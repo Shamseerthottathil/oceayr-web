@@ -7,54 +7,112 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: black; }
-        .mix-blend { mix-blend-mode: difference; }
+        body { font-family: 'Inter', sans-serif; background-color: #000; cursor: crosshair; }
+        
+        /* The "OR" Logo Concept */
+        .logo-or {
+            font-weight: 900;
+            border: 2px solid white;
+            padding: 2px 10px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .logo-or:hover { background: white; color: black; }
+
+        .outline-text {
+            -webkit-text-stroke: 1.5px white;
+            color: transparent;
+        }
+
+        /* Movable Image Logic */
+        .floating-img {
+            position: absolute;
+            width: 280px;
+            height: 380px;
+            z-index: 5;
+            transition: transform 0.2s ease-out;
+            pointer-events: auto;
+        }
+        .floating-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) brightness(0.7);
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .floating-img:hover img {
+            filter: grayscale(0%) brightness(1);
+            transform: scale(1.05);
+            border-color: white;
+        }
     </style>
 </head>
-<body class="text-white overflow-x-hidden">
+<body class="text-white overflow-x-hidden select-none">
 
     <div class="fixed inset-0 z-0">
         <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-dark-fluid-background-loop-2550-large.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black"></div>
+        <div class="absolute inset-0 bg-black/40"></div>
     </div>
 
-    <nav class="relative z-10 flex justify-between p-8 uppercase tracking-widest text-[10px]">
-        <div class="font-bold text-xl tracking-tighter">OCEAYR.</div>
-        <div class="hidden md:flex gap-10">
-            <a href="#" class="hover:line-through">Studio</a>
-            <a href="#" class="hover:line-through">Work</a>
+    <div class="floating-img hidden md:block" style="top: 15%; left: 8%;" data-speed="3">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="Test 1">
+    </div>
+    
+    <div class="floating-img hidden md:block" style="top: 45%; right: 5%;" data-speed="-4">
+        <img src="https://images.unsplash.com/photo-1635776062127-d379bfcbb9c8?q=80&w=2532&auto=format&fit=crop" alt="Test 2">
+    </div>
+
+    <nav class="relative z-20 flex justify-between p-10 items-center">
+        <div class="logo-or text-3xl">OR</div>
+        <div class="font-black text-xl tracking-tighter uppercase">Oceayr Agency</div>
+        <div class="hidden md:flex gap-10 uppercase text-[10px] tracking-[0.4em] font-bold">
+            <a href="#" class="hover:line-through">Atelier</a>
+            <a href="#" class="hover:line-through">Cinema</a>
             <a href="#" class="hover:line-through">Contact</a>
         </div>
     </nav>
 
-    <main class="relative z-10 flex flex-col items-center justify-center min-h-[85vh] px-6 text-center">
-        <h2 class="text-[10px] uppercase tracking-[0.5em] mb-6 text-gray-400">The Marketing Atelier</h2>
+    <main class="relative z-10 flex flex-col items-start justify-center min-h-[80vh] px-10">
+        <h2 class="text-[10px] uppercase tracking-[1em] mb-12 text-white/40">Established in Dubai</h2>
         
-        <h1 class="text-6xl md:text-[120px] font-black uppercase leading-[0.9] tracking-tighter mix-blend">
-            WE MAKE <br> 
-            <span class="text-transparent" style="-webkit-text-stroke: 1px white;">NOISE.</span>
+        <h1 class="text-7xl md:text-[180px] font-black uppercase leading-[0.85] tracking-tighter mb-10">
+            WE MAKE<br>
+            <span class="outline-text">NOISE.</span>
         </h1>
 
-        <p class="max-w-md mt-10 text-sm md:text-base text-gray-300 font-light leading-relaxed tracking-wide">
-            Oceayr is a boutique studio specializing in premium content creation 
-            and high-impact marketing strategies for the modern age.
-        </p>
-
-        <button class="mt-12 px-10 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-transparent hover:text-white border border-white transition-all duration-300 text-xs">
-            Collaborate
-        </button>
+        <div class="flex flex-col md:flex-row gap-12 items-start md:items-center">
+            <p class="max-w-sm text-xs text-gray-400 leading-relaxed uppercase tracking-[0.2em]">
+                Oceayr is a boutique studio specializing in premium content creation 
+                and high-impact marketing for the modern age.
+            </p>
+            <button class="px-14 py-6 bg-white text-black font-black uppercase tracking-tighter hover:bg-red-600 hover:text-white transition-all duration-500 text-lg">
+                GET IN TOUCH
+            </button>
+        </div>
     </main>
 
-    <footer class="relative z-10 p-8 flex justify-between items-end">
-        <div class="text-[10px] text-gray-500 uppercase tracking-[0.3em]">
-            Dubai // UAE
+    <footer class="relative z-10 p-10 flex justify-between items-end mt-20 border-t border-white/5">
+        <div class="text-[10px] text-gray-600 uppercase tracking-[0.5em]">
+            25.2048° N, 55.2708° E
         </div>
-        <div class="text-[10px] tracking-widest text-gray-500 uppercase">
+        <div class="text-[10px] tracking-widest text-gray-600 uppercase font-bold">
             © 2026 OCEAYR STUDIO
         </div>
     </footer>
 
+    <script>
+        document.addEventListener("mousemove", (e) => {
+            const x = (e.clientX - window.innerWidth / 2) / 25;
+            const y = (e.clientY - window.innerHeight / 2) / 25;
+
+            document.querySelectorAll('.floating-img').forEach(img => {
+                const speed = img.getAttribute('data-speed');
+                img.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
 </body>
 </html>
