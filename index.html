@@ -3,29 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oceayr | Marketing Atelier</title>
+    <title>OCEAYR | Marketing Atelier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body, html { margin: 0; padding: 0; background-color: #000; color: #fff; font-family: 'Georgia', serif; height: 100%; display: flex; align-items: center; justify-content: center; }
-        .container { text-align: center; padding: 20px; }
-        h1 { font-size: clamp(2rem, 8vw, 4rem); font-weight: 300; letter-spacing: 12px; text-transform: uppercase; margin-bottom: 10px; }
-        p.tagline { font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; color: #666; margin-bottom: 50px; font-family: sans-serif; }
-        .content { max-width: 500px; margin: 0 auto; border-top: 1px solid #222; padding-top: 40px; }
-        p.description { font-size: 1.2rem; line-height: 1.8; color: #aaa; font-weight: 200; font-style: italic; }
-        .cta { margin-top: 60px; }
-        .cta a { color: #fff; text-decoration: none; font-size: 0.7rem; letter-spacing: 4px; border: 1px solid #444; padding: 15px 30px; transition: 0.3s; font-family: sans-serif; }
-        .cta a:hover { background: #fff; color: #000; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: black; }
+        .mix-blend { mix-blend-mode: difference; }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Oceayr</h1>
-        <p class="tagline">Marketing Atelier • Dubai</p>
-        <div class="content">
-            <p class="description">Defining the culinary horizon through sensory narratives and atmospheric branding.</p>
-        </div>
-        <div class="cta">
-            <a href="mailto:hello@oceayr.com">START A CONVERSATION</a>
-        </div>
+<body class="text-white overflow-x-hidden">
+
+    <div class="fixed inset-0 z-0">
+        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-dark-fluid-background-loop-2550-large.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black"></div>
     </div>
+
+    <nav class="relative z-10 flex justify-between p-8 uppercase tracking-widest text-[10px]">
+        <div class="font-bold text-xl tracking-tighter">OCEAYR.</div>
+        <div class="hidden md:flex gap-10">
+            <a href="#" class="hover:line-through">Studio</a>
+            <a href="#" class="hover:line-through">Work</a>
+            <a href="#" class="hover:line-through">Contact</a>
+        </div>
+    </nav>
+
+    <main class="relative z-10 flex flex-col items-center justify-center min-h-[85vh] px-6 text-center">
+        <h2 class="text-[10px] uppercase tracking-[0.5em] mb-6 text-gray-400">The Marketing Atelier</h2>
+        
+        <h1 class="text-6xl md:text-[120px] font-black uppercase leading-[0.9] tracking-tighter mix-blend">
+            WE MAKE <br> 
+            <span class="text-transparent" style="-webkit-text-stroke: 1px white;">NOISE.</span>
+        </h1>
+
+        <p class="max-w-md mt-10 text-sm md:text-base text-gray-300 font-light leading-relaxed tracking-wide">
+            Oceayr is a boutique studio specializing in premium content creation 
+            and high-impact marketing strategies for the modern age.
+        </p>
+
+        <button class="mt-12 px-10 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-transparent hover:text-white border border-white transition-all duration-300 text-xs">
+            Collaborate
+        </button>
+    </main>
+
+    <footer class="relative z-10 p-8 flex justify-between items-end">
+        <div class="text-[10px] text-gray-500 uppercase tracking-[0.3em]">
+            Dubai // UAE
+        </div>
+        <div class="text-[10px] tracking-widest text-gray-500 uppercase">
+            © 2026 OCEAYR STUDIO
+        </div>
+    </footer>
+
 </body>
 </html>
