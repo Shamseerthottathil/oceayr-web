@@ -8,71 +8,124 @@
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #000; 
-            height: 100vh; 
-            overflow: hidden; 
-            touch-action: none; /* Prevents screen bouncing on mobile */
-        }
         
+        /* Prevent bounce/scroll on iOS */
+        html, body { 
+            position: fixed; 
+            overflow: hidden; 
+            width: 100%; 
+            height: 100%;
+            font-family: 'Inter', sans-serif; 
+            background-color: #000;
+        }
+
         .logo-or { font-weight: 900; border: 2px solid white; padding: 2px 10px; display: inline-block; }
         .outline-text { -webkit-text-stroke: 1px white; color: transparent; }
 
-        /* Responsive Draggable Styling */
+        /* Draggable Styling - Scaled for Mobile */
         .draggable {
             position: absolute;
-            width: 140px; height: 190px; /* Smaller for mobile */
-            z-index: 5;
+            width: 120px; height: 160px;
+            z-index: 10;
             touch-action: none;
             user-select: none;
+            will-change: transform;
         }
+        
         @media (min-width: 768px) {
-            .draggable { width: 200px; height: 270px; } /* Larger for desktop */
+            .draggable { width: 220px; height: 300px; }
         }
 
         .draggable img {
             width: 100%; height: 100%; object-fit: cover;
             filter: grayscale(100%) brightness(0.7);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 0.5px solid rgba(255,255,255,0.3);
             pointer-events: none;
-            transition: filter 0.3s ease;
+            transition: filter 0.3s ease, transform 0.3s ease;
         }
-        .draggable:active { z-index: 50; }
-        .draggable:hover img { filter: grayscale(0%) brightness(1); border-color: #fff; }
+
+        /* Active state for both touch and mouse */
+        .draggable.dragging img {
+            filter: grayscale(0%) brightness(1);
+            transform: scale(1.05);
+            border-color: #fff;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body class="text-white select-none">
 
     <div class="fixed inset-0 z-0">
-        <video id="bgVideo" autoplay loop muted playsinline webkit-playsinline class="w-full h-full object-cover opacity-40">
-            <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+        <video id="bgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto" class="w-full h-full object-cover opacity-40">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-luxury-restaurant-table-41438-large.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="absolute inset-0 bg-black/30"></div>
     </div>
 
     <div id="canvas" class="relative w-full h-full z-10">
-        <div class="draggable" style="top: 10%; left: 10%;"><img src="https://picsum.photos/id/292/400/600"></div> <div class="draggable" style="top: 15%; left: 50%;"><img src="https://picsum.photos/id/429/400/600"></div> <div class="draggable" style="top: 5%; left: 75%;"><img src="https://picsum.photos/id/431/400/600"></div> <div class="draggable" style="top: 40%; left: 5%;"><img src="https://picsum.photos/id/493/400/600"></div> <div class="draggable" style="top: 65%; left: 15%;"><img src="https://picsum.photos/id/635/400/600"></div> <div class="draggable" style="top: 55%; left: 70%;"><img src="https://picsum.photos/id/835/400/600"></div> <div class="draggable" style="top: 75%; left: 50%;"><img src="https://picsum.photos/id/999/400/600"></div> <div class="draggable" style="top: 25%; right: 5%;"><img src="https://picsum.photos/id/1060/400/600"></div> <div class="draggable" style="top: 80%; right: 10%;"><img src="https://picsum.photos/id/1080/400/600"></div> <div class="draggable" style="top: 35%; left: 35%;"><img src="https://picsum.photos/id/766/400/600"></div> </div>
+        <div class="draggable" style="top: 15%; left: 10%;"><img src="https://picsum.photos/id/429/400/600"></div>
+        <div class="draggable" style="top: 10%; left: 55%;"><img src="https://picsum.photos/id/431/400/600"></div>
+        <div class="draggable" style="top: 45%; left: 5%;"><img src="https://picsum.photos/id/493/400/600"></div>
+        <div class="draggable" style="top: 60%; left: 60%;"><img src="https://picsum.photos/id/635/400/600"></div>
+        <div class="draggable" style="top: 30%; left: 35%;"><img src="https://picsum.photos/id/292/400/600"></div>
+    </div>
 
-    <nav class="fixed top-0 left-0 w-full z-30 flex justify-between p-6 md:p-10 items-center pointer-events-none">
-        <div class="logo-or text-2xl md:text-3xl pointer-events-auto">OR</div>
-        <div class="font-black text-sm md:text-xl tracking-tighter uppercase">Oceayr Agency</div>
-        <div class="hidden md:flex gap-10 uppercase text-[10px] tracking-[0.4em] font-bold pointer-events-auto">
-            <a href="#" class="hover:line-through">Atelier</a>
-            <a href="#" class="hover:line-through">Cinema</a>
-            <a href="#" class="hover:line-through">Contact</a>
-        </div>
+    <nav class="fixed top-0 left-0 w-full z-30 flex justify-between p-8 items-center pointer-events-none">
+        <div class="logo-or text-2xl pointer-events-auto">OR</div>
+        <div class="font-black text-lg tracking-tighter uppercase">Oceayr Agency</div>
     </nav>
 
-    <main class="fixed inset-0 z-20 flex flex-col items-center justify-center text-center pointer-events-none px-4">
-        <h1 class="text-5xl md:text-[150px] font-black uppercase leading-[0.85] tracking-tighter mb-6">
+    <main class="fixed inset-0 z-20 flex flex-col items-center justify-center text-center pointer-events-none px-6">
+        <h1 class="text-5xl md:text-[140px] font-black uppercase leading-[0.8] tracking-tighter mb-8">
             WE MAKE<br>
             <span class="outline-text">NOISE.</span>
         </h1>
-        <button class="pointer-events-auto px-10 py-4 md:px-14 md:py-6 bg-white text-black font-black uppercase tracking-tighter hover:bg-red-600 hover:text-white transition-all duration-500 text-sm md:text-lg">
+        <button class="pointer-events-auto px-10 py-4 bg-white text-black font-black uppercase tracking-tighter hover:bg-red-600 hover:text-white transition-all text-xs md:text-sm">
             GET IN TOUCH
         </button>
     </main>
 
-    <footer class="fixed bottom-0 left-0 w-full p-6 md:p-10 flex justify-between items-end z-30 pointer-events-none">
-        <div class="text-[8px] md:text-[10px] text-gray-4
+    <script>
+        // Initialize Interactivity
+        interact('.draggable').draggable({
+            inertia: true,
+            autoScroll: false,
+            listeners: {
+                start(event) {
+                    event.target.classList.add('dragging');
+                    // Bring to front
+                    event.target.style.zIndex = 100;
+                },
+                move(event) {
+                    const target = event.target;
+                    const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+                    const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+                    target.style.transform = `translate(${x}px, ${y}px)`;
+                    target.setAttribute('data-x', x);
+                    target.setAttribute('data-y', y);
+                },
+                end(event) {
+                    event.target.classList.remove('dragging');
+                    event.target.style.zIndex = 10;
+                }
+            }
+        });
+
+        // SAFARI AUTO-PLAY FIX: 
+        // iOS requires a user interaction to play video in many cases.
+        const startVideo = () => {
+            const video = document.getElementById('bgVideo');
+            if (video) {
+                video.play().catch(() => {
+                    // Fallback if autoplay is still blocked
+                    console.log("Autoplay blocked, waiting for touch");
+                });
+            }
+        };
+
+        document.addEventListener('touchstart', startVideo, { once: true });
+        document.addEventListener('mousedown', startVideo, { once: true });
+    </script>
+</body>
+</html>
