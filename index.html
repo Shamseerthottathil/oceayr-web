@@ -9,41 +9,70 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
         
-        body { background-color: #000; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        body { 
+            background-color: #000; 
+            color: white; 
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
         .logo-or { font-weight: 900; border: 2px solid white; padding: 4px 12px; display: inline-block; }
         .outline-text { -webkit-text-stroke: 1.5px white; color: transparent; }
 
-        /* Nav */
+        /* Trending Nav Styles */
         .nav-link { position: relative; transition: opacity 0.3s ease; }
         .nav-link:hover { opacity: 0.6; }
-
-        /* Massive Typography */
-        .massive-title { font-size: clamp(3rem, 16vw, 12rem); line-height: 0.8; letter-spacing: -0.06em; font-weight: 900; }
-
-        /* 12 Draggable Images */
-        .draggable {
-            position: absolute; width: 140px; height: 190px; z-index: 10;
-            touch-action: none; user-select: none; cursor: grab;
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 1px;
+            bottom: -2px; left: 0; background-color: white; transition: width 0.3s ease;
         }
-        @media (min-width: 768px) { .draggable { width: 280px; height: 380px; } }
-        
+        .nav-link:hover::after { width: 100%; }
+
+        /* Massive Typography like Loud.ae */
+        .massive-title {
+            font-size: clamp(3rem, 15vw, 12rem);
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+        }
+
+        /* Draggable Image Styling */
+        .draggable {
+            position: absolute;
+            width: 150px; height: 200px;
+            z-index: 10;
+            touch-action: none;
+            user-select: none;
+            cursor: grab;
+        }
+        @media (min-width: 768px) {
+            .draggable { width: 280px; height: 380px; }
+        }
         .draggable img {
             width: 100%; height: 100%; object-fit: cover;
-            filter: grayscale(100%) brightness(0.4);
-            border: 0.5px solid rgba(255,255,255,0.15);
-            transition: all 0.6s ease; pointer-events: none;
+            filter: grayscale(100%) brightness(0.5);
+            border: 0.5px solid rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            pointer-events: none;
         }
-        .draggable.dragging img { filter: grayscale(0%) brightness(1); transform: scale(1.05); border-color: #fff; }
+        .draggable.dragging img {
+            filter: grayscale(0%) brightness(1);
+            transform: scale(1.05);
+            border-color: #fff;
+        }
 
-        #hero { position: relative; height: 100vh; overflow: hidden; background: #000; }
-        #image-section { position: relative; width: 100%; height: 250vh; background: #000; z-index: 30; }
+        /* Separation: Video only on Hero, Black for Gallery */
+        #hero { position: relative; height: 100vh; overflow: hidden; }
+        #image-section { position: relative; width: 100%; height: 180vh; background: #000; z-index: 30; }
     </style>
 </head>
 <body class="select-none">
 
     <nav class="fixed top-0 left-0 w-full z-50 flex flex-col md:flex-row justify-between items-center p-6 md:p-10 mix-blend-difference">
-        <div class="logo-or text-xl mb-4 md:mb-0">OR</div>
-        <div class="flex flex-wrap justify-center gap-6 md:gap-10 uppercase text-[9px] md:text-[11px] tracking-[0.45em] font-bold">
+        <div class="flex items-center gap-4 mb-4 md:mb-0">
+            <div class="logo-or text-xl">OR</div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6 md:gap-12 uppercase text-[9px] md:text-[11px] tracking-[0.4em] font-bold">
             <a href="#" class="nav-link">Home</a>
             <a href="#" class="nav-link">Our Work</a>
             <a href="#" class="nav-link">About Us</a>
@@ -54,56 +83,45 @@
 
     <section id="hero" class="flex flex-col items-center justify-center text-center px-6">
         <div class="absolute inset-0 z-0">
-            <video id="bgVideo" autoplay loop muted playsinline webkit-playsinline class="w-full h-full object-cover opacity-60">
-                <source src="https://player.vimeo.com/external/517728443.hd.mp4?s=235f999965f029019d0a6c76e2715ed449a888c3&profile_id=175" type="video/mp4">
+            <video id="bgVideo" autoplay loop muted playsinline webkit-playsinline class="w-full h-full object-cover opacity-40">
+                <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
             </video>
-            <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black"></div>
+            <div class="absolute inset-0 bg-black/40"></div>
         </div>
 
-        <div class="relative z-10">
-            <h1 class="massive-title uppercase mb-6">OCEAYR<br><span class="outline-text">AGENCY</span></h1>
-            <p class="text-[10px] md:text-[16px] tracking-[1.2em] uppercase text-white/80 mb-12">WE MAKE NOISE.</p>
-            <button onclick="forcePlay()" class="px-16 py-7 bg-white text-black font-black uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all text-[10px]">
+        <div class="relative z-10 flex flex-col items-center">
+            <h1 class="massive-title font-black uppercase mb-4">
+                OCEAYR<br>
+                <span class="outline-text">AGENCY</span>
+            </h1>
+            <p class="text-[10px] md:text-[14px] tracking-[0.8em] uppercase text-gray-300 mb-10">
+                WE MAKE NOISE.
+            </p>
+            <button class="px-14 py-6 bg-white text-black font-black uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all text-[10px]">
                 START A PROJECT
             </button>
         </div>
     </section>
 
     <section id="image-section">
-        <div class="draggable" style="top: 5%; left: 10%;"><img src="https://picsum.photos/id/830/600/800"></div>
-        <div class="draggable" style="top: 8%; left: 65%;"><img src="https://picsum.photos/id/1059/600/800"></div>
-        <div class="draggable" style="top: 25%; left: 35%;"><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800"></div>
-        <div class="draggable" style="top: 40%; left: 5%;"><img src="https://picsum.photos/id/64/600/800"></div>
-        <div class="draggable" style="top: 50%; left: 70%;"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800"></div>
-        <div class="draggable" style="top: 15%; left: 85%;"><img src="https://picsum.photos/id/338/600/800"></div>
-        <div class="draggable" style="top: 65%; left: 15%;"><img src="https://picsum.photos/id/292/600/800"></div>
-        <div class="draggable" style="top: 75%; left: 45%;"><img src="https://picsum.photos/id/431/600/800"></div>
-        <div class="draggable" style="top: 85%; left: 75%;"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800"></div>
-        <div class="draggable" style="top: 20%; left: 5%;"><img src="https://picsum.photos/id/824/600/800"></div>
-        <div class="draggable" style="top: 55%; left: 30%;"><img src="https://picsum.photos/id/1060/600/800"></div>
-        <div class="draggable" style="top: 88%; left: 10%;"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800"></div>
+        <div class="draggable" style="top: 5%; left: 10%;"><img src="https://picsum.photos/id/830/500/700"></div>
+        <div class="draggable" style="top: 15%; left: 60%;"><img src="https://picsum.photos/id/1059/500/700"></div>
+        <div class="draggable" style="top: 30%; left: 35%;"><img src="https://picsum.photos/id/64/500/700"></div>
+        <div class="draggable" style="top: 45%; left: 75%;"><img src="https://picsum.photos/id/445/500/700"></div>
+        <div class="draggable" style="top: 60%; left: 5%;"><img src="https://picsum.photos/id/326/500/700"></div>
+        <div class="draggable" style="top: 10%; left: 80%;"><img src="https://picsum.photos/id/338/500/700"></div>
+        <div class="draggable" style="top: 75%; left: 45%;"><img src="https://picsum.photos/id/292/500/700"></div>
+        <div class="draggable" style="top: 85%; left: 15%;"><img src="https://picsum.photos/id/431/500/700"></div>
+        <div class="draggable" style="top: 25%; left: 80%;"><img src="https://picsum.photos/id/824/500/700"></div>
+        <div class="draggable" style="top: 55%; left: 40%;"><img src="https://picsum.photos/id/1060/500/700"></div>
     </section>
 
-    <footer class="relative z-40 bg-black p-12 flex justify-between items-center border-t border-white/5 text-[9px] tracking-[0.5em] text-gray-500">
-        <div>DUBAI // UAE</div>
-        <div>© 2026 OCEAYR STUDIO</div>
+    <footer class="relative z-40 bg-black p-10 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-white/10">
+        <div class="text-[9px] tracking-[0.5em] uppercase text-gray-500">Dubai // UAE</div>
+        <div class="text-[9px] tracking-[0.5em] uppercase font-bold">© 2026 OCEAYR STUDIO</div>
     </footer>
 
     <script>
-        const video = document.getElementById('bgVideo');
-        
-        function forcePlay() {
-            if (video) {
-                video.muted = true;
-                video.play();
-            }
-        }
-
-        // Trigger video play on any interaction
-        ['click', 'touchstart', 'scroll', 'mousemove'].forEach(evt => {
-            document.addEventListener(evt, forcePlay, { once: true });
-        });
-
         // DRAG ENGINE
         interact('.draggable').draggable({
             inertia: true,
@@ -111,7 +129,6 @@
                 start(event) {
                     event.target.classList.add('dragging');
                     event.target.style.zIndex = 100;
-                    forcePlay();
                 },
                 move(event) {
                     const target = event.target;
@@ -127,6 +144,12 @@
                 }
             }
         });
+
+        // FORCE VIDEO PLAY ON INTERACTION
+        window.addEventListener('touchstart', () => {
+            const video = document.getElementById('bgVideo');
+            if (video && video.paused) video.play();
+        }, { once: true });
     </script>
 </body>
 </html>
