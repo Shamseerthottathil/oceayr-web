@@ -2,27 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>OCEAYR | Marketing Atelier</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
         
-        /* Prevent bounce/scroll on iOS */
+        /* Prevent bounce/scroll on iOS and Desktop */
         html, body { 
             position: fixed; 
             overflow: hidden; 
             width: 100%; 
             height: 100%;
+            margin: 0;
+            padding: 0;
             font-family: 'Inter', sans-serif; 
             background-color: #000;
+            touch-action: none;
         }
 
         .logo-or { font-weight: 900; border: 2px solid white; padding: 2px 10px; display: inline-block; }
         .outline-text { -webkit-text-stroke: 1px white; color: transparent; }
 
-        /* Draggable Styling - Scaled for Mobile */
+        /* Draggable Styling - Scaled for Mobile/Desktop */
         .draggable {
             position: absolute;
             width: 120px; height: 160px;
@@ -30,6 +33,7 @@
             touch-action: none;
             user-select: none;
             will-change: transform;
+            cursor: grab;
         }
         
         @media (min-width: 768px) {
@@ -45,6 +49,7 @@
         }
 
         /* Active state for both touch and mouse */
+        .draggable.dragging { cursor: grabbing; }
         .draggable.dragging img {
             filter: grayscale(0%) brightness(1);
             transform: scale(1.05);
@@ -57,7 +62,7 @@
 
     <div class="fixed inset-0 z-0">
         <video id="bgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto" class="w-full h-full object-cover opacity-40">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-luxury-restaurant-table-41438-large.mp4" type="video/mp4">
+            <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
         </video>
         <div class="absolute inset-0 bg-black/30"></div>
     </div>
@@ -86,15 +91,15 @@
     </main>
 
     <script>
-        // Initialize Interactivity
+        // DRAG ENGINE INITIALIZATION
         interact('.draggable').draggable({
             inertia: true,
             autoScroll: false,
             listeners: {
                 start(event) {
                     event.target.classList.add('dragging');
-                    // Bring to front
                     event.target.style.zIndex = 100;
+                    startVideo(); // Force video check on interaction
                 },
                 move(event) {
                     const target = event.target;
@@ -102,30 +107,4 @@
                     const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
                     target.style.transform = `translate(${x}px, ${y}px)`;
-                    target.setAttribute('data-x', x);
-                    target.setAttribute('data-y', y);
-                },
-                end(event) {
-                    event.target.classList.remove('dragging');
-                    event.target.style.zIndex = 10;
-                }
-            }
-        });
-
-        // SAFARI AUTO-PLAY FIX: 
-        // iOS requires a user interaction to play video in many cases.
-        const startVideo = () => {
-            const video = document.getElementById('bgVideo');
-            if (video) {
-                video.play().catch(() => {
-                    // Fallback if autoplay is still blocked
-                    console.log("Autoplay blocked, waiting for touch");
-                });
-            }
-        };
-
-        document.addEventListener('touchstart', startVideo, { once: true });
-        document.addEventListener('mousedown', startVideo, { once: true });
-    </script>
-</body>
-</html>
+                    target.setAttribute('data
