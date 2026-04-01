@@ -2,62 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>OCEAYR | Marketing Atelier</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #000; cursor: crosshair; height: 100vh; overflow: hidden; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #000; 
+            height: 100vh; 
+            overflow: hidden; 
+            touch-action: none; /* Prevents screen bouncing on mobile */
+        }
         
         .logo-or { font-weight: 900; border: 2px solid white; padding: 2px 10px; display: inline-block; }
-        .outline-text { -webkit-text-stroke: 1.5px white; color: transparent; }
+        .outline-text { -webkit-text-stroke: 1px white; color: transparent; }
 
-        /* Draggable Image Styling */
+        /* Responsive Draggable Styling */
         .draggable {
             position: absolute;
-            width: 180px; height: 240px;
+            width: 140px; height: 190px; /* Smaller for mobile */
             z-index: 5;
             touch-action: none;
             user-select: none;
-            cursor: grab;
         }
+        @media (min-width: 768px) {
+            .draggable { width: 200px; height: 270px; } /* Larger for desktop */
+        }
+
         .draggable img {
             width: 100%; height: 100%; object-fit: cover;
             filter: grayscale(100%) brightness(0.7);
             border: 1px solid rgba(255,255,255,0.2);
-            pointer-events: none; /* Let the div handle the drag */
+            pointer-events: none;
             transition: filter 0.3s ease;
         }
-        .draggable:active { cursor: grabbing; z-index: 50; }
+        .draggable:active { z-index: 50; }
         .draggable:hover img { filter: grayscale(0%) brightness(1); border-color: #fff; }
     </style>
 </head>
 <body class="text-white select-none">
 
     <div class="fixed inset-0 z-0">
-        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40">
+        <video id="bgVideo" autoplay loop muted playsinline webkit-playsinline class="w-full h-full object-cover opacity-40">
             <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
         </video>
         <div class="absolute inset-0 bg-black/20"></div>
     </div>
 
     <div id="canvas" class="relative w-full h-full z-10">
-        <div class="draggable" style="top: 10%; left: 10%;"><img src="https://picsum.photos/id/1/400/600"></div>
-        <div class="draggable" style="top: 15%; left: 30%;"><img src="https://picsum.photos/id/2/400/600"></div>
-        <div class="draggable" style="top: 5%; left: 70%;"><img src="https://picsum.photos/id/3/400/600"></div>
-        <div class="draggable" style="top: 40%; left: 5%;"><img src="https://picsum.photos/id/4/400/600"></div>
-        <div class="draggable" style="top: 60%; left: 15%;"><img src="https://picsum.photos/id/5/400/600"></div>
-        <div class="draggable" style="top: 50%; left: 75%;"><img src="https://picsum.photos/id/6/400/600"></div>
-        <div class="draggable" style="top: 75%; left: 40%;"><img src="https://picsum.photos/id/7/400/600"></div>
-        <div class="draggable" style="top: 20%; right: 5%;"><img src="https://picsum.photos/id/8/400/600"></div>
-        <div class="draggable" style="top: 80%; right: 10%;"><img src="https://picsum.photos/id/9/400/600"></div>
-        <div class="draggable" style="top: 35%; left: 45%;"><img src="https://picsum.photos/id/10/400/600"></div>
-    </div>
+        <div class="draggable" style="top: 10%; left: 10%;"><img src="https://picsum.photos/id/292/400/600"></div> <div class="draggable" style="top: 15%; left: 50%;"><img src="https://picsum.photos/id/429/400/600"></div> <div class="draggable" style="top: 5%; left: 75%;"><img src="https://picsum.photos/id/431/400/600"></div> <div class="draggable" style="top: 40%; left: 5%;"><img src="https://picsum.photos/id/493/400/600"></div> <div class="draggable" style="top: 65%; left: 15%;"><img src="https://picsum.photos/id/635/400/600"></div> <div class="draggable" style="top: 55%; left: 70%;"><img src="https://picsum.photos/id/835/400/600"></div> <div class="draggable" style="top: 75%; left: 50%;"><img src="https://picsum.photos/id/999/400/600"></div> <div class="draggable" style="top: 25%; right: 5%;"><img src="https://picsum.photos/id/1060/400/600"></div> <div class="draggable" style="top: 80%; right: 10%;"><img src="https://picsum.photos/id/1080/400/600"></div> <div class="draggable" style="top: 35%; left: 35%;"><img src="https://picsum.photos/id/766/400/600"></div> </div>
 
-    <nav class="fixed top-0 left-0 w-full z-30 flex justify-between p-10 items-center pointer-events-none">
-        <div class="logo-or text-3xl pointer-events-auto">OR</div>
-        <div class="font-black text-xl tracking-tighter uppercase">Oceayr Agency</div>
+    <nav class="fixed top-0 left-0 w-full z-30 flex justify-between p-6 md:p-10 items-center pointer-events-none">
+        <div class="logo-or text-2xl md:text-3xl pointer-events-auto">OR</div>
+        <div class="font-black text-sm md:text-xl tracking-tighter uppercase">Oceayr Agency</div>
         <div class="hidden md:flex gap-10 uppercase text-[10px] tracking-[0.4em] font-bold pointer-events-auto">
             <a href="#" class="hover:line-through">Atelier</a>
             <a href="#" class="hover:line-through">Cinema</a>
@@ -65,46 +64,15 @@
         </div>
     </nav>
 
-    <main class="fixed inset-0 z-20 flex flex-col items-center justify-center text-center pointer-events-none">
-        <h1 class="text-7xl md:text-[150px] font-black uppercase leading-[0.85] tracking-tighter mb-6">
+    <main class="fixed inset-0 z-20 flex flex-col items-center justify-center text-center pointer-events-none px-4">
+        <h1 class="text-5xl md:text-[150px] font-black uppercase leading-[0.85] tracking-tighter mb-6">
             WE MAKE<br>
             <span class="outline-text">NOISE.</span>
         </h1>
-        <button class="pointer-events-auto px-14 py-6 bg-white text-black font-black uppercase tracking-tighter hover:bg-red-600 hover:text-white transition-all duration-500 text-lg">
+        <button class="pointer-events-auto px-10 py-4 md:px-14 md:py-6 bg-white text-black font-black uppercase tracking-tighter hover:bg-red-600 hover:text-white transition-all duration-500 text-sm md:text-lg">
             GET IN TOUCH
         </button>
     </main>
 
-    <footer class="fixed bottom-0 left-0 w-full p-10 flex justify-between items-end z-30 pointer-events-none">
-        <div class="text-[10px] text-gray-400 uppercase tracking-[0.5em]">Dubai // UAE</div>
-        <div class="text-[10px] tracking-widest text-gray-400 uppercase font-bold">© 2026 OCEAYR</div>
-    </footer>
-
-    <script>
-        // Initialize dragging for all items with the "draggable" class
-        interact('.draggable').draggable({
-            listeners: {
-                move (event) {
-                    var target = event.target
-                    // keep the dragged position in the data-x/data-y attributes
-                    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
-                    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
-
-                    // translate the element
-                    target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
-
-                    // update the posiion attributes
-                    target.setAttribute('data-x', x)
-                    target.setAttribute('data-y', y)
-                }
-            }
-        })
-
-        // Auto-play fix: Browsers often block video until the user interacts
-        document.body.addEventListener('mousedown', function() {
-            const video = document.querySelector('video');
-            if (video) video.play();
-        }, { once: true });
-    </script>
-</body>
-</html>
+    <footer class="fixed bottom-0 left-0 w-full p-6 md:p-10 flex justify-between items-end z-30 pointer-events-none">
+        <div class="text-[8px] md:text-[10px] text-gray-4
