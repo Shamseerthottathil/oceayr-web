@@ -13,56 +13,43 @@
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
     <style>
-        @media (min-width: 1024px) { * { cursor: none !important; } }
-        body { background-color: #000; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
-
-        /* 🖱️ SOPHISTICATED CURSOR */
-        #cursor-dot { width: 4px; height: 4px; background: #fff; position: fixed; top: 0; left: 0; border-radius: 50%; z-index: 10005; pointer-events: none; display: none; }
-        #cursor-ring { 
-            width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.3); 
-            position: fixed; top: 0; left: 0; border-radius: 50%; z-index: 10004; 
-            pointer-events: none; display: none;
+        /* 🖱️ CUSTOM CURSOR VISIBILITY */
+        @media (min-width: 1024px) { 
+            html, body, a, div, img { cursor: none !important; } 
         }
+
+        body { background-color: #000; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+
+        /* 🚫 DISABLE BLUE SELECTION & DRAG OVERLAY */
+        * { 
+            -webkit-user-select: none; 
+            user-select: none; 
+            -webkit-user-drag: none; 
+            outline: none !important;
+        }
+
+        #cursor-dot { width: 6px; height: 6px; background: #fff; position: fixed; top: 0; left: 0; border-radius: 50%; z-index: 100001; pointer-events: none; display: none; }
+        #cursor-ring { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.4); position: fixed; top: 0; left: 0; border-radius: 50%; z-index: 100000; pointer-events: none; display: none; }
         @media (min-width: 1024px) { #cursor-dot, #cursor-ring { display: block; } }
 
-        /* Typography */
+        /* Typography - Locked to your original request */
         .massive-title { font-weight: 900; font-size: clamp(2.8rem, 12vw, 10rem); line-height: 0.82; letter-spacing: -0.05em; }
         .outline-text { -webkit-text-stroke: 1px white; color: transparent; }
-        .hero-subtitle {
-            font-size: clamp(9px, 1.5vw, 11px);
-            text-transform: uppercase;
-            letter-spacing: 0.5em;
-            color: rgba(255,255,255,0.6);
-            margin-top: 1.5rem;
-            max-width: 600px;
-            line-height: 1.8;
-        }
+        .hero-subtitle { font-size: clamp(9px, 1.5vw, 11px); text-transform: uppercase; letter-spacing: 0.5em; color: rgba(255,255,255,0.6); margin-top: 1.5rem; max-width: 600px; line-height: 1.8; text-align: center; }
 
-        /* 🖋️ NAV UNDERLINE */
-        .nav-link { position: relative; padding-bottom: 4px; }
-        .nav-link::after {
-            content: '';
-            position: absolute; bottom: 0; left: 50%; width: 0; height: 1px;
-            background: white; transition: width 0.4s cubic-bezier(0.2, 1, 0.3, 1), left 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-        }
-        .nav-link:hover::after { width: 100%; left: 0; }
-
-        #image-section { position: relative; width: 100%; height: 250vh; background: #000; z-index: 10; overflow: hidden; }
+        /* Image Grid (16 Images / 4 Rows) */
+        #image-section { position: relative; width: 100%; min-height: 450vh; background: #000; z-index: 10; padding-top: 20vh; }
         .scroll-wrapper { position: absolute; will-change: transform; }
-        
-        .draggable { width: 150px; height: 200px; touch-action: none; cursor: grab; }
+        .draggable { width: 150px; height: 200px; touch-action: none; }
         @media (min-width: 768px) { .draggable { width: 320px; height: 420px; } }
 
-        .draggable img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) brightness(0.4); transition: filter 0.6s ease; pointer-events: none; }
+        /* SHOW ORIGINAL COLOR ON HOVER - No Blue */
+        .draggable img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) brightness(0.4); transition: filter 0.6s ease; }
         .draggable:hover img { filter: grayscale(0%) brightness(1); }
 
-        #zoom-portal {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: 10002; display: none; align-items: center; justify-content: center;
-            background: rgba(0,0,0,0.98); cursor: pointer;
-        }
+        /* Zoom Portal */
+        #zoom-portal { position: fixed; inset: 0; z-index: 200000; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.96); }
         #zoom-portal.active { display: flex; }
-        #zoom-portal img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
     </style>
 </head>
 <body>
@@ -70,113 +57,106 @@
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
 
-    <div id="zoom-portal">
-        <img id="portal-img" src="" alt="Zoomed">
-    </div>
+    <div id="zoom-portal"><img id="portal-img" src="" class="max-w-[90%] max-h-[85%] object-contain"></div>
 
-    <nav class="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md">
-        <div class="flex justify-between items-center max-w-7xl mx-auto p-4 md:p-6">
-            <div class="font-black border-2 border-white px-2 py-0.5 text-xs md:text-xl cursor-pointer">OR</div>
-            <div class="flex gap-4 md:gap-10 uppercase text-[8px] md:text-[11px] tracking-[0.2em] md:tracking-[0.4em] font-bold">
-                <a href="#" class="nav-link interactive">Home</a>
-                <a href="#" class="nav-link interactive">Work</a>
-                <a href="#" class="nav-link interactive">About</a>
-                <a href="#" class="nav-link interactive">Careers</a>
-                <a href="#" class="nav-link interactive">Contact</a>
+    <nav class="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md p-6">
+        <div class="flex justify-between items-center max-w-7xl mx-auto">
+            <div class="font-black border-2 border-white px-2 py-0.5 text-xl interactive">OR</div>
+            <div class="flex gap-10 uppercase text-[11px] tracking-[0.4em] font-bold">
+                <a href="#" class="interactive">Home</a>
+                <a href="#" class="interactive">Work</a>
+                <a href="#" class="interactive">About</a>
+                <a href="#" class="interactive">Contact</a>
             </div>
         </div>
     </nav>
 
-    <section id="hero" class="h-[100vh] flex flex-col items-center justify-center text-center px-6">
+    <section id="hero" class="h-screen flex flex-col items-center justify-center relative bg-black">
         <div class="absolute inset-0 z-0">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-black/50 z-10"></div>
+            <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover opacity-40">
                 <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
             </video>
         </div>
-        <div class="relative z-10 flex flex-col items-center">
+        <div class="relative z-20 text-center flex flex-col items-center">
             <h1 class="massive-title uppercase">OCEAYR<br><span class="outline-text">AGENCY</span></h1>
             <p class="hero-subtitle">Defining the aesthetic of future culture through disruptive strategy and lifestyle marketing.</p>
         </div>
     </section>
 
-    <section id="image-section">
-        <div class="scroll-wrapper" data-speed="-120" style="top: 10%; left: 5%;"><div class="draggable"><img src="https://picsum.photos/id/830/800/1200"></div></div>
-        <div class="scroll-wrapper" data-speed="100" style="top: 5%; left: 55%;"><div class="draggable"><img src="https://picsum.photos/id/1059/800/1200"></div></div>
-        <div class="scroll-wrapper" data-speed="-60" style="top: 30%; left: 30%;"><div class="draggable"><img src="https://picsum.photos/id/64/800/1200"></div></div>
-        <div class="scroll-wrapper" data-speed="180" style="top: 40%; left: 65%;"><div class="draggable"><img src="https://picsum.photos/id/445/800/1200"></div></div>
-        <div class="scroll-wrapper" data-speed="-150" style="top: 60%; left: 8%;"><div class="draggable"><img src="https://picsum.photos/id/326/800/1200"></div></div>
-    </section>
+    <section id="image-section"></section>
 
-    <footer class="bg-black p-10 text-center border-t border-white/10">
+    <footer class="bg-black p-10 text-center border-t border-white/10 relative z-30">
         <div class="text-[8px] tracking-[0.6em] uppercase opacity-30">© 2026 OCEAYR AGENCY</div>
     </footer>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
+        // 1. CURSOR
         const dot = document.getElementById('cursor-dot');
         const ring = document.getElementById('cursor-ring');
-        if (window.innerWidth > 1024) {
-            window.addEventListener('mousemove', (e) => {
-                gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0.1 });
-                gsap.to(ring, { x: e.clientX - 20, y: e.clientY - 20, duration: 0.3 });
-            });
-
-            document.querySelectorAll('.interactive').forEach(link => {
-                link.addEventListener('mouseenter', () => {
-                    gsap.to(ring, { scale: 0, opacity: 0, duration: 0.3 });
-                    gsap.to(dot, { scale: 1.5, duration: 0.3 });
-                });
-                link.addEventListener('mouseleave', () => {
-                    gsap.to(ring, { scale: 1, opacity: 1, duration: 0.3 });
-                    gsap.to(dot, { scale: 1, duration: 0.3 });
-                });
-            });
-        }
-
-        gsap.utils.toArray(".scroll-wrapper").forEach((wrapper) => {
-            gsap.to(wrapper, {
-                y: wrapper.getAttribute("data-speed"),
-                ease: "none",
-                scrollTrigger: { trigger: "#image-section", start: "top bottom", end: "bottom top", scrub: 1 }
-            });
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0 });
+            gsap.to(ring, { x: e.clientX - 20, y: e.clientY - 20, duration: 0.15 });
         });
 
-        interact('.draggable').draggable({
-            listeners: {
-                move(event) {
-                    const target = event.target;
-                    const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-                    const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-                    target.style.transform = `translate(${x}px, ${y}px)`;
-                    target.setAttribute('data-x', x);
-                    target.setAttribute('data-y', y);
-                }
-            }
+        // 2. GENERATE 16 IMAGES / 4 ROWS
+        const container = document.getElementById('image-section');
+        const imgIds = [830, 1059, 64, 445, 326, 674, 1044, 250, 682, 600, 311, 453, 522, 1011, 984, 1031];
+        
+        imgIds.forEach((id, i) => {
+            const row = Math.floor(i / 4);
+            const col = i % 4;
+            const wrap = document.createElement('div');
+            wrap.className = 'scroll-wrapper';
+            wrap.style.top = `${(row * 105) + 15}vh`;
+            wrap.style.left = `${(col * 22) + 5}%`;
+            wrap.setAttribute('data-speed', (Math.random() * 100) - 50);
+            wrap.innerHTML = `<div class="draggable"><img src="https://picsum.photos/id/${id}/800/1200" class="interactive"></div>`;
+            container.appendChild(wrap);
         });
 
+        // 3. ZOOM & ESC FIX
         const portal = document.getElementById('zoom-portal');
         const portalImg = document.getElementById('portal-img');
 
         function openImage(src) {
             portalImg.src = src;
             portal.classList.add('active');
-            gsap.fromTo(portalImg, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4 });
         }
 
-        function closeZoom() {
-            if (!portal.classList.contains('active')) return;
-            gsap.to(portalImg, { scale: 0.9, opacity: 0, duration: 0.3, onComplete: () => portal.classList.remove('active') });
+        function closeImage() {
+            portal.classList.remove('active');
         }
-
-        portal.addEventListener('click', closeZoom);
-        window.addEventListener('keydown', (e) => { if (e.key === "Escape") closeZoom(); });
 
         document.querySelectorAll('.draggable').forEach(el => {
-            el.addEventListener('dblclick', (e) => { e.stopPropagation(); openImage(el.querySelector('img').src); });
-            let timer;
-            el.addEventListener('touchstart', (e) => { timer = setTimeout(() => openImage(el.querySelector('img').src), 500); });
-            el.addEventListener('touchend', () => clearTimeout(timer));
+            el.addEventListener('dblclick', () => openImage(el.querySelector('img').src));
+        });
+
+        portal.addEventListener('click', closeImage);
+
+        // ✅ GLOBAL ESCAPE KEY (WORKING)
+        window.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") closeImage();
+        });
+
+        // 4. PARALLAX & DRAG
+        gsap.utils.toArray(".scroll-wrapper").forEach((w) => {
+            gsap.to(w, { y: w.getAttribute("data-speed"), scrollTrigger: { trigger: "#image-section", start: "top bottom", end: "bottom top", scrub: 1.2 } });
+        });
+
+        interact('.draggable').draggable({
+            listeners: {
+                move(event) {
+                    const t = event.target;
+                    const x = (parseFloat(t.getAttribute('data-x')) || 0) + event.dx;
+                    const y = (parseFloat(t.getAttribute('data-y')) || 0) + event.dy;
+                    t.style.transform = `translate(${x}px, ${y}px)`;
+                    t.setAttribute('data-x', x);
+                    t.setAttribute('data-y', y);
+                }
+            }
         });
     </script>
 </body>
