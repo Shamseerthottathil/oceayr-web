@@ -26,17 +26,18 @@
         #cursor-ring { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.4); position: fixed; top: 0; left: 0; border-radius: 50%; z-index: 100000; pointer-events: none; display: none; }
         @media (min-width: 1024px) { #cursor-dot, #cursor-ring { display: block; } }
 
-        /* Typography - Scaling Fix */
         .massive-title { font-weight: 900; font-size: clamp(3.5rem, 15vw, 10rem); line-height: 0.82; letter-spacing: -0.05em; }
         .outline-text { -webkit-text-stroke: 1px white; color: transparent; }
         .hero-subtitle { font-size: clamp(8px, 2vw, 11px); text-transform: uppercase; letter-spacing: 0.3em; color: rgba(255,255,255,0.6); margin-top: 1.5rem; max-width: 80% ; line-height: 1.8; text-align: center; }
 
         /* Image Grid Layout */
-        #image-section { position: relative; width: 100%; min-height: 450vh; background: #000; z-index: 10; padding-top: 20vh; }
+        #image-section { position: relative; width: 100%; min-height: 250vh; background: #000; z-index: 10; padding-top: 10vh; }
+        @media (min-width: 768px) { #image-section { min-height: 450vh; padding-top: 20vh; } }
+        
         .scroll-wrapper { position: absolute; will-change: transform; }
         
-        /* Responsive Image Sizes */
-        .draggable { width: 85px; height: 120px; touch-action: none; }
+        /* Fixed Sizes */
+        .draggable { width: 100px; height: 140px; touch-action: none; }
         @media (min-width: 768px) { .draggable { width: 320px; height: 420px; } }
 
         .draggable img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) brightness(0.4); transition: filter 0.6s ease; }
@@ -51,7 +52,6 @@
 
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
-
     <div id="zoom-portal"><img id="portal-img" src="" class="max-w-[90%] max-h-[85%] object-contain"></div>
 
     <nav class="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md">
@@ -88,7 +88,6 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // 1. CURSOR
         const dot = document.getElementById('cursor-dot');
         const ring = document.getElementById('cursor-ring');
         window.addEventListener('mousemove', (e) => {
@@ -96,7 +95,6 @@
             gsap.to(ring, { x: e.clientX - 20, y: e.clientY - 20, duration: 0.15 });
         });
 
-        // 2. RESPONSIVE GRID GENERATION
         const container = document.getElementById('image-section');
         const imgIds = [830, 1059, 64, 445, 326, 674, 1044, 250, 682, 600, 311, 453, 522, 1011, 984, 1031];
         const isMobile = window.innerWidth < 768;
@@ -107,49 +105,36 @@
             const wrap = document.createElement('div');
             wrap.className = 'scroll-wrapper';
             
-            // Fixed column widths for mobile to prevent overlapping
-            const colWidth = isMobile ? 24 : 22; 
-            const leftOffset = isMobile ? 2 : 5;
+            // 🔥 FIXED: Tighter vertical spacing for Mobile (45vh) vs Desktop (105vh)
+            const rowHeight = isMobile ? 45 : 105;
+            const colWidth = isMobile ? 24 : 22;
+            const leftBase = isMobile ? 2 : 5;
+
+            wrap.style.top = `${(row * rowHeight) + 10}vh`;
+            wrap.style.left = `${(col * colWidth) + leftBase}%`;
             
-            wrap.style.top = `${(row * 105) + 15}vh`;
-            wrap.style.left = `${(col * colWidth) + leftOffset}%`;
-            
-            // Random scatter effect
-            const scatter = isMobile ? (Math.random() * 3) : (Math.random() * 8);
+            // Random scatter but subtle on mobile
+            const scatter = isMobile ? (Math.random() * 2) : (Math.random() * 8);
             wrap.style.marginLeft = `${scatter}%`;
             
-            wrap.setAttribute('data-speed', (Math.random() * 100) - 50);
+            wrap.setAttribute('data-speed', (Math.random() * 80) - 40);
             wrap.innerHTML = `<div class="draggable"><img src="https://picsum.photos/id/${id}/800/1200" class="interactive" loading="lazy"></div>`;
             container.appendChild(wrap);
         });
 
-        // 3. ZOOM & ESC
         const portal = document.getElementById('zoom-portal');
         const portalImg = document.getElementById('portal-img');
 
-        function openImage(src) {
-            portalImg.src = src;
-            portal.classList.add('active');
-        }
-
-        function closeImage() {
-            portal.classList.remove('active');
-        }
+        function openImage(src) { portalImg.src = src; portal.classList.add('active'); }
+        function closeImage() { portal.classList.remove('active'); }
 
         document.querySelectorAll('.draggable').forEach(el => {
             el.addEventListener('dblclick', () => openImage(el.querySelector('img').src));
-            // Adding single click support for mobile users
-            if (isMobile) {
-                el.addEventListener('click', (e) => {
-                    if (e.detail === 2) return; // double click handled above
-                });
-            }
         });
 
         portal.addEventListener('click', closeImage);
         window.addEventListener('keydown', (e) => { if (e.key === "Escape") closeImage(); });
 
-        // 4. GSAP PARALLAX
         gsap.utils.toArray(".scroll-wrapper").forEach((w) => {
             gsap.to(w, { 
                 y: w.getAttribute("data-speed"), 
@@ -162,7 +147,6 @@
             });
         });
 
-        // 5. INTERACT DRAG
         interact('.draggable').draggable({
             listeners: {
                 move(event) {
