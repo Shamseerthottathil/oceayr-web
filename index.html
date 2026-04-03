@@ -2,188 +2,179 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>OCEAYR | Marketing Atelier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCEAYR | Agency</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=JetBrains+Mono:wght@100&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
 
     <style>
-        @media (min-width: 1024px) { 
-            *, html, body, a, button, .interactive { cursor: none !important; } 
-        }
-
-        body { background-color: #000; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
-        * { -webkit-user-select: none; user-select: none; -webkit-user-drag: none; outline: none !important; }
-
-        #cursor-dot { width: 6px; height: 6px; background: #fff; position: fixed; top: 0; left: 0; border-radius: 50%; z-index: 100001; pointer-events: none; display: none; }
-        #cursor-ring { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.4); position: fixed; top: 0; left: 0; border-radius: 50%; z-index: 100000; pointer-events: none; display: none; }
-        @media (min-width: 1024px) { #cursor-dot, #cursor-ring { display: block; } }
-
-        /* Restored Nav & Underline */
-        .nav-link { position: relative; padding-bottom: 2px; transition: color 0.3s ease; }
-        .nav-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: 0; left: 0; background-color: white; transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
-        .nav-link:hover::after { width: 100%; }
-
-        /* Massive Title Styling */
-        .massive-title { font-weight: 900; font-size: clamp(3.5rem, 18vw, 12rem); line-height: 0.8; letter-spacing: -0.04em; }
-        .outline-text { -webkit-text-stroke: 1px white; color: transparent; }
+        body { background: #000; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; cursor: none; }
         
-        /* 🖋️ RESTORED QUOTE FONT (Exact Spacing/Size) */
-        .hero-subtitle { 
-            font-size: clamp(7px, 2.2vw, 10px); 
-            text-transform: uppercase; 
-            letter-spacing: 0.45em; 
-            color: rgba(255,255,255,0.7); 
-            margin-top: 2.5rem; 
-            max-width: 80vw; 
-            line-height: 2.2; 
-            text-align: center;
+        #cursor {
+            position: fixed; width: 12px; height: 12px; background: #fff;
+            border-radius: 50%; pointer-events: none; z-index: 99999;
+            mix-blend-mode: difference;
         }
-        @media (min-width: 768px) { .hero-subtitle { max-width: 650px; } }
 
-        /* 🖼️ DESIGNATED IMAGE AREA (Strict Boundary) */
-        #image-section { 
-            position: relative; 
-            width: 100%; 
-            min-height: 120vh; /* Shorter for tighter mobile rows */
-            background: #000; 
-            z-index: 10; 
-            overflow: hidden;
-            padding-top: 10vh; /* Buffer to prevent images touching the quote */
+        /* FIXED VIDEO CSS */
+        .video-wrapper {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; overflow: hidden; pointer-events: none;
+            background: #000; /* Fallback if video fails */
         }
+        .video-wrapper video {
+            width: 100%; height: 100%; object-fit: cover;
+            opacity: 0.4; transition: opacity 1s ease;
+        }
+
+        .logo-container { position: fixed; top: 35px; left: 40px; z-index: 1000; }
+        .or-logo { font-weight: 900; font-size: 24px; letter-spacing: -0.05em; border: 2px solid #fff; padding: 0 8px; line-height: 1; }
+
+        .nav-links { 
+            position: fixed; top: 40px; width: 100%; 
+            display: flex; justify-content: center; gap: 50px; 
+            font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase; 
+            z-index: 1000; 
+        }
+        .nav-links a { color: #fff; text-decoration: none; opacity: 0.5; transition: 0.3s; }
+        .nav-links a:hover { opacity: 1; }
+
+        .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; z-index: 10; background: transparent; }
+        .massive-title { font-weight: 900; font-size: 11vw; line-height: 0.82; letter-spacing: -0.05em; text-align: center; text-transform: uppercase; }
+        .outline { -webkit-text-stroke: 1px white; color: transparent; }
+        .quote { font-size: 12px; letter-spacing: 0.5em; opacity: 0.6; text-transform: uppercase; margin-top: 30px; text-align: center; max-width: 600px; line-height: 2; }
+
+        #work-section { position: relative; width: 100%; height: 750vh; background: #000; }
+        .sticky-viewport { position: sticky; top: 0; width: 100%; height: 100vh; overflow: hidden; }
+
+        .section-header {
+            position: absolute; top: 15vh; width: 100%; text-align: center;
+            font-family: 'JetBrains Mono', monospace; font-weight: 100; 
+            font-size: 11px; letter-spacing: 1em; text-transform: uppercase; 
+            z-index: 5; pointer-events: none; opacity: 0; color: #fff;
+        }
+
+        .shuffle-item { position: absolute; width: 24vw; will-change: transform; cursor: grab; }
+        .img-box { width: 100%; aspect-ratio: 900 / 1125; background: #111; box-shadow: 0 30px 90px rgba(0,0,0,0.8); overflow: hidden; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
         
-        .scroll-wrapper { position: absolute; will-change: transform; }
-        
-        /* Image Sizing */
-        .draggable { width: 22vw; height: 30vw; touch-action: none; }
-        @media (min-width: 768px) { 
-            .draggable { width: 300px; height: 400px; }
-            #image-section { min-height: 400vh; padding-top: 20vh; }
-        }
-
-        .draggable img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) brightness(0.5); transition: filter 0.6s ease; }
-        .draggable:hover img { filter: grayscale(0%) brightness(1); }
-
-        #zoom-portal { position: fixed; inset: 0; z-index: 200000; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.96); }
-        #zoom-portal.active { display: flex; }
+        footer { padding: 80px 0; text-align: center; opacity: 0.2; font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-    <div id="cursor-dot"></div>
-    <div id="cursor-ring"></div>
-    <div id="zoom-portal"><img id="portal-img" src="" class="max-w-[90%] max-h-[85%] object-contain"></div>
+    <div id="cursor"></div>
 
-    <nav class="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md">
-        <div class="flex justify-between items-center max-w-7xl mx-auto p-4 md:p-6">
-            <div class="font-black border-2 border-white px-2 py-0.5 text-sm md:text-xl interactive">OR</div>
-            <div class="flex gap-4 md:gap-10 uppercase text-[8px] md:text-[11px] tracking-[0.2em] md:tracking-[0.4em] font-bold">
-                <a href="#" class="interactive nav-link">Home</a>
-                <a href="#" class="interactive nav-link">Work</a>
-                <a href="#" class="interactive nav-link">About</a>
-                <a href="#" class="interactive nav-link">Careers</a>
-                <a href="#" class="interactive nav-link">Contact</a>
-            </div>
-        </div>
+    <div class="logo-container">
+        <div class="or-logo">OR</div>
+    </div>
+
+    <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#work-section">Work</a>
+        <a href="#">Studio</a>
+        <a href="#">Contact</a>
     </nav>
 
-    <section id="hero" class="h-screen flex items-center justify-center relative bg-black text-center px-4 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-black/50 z-10"></div>
-            <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover opacity-40">
-                <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+    <section class="hero">
+        <div class="video-wrapper">
+            <!-- Using a high-bandwidth sample video that auto-plays easily -->
+            <video id="bgVideo" autoplay loop muted playsinline poster="https://picsum.photos/1920/1080?grayscale">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
             </video>
         </div>
-        <div class="relative z-20 flex flex-col items-center">
-            <h1 class="massive-title uppercase">OCEAYR<br><span class="outline-text">AGENCY</span></h1>
-            <p class="hero-subtitle">Defining the aesthetic of future culture through disruptive strategy and lifestyle marketing.</p>
-        </div>
+        <h1 class="massive-title">OCEAYR<br><span class="outline">AGENCY</span></h1>
+        <p class="quote">Crafting digital narratives through<br>unconventional marketing atelier</p>
     </section>
 
-    <section id="image-section"></section>
+    <div id="work-section">
+        <div class="sticky-viewport" id="card-stack">
+            <h2 class="section-header" id="shuffle-text">SHUFFLE OUR ART</h2>
+        </div>
+    </div>
 
-    <footer class="bg-black py-20 text-center border-t border-white/10 relative z-30">
-        <div class="text-[8px] tracking-[0.6em] uppercase opacity-30">© 2026 OCEAYR AGENCY</div>
-    </footer>
+    <footer>© 2026 OCEAYR ATELIER</footer>
 
     <script>
-        gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger, Draggable);
 
-        // 1. Custom Cursor
-        const dot = document.getElementById('cursor-dot');
-        const ring = document.getElementById('cursor-ring');
+        // FORCE VIDEO PLAY ON USER INTERACTION (Browser Security Fix)
+        const video = document.getElementById('bgVideo');
+        const playVideo = () => {
+            if (video.paused) video.play();
+            window.removeEventListener('scroll', playVideo);
+            window.removeEventListener('click', playVideo);
+        };
+        window.addEventListener('scroll', playVideo);
+        window.addEventListener('click', playVideo);
+
+        const lenis = new Lenis({ lerp: 0.08 });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        const cursor = document.getElementById('cursor');
         window.addEventListener('mousemove', (e) => {
-            gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0 });
-            gsap.to(ring, { x: e.clientX - 20, y: e.clientY - 20, duration: 0.15 });
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
         });
 
-        // 2. Strict Grid Logic
-        const container = document.getElementById('image-section');
-        const imgIds = [830, 1059, 64, 445, 326, 674, 1044, 250, 682, 600, 311, 453, 522, 1011, 984, 1031];
-        const isMobile = window.innerWidth < 768;
-        
-        imgIds.forEach((id, i) => {
-            const row = Math.floor(i / 4);
-            const col = i % 4;
-            const wrap = document.createElement('div');
-            wrap.className = 'scroll-wrapper';
-            
-            // Tightened spacing to remove gaps
-            const rowHeight = isMobile ? 160 : 500; 
-            const colWidth = isMobile ? 24 : 22; 
-            
-            wrap.style.top = `${row * rowHeight}px`;
-            wrap.style.left = `${(col * colWidth) + 3}%`;
-            
-            // Parallax intensity
-            wrap.setAttribute('data-speed', isMobile ? (Math.random() * 40 - 20) : (Math.random() * 120 - 60));
-            wrap.innerHTML = `<div class="draggable"><img src="https://picsum.photos/id/${id}/800/1200" class="interactive" loading="lazy"></div>`;
-            container.appendChild(wrap);
-        });
-
-        // 3. Zoom / ESC
-        const portal = document.getElementById('zoom-portal');
-        const portalImg = document.getElementById('portal-img');
-        const closePortal = () => portal.classList.remove('active');
-        document.querySelectorAll('.draggable').forEach(el => {
-            el.addEventListener('dblclick', () => {
-                portalImg.src = el.querySelector('img').src;
-                portal.classList.add('active');
-            });
-        });
-        portal.addEventListener('click', closePortal);
-        window.addEventListener('keydown', (e) => { if (e.key === "Escape") closePortal(); });
-
-        // 4. Parallax (Restricted to section)
-        gsap.utils.toArray(".scroll-wrapper").forEach((w) => {
-            gsap.to(w, { 
-                y: w.getAttribute("data-speed"), 
-                scrollTrigger: { 
-                    trigger: "#image-section", 
-                    start: "top bottom", 
-                    end: "bottom top", 
-                    scrub: 1.5
-                } 
-            });
-        });
-
-        // 5. Drag
-        interact('.draggable').draggable({
-            listeners: {
-                move(event) {
-                    const t = event.target;
-                    const x = (parseFloat(t.getAttribute('data-x')) || 0) + event.dx;
-                    const y = (parseFloat(t.getAttribute('data-y')) || 0) + event.dy;
-                    t.style.transform = `translate(${x}px, ${y}px)`;
-                    t.setAttribute('data-x', x);
-                    t.setAttribute('data-y', y);
-                }
+        gsap.to("#shuffle-text", {
+            opacity: 0.7,
+            scrollTrigger: {
+                trigger: "#work-section",
+                start: "top 40%",
+                end: "top 10%",
+                scrub: true
             }
+        });
+
+        const container = document.getElementById('card-stack');
+        const imgIds = [830, 1059, 64, 445, 326, 674, 1044, 250, 682, 600, 311, 453, 522, 1011, 22, 49];
+        let highestZ = 100;
+
+        imgIds.forEach((id, i) => {
+            const item = document.createElement('div');
+            item.className = 'shuffle-item';
+            const columns = [4, 27, 50, 73]; 
+            const xPos = columns[i % 4];
+            const yStartOffset = (Math.random() * 12) - 6;
+
+            gsap.set(item, { left: `${xPos}%`, y: "110vh", zIndex: i + 10 });
+            item.innerHTML = `<div class="img-box"><img src="https://picsum.photos/id/${id}/900/1125" alt="Work"></div>`;
+            container.appendChild(item);
+
+            Draggable.create(item, {
+                type: "x,y",
+                onPress: function() {
+                    highestZ++;
+                    gsap.set(this.target, { zIndex: highestZ });
+                    gsap.to(cursor, { scale: 3, opacity: 0.4 });
+                },
+                onRelease: () => gsap.to(cursor, { scale: 1, opacity: 1 }),
+                onDragStart: () => lenis.stop(),
+                onDragEnd: () => lenis.start()
+            });
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#work-section",
+                    start: `top+=${i * 350 + 200} top`, 
+                    end: `top+=${i * 350 + 1400} top`,
+                    scrub: 1.2
+                }
+            });
+
+            tl.to(item, { y: `${25 + yStartOffset}vh`, ease: "power2.out" })
+              .to(item, { y: "-130vh", ease: "power2.in" }, "+=0.3");
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('mouseenter', () => gsap.to(cursor, { scale: 4 }));
+            link.addEventListener('mouseleave', () => gsap.to(cursor, { scale: 1 }));
         });
     </script>
 </body>
