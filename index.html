@@ -69,10 +69,24 @@ body {
     text-decoration: none;
     opacity: .5;
     position: relative;
+    padding-bottom: 4px;
     transition: opacity 0.3s ease;
 }
 
 .nav-links a:hover { opacity: 1; }
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #00ffff;
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav-links a:hover::after { width: 100%; }
 
 .hero {
     height: 100vh;
@@ -100,7 +114,8 @@ body {
     display: flex;
     align-items: center;
     overflow: hidden;
-    margin: 100px 0;
+    margin-top: 100px;
+    margin-bottom: 140px;
     border-top: 1px solid rgba(255,255,255,0.1);
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
@@ -122,7 +137,6 @@ body {
 .gallery-section {
     position: relative;
     min-height: 7000px;
-    width: 100%;
 }
 
 .card-wrapper {
@@ -130,7 +144,7 @@ body {
     will-change: transform;
 }
 
-/* PC SIZES (DEFAULT) */
+/* PC VERSION - UNTOUCHED */
 .card {
     width: 460px;
     height: 680px;
@@ -143,26 +157,24 @@ body {
     height: 620px;
 }
 
-/* MOBILE CORRECTION: MAINTAINING PC ROW STRUCTURE */
+/* MOBILE CORRECTION ONLY */
 @media (max-width: 768px) {
     .gallery-section {
-        min-height: 3500px; /* Adjusted for scaled height */
+        min-height: 6000px; /* Adjusting for taller mobile scroll */
     }
-
-    /* We shrink the images by about 60% to fit 3 per row on a phone */
+    
     .card {
-        width: 28vw !important; 
-        height: 40vw !important;
+        width: 80vw !important;
+        height: auto !important;
+        aspect-ratio: 4/5.5;
     }
 
     .card.narrow {
-        width: 24vw !important;
-        height: 36vw !important;
+        width: 70vw !important;
     }
 
-    .logo-container { top: 20px; left: 15px; }
+    .logo-container { top: 20px; left: 20px; }
     .nav-links { top: 25px; gap: 15px; font-size: 8px; }
-    .or-logo { font-size: 18px; }
 }
 
 .card img {
@@ -218,11 +230,10 @@ requestAnimationFrame(raf);
 const images = ["1020", "1021", "1022", "1023", "1024", "1025", "1026", "1027", "1028"];
 const gallery = document.getElementById('gallery');
 
-// PC LAYOUT (3 Images per row)
 const baseLayout = [
-    {left:5, top:120, type:'normal'}, {left:36, top:260, type:'normal'}, {left:68, top:160, type:'narrow'},
-    {left:8, top:1000, type:'normal'}, {left:38, top:1160, type:'narrow'}, {left:66, top:1040, type:'normal'},
-    {left:5, top:1800, type:'normal'}, {left:35, top:1960, type:'normal'}, {left:68, top:1840, type:'narrow'}
+    {left:5, top:120, type:'normal'}, {left:33, top:260, type:'normal'}, {left:62, top:160, type:'narrow'},
+    {left:10, top:900, type:'normal'}, {left:38, top:1060, type:'narrow'}, {left:65, top:940, type:'normal'},
+    {left:6, top:1700, type:'normal'}, {left:35, top:1860, type:'normal'}, {left:64, top:1740, type:'narrow'}
 ];
 
 const isMobile = window.innerWidth <= 768;
@@ -231,10 +242,10 @@ baseLayout.forEach((pos, i) => {
     const wrap = document.createElement('div');
     wrap.className = 'card-wrapper';
     
-    // On mobile, we keep the exact percentage 'left' to maintain the 3-column row
-    // but we scale down the 'top' pixel values so the gap isn't too huge.
-    let finalLeft = pos.left; 
-    let finalTop = isMobile ? (pos.top * 0.5) : pos.top;
+    // MOBILE ALIGNMENT CORRECTION:
+    // We keep the pattern but clamp the 'left' values so they stay within the phone's viewport.
+    let finalLeft = isMobile ? Math.min(Math.max(pos.left * 0.3, 5), 15) : pos.left; 
+    let finalTop = isMobile ? (i * 650) + 100 : pos.top; // Give consistent vertical spacing on mobile
 
     wrap.style.cssText = `left:${finalLeft}%; top:${finalTop}px; z-index:${i+10};`;
     
@@ -249,20 +260,18 @@ baseLayout.forEach((pos, i) => {
     gallery.appendChild(wrap);
 });
 
-// SUBTLE SCROLL PARALLAX
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if(entry.isIntersecting) {
-            gsap.to(entry.target, { y: isMobile ? -15 : -60, duration: 2, ease: "power2.out" });
+            gsap.to(entry.target, { y: isMobile ? -30 : -80, duration: 2.5, ease: "power2.out" });
         } else {
-            gsap.to(entry.target, { y: 0, duration: 2, ease: "power2.out" });
+            gsap.to(entry.target, { y: 0, duration: 2.5, ease: "power2.out" });
         }
     });
 }, { threshold: 0.05 });
 
 document.querySelectorAll('.card-wrapper').forEach(el => observer.observe(el));
 
-// DRAGGABLE FEATURE
 interact('.draggable').draggable({
     listeners: {
         move(event) {
