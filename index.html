@@ -19,9 +19,9 @@ body {
     color: white;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    /* Normal cursor restored */
     cursor: default;
     user-select: none;
+    touch-action: pan-y; /* Allows scrolling but prevents accidental zooming */
 }
 
 .video-wrapper {
@@ -40,29 +40,35 @@ body {
 
 .logo-container {
     position: fixed;
-    top: 35px;
-    left: 40px;
+    top: 25px;
+    left: 20px;
     z-index: 1000;
 }
 
 .or-logo {
     font-weight: 900;
-    font-size: 24px;
+    font-size: 20px;
     border: 2px solid white;
     padding: 0 8px;
 }
 
 .nav-links {
     position: fixed;
-    top: 40px;
+    top: 30px;
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 50px;
-    font-size: 11px;
-    letter-spacing: .4em;
+    gap: 15px;
+    font-size: 9px;
+    letter-spacing: .2em;
     text-transform: uppercase;
     z-index: 1000;
+}
+
+@media(min-width: 768px) {
+    .logo-container { top: 35px; left: 40px; }
+    .or-logo { font-size: 24px; }
+    .nav-links { top: 40px; gap: 50px; font-size: 11px; letter-spacing: .4em; }
 }
 
 .nav-links a {
@@ -72,14 +78,10 @@ body {
     position: relative;
     padding-bottom: 4px;
     transition: opacity 0.3s ease;
-    cursor: pointer;
 }
 
-.nav-links a:hover {
-    opacity: 1;
-}
+.nav-links a:hover { opacity: 1; }
 
-/* UNDERLINE EFFECT */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -91,9 +93,7 @@ body {
     transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.nav-links a:hover::after {
-    width: 100%;
-}
+.nav-links a:hover::after { width: 100%; }
 
 .hero {
     height: 100vh;
@@ -105,11 +105,13 @@ body {
 }
 
 .massive-title {
-    font-size: 11vw;
+    font-size: 16vw;
     font-weight: 900;
     line-height: .82;
     text-align: center;
 }
+
+@media(min-width: 768px) { .massive-title { font-size: 11vw; } }
 
 .outline {
     color: transparent;
@@ -117,8 +119,8 @@ body {
 }
 
 .quote {
-    font-size: 12px;
-    letter-spacing: .5em;
+    font-size: 10px;
+    letter-spacing: .3em;
     opacity: .6;
     text-transform: uppercase;
     margin-top: 30px;
@@ -127,24 +129,24 @@ body {
 }
 
 .moving-title-wrap {
-    height: 140px;
+    height: 100px;
     display: flex;
     align-items: center;
     overflow: hidden;
-    margin-top: 100px;
-    margin-bottom: 140px;
+    margin: 80px 0;
     border-top: 1px solid rgba(255,255,255,0.1);
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
+@media(min-width: 768px) { .moving-title-wrap { height: 140px; } }
+
 .moving-title {
     font-family: 'Orbitron', sans-serif;
-    font-size: 22px;
+    font-size: 18px;
     color: #00ffff;
     white-space: nowrap;
-    letter-spacing: 0.8em;
-    text-transform: uppercase;
-    animation: moveText 10s linear infinite;
+    letter-spacing: 0.6em;
+    animation: moveText 12s linear infinite;
 }
 
 @keyframes moveText {
@@ -154,28 +156,28 @@ body {
 
 .gallery-section {
     position: relative;
-    min-height: 7000px;
+    min-height: 5500px; /* Adjust based on total cards */
 }
+
+@media(min-width: 768px) { .gallery-section { min-height: 7000px; } }
 
 .card-wrapper {
     position: absolute;
+    will-change: transform;
 }
 
 .card {
-    width: 460px;
-    height: 680px;
+    width: 65vw; /* Smaller on mobile to allow "scatter" room */
+    height: auto;
+    aspect-ratio: 4/6;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0, .5);
-    cursor: grab;
+    box-shadow: 0 15px 35px rgba(0,0,0, 0.7);
+    background: #111;
 }
 
-.card:active {
-    cursor: grabbing;
-}
-
-.card.narrow {
-    width: 400px;
-    height: 620px;
+@media(min-width: 768px) {
+    .card { width: 460px; height: 680px; }
+    .card.narrow { width: 400px; height: 620px; }
 }
 
 .card img {
@@ -183,10 +185,6 @@ body {
     height: 100%;
     object-fit: cover;
     pointer-events: none;
-}
-
-@media(max-width:768px) {
-    body { cursor: auto !important; }
 }
 </style>
 </head>
@@ -217,43 +215,47 @@ body {
     <div class="moving-title">
         SHUFFLE OUR ART WORKS &nbsp;&nbsp; SHUFFLE OUR ART WORKS &nbsp;&nbsp; SHUFFLE OUR ART WORKS &nbsp;&nbsp;
     </div>
-    <div class="moving-title">
-        SHUFFLE OUR ART WORKS &nbsp;&nbsp; SHUFFLE OUR ART WORKS &nbsp;&nbsp; SHUFFLE OUR ART WORKS &nbsp;&nbsp;
-    </div>
 </div>
 
 <section class="gallery-section" id="gallery"></section>
 
 <script>
-// FORCE VIDEO PLAY ON INTERACTION
 const video = document.getElementById('bgVideo');
-const forcePlay = () => { video.play(); };
-window.addEventListener('mousedown', forcePlay);
+const forcePlay = () => { video.play().catch(()=>{}); };
+window.addEventListener('touchstart', forcePlay);
 window.addEventListener('scroll', forcePlay);
 
-// SMOOTH SCROLL
-const lenis = new Lenis({lerp: 0.06});
+const lenis = new Lenis({ lerp: 0.08 });
 function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
 
-// GALLERY GEN
-const images = ["1020", "1021", "1022", "1023", "1024", "1025", "1026", "1027", "1028", "1029", "1031", "1032", "1033", "1035", "1036", "1037", "1038", "1039", "1040", "1041"];
+const images = ["1020", "1021", "1022", "1023", "1024", "1025", "1026", "1027", "1028", "1029", "1031", "1032", "1033", "1035", "1036"];
 const gallery = document.getElementById('gallery');
-const layout = [
+
+// The original "Pattern" from your PC view
+const baseLayout = [
     {left:5, top:120, type:'normal'}, {left:33, top:260, type:'normal'}, {left:62, top:160, type:'narrow'},
     {left:10, top:900, type:'normal'}, {left:38, top:1060, type:'narrow'}, {left:65, top:940, type:'normal'},
     {left:6, top:1700, type:'normal'}, {left:35, top:1860, type:'normal'}, {left:64, top:1740, type:'narrow'},
-    {left:12, top:2500, type:'normal'}, {left:40, top:2640, type:'narrow'}, {left:66, top:2520, type:'normal'},
-    {left:8, top:3320, type:'normal'}, {left:36, top:3480, type:'normal'}, {left:64, top:3360, type:'narrow'}
+    {left:12, top:2500, type:'normal'}, {left:40, top:2640, type:'narrow'}, {left:66, top:2520, type:'normal'}
 ];
 
-layout.forEach((pos, i) => {
+const isMobile = window.innerWidth < 768;
+
+baseLayout.forEach((pos, i) => {
     const wrap = document.createElement('div');
     wrap.className = 'card-wrapper';
-    wrap.style.cssText = `left:${pos.left}%; top:${pos.top}px; z-index:${i+10};`;
+    
+    // MATHEMATICAL FIX FOR MOBILE: 
+    // We "pinch" the horizontal values (left) so they don't fall off screen
+    // and "shrink" the vertical spacing (top) so the scroll isn't 10 miles long.
+    let finalLeft = isMobile ? (pos.left * 0.45) : pos.left; 
+    let finalTop = isMobile ? (pos.top * 0.65) : pos.top;
+
+    wrap.style.cssText = `left:${finalLeft}%; top:${finalTop}px; z-index:${i+10};`;
     
     const card = document.createElement('div');
     card.className = `card draggable ${pos.type === 'narrow' ? 'narrow' : ''}`;
@@ -270,12 +272,12 @@ layout.forEach((pos, i) => {
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if(entry.isIntersecting) {
-            gsap.to(entry.target, { y: -80, duration: 2.5, ease: "power2.out" });
+            gsap.to(entry.target, { y: isMobile ? -40 : -80, duration: 2.5, ease: "power2.out" });
         } else {
             gsap.to(entry.target, { y: 0, duration: 2.5, ease: "power2.out" });
         }
     });
-}, { threshold: 0.1 });
+}, { threshold: 0.05 });
 
 document.querySelectorAll('.card-wrapper').forEach(el => observer.observe(el));
 
