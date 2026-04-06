@@ -30,11 +30,13 @@ body {
     overflow: hidden;
 }
 
+/* Ensure video fills the screen on mobile */
 .video-wrapper video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     opacity: 0.45;
+    background: black; /* Prevents white flash before video loads */
 }
 
 .logo-container {
@@ -75,7 +77,6 @@ body {
 
 .nav-links a:hover { opacity: 1; }
 
-/* UNDERLINE EFFECT */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -144,7 +145,6 @@ body {
     position: absolute;
 }
 
-/* PC IMAGE SIZES (STAYS SAME) */
 .card {
     width: 460px;
     height: 680px;
@@ -157,22 +157,14 @@ body {
     height: 620px;
 }
 
-/* MOBILE ONLY CORRECTION */
 @media (max-width: 768px) {
-    .gallery-section {
-        min-height: 4500px; /* Shorter scroll for mobile */
-    }
-    
+    .gallery-section { min-height: 4500px; }
     .card {
-        width: 75vw !important; /* Large visible size on mobile */
+        width: 75vw !important;
         height: auto !important;
         aspect-ratio: 4/5.5;
     }
-
-    .card.narrow {
-        width: 65vw !important; /* Keep narrow proportion */
-    }
-
+    .card.narrow { width: 65vw !important; }
     .logo-container { top: 20px; left: 20px; }
     .nav-links { top: 25px; gap: 20px; font-size: 9px; }
 }
@@ -200,7 +192,7 @@ body {
 
 <section class="hero">
     <div class="video-wrapper">
-        <video autoplay muted loop playsinline id="bgVideo">
+        <video autoplay muted loop playsinline id="bgVideo" preload="auto">
             <source src="https://res.cloudinary.com/demo/video/upload/q_auto/sea_turtle.mp4" type="video/mp4">
         </video>
     </div>
@@ -217,9 +209,22 @@ body {
 
 <script>
 const video = document.getElementById('bgVideo');
-const forcePlay = () => { video.play(); };
-window.addEventListener('mousedown', forcePlay);
-window.addEventListener('touchstart', forcePlay);
+
+// AUTO-PLAY FIX FOR MOBILE
+// Mobile browsers often block autoplay until a user interaction occurs.
+const playVideo = () => {
+    video.play().then(() => {
+        // Successfully playing
+        window.removeEventListener('touchstart', playVideo);
+        window.removeEventListener('scroll', playVideo);
+    }).catch(error => {
+        console.log("Autoplay blocked, waiting for interaction.");
+    });
+};
+
+window.addEventListener('touchstart', playVideo);
+window.addEventListener('scroll', playVideo);
+window.addEventListener('load', playVideo);
 
 const lenis = new Lenis({lerp: 0.06});
 function raf(time) {
@@ -231,7 +236,6 @@ requestAnimationFrame(raf);
 const images = ["1020", "1021", "1022", "1023", "1024", "1025", "1026", "1027", "1028", "1029"];
 const gallery = document.getElementById('gallery');
 
-// Pattern from your original PC layout
 const baseLayout = [
     {left:5, top:120, type:'normal'}, {left:33, top:260, type:'normal'}, {left:62, top:160, type:'narrow'},
     {left:10, top:900, type:'normal'}, {left:38, top:1060, type:'narrow'}, {left:65, top:940, type:'normal'},
@@ -244,7 +248,6 @@ baseLayout.forEach((pos, i) => {
     const wrap = document.createElement('div');
     wrap.className = 'card-wrapper';
     
-    // Scale horizontal position to fit mobile width, scale vertical to keep pattern
     let finalLeft = isMobile ? (pos.left * 0.4) : pos.left; 
     let finalTop = isMobile ? (pos.top * 0.6) : pos.top;
 
@@ -261,7 +264,6 @@ baseLayout.forEach((pos, i) => {
     gallery.appendChild(wrap);
 });
 
-// SCROLL GLIDE
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if(entry.isIntersecting) {
@@ -274,7 +276,6 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.card-wrapper').forEach(el => observer.observe(el));
 
-// DRAG SYSTEM
 interact('.draggable').draggable({
     listeners: {
         move(event) {
