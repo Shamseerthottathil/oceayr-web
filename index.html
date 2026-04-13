@@ -5,36 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OCEAYR | Agency</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Orbitron:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
 
 <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-    margin: 0;
-    background: black;
-    color: white;
+    background: #000;
+    color: #fff;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     cursor: default;
     user-select: none;
 }
 
-.video-wrapper {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-}
-.video-wrapper video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.45;
-}
-
+/* ── NAV — fixed always on top ── */
 .logo-container {
     position: fixed;
     top: 35px;
@@ -47,7 +36,6 @@ body {
     border: 2px solid white;
     padding: 0 8px;
 }
-
 .nav-links {
     position: fixed;
     top: 40px;
@@ -79,114 +67,155 @@ body {
 }
 .nav-links a:hover::after { width: 100%; }
 
+/* ── HERO — video is INSIDE here, clipped to this section only ── */
 .hero {
+    position: relative;          /* contains the video */
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+    overflow: hidden;            /* video never bleeds out */
+    background: #000;
 }
-.massive-title {
+
+/* Video lives INSIDE hero — NOT fixed on body */
+.hero-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+.hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+}
+
+.hero h1 {
+    position: relative;
+    z-index: 1;
     font-size: 11vw;
     font-weight: 900;
     line-height: .82;
     text-align: center;
+    font-family: 'Inter', sans-serif;
 }
 .outline {
     color: transparent;
     -webkit-text-stroke: 1px white;
 }
 
-/* ── TICKER ── */
-.moving-title-wrap {
-    height: 140px;
+/* ── TICKER ──
+   Font: Playfair Display italic — editorial, luxury, loud.ae style
+   Two spans in one flex track → seamless CSS loop
+── */
+.ticker-wrap {
+    height: 110px;
     display: flex;
     align-items: center;
     overflow: hidden;
-    margin-top: 100px;
-    margin-bottom: 140px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    background: #000;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    /* NO margin-bottom — gallery follows immediately */
 }
 .ticker-track {
     display: flex;
     flex-shrink: 0;
     width: max-content;
-    animation: moveText 12s linear infinite;
+    animation: tickerMove 14s linear infinite;
     will-change: transform;
 }
 .ticker-track span {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 22px;
-    color: #00ffff;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 400;
+    color: #fff;
     white-space: nowrap;
-    letter-spacing: 0.8em;
-    padding-right: 3em;
+    letter-spacing: 0.25em;
+    padding-right: 2.5em;
     flex-shrink: 0;
+    opacity: 0.9;
 }
-@keyframes moveText {
-    from { transform: translateX(0%); }
+/* Accent dots between words */
+.ticker-track span em {
+    font-style: normal;
+    color: #00ffff;
+    margin: 0 0.3em;
+}
+@keyframes tickerMove {
+    from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
 }
 
-/* ── GALLERY ── */
+/* ── GALLERY SECTION — solid black, no video ── */
 .gallery-section {
     position: relative;
-    /* height set by JS based on layout */
+    background: #000;
+    /* height set by JS */
 }
 
+/* ── CARD WRAPPERS ── */
 .card-wrapper {
     position: absolute;
     will-change: transform;
+    cursor: grab;
+    touch-action: none; /* required for interact.js on mobile */
 }
+.card-wrapper:active { cursor: grabbing; }
 
-/* PC card sizes — untouched */
+/* PC card sizes */
 .card {
-    width: 460px;
-    height: 680px;
+    width: 420px;
+    height: 620px;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,.5);
+    box-shadow: 0 16px 50px rgba(0,0,0,0.8);
+    background: #111;
 }
 .card.narrow {
-    width: 400px;
-    height: 620px;
+    width: 360px;
+    height: 560px;
 }
 .card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
     pointer-events: none;
-    transition: transform 0.6s ease;
+    transition: transform 0.7s ease;
 }
 .card-wrapper:hover .card img {
-    transform: scale(1.04);
+    transform: scale(1.05);
 }
 
 /* ── MOBILE ── */
 @media (max-width: 768px) {
-    .logo-container { top: 20px; left: 20px; }
-    .nav-links { top: 25px; gap: 15px; font-size: 8px; letter-spacing: 0.15em; }
-    .massive-title { font-size: 15vw; }
-    .moving-title-wrap { height: 70px; margin-top: 50px; margin-bottom: 60px; }
-    .ticker-track span { font-size: 13px; letter-spacing: 0.5em; }
+    .logo-container { top: 18px; left: 16px; }
+    .or-logo { font-size: 18px; }
+    .nav-links { top: 20px; gap: 12px; font-size: 7px; letter-spacing: 0.15em; }
+    .hero h1 { font-size: 16vw; }
 
+    .ticker-wrap { height: 64px; }
+    .ticker-track span { font-size: 16px; letter-spacing: 0.15em; padding-right: 1.5em; }
+
+    /* Mobile card sizes: 3 columns visible */
     .card {
-        width: 30vw !important;
-        height: 44vw !important;
+        width: 29vw !important;
+        height: 42vw !important;
     }
     .card.narrow {
-        width: 27vw !important;
-        height: 40vw !important;
+        width: 26vw !important;
+        height: 38vw !important;
     }
 }
 </style>
 </head>
 <body>
 
-<div class="logo-container">
-    <div class="or-logo">OR</div>
-</div>
+<div class="logo-container"><div class="or-logo">OR</div></div>
 
 <nav class="nav-links">
     <a href="#">Home</a>
@@ -195,108 +224,139 @@ body {
     <a href="#">Contact</a>
 </nav>
 
+<!-- HERO: video is INSIDE this section, clipped by overflow:hidden -->
 <section class="hero">
-    <div class="video-wrapper">
+    <div class="hero-video">
         <video autoplay muted loop playsinline id="bgVideo">
-            <source src="https://res.cloudinary.com/demo/video/upload/q_auto/sea_turtle.mp4" type="video/mp4">
+            <!-- Fashion-oriented video from Pexels (free, no auth needed) -->
+            <source src="https://videos.pexels.com/video-files/3209828/3209828-uhd_2560_1440_25fps.mp4" type="video/mp4">
+            <!-- Fallback fashion video -->
+            <source src="https://videos.pexels.com/video-files/2795750/2795750-uhd_2560_1440_30fps.mp4" type="video/mp4">
         </video>
     </div>
-    <h1 class="massive-title">OCEAYR<br><span class="outline">AGENCY</span></h1>
+    <h1>OCEAYR<br><span class="outline">AGENCY</span></h1>
 </section>
 
-<div class="moving-title-wrap">
+<!-- TICKER: immediately after hero, no gap -->
+<div class="ticker-wrap">
     <div class="ticker-track">
-        <span>SHUFFLE OUR ART WORKS &nbsp;&nbsp; SHUFFLE OUR ART WORKS &nbsp;&nbsp; SHUFFLE OUR ART WORKS &nbsp;&nbsp;</span>
-        <span>SHUFFLE OUR ART WORKS &nbsp;&nbsp; SHUFFLE OUR ART WORKS &nbsp;&nbsp; SHUFFLE OUR ART WORKS &nbsp;&nbsp;</span>
+        <span>Shuffle Our Art Works <em>✦</em> Shuffle Our Art Works <em>✦</em> Shuffle Our Art Works <em>✦</em> Shuffle Our Art Works <em>✦</em></span>
+        <span>Shuffle Our Art Works <em>✦</em> Shuffle Our Art Works <em>✦</em> Shuffle Our Art Works <em>✦</em> Shuffle Our Art Works <em>✦</em></span>
     </div>
 </div>
 
+<!-- GALLERY: solid black background, images start here -->
 <section class="gallery-section" id="gallery"></section>
 
 <script>
-/* ── VIDEO ── */
+/* ── VIDEO PLAY ── */
 const video = document.getElementById('bgVideo');
-['touchstart','mousedown','scroll'].forEach(ev =>
-    window.addEventListener(ev, () => video.play().catch(()=>{}), {once:true})
-);
+video.muted = true;
+video.play().catch(() => {
+    ['touchstart','click'].forEach(ev =>
+        window.addEventListener(ev, () => video.play().catch(()=>{}), {once:true})
+    );
+});
 
-/* ── LENIS ── */
-const lenis = new Lenis({ lerp: 0.06 });
+/* ── LENIS SMOOTH SCROLL ── */
+const lenis = new Lenis({ lerp: 0.07 });
 
 /* ── DEVICE ── */
 const isMobile = window.innerWidth <= 768;
+const VW = window.innerWidth;
 
 /* ── IMAGES ── */
 const images = [
-    'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80',
-    'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800&q=80',
-    'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80',
-    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=800&q=80',
-    'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=800&q=80',
-    'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80',
-    'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&q=80',
-    'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80',
-    'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?w=800&q=80'
+    'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900&q=85', // fashion
+    'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=85',
+    'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=85',
+    'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=85',
+    'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=85',
+    'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&q=85',
+    'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=900&q=85',
+    'https://images.unsplash.com/photo-1445205170230-053b83016050?w=900&q=85',
+    'https://images.unsplash.com/photo-1566206091558-7f218b696731?w=900&q=85',
 ];
 
 /* ─────────────────────────────────────────────────────────────────────
-   LAYOUT STRATEGY
-   The key to loud.ae-style overlap is:
-   1. Row gap is SMALLER than card height → rows already overlap in DOM
-   2. Each card has a different parallax speed → as you scroll, fast cards
-      race upward and slice through slow cards from the row below,
-      creating dynamic depth that changes as you scroll.
+   LAYOUT — THE LOUD.AE FORMULA:
 
-   PC card height = 680px. Row gap = 480px (gap < height = 200px overlap in DOM)
-   Mobile card height = 44vw. Row gap scaled proportionally.
+   1. ROW GAP < CARD HEIGHT → rows overlap in static DOM already
+   2. Each card has a UNIQUE speed → cards from different rows
+      weave past each other as you scroll (depth illusion)
+   3. Within each row, cards are staggered vertically (not aligned)
+      → the "scattered editorial" look
 
-   Per-card speeds are HIGH (0.30–0.55) and deliberately varied so
-   neighbouring cards separate/cross each other dramatically on scroll.
+   PC: card 420×620. Row gap = 400px → 220px static DOM overlap per row.
+   Mobile: card ~29vw × ~42vw. Row gap = 60% of card height.
+
+   Speed range 0.28–0.58: fast enough to feel swift, varied enough
+   for cards to cross each other.
 ─────────────────────────────────────────────────────────────────────*/
 
-const PC_LAYOUT = [
-    // ROW 0  — starts at top of gallery
-    { left:5,  top:  80, type:'normal', speed:0.50 },
-    { left:33, top: 220, type:'normal', speed:0.28 },
-    { left:62, top: 120, type:'narrow', speed:0.42 },
+let layout;
 
-    // ROW 1  — top: 480px (200px below bottom of shortest card in row 0)
-    //          So at scroll=0 they're hidden; parallax pulls them up fast
-    { left:10, top: 700, type:'normal', speed:0.38 },
-    { left:38, top: 860, type:'narrow', speed:0.55 },
-    { left:65, top: 740, type:'normal', speed:0.32 },
+if (!isMobile) {
+    // PC layout — 3 columns, rows 400px apart (card=620 so 220px already overlapping)
+    const ROW = 400; // gap between row base tops
+    layout = [
+        // Row 0
+        { left:'4%',  top: 60,        type:'normal', speed:0.52 },
+        { left:'33%', top: 200,       type:'normal', speed:0.28 },
+        { left:'62%', top: 100,       type:'narrow', speed:0.44 },
+        // Row 1
+        { left:'7%',  top: 60+ROW,    type:'narrow', speed:0.36 },
+        { left:'36%', top: 200+ROW,   type:'normal', speed:0.58 },
+        { left:'64%', top: 100+ROW,   type:'normal', speed:0.30 },
+        // Row 2
+        { left:'4%',  top: 60+ROW*2,  type:'normal', speed:0.48 },
+        { left:'33%', top: 200+ROW*2, type:'narrow', speed:0.32 },
+        { left:'62%', top: 100+ROW*2, type:'normal', speed:0.54 },
+    ];
+} else {
+    // Mobile: card width = 29vw, height = 42vw
+    // On 390px screen: card ≈ 113px × 164px
+    // Row gap = 100px → 64px overlap already in DOM
+    const cardH = Math.round(VW * 0.42);
+    const ROW   = Math.round(cardH * 0.62); // gap < cardH → overlap
 
-    // ROW 2  — same gap below row 1
-    { left:6,  top:1320, type:'normal', speed:0.46 },
-    { left:35, top:1480, type:'normal', speed:0.30 },
-    { left:64, top:1360, type:'narrow', speed:0.52 },
-];
+    layout = [
+        // Row 0
+        { left:'2%',  top: 20,        type:'normal', speed:0.52 },
+        { left:'36%', top: 90,        type:'normal', speed:0.28 },
+        { left:'67%', top: 40,        type:'narrow', speed:0.44 },
+        // Row 1
+        { left:'2%',  top: 20+ROW,    type:'narrow', speed:0.36 },
+        { left:'36%', top: 90+ROW,    type:'normal', speed:0.58 },
+        { left:'67%', top: 40+ROW,    type:'normal', speed:0.30 },
+        // Row 2
+        { left:'2%',  top: 20+ROW*2,  type:'normal', speed:0.48 },
+        { left:'36%', top: 90+ROW*2,  type:'narrow', speed:0.32 },
+        { left:'67%', top: 40+ROW*2,  type:'normal', speed:0.54 },
+    ];
+}
 
-// Mobile: card is ~44vw tall. Scale tops proportionally.
-// 44vw on a 390px screen ≈ 172px tall. Row gap ≈ 140px (overlap built in).
-const MOBILE_LAYOUT = [
-    { left:2,  top:  50, type:'normal', speed:0.50 },
-    { left:35, top: 140, type:'normal', speed:0.28 },
-    { left:66, top:  80, type:'narrow', speed:0.42 },
+/* ─────────────────────────────────────────────────────────────────────
+   GALLERY HEIGHT
+   Must be tall enough that:
+   - All cards are reachable by scroll
+   - After parallax pulls cards up, the last card's BOTTOM edge
+     sits at/near the bottom of the gallery → no blank space
 
-    { left:2,  top: 440, type:'normal', speed:0.38 },
-    { left:35, top: 560, type:'narrow', speed:0.55 },
-    { left:66, top: 470, type:'normal', speed:0.32 },
-
-    { left:2,  top: 840, type:'normal', speed:0.46 },
-    { left:35, top: 960, type:'normal', speed:0.30 },
-    { left:66, top: 870, type:'narrow', speed:0.52 },
-];
-
-const layout = isMobile ? MOBILE_LAYOUT : PC_LAYOUT;
-
-/* ── Gallery height: last card's top + card height + generous padding ── */
-const galleryH = isMobile
-    ? Math.max(...MOBILE_LAYOUT.map(l => l.top)) + 600
-    : Math.max(...PC_LAYOUT.map(l => l.top)) + 1800;
+   Formula: last card bottom in DOM + extra scroll room for parallax.
+   The parallax travel for a card = maxScroll × speed.
+   maxScroll ≈ galleryH (approx). So we need:
+   galleryH > lastCardBottom + speed × galleryH
+   → galleryH > lastCardBottom / (1 - maxSpeed)
+   With maxSpeed=0.58: galleryH = lastCardBottom / 0.42 + padding
+─────────────────────────────────────────────────────────────────────*/
+const cardH   = isMobile ? Math.round(VW * 0.42) : 620;
+const lastTop = Math.max(...layout.map(l => l.top));
+// Enough height so fast cards (speed 0.58) travel the full DOM distance
+const galleryH = Math.round((lastTop + cardH) / (1 - 0.58)) + (isMobile ? 200 : 600);
 
 const gallery = document.getElementById('gallery');
-gallery.style.minHeight = galleryH + 'px';
+gallery.style.height = galleryH + 'px';
 
 /* ── BUILD CARDS ── */
 const wrappers    = [];
@@ -305,12 +365,12 @@ const dragOffsets = [];
 layout.forEach((pos, i) => {
     const wrap = document.createElement('div');
     wrap.className    = 'card-wrapper';
-    wrap.style.left   = pos.left + '%';
+    wrap.style.left   = pos.left;
     wrap.style.top    = pos.top + 'px';
-    wrap.style.zIndex = i + 10;
+    wrap.style.zIndex = 10 + i;
 
     const card = document.createElement('div');
-    card.className = 'card draggable' + (pos.type === 'narrow' ? ' narrow' : '');
+    card.className = 'card' + (pos.type === 'narrow' ? ' narrow' : '');
 
     const img = document.createElement('img');
     img.src     = images[i];
@@ -325,43 +385,53 @@ layout.forEach((pos, i) => {
 });
 
 /* ─────────────────────────────────────────────────────────────────────
-   CONTINUOUS PARALLAX
-   Hooked into lenis.on('scroll') so it fires every smooth-scroll frame.
-   Each card moves up by scrollY × its own speed.
-   High + varied speeds = swift movement + cards crossing each other.
+   PARALLAX ENGINE
+   Reads lenis.scroll every frame.
+   Each card's visual position = DOM top + (drag offset) - (scroll × speed)
+   Negative scroll term = card moves UP as user scrolls DOWN.
+   Different speeds per card = depth layering + inter-row crossing.
 ─────────────────────────────────────────────────────────────────────*/
 function updateParallax(scrollY) {
     wrappers.forEach((wrap, i) => {
         const speed = layout[i].speed;
         const dx    = dragOffsets[i].x;
-        const dy    = dragOffsets[i].y - scrollY * speed;
-        wrap.style.transform = `translate(${dx}px, ${dy}px)`;
+        const dy    = dragOffsets[i].y - (scrollY * speed);
+        wrap.style.transform = `translate(${dx}px,${dy}px)`;
     });
 }
 
 lenis.on('scroll', ({ scroll }) => updateParallax(scroll));
 
-/* ── RAF loop ── */
 function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
-
 updateParallax(0);
 
-/* ── DRAGGABLE ── */
-interact('.draggable').draggable({
+/* ─────────────────────────────────────────────────────────────────────
+   DRAGGABLE — interact.js
+   Works on both mouse (PC) and touch (mobile).
+   touch-action:none on .card-wrapper (set in CSS) is required for
+   interact.js to intercept touch events before the browser does.
+   Drag offset stored separately so parallax + drag combine cleanly.
+─────────────────────────────────────────────────────────────────────*/
+interact('.card-wrapper').draggable({
+    inertia: true,   // flick momentum — feels natural on mobile
     listeners: {
         start(event) {
-            event.target.parentElement.style.zIndex = 3000;
+            event.target.style.zIndex = 3000;
+            event.target.style.cursor = 'grabbing';
         },
         move(event) {
-            const idx = wrappers.indexOf(event.target.parentElement);
+            const idx = wrappers.indexOf(event.target);
             if (idx < 0) return;
             dragOffsets[idx].x += event.dx;
             dragOffsets[idx].y += event.dy;
             updateParallax(lenis.scroll);
+        },
+        end(event) {
+            event.target.style.cursor = 'grab';
         }
     }
 });
