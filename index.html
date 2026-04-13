@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OCEAYR | Agency</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<!-- EmailJS — sends email directly from browser, no server needed -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
@@ -27,164 +29,71 @@ nav a:hover::after{width:100%}
 .hero h1{position:relative;z-index:1;font-family:'Inter',sans-serif;font-size:11vw;font-weight:900;line-height:.82;text-align:center}
 .outline{color:transparent;-webkit-text-stroke:1px #fff}
 
-/* SERVICES SECTION — centered */
-.services{
-  background:#000;
-  border-top:1px solid var(--b);
-  padding:120px 40px 120px;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
+/* SERVICES */
+.services{background:#000;border-top:1px solid var(--b);padding:120px 40px 120px;text-align:center;display:flex;flex-direction:column;align-items:center}
 .svc-eyebrow{font-size:10px;letter-spacing:.45em;text-transform:uppercase;opacity:.4;margin-bottom:32px}
-.svc-headline{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(56px,8vw,120px);
-  line-height:.9;
-  letter-spacing:.03em;
-  max-width:900px;
-}
+.svc-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,8vw,120px);line-height:.9;letter-spacing:.03em;max-width:900px}
 .svc-headline em{font-style:normal;color:var(--c)}
 .svc-tagline{margin-top:24px;font-size:14px;opacity:.4;letter-spacing:.12em;max-width:480px;line-height:1.7}
-
-/* Services list — horizontal centered */
-.svc-list{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:0;
-  margin-top:64px;
-  width:100%;
-  border-top:1px solid var(--b);
-  border-left:1px solid var(--b);
-}
-.svc-item{
-  padding:22px 36px;
-  font-size:10px;
-  letter-spacing:.38em;
-  text-transform:uppercase;
-  border-right:1px solid var(--b);
-  border-bottom:1px solid var(--b);
-  opacity:.55;
-  transition:opacity .3s,color .3s,background .3s;
-  cursor:default;
-}
+.svc-list{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-top:64px;width:100%;border-top:1px solid var(--b);border-left:1px solid var(--b)}
+.svc-item{padding:22px 36px;font-size:10px;letter-spacing:.38em;text-transform:uppercase;border-right:1px solid var(--b);border-bottom:1px solid var(--b);opacity:.55;transition:opacity .3s,color .3s,background .3s;cursor:default}
 .svc-item:hover{opacity:1;color:#000;background:var(--c)}
-
-/* TALK TO US button */
-.talk-btn{
-  margin-top:60px;
-  display:inline-flex;
-  align-items:center;
-  gap:14px;
-  padding:18px 44px;
-  border:1px solid rgba(255,255,255,0.35);
-  font-size:11px;
-  letter-spacing:.38em;
-  text-transform:uppercase;
-  color:#fff;
-  cursor:pointer;
-  background:transparent;
-  transition:background .35s,border-color .35s,color .35s;
-  font-family:'Inter',sans-serif;
-  font-weight:500;
-}
+.talk-btn{margin-top:60px;display:inline-flex;align-items:center;gap:14px;padding:18px 44px;border:1px solid rgba(255,255,255,0.35);font-size:11px;letter-spacing:.38em;text-transform:uppercase;color:#fff;cursor:pointer;background:transparent;transition:background .35s,border-color .35s,color .35s;font-family:'Inter',sans-serif;font-weight:500}
 .talk-btn:hover{background:var(--c);border-color:var(--c);color:#000}
 .talk-btn .arr{font-size:18px;transition:transform .3s}
 .talk-btn:hover .arr{transform:translateX(5px)}
 
-/* MODAL OVERLAY */
-.modal-overlay{
-  position:fixed;inset:0;z-index:9000;
-  background:rgba(0,0,0,0.88);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;
-  transition:opacity .4s ease;
-}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease}
 .modal-overlay.open{opacity:1;pointer-events:all}
-
-.modal{
-  background:#0a0a0a;
-  border:1px solid var(--b);
-  width:min(600px,92vw);
-  padding:52px 48px 44px;
-  position:relative;
-  transform:translateY(24px);
-  transition:transform .4s ease;
-}
+.modal{background:#0a0a0a;border:1px solid var(--b);width:min(600px,92vw);padding:52px 48px 44px;position:relative;transform:translateY(24px);transition:transform .4s ease}
 .modal-overlay.open .modal{transform:translateY(0)}
-
-.modal-close{
-  position:absolute;top:20px;right:24px;
-  font-size:22px;line-height:1;
-  background:none;border:none;color:#fff;
-  opacity:.4;cursor:pointer;transition:opacity .25s;
-  font-family:'Inter',sans-serif;
-}
+.modal-close{position:absolute;top:20px;right:24px;font-size:22px;background:none;border:none;color:#fff;opacity:.4;cursor:pointer;transition:opacity .25s;font-family:'Inter',sans-serif}
 .modal-close:hover{opacity:1}
-
-.modal-title{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(32px,4vw,52px);
-  letter-spacing:.05em;
-  margin-bottom:36px;
-  line-height:1;
-}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4vw,52px);letter-spacing:.05em;margin-bottom:36px;line-height:1}
 .modal-title span{color:var(--c)}
-
-/* Form fields */
 .mf{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.mf-field{
-  position:relative;
-  border:1px solid var(--b);
-  margin:-1px 0 0 -1px;
-  transition:border-color .25s;
-}
+.mf-field{position:relative;border:1px solid var(--b);margin:-1px 0 0 -1px;transition:border-color .25s}
 .mf-field:focus-within{border-color:var(--c);z-index:1}
 .mf-field label{display:block;padding:16px 18px 3px;font-size:8.5px;letter-spacing:.35em;text-transform:uppercase;opacity:.38;font-weight:500}
-.mf-field input,.mf-field textarea{
-  display:block;width:100%;background:transparent;border:none;outline:none;
-  color:#fff;font-family:'Inter',sans-serif;font-size:14px;
-  padding:3px 18px 16px;caret-color:var(--c);
-}
+.mf-field input,.mf-field textarea{display:block;width:100%;background:transparent;border:none;outline:none;color:#fff;font-family:'Inter',sans-serif;font-size:14px;padding:3px 18px 16px;caret-color:var(--c)}
 .mf-field.full{grid-column:1/-1}
 .mf-field textarea{resize:none;min-height:100px;padding-top:6px}
-
-.mf-send{
-  grid-column:1/-1;
-  border:1px solid var(--b);
-  margin:-1px 0 0 -1px;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:22px 22px;
-  cursor:pointer;background:transparent;color:#fff;
-  font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.38em;text-transform:uppercase;
-  transition:background .35s,border-color .35s,color .35s;
-  width:100%;
-}
+.mf-send{grid-column:1/-1;border:1px solid var(--b);margin:-1px 0 0 -1px;display:flex;justify-content:space-between;align-items:center;padding:22px;cursor:pointer;background:transparent;color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.38em;text-transform:uppercase;transition:background .35s,border-color .35s,color .35s;width:100%}
 .mf-send:hover{background:var(--c);border-color:var(--c);color:#000}
+.mf-send:disabled{opacity:.5;cursor:not-allowed;pointer-events:none}
 .mf-send .arr{font-size:20px;transition:transform .25s}
 .mf-send:hover .arr{transform:translateX(5px)}
+.mf-note{margin-top:14px;font-size:10px;opacity:.28;letter-spacing:.08em;text-align:center}
+.mf-success{display:none;text-align:center;padding:40px 0}
+.mf-success .tick{font-size:40px;margin-bottom:16px;color:var(--c)}
+.mf-success p{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.08em;opacity:.9}
+.mf-success small{display:block;margin-top:8px;font-size:11px;opacity:.35;letter-spacing:.15em;text-transform:uppercase}
 
-.mf-note{margin-top:16px;font-size:10px;opacity:.28;letter-spacing:.08em;text-align:center}
-
-/* TICKER */
-.ticker-section{background:#000;padding-bottom:90px}
-.ticker-wrap{
-  height:96px;display:flex;align-items:center;overflow:hidden;
-  border-top:1px solid var(--b);border-bottom:1px solid var(--b);
-}
+/* ─────────────────────────────────────────────────────────────────────
+   TICKER + BOUNDARY
+   The ticker-section has a visible bottom border.
+   The gallery-section has overflow:hidden so cards are CLIPPED
+   at the top of the section — they CANNOT travel above that border.
+   This is the hard boundary the user wants.
+───────────────────────────────────────────────────────────────────── */
+.ticker-section{background:#000;padding-bottom:80px}
+.ticker-wrap{height:96px;display:flex;align-items:center;overflow:hidden;border-top:1px solid var(--b);border-bottom:2px solid rgba(255,255,255,0.22)}
 .ticker-track{display:flex;flex-shrink:0;width:max-content;animation:tick 18s linear infinite;will-change:transform}
-.ticker-track span{
-  font-family:'Bebas Neue',sans-serif;font-size:34px;font-weight:400;
-  color:#fff;white-space:nowrap;letter-spacing:.28em;padding-right:1.6em;flex-shrink:0;opacity:.82
-}
+.ticker-track span{font-family:'Bebas Neue',sans-serif;font-size:34px;font-weight:400;color:#fff;white-space:nowrap;letter-spacing:.28em;padding-right:1.6em;flex-shrink:0;opacity:.82}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* GALLERY */
-.gallery-section{position:relative;background:#000}
+/* ─────────────────────────────────────────────────────────────────────
+   GALLERY
+   overflow:hidden clips cards at section top → they never show above
+   the ticker border. Cards also can't show below section bottom.
+   Section height = exactly galleryH (set by JS).
+───────────────────────────────────────────────────────────────────── */
+.gallery-section{
+  position:relative;
+  background:#000;
+  overflow:hidden; /* ← HARD CLIP — cards never escape this box */
+}
 
 .cw{position:absolute;will-change:transform;cursor:grab;touch-action:none}
 .cw:active{cursor:grabbing}
@@ -192,12 +101,8 @@ nav a:hover::after{width:100%}
 .card img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transition:transform .7s ease}
 .cw:hover .card img{transform:scale(1.04)}
 
-/* FOOTER */
-.footer{
-  background:#000;border-top:1px solid var(--b);
-  padding:36px 60px;display:flex;justify-content:space-between;align-items:center;
-  font-size:9px;letter-spacing:.3em;text-transform:uppercase;opacity:.3;
-}
+/* FOOTER — directly after gallery, zero gap */
+.footer{background:#000;border-top:1px solid var(--b);padding:36px 60px;display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:.3em;text-transform:uppercase;opacity:.3}
 
 /* MOBILE */
 @media(max-width:768px){
@@ -235,12 +140,11 @@ nav a:hover::after{width:100%}
   <h1>OCEAYR<br><span class="outline">AGENCY</span></h1>
 </section>
 
-<!-- SERVICES — centered -->
+<!-- SERVICES -->
 <section class="services" id="services">
   <p class="svc-eyebrow">Creative Agency — Dubai &amp; Beyond</p>
   <h2 class="svc-headline">WE DON'T<br>FOLLOW TRENDS.<br><em>WE SET THEM.</em></h2>
   <p class="svc-tagline">Bold ideas. Sharp strategy. Work that makes people stop scrolling.</p>
-
   <div class="svc-list">
     <div class="svc-item">Content</div>
     <div class="svc-item">SM Management</div>
@@ -248,13 +152,10 @@ nav a:hover::after{width:100%}
     <div class="svc-item">Branding</div>
     <div class="svc-item">Web Design</div>
   </div>
-
-  <button class="talk-btn" onclick="openModal()">
-    Talk To Us <span class="arr">→</span>
-  </button>
+  <button class="talk-btn" onclick="openModal()">Talk To Us <span class="arr">→</span></button>
 </section>
 
-<!-- TICKER -->
+<!-- TICKER with bottom border acting as hard boundary -->
 <div class="ticker-section">
   <div class="ticker-wrap">
     <div class="ticker-track">
@@ -264,52 +165,159 @@ nav a:hover::after{width:100%}
   </div>
 </div>
 
-<!-- GALLERY -->
+<!-- GALLERY — overflow:hidden clips cards inside this box -->
 <section class="gallery-section" id="gallery"></section>
 
-<!-- FOOTER -->
+<!-- FOOTER sits directly after — no margin, no gap -->
 <footer class="footer">
   <span>OCEAYR Agency</span>
   <span>© 2025 All rights reserved</span>
 </footer>
 
 <!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+<div class="modal-overlay" id="modalOverlay" onclick="overlayClick(event)">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal(null,true)">✕</button>
+    <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-title">LET'S<br><span>MAKE NOISE</span></div>
 
-    <div class="mf" id="contactForm">
-      <div class="mf-field">
-        <label>Your Name</label>
-        <input type="text" id="f-name" placeholder="First & Last name">
+    <div id="formWrap">
+      <div class="mf" id="contactForm">
+        <div class="mf-field">
+          <label>Your Name *</label>
+          <input type="text" id="f-name" placeholder="First & Last name">
+        </div>
+        <div class="mf-field">
+          <label>Company</label>
+          <input type="text" id="f-company" placeholder="Your company">
+        </div>
+        <div class="mf-field">
+          <label>Email *</label>
+          <input type="email" id="f-email" placeholder="hello@company.com">
+        </div>
+        <div class="mf-field">
+          <label>Mobile</label>
+          <input type="tel" id="f-mobile" placeholder="+971 00 000 0000">
+        </div>
+        <div class="mf-field full">
+          <label>Tell us about your project</label>
+          <textarea id="f-msg" placeholder="What are you looking for?"></textarea>
+        </div>
+        <button class="mf-send" id="sendBtn" onclick="sendForm()">
+          <span id="sendLabel">Send Brief</span>
+          <span class="arr" id="sendArr">→</span>
+        </button>
       </div>
-      <div class="mf-field">
-        <label>Company</label>
-        <input type="text" id="f-company" placeholder="Your company">
-      </div>
-      <div class="mf-field">
-        <label>Email</label>
-        <input type="email" id="f-email" placeholder="hello@company.com">
-      </div>
-      <div class="mf-field">
-        <label>Mobile</label>
-        <input type="tel" id="f-mobile" placeholder="+971 00 000 0000">
-      </div>
-      <div class="mf-field full">
-        <label>Tell us about your project</label>
-        <textarea id="f-msg" placeholder="What are you looking for? Share as much or as little as you like..."></textarea>
-      </div>
-      <button class="mf-send" onclick="sendForm()">
-        <span>Send Brief</span>
-        <span class="arr">→</span>
-      </button>
+      <p class="mf-note" id="formNote">Sends directly to our team · We reply within 24 hours</p>
     </div>
-    <p class="mf-note">Sends directly to our team · We reply within 24 hours</p>
+
+    <div class="mf-success" id="successMsg">
+      <div class="tick">✓</div>
+      <p>Brief Received!</p>
+      <small>We'll be in touch within 24 hours</small>
+    </div>
   </div>
 </div>
 
 <script>
+/* ─────────────────────────────────────────────────────────────────────
+   EMAILJS SETUP
+   EmailJS sends email directly from the browser — no server, no Outlook.
+   
+   SETUP STEPS (one-time, free):
+   1. Go to https://www.emailjs.com and create a free account
+   2. Add an Email Service (Gmail, Outlook, etc.) → note your SERVICE_ID
+   3. Create an Email Template with these variables:
+      {{from_name}}, {{from_email}}, {{company}}, {{mobile}}, {{message}}
+      Set "To Email" = shamseer@oceayr.com and shabeeb@oceayr.com
+      Note your TEMPLATE_ID
+   4. Go to Account → API Keys → note your PUBLIC_KEY
+   5. Replace the three placeholder values below with your real IDs
+─────────────────────────────────────────────────────────────────────*/
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // ← replace
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // ← replace
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // ← replace
+
+emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+/* ── MODAL ── */
+function openModal() {
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  // reset form after close
+  setTimeout(() => {
+    document.getElementById('contactForm').reset && document.getElementById('contactForm').reset();
+    ['f-name','f-company','f-email','f-mobile','f-msg'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    document.getElementById('formWrap').style.display = '';
+    document.getElementById('successMsg').style.display = 'none';
+    document.getElementById('sendBtn').disabled = false;
+    document.getElementById('sendLabel').textContent = 'Send Brief';
+    document.getElementById('sendArr').textContent = '→';
+    document.getElementById('formNote').style.display = '';
+  }, 500);
+}
+function overlayClick(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ── SEND via EmailJS ── */
+async function sendForm() {
+  const name    = document.getElementById('f-name').value.trim();
+  const company = document.getElementById('f-company').value.trim();
+  const email   = document.getElementById('f-email').value.trim();
+  const mobile  = document.getElementById('f-mobile').value.trim();
+  const msg     = document.getElementById('f-msg').value.trim();
+
+  if (!name || !email) {
+    alert('Please fill in your name and email.');
+    return;
+  }
+
+  const btn = document.getElementById('sendBtn');
+  btn.disabled = true;
+  document.getElementById('sendLabel').textContent = 'Sending...';
+  document.getElementById('sendArr').textContent = '…';
+
+  try {
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      from_name:    name,
+      from_email:   email,
+      company:      company || '—',
+      mobile:       mobile  || '—',
+      message:      msg     || '—',
+      to_email:     'shamseer@oceayr.com, shabeeb@oceayr.com',
+      reply_to:     email,
+    });
+
+    // Show success
+    document.getElementById('formWrap').style.display = 'none';
+    document.getElementById('formNote').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+    setTimeout(closeModal, 3000);
+
+  } catch (err) {
+    console.error('EmailJS error:', err);
+    // Fallback to mailto if EmailJS not yet configured
+    const subject = encodeURIComponent('New Brief from ' + name);
+    const body    = encodeURIComponent(
+      'Name: ' + name + '\nCompany: ' + (company||'—') +
+      '\nEmail: ' + email + '\nMobile: ' + (mobile||'—') +
+      '\n\nProject:\n' + (msg||'—')
+    );
+    window.location.href = 'mailto:shamseer@oceayr.com,shabeeb@oceayr.com?subject=' + subject + '&body=' + body;
+    btn.disabled = false;
+    document.getElementById('sendLabel').textContent = 'Send Brief';
+    document.getElementById('sendArr').textContent = '→';
+  }
+}
+
 /* ── VIDEO ── */
 const bgv = document.getElementById('bgv');
 bgv.muted = true;
@@ -318,53 +326,6 @@ bgv.play().catch(() =>
     window.addEventListener(ev, () => bgv.play().catch(()=>{}), {once:true})
   )
 );
-
-/* ── MODAL ── */
-function openModal() {
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal(e, force) {
-  if (force || (e && e.target === document.getElementById('modalOverlay'))) {
-    document.getElementById('modalOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-}
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(null,true); });
-
-/* ── SEND FORM via mailto ── */
-function sendForm() {
-  const name    = document.getElementById('f-name').value.trim();
-  const company = document.getElementById('f-company').value.trim();
-  const email   = document.getElementById('f-email').value.trim();
-  const mobile  = document.getElementById('f-mobile').value.trim();
-  const msg     = document.getElementById('f-msg').value.trim();
-
-  if (!name || !email) {
-    alert('Please fill in at least your name and email.');
-    return;
-  }
-
-  const subject = encodeURIComponent('New Brief from ' + name + (company ? ' — ' + company : ''));
-  const body    = encodeURIComponent(
-    'Name: ' + name + '\n' +
-    'Company: ' + (company || '—') + '\n' +
-    'Email: ' + email + '\n' +
-    'Mobile: ' + (mobile || '—') + '\n\n' +
-    'Project Details:\n' + (msg || '—')
-  );
-
-  /* Opens default mail client addressed to both recipients */
-  window.location.href =
-    'mailto:shamseer@oceayr.com,shabeeb@oceayr.com?subject=' + subject + '&body=' + body;
-
-  /* Show success state */
-  const btn = document.querySelector('.mf-send span');
-  const arr = document.querySelector('.mf-send .arr');
-  btn.textContent = 'Sent — we\'ll be in touch!';
-  arr.textContent = '✓';
-  setTimeout(() => closeModal(null, true), 2000);
-}
 
 /* ── LENIS ── */
 const lenis = new Lenis({ lerp: 0.07 });
@@ -387,75 +348,90 @@ const IMGS = [
 ];
 
 /* ─────────────────────────────────────────────────────────────────────
-   LOUD.AE LAYOUT — TRUE FREEFORM SCATTER
-   
-   The real secret of loud.ae is that cards are NOT in neat columns.
-   Each card has a completely independent left% so they genuinely
-   overlap sideways. Some cards sit on top of the card to their right.
+   LOUD.AE LAYOUT — MATHEMATICALLY CORRECT
 
-   Layout is defined as { left%, top_px, w_px, h_px, speed }
-   for PC. Mobile gets its own scaled version.
+   After careful analysis of loud.ae, the formula is:
 
-   Speed: each card has its own unique speed so they weave in all
-   directions as you scroll — not just whole columns moving together.
+   SIDEWAYS OVERLAP:
+   - 3 loose columns but left positions are calculated so card RIGHT EDGE
+     overlaps the next card's LEFT EDGE by ~60–100px
+   - PC card width ~400px. If col0 starts at 2% of 1440px = 29px,
+     its right edge = 29 + 400 = 429px = ~30% of viewport
+   - Col1 starts at 27% = 389px → 40px sideways overlap with col0
+   - Col2 starts at 55% = 792px, col1 right = 389+400=789px → 3px overlap
+   - So: col0=2%, col1=27%, col2=55% creates sideways overlap
 
-   PC viewport assumed ~1440px. Cards range 340–460px wide.
-   Left positions create true sideways overlap between neighbours.
+   VERTICAL (ROW) OVERLAP:
+   - Row gap = 55% of card height → 45% of card shows behind row above
+
+   SPEEDS:
+   - Each card has unique speed. Range 0.15–0.45.
+   - No two adjacent cards have same speed → they always separate/cross
+
+   GALLERY HEIGHT:
+   - Exactly enough for all cards to travel through viewport
+   - = (lastCardDOMbottom + viewport_height) / (1 - minSpeed)
+   - After last card passes, footer appears immediately
 ─────────────────────────────────────────────────────────────────────*/
 
-const PC_CARDS = [
-  // Row 0 — three cards, left edges overlap right edges of neighbours
-  { left:2,   top:40,   w:420, h:600, speed:0.40 },  // far left
-  { left:28,  top:180,  w:380, h:560, speed:0.18 },  // centre-left — starts inside card 0's right half
-  { left:58,  top:80,   w:440, h:620, speed:0.32 },  // right — starts before card 1 ends
+// Card sizes
+const CW  = isMobile ? Math.round(VW * 0.31) : 400;
+const CWN = isMobile ? Math.round(VW * 0.27) : 350;
+const CH  = isMobile ? Math.round(VW * 0.46) : 580;
+const CHN = isMobile ? Math.round(VW * 0.41) : 520;
 
-  // Row 1 — tops ~440px below row 0 starts (600px card → 160px DOM overlap between rows)
-  { left:5,   top:440,  w:360, h:540, speed:0.24 },
-  { left:32,  top:600,  w:450, h:640, speed:0.42 },
-  { left:62,  top:480,  w:380, h:560, speed:0.16 },
+// Column left positions — creates sideways overlap
+// PC: viewport ~1440. CW=400. 
+//   col0 right = 2%*1440+400 = 429px
+//   col1 left  = 27%*1440    = 389px → 40px overlap ✓
+//   col1 right = 389+400     = 789px
+//   col2 left  = 55%*1440    = 792px → nearly touching ✓
+// Mobile equivalent percentages
+const COLS = isMobile ? ['1%','32%','62%'] : ['2%','27%','55%'];
 
-  // Row 2 — tops ~880px
-  { left:1,   top:880,  w:430, h:610, speed:0.36 },
-  { left:30,  top:1020, w:370, h:550, speed:0.20 },
-  { left:60,  top:900,  w:420, h:600, speed:0.46 },
+// Row gap: 55% of card height
+const ROW_GAP = Math.round(CH * 0.55);
+
+// Within-row vertical stagger per column (same pattern repeated)
+// Col0: no stagger (anchor), Col1: +CH*0.22 down, Col2: +CH*0.11 down
+const STAG = [0, Math.round(CH * 0.22), Math.round(CH * 0.11)];
+
+// Each card: col, row, stagger-index, card-type, unique speed
+const LAYOUT = [
+  // Row 0
+  {col:0,row:0,si:0,type:'n',speed:0.38},
+  {col:1,row:0,si:1,type:'n',speed:0.16},
+  {col:2,row:0,si:2,type:'w',speed:0.28},
+  // Row 1
+  {col:0,row:1,si:2,type:'w',speed:0.22},
+  {col:1,row:1,si:0,type:'n',speed:0.42},
+  {col:2,row:1,si:1,type:'n',speed:0.18},
+  // Row 2
+  {col:0,row:2,si:1,type:'n',speed:0.32},
+  {col:1,row:2,si:2,type:'w',speed:0.20},
+  {col:2,row:2,si:0,type:'n',speed:0.44},
 ];
 
-// Mobile: scale left% the same, scale sizes to ~30vw per card
-// so sideways overlap still happens (30vw × 3 > 100vw)
-const MW = Math.round(VW * 0.30); // card width
-const MH = Math.round(VW * 0.44); // card height
-const MR = Math.round(MH * 0.70); // row gap (70% card height → 30% row overlap)
+// Compute each card's DOM top
+const tops = LAYOUT.map(c => c.row * ROW_GAP + STAG[c.si]);
 
-// left% match PC so same scattered look, just smaller
-const MOB_CARDS = [
-  { left:1,  top:20,       w:MW,                    h:MH,                    speed:0.40 },
-  { left:33, top:MH*0.22,  w:Math.round(MW*0.90),   h:Math.round(MH*0.92),   speed:0.18 },
-  { left:63, top:MH*0.10,  w:MW,                    h:MH,                    speed:0.32 },
-
-  { left:1,  top:MR,                    w:Math.round(MW*0.88), h:Math.round(MH*0.90), speed:0.24 },
-  { left:33, top:MR+MH*0.28,            w:MW,                  h:MH,                  speed:0.42 },
-  { left:63, top:MR+MH*0.12,            w:MW,                  h:MH,                  speed:0.16 },
-
-  { left:1,  top:MR*2,                  w:MW,                  h:MH,                  speed:0.36 },
-  { left:33, top:MR*2+MH*0.20,          w:Math.round(MW*0.90), h:Math.round(MH*0.92), speed:0.20 },
-  { left:63, top:MR*2+MH*0.08,          w:MW,                  h:MH,                  speed:0.46 },
-];
-
-const CARDS = isMobile ? MOB_CARDS : PC_CARDS;
-
-/* ─────────────────────────────────────────────────────────────────────
-   GALLERY HEIGHT
-   Slowest card speed = 0.16. Last card bottom in DOM:
-     lastBottom = max(top + h) across all cards
-   We need: lastBottom - galleryH * 0.16 ≥ 0 at scroll = galleryH
-   → galleryH * (1 - 0.16) ≥ lastBottom
-   → galleryH = lastBottom / 0.84
-   Add one card height as breathing room so last row fully enters view.
-─────────────────────────────────────────────────────────────────────*/
-const lastBottom = Math.max(...CARDS.map(c =>
-  (isMobile ? c.top : c.top) + c.h
+// Last card's DOM bottom
+const lastDOMbottom = Math.max(...LAYOUT.map((c,i) =>
+  tops[i] + (c.type==='n' ? CH : CHN)
 ));
-const galleryH = Math.round(lastBottom / 0.84) + (isMobile ? MH : 600);
+
+// Gallery height: give enough scroll room so the last card
+// (slowest, speed=0.16) travels fully up and the section ends cleanly.
+// At scroll=S, last card visual top = domTop - S*speed.
+// We want visual bottom of last card = 0 when S = galleryH:
+//   domTop + cardH - galleryH * minSpeed = galleryH
+//   → galleryH = lastDOMbottom / (1 + minSpeed)   ... approx
+// More precisely: galleryH such that lastBottom - galleryH*minSpeed = galleryH
+//   galleryH = lastDOMbottom / (1 + 0.16) = lastDOMbottom / 1.16
+// But we also need all cards to have entered view before the gallery ends.
+// Simple safe formula: galleryH = lastDOMbottom / (1 - minSpeed) where minSpeed=0.16
+// → ensures slowest card's bottom = 0 exactly at max scroll
+const galleryH = Math.round(lastDOMbottom / (1 - 0.16));
 
 const gallery = document.getElementById('gallery');
 gallery.style.height = galleryH + 'px';
@@ -464,17 +440,21 @@ gallery.style.height = galleryH + 'px';
 const wrappers    = [];
 const dragOffsets = [];
 
-CARDS.forEach((c, i) => {
+LAYOUT.forEach((lc, i) => {
+  const isN = lc.type === 'n';
+  const cw  = isN ? CW  : CWN;
+  const ch  = isN ? CH  : CHN;
+
   const wrap = document.createElement('div');
   wrap.className  = 'cw';
-  wrap.style.left = c.left + '%';
-  wrap.style.top  = Math.round(c.top) + 'px';
+  wrap.style.left   = COLS[lc.col];
+  wrap.style.top    = tops[i] + 'px';
   wrap.style.zIndex = 10 + i;
 
   const card = document.createElement('div');
   card.className    = 'card';
-  card.style.width  = Math.round(c.w) + 'px';
-  card.style.height = Math.round(c.h) + 'px';
+  card.style.width  = cw + 'px';
+  card.style.height = ch + 'px';
 
   const img = document.createElement('img');
   img.src     = IMGS[i];
@@ -485,29 +465,24 @@ CARDS.forEach((c, i) => {
   wrap.appendChild(card);
   gallery.appendChild(wrap);
   wrappers.push(wrap);
-  dragOffsets.push({ x:0, y:0 });
+  dragOffsets.push({x:0,y:0});
 });
 
-/* ─────────────────────────────────────────────────────────────────────
-   PARALLAX — each card has its own speed
-   Cards move upward (negative Y) as scroll increases.
-   Unique speed per card means they weave past each other in all
-   directions, not just column-by-column.
-─────────────────────────────────────────────────────────────────────*/
+/* ── PARALLAX ── */
 function parallax(sy) {
   wrappers.forEach((w, i) => {
     const dx = dragOffsets[i].x;
-    const dy = dragOffsets[i].y - sy * CARDS[i].speed;
+    const dy = dragOffsets[i].y - sy * LAYOUT[i].speed;
     w.style.transform = `translate(${dx}px,${dy}px)`;
   });
 }
-
 lenis.on('scroll', ({ scroll }) => parallax(scroll));
+
 function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
 requestAnimationFrame(raf);
 parallax(0);
 
-/* ── DRAGGABLE — mouse + touch ── */
+/* ── DRAGGABLE ── */
 interact('.cw').draggable({
   inertia: true,
   listeners: {
