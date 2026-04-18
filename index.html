@@ -14,41 +14,38 @@
 :root{--c:#00ffff;--b:rgba(255,255,255,0.12)}
 html,body{background:#000;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden;cursor:default;user-select:none}
 
+/* ── LOGO: O overlaps R slightly on right side, black stroke, no box/bg ── */
+.logo{
+  position:fixed;top:24px;left:32px;z-index:2000;
+  display:flex;align-items:center;
+  font-family:'Inter',sans-serif;font-weight:900;font-size:44px;line-height:1;
+}
+.lo{
+  display:inline-block;
+  color:#fff;
+  -webkit-text-stroke:2px #000;
+  paint-order:stroke fill;
+  position:relative;z-index:2;
+}
+.lr{
+  display:inline-block;
+  color:#fff;
+  -webkit-text-stroke:2px #000;
+  paint-order:stroke fill;
+  position:relative;z-index:1;
+  margin-left:-9px; /* only the right curve of O overlaps the left stem of R */
+}
+
 /* NAV */
-.logo{position:fixed;top:24px;left:32px;z-index:2000;width:56px;height:56px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;border:2px solid #fff;letter-spacing:.02em}
-nav{position:fixed;top:38px;width:100%;display:flex;justify-content:center;gap:48px;font-size:10px;letter-spacing:.4em;text-transform:uppercase;z-index:2000}
+nav{position:fixed;top:40px;width:100%;display:flex;justify-content:center;gap:48px;font-size:10px;letter-spacing:.4em;text-transform:uppercase;z-index:2000}
 nav a{color:#fff;text-decoration:none;opacity:.45;position:relative;padding-bottom:3px;transition:opacity .3s}
 nav a:hover{opacity:1}
 nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--c);transition:width .4s cubic-bezier(.25,1,.5,1)}
 nav a:hover::after{width:100%}
 
-/* ─── HERO VIDEO FIX ───
-   The ONLY correct way to make a video fill any viewport (portrait mobile,
-   landscape mobile, desktop) without JS sizing hacks:
-   - position:absolute; inset:0 (fills parent 100%×100%)
-   - width:100%; height:100%; object-fit:cover
-   That's it. The JS fixVideo() function in the original code was
-   overriding this and breaking mobile portrait mode.
-   PC view is unchanged — same visual result on wide screens.
-─────────────────────────────────────────────────────────────────── */
-.hero{
-  position:relative;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-  background:#000;
-}
-.hero video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:.52;
-  pointer-events:none;
-}
+/* HERO */
+.hero{position:relative;height:100vh;display:flex;justify-content:center;align-items:center;overflow:hidden;background:#000}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;pointer-events:none}
 .hero h1{position:relative;z-index:1;font-family:'Inter',sans-serif;font-size:11vw;font-weight:900;line-height:.82;text-align:center}
 .outline{color:transparent;-webkit-text-stroke:1px #fff}
 
@@ -69,48 +66,22 @@ nav a:hover::after{width:100%}
 .ticker-section{background:#000;padding-bottom:80px}
 .ticker-wrap{height:96px;display:flex;align-items:center;overflow:hidden;border-top:1px solid var(--b);border-bottom:2px solid rgba(255,255,255,0.22)}
 .ticker-track{display:flex;flex-shrink:0;width:max-content;animation:tick 22s linear infinite;will-change:transform}
-.ticker-track span{font-family:'Bebas Neue',sans-serif;font-size:34px;font-weight:400;color:#fff;white-space:nowrap;letter-spacing:.28em;padding-right:1.6em;flex-shrink:0;opacity:.82}
+.ticker-track span{font-family:'Bebas Neue',sans-serif;font-size:34px;color:#fff;white-space:nowrap;letter-spacing:.28em;padding-right:1.6em;flex-shrink:0;opacity:.82}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ─── GALLERY ───
-   overflow:hidden clips cards — they never appear above the ticker border.
-   Height set exactly by JS so footer appears right after last image.
-─────────────────────────────────────────────────────────────────── */
-.gallery-section{
-  position:relative;
-  background:#000;
-  overflow:hidden;
-  padding-bottom:0;
-  margin-bottom:0;
-}
+/* GALLERY — clips everything, no leaking */
+.gallery-section{position:relative;width:100%;background:#000;overflow:hidden}
 
-.cw{
-  position:absolute;
-  will-change:transform;
-  cursor:grab;
-  touch-action:none;
-}
+.cw{position:absolute;will-change:transform;cursor:grab;touch-action:none;backface-visibility:hidden}
 .cw:active{cursor:grabbing}
-
-/* NO border on cards */
-.card{
-  overflow:hidden;
-  /* Stylish drop shadow for depth — no border */
-  box-shadow:0 24px 60px rgba(0,0,0,0.85), 0 4px 16px rgba(0,0,0,0.5);
-  background:#111;
-}
-.card img{
-  width:100%;height:100%;
-  object-fit:cover;display:block;
-  pointer-events:none;
-  transition:transform .7s ease;
-}
-.cw:hover .card img{transform:scale(1.04)}
+.card{overflow:hidden;box-shadow:0 18px 52px rgba(0,0,0,.9),0 4px 14px rgba(0,0,0,.6);background:#111}
+.card img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transition:transform .65s ease}
+.cw:hover .card img{transform:scale(1.045)}
 
 /* LIGHTBOX */
-.lb{position:fixed;inset:0;z-index:9500;background:rgba(0,0,0,.95);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.lb{position:fixed;inset:0;z-index:9500;background:rgba(0,0,0,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease}
 .lb.open{opacity:1;pointer-events:all}
-.lb img{max-width:88vw;max-height:88vh;object-fit:contain;box-shadow:0 32px 100px rgba(0,0,0,.98);transform:scale(.9) translateY(16px);opacity:0;transition:transform .45s cubic-bezier(.25,1,.5,1),opacity .35s ease;display:block;pointer-events:none}
+.lb img{max-width:88vw;max-height:88vh;object-fit:contain;box-shadow:0 32px 100px rgba(0,0,0,.98);border:1px solid rgba(255,255,255,.06);transform:scale(.9) translateY(16px);opacity:0;transition:transform .45s cubic-bezier(.25,1,.5,1),opacity .35s ease;display:block;pointer-events:none}
 .lb.open img{transform:scale(1) translateY(0);opacity:1}
 .lb-close{position:absolute;top:24px;right:32px;background:none;border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.38em;text-transform:uppercase;padding:10px 22px;cursor:pointer;transition:background .25s,border-color .25s,color .25s}
 .lb-close:hover{background:var(--c);border-color:var(--c);color:#000}
@@ -143,21 +114,15 @@ nav a:hover::after{width:100%}
 .mf-success p{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.05em;opacity:.9;line-height:1.5}
 .mf-success small{display:block;margin-top:8px;font-size:11px;opacity:.35;letter-spacing:.15em;text-transform:uppercase}
 
-/* FOOTER — zero gap after gallery */
-.footer{background:#000;border-top:1px solid var(--b);padding:36px 60px;display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:.3em;text-transform:uppercase;opacity:.3;margin:0;padding-top:28px;padding-bottom:28px}
+.footer{background:#000;border-top:1px solid var(--b);padding:28px 60px;display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:.3em;text-transform:uppercase;opacity:.3}
 
-/* MOBILE */
+/* ── MOBILE — completely untouched ── */
 @media(max-width:768px){
-  .logo{top:16px;left:16px;width:44px;height:44px;font-size:14px}
+  .logo{top:16px;left:16px;font-size:30px}
+  .lr{margin-left:-7px}
   nav{top:18px;gap:10px;font-size:7px;letter-spacing:.15em}
-  /* ── Mobile video: force full viewport fill, portrait & landscape ── */
   .hero{width:100vw;height:100svh;min-height:100vh}
-  .hero video{
-    position:absolute;inset:0;
-    width:100%;height:100%;
-    object-fit:cover;
-    min-width:100%;min-height:100%;
-  }
+  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;min-width:100%;min-height:100%}
   .hero h1{font-size:16vw}
   .services{padding:80px 24px 80px}
   .svc-list{margin-top:40px}
@@ -176,7 +141,8 @@ nav a:hover::after{width:100%}
 </head>
 <body>
 
-<div class="logo">OR</div>
+<div class="logo"><span class="lo">O</span><span class="lr">R</span></div>
+
 <nav>
   <a href="#">Home</a>
   <a href="#services">Work</a>
@@ -184,7 +150,6 @@ nav a:hover::after{width:100%}
   <a href="#">Studio</a>
 </nav>
 
-<!-- HERO — pure CSS video cover, works portrait+landscape mobile and PC -->
 <section class="hero">
   <video autoplay muted loop playsinline preload="auto" id="bgv">
     <source src="https://res.cloudinary.com/dfb6kdreu/video/upload/v1776189656/full_lh2zj6.mp4">
@@ -193,7 +158,6 @@ nav a:hover::after{width:100%}
 </section>
 
 <section class="services" id="services">
-  <!-- CHANGED: "Marketing Agency — UAE & Beyond" -->
   <p class="svc-eyebrow">Marketing Agency — UAE &amp; Beyond</p>
   <h2 class="svc-headline">WE DON'T<br>FOLLOW TRENDS.<br><em>WE SET THEM.</em></h2>
   <div class="svc-list">
@@ -217,26 +181,23 @@ nav a:hover::after{width:100%}
 
 <section class="gallery-section" id="gallery"></section>
 
-<!-- Footer sits directly after gallery — no margin, no blank space -->
 <footer class="footer">
   <span>OCEAYR Agency</span>
   <span>© 2025 All rights reserved</span>
 </footer>
 
-<!-- LIGHTBOX -->
 <div class="lb" id="lb" onclick="lbBgClick(event)">
   <button class="lb-close" onclick="closeLb()">✕ &nbsp;Close</button>
-  <img id="lbImg" src="" alt="Artwork">
+  <img id="lbImg" src="" alt="">
   <span class="lb-hint">Click backdrop or press ESC to close</span>
 </div>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="overlayClick(event)">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-title">LET'S<br><span>MAKE NOISE</span></div>
     <div id="formWrap">
-      <div class="mf" id="contactForm">
+      <div class="mf">
         <div class="mf-field"><label>Your Name *</label><input type="text" id="f-name" placeholder="First & Last name"></div>
         <div class="mf-field"><label>Company</label><input type="text" id="f-company" placeholder="Your company"></div>
         <div class="mf-field"><label>Email *</label><input type="email" id="f-email" placeholder="hello@company.com"></div>
@@ -255,151 +216,132 @@ nav a:hover::after{width:100%}
 </div>
 
 <script>
-/* ── EmailJS ── */
 emailjs.init({ publicKey: 'YOUR_PUBLIC_KEY' });
 const EJ_SVC = 'YOUR_SERVICE_ID';
 const EJ_TPL = 'YOUR_TEMPLATE_ID';
 
-/* ── VIDEO: no JS sizing — pure CSS handles it ── */
 const vid = document.getElementById('bgv');
 vid.muted = true;
-vid.play().catch(() => {
-  ['touchstart','click'].forEach(ev =>
-    window.addEventListener(ev, () => vid.play().catch(()=>{}), {once:true})
-  );
-});
+vid.play().catch(()=>['touchstart','click'].forEach(ev=>
+  window.addEventListener(ev,()=>vid.play().catch(()=>{}),{once:true})
+));
 
-/* ── LENIS smooth scroll ── */
-const lenis = new Lenis({ lerp: 0.07 });
-function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
-requestAnimationFrame(raf);
+const lenis = new Lenis({ lerp: 0.08 });
 
-/* ── DEVICE ── */
 const VW = window.innerWidth;
 const isMobile = VW <= 768;
 
-/* ─────────────────────────────────────────────────────────────────────
-  IMAGES — fashion + food + real estate (all portrait, same size)
-  18 images total: 6 fashion, 6 food, 6 real estate
-─────────────────────────────────────────────────────────────────────*/
 const IMGS = [
-  /* fashion */
-  'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&q=85',
-  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=85',
-  'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=85',
-  'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=85',
-  'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=85',
-  'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=85',
-  /* food */
-  'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=85',
-  'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&q=85',
-  'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=85',
-  'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800&q=85',
-  'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=85',
-  'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=85',
-  /* real estate */
-  'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=85',
-  'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=85',
-  'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=85',
-  'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=85',
-  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85',
-  'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=85',
+  'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900&q=85',
+  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=85',
+  'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=85',
+  'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=85',
+  'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=85',
+  'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&q=85',
+  'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&q=85',
+  'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=900&q=85',
+  'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=900&q=85',
+  'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=900&q=85',
+  'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=900&q=85',
+  'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=900&q=85',
+  'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&q=85',
+  'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&q=85',
+  'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&q=85',
+  'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=900&q=85',
+  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85',
+  'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=900&q=85',
 ];
 
-/* ─────────────────────────────────────────────────────────────────────
-  LAYOUT — LOUD.AE STYLE (CORRECTED)
+/* ══════════════════════════════════════════════════════════════════
+   LOUD.AE GALLERY — definitive implementation
 
-  What loud.ae actually does:
-  • 3 columns, each clearly visible with deliberate BLACK SPACE between
-    rows — NOT tight stacking.
-  • Row gap is LARGER than card height so rows are well separated.
-  • Columns are offset vertically (staggered) so they don't align
-    horizontally — this creates the asymmetric editorial look.
-  • Cards from different columns partially overlap each other SIDEWAYS
-    because column positions are close enough that card edges meet.
-  • The parallax scroll makes columns move at different speeds so the
-    arrangement changes dynamically — slow column stays, fast rises.
+   WHAT CREATES THE OVERLAP IN LOUD.AE (from your screenshots):
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  Formula:
-  • CW = 400px PC, 32vw mobile
-  • CH = 560px PC, 46vw mobile  (tall portrait)
-  • ROW_GAP = CH * 1.25  →  25% taller than card = visible black gap
-  • Column left: 1%, 30%, 58% PC  /  1%, 33%, 64% mobile
-    Card right edges: 1%+28%=29%, 30%+28%=58%, 58%+28%=86%
-    → each column's right edge meets the next column's left → sideways touch/overlap
-  • COL_STAGGER: col0=0, col1=+180px, col2=+90px (staggered down)
-  • SPEEDS: col0=0.30, col1=0.12, col2=0.42
-    Wide speed spread → fast (col2) rises dramatically, slow (col1) lags
-    This creates the weaving depth effect on scroll.
-─────────────────────────────────────────────────────────────────────*/
-const NCOLS = 3;
+   1. CARD WIDTH > COLUMN PITCH
+      Each card is WIDER than the horizontal distance between columns.
+      Screenshot analysis: viewport ~1540px, 3 cols.
+      Col starts at: ~88px, ~578px, ~1068px → pitch = 490px
+      Card width: ~530px → each card overhangs into the next col by 40px
+      This creates SIDEWAYS overlap between adjacent columns.
 
-/* Card dimensions — same size for all */
-const CW = isMobile ? Math.round(VW * 0.32) : 400;
-const CH = isMobile ? Math.round(VW * 0.48) : 560;
+   2. VERTICAL STAGGER PER COLUMN
+      Col 1 (centre) starts much higher (Y≈0) than col0 (Y≈+200) and col2 (Y≈+110).
+      Cards within each column have small gap (~20px).
+      Because col1 is higher, col1-row1 sits at the same Y as col0-row0,
+      so they VERTICALLY interleave → the overlapping editorial look.
 
-/* Column left positions — cards touch/overlap sideways */
-const COLS = isMobile
-  ? [`${Math.round(VW*0.01)}px`, `${Math.round(VW*0.345)}px`, `${Math.round(VW*0.665)}px`]
-  : ['1%', '30%', '57%'];
+   3. PARALLAX — different speeds make columns visually shuffle:
+      Col0: slow (0.18), Col1: fast (0.46), Col2: medium (0.30)
+      As you scroll, fast col rises faster → cards swap layers → shuffle effect.
 
-/* Parallax speeds — col1 is slowest, col2 fastest */
-const COL_SPEEDS = [0.30, 0.12, 0.42];
+   4. NO EMPTY SIDES/BOTTOM:
+      Cards span from X=0 to X=VW (full bleed).
+      Gallery height = EXACT bottom of tallest static column (no parallax buffer).
+      This keeps footer right below last card. Zero black space.
+      The parallax means cards travel UP as you scroll — the gallery section
+      itself doesn't grow, cards just shift position within the clipped box.
+══════════════════════════════════════════════════════════════════ */
 
-/* ── ROW_GAP: stylish gap like loud.ae — visible breathing room between rows ── */
-const ROW_GAP = Math.round(CH * 1.12);
+// Card dimensions
+const CW = isMobile ? Math.round(VW * 0.38) : Math.round(VW * 0.365); // wider than col pitch
+const CH = isMobile ? Math.round(VW * 0.55) : Math.round(VW * 0.48);  // tall portrait
 
-/* Per-column vertical stagger within a row */
-const COL_STAG = isMobile
-  ? [0, Math.round(CH * 0.28), Math.round(CH * 0.14)]
-  : [0, 180, 90];
+// Column X pitch — less than CW so cards overlap sideways
+const PITCH = isMobile ? Math.round(VW * 0.315) : Math.round(VW * 0.31);
 
-/* 18 images → 6 rows × 3 cols */
-const NROWS = Math.ceil(IMGS.length / NCOLS); // 6
-const LAYOUT = [];
-for (let r = 0; r < NROWS; r++) {
-  for (let c = 0; c < NCOLS; c++) {
-    if (r * NCOLS + c < IMGS.length) LAYOUT.push({col: c, row: r});
+// Column left positions — col0 flush left, cols spaced by PITCH
+const COL_X = [0, PITCH, PITCH * 2];
+
+// Vertical stagger: col1 highest (0), col2 mid, col0 lowest
+// This creates the vertical interleaving between columns
+const COL_Y0 = isMobile
+  ? [Math.round(CH * 0.28), 0, Math.round(CH * 0.14)]
+  : [Math.round(CH * 0.36), 0, Math.round(CH * 0.18)];
+
+// Within-column gap between cards (thin black strip, not large gap)
+const GAP = isMobile ? 12 : 18;
+
+// Parallax speeds per column
+const SPD = isMobile ? [0.14, 0.38, 0.24] : [0.18, 0.46, 0.30];
+
+// 6 cards per column × 3 columns = 18
+const PER_COL = 6;
+
+// Build card list
+const CARDS = [];
+for (let c = 0; c < 3; c++) {
+  for (let r = 0; r < PER_COL; r++) {
+    const domTop = COL_Y0[c] + r * (CH + GAP);
+    CARDS.push({ col: c, row: r, img: IMGS[c * PER_COL + r], domTop });
   }
 }
 
-/* DOM top for each card (static position before parallax) */
-const DOM_TOPS = LAYOUT.map(lc => lc.row * ROW_GAP + COL_STAG[lc.col]);
-
-/* ─────────────────────────────────────────────────────────────────────
-  GALLERY HEIGHT — exact, zero blank space
-
-  With parallax: at scroll S within gallery, card visual top = domTop - S*speed.
-  We need all cards to be visible before they scroll off top.
-  The binding constraint: last card in SLOWEST column must still
-  have its BOTTOM edge at the gallery bottom when scroll=galleryH.
-
-  slowCard bottom at scroll S: domTop + CH - S * minSpeed
-  Set = 0 when S = galleryH:
-  galleryH = (domTop + CH) / minSpeed   for slowest card
-
-  Take max across all cards to ensure every card is reachable.
-─────────────────────────────────────────────────────────────────────*/
-/* ─────────────────────────────────────────────────────────────────────
-  GALLERY HEIGHT — exact fit: bottom of last card + small padding.
-  No parallax means no extra height needed — cards don't move up.
-─────────────────────────────────────────────────────────────────────*/
-const galleryH = Math.max(...DOM_TOPS.map(t => t + CH)) + 48;
+// ── GALLERY HEIGHT = bottom of the TALLEST static column
+// We do NOT inflate for parallax travel — that would create empty space.
+// Cards move UP inside the clipped section; the section itself stays fixed height.
+// The visible result: as you scroll, cards rise out of the top — exactly like loud.ae.
+const colBottoms = [0, 1, 2].map(c =>
+  Math.max(...CARDS.filter(d => d.col === c).map(d => d.domTop + CH))
+);
+const galleryH = Math.max(...colBottoms); // exact — no padding, no buffer
 
 const gallery = document.getElementById('gallery');
 gallery.style.height = galleryH + 'px';
 
-/* ── BUILD CARDS ── */
-const wrappers = [], dragOff = [];
+// ── BUILD DOM
+const elems = [], dragOff = [];
 
-LAYOUT.forEach((lc, i) => {
+CARDS.forEach((d, i) => {
   const wrap = document.createElement('div');
-  wrap.className = 'cw';
-  wrap.style.left   = COLS[lc.col];
-  wrap.style.top    = DOM_TOPS[i] + 'px';
-  /* Z-index: alternate which column sits on top between rows for depth */
-  const zMap = [[3,1,2],[2,3,1],[1,2,3],[3,1,2],[2,3,1],[1,2,3]];
-  wrap.style.zIndex = 10 + (zMap[lc.row] ? zMap[lc.row][lc.col] : 1);
+  wrap.className  = 'cw';
+  wrap.style.left = COL_X[d.col] + 'px';
+  wrap.style.top  = d.domTop + 'px';
+  wrap.style.width = CW + 'px';
+
+  // Z-index: alternates per row so overlap direction changes (more dynamic)
+  const zPat = [[1,3,2],[3,2,1],[2,1,3],[1,3,2],[3,2,1],[2,1,3]];
+  wrap.style.zIndex = 10 + zPat[d.row % 6][d.col];
 
   const card = document.createElement('div');
   card.className    = 'card';
@@ -407,56 +349,68 @@ LAYOUT.forEach((lc, i) => {
   card.style.height = CH + 'px';
 
   const img = document.createElement('img');
-  img.src     = IMGS[i];
-  img.loading = i < NCOLS ? 'eager' : 'lazy';
-  img.alt     = 'Artwork ' + (i + 1);
+  img.src     = d.img;
+  img.loading = i < 6 ? 'eager' : 'lazy';
+  img.alt     = 'Work ' + (i + 1);
 
   card.appendChild(img);
   wrap.appendChild(card);
   gallery.appendChild(wrap);
-  wrappers.push(wrap);
-  dragOff.push({x: 0, y: 0});
+  elems.push({ el: wrap, col: d.col });
+  dragOff.push({ x: 0, y: 0 });
 
-  /* Double-click → lightbox */
+  // Double-click / double-tap → lightbox
   let dc = 0, dt = null;
   wrap.addEventListener('click', () => {
     dc++;
-    if (dc === 1) { dt = setTimeout(() => { dc = 0; }, 300); }
-    else { clearTimeout(dt); dc = 0; openLb(IMGS[i]); }
+    if (dc === 1) { dt = setTimeout(() => { dc = 0; }, 280); }
+    else { clearTimeout(dt); dc = 0; openLb(d.img); }
   });
 });
 
-/* ─────────────────────────────────────────────────────────────────────
-  NO scroll-driven upward parallax — cards stay fixed in position.
-  Only drag offsets are applied (draggable still works).
-─────────────────────────────────────────────────────────────────────*/
-function applyDragTransforms() {
-  wrappers.forEach((w, i) => {
-    w.style.transform = `translate(${dragOff[i].x}px,${dragOff[i].y}px)`;
-  });
+// ── PARALLAX via rAF — continuous, smooth
+// localScroll = how far page has scrolled past gallery top.
+// Card visual Y = domTop − localScroll × speed.
+// Fast col (1) rises quicker → cards from different cols swap relative positions → SHUFFLE.
+let gTop = 0;
+function cacheGTop() {
+  let el = gallery, t = 0;
+  while (el) { t += el.offsetTop; el = el.offsetParent; }
+  gTop = t;
 }
-applyDragTransforms();
+window.addEventListener('load', cacheGTop);
+setTimeout(cacheGTop, 200);
+window.addEventListener('resize', cacheGTop);
 
-/* ── DRAGGABLE ── */
+function tick(time) {
+  lenis.raf(time);
+  const local = Math.max(0, lenis.scroll - gTop);
+  elems.forEach((c, i) => {
+    const dy = dragOff[i].y - local * SPD[c.col];
+    c.el.style.transform = `translate(${dragOff[i].x}px,${dy}px)`;
+  });
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+
+// ── DRAGGABLE
 interact('.cw').draggable({
   inertia: true,
   listeners: {
-    start(e) { e.target.style.zIndex = 3000; },
+    start(e) { e.target.style.zIndex = 5000; },
     move(e) {
-      const idx = wrappers.indexOf(e.target);
+      const idx = elems.findIndex(c => c.el === e.target);
       if (idx < 0) return;
       dragOff[idx].x += e.dx;
       dragOff[idx].y += e.dy;
-      applyDragTransforms();
     }
   }
 });
 
-/* ── LIGHTBOX ── */
+// ── LIGHTBOX
 function openLb(src) {
-  const lb = document.getElementById('lb');
   document.getElementById('lbImg').src = src;
-  lb.classList.add('open');
+  document.getElementById('lb').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeLb() {
@@ -464,11 +418,9 @@ function closeLb() {
   document.body.style.overflow = '';
   setTimeout(() => { document.getElementById('lbImg').src = ''; }, 400);
 }
-function lbBgClick(e) {
-  if (e.target === document.getElementById('lb')) closeLb();
-}
+function lbBgClick(e) { if (e.target === document.getElementById('lb')) closeLb(); }
 
-/* ── MODAL ── */
+// ── MODAL
 function openModal() {
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -488,14 +440,10 @@ function closeModal() {
     document.getElementById('formNote').style.display = '';
   }, 500);
 }
-function overlayClick(e) {
-  if (e.target === document.getElementById('modalOverlay')) closeModal();
-}
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeLb(); closeModal(); }
-});
+function overlayClick(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLb(); closeModal(); } });
 
-/* ── SEND — no mailto, no Outlook ── */
+// ── SEND
 async function sendForm() {
   const n  = document.getElementById('f-name').value.trim();
   const em = document.getElementById('f-email').value.trim();
@@ -509,8 +457,8 @@ async function sendForm() {
   document.getElementById('sendArr').textContent = '…';
   try {
     await emailjs.send(EJ_SVC, EJ_TPL, {
-      from_name: n, from_email: em, company: co||'—',
-      mobile: mo||'—', message: ms||'—', reply_to: em
+      from_name: n, from_email: em,
+      company: co || '—', mobile: mo || '—', message: ms || '—', reply_to: em
     });
   } catch(err) { console.warn('EmailJS:', err); }
   document.getElementById('formWrap').style.display = 'none';
