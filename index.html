@@ -116,7 +116,7 @@ nav a:hover::after{width:100%}
 
 .footer{background:#000;border-top:1px solid var(--b);padding:28px 60px;display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:.3em;text-transform:uppercase;opacity:.3}
 
-/* ── MOBILE — completely untouched ── */
+/* ── MOBILE ── */
 @media(max-width:768px){
   .logo{top:16px;left:16px;font-size:30px}
   .lr{margin-left:-7px}
@@ -216,9 +216,12 @@ nav a:hover::after{width:100%}
 </div>
 
 <script>
-emailjs.init({ publicKey: 'YOUR_PUBLIC_KEY' });
+// REPLACE THESE WITH YOUR DASHBOARD IDS
+const EJ_KEY = 'YOUR_PUBLIC_KEY';
 const EJ_SVC = 'YOUR_SERVICE_ID';
 const EJ_TPL = 'YOUR_TEMPLATE_ID';
+
+emailjs.init({ publicKey: EJ_KEY });
 
 const vid = document.getElementById('bgv');
 vid.muted = true;
@@ -252,63 +255,15 @@ const IMGS = [
   'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=900&q=85',
 ];
 
-/* ══════════════════════════════════════════════════════════════════
-   LOUD.AE GALLERY — definitive implementation
-
-   WHAT CREATES THE OVERLAP IN LOUD.AE (from your screenshots):
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-   1. CARD WIDTH > COLUMN PITCH
-      Each card is WIDER than the horizontal distance between columns.
-      Screenshot analysis: viewport ~1540px, 3 cols.
-      Col starts at: ~88px, ~578px, ~1068px → pitch = 490px
-      Card width: ~530px → each card overhangs into the next col by 40px
-      This creates SIDEWAYS overlap between adjacent columns.
-
-   2. VERTICAL STAGGER PER COLUMN
-      Col 1 (centre) starts much higher (Y≈0) than col0 (Y≈+200) and col2 (Y≈+110).
-      Cards within each column have small gap (~20px).
-      Because col1 is higher, col1-row1 sits at the same Y as col0-row0,
-      so they VERTICALLY interleave → the overlapping editorial look.
-
-   3. PARALLAX — different speeds make columns visually shuffle:
-      Col0: slow (0.18), Col1: fast (0.46), Col2: medium (0.30)
-      As you scroll, fast col rises faster → cards swap layers → shuffle effect.
-
-   4. NO EMPTY SIDES/BOTTOM:
-      Cards span from X=0 to X=VW (full bleed).
-      Gallery height = EXACT bottom of tallest static column (no parallax buffer).
-      This keeps footer right below last card. Zero black space.
-      The parallax means cards travel UP as you scroll — the gallery section
-      itself doesn't grow, cards just shift position within the clipped box.
-══════════════════════════════════════════════════════════════════ */
-
-// Card dimensions
-const CW = isMobile ? Math.round(VW * 0.38) : Math.round(VW * 0.365); // wider than col pitch
-const CH = isMobile ? Math.round(VW * 0.55) : Math.round(VW * 0.48);  // tall portrait
-
-// Column X pitch — less than CW so cards overlap sideways
+const CW = isMobile ? Math.round(VW * 0.38) : Math.round(VW * 0.365); 
+const CH = isMobile ? Math.round(VW * 0.55) : Math.round(VW * 0.48);  
 const PITCH = isMobile ? Math.round(VW * 0.315) : Math.round(VW * 0.31);
-
-// Column left positions — col0 flush left, cols spaced by PITCH
 const COL_X = [0, PITCH, PITCH * 2];
-
-// Vertical stagger: col1 highest (0), col2 mid, col0 lowest
-// This creates the vertical interleaving between columns
-const COL_Y0 = isMobile
-  ? [Math.round(CH * 0.28), 0, Math.round(CH * 0.14)]
-  : [Math.round(CH * 0.36), 0, Math.round(CH * 0.18)];
-
-// Within-column gap between cards (thin black strip, not large gap)
+const COL_Y0 = isMobile ? [Math.round(CH * 0.28), 0, Math.round(CH * 0.14)] : [Math.round(CH * 0.36), 0, Math.round(CH * 0.18)];
 const GAP = isMobile ? 12 : 18;
-
-// Parallax speeds per column
 const SPD = isMobile ? [0.14, 0.38, 0.24] : [0.18, 0.46, 0.30];
-
-// 6 cards per column × 3 columns = 18
 const PER_COL = 6;
 
-// Build card list
 const CARDS = [];
 for (let c = 0; c < 3; c++) {
   for (let r = 0; r < PER_COL; r++) {
@@ -317,49 +272,34 @@ for (let c = 0; c < 3; c++) {
   }
 }
 
-// ── GALLERY HEIGHT = bottom of the TALLEST static column
-// We do NOT inflate for parallax travel — that would create empty space.
-// Cards move UP inside the clipped section; the section itself stays fixed height.
-// The visible result: as you scroll, cards rise out of the top — exactly like loud.ae.
-const colBottoms = [0, 1, 2].map(c =>
-  Math.max(...CARDS.filter(d => d.col === c).map(d => d.domTop + CH))
-);
-const galleryH = Math.max(...colBottoms); // exact — no padding, no buffer
-
+const colBottoms = [0, 1, 2].map(c => Math.max(...CARDS.filter(d => d.col === c).map(d => d.domTop + CH)));
+const galleryH = Math.max(...colBottoms); 
 const gallery = document.getElementById('gallery');
 gallery.style.height = galleryH + 'px';
 
-// ── BUILD DOM
 const elems = [], dragOff = [];
-
 CARDS.forEach((d, i) => {
   const wrap = document.createElement('div');
   wrap.className  = 'cw';
   wrap.style.left = COL_X[d.col] + 'px';
   wrap.style.top  = d.domTop + 'px';
   wrap.style.width = CW + 'px';
-
-  // Z-index: alternates per row so overlap direction changes (more dynamic)
   const zPat = [[1,3,2],[3,2,1],[2,1,3],[1,3,2],[3,2,1],[2,1,3]];
   wrap.style.zIndex = 10 + zPat[d.row % 6][d.col];
-
   const card = document.createElement('div');
   card.className    = 'card';
   card.style.width  = CW + 'px';
   card.style.height = CH + 'px';
-
   const img = document.createElement('img');
   img.src     = d.img;
   img.loading = i < 6 ? 'eager' : 'lazy';
   img.alt     = 'Work ' + (i + 1);
-
   card.appendChild(img);
   wrap.appendChild(card);
   gallery.appendChild(wrap);
   elems.push({ el: wrap, col: d.col });
   dragOff.push({ x: 0, y: 0 });
 
-  // Double-click / double-tap → lightbox
   let dc = 0, dt = null;
   wrap.addEventListener('click', () => {
     dc++;
@@ -368,10 +308,6 @@ CARDS.forEach((d, i) => {
   });
 });
 
-// ── PARALLAX via rAF — continuous, smooth
-// localScroll = how far page has scrolled past gallery top.
-// Card visual Y = domTop − localScroll × speed.
-// Fast col (1) rises quicker → cards from different cols swap relative positions → SHUFFLE.
 let gTop = 0;
 function cacheGTop() {
   let el = gallery, t = 0;
@@ -393,7 +329,6 @@ function tick(time) {
 }
 requestAnimationFrame(tick);
 
-// ── DRAGGABLE
 interact('.cw').draggable({
   inertia: true,
   listeners: {
@@ -407,7 +342,6 @@ interact('.cw').draggable({
   }
 });
 
-// ── LIGHTBOX
 function openLb(src) {
   document.getElementById('lbImg').src = src;
   document.getElementById('lb').classList.add('open');
@@ -420,7 +354,6 @@ function closeLb() {
 }
 function lbBgClick(e) { if (e.target === document.getElementById('lb')) closeLb(); }
 
-// ── MODAL
 function openModal() {
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -443,28 +376,40 @@ function closeModal() {
 function overlayClick(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLb(); closeModal(); } });
 
-// ── SEND
 async function sendForm() {
   const n  = document.getElementById('f-name').value.trim();
   const em = document.getElementById('f-email').value.trim();
   const co = document.getElementById('f-company').value.trim();
   const mo = document.getElementById('f-mobile').value.trim();
   const ms = document.getElementById('f-msg').value.trim();
+  
   if (!n || !em) { alert('Name and Email required'); return; }
+  
   const btn = document.getElementById('sendBtn');
   btn.disabled = true;
   document.getElementById('sendLabel').textContent = 'Sending...';
   document.getElementById('sendArr').textContent = '…';
+
   try {
+    // Sending data that matches your EmailJS {{tags}}
     await emailjs.send(EJ_SVC, EJ_TPL, {
-      from_name: n, from_email: em,
-      company: co || '—', mobile: mo || '—', message: ms || '—', reply_to: em
+      name: n,      // Matches {{name}}
+      email: em,    // Matches {{email}}
+      company: co || '—', 
+      mobile: mo || '—', 
+      message: ms || '—'
     });
-  } catch(err) { console.warn('EmailJS:', err); }
-  document.getElementById('formWrap').style.display = 'none';
-  document.getElementById('formNote').style.display = 'none';
-  document.getElementById('successMsg').style.display = 'block';
-  setTimeout(closeModal, 3500);
+    
+    document.getElementById('formWrap').style.display = 'none';
+    document.getElementById('formNote').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+    setTimeout(closeModal, 3500);
+    
+  } catch(err) { 
+    console.warn('EmailJS:', err); 
+    btn.disabled = false;
+    document.getElementById('sendLabel').textContent = 'Error. Try Again';
+  }
 }
 </script>
 </body>
