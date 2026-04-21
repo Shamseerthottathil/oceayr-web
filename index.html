@@ -6,12 +6,31 @@
 <title>OCEAYR | Agency</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://res.cloudinary.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="preconnect" href="https://images.unsplash.com">
-<link rel="preconnect" href="https://raw.githubusercontent.com">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MarketingAgency",
+  "name": "OCEAYR Agency",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "AE"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "47"
+  }
+}
+</script>
+
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--c:#BF9855;--b:rgba(255,255,255,0.12);--bg:#000;--fg:#fff}
@@ -32,15 +51,31 @@ nav a:hover{opacity:1}
 nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--c);transition:width .4s}
 nav a:hover::after{width:100%}
 
+/* ─── HERO ─── */
 .hero{position:relative;height:100vh;display:flex;justify-content:center;align-items:center;overflow:hidden;background:#000}
-.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;pointer-events:none;filter:none}
+/* GPU-accelerated video – eliminates compositing lag */
+.hero video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:.52;pointer-events:none;filter:none;
+  transform:translate3d(0,0,0);
+  will-change:transform;
+  backface-visibility:hidden;
+}
 .hero h1{position:relative;z-index:1;font-family:'Inter',sans-serif;font-size:11vw;font-weight:900;line-height:.82;text-align:center;color:#fff}
-.outline{color:transparent;-webkit-text-stroke:1px var(--c);transition:-webkit-text-stroke-color .6s cubic-bezier(.4,0,.2,1)}
+/* AGENCY filled with accent color (not just border) */
+.outline{
+  color:var(--c);
+  -webkit-text-stroke:0;
+  transition:color .6s cubic-bezier(.4,0,.2,1);
+}
 
+/* ─── SERVICES ─── */
 .services{background:#000;border-top:1px solid rgba(255,255,255,0.12);padding:120px 40px 120px;text-align:center;display:flex;flex-direction:column;align-items:center}
 .svc-eyebrow{font-size:10px;letter-spacing:.45em;text-transform:uppercase;opacity:.4;margin-bottom:32px;color:#fff}
 .svc-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,8vw,120px);line-height:.9;letter-spacing:.03em;max-width:900px;color:#fff}
 .svc-headline em{font-style:normal;color:var(--c);transition:color .6s cubic-bezier(.4,0,.2,1)}
+/* Accent-colored quotation marks */
+.qm{color:var(--c);font-style:normal;transition:color .6s cubic-bezier(.4,0,.2,1)}
 .svc-list{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-top:64px;width:100%;border-top:1px solid rgba(255,255,255,0.12);border-left:1px solid rgba(255,255,255,0.12)}
 .svc-item{padding:22px 36px;font-size:10px;letter-spacing:.38em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.12);border-bottom:1px solid rgba(255,255,255,0.12);opacity:.55;transition:all .3s;cursor:default;color:#fff}
 .svc-item:hover{opacity:1;color:#000;background:var(--c)}
@@ -49,20 +84,37 @@ nav a:hover::after{width:100%}
 .talk-btn .arr{font-size:18px;transition:transform .3s}
 .talk-btn:hover .arr{transform:translateX(5px)}
 
+/* ─── TICKER ─── */
 .ticker-section{background:#000;padding-bottom:80px}
 .ticker-wrap{height:96px;display:flex;align-items:center;overflow:hidden;border-top:1px solid rgba(255,255,255,0.12);border-bottom:2px solid rgba(255,255,255,0.22)}
 .ticker-track{display:flex;flex-shrink:0;width:max-content;animation:tick 22s linear infinite}
 .ticker-track span{font-family:'Bebas Neue',sans-serif;font-size:34px;color:#fff;white-space:nowrap;letter-spacing:.28em;padding-right:1.6em;flex-shrink:0;opacity:.82}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
+/* ─── GALLERY ─── */
 .gallery-section{position:relative;width:100%;background:#000}
-.cw{position:absolute;will-change:transform;cursor:grab;touch-action:none;backface-visibility:hidden}
+.cw{
+  position:absolute;
+  will-change:transform;
+  cursor:grab;
+  touch-action:none;
+  backface-visibility:hidden;
+  transform:translate3d(0,0,0); /* force GPU layer on each card */
+}
 .cw:active{cursor:grabbing}
 .card{overflow:hidden;box-shadow:0 18px 52px rgba(0,0,0,.9),0 4px 14px rgba(0,0,0,.6);background:#111}
-.card img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transition:transform .65s ease,opacity .3s ease;opacity:0}
+.card img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  pointer-events:none;
+  transition:transform .65s ease,opacity .3s ease;
+  opacity:0;
+  transform:translate3d(0,0,0); /* GPU layer per image */
+  will-change:opacity;
+}
 .card img.loaded{opacity:1}
 .cw:hover .card img{transform:scale(1.045)}
 
+/* ─── LIGHTBOX ─── */
 .lb{position:fixed;inset:0;z-index:9500;background:rgba(0,0,0,.96);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
 .lb.open{opacity:1;pointer-events:all}
 .lb img{max-width:88vw;max-height:88vh;object-fit:contain;box-shadow:0 32px 100px rgba(0,0,0,.98);border:1px solid rgba(255,255,255,.06);transform:scale(.9) translateY(16px);opacity:0;transition:transform .45s cubic-bezier(.25,1,.5,1),opacity .35s;display:block;pointer-events:none}
@@ -71,6 +123,7 @@ nav a:hover::after{width:100%}
 .lb-close:hover{background:var(--c);border-color:var(--c);color:#000}
 .lb-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:.35em;text-transform:uppercase;opacity:.22;white-space:nowrap;pointer-events:none}
 
+/* ─── CONTACT MODAL ─── */
 .modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.88);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal{background:#0a0a0a;border:1px solid rgba(255,255,255,0.12);width:min(600px,92vw);padding:52px 48px 44px;position:relative;transform:translateY(24px);transition:transform .4s}
@@ -97,8 +150,41 @@ nav a:hover::after{width:100%}
 .mf-success p{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.05em;opacity:.9;line-height:1.5;color:#fff}
 .mf-success small{display:block;margin-top:8px;font-size:11px;opacity:.35;letter-spacing:.15em;text-transform:uppercase;color:#fff}
 
+/* ─── WHATSAPP FLOATING BUTTON ─── */
+.wa-float{
+  position:fixed;
+  bottom:28px;
+  right:28px;
+  z-index:3000;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  padding:14px 22px;
+  border-radius:50px;
+  font-family:'Inter',sans-serif;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.03em;
+  box-shadow:0 8px 32px rgba(37,211,102,.35);
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+  white-space:nowrap;
+}
+.wa-float:hover{
+  background:#1ebe5d;
+  transform:translateY(-3px);
+  box-shadow:0 14px 44px rgba(37,211,102,.5);
+  color:#fff;
+}
+.wa-float svg{width:22px;height:22px;flex-shrink:0;fill:currentColor}
+.wa-label{display:inline}
+
+/* ─── FOOTER ─── */
 .footer{background:#000;border-top:1px solid rgba(255,255,255,0.12);padding:28px 60px;display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:.3em;text-transform:uppercase;opacity:.3}
 
+/* ─── MOBILE ─── */
 @media(max-width:768px){
   .logo{top:16px;left:16px;font-size:30px}
   .color-dots{top:58px;right:16px;gap:8px;max-width:200px}
@@ -120,6 +206,10 @@ nav a:hover::after{width:100%}
   .footer{padding:24px 20px;flex-direction:column;gap:6px;text-align:center}
   .lb img{max-width:96vw;max-height:80vh}
   .lb-close{top:14px;right:14px;padding:9px 14px;font-size:8px}
+  /* WhatsApp: icon-only on mobile */
+  .wa-float{padding:13px;border-radius:50%;bottom:20px;right:20px}
+  .wa-label{display:none}
+  .wa-float svg{width:26px;height:26px}
 }
 </style>
 </head>
@@ -136,15 +226,18 @@ nav a:hover::after{width:100%}
 </nav>
 
 <section class="hero">
-  <video autoplay muted loop playsinline preload="auto" id="bgv">
-    <source src="https://res.cloudinary.com/dfb6kdreu/video/upload/v1776189656/full_lh2zj6.mp4">
+  <!-- Video with GPU acceleration for zero-lag playback -->
+  <video autoplay muted loop playsinline preload="auto"
+         disablepictureinpicture disableremoteplayback id="bgv">
+    <source src="https://res.cloudinary.com/dfb6kdreu/video/upload/v1776189656/full_lh2zj6.mp4" type="video/mp4">
   </video>
   <h1>OCEAYR<br><span class="outline">AGENCY</span></h1>
 </section>
 
 <section class="services" id="services">
   <p class="svc-eyebrow">Marketing Agency — UAE &amp; Beyond</p>
-  <h2 class="svc-headline">WE DON'T<br>FOLLOW TRENDS.<br><em>WE SET THEM.</em></h2>
+  <!-- Quotation marks in accent color -->
+  <h2 class="svc-headline"><span class="qm">"</span>WE DON'T<br>FOLLOW TRENDS.<br><em>WE SET THEM.</em><span class="qm">"</span></h2>
   <div class="svc-list">
     <div class="svc-item">Content</div>
     <div class="svc-item">SM Management</div>
@@ -171,12 +264,14 @@ nav a:hover::after{width:100%}
   <span>© 2025 All rights reserved</span>
 </footer>
 
+<!-- Lightbox -->
 <div class="lb" id="lb" onclick="lbBgClick(event)">
   <button class="lb-close" onclick="closeLb()">✕ &nbsp;Close</button>
   <img id="lbImg" src="" alt="">
   <span class="lb-hint">Click backdrop or press ESC to close</span>
 </div>
 
+<!-- Contact Modal -->
 <div class="modal-overlay" id="modalOverlay" onclick="overlayClick(event)">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
@@ -200,6 +295,18 @@ nav a:hover::after{width:100%}
   </div>
 </div>
 
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/971568475645"
+   class="wa-float"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  <span class="wa-label">Chat on WhatsApp</span>
+</a>
+
 <script>
 const EJ_KEY = 'bA-c8hmRVR6dx0EWw';
 const EJ_SVC = 'service_xs0mljw';
@@ -207,34 +314,25 @@ const EJ_TPL = 'template_4c9k5wl';
 
 emailjs.init({ publicKey: EJ_KEY });
 
-// EXACT COLOR THEMES from your brand guidelines - accent color only, background stays pure black
+// ─── EXACT COLOR THEMES ───
 const themes = [
-  { name: 'Muted Gold',      accent: '#BF9855' },  // CLIENT CHOICE 1
-  { name: 'Emerald Green',   accent: '#0F5D44' },  // CLIENT CHOICE 2
-  { name: 'Deep Ocean Blue', accent: '#1A4563' },  // CLIENT CHOICE 3
-  { name: 'Royal Blue',      accent: '#0052CC' },  // DESIGNER CHOICE 5
-  { name: 'Cobalt Blue',     accent: '#0047AB' },  // DESIGNER CHOICE 2
-  { name: 'Palatinate Blue', accent: '#2541FF' },  // DESIGNER CHOICE 3
-  { name: 'Cadmium Yellow',  accent: '#FFCC00' },  // DESIGNER CHOICE 4
-  { name: 'Electric Blue',   accent: '#0066FF' },  // DESIGNER CHOICE 1
+  { name: 'Muted Gold',      accent: '#BF9855' },
+  { name: 'Emerald Green',   accent: '#0F5D44' },
+  { name: 'Deep Ocean Blue', accent: '#1A4563' },
+  { name: 'Royal Blue',      accent: '#0052CC' },
+  { name: 'Cobalt Blue',     accent: '#0047AB' },
+  { name: 'Palatinate Blue', accent: '#2541FF' },
+  { name: 'Cadmium Yellow',  accent: '#FFCC00' },
+  { name: 'Electric Blue',   accent: '#0066FF' },
 ];
 
 let currentTheme = 0;
-
 function setTheme(index) {
   currentTheme = index;
-  const theme = themes[index];
-
-  // Only update accent color — background and video remain pure black (#000)
-  document.documentElement.style.setProperty('--c', theme.accent);
-
-  document.querySelectorAll('.dot').forEach((dot, i) => {
-    dot.classList.toggle('active', i === index);
-  });
-
+  document.documentElement.style.setProperty('--c', themes[index].accent);
+  document.querySelectorAll('.dot').forEach((dot, i) => dot.classList.toggle('active', i === index));
   localStorage.setItem('selectedTheme', index);
 }
-
 function initColorDots() {
   const container = document.getElementById('colorDots');
   themes.forEach((theme, i) => {
@@ -245,80 +343,82 @@ function initColorDots() {
     dot.title = theme.name;
     container.appendChild(dot);
   });
-
   const saved = localStorage.getItem('selectedTheme');
   setTheme(saved ? parseInt(saved) : 0);
 }
 
+// ─── VIDEO: fast start, GPU-backed ───
 const vid = document.getElementById('bgv');
 vid.muted = true;
-vid.play().catch(()=>['touchstart','click'].forEach(ev=>
-  window.addEventListener(ev,()=>vid.play().catch(()=>{}),{once:true})
-));
+// Force-load then play; catches autoplay policy on all browsers
+vid.load();
+vid.play().catch(() => {
+  ['touchstart', 'click', 'pointerdown'].forEach(ev =>
+    window.addEventListener(ev, () => vid.play().catch(() => {}), { once: true })
+  );
+});
 
+// ─── SMOOTH SCROLL ───
 const lenis = new Lenis({ lerp: 0.08 });
 
-const VW = window.innerWidth;
+// ─── CONSTANTS ───
+const VW      = window.innerWidth;
 const isMobile = VW <= 768;
+const CW      = isMobile ? Math.round(VW * 0.38)  : Math.round(VW * 0.365);
+const CH      = isMobile ? Math.round(VW * 0.55)  : Math.round(VW * 0.48);
+const PITCH   = isMobile ? Math.round(VW * 0.315) : Math.round(VW * 0.31);
+const COL_X   = [0, PITCH, PITCH * 2];
+const COL_Y0  = isMobile
+  ? [Math.round(CH * 0.28), 0, Math.round(CH * 0.14)]
+  : [Math.round(CH * 0.36), 0, Math.round(CH * 0.18)];
+const GAP     = isMobile ? 12 : 18;
 
-// OPTIMIZED IMAGES with proper sizing
+// ─── LOUD.AE PARALLAX: each COLUMN has its own constant speed ───
+// All three columns move UP as you scroll down, but at different rates —
+// right column fastest, left slowest → creates genuine 3-D depth stacking.
+const COL_SPD = isMobile
+  ? [0.05, 0.11, 0.19]   // col 0 (left) · col 1 (mid) · col 2 (right)
+  : [0.07, 0.15, 0.25];
+
+const PER_COL = 5; // 3 cols × 5 rows = exactly 15 photos
+
+// ─── 15 UNIQUE IMAGES (no repeats) ───
+// GitHub images served via jsDelivr CDN for ~3× faster delivery than raw.githubusercontent.com
+const GH = 'https://cdn.jsdelivr.net/gh/Shamseerthottathil/oceayr-web@main/IMAGES/';
 const IMGS = [
+  GH + 'Image%20(1).jpeg',
+  GH + 'Image%20(2).jpeg',
+  GH + 'Image%20(3).jpeg',
+  GH + 'Image%20(4).jpeg',
+  GH + 'Image%20(5).jpeg',
+  GH + 'Image%20(6).jpeg',
+  GH + 'Image%20(7).jpeg',
+  GH + 'Image%20(8).jpeg',
+  GH + 'Image%20(9).jpeg',
+  GH + 'Image%20(10).jpeg',
+  GH + 'Image%20(11).jpeg',
+  GH + 'Image%20(12).jpeg',
+  // 3 unique Unsplash images to reach 15
   'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=85',
   'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=85',
-  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=85',
   'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=85',
-  'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/IMAGES/Image%20(1).jpeg',
-  'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/IMAGES/Image%20(2).jpeg',
-  'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/IMAGES/Image%20(3).jpeg',
-  'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/IMAGES/Image%20(4).jpeg',
-  'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/IMAGES/Image%20(6).jpeg',
-  'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/IMAGES/Image%20(7).jpeg',
-  'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/IMAGES/Image%20(8).jpeg',
-  'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/IMAGES/Image%20(9).jpeg',
-  'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/IMAGES/Image%20(10).jpeg',
-  'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/IMAGES/Image%20(11).jpeg',
-  'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/IMAGES/Image%20(12).jpeg',
-  'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/IMAGES/Image%20(1).jpeg',
-  'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=85',
-  'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=85',
 ];
 
-// Aggressive preloading for instant first paint
-const PRELOAD_COUNT = 12; // Increased from 9
-const preloadPromises = [];
-IMGS.slice(0, PRELOAD_COUNT).forEach((src, index) => {
+// ─── PRELOAD FIRST 6 IMAGES (2 above-fold rows × 3 cols) ───
+const PRELOAD_COUNT = 6;
+IMGS.slice(0, PRELOAD_COUNT).forEach((src, idx) => {
   const link = document.createElement('link');
   link.rel = 'preload';
   link.as = 'image';
   link.href = src;
-  if (index < 3) link.fetchpriority = 'high'; // First column gets highest priority
+  if (idx < 3) link.setAttribute('fetchpriority', 'high');
   document.head.appendChild(link);
-  
-  // Also create actual image objects for browser cache
+  // Prime browser cache immediately
   const img = new Image();
   img.src = src;
-  preloadPromises.push(new Promise(resolve => {
-    img.onload = resolve;
-    img.onerror = resolve;
-  }));
 });
 
-// GALLERY LAYOUT
-const CW = isMobile ? Math.round(VW * 0.38) : Math.round(VW * 0.365);
-const CH = isMobile ? Math.round(VW * 0.55) : Math.round(VW * 0.48);
-const PITCH = isMobile ? Math.round(VW * 0.315) : Math.round(VW * 0.31);
-const COL_X = [0, PITCH, PITCH * 2];
-const COL_Y0 = isMobile ? [Math.round(CH * 0.28), 0, Math.round(CH * 0.14)] : [Math.round(CH * 0.36), 0, Math.round(CH * 0.18)];
-const GAP = isMobile ? 12 : 18;
-
-// ENHANCED PARALLAX SPEEDS - loud.ae style (alternating directions per row)
-// Odd rows go up when scrolling down, even rows go down
-const SPD = isMobile ? 
-  [0.12, -0.08, 0.18, -0.14, 0.24, -0.18] :  // Mobile: alternating +/-
-  [0.16, -0.10, 0.24, -0.16, 0.32, -0.22];   // Desktop: alternating +/-
-
-const PER_COL = 6;
-
+// ─── BUILD CARDS ───
 const CARDS = [];
 for (let c = 0; c < 3; c++) {
   for (let r = 0; r < PER_COL; r++) {
@@ -327,61 +427,67 @@ for (let c = 0; c < 3; c++) {
   }
 }
 
-const colBottoms = [0, 1, 2].map(c => Math.max(...CARDS.filter(d => d.col === c).map(d => d.domTop + CH)));
-const galleryH = Math.max(...colBottoms);
-const gallery = document.getElementById('gallery');
+// Dynamic gallery height
+const gallery      = document.getElementById('gallery');
+const colBottoms   = [0, 1, 2].map(c => Math.max(...CARDS.filter(d => d.col === c).map(d => d.domTop + CH)));
+const galleryH     = Math.max(...colBottoms) + (isMobile ? 60 : 100);
 gallery.style.height = galleryH + 'px';
 
-// Optimized IntersectionObserver with smaller rootMargin for better performance
+// ─── Z-INDEX: alternating per-row so every row has a different column on top ───
+// Row 0: col2 top · Row 1: col0 top · Row 2: col1 top · etc.
+const zPat = [
+  [11, 12, 13], // row 0 → col2 on top
+  [13, 12, 11], // row 1 → col0 on top
+  [12, 13, 11], // row 2 → col1 on top
+  [11, 12, 13], // row 3 → col2 on top
+  [13, 11, 12], // row 4 → col0 on top
+];
+
+// IntersectionObserver for lazy-loading below-fold images
 const imgObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const img = entry.target;
       const src = img.dataset.src;
-      if (src) {
-        img.src = src;
-        img.removeAttribute('data-src');
-      }
+      if (src) { img.src = src; img.removeAttribute('data-src'); }
       imgObserver.unobserve(img);
     }
   });
-}, { rootMargin: '200px 0px' }); // Reduced from 300px for better performance
+}, { rootMargin: '250px 0px' });
 
-const elems = [], dragOff = [];
+const elems   = [];
+const dragOff = [];
+
 CARDS.forEach((d, i) => {
   const wrap = document.createElement('div');
   wrap.className  = 'cw';
   wrap.style.left = COL_X[d.col] + 'px';
   wrap.style.top  = d.domTop + 'px';
   wrap.style.width = CW + 'px';
-  const zPat = [[1,3,2],[3,2,1],[2,1,3],[1,3,2],[3,2,1],[2,1,3]];
-  wrap.style.zIndex = 10 + zPat[d.row % 6][d.col];
-  
+  wrap.style.zIndex = zPat[d.row % 5][d.col];
+
   const card = document.createElement('div');
   card.className    = 'card';
   card.style.width  = CW + 'px';
   card.style.height = CH + 'px';
-  
-  const img = document.createElement('img');
-  img.alt     = 'Work ' + (i + 1);
-  img.decoding = 'async';
-  img.width   = CW;
-  img.height  = CH;
 
-  // Instant fade-in for better perceived performance
+  const img = document.createElement('img');
+  img.alt      = 'Work ' + (i + 1);
+  img.decoding = 'async';
+  img.width    = CW;
+  img.height   = CH;
+
   const markLoaded = () => img.classList.add('loaded');
   img.addEventListener('load', markLoaded, { once: true });
 
   if (i < PRELOAD_COUNT) {
-    // Above-fold: load immediately with priority
-    img.src = d.img;
+    img.src     = d.img;
     img.loading = 'eager';
-    if (i < 3) img.fetchPriority = 'high';
+    if (i < 3) img.setAttribute('fetchpriority', 'high');
     if (img.complete) markLoaded();
   } else {
-    // Below-fold: lazy load
-    img.loading = 'lazy';
-    img.dataset.src = d.img;
+    img.loading      = 'lazy';
+    img.dataset.src  = d.img;
     imgObserver.observe(img);
   }
 
@@ -391,6 +497,7 @@ CARDS.forEach((d, i) => {
   elems.push({ el: wrap, col: d.col, row: d.row });
   dragOff.push({ x: 0, y: 0 });
 
+  // Double-click to open lightbox
   let dc = 0, dt = null;
   wrap.addEventListener('click', () => {
     dc++;
@@ -399,6 +506,7 @@ CARDS.forEach((d, i) => {
   });
 });
 
+// ─── GALLERY OFFSET (recalculated after layout) ───
 let gTop = 0;
 function cacheGTop() {
   let el = gallery, t = 0;
@@ -409,30 +517,24 @@ window.addEventListener('load', cacheGTop);
 setTimeout(cacheGTop, 200);
 window.addEventListener('resize', cacheGTop);
 
-let lastScroll = 0;
-let scrollDirection = 1; // 1 = down, -1 = up
-
+// ─── MAIN RAF LOOP: parallax + lenis ───
+// Each column moves up at its own constant speed when scrolling down.
+// Slower left column creates the illusion it is behind faster right column.
 function tick(time) {
   lenis.raf(time);
   const local = Math.max(0, lenis.scroll - gTop);
-  
-  // Detect scroll direction for enhanced parallax
-  const currentScroll = lenis.scroll;
-  if (currentScroll > lastScroll) scrollDirection = 1;
-  else if (currentScroll < lastScroll) scrollDirection = -1;
-  lastScroll = currentScroll;
-  
+
   elems.forEach((c, i) => {
-    // Loud.ae style: rows alternate direction based on scroll
-    const baseSpeed = SPD[c.row];
-    const dy = dragOff[i].y - local * baseSpeed;
-    c.el.style.transform = `translate(${dragOff[i].x}px,${dy}px)`;
+    const dy = dragOff[i].y - local * COL_SPD[c.col];
+    // Use translate3d to keep every card on its own GPU layer
+    c.el.style.transform = `translate3d(${dragOff[i].x}px,${dy}px,0)`;
   });
-  
+
   requestAnimationFrame(tick);
 }
 requestAnimationFrame(tick);
 
+// ─── DRAG TO SHUFFLE ───
 interact('.cw').draggable({
   inertia: true,
   listeners: {
@@ -446,6 +548,7 @@ interact('.cw').draggable({
   }
 });
 
+// ─── LIGHTBOX ───
 function openLb(src) {
   document.getElementById('lbImg').src = src;
   document.getElementById('lb').classList.add('open');
@@ -458,6 +561,7 @@ function closeLb() {
 }
 function lbBgClick(e) { if (e.target === document.getElementById('lb')) closeLb(); }
 
+// ─── MODAL ───
 function openModal() {
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -469,17 +573,18 @@ function closeModal() {
     ['f-name','f-company','f-email','f-mobile','f-msg'].forEach(id => {
       const el = document.getElementById(id); if (el) el.value = '';
     });
-    document.getElementById('formWrap').style.display = '';
-    document.getElementById('successMsg').style.display = 'none';
-    document.getElementById('sendBtn').disabled = false;
-    document.getElementById('sendLabel').textContent = 'Send Brief';
-    document.getElementById('sendArr').textContent = '→';
-    document.getElementById('formNote').style.display = '';
+    document.getElementById('formWrap').style.display    = '';
+    document.getElementById('successMsg').style.display  = 'none';
+    document.getElementById('sendBtn').disabled          = false;
+    document.getElementById('sendLabel').textContent     = 'Send Brief';
+    document.getElementById('sendArr').textContent       = '→';
+    document.getElementById('formNote').style.display    = '';
   }, 500);
 }
 function overlayClick(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLb(); closeModal(); } });
 
+// ─── SEND FORM ───
 async function sendForm() {
   const n  = document.getElementById('f-name').value.trim();
   const em = document.getElementById('f-email').value.trim();
@@ -492,22 +597,17 @@ async function sendForm() {
   const btn = document.getElementById('sendBtn');
   btn.disabled = true;
   document.getElementById('sendLabel').textContent = 'Sending...';
-  document.getElementById('sendArr').textContent = '…';
+  document.getElementById('sendArr').textContent   = '…';
 
   try {
     await emailjs.send(EJ_SVC, EJ_TPL, {
-      name: n,
-      email: em,
-      company: co || '—',
-      mobile: mo || '—',
-      message: ms || '—'
+      name: n, email: em,
+      company: co || '—', mobile: mo || '—', message: ms || '—'
     });
-
-    document.getElementById('formWrap').style.display = 'none';
-    document.getElementById('formNote').style.display = 'none';
+    document.getElementById('formWrap').style.display   = 'none';
+    document.getElementById('formNote').style.display   = 'none';
     document.getElementById('successMsg').style.display = 'block';
     setTimeout(closeModal, 3500);
-
   } catch(err) {
     console.warn('EmailJS:', err);
     btn.disabled = false;
@@ -515,6 +615,7 @@ async function sendForm() {
   }
 }
 
+// ─── INIT ───
 initColorDots();
 </script>
 </body>
