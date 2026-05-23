@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OCEAYR | Agency</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Bebas+Neue&family=Teko:wght@600;700&family=Cormorant+Garamond:wght@600;700&family=Abril+Fatface&family=Russo+One&family=Bungee&family=Righteous&family=Alfa+Slab+One&family=Black+Ops+One&family=Fjalla+One&family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://res.cloudinary.com">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -14,34 +14,109 @@
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--c:#D4AF37;--b:rgba(255,255,255,0.12);--bg:#000;--fg:#fff}
+:root{--c:#D4AF37;--b:rgba(255,255,255,0.12);--bg:#000;--fg:#fff;--font-display:'Bebas Neue'}
 html,body{background:#000;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden;cursor:default;user-select:none}
 
-/* OVERLAPPING LOGO - O and R connected */
-.logo{position:fixed;top:24px;left:32px;z-index:2000;display:flex;align-items:center;font-family:'Inter',sans-serif;font-weight:900;font-size:44px;line-height:1}
-.lo{display:inline-block;color:#fff;-webkit-text-stroke:2px #000;paint-order:stroke fill;position:relative;z-index:2}
-.lr{display:inline-block;color:transparent;-webkit-text-stroke:2px #fff;paint-order:stroke fill;position:relative;z-index:1;margin-left:-12px}
+/* ─── LOGO BASE ─── */
+.logo{position:fixed;top:24px;left:32px;z-index:2000;display:flex;align-items:center;justify-content:center;width:68px;height:68px;font-family:'Inter',sans-serif;font-weight:900;font-size:32px;line-height:1;cursor:default;transition:all .3s;pointer-events:none}
 
-.color-dots{position:fixed;top:72px;right:32px;z-index:2000;display:flex;gap:10px;align-items:center;flex-wrap:wrap;max-width:280px}
-.dot{width:14px;height:14px;border-radius:50%;cursor:pointer;border:2px solid #fff;transition:all .4s;opacity:.6}
-.dot.active{opacity:1;transform:scale(1.4);box-shadow:0 0 12px currentColor}
-.dot:hover{opacity:.9;transform:scale(1.15)}
+/* ─── STYLE 1 — Classic White Stroke Overlap ─── */
+.logo.style1{background:transparent}
+.logo.style1 .lo{display:inline-block;color:#fff;-webkit-text-stroke:2px #000;paint-order:stroke fill;position:relative;z-index:2;font-size:44px}
+.logo.style1 .lr{display:inline-block;color:#fff;-webkit-text-stroke:2px #000;paint-order:stroke fill;position:relative;z-index:1;margin-left:-12px;font-size:44px}
 
+/* ─── STYLE 2 — Luxury Serif Monogram (like CR reference image) ─── */
+.logo.style2{background:transparent;width:74px;height:74px;position:relative;overflow:visible;padding:0}
+.logo.style2 .lo{position:absolute;font-family:'Cormorant Garamond',serif;font-size:78px;font-weight:700;color:transparent;-webkit-text-stroke:2px #fff;paint-order:stroke fill;line-height:1;top:-4px;left:-2px;z-index:1;letter-spacing:-2px}
+.logo.style2 .lr{position:absolute;font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:700;color:#fff;-webkit-text-stroke:0;line-height:1;top:6px;left:17px;z-index:2}
+.logo.style2 .sep{display:none}
+
+/* ─── STYLE 3 — White Square ─── */
+.logo.style3{background:#fff;border-radius:4px;padding:8px}
+.logo.style3 .lo{color:#000;font-size:36px;margin-right:-6px}
+.logo.style3 .lr{color:var(--c);font-size:36px}
+
+/* ─── STYLE 4 — Minimal dot separator ─── */
+.logo.style4{background:transparent;font-size:28px;letter-spacing:2px;gap:2px}
+.logo.style4 .lo{color:#fff;font-weight:900;font-size:32px}
+.logo.style4 .sep{color:var(--c);font-size:38px;line-height:.7;align-self:center;display:inline}
+.logo.style4 .lr{color:var(--c);font-weight:900;font-size:32px}
+
+/* ─── STYLE 5 — Neon Glow ─── */
+.logo.style5{background:transparent}
+.logo.style5 .lo{color:#fff;font-size:44px;text-shadow:0 0 12px var(--c),0 0 24px var(--c),0 0 48px rgba(212,175,55,.4);position:relative;z-index:2}
+.logo.style5 .lr{color:var(--c);font-size:44px;margin-left:-10px;text-shadow:0 0 12px var(--c),0 0 28px var(--c),0 0 56px rgba(212,175,55,.5);position:relative;z-index:1}
+
+/* ─── STYLE 6 — Bold Split ─── */
+.logo.style6{background:transparent;gap:0}
+.logo.style6 .lo{font-size:48px;color:var(--c);font-weight:900;position:relative;z-index:2}
+.logo.style6 .lr{font-size:48px;color:#fff;font-weight:900;margin-left:-14px;position:relative;z-index:1;-webkit-text-stroke:1px rgba(255,255,255,.3)}
+
+/* ─── STYLE 7 — Outlined Box ─── */
+.logo.style7{background:transparent;border:2px solid var(--c);border-radius:6px;width:64px;height:64px}
+.logo.style7 .lo{color:transparent;-webkit-text-stroke:2px #fff;font-size:38px;position:relative;z-index:2;margin-right:-8px}
+.logo.style7 .lr{color:transparent;-webkit-text-stroke:2px var(--c);font-size:38px;position:relative;z-index:1}
+
+/* ─── STYLE 8 — Stacked ─── */
+.logo.style8{background:transparent;flex-direction:column;gap:0;height:68px;width:52px}
+.logo.style8 .lo{color:#fff;font-size:36px;line-height:1;border-bottom:2px solid var(--c);padding-bottom:2px;width:100%;text-align:center}
+.logo.style8 .lr{color:var(--c);font-size:36px;line-height:1;width:100%;text-align:center}
+
+/* ─── STYLE 9 — Slash Separator ─── */
+.logo.style9{background:transparent;gap:0;width:80px}
+.logo.style9 .lo{color:#fff;font-size:36px;font-weight:900}
+.logo.style9 .sep{color:rgba(255,255,255,.25);font-size:44px;font-weight:100;font-family:'Inter',sans-serif;margin:0 1px;line-height:1;font-style:italic;display:inline}
+.logo.style9 .lr{color:var(--c);font-size:36px;font-weight:900}
+
+/* ─── STYLE 10 — Inverted Gold ─── */
+.logo.style10{background:var(--c);border-radius:0;width:64px;height:64px;position:relative;overflow:hidden}
+.logo.style10 .lo{color:#000;font-size:38px;position:relative;z-index:2;margin-right:-6px;font-weight:900}
+.logo.style10 .lr{color:#000;font-size:38px;position:relative;z-index:2;font-weight:900;-webkit-text-stroke:2px var(--c)}
+
+/* ─── CONTROLS PANEL (Logo + Font choosers) ─── */
+.controls-panel{position:fixed;top:32px;right:32px;z-index:2000;display:flex;flex-direction:column;gap:8px}
+.chooser-row{display:flex;align-items:center;gap:10px}
+.chooser-label{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#fff;opacity:.65;width:32px;text-align:right;flex-shrink:0}
+.chooser-select{
+  background:#161616;
+  border:1px solid rgba(255,255,255,0.30);
+  color:#fff;
+  padding:8px 28px 8px 12px;
+  font-size:10px;
+  letter-spacing:.08em;
+  cursor:pointer;
+  transition:all .3s;
+  font-family:'Inter',sans-serif;
+  appearance:none;
+  -webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23D4AF37'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 9px center;
+  outline:none;
+  min-width:170px;
+}
+.chooser-select:hover{border-color:var(--c);background-color:#1e1e1e}
+.chooser-select:focus{border-color:var(--c);background-color:#1e1e1e}
+.chooser-select option{background:#161616;color:#fff}
+
+/* ─── NAV ─── */
 nav{position:fixed;top:40px;width:100%;display:flex;justify-content:center;gap:48px;font-size:10px;letter-spacing:.4em;text-transform:uppercase;z-index:2000}
 nav a{color:#fff;text-decoration:none;opacity:.45;position:relative;padding-bottom:3px;transition:all .3s}
 nav a:hover{opacity:1}
 nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--c);transition:width .4s}
 nav a:hover::after{width:100%}
 
+/* ─── HERO ─── */
 .hero{position:relative;height:100vh;display:flex;justify-content:center;align-items:center;overflow:hidden;background:#000}
 .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;pointer-events:none;filter:none;transform:translate3d(0,0,0);will-change:transform;backface-visibility:hidden}
 .hero h1{position:relative;z-index:1;font-family:'Inter',sans-serif;font-size:11vw;font-weight:900;line-height:.82;text-align:center;color:#fff}
 .outline{color:transparent;-webkit-text-stroke:1px #fff;transition:-webkit-text-stroke-color .6s cubic-bezier(.4,0,.2,1)}
 
+/* ─── SERVICES ─── */
 .services{background:#000;border-top:1px solid rgba(255,255,255,0.12);padding:120px 40px 120px;text-align:center;display:flex;flex-direction:column;align-items:center}
 .svc-eyebrow{font-size:10px;letter-spacing:.45em;text-transform:uppercase;opacity:.4;margin-bottom:32px;color:#fff}
-.svc-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,8vw,120px);line-height:.9;letter-spacing:.03em;max-width:900px;color:#fff}
-.svc-headline em{font-style:normal;color:var(--c);transition:color .6s cubic-bezier(.4,0,.2,1)}
+.svc-headline{font-family:var(--font-display);font-size:clamp(56px,8vw,120px);line-height:.92;letter-spacing:.03em;max-width:900px;color:#fff;transition:font-family .4s cubic-bezier(.4,0,.2,1)}
+.svc-headline em{font-style:normal;color:var(--c)}
 .svc-list{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-top:64px;width:100%;border-top:1px solid rgba(255,255,255,0.12);border-left:1px solid rgba(255,255,255,0.12)}
 .svc-item{padding:22px 36px;font-size:10px;letter-spacing:.38em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.12);border-bottom:1px solid rgba(255,255,255,0.12);opacity:.55;transition:all .3s;cursor:default;color:#fff}
 .svc-item:hover{opacity:1;color:#000;background:var(--c)}
@@ -50,13 +125,14 @@ nav a:hover::after{width:100%}
 .talk-btn .arr{font-size:18px;transition:transform .3s}
 .talk-btn:hover .arr{transform:translateX(5px)}
 
+/* ─── TICKER ─── */
 .ticker-section{background:#000;padding-bottom:80px}
 .ticker-wrap{height:96px;display:flex;align-items:center;overflow:hidden;border-top:1px solid rgba(255,255,255,0.12);border-bottom:2px solid rgba(255,255,255,0.22)}
 .ticker-track{display:flex;flex-shrink:0;width:max-content;animation:tick 22s linear infinite}
 .ticker-track span{font-family:'Bebas Neue',sans-serif;font-size:34px;color:#fff;white-space:nowrap;letter-spacing:.28em;padding-right:1.6em;flex-shrink:0;opacity:.82}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* LOUD.AE STYLE GALLERY - 3 vertical columns with heavy overlapping */
+/* ─── GALLERY ─── */
 .gallery-section{position:relative;width:100%;background:#000;overflow:hidden}
 .cw{position:absolute;will-change:transform;cursor:grab;touch-action:none;backface-visibility:hidden;transform:translate3d(0,0,0)}
 .cw:active{cursor:grabbing}
@@ -65,6 +141,7 @@ nav a:hover::after{width:100%}
 .card img.loaded{opacity:1}
 .cw:hover .card img{transform:scale(1.045)}
 
+/* ─── LIGHTBOX ─── */
 .lb{position:fixed;inset:0;z-index:9500;background:rgba(0,0,0,.96);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
 .lb.open{opacity:1;pointer-events:all}
 .lb img{max-width:88vw;max-height:88vh;object-fit:contain;box-shadow:0 32px 100px rgba(0,0,0,.98);border:1px solid rgba(255,255,255,.06);transform:scale(.9) translateY(16px);opacity:0;transition:transform .45s cubic-bezier(.25,1,.5,1),opacity .35s;display:block;pointer-events:none}
@@ -73,14 +150,15 @@ nav a:hover::after{width:100%}
 .lb-close:hover{background:var(--c);border-color:var(--c);color:#000}
 .lb-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:.35em;text-transform:uppercase;opacity:.22;white-space:nowrap;pointer-events:none}
 
+/* ─── MODAL ─── */
 .modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.88);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal{background:#0a0a0a;border:1px solid rgba(255,255,255,0.12);width:min(600px,92vw);padding:52px 48px 44px;position:relative;transform:translateY(24px);transition:transform .4s}
 .modal-overlay.open .modal{transform:translateY(0)}
 .modal-close{position:absolute;top:20px;right:24px;font-size:22px;background:none;border:none;color:#fff;opacity:.4;cursor:pointer;transition:opacity .25s;font-family:'Inter',sans-serif}
 .modal-close:hover{opacity:1}
-.modal-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4vw,52px);letter-spacing:.05em;margin-bottom:36px;line-height:1;color:#fff}
-.modal-title span{color:var(--c);transition:color .6s}
+.modal-title{font-family:var(--font-display);font-size:clamp(32px,4vw,52px);letter-spacing:.05em;margin-bottom:36px;line-height:1;color:#fff;transition:font-family .4s}
+.modal-title span{color:var(--c)}
 .mf{display:grid;grid-template-columns:1fr 1fr;gap:0}
 .mf-field{position:relative;border:1px solid rgba(255,255,255,0.12);margin:-1px 0 0 -1px;transition:border-color .25s}
 .mf-field:focus-within{border-color:var(--c);z-index:1}
@@ -96,21 +174,24 @@ nav a:hover::after{width:100%}
 .mf-note{margin-top:14px;font-size:10px;opacity:.28;letter-spacing:.08em;text-align:center;color:#fff}
 .mf-success{display:none;text-align:center;padding:40px 0}
 .mf-success .tick{font-size:40px;margin-bottom:16px;color:var(--c)}
-.mf-success p{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.05em;opacity:.9;line-height:1.5;color:#fff}
+.mf-success p{font-family:var(--font-display);font-size:22px;letter-spacing:.05em;opacity:.9;line-height:1.5;color:#fff}
 .mf-success small{display:block;margin-top:8px;font-size:11px;opacity:.35;letter-spacing:.15em;text-transform:uppercase;color:#fff}
 
+/* ─── WHATSAPP ─── */
 .wa-float{position:fixed;bottom:28px;right:28px;z-index:3000;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;padding:14px 22px;border-radius:50px;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:.03em;box-shadow:0 8px 32px rgba(37,211,102,.35);transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap}
 .wa-float:hover{background:#1ebe5d;transform:translateY(-3px);box-shadow:0 14px 44px rgba(37,211,102,.5);color:#fff}
 .wa-float svg{width:22px;height:22px;flex-shrink:0;fill:currentColor}
 .wa-label{display:inline}
 
+/* ─── FOOTER ─── */
 .footer{background:#000;border-top:1px solid rgba(255,255,255,0.12);padding:28px 60px;display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:.3em;text-transform:uppercase;opacity:.3}
 
+/* ─── MOBILE ─── */
 @media(max-width:768px){
-  .logo{top:16px;left:16px;font-size:30px}
-  .color-dots{top:58px;right:16px;gap:8px;max-width:200px}
-  .dot{width:12px;height:12px}
-  .lr{margin-left:-9px}
+  .logo{top:16px;left:16px;width:54px;height:54px}
+  .controls-panel{top:14px;right:12px;gap:5px}
+  .chooser-label{display:none}
+  .chooser-select{min-width:130px;font-size:9px;padding:6px 22px 6px 9px}
   nav{top:18px;gap:10px;font-size:7px;letter-spacing:.15em}
   .hero{width:100vw;height:100svh;min-height:100vh}
   .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;min-width:100%;min-height:100%}
@@ -130,14 +211,51 @@ nav a:hover::after{width:100%}
   .wa-float{padding:13px;border-radius:50%;bottom:20px;right:20px}
   .wa-label{display:none}
   .wa-float svg{width:26px;height:26px}
+  .logo.style2 .lo{font-size:64px;top:-2px;left:-2px}
+  .logo.style2 .lr{font-size:46px;top:6px;left:14px}
 }
 </style>
-
 </head>
 <body>
 
-<div class="logo"><span class="lo">O</span><span class="lr">R</span></div>
-<div class="color-dots" id="colorDots"></div>
+<!-- ─── LOGO DISPLAY (non-interactive, driven by select) ─── -->
+<div class="logo style1" id="logoDisplay">
+  <span class="lo">O</span><span class="sep" style="display:none">·</span><span class="lr">R</span>
+</div>
+
+<!-- ─── CONTROLS PANEL ─── -->
+<div class="controls-panel">
+  <div class="chooser-row">
+    <label class="chooser-label">Logo</label>
+    <select class="chooser-select" id="logoSelect" onchange="changeLogoFromSelect()">
+      <option value="style1">1 — Classic Stroke</option>
+      <option value="style2">2 — Serif Monogram</option>
+      <option value="style3">3 — White Square</option>
+      <option value="style4">4 — Dot Separator</option>
+      <option value="style5">5 — Neon Glow</option>
+      <option value="style6">6 — Bold Split</option>
+      <option value="style7">7 — Outlined Box</option>
+      <option value="style8">8 — Stacked</option>
+      <option value="style9">9 — Slash Mono</option>
+      <option value="style10">10 — Inverted Gold</option>
+    </select>
+  </div>
+  <div class="chooser-row">
+    <label class="chooser-label">Font</label>
+    <select class="chooser-select" id="fontSelect" onchange="changeFont()">
+      <option value="Bebas Neue">1 — Bebas Neue</option>
+      <option value="Teko">2 — Teko</option>
+      <option value="Abril Fatface">3 — Abril Fatface</option>
+      <option value="Russo One">4 — Russo One</option>
+      <option value="Bungee">5 — Bungee</option>
+      <option value="Righteous">6 — Righteous</option>
+      <option value="Alfa Slab One">7 — Alfa Slab One</option>
+      <option value="Black Ops One">8 — Black Ops One</option>
+      <option value="Fjalla One">9 — Fjalla One</option>
+      <option value="Josefin Sans">10 — Josefin Sans</option>
+    </select>
+  </div>
+</div>
 
 <nav>
   <a href="#">Home</a>
@@ -219,317 +337,230 @@ nav a:hover::after{width:100%}
 </a>
 
 <script>
+/* ─── EMAIL JS ─── */
 const EJ_KEY = 'MfKifkzUlPhOg2uQg';
 const EJ_SVC = 'service_r4vas1a';
 const EJ_TPL = 'template_vku1h9b';
 emailjs.init({ publicKey: EJ_KEY });
 
-const themes = [
-  { name: 'Classic Gold',      accent: '#D4AF37', category: 'gold' },
-  { name: 'Vegas Gold',        accent: '#C5B358', category: 'gold' },
-  { name: 'Metallic Gold',     accent: '#D4A853', category: 'gold' },
-  { name: 'Old Gold',          accent: '#CFB53B', category: 'gold' },
-  { name: 'Satin Sheen Gold',  accent: '#CBA135', category: 'gold' },
-  { name: 'Pale Gold',         accent: '#E6BE8A', category: 'gold' },
-  { name: 'Antique Gold',      accent: '#C9AE5D', category: 'gold' },
-  { name: 'Bright Gold',       accent: '#FDD017', category: 'gold' },
-  { name: 'Royal Purple',      accent: '#8B5CF6', category: 'premium' },
-  { name: 'Electric Blue',     accent: '#3B82F6', category: 'premium' },
-  { name: 'Emerald Green',     accent: '#10B981', category: 'premium' },
-  { name: 'Coral Red',         accent: '#EF4444', category: 'premium' },
-  { name: 'Rose Gold',         accent: '#E8A8A8', category: 'premium' },
-  { name: 'Teal',              accent: '#14B8A6', category: 'premium' },
-  { name: 'Sunset Orange',     accent: '#F97316', category: 'premium' },
-  { name: 'Magenta',           accent: '#EC4899', category: 'premium' },
-];
-
-let currentTheme = 0;
-function setTheme(index) {
-  currentTheme = index;
-  document.documentElement.style.setProperty('--c', themes[index].accent);
-  document.querySelectorAll('.dot').forEach((dot, i) => dot.classList.toggle('active', i === index));
-  localStorage.setItem('selectedTheme', index);
-}
-
-function initColorDots() {
-  const container = document.getElementById('colorDots');
-  themes.forEach((theme, i) => {
-    const dot = document.createElement('div');
-    dot.className = 'dot';
-    dot.style.backgroundColor = theme.accent;
-    dot.onclick = () => setTheme(i);
-    dot.title = theme.name;
-    container.appendChild(dot);
-  });
-  const saved = localStorage.getItem('selectedTheme');
-  setTheme(saved ? parseInt(saved) : 0);
-}
-
+/* ─── VIDEO ─── */
 const vid = document.getElementById('bgv');
 vid.muted = true;
 vid.load();
 vid.play().catch(() => {
-  ['touchstart', 'click', 'pointerdown'].forEach(ev =>
+  ['touchstart','click','pointerdown'].forEach(ev =>
     window.addEventListener(ev, () => vid.play().catch(() => {}), { once: true })
   );
 });
 
+/* ─── LENIS ─── */
 const lenis = new Lenis({ lerp: 0.08 });
 const VW = window.innerWidth;
 const isMobile = VW <= 768;
 
-// UPDATED: TARGETING image00001.jpeg THROUGH image00017.jpeg
+/* ─── GALLERY DATA ─── */
 const GH_BASE = 'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/';
-
 function generatePhotoURLs() {
   const urls = [];
   for (let i = 1; i <= 17; i++) {
-    // Pads the number with zeros (e.g., 1 becomes 00001)
-    const paddedNum = String(i).padStart(5, '0');
-    urls.push(`${GH_BASE}image${paddedNum}.jpeg`);
+    urls.push(`${GH_BASE}image${String(i).padStart(5,'0')}.jpeg`);
   }
   return urls;
 }
-
 const IMGS = generatePhotoURLs();
 const NUM_CARDS = IMGS.length;
 
-function generateLoudAeLayout() {
+function generateLayout() {
   const cards = [];
   const numCols = 3;
   const cardsPerCol = Math.ceil(NUM_CARDS / numCols);
-  
-  const colPositions = isMobile 
-    ? [VW * 0.05, VW * 0.38, VW * 0.68]  
-    : [VW * 0.08, VW * 0.42, VW * 0.72]; 
-  
-  const baseW = isMobile ? VW * 0.35 : VW * 0.32;
-  const baseH = isMobile ? VW * 0.48 : VW * 0.42;
-  
+  const colPositions = isMobile ? [VW*.05,VW*.38,VW*.68] : [VW*.08,VW*.42,VW*.72];
+  const baseW = isMobile ? VW*.35 : VW*.32;
+  const baseH = isMobile ? VW*.48 : VW*.42;
   let imgIndex = 0;
-  
   for (let col = 0; col < numCols; col++) {
-    let yPos = isMobile ? 20 : 40; 
+    let yPos = isMobile ? 20 : 40;
     const colX = colPositions[col];
-    
     for (let row = 0; row < cardsPerCol && imgIndex < NUM_CARDS; row++) {
-      const xOffset = (Math.random() - 0.5) * (isMobile ? 30 : 50);
-      const sizeVar = 0.88 + Math.random() * 0.24;
-      const w = Math.round(baseW * sizeVar);
-      const h = Math.round(baseH * sizeVar);
-      
-      cards.push({
-        x: colX + xOffset,
-        y: yPos,
-        w: w,
-        h: h,
-        img: IMGS[imgIndex],
-        col: col,
-        row: row,
-        z: col * 10 + row + 5,
-        parallax: [0.12, 0.18, 0.24][col] + Math.random() * 0.08
-      });
-      
-      const overlapAmount = isMobile ? h * 0.35 : h * 0.42; 
-      yPos += h - overlapAmount + (Math.random() - 0.5) * 30;
+      const xOffset = (Math.random()-.5)*(isMobile?30:50);
+      const sizeVar = .88+Math.random()*.24;
+      const w = Math.round(baseW*sizeVar);
+      const h = Math.round(baseH*sizeVar);
+      cards.push({ x:colX+xOffset, y:yPos, w, h, img:IMGS[imgIndex], col, z:col*10+row+5, parallax:[.12,.18,.24][col]+Math.random()*.08 });
+      yPos += h - (isMobile?h*.35:h*.42) + (Math.random()-.5)*30;
       imgIndex++;
     }
   }
   return cards;
 }
 
-const CARDS = generateLoudAeLayout();
-const maxY = Math.max(...CARDS.map(c => c.y + c.h));
-const galleryH = maxY + (isMobile ? 120 : 200);
+const CARDS = generateLayout();
+const maxY = Math.max(...CARDS.map(c => c.y+c.h));
+const galleryH = maxY + (isMobile?120:200);
 const gallery = document.getElementById('gallery');
-gallery.style.height = galleryH + 'px';
+gallery.style.height = galleryH+'px';
 
-const PRELOAD_COUNT = 6;
-const preloadCache = [];
-IMGS.slice(0, PRELOAD_COUNT).forEach((src, idx) => {
+/* preload first 6 */
+IMGS.slice(0,6).forEach((src,idx) => {
   const link = document.createElement('link');
-  link.rel = 'preload';
-  link.as = 'image';
-  link.href = src;
-  if (idx < 3) link.setAttribute('fetchpriority', 'high');
+  link.rel='preload'; link.as='image'; link.href=src;
+  if(idx<3) link.setAttribute('fetchpriority','high');
   document.head.appendChild(link);
-  const img = new Image();
-  img.src = src;
-  preloadCache.push(img);
+  const img = new Image(); img.src=src;
 });
 
-const imgObserver = new IntersectionObserver((entries) => {
+const imgObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
+    if(entry.isIntersecting){
       const img = entry.target;
       const src = img.dataset.src;
-      if (src) {
-        img.src = src;
-        img.removeAttribute('data-src');
-      }
+      if(src){ img.src=src; img.removeAttribute('data-src'); }
       imgObserver.unobserve(img);
     }
   });
-}, { rootMargin: '200px 0px' });
+}, { rootMargin:'200px 0px' });
 
 const elems = [];
 const dragOff = [];
 
-CARDS.forEach((d, i) => {
+CARDS.forEach((d,i) => {
   const wrap = document.createElement('div');
-  wrap.className = 'cw';
-  wrap.style.left = d.x + 'px';
-  wrap.style.top = d.y + 'px';
-  wrap.style.width = d.w + 'px';
-  wrap.style.zIndex = d.z;
-
+  wrap.className='cw';
+  wrap.style.cssText=`left:${d.x}px;top:${d.y}px;width:${d.w}px;z-index:${d.z}`;
   const card = document.createElement('div');
-  card.className = 'card';
-  card.style.width = d.w + 'px';
-  card.style.height = d.h + 'px';
-
+  card.className='card';
+  card.style.cssText=`width:${d.w}px;height:${d.h}px`;
   const img = document.createElement('img');
-  img.alt = 'Work ' + (i + 1);
-  img.decoding = 'async';
-  img.width = d.w;
-  img.height = d.h;
-
+  img.alt='Work '+(i+1); img.decoding='async'; img.width=d.w; img.height=d.h;
   const markLoaded = () => img.classList.add('loaded');
-  img.addEventListener('load', markLoaded, { once: true });
-  
-  if (i < PRELOAD_COUNT) {
-    img.src = d.img;
-    img.loading = 'eager';
-    if (i < 3) img.setAttribute('fetchpriority', 'high');
-    if (img.complete) markLoaded();
+  img.addEventListener('load', markLoaded, {once:true});
+  if(i<6){
+    img.src=d.img; img.loading='eager';
+    if(i<3) img.setAttribute('fetchpriority','high');
+    if(img.complete) markLoaded();
   } else {
-    img.loading = 'lazy';
-    img.dataset.src = d.img;
-    imgObserver.observe(img);
+    img.loading='lazy'; img.dataset.src=d.img; imgObserver.observe(img);
   }
-
-  card.appendChild(img);
-  wrap.appendChild(card);
-  gallery.appendChild(wrap);
-  
-  elems.push({ el: wrap, originalX: d.x, originalY: d.y, parallax: d.parallax, col: d.col });
-  dragOff.push({ x: 0, y: 0 });
-
-  let dc = 0, dt = null;
-  wrap.addEventListener('click', () => {
+  card.appendChild(img); wrap.appendChild(card); gallery.appendChild(wrap);
+  elems.push({el:wrap, parallax:d.parallax});
+  dragOff.push({x:0,y:0});
+  let dc=0,dt=null;
+  wrap.addEventListener('click',()=>{
     dc++;
-    if (dc === 1) { dt = setTimeout(() => { dc = 0; }, 280); }
-    else { clearTimeout(dt); dc = 0; openLb(d.img); }
+    if(dc===1){ dt=setTimeout(()=>{dc=0;},280); }
+    else { clearTimeout(dt); dc=0; openLb(d.img); }
   });
 });
 
-let gTop = 0;
-function cacheGTop() {
-  let el = gallery, t = 0;
-  while (el) { t += el.offsetTop; el = el.offsetParent; }
-  gTop = t;
-}
-window.addEventListener('load', cacheGTop);
-setTimeout(cacheGTop, 200);
-window.addEventListener('resize', cacheGTop);
+let gTop=0;
+function cacheGTop(){ let el=gallery,t=0; while(el){t+=el.offsetTop;el=el.offsetParent;} gTop=t; }
+window.addEventListener('load',cacheGTop); setTimeout(cacheGTop,200); window.addEventListener('resize',cacheGTop);
 
-function tick(time) {
+function tick(time){
   lenis.raf(time);
-  const currentScroll = lenis.scroll;
-  const local = Math.max(0, currentScroll - gTop);
-  elems.forEach((c, i) => {
-    const dy = dragOff[i].y - local * c.parallax;
-    c.el.style.transform = `translate3d(${dragOff[i].x}px,${dy}px,0)`;
+  const scroll=lenis.scroll;
+  const local=Math.max(0,scroll-gTop);
+  elems.forEach((c,i)=>{
+    const dy=dragOff[i].y-local*c.parallax;
+    c.el.style.transform=`translate3d(${dragOff[i].x}px,${dy}px,0)`;
   });
   requestAnimationFrame(tick);
 }
 requestAnimationFrame(tick);
 
 interact('.cw').draggable({
-  inertia: true,
-  listeners: {
-    start(e) { e.target.style.zIndex = 5000; },
-    move(e) {
-      const idx = elems.findIndex(c => c.el === e.target);
-      if (idx < 0) return;
-      dragOff[idx].x += e.dx;
-      dragOff[idx].y += e.dy;
+  inertia:true,
+  listeners:{
+    start(e){ e.target.style.zIndex=5000; },
+    move(e){
+      const idx=elems.findIndex(c=>c.el===e.target);
+      if(idx<0) return;
+      dragOff[idx].x+=e.dx; dragOff[idx].y+=e.dy;
     }
   }
 });
 
-function openLb(src) {
-  document.getElementById('lbImg').src = src;
-  document.getElementById('lb').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLb() {
-  document.getElementById('lb').classList.remove('open');
-  document.body.style.overflow = '';
-  setTimeout(() => { document.getElementById('lbImg').src = ''; }, 400);
-}
-function lbBgClick(e) { if (e.target === document.getElementById('lb')) closeLb(); }
-
-function openModal() {
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
+/* ─── LOGO LOGIC ─── */
+function applyLogoStyle(style){
+  const logo = document.getElementById('logoDisplay');
+  const sep  = logo.querySelector('.sep');
+  logo.className = 'logo '+style;
+  if(style==='style4'){ sep.textContent='·'; sep.style.display='inline'; }
+  else if(style==='style9'){ sep.textContent='/'; sep.style.display='inline'; }
+  else { sep.style.display='none'; }
 }
 
-function openJoinModal() {
-  alert('Join The Team feature coming soon! Send us an email at careers@oceayr.com');
+function changeLogoFromSelect(){
+  const style = document.getElementById('logoSelect').value;
+  applyLogoStyle(style);
+  localStorage.setItem('selectedLogoStyle', style);
 }
 
-function closeModal() {
+/* ─── FONT LOGIC ─── */
+function changeFont(){
+  const f = document.getElementById('fontSelect').value;
+  document.documentElement.style.setProperty('--font-display',`'${f}'`);
+  localStorage.setItem('selectedFont', f);
+}
+
+/* ─── INIT PREFERENCES ─── */
+window.addEventListener('load', ()=>{
+  const savedLogo = localStorage.getItem('selectedLogoStyle') || 'style1';
+  const savedFont = localStorage.getItem('selectedFont')      || 'Bebas Neue';
+  applyLogoStyle(savedLogo);
+  document.getElementById('logoSelect').value = savedLogo;
+  document.getElementById('fontSelect').value = savedFont;
+  document.documentElement.style.setProperty('--font-display',`'${savedFont}'`);
+});
+
+/* ─── LIGHTBOX ─── */
+function openLb(src){ document.getElementById('lbImg').src=src; document.getElementById('lb').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLb(){ document.getElementById('lb').classList.remove('open'); document.body.style.overflow=''; setTimeout(()=>{document.getElementById('lbImg').src='';},400); }
+function lbBgClick(e){ if(e.target===document.getElementById('lb')) closeLb(); }
+
+/* ─── MODAL ─── */
+function openModal(){ document.getElementById('modalOverlay').classList.add('open'); document.body.style.overflow='hidden'; }
+function openJoinModal(){ alert('Join The Team feature coming soon! Send us an email at careers@oceayr.com'); }
+function closeModal(){
   document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-  setTimeout(() => {
-    ['f-name','f-company','f-email','f-mobile','f-msg'].forEach(id => {
-      const el = document.getElementById(id); if (el) el.value = '';
-    });
-    document.getElementById('formWrap').style.display = '';
-    document.getElementById('successMsg').style.display = 'none';
-    document.getElementById('sendBtn').disabled = false;
-    document.getElementById('sendLabel').textContent = 'Send Brief';
-    document.getElementById('sendArr').textContent = '→';
-    document.getElementById('formNote').style.display = '';
-  }, 500);
+  document.body.style.overflow='';
+  setTimeout(()=>{
+    ['f-name','f-company','f-email','f-mobile','f-msg'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    document.getElementById('formWrap').style.display='';
+    document.getElementById('successMsg').style.display='none';
+    document.getElementById('sendBtn').disabled=false;
+    document.getElementById('sendLabel').textContent='Send Brief';
+    document.getElementById('sendArr').textContent='→';
+    document.getElementById('formNote').style.display='';
+  },500);
 }
+function overlayClick(e){ if(e.target===document.getElementById('modalOverlay')) closeModal(); }
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){closeLb();closeModal();} });
 
-function overlayClick(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLb(); closeModal(); } });
-
-async function sendForm() {
-  const n = document.getElementById('f-name').value.trim();
-  const em = document.getElementById('f-email').value.trim();
-  const co = document.getElementById('f-company').value.trim();
-  const mo = document.getElementById('f-mobile').value.trim();
-  const ms = document.getElementById('f-msg').value.trim();
-
-  if (!n || !em) { alert('Name and Email required'); return; }
-
-  const btn = document.getElementById('sendBtn');
-  btn.disabled = true;
-  document.getElementById('sendLabel').textContent = 'Sending...';
-  document.getElementById('sendArr').textContent = '…';
-
-  try {
-    await emailjs.send(EJ_SVC, EJ_TPL, {
-      name: n, email: em,
-      company: co || '—', mobile: mo || '—', message: ms || '—'
-    });
-    document.getElementById('formWrap').style.display = 'none';
-    document.getElementById('formNote').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
-    setTimeout(closeModal, 3500);
-  } catch(err) {
-    console.warn('EmailJS:', err);
-    btn.disabled = false;
-    document.getElementById('sendLabel').textContent = 'Error. Try Again';
+/* ─── FORM SEND ─── */
+async function sendForm(){
+  const n=document.getElementById('f-name').value.trim();
+  const em=document.getElementById('f-email').value.trim();
+  const co=document.getElementById('f-company').value.trim();
+  const mo=document.getElementById('f-mobile').value.trim();
+  const ms=document.getElementById('f-msg').value.trim();
+  if(!n||!em){alert('Name and Email required');return;}
+  const btn=document.getElementById('sendBtn');
+  btn.disabled=true;
+  document.getElementById('sendLabel').textContent='Sending...';
+  document.getElementById('sendArr').textContent='…';
+  try{
+    await emailjs.send(EJ_SVC,EJ_TPL,{name:n,email:em,company:co||'—',mobile:mo||'—',message:ms||'—'});
+    document.getElementById('formWrap').style.display='none';
+    document.getElementById('formNote').style.display='none';
+    document.getElementById('successMsg').style.display='block';
+    setTimeout(closeModal,3500);
+  } catch(err){
+    console.warn('EmailJS:',err);
+    btn.disabled=false;
+    document.getElementById('sendLabel').textContent='Error. Try Again';
   }
 }
-
-initColorDots();
 </script>
-
 </body>
 </html>
