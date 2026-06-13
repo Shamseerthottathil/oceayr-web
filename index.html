@@ -4,124 +4,87 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OCEAYR | Agency</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Bebas+Neue&family=Teko:wght@600;700&family=Cormorant+Garamond:wght@600;700&family=Abril+Fatface&family=Russo+One&family=Bungee&family=Righteous&family=Alfa+Slab+One&family=Black+Ops+One&family=Fjalla+One&family=Josefin+Sans:wght@700&family=Playfair+Display:wght@700;900&family=DM+Serif+Display&family=Libre+Baskerville:wght@700&family=Oswald:wght@700&family=Anton&family=Syne:wght@700;800&family=Big+Shoulders+Display:wght@700;900&family=League+Spartan:wght@700;900&family=Barlow+Condensed:wght@700;900&family=Orbitron:wght@700;900&family=Exo+2:wght@800;900&family=Rajdhani:wght@700&family=Saira+Condensed:wght@700;900&family=Changa:wght@700;800&family=Michroma&family=Share+Tech+Mono&family=Syncopate:wght@700&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://res.cloudinary.com">
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Bebas+Neue&family=Teko:wght@600;700&family=Cormorant+Garamond:wght@600;700&family=Abril+Fatface&family=Russo+One&family=Bungee&family=Righteous&family=Alfa+Slab+One&family=Black+Ops+One&family=Fjalla+One&family=Josefin+Sans:wght@700&family=Playfair+Display:wght@700;900&family=DM+Serif+Display&family=Oswald:wght@700&family=Anton&family=Syne:wght@700;800&family=Big+Shoulders+Display:wght@700;900&family=League+Spartan:wght@700;900&family=Barlow+Condensed:wght@700;900&family=Orbitron:wght@700;900&family=Exo+2:wght@800;900&family=Rajdhani:wght@700&family=Saira+Condensed:wght@700;900&family=Changa:wght@700;800&family=Michroma&family=Syncopate:wght@700&family=Unbounded:wght@700;900&family=Space+Grotesk:wght@700&family=Kanit:wght@700;900&family=Chakra+Petch:wght@700&family=Noto+Serif+Display:wght@700;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--c:#D4AF37;--b:rgba(255,255,255,0.12);--bg:#000;--fg:#fff;--font-display:'Bebas Neue'}
+:root{--c:#D4AF37;--bg:#000;--fg:#fff;--font-display:'Bebas Neue'}
 html,body{background:#000;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden;cursor:default;user-select:none}
 
-/* ─── LOGO BASE ─── */
-.logo{position:fixed;top:24px;left:32px;z-index:2000;display:flex;align-items:center;justify-content:center;width:68px;height:68px;font-family:'Inter',sans-serif;font-weight:900;font-size:32px;line-height:1;cursor:default;transition:all .3s;pointer-events:none}
+/* ─── LOGO ─── */
+.logo{position:fixed;top:24px;left:32px;z-index:2000;display:flex;align-items:center;justify-content:center;width:72px;height:72px;font-family:'Inter',sans-serif;font-weight:900;font-size:32px;line-height:1;cursor:default;transition:all .3s;pointer-events:none}
+.logo.s1{background:transparent}
+.logo.s1 .lo{display:inline-block;color:#fff;-webkit-text-stroke:2px #000;paint-order:stroke fill;position:relative;z-index:2;font-size:44px}
+.logo.s1 .lr{display:inline-block;color:#fff;-webkit-text-stroke:2px #000;paint-order:stroke fill;position:relative;z-index:1;margin-left:-12px;font-size:44px}
+.logo.s2{background:transparent;width:74px;height:74px;position:relative;overflow:visible;padding:0}
+.logo.s2 .lo{position:absolute;font-family:'Cormorant Garamond',serif;font-size:78px;font-weight:700;color:transparent;-webkit-text-stroke:2px #fff;line-height:1;top:-4px;left:-2px;z-index:1;letter-spacing:-2px}
+.logo.s2 .lr{position:absolute;font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:700;color:#fff;line-height:1;top:6px;left:17px;z-index:2}
+.logo.s2 .sep{display:none}
+.logo.s3{background:#fff;border-radius:4px;padding:8px}
+.logo.s3 .lo{color:#000;font-size:36px;margin-right:-6px}
+.logo.s3 .lr{color:var(--c);font-size:36px}
+.logo.s4{background:transparent;font-size:28px;letter-spacing:2px;gap:2px}
+.logo.s4 .lo{color:#fff;font-weight:900;font-size:32px}
+.logo.s4 .sep{color:var(--c);font-size:38px;line-height:.7;align-self:center;display:inline}
+.logo.s4 .lr{color:var(--c);font-weight:900;font-size:32px}
+.logo.s5{background:transparent}
+.logo.s5 .lo{color:#fff;font-size:44px;text-shadow:0 0 12px var(--c),0 0 28px var(--c);position:relative;z-index:2}
+.logo.s5 .lr{color:var(--c);font-size:44px;margin-left:-10px;text-shadow:0 0 12px var(--c),0 0 28px var(--c);position:relative;z-index:1}
+.logo.s6{background:transparent;gap:0}
+.logo.s6 .lo{font-size:48px;color:var(--c);font-weight:900;position:relative;z-index:2}
+.logo.s6 .lr{font-size:48px;color:#fff;font-weight:900;margin-left:-14px;position:relative;z-index:1}
+.logo.s7{background:transparent;border:2px solid var(--c);border-radius:6px;width:64px;height:64px}
+.logo.s7 .lo{color:transparent;-webkit-text-stroke:2px #fff;font-size:38px;position:relative;z-index:2;margin-right:-8px}
+.logo.s7 .lr{color:transparent;-webkit-text-stroke:2px var(--c);font-size:38px;position:relative;z-index:1}
+.logo.s8{background:transparent;flex-direction:column;gap:0;height:68px;width:52px}
+.logo.s8 .lo{color:#fff;font-size:36px;line-height:1;border-bottom:2px solid var(--c);padding-bottom:2px;width:100%;text-align:center}
+.logo.s8 .lr{color:var(--c);font-size:36px;line-height:1;width:100%;text-align:center}
+.logo.s9{background:transparent;gap:0;width:80px}
+.logo.s9 .lo{color:#fff;font-size:36px;font-weight:900}
+.logo.s9 .sep{color:rgba(255,255,255,.25);font-size:44px;font-weight:100;margin:0 1px;line-height:1;font-style:italic;display:inline}
+.logo.s9 .lr{color:var(--c);font-size:36px;font-weight:900}
+.logo.s10{background:var(--c);width:64px;height:64px;overflow:hidden}
+.logo.s10 .lo{color:#000;font-size:38px;position:relative;z-index:2;margin-right:-6px;font-weight:900}
+.logo.s10 .lr{color:#000;font-size:38px;position:relative;z-index:2;font-weight:900}
+.logo.s11{background:transparent;gap:0;width:80px}
+.logo.s11 .lo{font-family:'Orbitron',sans-serif;color:#fff;font-size:26px;font-weight:900;position:relative;z-index:2}
+.logo.s11 .lr{font-family:'Orbitron',sans-serif;color:var(--c);font-size:26px;font-weight:900;margin-left:-2px;position:relative;z-index:1}
+.logo.s12{background:transparent;gap:0}
+.logo.s12 .lo{font-family:'Syne',sans-serif;color:#fff;font-size:50px;font-weight:800;position:relative;z-index:2;line-height:1}
+.logo.s12 .lr{font-family:'Syne',sans-serif;color:var(--c);font-size:50px;font-weight:800;margin-left:-16px;position:relative;z-index:1}
+.logo.s13{background:transparent;border:2px solid #fff;border-radius:50%;width:62px;height:62px;gap:0}
+.logo.s13 .lo{color:#fff;font-size:32px;font-weight:900;margin-right:-5px;position:relative;z-index:2}
+.logo.s13 .lr{color:var(--c);font-size:32px;font-weight:900;position:relative;z-index:1}
+.logo.s14{background:transparent;gap:0;width:72px}
+.logo.s14 .lo{font-family:'Michroma',sans-serif;color:var(--c);font-size:24px;letter-spacing:-1px;position:relative;z-index:2}
+.logo.s14 .lr{font-family:'Michroma',sans-serif;color:#fff;font-size:24px;position:relative;z-index:1;letter-spacing:-1px}
+.logo.s15{background:transparent;gap:0;border-bottom:3px solid var(--c);padding-bottom:3px}
+.logo.s15 .lo{font-family:'League Spartan',sans-serif;color:#fff;font-size:48px;font-weight:900;position:relative;z-index:2;line-height:1;margin-right:-12px}
+.logo.s15 .lr{font-family:'League Spartan',sans-serif;color:var(--c);font-size:48px;font-weight:900;position:relative;z-index:1;line-height:1}
+.logo.s16{background:transparent;gap:0}
+.logo.s16 .lo{font-family:'Unbounded',sans-serif;color:#fff;font-size:28px;font-weight:900;position:relative;z-index:2;line-height:1}
+.logo.s16 .lr{font-family:'Unbounded',sans-serif;color:var(--c);font-size:28px;font-weight:900;position:relative;z-index:1;line-height:1;margin-left:-4px}
+.logo.s17{background:transparent;position:relative;width:68px;height:68px}
+.logo.s17 .lo{position:absolute;font-family:'Space Grotesk',sans-serif;color:#fff;font-size:46px;font-weight:700;top:2px;left:0;z-index:1;line-height:1}
+.logo.s17 .lr{position:absolute;font-family:'Space Grotesk',sans-serif;color:var(--c);font-size:30px;font-weight:700;bottom:2px;right:0;z-index:2;line-height:1}
+.logo.s18{background:linear-gradient(135deg,#fff 50%,var(--c) 50%);width:60px;height:60px;border-radius:4px}
+.logo.s18 .lo{color:#000;font-size:38px;font-weight:900;margin-right:-8px;position:relative;z-index:2}
+.logo.s18 .lr{color:#fff;font-size:38px;font-weight:900;position:relative;z-index:1;mix-blend-mode:difference}
+.logo.s19{background:transparent;gap:0;border:1px solid rgba(255,255,255,.3);padding:6px 10px}
+.logo.s19 .lo{font-family:'Kanit',sans-serif;color:#fff;font-size:38px;font-weight:900;position:relative;z-index:2;margin-right:-8px;line-height:1}
+.logo.s19 .lr{font-family:'Kanit',sans-serif;color:var(--c);font-size:38px;font-weight:900;position:relative;z-index:1;line-height:1}
+.logo.s20{background:transparent;flex-direction:column;gap:0;width:64px;height:60px;align-items:flex-start}
+.logo.s20 .lo{font-family:'Chakra Petch',sans-serif;color:#fff;font-size:40px;font-weight:700;line-height:1;z-index:2}
+.logo.s20 .lr{font-family:'Chakra Petch',sans-serif;color:var(--c);font-size:18px;font-weight:700;letter-spacing:.3em;line-height:1;margin-top:-4px}
 
-/* ─── STYLE 1 — Classic White Stroke Overlap ─── */
-.logo.style1{background:transparent}
-.logo.style1 .lo{display:inline-block;color:#fff;-webkit-text-stroke:2px #000;paint-order:stroke fill;position:relative;z-index:2;font-size:44px}
-.logo.style1 .lr{display:inline-block;color:#fff;-webkit-text-stroke:2px #000;paint-order:stroke fill;position:relative;z-index:1;margin-left:-12px;font-size:44px}
-
-/* ─── STYLE 2 — Luxury Serif Monogram ─── */
-.logo.style2{background:transparent;width:74px;height:74px;position:relative;overflow:visible;padding:0}
-.logo.style2 .lo{position:absolute;font-family:'Cormorant Garamond',serif;font-size:78px;font-weight:700;color:transparent;-webkit-text-stroke:2px #fff;paint-order:stroke fill;line-height:1;top:-4px;left:-2px;z-index:1;letter-spacing:-2px}
-.logo.style2 .lr{position:absolute;font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:700;color:#fff;-webkit-text-stroke:0;line-height:1;top:6px;left:17px;z-index:2}
-.logo.style2 .sep{display:none}
-
-/* ─── STYLE 3 — White Square ─── */
-.logo.style3{background:#fff;border-radius:4px;padding:8px}
-.logo.style3 .lo{color:#000;font-size:36px;margin-right:-6px}
-.logo.style3 .lr{color:var(--c);font-size:36px}
-
-/* ─── STYLE 4 — Minimal dot separator ─── */
-.logo.style4{background:transparent;font-size:28px;letter-spacing:2px;gap:2px}
-.logo.style4 .lo{color:#fff;font-weight:900;font-size:32px}
-.logo.style4 .sep{color:var(--c);font-size:38px;line-height:.7;align-self:center;display:inline}
-.logo.style4 .lr{color:var(--c);font-weight:900;font-size:32px}
-
-/* ─── STYLE 5 — Neon Glow ─── */
-.logo.style5{background:transparent}
-.logo.style5 .lo{color:#fff;font-size:44px;text-shadow:0 0 12px var(--c),0 0 24px var(--c),0 0 48px rgba(212,175,55,.4);position:relative;z-index:2}
-.logo.style5 .lr{color:var(--c);font-size:44px;margin-left:-10px;text-shadow:0 0 12px var(--c),0 0 28px var(--c),0 0 56px rgba(212,175,55,.5);position:relative;z-index:1}
-
-/* ─── STYLE 6 — Bold Split ─── */
-.logo.style6{background:transparent;gap:0}
-.logo.style6 .lo{font-size:48px;color:var(--c);font-weight:900;position:relative;z-index:2}
-.logo.style6 .lr{font-size:48px;color:#fff;font-weight:900;margin-left:-14px;position:relative;z-index:1;-webkit-text-stroke:1px rgba(255,255,255,.3)}
-
-/* ─── STYLE 7 — Outlined Box ─── */
-.logo.style7{background:transparent;border:2px solid var(--c);border-radius:6px;width:64px;height:64px}
-.logo.style7 .lo{color:transparent;-webkit-text-stroke:2px #fff;font-size:38px;position:relative;z-index:2;margin-right:-8px}
-.logo.style7 .lr{color:transparent;-webkit-text-stroke:2px var(--c);font-size:38px;position:relative;z-index:1}
-
-/* ─── STYLE 8 — Stacked ─── */
-.logo.style8{background:transparent;flex-direction:column;gap:0;height:68px;width:52px}
-.logo.style8 .lo{color:#fff;font-size:36px;line-height:1;border-bottom:2px solid var(--c);padding-bottom:2px;width:100%;text-align:center}
-.logo.style8 .lr{color:var(--c);font-size:36px;line-height:1;width:100%;text-align:center}
-
-/* ─── STYLE 9 — Slash Separator ─── */
-.logo.style9{background:transparent;gap:0;width:80px}
-.logo.style9 .lo{color:#fff;font-size:36px;font-weight:900}
-.logo.style9 .sep{color:rgba(255,255,255,.25);font-size:44px;font-weight:100;font-family:'Inter',sans-serif;margin:0 1px;line-height:1;font-style:italic;display:inline}
-.logo.style9 .lr{color:var(--c);font-size:36px;font-weight:900}
-
-/* ─── STYLE 10 — Inverted Gold ─── */
-.logo.style10{background:var(--c);border-radius:0;width:64px;height:64px;position:relative;overflow:hidden}
-.logo.style10 .lo{color:#000;font-size:38px;position:relative;z-index:2;margin-right:-6px;font-weight:900}
-.logo.style10 .lr{color:#000;font-size:38px;position:relative;z-index:2;font-weight:900;-webkit-text-stroke:2px var(--c)}
-
-/* ─── STYLE 11 — Orbitron Futuristic ─── */
-.logo.style11{background:transparent;gap:0;width:80px}
-.logo.style11 .lo{font-family:'Orbitron',sans-serif;color:#fff;font-size:28px;font-weight:900;position:relative;z-index:2}
-.logo.style11 .lr{font-family:'Orbitron',sans-serif;color:var(--c);font-size:28px;font-weight:900;margin-left:-3px;position:relative;z-index:1}
-
-/* ─── STYLE 12 — Syne Ultra Bold ─── */
-.logo.style12{background:transparent;gap:0}
-.logo.style12 .lo{font-family:'Syne',sans-serif;color:#fff;font-size:50px;font-weight:800;position:relative;z-index:2;line-height:1}
-.logo.style12 .lr{font-family:'Syne',sans-serif;color:var(--c);font-size:50px;font-weight:800;margin-left:-16px;position:relative;z-index:1;opacity:.9}
-
-/* ─── STYLE 13 — Circle Badge ─── */
-.logo.style13{background:transparent;border:2px solid #fff;border-radius:50%;width:62px;height:62px;gap:0;overflow:visible}
-.logo.style13 .lo{color:#fff;font-size:32px;font-weight:900;margin-right:-5px;position:relative;z-index:2}
-.logo.style13 .lr{color:var(--c);font-size:32px;font-weight:900;position:relative;z-index:1}
-
-/* ─── STYLE 14 — Michroma Tech ─── */
-.logo.style14{background:transparent;gap:0;width:72px}
-.logo.style14 .lo{font-family:'Michroma',sans-serif;color:var(--c);font-size:26px;font-weight:400;letter-spacing:-1px;position:relative;z-index:2}
-.logo.style14 .lr{font-family:'Michroma',sans-serif;color:#fff;font-size:26px;font-weight:400;position:relative;z-index:1;letter-spacing:-1px}
-
-/* ─── STYLE 15 — League Spartan Condensed ─── */
-.logo.style15{background:transparent;gap:0;border-bottom:3px solid var(--c);padding-bottom:3px}
-.logo.style15 .lo{font-family:'League Spartan',sans-serif;color:#fff;font-size:48px;font-weight:900;position:relative;z-index:2;line-height:1;margin-right:-12px}
-.logo.style15 .lr{font-family:'League Spartan',sans-serif;color:var(--c);font-size:48px;font-weight:900;position:relative;z-index:1;line-height:1}
-
-/* ─── CONTROLS PANEL (Logo + Font choosers) ─── */
+/* ─── CONTROLS PANEL ─── */
 .controls-panel{position:fixed;top:32px;right:32px;z-index:2000;display:flex;flex-direction:column;gap:8px}
 .chooser-row{display:flex;align-items:center;gap:10px}
 .chooser-label{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#fff;opacity:.65;width:32px;text-align:right;flex-shrink:0}
-.chooser-select{
-  background:#161616;
-  border:1px solid rgba(255,255,255,0.30);
-  color:#fff;
-  padding:8px 28px 8px 12px;
-  font-size:10px;
-  letter-spacing:.08em;
-  cursor:pointer;
-  transition:all .3s;
-  font-family:'Inter',sans-serif;
-  appearance:none;
-  -webkit-appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23D4AF37'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 9px center;
-  outline:none;
-  min-width:185px;
-}
-.chooser-select:hover{border-color:var(--c);background-color:#1e1e1e}
-.chooser-select:focus{border-color:var(--c);background-color:#1e1e1e}
+.chooser-select{background:#161616;border:1px solid rgba(255,255,255,.3);color:#fff;padding:7px 26px 7px 11px;font-size:10px;letter-spacing:.06em;cursor:pointer;transition:all .3s;font-family:'Inter',sans-serif;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23D4AF37'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;outline:none;min-width:190px}
+.chooser-select:hover,.chooser-select:focus{border-color:var(--c);background-color:#1a1a1a}
 .chooser-select option{background:#161616;color:#fff}
 
 /* ─── NAV ─── */
@@ -133,73 +96,47 @@ nav a:hover::after{width:100%}
 
 /* ─── HERO ─── */
 .hero{position:relative;height:100vh;display:flex;justify-content:center;align-items:center;overflow:hidden;background:#000}
-.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;pointer-events:none;filter:none;transform:translate3d(0,0,0);will-change:transform;backface-visibility:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;pointer-events:none;transform:translate3d(0,0,0);will-change:transform;backface-visibility:hidden}
 .hero h1{position:relative;z-index:1;font-family:'Inter',sans-serif;font-size:11vw;font-weight:900;line-height:.82;text-align:center;color:#fff}
-.outline{color:transparent;-webkit-text-stroke:1px #fff;transition:-webkit-text-stroke-color .6s cubic-bezier(.4,0,.2,1)}
+.outline{color:transparent;-webkit-text-stroke:1px #fff}
 
 /* ─── SERVICES ─── */
-.services{background:#000;border-top:1px solid rgba(255,255,255,0.12);padding:120px 40px 120px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.services{background:#000;border-top:1px solid rgba(255,255,255,.12);padding:120px 40px;text-align:center;display:flex;flex-direction:column;align-items:center}
 .svc-eyebrow{font-size:10px;letter-spacing:.45em;text-transform:uppercase;opacity:.4;margin-bottom:32px;color:#fff}
-.svc-headline{font-family:var(--font-display);font-size:clamp(56px,8vw,120px);line-height:.92;letter-spacing:.03em;max-width:900px;color:#fff;transition:font-family .4s cubic-bezier(.4,0,.2,1)}
+.svc-headline{font-family:var(--font-display);font-size:clamp(52px,7.5vw,116px);line-height:.92;letter-spacing:.03em;max-width:920px;color:#fff;transition:font-family .4s}
 .svc-headline em{font-style:normal;color:var(--c)}
-.svc-list{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-top:64px;width:100%;border-top:1px solid rgba(255,255,255,0.12);border-left:1px solid rgba(255,255,255,0.12)}
-.svc-item{padding:22px 36px;font-size:10px;letter-spacing:.38em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,0.12);border-bottom:1px solid rgba(255,255,255,0.12);opacity:.55;transition:all .3s;cursor:default;color:#fff}
+.svc-list{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-top:64px;width:100%;border-top:1px solid rgba(255,255,255,.12);border-left:1px solid rgba(255,255,255,.12)}
+.svc-item{padding:22px 36px;font-size:10px;letter-spacing:.38em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);opacity:.55;transition:all .3s;cursor:default;color:#fff}
 .svc-item:hover{opacity:1;color:#000;background:var(--c)}
-.talk-btn{margin-top:60px;display:inline-flex;align-items:center;gap:14px;padding:18px 44px;border:1px solid rgba(255,255,255,0.35);font-size:11px;letter-spacing:.38em;text-transform:uppercase;color:#fff;cursor:pointer;background:transparent;transition:all .35s;font-family:'Inter',sans-serif;font-weight:500}
+.talk-btn{margin-top:60px;display:inline-flex;align-items:center;gap:14px;padding:18px 44px;border:1px solid rgba(255,255,255,.35);font-size:11px;letter-spacing:.38em;text-transform:uppercase;color:#fff;cursor:pointer;background:transparent;transition:all .35s;font-family:'Inter',sans-serif;font-weight:500}
 .talk-btn:hover{background:var(--c);border-color:var(--c);color:#000}
 .talk-btn .arr{font-size:18px;transition:transform .3s}
 .talk-btn:hover .arr{transform:translateX(5px)}
 
 /* ─── TICKER ─── */
 .ticker-section{background:#000;padding-bottom:80px}
-.ticker-wrap{height:96px;display:flex;align-items:center;overflow:hidden;border-top:1px solid rgba(255,255,255,0.12);border-bottom:2px solid rgba(255,255,255,0.22)}
+.ticker-wrap{height:96px;display:flex;align-items:center;overflow:hidden;border-top:1px solid rgba(255,255,255,.12);border-bottom:2px solid rgba(255,255,255,.22)}
 .ticker-track{display:flex;flex-shrink:0;width:max-content;animation:tick 22s linear infinite}
 .ticker-track span{font-family:'Bebas Neue',sans-serif;font-size:34px;color:#fff;white-space:nowrap;letter-spacing:.28em;padding-right:1.6em;flex-shrink:0;opacity:.82}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ─── GALLERY — loud.ae 3-layer parallax ─── */
-.gallery-section{
-  position:relative;
-  width:100%;
-  background:#000;
-  overflow:hidden;
-}
-
-/* Each parallax layer — absolutely positioned, full width, moves as a unit */
-.g-layer{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  will-change:transform;
-  pointer-events:none;
-}
-
-/* Each photo card — absolutely placed within the layer */
+/* ─── GALLERY ─── */
+.gallery-section{position:relative;width:100%;background:#000;overflow:hidden}
+.g-col{position:absolute;top:0;will-change:transform;transform:translate3d(0,0,0)}
 .g-card{
   position:absolute;
   overflow:hidden;
-  background:#111;
-  box-shadow:0 20px 60px rgba(0,0,0,.92),0 4px 16px rgba(0,0,0,.6);
-  cursor:zoom-in;
-  pointer-events:all;
+  background:#0d0d0d;
+  cursor:pointer;
+  /* NO box-shadow, NO hover effects — match loud.ae clean look */
 }
-.g-card:hover{
-  z-index:50 !important;
-  box-shadow:0 30px 80px rgba(0,0,0,.98),0 8px 24px rgba(0,0,0,.8);
-}
+/* STATIC images — fade in only, ZERO zoom, ZERO movement inside photo */
 .g-card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  pointer-events:none;
-  transition:transform .7s cubic-bezier(.25,1,.5,1),opacity .3s ease;
-  opacity:0;
-  transform:scale(1.05);
+  width:100%;height:100%;object-fit:cover;display:block;
+  pointer-events:none;opacity:0;
+  transition:opacity .4s ease;
 }
-.g-card img.loaded{opacity:1;transform:scale(1)}
-.g-card:hover img{transform:scale(1.06)}
+.g-card img.loaded{opacity:1}
 
 /* ─── LIGHTBOX ─── */
 .lb{position:fixed;inset:0;z-index:9500;background:rgba(0,0,0,.96);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
@@ -211,22 +148,22 @@ nav a:hover::after{width:100%}
 .lb-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:.35em;text-transform:uppercase;opacity:.22;white-space:nowrap;pointer-events:none}
 
 /* ─── MODAL ─── */
-.modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.88);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
+.modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.88);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
 .modal-overlay.open{opacity:1;pointer-events:all}
-.modal{background:#0a0a0a;border:1px solid rgba(255,255,255,0.12);width:min(600px,92vw);padding:52px 48px 44px;position:relative;transform:translateY(24px);transition:transform .4s}
+.modal{background:#0a0a0a;border:1px solid rgba(255,255,255,.12);width:min(600px,92vw);padding:52px 48px 44px;position:relative;transform:translateY(24px);transition:transform .4s}
 .modal-overlay.open .modal{transform:translateY(0)}
 .modal-close{position:absolute;top:20px;right:24px;font-size:22px;background:none;border:none;color:#fff;opacity:.4;cursor:pointer;transition:opacity .25s;font-family:'Inter',sans-serif}
 .modal-close:hover{opacity:1}
 .modal-title{font-family:var(--font-display);font-size:clamp(32px,4vw,52px);letter-spacing:.05em;margin-bottom:36px;line-height:1;color:#fff;transition:font-family .4s}
 .modal-title span{color:var(--c)}
 .mf{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.mf-field{position:relative;border:1px solid rgba(255,255,255,0.12);margin:-1px 0 0 -1px;transition:border-color .25s}
+.mf-field{position:relative;border:1px solid rgba(255,255,255,.12);margin:-1px 0 0 -1px;transition:border-color .25s}
 .mf-field:focus-within{border-color:var(--c);z-index:1}
 .mf-field label{display:block;padding:16px 18px 3px;font-size:8.5px;letter-spacing:.35em;text-transform:uppercase;opacity:.38;font-weight:500;color:#fff}
 .mf-field input,.mf-field textarea{display:block;width:100%;background:transparent;border:none;outline:none;color:#fff;font-family:'Inter',sans-serif;font-size:14px;padding:3px 18px 16px;caret-color:var(--c)}
 .mf-field.full{grid-column:1/-1}
 .mf-field textarea{resize:none;min-height:100px;padding-top:6px}
-.mf-send{grid-column:1/-1;border:1px solid rgba(255,255,255,0.12);margin:-1px 0 0 -1px;display:flex;justify-content:space-between;align-items:center;padding:22px;cursor:pointer;background:transparent;color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.38em;text-transform:uppercase;transition:all .35s;width:100%}
+.mf-send{grid-column:1/-1;border:1px solid rgba(255,255,255,.12);margin:-1px 0 0 -1px;display:flex;justify-content:space-between;align-items:center;padding:22px;cursor:pointer;background:transparent;color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.38em;text-transform:uppercase;transition:all .35s;width:100%}
 .mf-send:hover{background:var(--c);border-color:var(--c);color:#000}
 .mf-send:disabled{opacity:.5;cursor:not-allowed}
 .mf-send .arr{font-size:20px;transition:transform .25s}
@@ -238,25 +175,27 @@ nav a:hover::after{width:100%}
 .mf-success small{display:block;margin-top:8px;font-size:11px;opacity:.35;letter-spacing:.15em;text-transform:uppercase;color:#fff}
 
 /* ─── WHATSAPP ─── */
-.wa-float{position:fixed;bottom:28px;right:28px;z-index:3000;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;padding:14px 22px;border-radius:50px;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:.03em;box-shadow:0 8px 32px rgba(37,211,102,.35);transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap}
-.wa-float:hover{background:#1ebe5d;transform:translateY(-3px);box-shadow:0 14px 44px rgba(37,211,102,.5);color:#fff}
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:3000;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;padding:14px 22px;border-radius:50px;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;box-shadow:0 8px 32px rgba(37,211,102,.35);transition:all .3s;white-space:nowrap}
+.wa-float:hover{background:#1ebe5d;transform:translateY(-3px);color:#fff}
 .wa-float svg{width:22px;height:22px;flex-shrink:0;fill:currentColor}
 .wa-label{display:inline}
 
 /* ─── FOOTER ─── */
-.footer{background:#000;border-top:1px solid rgba(255,255,255,0.12);padding:28px 60px;display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:.3em;text-transform:uppercase;opacity:.3}
+.footer{background:#000;border-top:1px solid rgba(255,255,255,.12);padding:28px 60px;display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:.3em;text-transform:uppercase;opacity:.3}
 
 /* ─── MOBILE ─── */
 @media(max-width:768px){
   .logo{top:16px;left:16px;width:54px;height:54px}
+  .logo.s2 .lo{font-size:64px;top:-2px;left:-2px}
+  .logo.s2 .lr{font-size:46px;top:6px;left:14px}
   .controls-panel{top:14px;right:12px;gap:5px}
   .chooser-label{display:none}
-  .chooser-select{min-width:140px;font-size:9px;padding:6px 22px 6px 9px}
+  .chooser-select{min-width:148px;font-size:9px;padding:6px 22px 6px 9px}
   nav{top:18px;gap:10px;font-size:7px;letter-spacing:.15em}
   .hero{width:100vw;height:100svh;min-height:100vh}
-  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;min-width:100%;min-height:100%}
+  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .hero h1{font-size:16vw}
-  .services{padding:80px 24px 80px}
+  .services{padding:80px 24px}
   .svc-list{margin-top:40px}
   .svc-item{padding:16px 20px;font-size:9px;letter-spacing:.25em}
   .talk-btn{padding:15px 32px;font-size:10px}
@@ -271,38 +210,39 @@ nav a:hover::after{width:100%}
   .wa-float{padding:13px;border-radius:50%;bottom:20px;right:20px}
   .wa-label{display:none}
   .wa-float svg{width:26px;height:26px}
-  .logo.style2 .lo{font-size:64px;top:-2px;left:-2px}
-  .logo.style2 .lr{font-size:46px;top:6px;left:14px}
 }
 </style>
 </head>
 <body>
 
-<!-- ─── LOGO DISPLAY ─── -->
-<div class="logo style1" id="logoDisplay">
+<div class="logo s1" id="logoDisplay">
   <span class="lo">O</span><span class="sep" style="display:none">·</span><span class="lr">R</span>
 </div>
 
-<!-- ─── CONTROLS PANEL ─── -->
 <div class="controls-panel">
   <div class="chooser-row">
     <label class="chooser-label">Logo</label>
-    <select class="chooser-select" id="logoSelect" onchange="changeLogoFromSelect()">
-      <option value="style1">1 — Classic Stroke</option>
-      <option value="style2">2 — Serif Monogram</option>
-      <option value="style3">3 — White Square</option>
-      <option value="style4">4 — Dot Separator</option>
-      <option value="style5">5 — Neon Glow</option>
-      <option value="style6">6 — Bold Split</option>
-      <option value="style7">7 — Outlined Box</option>
-      <option value="style8">8 — Stacked</option>
-      <option value="style9">9 — Slash Mono</option>
-      <option value="style10">10 — Inverted Gold</option>
-      <option value="style11">11 — Orbitron Tech</option>
-      <option value="style12">12 — Syne Ultra</option>
-      <option value="style13">13 — Circle Badge</option>
-      <option value="style14">14 — Michroma Tech</option>
-      <option value="style15">15 — League Spartan</option>
+    <select class="chooser-select" id="logoSelect" onchange="changeLogo()">
+      <option value="s1">1 — Classic Stroke</option>
+      <option value="s2">2 — Serif Monogram</option>
+      <option value="s3">3 — White Square</option>
+      <option value="s4">4 — Dot Separator</option>
+      <option value="s5">5 — Neon Glow</option>
+      <option value="s6">6 — Bold Split</option>
+      <option value="s7">7 — Outlined Box</option>
+      <option value="s8">8 — Stacked</option>
+      <option value="s9">9 — Slash Mono</option>
+      <option value="s10">10 — Inverted Gold</option>
+      <option value="s11">11 — Orbitron Tech</option>
+      <option value="s12">12 — Syne Ultra</option>
+      <option value="s13">13 — Circle Badge</option>
+      <option value="s14">14 — Michroma</option>
+      <option value="s15">15 — League Spartan</option>
+      <option value="s16">16 — Unbounded</option>
+      <option value="s17">17 — Space Grotesk Split</option>
+      <option value="s18">18 — Gradient Block</option>
+      <option value="s19">19 — Kanit Bordered</option>
+      <option value="s20">20 — Chakra Stack</option>
     </select>
   </div>
   <div class="chooser-row">
@@ -332,6 +272,11 @@ nav a:hover::after{width:100%}
       <option value="Saira Condensed">22 — Saira Condensed</option>
       <option value="Changa">23 — Changa</option>
       <option value="Syncopate">24 — Syncopate</option>
+      <option value="Unbounded">25 — Unbounded</option>
+      <option value="Space Grotesk">26 — Space Grotesk</option>
+      <option value="Kanit">27 — Kanit</option>
+      <option value="Chakra Petch">28 — Chakra Petch</option>
+      <option value="Noto Serif Display">29 — Noto Serif Display</option>
     </select>
   </div>
 </div>
@@ -352,7 +297,7 @@ nav a:hover::after{width:100%}
 
 <section class="services" id="services">
   <p class="svc-eyebrow">Marketing Agency — UAE &amp; Beyond</p>
-  <h2 class="svc-headline">MORE THAN CONTENT,<br>MORE THAN TRENDS.<br><em>WE CREATE DEMAND.</em></h2>
+  <h2 class="svc-headline" id="svcHeadline">MORE THAN CONTENT,<br>MORE THAN TRENDS.<br><em>WE CREATE DEMAND.</em></h2>
   <div class="svc-list">
     <div class="svc-item">Content</div>
     <div class="svc-item">SM Management</div>
@@ -372,7 +317,6 @@ nav a:hover::after{width:100%}
   </div>
 </div>
 
-<!-- ─── GALLERY — loud.ae column parallax style ─── -->
 <section class="gallery-section" id="gallery"></section>
 
 <footer class="footer">
@@ -380,13 +324,13 @@ nav a:hover::after{width:100%}
   <span>© 2025 All rights reserved</span>
 </footer>
 
-<div class="lb" id="lb" onclick="lbBgClick(event)">
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
   <button class="lb-close" onclick="closeLb()">✕ &nbsp;Close</button>
   <img id="lbImg" src="" alt="">
   <span class="lb-hint">Click backdrop or press ESC to close</span>
 </div>
 
-<div class="modal-overlay" id="modalOverlay" onclick="overlayClick(event)">
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-title">LET'S<br><span>MAKE NOISE</span></div>
@@ -409,337 +353,285 @@ nav a:hover::after{width:100%}
   </div>
 </div>
 
-<a href="https://wa.me/971568475645" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
+<a href="https://wa.me/971568475645" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   <span class="wa-label">Chat on WhatsApp</span>
 </a>
 
 <script>
-/* ─── EMAIL JS ─── */
-const EJ_KEY = 'MfKifkzUIPhOg2uQg';
-const EJ_SVC = 'service_r4vas1a';
-const EJ_TPL = 'template_vku1h9b';
-emailjs.init({ publicKey: EJ_KEY });
+/* ─── EMAILJS ─── */
+emailjs.init({ publicKey: 'MfKifkzUIPhOg2uQg' });
 
 /* ─── VIDEO ─── */
 const vid = document.getElementById('bgv');
-vid.muted = true;
-vid.load();
-vid.play().catch(() => {
-  ['touchstart','click','pointerdown'].forEach(ev =>
-    window.addEventListener(ev, () => vid.play().catch(() => {}), { once: true })
-  );
+vid.muted = true; vid.load();
+vid.play().catch(()=>{
+  ['touchstart','click','pointerdown'].forEach(ev=>
+    window.addEventListener(ev,()=>vid.play().catch(()=>{}),{once:true}));
 });
 
-/* ─── LENIS ─── */
+/* ─── LENIS smooth scroll ─── */
 const lenis = new Lenis({ lerp: 0.08 });
 
-/* ─── GALLERY: loud.ae exact 3-layer parallax ─── */
-/*
-  How loud.ae actually works (from detailed video frame analysis):
-  
-  3 PARALLAX LAYERS — not column lanes. Each layer is a GROUP of cards
-  all positioned absolutely across the full viewport, moving as one unit.
-  
-  Cards within each layer stack vertically with heavy overlap (~45%).
-  Cards from DIFFERENT layers are horizontally positioned to OVERLAP each other.
-  
-  The differential scroll speeds (Layer A slow, B medium, C fast) cause cards
-  from different layers to slide past each other BOTH vertically AND horizontally
-  as the user scrolls — this IS the loud.ae crossing/overlapping photo effect.
-  
-  Layer A (speed 0.06): left-anchored cards — bleeds from left edge, ~32vw wide
-  Layer B (speed 0.16): center cards — positioned 33–65vw, starts 28vh lower
-  Layer C (speed 0.27): right-anchored cards — 63–96vw, starts 5vh from top
-  
-  Because B and C are faster, they rise quicker than A. So on scroll:
-  - B cards appear to cross over A cards horizontally
-  - C cards fly past both A and B
-  This creates the overlapping in all directions.
-*/
+/* ═══════════════════════════════════════════════════════
+   GALLERY — exact loud.ae 3-column parallax
+   
+   Measured pixel-by-pixel from loud.ae mobile screenshot (390px CSS):
+   
+   MOBILE columns:
+     Col L: x=34px,  w=106px (27.2%) — SLOWEST  speed=0.10
+     Col C: x=147px, w=79px  (20.2%) — FASTEST  speed=0.26  ← narrower!
+     Col R: x=244px, w=126px (32.4%) — MEDIUM   speed=0.18
+     Gap L→C: 7px,  Gap C→R: 18px
+   
+   DESKTOP columns (measured at 1536px):
+     Col L: x=78px,  w=468px (30.5%) — speed=0.10
+     Col C: x=571px, w=432px (28.1%) — speed=0.26
+     Col R: x=1068px,w=466px (30.3%) — speed=0.18
+     Gap L→C: 25px, Gap C→R: 65px
+   
+   CARDS: overlap each other by ~15px within same column (negative gap)
+   STAGGER: Col C starts 90px higher, Col R starts 80px lower
+   Card heights: measured ratios from screenshot — tall portrait + short landscape
+   
+   ZERO animation inside photos. Only columns translate.
+═══════════════════════════════════════════════════════ */
 
-const GH_BASE = 'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/';
-const IMGS = Array.from({length:17},(_,i) => `${GH_BASE}image${String(i+1).padStart(5,'0')}.jpeg`);
+(function buildGallery() {
+  const GH = 'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/';
+  const IMGS = Array.from({length:17},(_,i)=>`${GH}image${String(i+1).padStart(5,'0')}.jpeg`);
 
-const VW = window.innerWidth;
-const VH = window.innerHeight;
-const isMobile = VW <= 768;
+  const VW  = window.innerWidth;
+  const mob = VW <= 768;
+  const OV  = 15; // card overlap in px (next card's top = prev bottom - OV)
 
-const gallery = document.getElementById('gallery');
+  // ── Column dimensions ──
+  const wL = mob ? Math.round(VW*.272) : Math.round(VW*.305);
+  const wC = mob ? Math.round(VW*.202) : Math.round(VW*.281);
+  const wR = mob ? Math.round(VW*.323) : Math.round(VW*.303);
 
-// ── Build 3 layers with their card positions ──
-// Each layer: speed, zBase, and array of card definitions {x, y, w, h, imgIdx}
+  // ── Column X positions ──
+  const gLC = mob ? 7  : 25;
+  const gCR = mob ? 18 : 65;
+  const xL  = mob ? Math.round(VW*.087) : Math.round(VW*.051);
+  const xC  = xL + wL + gLC;
+  const xR  = xC + wC + gCR;
 
-function buildLayers() {
-  if (!isMobile) {
-    // ── DESKTOP ──
-    // Layer A cards: left side, bleeds from -2% to ~37%
-    const wA = Math.round(VW * 0.34);
-    const xA = Math.round(VW * -0.03);
-    const layerA = { speed: 0.06, zBase: 10, cards: [] };
-    const seqA = [0.72, 1.42, 0.80, 1.38, 0.75, 1.45]; // height/width ratios alternating land/port
-    let yA = 0;
-    [0,3,6,9,12,15].forEach((imgIdx,i) => {
-      const h = Math.round(wA * seqA[i % seqA.length]);
-      layerA.cards.push({ x: xA, y: yA, w: wA, h, imgIdx });
-      yA += Math.round(h * 0.55); // 45% overlap
+  // ── Column start Y stagger ──
+  // Col C starts HIGHER (first card enters viewport first — exits first too)
+  // Col R starts LOWER (delayed entry)
+  const startL =  0;
+  const startC = mob ? -Math.round(VW*.23) : -90;
+  const startR = mob ?  Math.round(VW*.20) :  80;
+
+  // ── Card aspect ratios per column ──
+  // Measured from loud.ae screenshot + video frames
+  // Alternating tall portrait / short landscape creates the stagger look
+  const ratL = [1.56, 0.80, 1.42, 0.76, 1.50, 0.82]; // col L
+  const ratC = [1.99, 0.65, 1.85, 0.68, 1.92, 0.70]; // col C — very tall portraits
+  const ratR = [0.78, 0.84, 1.25, 0.82, 1.18, 0.86]; // col R — starts landscape
+
+  // ── Image assignment ──
+  const iL = [0, 3,  6,  9, 12, 15];
+  const iC = [1, 4,  7, 10, 13, 16];
+  const iR = [2, 5,  8, 11, 14    ];
+
+  const defs = [
+    {x:xL, w:wL, spd:0.10, sy:startL, imgs:iL, rat:ratL},
+    {x:xC, w:wC, spd:0.26, sy:startC, imgs:iC, rat:ratC},
+    {x:xR, w:wR, spd:0.18, sy:startR, imgs:iR, rat:ratR},
+  ];
+
+  const gEl   = document.getElementById('gallery');
+  const colEls = [];
+  let gi = 0;
+
+  defs.forEach(def => {
+    const col = document.createElement('div');
+    col.className = 'g-col';
+    col.style.cssText = `left:${def.x}px;width:${def.w}px;`;
+    col.dataset.spd = def.spd;
+
+    let y = def.sy;
+
+    def.imgs.forEach((idx, ci) => {
+      const r    = def.rat[ci % def.rat.length];
+      const h    = Math.round(def.w * r);
+      const src  = IMGS[idx % IMGS.length];
+
+      const card = document.createElement('div');
+      card.className = 'g-card';
+      // Later cards sit ON TOP of earlier cards (higher z-index = in front)
+      card.style.cssText = `top:${y}px;width:${def.w}px;height:${h}px;z-index:${ci+1};`;
+
+      const img = document.createElement('img');
+      img.alt = `Work ${idx+1}`;
+      img.decoding = 'async';
+      img.width = def.w;
+      img.height = h;
+
+      // Fade in only — no zoom, no scale, no movement
+      const done = () => img.classList.add('loaded');
+      img.addEventListener('load', done, {once:true});
+
+      if (gi < 6) {
+        img.src = src; img.loading = 'eager';
+        if (gi < 3) img.setAttribute('fetchpriority','high');
+        if (img.complete && img.naturalWidth) done();
+      } else {
+        img.loading = 'lazy'; img.dataset.src = src;
+      }
+
+      // Double-tap = lightbox
+      let cc=0, ct=null;
+      card.addEventListener('click',()=>{
+        cc++;
+        if(cc===1){ ct=setTimeout(()=>{cc=0;},300); }
+        else { clearTimeout(ct); cc=0; openLb(src); }
+      });
+
+      card.appendChild(img);
+      col.appendChild(card);
+
+      // Next card overlaps this one by OV pixels
+      y += h - OV;
+      gi++;
     });
 
-    // Layer B cards: center, 33–65vw, starts 28vh lower
-    const wB = Math.round(VW * 0.32);
-    const xB = Math.round(VW * 0.335);
-    const layerB = { speed: 0.16, zBase: 20, cards: [] };
-    const seqB = [1.44, 0.86, 1.50, 0.90, 1.40, 1.46];
-    let yB = Math.round(VH * 0.28);
-    [1,4,7,10,13,16].forEach((imgIdx,i) => {
-      const h = Math.round(wB * seqB[i % seqB.length]);
-      layerB.cards.push({ x: xB, y: yB, w: wB, h, imgIdx });
-      yB += Math.round(h * 0.57);
+    col.dataset.totalH = y;
+    gEl.appendChild(col);
+    colEls.push(col);
+  });
+
+  // Gallery height
+  const maxH = Math.max(...colEls.map(c=>parseFloat(c.dataset.totalH)));
+  gEl.style.height = (maxH + (mob?300:500)) + 'px';
+
+  // Lazy observer
+  const obs = new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        const img=e.target;
+        if(img.dataset.src){img.src=img.dataset.src;img.removeAttribute('data-src');}
+        obs.unobserve(img);
+      }
     });
+  },{rootMargin:'600px 0px'});
+  gEl.querySelectorAll('img[data-src]').forEach(img=>obs.observe(img));
 
-    // Layer C cards: right side, 63–96vw, starts 5vh from top
-    const wC = Math.round(VW * 0.33);
-    const xC = Math.round(VW * 0.635);
-    const layerC = { speed: 0.27, zBase: 15, cards: [] };
-    const seqC = [0.78, 1.38, 0.82, 1.42, 1.35];
-    let yC = Math.round(VH * 0.05);
-    [2,5,8,11,14].forEach((imgIdx,i) => {
-      const h = Math.round(wC * seqC[i % seqC.length]);
-      layerC.cards.push({ x: xC, y: yC, w: wC, h, imgIdx });
-      yC += Math.round(h * 0.56);
-    });
+  // Preload first 6
+  IMGS.slice(0,6).forEach((src,i)=>{
+    const l=document.createElement('link');
+    l.rel='preload';l.as='image';l.href=src;
+    if(i<3)l.setAttribute('fetchpriority','high');
+    document.head.appendChild(l);
+  });
 
-    return [layerA, layerB, layerC];
-
-  } else {
-    // ── MOBILE ──
-    const wA = Math.round(VW * 0.62);
-    const xA = Math.round(VW * -0.02);
-    const layerA = { speed: 0.06, zBase: 10, cards: [] };
-    let yA = 0;
-    [0,3,6,9,12].forEach((imgIdx,i) => {
-      const h = Math.round(wA * (i%2===0 ? 1.32 : 0.76));
-      layerA.cards.push({ x:xA, y:yA, w:wA, h, imgIdx });
-      yA += Math.round(h * 0.52);
-    });
-
-    const wB = Math.round(VW * 0.58);
-    const xB = Math.round(VW * 0.32);
-    const layerB = { speed: 0.16, zBase: 20, cards: [] };
-    let yB = Math.round(VH * 0.22);
-    [1,4,7,10,13].forEach((imgIdx,i) => {
-      const h = Math.round(wB * (i%2===0 ? 1.44 : 0.84));
-      layerB.cards.push({ x:xB, y:yB, w:wB, h, imgIdx });
-      yB += Math.round(h * 0.54);
-    });
-
-    const wC = Math.round(VW * 0.55);
-    const xC = Math.round(VW * 0.44);
-    const layerC = { speed: 0.27, zBase: 15, cards: [] };
-    let yC = Math.round(VH * 0.06);
-    [2,5,8,11,14,15,16].forEach((imgIdx,i) => {
-      const h = Math.round(wC * (i%2===0 ? 0.80 : 1.38));
-      layerC.cards.push({ x:xC, y:yC, w:wC, h, imgIdx });
-      yC += Math.round(h * 0.53);
-    });
-
-    return [layerA, layerB, layerC];
+  // Cache gallery offset
+  let gTop=0;
+  function cacheTop(){
+    let el=gEl,t=0;
+    while(el){t+=el.offsetTop;el=el.offsetParent;}
+    gTop=t;
   }
-}
+  window.addEventListener('load',cacheTop);
+  setTimeout(cacheTop,200);
+  window.addEventListener('resize',cacheTop);
 
-const layers = buildLayers();
-
-// Gallery height: tallest layer content + padding
-let maxBottom = 0;
-layers.forEach(layer => layer.cards.forEach(c => {
-  maxBottom = Math.max(maxBottom, c.y + c.h);
-}));
-gallery.style.height = (maxBottom + (isMobile ? 200 : 340)) + 'px';
-
-// Lazy observer
-const imgObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const img = e.target;
-      if (img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); }
-      imgObserver.unobserve(img);
-    }
-  });
-}, { rootMargin: '400px 0px' });
-
-// Build DOM
-const layerEls = layers.map((layer, lIdx) => {
-  const layerEl = document.createElement('div');
-  layerEl.className = 'g-layer';
-  layerEl.dataset.speed = layer.speed;
-
-  layer.cards.forEach((c, cIdx) => {
-    const src = IMGS[c.imgIdx % IMGS.length];
-
-    const card = document.createElement('div');
-    card.className = 'g-card';
-    card.style.cssText = `left:${c.x}px;top:${c.y}px;width:${c.w}px;height:${c.h}px;z-index:${layer.zBase + cIdx}`;
-
-    const img = document.createElement('img');
-    img.alt = `Work ${c.imgIdx + 1}`;
-    img.decoding = 'async';
-    img.width = c.w;
-    img.height = c.h;
-
-    const markLoaded = () => img.classList.add('loaded');
-    img.addEventListener('load', markLoaded, {once:true});
-
-    const globalIdx = lIdx * 6 + cIdx;
-    if (globalIdx < 6) {
-      img.src = src; img.loading = 'eager';
-      if (globalIdx < 3) img.setAttribute('fetchpriority','high');
-      if (img.complete && img.naturalWidth > 0) markLoaded();
-    } else {
-      img.loading = 'lazy'; img.dataset.src = src;
-      imgObserver.observe(img);
-    }
-
-    let clickCount = 0, clickTimer = null;
-    card.addEventListener('click', () => {
-      clickCount++;
-      if (clickCount === 1) { clickTimer = setTimeout(() => { clickCount = 0; }, 300); }
-      else { clearTimeout(clickTimer); clickCount = 0; openLb(src); }
+  // RAF — columns move at different speeds = "row by row" movement effect
+  // Col C fastest → its cards exit viewport first
+  // Col L slowest → its cards linger
+  // The stagger means Col C row2 is visible while Col L row1 still shows = cross-column overlap
+  function tick(t){
+    lenis.raf(t);
+    const sc = lenis.scroll;
+    const lc = Math.max(0, sc - gTop);
+    colEls.forEach(c=>{
+      c.style.transform = `translate3d(0,${-lc*parseFloat(c.dataset.spd)}px,0)`;
     });
-
-    card.appendChild(img);
-    layerEl.appendChild(card);
-  });
-
-  gallery.appendChild(layerEl);
-  return layerEl;
-});
-
-// Preload first images
-IMGS.slice(0,6).forEach((src,idx) => {
-  const link = document.createElement('link');
-  link.rel='preload'; link.as='image'; link.href=src;
-  if(idx<3) link.setAttribute('fetchpriority','high');
-  document.head.appendChild(link);
-});
-
-// Cache gallery top
-let gTop = 0;
-function cacheGTop() {
-  let el = gallery, t = 0;
-  while (el) { t += el.offsetTop; el = el.offsetParent; }
-  gTop = t;
-}
-window.addEventListener('load', cacheGTop);
-setTimeout(cacheGTop, 200);
-window.addEventListener('resize', cacheGTop);
-
-// RAF loop — each layer moves at its own speed
-// The DIFFERENCE in speeds = cards crossing each other horizontally as you scroll
-function tick(time) {
-  lenis.raf(time);
-  const scroll = lenis.scroll;
-  const local = Math.max(0, scroll - gTop);
-
-  layerEls.forEach(layerEl => {
-    const speed = parseFloat(layerEl.dataset.speed);
-    layerEl.style.transform = `translate3d(0,${-local * speed}px,0)`;
-  });
-
+    requestAnimationFrame(tick);
+  }
   requestAnimationFrame(tick);
-}
-requestAnimationFrame(tick);
+})();
 
-/* ─── LOGO LOGIC ─── */
-function applyLogoStyle(style) {
+/* ─── LOGO ─── */
+function changeLogo(){
+  const s = document.getElementById('logoSelect').value;
   const logo = document.getElementById('logoDisplay');
   const sep  = logo.querySelector('.sep');
-  logo.className = 'logo ' + style;
-  if (style === 'style4') { sep.textContent = '·'; sep.style.display = 'inline'; }
-  else if (style === 'style9') { sep.textContent = '/'; sep.style.display = 'inline'; }
-  else { sep.style.display = 'none'; }
+  logo.className = 'logo ' + s;
+  if(s==='s4'){ sep.textContent='·'; sep.style.display='inline'; }
+  else if(s==='s9'){ sep.textContent='/'; sep.style.display='inline'; }
+  else { sep.style.display='none'; }
+  localStorage.setItem('logo', s);
 }
 
-function changeLogoFromSelect() {
-  const style = document.getElementById('logoSelect').value;
-  applyLogoStyle(style);
-  localStorage.setItem('selectedLogoStyle', style);
-}
-
-/* ─── FONT LOGIC ─── */
-function changeFont() {
+/* ─── FONT ─── */
+function changeFont(){
   const f = document.getElementById('fontSelect').value;
-  document.documentElement.style.setProperty('--font-display', `'${f}'`);
-  localStorage.setItem('selectedFont', f);
+  document.documentElement.style.setProperty('--font-display',`'${f}'`);
+  localStorage.setItem('font', f);
 }
 
-/* ─── INIT PREFERENCES ─── */
-window.addEventListener('load', () => {
-  const savedLogo = localStorage.getItem('selectedLogoStyle') || 'style1';
-  const savedFont = localStorage.getItem('selectedFont')      || 'Bebas Neue';
-  applyLogoStyle(savedLogo);
-  document.getElementById('logoSelect').value = savedLogo;
-  document.getElementById('fontSelect').value = savedFont;
-  document.documentElement.style.setProperty('--font-display', `'${savedFont}'`);
+/* ─── INIT ─── */
+window.addEventListener('load',()=>{
+  const sl = localStorage.getItem('logo') || 's1';
+  const sf = localStorage.getItem('font') || 'Bebas Neue';
+  document.getElementById('logoSelect').value = sl;
+  document.getElementById('fontSelect').value = sf;
+  const logo=document.getElementById('logoDisplay');
+  const sep=logo.querySelector('.sep');
+  logo.className='logo '+sl;
+  if(sl==='s4'){sep.textContent='·';sep.style.display='inline';}
+  else if(sl==='s9'){sep.textContent='/';sep.style.display='inline';}
+  else{sep.style.display='none';}
+  document.documentElement.style.setProperty('--font-display',`'${sf}'`);
 });
 
 /* ─── LIGHTBOX ─── */
-function openLb(src) {
-  document.getElementById('lbImg').src = src;
-  document.getElementById('lb').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLb() {
-  document.getElementById('lb').classList.remove('open');
-  document.body.style.overflow = '';
-  setTimeout(() => { document.getElementById('lbImg').src = ''; }, 400);
-}
-function lbBgClick(e) { if (e.target === document.getElementById('lb')) closeLb(); }
+function openLb(src){ document.getElementById('lbImg').src=src; document.getElementById('lb').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLb(){ document.getElementById('lb').classList.remove('open'); document.body.style.overflow=''; setTimeout(()=>{document.getElementById('lbImg').src='';},400); }
 
 /* ─── MODAL ─── */
-function openModal() { document.getElementById('modalOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
-function openJoinModal() { alert('Join The Team feature coming soon! Send us an email at careers@oceayr.com'); }
-function closeModal() {
+function openModal(){ document.getElementById('modalOverlay').classList.add('open'); document.body.style.overflow='hidden'; }
+function openJoinModal(){ alert('Join The Team — coming soon! Email: careers@oceayr.com'); }
+function closeModal(){
   document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-  setTimeout(() => {
-    ['f-name','f-company','f-email','f-mobile','f-msg'].forEach(id => {
-      const el = document.getElementById(id); if (el) el.value = '';
-    });
-    document.getElementById('formWrap').style.display = '';
-    document.getElementById('successMsg').style.display = 'none';
-    document.getElementById('sendBtn').disabled = false;
-    document.getElementById('sendLabel').textContent = 'Send Brief';
-    document.getElementById('sendArr').textContent = '→';
-    document.getElementById('formNote').style.display = '';
-  }, 500);
+  document.body.style.overflow='';
+  setTimeout(()=>{
+    ['f-name','f-company','f-email','f-mobile','f-msg'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    document.getElementById('formWrap').style.display='';
+    document.getElementById('successMsg').style.display='none';
+    document.getElementById('sendBtn').disabled=false;
+    document.getElementById('sendLabel').textContent='Send Brief';
+    document.getElementById('sendArr').textContent='→';
+    document.getElementById('formNote').style.display='';
+  },500);
 }
-function overlayClick(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLb(); closeModal(); } });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){closeLb();closeModal();} });
 
-/* ─── FORM SEND ─── */
-async function sendForm() {
-  const n  = document.getElementById('f-name').value.trim();
-  const em = document.getElementById('f-email').value.trim();
-  const co = document.getElementById('f-company').value.trim();
-  const mo = document.getElementById('f-mobile').value.trim();
-  const ms = document.getElementById('f-msg').value.trim();
-  if (!n || !em) { alert('Name and Email required'); return; }
-  const btn = document.getElementById('sendBtn');
-  btn.disabled = true;
-  document.getElementById('sendLabel').textContent = 'Sending...';
-  document.getElementById('sendArr').textContent = '…';
-  try {
-    await emailjs.send(EJ_SVC, EJ_TPL, { name:n, email:em, company:co||'—', mobile:mo||'—', message:ms||'—' });
-    document.getElementById('formWrap').style.display = 'none';
-    document.getElementById('formNote').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
-    setTimeout(closeModal, 3500);
-  } catch(err) {
-    console.warn('EmailJS:', err);
-    btn.disabled = false;
-    document.getElementById('sendLabel').textContent = 'Error. Try Again';
+/* ─── SEND FORM ─── */
+async function sendForm(){
+  const n=document.getElementById('f-name').value.trim();
+  const em=document.getElementById('f-email').value.trim();
+  const co=document.getElementById('f-company').value.trim();
+  const mo=document.getElementById('f-mobile').value.trim();
+  const ms=document.getElementById('f-msg').value.trim();
+  if(!n||!em){alert('Name and Email required');return;}
+  const btn=document.getElementById('sendBtn');
+  btn.disabled=true;
+  document.getElementById('sendLabel').textContent='Sending...';
+  document.getElementById('sendArr').textContent='…';
+  try{
+    await emailjs.send('service_r4vas1a','template_vku1h9b',{name:n,email:em,company:co||'—',mobile:mo||'—',message:ms||'—'});
+    document.getElementById('formWrap').style.display='none';
+    document.getElementById('formNote').style.display='none';
+    document.getElementById('successMsg').style.display='block';
+    setTimeout(closeModal,3500);
+  }catch(err){
+    console.warn('EmailJS:',err);
+    btn.disabled=false;
+    document.getElementById('sendLabel').textContent='Error. Try Again';
   }
 }
 </script>
