@@ -4,107 +4,117 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OCEAYR | Agency</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Bebas+Neue&family=Teko:wght@600;700&family=Cormorant+Garamond:wght@600;700&family=Abril+Fatface&family=Russo+One&family=Bungee&family=Righteous&family=Alfa+Slab+One&family=Black+Ops+One&family=Fjalla+One&family=Josefin+Sans:wght@700&family=Playfair+Display:wght@700;900&family=DM+Serif+Display&family=Oswald:wght@700&family=Anton&family=Syne:wght@700;800&family=Big+Shoulders+Display:wght@700;900&family=League+Spartan:wght@700;900&family=Barlow+Condensed:wght@700;900&family=Orbitron:wght@700;900&family=Exo+2:wght@800;900&family=Rajdhani:wght@700&family=Saira+Condensed:wght@700;900&family=Changa:wght@700;800&family=Michroma&family=Syncopate:wght@700&family=Unbounded:wght@700;900&family=Space+Grotesk:wght@700&family=Kanit:wght@700;900&family=Chakra+Petch:wght@700&family=Noto+Serif+Display:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Bebas+Neue&family=Teko:wght@600;700&family=Cormorant+Garamond:wght@600;700&family=Abril+Fatface&family=Russo+One&family=Bungee&family=Righteous&family=Alfa+Slab+One&family=Black+Ops+One&family=Fjalla+One&family=Josefin+Sans:wght@700&family=Playfair+Display:wght@700;900&family=DM+Serif+Display&family=Oswald:wght@700&family=Anton&family=Syne:wght@700;800&family=Big+Shoulders+Display:wght@700;900&family=League+Spartan:wght@700;900&family=Barlow+Condensed:wght@700;900&family=Orbitron:wght@700;900&family=Exo+2:wght@800;900&family=Rajdhani:wght@700&family=Saira+Condensed:wght@700;900&family=Changa:wght@700;800&family=Michroma&family=Syncopate:wght@700&family=Unbounded:wght@700;900&family=Space+Grotesk:wght@700&family=Kanit:wght@700;900&family=Chakra+Petch:wght@700&family=Noto+Serif+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
-
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--c:#D4AF37;--bg:#000;--fg:#fff;--font-display:'Bebas Neue'}
 html,body{background:#000;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden;cursor:default;user-select:none}
 
-/* ─── LOGO ─── */
+/* ══ LOGO STYLES ══ */
 .logo{position:fixed;top:24px;left:32px;z-index:2000;display:flex;align-items:center;justify-content:center;width:72px;height:72px;font-family:'Inter',sans-serif;font-weight:900;font-size:32px;line-height:1;cursor:default;transition:all .3s;pointer-events:none}
-.logo.s1{background:transparent}
 .logo.s1 .lo{display:inline-block;color:#fff;-webkit-text-stroke:2px #000;paint-order:stroke fill;position:relative;z-index:2;font-size:44px}
 .logo.s1 .lr{display:inline-block;color:#fff;-webkit-text-stroke:2px #000;paint-order:stroke fill;position:relative;z-index:1;margin-left:-12px;font-size:44px}
-.logo.s2{background:transparent;width:74px;height:74px;position:relative;overflow:visible;padding:0}
+.logo.s2{width:74px;height:74px;position:relative;overflow:visible;padding:0}
 .logo.s2 .lo{position:absolute;font-family:'Cormorant Garamond',serif;font-size:78px;font-weight:700;color:transparent;-webkit-text-stroke:2px #fff;line-height:1;top:-4px;left:-2px;z-index:1;letter-spacing:-2px}
 .logo.s2 .lr{position:absolute;font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:700;color:#fff;line-height:1;top:6px;left:17px;z-index:2}
 .logo.s2 .sep{display:none}
 .logo.s3{background:#fff;border-radius:4px;padding:8px}
 .logo.s3 .lo{color:#000;font-size:36px;margin-right:-6px}
 .logo.s3 .lr{color:var(--c);font-size:36px}
-.logo.s4{background:transparent;font-size:28px;letter-spacing:2px;gap:2px}
 .logo.s4 .lo{color:#fff;font-weight:900;font-size:32px}
 .logo.s4 .sep{color:var(--c);font-size:38px;line-height:.7;align-self:center;display:inline}
 .logo.s4 .lr{color:var(--c);font-weight:900;font-size:32px}
-.logo.s5{background:transparent}
 .logo.s5 .lo{color:#fff;font-size:44px;text-shadow:0 0 12px var(--c),0 0 28px var(--c);position:relative;z-index:2}
 .logo.s5 .lr{color:var(--c);font-size:44px;margin-left:-10px;text-shadow:0 0 12px var(--c),0 0 28px var(--c);position:relative;z-index:1}
-.logo.s6{background:transparent;gap:0}
 .logo.s6 .lo{font-size:48px;color:var(--c);font-weight:900;position:relative;z-index:2}
 .logo.s6 .lr{font-size:48px;color:#fff;font-weight:900;margin-left:-14px;position:relative;z-index:1}
-.logo.s7{background:transparent;border:2px solid var(--c);border-radius:6px;width:64px;height:64px}
+.logo.s7{border:2px solid var(--c);border-radius:6px;width:64px;height:64px}
 .logo.s7 .lo{color:transparent;-webkit-text-stroke:2px #fff;font-size:38px;position:relative;z-index:2;margin-right:-8px}
 .logo.s7 .lr{color:transparent;-webkit-text-stroke:2px var(--c);font-size:38px;position:relative;z-index:1}
-.logo.s8{background:transparent;flex-direction:column;gap:0;height:68px;width:52px}
+.logo.s8{flex-direction:column;gap:0;height:68px;width:52px}
 .logo.s8 .lo{color:#fff;font-size:36px;line-height:1;border-bottom:2px solid var(--c);padding-bottom:2px;width:100%;text-align:center}
 .logo.s8 .lr{color:var(--c);font-size:36px;line-height:1;width:100%;text-align:center}
-.logo.s9{background:transparent;gap:0;width:80px}
+.logo.s9{gap:0;width:80px}
 .logo.s9 .lo{color:#fff;font-size:36px;font-weight:900}
 .logo.s9 .sep{color:rgba(255,255,255,.25);font-size:44px;font-weight:100;margin:0 1px;line-height:1;font-style:italic;display:inline}
 .logo.s9 .lr{color:var(--c);font-size:36px;font-weight:900}
 .logo.s10{background:var(--c);width:64px;height:64px;overflow:hidden}
-.logo.s10 .lo{color:#000;font-size:38px;position:relative;z-index:2;margin-right:-6px;font-weight:900}
-.logo.s10 .lr{color:#000;font-size:38px;position:relative;z-index:2;font-weight:900}
-.logo.s11{background:transparent;gap:0;width:80px}
+.logo.s10 .lo{color:#000;font-size:38px;margin-right:-6px;font-weight:900}
+.logo.s10 .lr{color:#000;font-size:38px;font-weight:900}
+.logo.s11{gap:0;width:80px}
 .logo.s11 .lo{font-family:'Orbitron',sans-serif;color:#fff;font-size:26px;font-weight:900;position:relative;z-index:2}
 .logo.s11 .lr{font-family:'Orbitron',sans-serif;color:var(--c);font-size:26px;font-weight:900;margin-left:-2px;position:relative;z-index:1}
-.logo.s12{background:transparent;gap:0}
 .logo.s12 .lo{font-family:'Syne',sans-serif;color:#fff;font-size:50px;font-weight:800;position:relative;z-index:2;line-height:1}
 .logo.s12 .lr{font-family:'Syne',sans-serif;color:var(--c);font-size:50px;font-weight:800;margin-left:-16px;position:relative;z-index:1}
-.logo.s13{background:transparent;border:2px solid #fff;border-radius:50%;width:62px;height:62px;gap:0}
+.logo.s13{border:2px solid #fff;border-radius:50%;width:62px;height:62px;gap:0}
 .logo.s13 .lo{color:#fff;font-size:32px;font-weight:900;margin-right:-5px;position:relative;z-index:2}
 .logo.s13 .lr{color:var(--c);font-size:32px;font-weight:900;position:relative;z-index:1}
-.logo.s14{background:transparent;gap:0;width:72px}
+.logo.s14{gap:0;width:72px}
 .logo.s14 .lo{font-family:'Michroma',sans-serif;color:var(--c);font-size:24px;letter-spacing:-1px;position:relative;z-index:2}
 .logo.s14 .lr{font-family:'Michroma',sans-serif;color:#fff;font-size:24px;position:relative;z-index:1;letter-spacing:-1px}
-.logo.s15{background:transparent;gap:0;border-bottom:3px solid var(--c);padding-bottom:3px}
+.logo.s15{gap:0;border-bottom:3px solid var(--c);padding-bottom:3px}
 .logo.s15 .lo{font-family:'League Spartan',sans-serif;color:#fff;font-size:48px;font-weight:900;position:relative;z-index:2;line-height:1;margin-right:-12px}
 .logo.s15 .lr{font-family:'League Spartan',sans-serif;color:var(--c);font-size:48px;font-weight:900;position:relative;z-index:1;line-height:1}
-.logo.s16{background:transparent;gap:0}
+.logo.s16{gap:0}
 .logo.s16 .lo{font-family:'Unbounded',sans-serif;color:#fff;font-size:28px;font-weight:900;position:relative;z-index:2;line-height:1}
 .logo.s16 .lr{font-family:'Unbounded',sans-serif;color:var(--c);font-size:28px;font-weight:900;position:relative;z-index:1;line-height:1;margin-left:-4px}
-.logo.s17{background:transparent;position:relative;width:68px;height:68px}
+.logo.s17{position:relative;width:68px;height:68px}
 .logo.s17 .lo{position:absolute;font-family:'Space Grotesk',sans-serif;color:#fff;font-size:46px;font-weight:700;top:2px;left:0;z-index:1;line-height:1}
 .logo.s17 .lr{position:absolute;font-family:'Space Grotesk',sans-serif;color:var(--c);font-size:30px;font-weight:700;bottom:2px;right:0;z-index:2;line-height:1}
-.logo.s18{background:linear-gradient(135deg,#fff 50%,var(--c) 50%);width:60px;height:60px;border-radius:4px}
+.logo.s18{background:linear-gradient(135deg,#fff 50%,var(--c) 50%);width:60px;height:60px;border-radius:4px;overflow:hidden}
 .logo.s18 .lo{color:#000;font-size:38px;font-weight:900;margin-right:-8px;position:relative;z-index:2}
-.logo.s18 .lr{color:#fff;font-size:38px;font-weight:900;position:relative;z-index:1;mix-blend-mode:difference}
-.logo.s19{background:transparent;gap:0;border:1px solid rgba(255,255,255,.3);padding:6px 10px}
+.logo.s18 .lr{color:#000;font-size:38px;font-weight:900;position:relative;z-index:1}
+.logo.s19{gap:0;border:1px solid rgba(255,255,255,.3);padding:6px 10px}
 .logo.s19 .lo{font-family:'Kanit',sans-serif;color:#fff;font-size:38px;font-weight:900;position:relative;z-index:2;margin-right:-8px;line-height:1}
 .logo.s19 .lr{font-family:'Kanit',sans-serif;color:var(--c);font-size:38px;font-weight:900;position:relative;z-index:1;line-height:1}
-.logo.s20{background:transparent;flex-direction:column;gap:0;width:64px;height:60px;align-items:flex-start}
+.logo.s20{flex-direction:column;gap:0;width:64px;height:60px;align-items:flex-start}
 .logo.s20 .lo{font-family:'Chakra Petch',sans-serif;color:#fff;font-size:40px;font-weight:700;line-height:1;z-index:2}
 .logo.s20 .lr{font-family:'Chakra Petch',sans-serif;color:var(--c);font-size:18px;font-weight:700;letter-spacing:.3em;line-height:1;margin-top:-4px}
 
-/* ─── CONTROLS PANEL ─── */
+/* ══ CONTROLS ══ */
 .controls-panel{position:fixed;top:32px;right:32px;z-index:2000;display:flex;flex-direction:column;gap:8px}
 .chooser-row{display:flex;align-items:center;gap:10px}
 .chooser-label{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#fff;opacity:.65;width:32px;text-align:right;flex-shrink:0}
-.chooser-select{background:#161616;border:1px solid rgba(255,255,255,.3);color:#fff;padding:7px 26px 7px 11px;font-size:10px;letter-spacing:.06em;cursor:pointer;transition:all .3s;font-family:'Inter',sans-serif;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23D4AF37'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;outline:none;min-width:190px}
-.chooser-select:hover,.chooser-select:focus{border-color:var(--c);background-color:#1a1a1a}
+.chooser-select{background:#161616;border:1px solid rgba(255,255,255,.3);color:#fff;padding:7px 26px 7px 11px;font-size:10px;cursor:pointer;font-family:'Inter',sans-serif;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23D4AF37'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;outline:none;min-width:192px;transition:border-color .2s}
+.chooser-select:hover,.chooser-select:focus{border-color:var(--c)}
 .chooser-select option{background:#161616;color:#fff}
 
-/* ─── NAV ─── */
+/* ══ NAV ══ */
 nav{position:fixed;top:40px;width:100%;display:flex;justify-content:center;gap:48px;font-size:10px;letter-spacing:.4em;text-transform:uppercase;z-index:2000}
 nav a{color:#fff;text-decoration:none;opacity:.45;position:relative;padding-bottom:3px;transition:all .3s}
 nav a:hover{opacity:1}
 nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--c);transition:width .4s}
 nav a:hover::after{width:100%}
 
-/* ─── HERO ─── */
+/* ══ HERO ══ */
 .hero{position:relative;height:100vh;display:flex;justify-content:center;align-items:center;overflow:hidden;background:#000}
-.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;pointer-events:none;transform:translate3d(0,0,0);will-change:transform;backface-visibility:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;pointer-events:none;transform:translate3d(0,0,0);will-change:transform}
 .hero h1{position:relative;z-index:1;font-family:'Inter',sans-serif;font-size:11vw;font-weight:900;line-height:.82;text-align:center;color:#fff}
 .outline{color:transparent;-webkit-text-stroke:1px #fff}
 
-/* ─── SERVICES ─── */
+/* ══ SERVICES ══ */
 .services{background:#000;border-top:1px solid rgba(255,255,255,.12);padding:120px 40px;text-align:center;display:flex;flex-direction:column;align-items:center}
 .svc-eyebrow{font-size:10px;letter-spacing:.45em;text-transform:uppercase;opacity:.4;margin-bottom:32px;color:#fff}
-.svc-headline{font-family:var(--font-display);font-size:clamp(52px,7.5vw,116px);line-height:.92;letter-spacing:.03em;max-width:920px;color:#fff;transition:font-family .4s}
-.svc-headline em{font-style:normal;color:var(--c)}
+
+/* HEADLINE — forced 3 separate lines for all fonts */
+.svc-headline{
+  font-family:var(--font-display);
+  font-size:clamp(42px,6.5vw,110px);
+  line-height:1.0;
+  letter-spacing:.03em;
+  max-width:960px;
+  color:#fff;
+  transition:font-family .35s;
+  display:flex;
+  flex-direction:column;
+  gap:.08em;
+}
+.svc-headline .hl{display:block;white-space:nowrap}
+.svc-headline .hl.gold{color:var(--c)}
+
 .svc-list{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-top:64px;width:100%;border-top:1px solid rgba(255,255,255,.12);border-left:1px solid rgba(255,255,255,.12)}
 .svc-item{padding:22px 36px;font-size:10px;letter-spacing:.38em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);opacity:.55;transition:all .3s;cursor:default;color:#fff}
 .svc-item:hover{opacity:1;color:#000;background:var(--c)}
@@ -113,41 +123,51 @@ nav a:hover::after{width:100%}
 .talk-btn .arr{font-size:18px;transition:transform .3s}
 .talk-btn:hover .arr{transform:translateX(5px)}
 
-/* ─── TICKER ─── */
+/* ══ TICKER ══ */
 .ticker-section{background:#000;padding-bottom:80px}
 .ticker-wrap{height:96px;display:flex;align-items:center;overflow:hidden;border-top:1px solid rgba(255,255,255,.12);border-bottom:2px solid rgba(255,255,255,.22)}
-.ticker-track{display:flex;flex-shrink:0;width:max-content;animation:tick 22s linear infinite}
+.ticker-track{display:flex;flex-shrink:0;width:max-content;animation:ticker 22s linear infinite}
 .ticker-track span{font-family:'Bebas Neue',sans-serif;font-size:34px;color:#fff;white-space:nowrap;letter-spacing:.28em;padding-right:1.6em;flex-shrink:0;opacity:.82}
-@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ─── GALLERY ─── */
+/* ══ GALLERY ══ */
 .gallery-section{position:relative;width:100%;background:#000;overflow:hidden}
+
+/* Each column — sits at fixed X, translated Y by parallax */
 .g-col{position:absolute;top:0;will-change:transform;transform:translate3d(0,0,0)}
+
+/* Each photo card — draggable, stacked with overlap */
 .g-card{
   position:absolute;
   overflow:hidden;
   background:#0d0d0d;
-  cursor:pointer;
-  /* NO box-shadow, NO hover effects — match loud.ae clean look */
+  cursor:grab;
+  touch-action:none;
+  /* No box-shadow, no border — clean like loud.ae */
 }
-/* STATIC images — fade in only, ZERO zoom, ZERO movement inside photo */
-.g-card img{
-  width:100%;height:100%;object-fit:cover;display:block;
-  pointer-events:none;opacity:0;
-  transition:opacity .4s ease;
-}
-.g-card img.loaded{opacity:1}
+.g-card:active{cursor:grabbing}
 
-/* ─── LIGHTBOX ─── */
+/* Photo image — ZERO internal animation, fade-in only */
+.g-card img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .4s ease;
+  /* NO transform, NO scale, NO zoom */
+}
+.g-card img.vis{opacity:1}
+
+/* ══ LIGHTBOX ══ */
 .lb{position:fixed;inset:0;z-index:9500;background:rgba(0,0,0,.96);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
 .lb.open{opacity:1;pointer-events:all}
-.lb img{max-width:88vw;max-height:88vh;object-fit:contain;box-shadow:0 32px 100px rgba(0,0,0,.98);border:1px solid rgba(255,255,255,.06);transform:scale(.9) translateY(16px);opacity:0;transition:transform .45s cubic-bezier(.25,1,.5,1),opacity .35s;display:block;pointer-events:none}
-.lb.open img{transform:scale(1) translateY(0);opacity:1}
+.lb img{max-width:88vw;max-height:88vh;object-fit:contain;transform:scale(.92);opacity:0;transition:transform .4s cubic-bezier(.25,1,.5,1),opacity .3s;display:block}
+.lb.open img{transform:scale(1);opacity:1}
 .lb-close{position:absolute;top:24px;right:32px;background:none;border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.38em;text-transform:uppercase;padding:10px 22px;cursor:pointer;transition:all .25s}
 .lb-close:hover{background:var(--c);border-color:var(--c);color:#000}
-.lb-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:.35em;text-transform:uppercase;opacity:.22;white-space:nowrap;pointer-events:none}
+.lb-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:.35em;text-transform:uppercase;opacity:.22;pointer-events:none}
 
-/* ─── MODAL ─── */
+/* ══ MODAL ══ */
 .modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.88);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal{background:#0a0a0a;border:1px solid rgba(255,255,255,.12);width:min(600px,92vw);padding:52px 48px 44px;position:relative;transform:translateY(24px);transition:transform .4s}
@@ -174,16 +194,15 @@ nav a:hover::after{width:100%}
 .mf-success p{font-family:var(--font-display);font-size:22px;letter-spacing:.05em;opacity:.9;line-height:1.5;color:#fff}
 .mf-success small{display:block;margin-top:8px;font-size:11px;opacity:.35;letter-spacing:.15em;text-transform:uppercase;color:#fff}
 
-/* ─── WHATSAPP ─── */
+/* ══ WHATSAPP ══ */
 .wa-float{position:fixed;bottom:28px;right:28px;z-index:3000;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;padding:14px 22px;border-radius:50px;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;box-shadow:0 8px 32px rgba(37,211,102,.35);transition:all .3s;white-space:nowrap}
 .wa-float:hover{background:#1ebe5d;transform:translateY(-3px);color:#fff}
-.wa-float svg{width:22px;height:22px;flex-shrink:0;fill:currentColor}
-.wa-label{display:inline}
+.wa-float svg{width:22px;height:22px;fill:currentColor;flex-shrink:0}
 
-/* ─── FOOTER ─── */
+/* ══ FOOTER ══ */
 .footer{background:#000;border-top:1px solid rgba(255,255,255,.12);padding:28px 60px;display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:.3em;text-transform:uppercase;opacity:.3}
 
-/* ─── MOBILE ─── */
+/* ══ MOBILE ══ */
 @media(max-width:768px){
   .logo{top:16px;left:16px;width:54px;height:54px}
   .logo.s2 .lo{font-size:64px;top:-2px;left:-2px}
@@ -196,6 +215,7 @@ nav a:hover::after{width:100%}
   .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .hero h1{font-size:16vw}
   .services{padding:80px 24px}
+  .svc-headline{font-size:clamp(36px,11vw,72px);gap:.1em}
   .svc-list{margin-top:40px}
   .svc-item{padding:16px 20px;font-size:9px;letter-spacing:.25em}
   .talk-btn{padding:15px 32px;font-size:10px}
@@ -208,7 +228,7 @@ nav a:hover::after{width:100%}
   .lb img{max-width:96vw;max-height:80vh}
   .lb-close{top:14px;right:14px;padding:9px 14px;font-size:8px}
   .wa-float{padding:13px;border-radius:50%;bottom:20px;right:20px}
-  .wa-label{display:none}
+  .wa-float span{display:none}
   .wa-float svg{width:26px;height:26px}
 }
 </style>
@@ -222,7 +242,7 @@ nav a:hover::after{width:100%}
 <div class="controls-panel">
   <div class="chooser-row">
     <label class="chooser-label">Logo</label>
-    <select class="chooser-select" id="logoSelect" onchange="changeLogo()">
+    <select class="chooser-select" id="logoSel" onchange="applyLogo()">
       <option value="s1">1 — Classic Stroke</option>
       <option value="s2">2 — Serif Monogram</option>
       <option value="s3">3 — White Square</option>
@@ -247,7 +267,7 @@ nav a:hover::after{width:100%}
   </div>
   <div class="chooser-row">
     <label class="chooser-label">Font</label>
-    <select class="chooser-select" id="fontSelect" onchange="changeFont()">
+    <select class="chooser-select" id="fontSel" onchange="applyFont()">
       <option value="Bebas Neue">1 — Bebas Neue</option>
       <option value="Teko">2 — Teko</option>
       <option value="Abril Fatface">3 — Abril Fatface</option>
@@ -297,7 +317,12 @@ nav a:hover::after{width:100%}
 
 <section class="services" id="services">
   <p class="svc-eyebrow">Marketing Agency — UAE &amp; Beyond</p>
-  <h2 class="svc-headline" id="svcHeadline">MORE THAN CONTENT,<br>MORE THAN TRENDS.<br><em>WE CREATE DEMAND.</em></h2>
+  <!-- 3-line headline: each line is a separate <span class="hl"> block -->
+  <h2 class="svc-headline">
+    <span class="hl">MORE THAN CONTENT,</span>
+    <span class="hl">MORE THAN TRENDS.</span>
+    <span class="hl gold">WE CREATE DEMAND.</span>
+  </h2>
   <div class="svc-list">
     <div class="svc-item">Content</div>
     <div class="svc-item">SM Management</div>
@@ -327,7 +352,7 @@ nav a:hover::after{width:100%}
 <div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
   <button class="lb-close" onclick="closeLb()">✕ &nbsp;Close</button>
   <img id="lbImg" src="" alt="">
-  <span class="lb-hint">Click backdrop or press ESC to close</span>
+  <span class="lb-hint">Click backdrop or ESC to close</span>
 </div>
 
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
@@ -353,85 +378,85 @@ nav a:hover::after{width:100%}
   </div>
 </div>
 
-<a href="https://wa.me/971568475645" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+<a href="https://wa.me/971568475645" class="wa-float" target="_blank" rel="noopener noreferrer">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  <span class="wa-label">Chat on WhatsApp</span>
+  <span>Chat on WhatsApp</span>
 </a>
 
 <script>
-/* ─── EMAILJS ─── */
+/* ── EMAILJS ── */
 emailjs.init({ publicKey: 'MfKifkzUIPhOg2uQg' });
 
-/* ─── VIDEO ─── */
-const vid = document.getElementById('bgv');
-vid.muted = true; vid.load();
-vid.play().catch(()=>{
+/* ── VIDEO ── */
+const bgv = document.getElementById('bgv');
+bgv.muted = true; bgv.load();
+bgv.play().catch(()=>{
   ['touchstart','click','pointerdown'].forEach(ev=>
-    window.addEventListener(ev,()=>vid.play().catch(()=>{}),{once:true}));
+    window.addEventListener(ev,()=>bgv.play().catch(()=>{}),{once:true}));
 });
 
-/* ─── LENIS smooth scroll ─── */
+/* ── LENIS ── */
 const lenis = new Lenis({ lerp: 0.08 });
 
-/* ═══════════════════════════════════════════════════════
-   GALLERY — exact loud.ae 3-column parallax
-   
-   Measured pixel-by-pixel from loud.ae mobile screenshot (390px CSS):
-   
-   MOBILE columns:
-     Col L: x=34px,  w=106px (27.2%) — SLOWEST  speed=0.10
-     Col C: x=147px, w=79px  (20.2%) — FASTEST  speed=0.26  ← narrower!
-     Col R: x=244px, w=126px (32.4%) — MEDIUM   speed=0.18
-     Gap L→C: 7px,  Gap C→R: 18px
-   
-   DESKTOP columns (measured at 1536px):
-     Col L: x=78px,  w=468px (30.5%) — speed=0.10
-     Col C: x=571px, w=432px (28.1%) — speed=0.26
-     Col R: x=1068px,w=466px (30.3%) — speed=0.18
-     Gap L→C: 25px, Gap C→R: 65px
-   
-   CARDS: overlap each other by ~15px within same column (negative gap)
-   STAGGER: Col C starts 90px higher, Col R starts 80px lower
-   Card heights: measured ratios from screenshot — tall portrait + short landscape
-   
-   ZERO animation inside photos. Only columns translate.
-═══════════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════════
+   GALLERY  —  exact loud.ae replica
 
-(function buildGallery() {
-  const GH = 'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/';
-  const IMGS = Array.from({length:17},(_,i)=>`${GH}image${String(i+1).padStart(5,'0')}.jpeg`);
+   Measured from loud.ae mobile screenshot (390px CSS):
+
+   MOBILE:
+     Col L  x=34  w=106  (27.2%)   speed=0.10  SLOWEST
+     Col C  x=147 w=79   (20.2%)   speed=0.26  FASTEST  ← narrower!
+     Col R  x=244 w=126  (32.3%)   speed=0.18  MEDIUM
+     Gap L→C=7px  Gap C→R=18px
+     Col L startY=0  Col C startY=-16  Col R startY=0
+
+   DESKTOP (1536px):
+     Col L  x=78  w=468  (30.5%)   speed=0.10
+     Col C  x=571 w=432  (28.1%)   speed=0.26
+     Col R  x=1068 w=466 (30.3%)   speed=0.18
+
+   CARDS: overlap ~15px within same column (cards stack on each other)
+   DRAG:  each card individually draggable via interact.js
+   PARALLAX: whole column moves at its speed on scroll
+   DRAG OFFSET stored per-card, added to parallax translate
+════════════════════════════════════════════════════ */
+(function initGallery(){
+
+  const BASE = 'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/';
+  const IMGS = Array.from({length:17},(_,i)=>
+    `${BASE}image${String(i+1).padStart(5,'0')}.jpeg`);
 
   const VW  = window.innerWidth;
   const mob = VW <= 768;
-  const OV  = 15; // card overlap in px (next card's top = prev bottom - OV)
 
-  // ── Column dimensions ──
+  // ── Column widths ──
   const wL = mob ? Math.round(VW*.272) : Math.round(VW*.305);
   const wC = mob ? Math.round(VW*.202) : Math.round(VW*.281);
   const wR = mob ? Math.round(VW*.323) : Math.round(VW*.303);
 
-  // ── Column X positions ──
+  // ── Column X ──
   const gLC = mob ? 7  : 25;
   const gCR = mob ? 18 : 65;
   const xL  = mob ? Math.round(VW*.087) : Math.round(VW*.051);
   const xC  = xL + wL + gLC;
   const xR  = xC + wC + gCR;
 
-  // ── Column start Y stagger ──
-  // Col C starts HIGHER (first card enters viewport first — exits first too)
-  // Col R starts LOWER (delayed entry)
-  const startL =  0;
-  const startC = mob ? -Math.round(VW*.23) : -90;
-  const startR = mob ?  Math.round(VW*.20) :  80;
+  // ── Vertical overlap between consecutive cards in same column ──
+  // 15px: each card's top sits 15px ABOVE the previous card's bottom
+  const OV = 15;
 
-  // ── Card aspect ratios per column ──
-  // Measured from loud.ae screenshot + video frames
-  // Alternating tall portrait / short landscape creates the stagger look
-  const ratL = [1.56, 0.80, 1.42, 0.76, 1.50, 0.82]; // col L
-  const ratC = [1.99, 0.65, 1.85, 0.68, 1.92, 0.70]; // col C — very tall portraits
-  const ratR = [0.78, 0.84, 1.25, 0.82, 1.18, 0.86]; // col R — starts landscape
+  // ── Column start Y stagger (from loud.ae measurement) ──
+  const startL =   0;
+  const startC = mob ? -16 : -16;
+  const startR =   0;
 
-  // ── Image assignment ──
+  // ── Card aspect ratios (height/width) per column ──
+  // Measured from loud.ae: Col C is very tall portrait, Col R starts landscape
+  const ratL = [1.56, 0.82, 1.45, 0.78, 1.50, 0.84, 1.40];
+  const ratC = [1.99, 0.65, 1.88, 0.68, 1.94, 0.63, 1.80];
+  const ratR = [0.78, 0.84, 1.28, 0.82, 1.20, 0.86, 1.24];
+
+  // ── Image distribution: L=6, C=6, R=5 ──
   const iL = [0, 3,  6,  9, 12, 15];
   const iC = [1, 4,  7, 10, 13, 16];
   const iR = [2, 5,  8, 11, 14    ];
@@ -442,47 +467,49 @@ const lenis = new Lenis({ lerp: 0.08 });
     {x:xR, w:wR, spd:0.18, sy:startR, imgs:iR, rat:ratR},
   ];
 
-  const gEl   = document.getElementById('gallery');
-  const colEls = [];
-  let gi = 0;
+  const gEl    = document.getElementById('gallery');
+  const cols   = [];      // column elements
+  const drags  = [];      // per-card drag offsets {x,y}
+  const cards  = [];      // all card elements
+  let   gi     = 0;       // global card index
 
   defs.forEach(def => {
     const col = document.createElement('div');
-    col.className = 'g-col';
+    col.className   = 'g-col';
     col.style.cssText = `left:${def.x}px;width:${def.w}px;`;
     col.dataset.spd = def.spd;
 
     let y = def.sy;
 
-    def.imgs.forEach((idx, ci) => {
-      const r    = def.rat[ci % def.rat.length];
-      const h    = Math.round(def.w * r);
-      const src  = IMGS[idx % IMGS.length];
+    def.imgs.forEach((imgIdx, ci) => {
+      const r   = def.rat[ci % def.rat.length];
+      const h   = Math.round(def.w * r);
+      const src = IMGS[imgIdx % IMGS.length];
 
       const card = document.createElement('div');
-      card.className = 'g-card';
-      // Later cards sit ON TOP of earlier cards (higher z-index = in front)
+      card.className    = 'g-card';
+      // Later cards rendered on top (higher z-index)
       card.style.cssText = `top:${y}px;width:${def.w}px;height:${h}px;z-index:${ci+1};`;
 
       const img = document.createElement('img');
-      img.alt = `Work ${idx+1}`;
+      img.alt      = `Work ${imgIdx+1}`;
       img.decoding = 'async';
-      img.width = def.w;
-      img.height = h;
+      img.width    = def.w;
+      img.height   = h;
 
-      // Fade in only — no zoom, no scale, no movement
-      const done = () => img.classList.add('loaded');
-      img.addEventListener('load', done, {once:true});
+      // Fade in on load — ZERO zoom, ZERO scale, ZERO internal movement
+      const show = () => img.classList.add('vis');
+      img.addEventListener('load', show, {once:true});
 
       if (gi < 6) {
         img.src = src; img.loading = 'eager';
         if (gi < 3) img.setAttribute('fetchpriority','high');
-        if (img.complete && img.naturalWidth) done();
+        if (img.complete && img.naturalWidth) show();
       } else {
         img.loading = 'lazy'; img.dataset.src = src;
       }
 
-      // Double-tap = lightbox
+      // Double-tap lightbox
       let cc=0, ct=null;
       card.addEventListener('click',()=>{
         cc++;
@@ -493,21 +520,26 @@ const lenis = new Lenis({ lerp: 0.08 });
       card.appendChild(img);
       col.appendChild(card);
 
-      // Next card overlaps this one by OV pixels
+      // Store drag offset for this card
+      drags.push({x:0, y:0});
+      cards.push(card);
+      card.dataset.gi = gi;
+
+      // Overlap: next card top = this card bottom - OV
       y += h - OV;
       gi++;
     });
 
     col.dataset.totalH = y;
     gEl.appendChild(col);
-    colEls.push(col);
+    cols.push(col);
   });
 
   // Gallery height
-  const maxH = Math.max(...colEls.map(c=>parseFloat(c.dataset.totalH)));
-  gEl.style.height = (maxH + (mob?300:500)) + 'px';
+  const maxH = Math.max(...cols.map(c=>parseFloat(c.dataset.totalH)));
+  gEl.style.height = (maxH + (mob?300:500))+'px';
 
-  // Lazy observer
+  // Lazy load
   const obs = new IntersectionObserver(es=>{
     es.forEach(e=>{
       if(e.isIntersecting){
@@ -527,82 +559,127 @@ const lenis = new Lenis({ lerp: 0.08 });
     document.head.appendChild(l);
   });
 
-  // Cache gallery offset
+  // Cache gallery top
   let gTop=0;
   function cacheTop(){
-    let el=gEl,t=0;
-    while(el){t+=el.offsetTop;el=el.offsetParent;}
-    gTop=t;
+    let el=gEl,t=0; while(el){t+=el.offsetTop;el=el.offsetParent;} gTop=t;
   }
   window.addEventListener('load',cacheTop);
   setTimeout(cacheTop,200);
   window.addEventListener('resize',cacheTop);
 
-  // RAF — columns move at different speeds = "row by row" movement effect
-  // Col C fastest → its cards exit viewport first
-  // Col L slowest → its cards linger
-  // The stagger means Col C row2 is visible while Col L row1 still shows = cross-column overlap
+  // ── DRAG via interact.js ──
+  // Each card is individually draggable.
+  // Drag offset is stored in drags[] and applied in the RAF loop on top of parallax.
+  interact('.g-card').draggable({
+    inertia: true,
+    listeners: {
+      start(e){
+        // Bring dragged card to front
+        e.target.style.zIndex = 9000;
+      },
+      move(e){
+        const i = parseInt(e.target.dataset.gi);
+        drags[i].x += e.dx;
+        drags[i].y += e.dy;
+      },
+      end(e){
+        // Keep high z-index so dragged card stays on top after release
+      }
+    }
+  });
+
+  // ── RAF: parallax + drag offsets ──
+  // Each column moves at its speed.
+  // Each card within the column ALSO has its own drag offset applied.
   function tick(t){
     lenis.raf(t);
     const sc = lenis.scroll;
     const lc = Math.max(0, sc - gTop);
-    colEls.forEach(c=>{
-      c.style.transform = `translate3d(0,${-lc*parseFloat(c.dataset.spd)}px,0)`;
+
+    cols.forEach(col=>{
+      // Column parallax translate
+      const spd = parseFloat(col.dataset.spd);
+      const colTy = -lc * spd;
+      col.style.transform = `translate3d(0,${colTy}px,0)`;
     });
+
+    // Per-card drag offset (applied as transform on the card itself)
+    // This is ADDITIVE to the column parallax
+    cards.forEach((card,i)=>{
+      const dx = drags[i].x;
+      const dy = drags[i].y;
+      if(dx !== 0 || dy !== 0){
+        card.style.transform = `translate3d(${dx}px,${dy}px,0)`;
+      }
+    });
+
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
+
 })();
 
-/* ─── LOGO ─── */
-function changeLogo(){
-  const s = document.getElementById('logoSelect').value;
-  const logo = document.getElementById('logoDisplay');
-  const sep  = logo.querySelector('.sep');
-  logo.className = 'logo ' + s;
-  if(s==='s4'){ sep.textContent='·'; sep.style.display='inline'; }
-  else if(s==='s9'){ sep.textContent='/'; sep.style.display='inline'; }
-  else { sep.style.display='none'; }
-  localStorage.setItem('logo', s);
+/* ── LOGO ── */
+function applyLogo(){
+  const s   = document.getElementById('logoSel').value;
+  const el  = document.getElementById('logoDisplay');
+  const sep = el.querySelector('.sep');
+  el.className = 'logo '+s;
+  if(s==='s4'){sep.textContent='·';sep.style.display='inline';}
+  else if(s==='s9'){sep.textContent='/';sep.style.display='inline';}
+  else{sep.style.display='none';}
+  localStorage.setItem('L',s);
 }
 
-/* ─── FONT ─── */
-function changeFont(){
-  const f = document.getElementById('fontSelect').value;
+/* ── FONT ── */
+function applyFont(){
+  const f = document.getElementById('fontSel').value;
   document.documentElement.style.setProperty('--font-display',`'${f}'`);
-  localStorage.setItem('font', f);
+  localStorage.setItem('F',f);
 }
 
-/* ─── INIT ─── */
+/* ── INIT PREFS ── */
 window.addEventListener('load',()=>{
-  const sl = localStorage.getItem('logo') || 's1';
-  const sf = localStorage.getItem('font') || 'Bebas Neue';
-  document.getElementById('logoSelect').value = sl;
-  document.getElementById('fontSelect').value = sf;
-  const logo=document.getElementById('logoDisplay');
-  const sep=logo.querySelector('.sep');
-  logo.className='logo '+sl;
+  const sl=localStorage.getItem('L')||'s1';
+  const sf=localStorage.getItem('F')||'Bebas Neue';
+  document.getElementById('logoSel').value=sl;
+  document.getElementById('fontSel').value=sf;
+  const el=document.getElementById('logoDisplay');
+  const sep=el.querySelector('.sep');
+  el.className='logo '+sl;
   if(sl==='s4'){sep.textContent='·';sep.style.display='inline';}
   else if(sl==='s9'){sep.textContent='/';sep.style.display='inline';}
   else{sep.style.display='none';}
   document.documentElement.style.setProperty('--font-display',`'${sf}'`);
 });
 
-/* ─── LIGHTBOX ─── */
-function openLb(src){ document.getElementById('lbImg').src=src; document.getElementById('lb').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeLb(){ document.getElementById('lb').classList.remove('open'); document.body.style.overflow=''; setTimeout(()=>{document.getElementById('lbImg').src='';},400); }
+/* ── LIGHTBOX ── */
+function openLb(src){
+  document.getElementById('lbImg').src=src;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLb(){
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow='';
+  setTimeout(()=>{document.getElementById('lbImg').src='';},400);
+}
 
-/* ─── MODAL ─── */
+/* ── MODAL ── */
 function openModal(){ document.getElementById('modalOverlay').classList.add('open'); document.body.style.overflow='hidden'; }
-function openJoinModal(){ alert('Join The Team — coming soon! Email: careers@oceayr.com'); }
+function openJoinModal(){ alert('Join The Team — coming soon!\nEmail: careers@oceayr.com'); }
 function closeModal(){
   document.getElementById('modalOverlay').classList.remove('open');
   document.body.style.overflow='';
   setTimeout(()=>{
-    ['f-name','f-company','f-email','f-mobile','f-msg'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    ['f-name','f-company','f-email','f-mobile','f-msg'].forEach(id=>{
+      const el=document.getElementById(id); if(el)el.value='';
+    });
     document.getElementById('formWrap').style.display='';
     document.getElementById('successMsg').style.display='none';
-    document.getElementById('sendBtn').disabled=false;
+    const btn=document.getElementById('sendBtn');
+    btn.disabled=false;
     document.getElementById('sendLabel').textContent='Send Brief';
     document.getElementById('sendArr').textContent='→';
     document.getElementById('formNote').style.display='';
@@ -610,20 +687,21 @@ function closeModal(){
 }
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'){closeLb();closeModal();} });
 
-/* ─── SEND FORM ─── */
+/* ── SEND FORM ── */
 async function sendForm(){
   const n=document.getElementById('f-name').value.trim();
   const em=document.getElementById('f-email').value.trim();
   const co=document.getElementById('f-company').value.trim();
   const mo=document.getElementById('f-mobile').value.trim();
   const ms=document.getElementById('f-msg').value.trim();
-  if(!n||!em){alert('Name and Email required');return;}
+  if(!n||!em){alert('Name and Email are required');return;}
   const btn=document.getElementById('sendBtn');
   btn.disabled=true;
   document.getElementById('sendLabel').textContent='Sending...';
   document.getElementById('sendArr').textContent='…';
   try{
-    await emailjs.send('service_r4vas1a','template_vku1h9b',{name:n,email:em,company:co||'—',mobile:mo||'—',message:ms||'—'});
+    await emailjs.send('service_r4vas1a','template_vku1h9b',
+      {name:n,email:em,company:co||'—',mobile:mo||'—',message:ms||'—'});
     document.getElementById('formWrap').style.display='none';
     document.getElementById('formNote').style.display='none';
     document.getElementById('successMsg').style.display='block';
@@ -631,7 +709,7 @@ async function sendForm(){
   }catch(err){
     console.warn('EmailJS:',err);
     btn.disabled=false;
-    document.getElementById('sendLabel').textContent='Error. Try Again';
+    document.getElementById('sendLabel').textContent='Error — Try Again';
   }
 }
 </script>
