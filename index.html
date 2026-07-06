@@ -305,7 +305,7 @@ nav a:hover::after{
 }
 
 /* =========================
-   GALLERY - LOUD.AE PERFECTED SIDE-OVERLAP STYLE ONLY
+   GALLERY - LOUD.AE EXACT MOSAIC STYLE ONLY
 ========================= */
 
 .gallery-section{
@@ -317,11 +317,10 @@ nav a:hover::after{
   padding:0;
 }
 
-.g-col{
-  position:absolute;
-  top:0;
-  will-change:transform;
-  transform:translate3d(0,0,0);
+.g-stage{
+  position:relative;
+  width:100%;
+  height:100%;
 }
 
 .g-card{
@@ -329,8 +328,8 @@ nav a:hover::after{
   overflow:visible;
   cursor:grab;
   touch-action:none;
-  will-change:transform;
   transform:translate3d(0,0,0);
+  will-change:transform;
 }
 
 .g-card:active{
@@ -343,11 +342,11 @@ nav a:hover::after{
   overflow:hidden;
   background:#0d0d0d;
   opacity:0;
-  transform:translate3d(0,92px,0);
+  transform:translate3d(0,120px,0);
   transition:
-    transform .95s cubic-bezier(.16,1,.3,1),
-    opacity .55s ease;
-  will-change:transform,opacity;
+    opacity .55s ease,
+    transform 1.05s cubic-bezier(.16,1,.3,1);
+  will-change:opacity,transform;
 }
 
 .g-card.is-loaded .g-inner{
@@ -362,7 +361,7 @@ nav a:hover::after{
   display:block;
   pointer-events:none;
   opacity:0;
-  transition:opacity .35s ease;
+  transition:opacity .38s ease;
 }
 
 .g-card img.vis{
@@ -371,7 +370,7 @@ nav a:hover::after{
 
 @media(max-width:768px){
   .g-inner{
-    transform:translate3d(0,72px,0);
+    transform:translate3d(0,84px,0);
   }
 }
 
@@ -1003,33 +1002,27 @@ bgv.play().catch(()=>{
 });
 
 /* =========================
-   GALLERY - LOUD.AE PERFECTED SIDE-OVERLAP STYLE ONLY
-   Replaces only the photo gallery implementation.
+   GALLERY - LOUD.AE EXACT MOSAIC STYLE ONLY
+   Only the photo gallery implementation is replaced.
 ========================= */
 
 (function initGallery(){
 
-  function loadLenisIfNeeded(){
+  function ensureLenis(){
     if(window.Lenis){
-      return Promise.resolve();
+      return Promise.resolve(true);
     }
 
     return new Promise(resolve=>{
       const s=document.createElement('script');
       s.src='https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js';
-      s.onload=resolve;
-      s.onerror=resolve;
+      s.onload=()=>resolve(true);
+      s.onerror=()=>resolve(false);
       document.head.appendChild(s);
     });
   }
 
-  loadLenisIfNeeded().then(()=>{
-
-    const BASE='https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/';
-
-    const IMGS=Array.from({length:17},(_,i)=>
-      `${BASE}image${String(i+1).padStart(5,'0')}.jpeg`
-    );
+  ensureLenis().then(()=>{
 
     const gallery=document.getElementById('gallery');
 
@@ -1039,262 +1032,188 @@ bgv.play().catch(()=>{
 
     gallery.innerHTML='';
 
+    const BASE='https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/';
+    const IMGS=Array.from({length:17},(_,i)=>
+      `${BASE}image${String(i+1).padStart(5,'0')}.jpeg`
+    );
+
     const VW=window.innerWidth;
     const mob=VW<=768;
 
+    const stage=document.createElement('div');
+    stage.className='g-stage';
+    gallery.appendChild(stage);
+
     /*
-      Loud.ae-like structure:
-      - 3 columns visible across screen
-      - column C slightly narrower / higher
-      - no strict grid rows
-      - varied card sizes, offsets, and gaps
-      - side overlap between neighbouring lanes
-      - balanced ending so bottom does not feel empty on the right
+      Loud.ae gallery behaviour from the reference video:
+      - Not a strict clean grid.
+      - Large editorial cards.
+      - Sideways overlapping between neighbouring cards.
+      - Uneven vertical gaps.
+      - Some portrait, some landscape, some square-ish.
+      - Images rise upward on load.
+      - Cards can be dragged individually.
+      - Footer begins immediately after the last visible card.
     */
 
-    const overlap=20;
+    const desktopLayout=[
+      {i:0,  x:4.8,  y:0.0,   w:31.0, r:1.27, z:22, d:0},
+      {i:1,  x:38.0, y:-6.0,  w:25.8, r:1.30, z:28, d:40},
+      {i:2,  x:66.2, y:2.2,   w:32.8, r:.88,  z:20, d:70},
 
-    let defs;
+      {i:3,  x:15.0, y:28.8,  w:31.8, r:.78,  z:40, d:110},
+      {i:4,  x:51.8, y:24.8,  w:30.4, r:.78,  z:42, d:150},
 
-    if(mob){
-      defs=[
-        {
-          name:'L',
-          x:Math.round(VW*.018),
-          w:Math.round(VW*.318),
-          speed:.82,
-          startY:8,
-          imgs:[0,3,6,9,12,15],
-          ratios:[1.36,.76,1.44,.70,1.20,.82],
-          widthM:[1.08,1.02,1.14,1.04,1.10,1.06],
-          xOffsets:[0,-6,13,-4,16,-8],
-          gaps:[24,44,14,56,18,0],
-          zBase:30
-        },
-        {
-          name:'C',
-          x:Math.round(VW*.326),
-          w:Math.round(VW*.294),
-          speed:1.00,
-          startY:-92,
-          imgs:[1,4,7,10,13,16],
-          ratios:[1.64,.68,1.20,.74,1.34,.70],
-          widthM:[1.14,1.04,1.20,1.08,1.16,1.10],
-          xOffsets:[-15,10,-13,17,-9,12],
-          gaps:[44,16,50,18,36,0],
-          zBase:75
-        },
-        {
-          name:'R',
-          x:Math.round(VW*.628),
-          w:Math.round(VW*.326),
-          speed:1.18,
-          startY:34,
-          imgs:[2,5,8,11,14],
-          ratios:[.76,1.34,.70,1.20,.82],
-          widthM:[1.16,1.02,1.12,1.05,1.18],
-          xOffsets:[-18,4,-15,11,-22],
-          gaps:[36,10,50,14,0],
-          zBase:55
-        }
-      ];
-    }else{
-      defs=[
-        {
-          name:'L',
-          x:Math.round(VW*.026),
-          w:Math.round(VW*.322),
-          speed:.82,
-          startY:22,
-          imgs:[0,3,6,9,12,15],
-          ratios:[1.12,.74,1.34,.72,1.04,.80],
-          widthM:[1.03,.98,1.12,1.00,1.08,1.04],
-          xOffsets:[0,-34,52,-22,62,-28],
-          gaps:[70,28,86,34,46,0],
-          zBase:30
-        },
-        {
-          name:'C',
-          x:Math.round(VW*.342),
-          w:Math.round(VW*.282),
-          speed:1.00,
-          startY:-96,
-          imgs:[1,4,7,10,13,16],
-          ratios:[1.44,.66,1.10,.72,1.28,.70],
-          widthM:[1.18,1.08,1.24,1.12,1.18,1.10],
-          xOffsets:[-72,48,-66,62,-50,38],
-          gaps:[52,90,24,78,34,0],
-          zBase:85
-        },
-        {
-          name:'R',
-          x:Math.round(VW*.628),
-          w:Math.round(VW*.326),
-          speed:1.18,
-          startY:66,
-          imgs:[2,5,8,11,14],
-          ratios:[.76,1.22,.70,1.10,.78],
-          widthM:[1.18,1.02,1.16,1.04,1.20],
-          xOffsets:[-116,18,-90,32,-126],
-          gaps:[46,82,34,58,0],
-          zBase:60
-        }
-      ];
-    }
+      {i:5,  x:7.2,  y:50.5,  w:34.0, r:1.02, z:52, d:190},
+      {i:6,  x:66.0, y:45.5,  w:33.5, r:.82,  z:50, d:230},
 
-    const cols=[];
+      {i:7,  x:40.5, y:63.0,  w:31.2, r:.98,  z:34, d:270},
+      {i:8,  x:72.0, y:68.8,  w:27.0, r:1.24, z:32, d:310},
+
+      {i:9,  x:4.8,  y:78.5,  w:31.0, r:.80,  z:24, d:350},
+      {i:10, x:30.4, y:91.0,  w:30.0, r:1.02, z:44, d:390},
+      {i:11, x:64.0, y:91.8,  w:28.5, r:.96,  z:46, d:430},
+
+      {i:12, x:67.5, y:109.5, w:31.5, r:1.00, z:58, d:470},
+      {i:13, x:39.5, y:119.2, w:31.0, r:.76,  z:36, d:510},
+      {i:14, x:6.2,  y:119.5, w:29.8, r:1.24, z:38, d:550},
+
+      {i:15, x:52.0, y:136.8, w:36.0, r:.76,  z:64, d:590},
+      {i:16, x:22.0, y:144.5, w:31.5, r:.92,  z:60, d:630}
+    ];
+
+    const mobileLayout=[
+      {i:0,  x:-4.0, y:0.0,   w:38.0, r:1.32, z:20, d:0},
+      {i:1,  x:31.0, y:-9.0,  w:35.0, r:1.42, z:30, d:35},
+      {i:2,  x:64.0, y:3.0,   w:39.0, r:.88,  z:22, d:70},
+
+      {i:3,  x:13.0, y:34.0,  w:40.0, r:.78,  z:42, d:105},
+      {i:4,  x:49.0, y:29.0,  w:41.0, r:.78,  z:44, d:140},
+
+      {i:5,  x:-2.0, y:56.0,  w:43.0, r:1.02, z:52, d:175},
+      {i:6,  x:59.0, y:52.0,  w:44.0, r:.82,  z:50, d:210},
+
+      {i:7,  x:29.0, y:73.0,  w:43.0, r:.98,  z:34, d:245},
+      {i:8,  x:68.0, y:82.0,  w:34.0, r:1.24, z:32, d:280},
+
+      {i:9,  x:-6.0, y:92.0,  w:42.0, r:.80,  z:24, d:315},
+      {i:10, x:28.0, y:105.0, w:42.0, r:1.02, z:44, d:350},
+      {i:11, x:62.0, y:106.0, w:39.0, r:.96,  z:46, d:385},
+
+      {i:12, x:55.0, y:129.0, w:46.0, r:1.00, z:58, d:420},
+      {i:13, x:30.0, y:139.0, w:43.0, r:.76,  z:36, d:455},
+      {i:14, x:-5.0, y:137.0, w:40.0, r:1.24, z:38, d:490},
+
+      {i:15, x:48.0, y:162.0, w:50.0, r:.76,  z:64, d:525},
+      {i:16, x:12.0, y:168.0, w:43.0, r:.92,  z:60, d:560}
+    ];
+
+    const layout=mob ? mobileLayout : desktopLayout;
     const cards=[];
     const dragOffsets=[];
-    let cardIndex=0;
     let maxBottom=0;
 
-    defs.forEach(def=>{
+    layout.forEach((cfg,index)=>{
 
-      const col=document.createElement('div');
-      col.className='g-col';
-      col.style.left=def.x+'px';
-      col.style.width=def.w+'px';
-      col.dataset.speed=String(def.speed);
+      const left=cfg.x*VW/100;
+      const top=cfg.y*VW/100;
+      const width=cfg.w*VW/100;
+      const height=width*cfg.r;
 
-      let top=def.startY;
+      const card=document.createElement('div');
+      card.className='g-card';
+      card.dataset.dragIndex=String(index);
+      card.style.left=left+'px';
+      card.style.top=top+'px';
+      card.style.width=width+'px';
+      card.style.height=height+'px';
+      card.style.zIndex=String(cfg.z);
 
-      def.imgs.forEach((imgIndexInSet,i)=>{
+      const inner=document.createElement('div');
+      inner.className='g-inner';
+      inner.style.transitionDelay=cfg.d+'ms';
 
-        const width=Math.round(def.w*def.widthM[i%def.widthM.length]);
-        const ratio=def.ratios[i%def.ratios.length];
-        const height=Math.round(width*ratio);
-        const left=def.xOffsets[i%def.xOffsets.length];
-        const src=IMGS[imgIndexInSet];
+      const img=document.createElement('img');
+      const src=IMGS[cfg.i];
 
-        const card=document.createElement('div');
-        card.className='g-card';
-        card.style.top=top+'px';
-        card.style.left=left+'px';
-        card.style.width=width+'px';
-        card.style.height=height+'px';
-        card.style.zIndex=String(def.zBase+i);
-        card.dataset.dragIndex=String(cardIndex);
+      img.alt='Work '+(cfg.i+1);
+      img.decoding='async';
+      img.width=Math.round(width);
+      img.height=Math.round(height);
 
-        const inner=document.createElement('div');
-        inner.className='g-inner';
-        inner.style.transitionDelay=(Math.min(cardIndex*42,420))+'ms';
+      const reveal=()=>{
+        img.classList.add('vis');
+        card.classList.add('is-loaded');
+      };
 
-        const img=document.createElement('img');
-        img.alt='Work '+(imgIndexInSet+1);
-        img.decoding='async';
-        img.width=width;
-        img.height=height;
+      img.addEventListener('load',reveal,{once:true});
 
-        const show=()=>{
-          img.classList.add('vis');
-          card.classList.add('is-loaded');
-        };
+      if(index<8){
+        img.src=src;
+        img.loading='eager';
 
-        img.addEventListener('load',show,{once:true});
-
-        if(cardIndex<6){
-          img.src=src;
-          img.loading='eager';
-          if(cardIndex<3){
-            img.setAttribute('fetchpriority','high');
-          }
-          if(img.complete&&img.naturalWidth){
-            show();
-          }
-        }else{
-          img.dataset.src=src;
-          img.loading='lazy';
+        if(index<4){
+          img.setAttribute('fetchpriority','high');
         }
 
-        let clicks=0;
-        let timer=null;
+        if(img.complete&&img.naturalWidth){
+          reveal();
+        }
+      }else{
+        img.dataset.src=src;
+        img.loading='lazy';
+      }
 
-        card.addEventListener('click',()=>{
-          if(card.dataset.wasDragged==='1'){
-            return;
-          }
+      inner.appendChild(img);
+      card.appendChild(inner);
+      stage.appendChild(card);
 
-          clicks++;
+      cards.push(card);
+      dragOffsets.push({x:0,y:0,moved:false});
 
-          if(clicks===1){
-            timer=setTimeout(()=>{clicks=0;},280);
-          }else{
-            clearTimeout(timer);
-            clicks=0;
-            openLb(src);
-          }
-        });
-
-        inner.appendChild(img);
-        card.appendChild(inner);
-        col.appendChild(card);
-
-        dragOffsets.push({x:0,y:0,moved:false});
-        cards.push(card);
-
-        maxBottom=Math.max(maxBottom,top+height);
-
-        top=top+height-overlap+def.gaps[i%def.gaps.length];
-        cardIndex++;
-      });
-
-      gallery.appendChild(col);
-      cols.push(col);
+      maxBottom=Math.max(maxBottom,top+height);
     });
 
     /*
-      Fill the gallery visually until the bottom:
-      maxBottom is based on all columns and the final content flow.
-      Use only a small buffer so footer starts immediately after final visible cards.
+      No blank bottom:
+      The gallery height is based only on the last card's real bottom.
+      A tiny buffer keeps the footer clean without creating dead space.
     */
-    gallery.style.height=Math.ceil(maxBottom+(mob?42:64))+'px';
+    gallery.style.height=Math.ceil(maxBottom+(mob?26:42))+'px';
 
     const observer=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
           const img=entry.target;
+
           if(img.dataset.src){
             img.src=img.dataset.src;
             img.removeAttribute('data-src');
           }
+
           observer.unobserve(img);
         }
       });
-    },{rootMargin:'650px 0px'});
+    },{rootMargin:'700px 0px'});
 
-    gallery.querySelectorAll('img[data-src]').forEach(img=>observer.observe(img));
+    stage.querySelectorAll('img[data-src]').forEach(img=>observer.observe(img));
 
-    IMGS.slice(0,6).forEach((src,i)=>{
+    IMGS.slice(0,8).forEach((src,index)=>{
       const link=document.createElement('link');
       link.rel='preload';
       link.as='image';
       link.href=src;
-      if(i<3){
+      if(index<4){
         link.setAttribute('fetchpriority','high');
       }
       document.head.appendChild(link);
     });
 
-    const lenis=window.Lenis ? new Lenis({lerp:.08,smoothWheel:true,smoothTouch:false}) : null;
-
-    let galleryTop=0;
-
-    function cacheGalleryTop(){
-      let el=gallery;
-      let top=0;
-
-      while(el){
-        top+=el.offsetTop;
-        el=el.offsetParent;
-      }
-
-      galleryTop=top;
-    }
-
-    cacheGalleryTop();
-    window.addEventListener('load',cacheGalleryTop);
-    window.addEventListener('resize',cacheGalleryTop);
-    setTimeout(cacheGalleryTop,250);
+    const lenis=window.Lenis ? new Lenis({
+      lerp:.085,
+      smoothWheel:true,
+      smoothTouch:false
+    }) : null;
 
     if(window.interact){
       interact('.g-card').draggable({
@@ -1302,6 +1221,7 @@ bgv.play().catch(()=>{
         listeners:{
           start(e){
             const i=parseInt(e.target.dataset.dragIndex,10);
+
             if(dragOffsets[i]){
               dragOffsets[i].moved=false;
             }
@@ -1310,21 +1230,27 @@ bgv.play().catch(()=>{
               lenis.stop();
             }
 
-            e.target.style.zIndex='9000';
+            e.target.style.zIndex='9999';
           },
+
           move(e){
             const i=parseInt(e.target.dataset.dragIndex,10);
             const d=dragOffsets[i];
 
+            if(!d){
+              return;
+            }
+
             d.x+=e.dx;
             d.y+=e.dy;
 
-            if(Math.abs(d.x)>3||Math.abs(d.y)>3){
+            if(Math.abs(d.x)>4||Math.abs(d.y)>4){
               d.moved=true;
             }
 
             e.target.style.transform=`translate3d(${d.x}px,${d.y}px,0)`;
           },
+
           end(e){
             const i=parseInt(e.target.dataset.dragIndex,10);
             const d=dragOffsets[i];
@@ -1333,7 +1259,7 @@ bgv.play().catch(()=>{
 
             setTimeout(()=>{
               e.target.dataset.wasDragged='0';
-            },120);
+            },150);
 
             if(lenis&&typeof lenis.start==='function'){
               lenis.start();
@@ -1343,23 +1269,26 @@ bgv.play().catch(()=>{
       });
     }
 
+    cards.forEach((card,index)=>{
+      card.addEventListener('click',()=>{
+        if(card.dataset.wasDragged==='1'){
+          return;
+        }
+
+        openLb(IMGS[layout[index].i]);
+      });
+    });
+
     function raf(time){
       if(lenis){
         lenis.raf(time);
       }
 
-      const currentScroll=lenis ? lenis.scroll : (window.scrollY||window.pageYOffset);
-      const localScroll=Math.max(0,currentScroll-galleryTop);
-
-      cols.forEach(col=>{
-        const speed=parseFloat(col.dataset.speed);
-        col.style.transform=`translate3d(0,${-localScroll*speed}px,0)`;
-      });
-
       requestAnimationFrame(raf);
     }
 
     requestAnimationFrame(raf);
+
   });
 
 })();
