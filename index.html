@@ -342,10 +342,10 @@ nav a:hover::after{
   overflow:hidden;
   background:#0d0d0d;
   opacity:0;
-  transform:translate3d(0,120px,0);
+  transform:translate3d(0,150px,0);
   transition:
     opacity .55s ease,
-    transform 1.05s cubic-bezier(.16,1,.3,1);
+    transform 1.18s cubic-bezier(.16,1,.3,1);
   will-change:opacity,transform;
 }
 
@@ -370,7 +370,7 @@ nav a:hover::after{
 
 @media(max-width:768px){
   .g-inner{
-    transform:translate3d(0,84px,0);
+    transform:translate3d(0,105px,0);
   }
 }
 
@@ -1141,12 +1141,19 @@ bgv.play().catch(()=>{
       img.width=Math.round(width);
       img.height=Math.round(height);
 
-      const reveal=()=>{
-        img.classList.add('vis');
-        card.classList.add('is-loaded');
+      function revealIfReady(){
+        if(card.dataset.imgReady==='1' && card.dataset.inView==='1'){
+          img.classList.add('vis');
+          card.classList.add('is-loaded');
+        }
+      }
+
+      const markImageReady=()=>{
+        card.dataset.imgReady='1';
+        revealIfReady();
       };
 
-      img.addEventListener('load',reveal,{once:true});
+      img.addEventListener('load',markImageReady,{once:true});
 
       if(index<8){
         img.src=src;
@@ -1157,7 +1164,7 @@ bgv.play().catch(()=>{
         }
 
         if(img.complete&&img.naturalWidth){
-          reveal();
+          markImageReady();
         }
       }else{
         img.dataset.src=src;
@@ -1181,7 +1188,7 @@ bgv.play().catch(()=>{
     */
     gallery.style.height=Math.ceil(maxBottom+(mob?26:42))+'px';
 
-    const observer=new IntersectionObserver(entries=>{
+    const imageObserver=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
           const img=entry.target;
@@ -1191,12 +1198,43 @@ bgv.play().catch(()=>{
             img.removeAttribute('data-src');
           }
 
-          observer.unobserve(img);
+          imageObserver.unobserve(img);
         }
       });
     },{rootMargin:'700px 0px'});
 
-    stage.querySelectorAll('img[data-src]').forEach(img=>observer.observe(img));
+    stage.querySelectorAll('img[data-src]').forEach(img=>imageObserver.observe(img));
+
+    /*
+      Loud.ae-style upward reveal:
+      cards do not animate when the page first loads above the fold.
+      Each visible row/card rises upward when it enters the viewport,
+      creating the loaded upward movement seen in the reference.
+    */
+    const revealObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const card=entry.target;
+          card.dataset.inView='1';
+
+          const img=card.querySelector('img');
+
+          if(img && img.dataset.src){
+            img.src=img.dataset.src;
+            img.removeAttribute('data-src');
+          }
+
+          if(card.dataset.imgReady==='1'){
+            img.classList.add('vis');
+            card.classList.add('is-loaded');
+          }
+
+          revealObserver.unobserve(card);
+        }
+      });
+    },{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+
+    cards.forEach(card=>revealObserver.observe(card));
 
     IMGS.slice(0,8).forEach((src,index)=>{
       const link=document.createElement('link');
