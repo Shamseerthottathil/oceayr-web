@@ -647,7 +647,9 @@ nav a:hover::after{
 }
 
 /* =========================
-   SOCIAL FLOAT ICONS - CURRENT APP STYLE
+   SOCIAL FLOAT ICONS - OCEAYR THEME
+   Black: #000000
+   Gold:  #D4AF37
 ========================= */
 
 .social-floats{
@@ -661,66 +663,98 @@ nav a:hover::after{
 }
 
 .social-float{
-  width:54px;
-  height:54px;
-  border-radius:15px;
+  position:relative;
+  width:52px;
+  height:52px;
+  border-radius:14px;
   display:flex;
   align-items:center;
   justify-content:center;
   text-decoration:none;
   overflow:hidden;
-  color:#fff;
-  box-shadow:0 10px 34px rgba(0,0,0,.36);
+  background:
+    radial-gradient(circle at 32% 18%, rgba(255,255,255,.12), rgba(255,255,255,0) 28%),
+    linear-gradient(145deg,#000 0%,#000 54%,#000 100%);
+  border:1px solid rgba(212,175,55,.48);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.12),
+    inset 0 -14px 22px rgba(0,0,0,.45),
+    0 10px 34px rgba(0,0,0,.46),
+    0 0 22px rgba(212,175,55,.12);
   transition:
     transform .3s cubic-bezier(.4,0,.2,1),
     box-shadow .3s cubic-bezier(.4,0,.2,1),
+    border-color .3s cubic-bezier(.4,0,.2,1),
     filter .3s cubic-bezier(.4,0,.2,1);
+}
+
+.social-float::before{
+  content:'';
+  position:absolute;
+  inset:2px;
+  border-radius:14px;
+  border:1px solid rgba(212,175,55,.13);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,0) 45%);
+  pointer-events:none;
+  z-index:1;
 }
 
 .social-float:hover{
   transform:translateY(-4px) scale(1.04);
-  filter:saturate(1.08) contrast(1.03);
+  border-color:rgba(212,175,55,.88);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.16),
+    inset 0 -14px 22px rgba(0,0,0,.45),
+    0 16px 48px rgba(0,0,0,.58),
+    0 0 34px rgba(212,175,55,.34);
+  filter:saturate(1.08) contrast(1.04);
 }
 
 .social-float svg{
-  width:32px;
-  height:32px;
+  position:relative;
+  z-index:2;
   display:block;
 }
 
-/* Instagram current app-style icon */
-.ig-float{
-  border-radius:16px;
-  background:
-    radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 8%, #fd5949 38%, #d6249f 62%, #285AEB 100%);
-  box-shadow:0 10px 34px rgba(214,36,159,.38);
-}
-
-.ig-float:hover{
-  box-shadow:0 16px 48px rgba(214,36,159,.55);
-}
-
+/* Instagram icon uses the same quote color: #D4AF37 */
 .ig-float svg{
-  width:34px;
-  height:34px;
-  fill:#fff;
-  stroke:none;
+  width:38px;
+  height:38px;
 }
 
-/* WhatsApp current app-style icon */
-.wa-float{
-  background:#25D366;
-  box-shadow:0 10px 34px rgba(37,211,102,.34);
+.ig-stroke{
+  fill:none;
+  stroke:var(--c);
+  stroke-width:3.3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter:url(#goldSocialGlow);
 }
 
-.wa-float:hover{
-  box-shadow:0 16px 48px rgba(37,211,102,.52);
+.ig-dot{
+  fill:var(--c);
+  filter:url(#goldSocialGlow);
 }
 
+/* WhatsApp icon uses the same quote color: #D4AF37 */
 .wa-float svg{
-  width:35px;
-  height:35px;
-  fill:#fff;
+  width:39px;
+  height:39px;
+}
+
+.wa-line{
+  fill:none;
+  stroke:var(--c);
+  stroke-width:2.6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter:url(#goldSocialGlow);
+}
+
+.wa-phone{
+  fill:var(--c);
+  filter:url(#goldSocialGlow);
 }
 
 /* =========================
@@ -870,24 +904,23 @@ nav a:hover::after{
   }
 
   .social-float{
-    width:52px;
-    height:52px;
-    border-radius:14px;
+    width:50px;
+    height:50px;
+    border-radius:13px;
   }
 
-  .social-float svg{
-    width:31px;
-    height:31px;
+  .social-float::before{
+    border-radius:13px;
   }
 
   .ig-float svg{
-    width:33px;
-    height:33px;
+    width:37px;
+    height:37px;
   }
 
   .wa-float svg{
-    width:34px;
-    height:34px;
+    width:38px;
+    height:38px;
   }
 }
 </style>
@@ -1015,14 +1048,31 @@ nav a:hover::after{
 
 <div class="social-floats" aria-label="Social links">
   <a href="https://www.instagram.com/oceayragency?igsh=NWJoZDZoeW05YWZx" class="social-float ig-float" target="_blank" rel="noopener noreferrer" aria-label="Open OCEAYR Agency Instagram">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5Zm8.92 2.02a1.32 1.32 0 1 1 0 2.64 1.32 1.32 0 0 1 0-2.64ZM12 7.05A4.95 4.95 0 1 1 12 16.95 4.95 4.95 0 0 1 12 7.05Zm0 2A2.95 2.95 0 1 0 12 14.95 2.95 2.95 0 0 0 12 9.05Z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
+      <defs>
+        <filter id="goldSocialGlow" x="-55%" y="-55%" width="210%" height="210%">
+          <feGaussianBlur stdDeviation="1.05" result="blur"/>
+          <feColorMatrix in="blur" type="matrix"
+            values="0 0 0 0 0.831
+                    0 0 0 0 0.686
+                    0 0 0 0 0.216
+                    0 0 0 1.35 0" result="glow"/>
+          <feMerge>
+            <feMergeNode in="glow"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <rect class="ig-stroke" x="9.5" y="9.5" width="29" height="29" rx="8.4"></rect>
+      <circle class="ig-stroke" cx="24" cy="24" r="6.8"></circle>
+      <circle class="ig-dot" cx="33.1" cy="14.9" r="2.25"></circle>
     </svg>
   </a>
 
   <a href="https://wa.me/971568475645" class="social-float wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M20.52 3.48A11.83 11.83 0 0 0 12.1 0C5.52 0 .17 5.34.17 11.91c0 2.1.55 4.15 1.59 5.96L.07 24l6.28-1.65a11.9 11.9 0 0 0 5.74 1.46h.01c6.57 0 11.92-5.34 11.92-11.91 0-3.18-1.24-6.17-3.5-8.42ZM12.1 21.79h-.01a9.88 9.88 0 0 1-5.03-1.38l-.36-.21-3.73.98 1-3.64-.23-.37a9.83 9.83 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.8 9.8 0 0 1 6.98 2.9 9.78 9.78 0 0 1 2.89 6.97c0 5.45-4.44 9.89-9.88 9.89Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.07c.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
+      <path class="wa-line" d="M24.2 7.9c-8.8 0-16 7.1-16 15.8 0 3 .86 5.8 2.35 8.18L8.3 40.15l8.55-2.25a16.1 16.1 0 0 0 7.35 1.77c8.84 0 16-7.08 16-15.84S33.04 7.9 24.2 7.9Z"/>
+      <path class="wa-phone" d="M18.15 15.65c-.37-.83-.75-.85-1.1-.87h-.92c-.32 0-.84.12-1.28.59-.44.47-1.66 1.61-1.66 3.9 0 2.3 1.7 4.51 1.94 4.82.24.31 3.29 5.22 8.26 7.12 4.14 1.58 4.98 1.26 5.88 1.18.9-.08 2.9-1.16 3.31-2.28.41-1.12.41-2.08.29-2.28-.12-.2-.45-.33-.94-.57-.49-.24-2.9-1.41-3.35-1.57-.45-.16-.77-.24-1.1.24-.33.48-1.26 1.57-1.55 1.89-.29.32-.57.36-1.06.12-.49-.24-2.05-.75-3.9-2.37-1.44-1.27-2.42-2.84-2.7-3.32-.29-.48-.03-.74.22-.98.22-.22.49-.57.73-.86.24-.29.33-.49.49-.82.16-.32.08-.61-.04-.85-.12-.24-1.1-2.65-1.52-3.09Z"/>
     </svg>
   </a>
 </div>
