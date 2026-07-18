@@ -18,7 +18,7 @@
 }
 
 :root{
-  --c:#D4AF37;
+  --c:#FFFFFF;
 }
 
 html,
@@ -768,7 +768,7 @@ nav a:hover::after{
 /* =========================
    SOCIAL FLOAT ICONS - OCEAYR THEME
    Black: #000000
-   Gold:  #D4AF37
+   Gold:  #FFFFFF
 ========================= */
 
 .social-floats{
@@ -794,12 +794,12 @@ nav a:hover::after{
   background:
     radial-gradient(circle at 32% 18%, rgba(255,255,255,.12), rgba(255,255,255,0) 28%),
     linear-gradient(145deg,#000 0%,#000 54%,#000 100%);
-  border:1px solid rgba(212,175,55,.48);
+  border:1px solid rgba(255,255,255,.48);
   box-shadow:
     inset 0 1px 2px rgba(255,255,255,.12),
     inset 0 -14px 22px rgba(0,0,0,.45),
     0 10px 34px rgba(0,0,0,.46),
-    0 0 22px rgba(212,175,55,.12);
+    0 0 22px rgba(255,255,255,.12);
   transition:
     transform .3s cubic-bezier(.4,0,.2,1),
     box-shadow .3s cubic-bezier(.4,0,.2,1),
@@ -812,7 +812,7 @@ nav a:hover::after{
   position:absolute;
   inset:2px;
   border-radius:14px;
-  border:1px solid rgba(212,175,55,.13);
+  border:1px solid rgba(255,255,255,.13);
   background:
     linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,0) 45%);
   pointer-events:none;
@@ -821,12 +821,12 @@ nav a:hover::after{
 
 .social-float:hover{
   transform:translateY(-4px) scale(1.04);
-  border-color:rgba(212,175,55,.88);
+  border-color:rgba(255,255,255,.88);
   box-shadow:
     inset 0 1px 2px rgba(255,255,255,.16),
     inset 0 -14px 22px rgba(0,0,0,.45),
     0 16px 48px rgba(0,0,0,.58),
-    0 0 34px rgba(212,175,55,.34);
+    0 0 34px rgba(255,255,255,.34);
   filter:saturate(1.08) contrast(1.04);
 }
 
@@ -836,7 +836,7 @@ nav a:hover::after{
   display:block;
 }
 
-/* Instagram icon uses the same quote color: #D4AF37 */
+/* Instagram icon uses the same quote color: #FFFFFF */
 .ig-float svg{
   width:38px;
   height:38px;
@@ -856,7 +856,7 @@ nav a:hover::after{
   filter:url(#goldSocialGlow);
 }
 
-/* WhatsApp icon uses the same quote color: #D4AF37 */
+/* WhatsApp icon uses the same quote color: #FFFFFF */
 .wa-float svg{
   width:39px;
   height:39px;
@@ -1189,7 +1189,7 @@ nav a:hover::after{
     <button class="modal-close" onclick="closeModal()">✕</button>
 
     <div class="modal-title">
-      ELEVATE<br>
+      ELAVATE<br>
       <span>YOUR BRAND</span>
     </div>
 
@@ -1244,9 +1244,9 @@ nav a:hover::after{
         <filter id="goldSocialGlow" x="-55%" y="-55%" width="210%" height="210%">
           <feGaussianBlur stdDeviation="1.05" result="blur"/>
           <feColorMatrix in="blur" type="matrix"
-            values="0 0 0 0 0.831
-                    0 0 0 0 0.686
-                    0 0 0 0 0.216
+            values="0 0 0 0 1
+                    0 0 0 0 1
+                    0 0 0 0 1
                     0 0 0 1.35 0" result="glow"/>
           <feMerge>
             <feMergeNode in="glow"/>
@@ -1260,7 +1260,7 @@ nav a:hover::after{
     </svg>
   </a>
 
-  <a href="https://wa.me/+971528749214" class="social-float wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <a href="https://wa.me/971568475645" class="social-float wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
       <path class="wa-line" d="M24.2 7.9c-8.8 0-16 7.1-16 15.8 0 3 .86 5.8 2.35 8.18L8.3 40.15l8.55-2.25a16.1 16.1 0 0 0 7.35 1.77c8.84 0 16-7.08 16-15.84S33.04 7.9 24.2 7.9Z"/>
       <path class="wa-phone" d="M18.15 15.65c-.37-.83-.75-.85-1.1-.87h-.92c-.32 0-.84.12-1.28.59-.44.47-1.66 1.61-1.66 3.9 0 2.3 1.7 4.51 1.94 4.82.24.31 3.29 5.22 8.26 7.12 4.14 1.58 4.98 1.26 5.88 1.18.9-.08 2.9-1.16 3.31-2.28.41-1.12.41-2.08.29-2.28-.12-.2-.45-.33-.94-.57-.49-.24-2.9-1.41-3.35-1.57-.45-.16-.77-.24-1.1.24-.33.48-1.26 1.57-1.55 1.89-.29.32-.57.36-1.06.12-.49-.24-2.05-.75-3.9-2.37-1.44-1.27-2.42-2.84-2.7-3.32-.29-.48-.03-.74.22-.98.22-.22.49-.57.73-.86.24-.29.33-.49.49-.82.16-.32.08-.61-.04-.85-.12-.24-1.1-2.65-1.52-3.09Z"/>
