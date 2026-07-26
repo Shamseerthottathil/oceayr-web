@@ -387,6 +387,8 @@ nav a:hover::after{
 ========================= */
 
 .ticker-section{
+  position:relative;
+  z-index:1;
   background:#000;
   padding-bottom:80px;
 }
@@ -429,17 +431,21 @@ nav a:hover::after{
 
 .gallery-section{
   position:relative;
+  z-index:20;
   width:100%;
   background:#000;
-  overflow:hidden;
+  overflow:visible;
   margin:0;
   padding:0;
 }
 
 .g-stage{
   position:relative;
+  z-index:1;
   width:100%;
   height:100%;
+  overflow:visible;
+  will-change:transform;
 }
 
 .g-card{
@@ -801,6 +807,7 @@ nav a:hover::after{
     0 10px 34px rgba(0,0,0,.46),
     0 0 22px rgba(255,255,255,.12);
   transition:
+    bottom .28s cubic-bezier(.4,0,.2,1),
     transform .3s cubic-bezier(.4,0,.2,1),
     box-shadow .3s cubic-bezier(.4,0,.2,1),
     border-color .3s cubic-bezier(.4,0,.2,1),
@@ -1092,6 +1099,16 @@ nav a:hover::after{
   }
 }
 </style>
+
+<!-- Vercel Web Analytics -->
+<script>
+  window.va =
+    window.va ||
+    function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body>
@@ -1346,6 +1363,8 @@ bgv.play().catch(()=>{
 
     const VW=window.innerWidth;
     const mob=VW<=768;
+    const galleryTopGap=mob ? 12 : 18;
+    const galleryBottomGap=mob ? 18 : 24;
 
     const stage=document.createElement('div');
     stage.className='g-stage';
@@ -1416,6 +1435,16 @@ bgv.play().catch(()=>{
     ];
 
     const layout=mob ? mobileLayout : desktopLayout;
+
+    /*
+      Keep every photo below the ticker when the gallery first loads.
+      The editorial layout contains a few negative Y positions, so the
+      full layout is shifted down only enough to clear the ticker.
+      Individual cards can still be dragged above it by the visitor.
+    */
+    const minLayoutTop=Math.min(...layout.map(cfg=>cfg.y*VW/100));
+    const layoutTopOffset=Math.max(0,-minLayoutTop)+galleryTopGap;
+
     const cards=[];
     const dragOffsets=[];
     let maxBottom=0;
@@ -1423,7 +1452,7 @@ bgv.play().catch(()=>{
     layout.forEach((cfg,index)=>{
 
       const left=cfg.x*VW/100;
-      const top=cfg.y*VW/100;
+      const top=(cfg.y*VW/100)+layoutTopOffset;
       const width=cfg.w*VW/100;
       const height=width*cfg.r;
 
@@ -1489,15 +1518,14 @@ bgv.play().catch(()=>{
     });
 
     /*
-      No blank bottom:
-      The gallery height is based only on the last card's real bottom.
-      A tiny buffer keeps the footer clean without creating dead space.
+      The gallery height follows the actual bottom edge of the final card.
+      This removes the old empty area before the footer while keeping a
+      small, deliberate finishing gap.
     */
-    /*
-      Keep enough height for slow continuous upward gallery movement,
-      but avoid a large empty area before the footer.
-    */
-    gallery.style.height=Math.ceil(maxBottom+(mob?70:110))+'px';
+    gallery.style.height=Math.max(
+      1,
+      Math.ceil(maxBottom+galleryBottomGap)
+    )+'px';
 
     const imageObserver=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
@@ -1628,72 +1656,15 @@ bgv.play().catch(()=>{
       });
     });
 
-    let lastTime=performance.now();
-    let autoUp=0;
-    let maxAutoUp=0;
-
-    function recalcMovementLimit(){
-      /*
-        This creates a safe movement limit based on the added gallery buffer.
-        It prevents the last row from moving too far up and leaving a large blank bottom.
-      */
-      maxAutoUp=mob ? 44 : 74;
-    }
-
-    recalcMovementLimit();
-    window.addEventListener('resize',recalcMovementLimit);
-
-    function getGalleryTop(){
-      let el=gallery;
-      let top=0;
-
-      while(el){
-        top+=el.offsetTop;
-        el=el.offsetParent;
-      }
-
-      return top;
-    }
-
     /*
-      Continuous loud.ae-style upward movement:
-      - stage moves slowly upward all the time when gallery is visible
-      - scroll still works normally
-      - cards keep the same overlap and gaps because the whole stage moves together
-      - dragging still works because drag transform remains on each card
+      Lenis keeps page scrolling smooth, but the full gallery stage is not
+      translated upward automatically. Photos therefore load below the
+      ticker, while individual cards can still be dragged above it.
     */
     function raf(time){
-
       if(lenis){
         lenis.raf(time);
       }
-
-      const delta=Math.min(40,time-lastTime);
-      lastTime=time;
-
-      const scrollY=window.scrollY || window.pageYOffset || 0;
-      const vh=window.innerHeight || document.documentElement.clientHeight;
-      const gTop=getGalleryTop();
-      const gBottom=gTop+gallery.offsetHeight;
-
-      const galleryIsNear=scrollY+vh>gTop-120 && scrollY<gBottom+120;
-
-      if(galleryIsNear){
-        autoUp+=delta*(mob?0.010:0.014);
-
-        if(autoUp>maxAutoUp){
-          autoUp=maxAutoUp;
-        }
-      }
-
-      /*
-        Additional small scroll-linked upward movement.
-        This keeps movement visible while scrolling without breaking layout.
-      */
-      const localScroll=Math.max(0,scrollY-gTop);
-      const scrollUp=Math.min(maxAutoUp,localScroll*(mob?0.045:0.055));
-
-      stage.style.transform=`translate3d(0,${-(autoUp+scrollUp)}px,0)`;
 
       requestAnimationFrame(raf);
     }
@@ -1702,6 +1673,49 @@ bgv.play().catch(()=>{
 
   });
 
+})();
+
+/* =========================
+   KEEP SOCIAL BUTTONS CLEAR OF FOOTER
+========================= */
+
+(function keepSocialButtonsClearOfFooter(){
+  const footer=document.querySelector('.footer');
+  const socialFloats=document.querySelector('.social-floats');
+
+  if(!footer || !socialFloats){
+    return;
+  }
+
+  let ticking=false;
+
+  function updateSocialPosition(){
+    const footerRect=footer.getBoundingClientRect();
+    const baseBottom=window.innerWidth<=768 ? 20 : 28;
+    const visibleFooterHeight=Math.max(0,window.innerHeight-footerRect.top);
+    const safeGap=12;
+
+    socialFloats.style.bottom=(
+      baseBottom +
+      Math.min(visibleFooterHeight,footerRect.height) +
+      (visibleFooterHeight>0 ? safeGap : 0)
+    )+'px';
+
+    ticking=false;
+  }
+
+  function requestSocialPositionUpdate(){
+    if(ticking){
+      return;
+    }
+
+    ticking=true;
+    requestAnimationFrame(updateSocialPosition);
+  }
+
+  window.addEventListener('scroll',requestSocialPositionUpdate,{passive:true});
+  window.addEventListener('resize',requestSocialPositionUpdate);
+  requestSocialPositionUpdate();
 })();
 
 function toggleContactInfo(event){
