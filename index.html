@@ -1118,34 +1118,10 @@ nav a:hover::after{
 </div>
 
 <nav>
-  <a href="#">Home</a>
-  <a href="#services">Our Work</a>
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
   <a href="#" onclick="openJoinModal();return false">Join The Team</a>
-
-  <div class="contact-nav" id="contactNav">
-    <a href="#" onclick="toggleContactInfo(event)">Contact Us</a>
-
-    <div class="contact-card">
-      <div class="contact-card-title">
-        ELEVATE<br>
-        <span>YOUR BRAND</span>
-      </div>
-
-      <a class="contact-detail" href="mailto:info@oceayr.com">
-        <span class="contact-detail-label">Email</span>
-        <span class="contact-detail-value">info@oceayr.com</span>
-      </a>
-
-      <a class="contact-detail" href="tel:+971528749214">
-        <span class="contact-detail-label">Call</span>
-        <span class="contact-detail-value">+971 52 874 9214</span>
-      </a>
-
-      <div class="contact-card-note">
-        Tap an option to contact OCEAYR
-      </div>
-    </div>
-  </div>
+  <a href="contact.html">Contact Us</a>
 </nav>
 
 <section class="hero">
@@ -1357,89 +1333,128 @@ bgv.play().catch(()=>{
     gallery.innerHTML='';
 
     const BASE='https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/';
-    const IMGS=Array.from({length:17},(_,i)=>
-      `${BASE}image${String(i+1).padStart(5,'0')}.jpeg`
-    );
+
+    /*
+      Explicit gallery source list with no repeated bedroom image.
+      image00008.jpeg is intentionally removed because image00005.jpeg
+      already represents that bedroom. Each remaining source appears once.
+      The version query helps browsers load the corrected list after deployment.
+    */
+    const IMGS=[
+      `${BASE}image00001.jpeg?v=4`,
+      `${BASE}image00002.jpeg?v=4`,
+      `${BASE}image00003.jpeg?v=4`,
+      `${BASE}image00004.jpeg?v=4`,
+      `${BASE}image00005.jpeg?v=4`,
+      `${BASE}image00006.jpeg?v=4`,
+      `${BASE}image00007.jpeg?v=4`,
+      `${BASE}image00009.jpeg?v=4`,
+      `${BASE}image00010.jpeg?v=4`,
+      `${BASE}image00011.jpeg?v=4`,
+      `${BASE}image00012.jpeg?v=4`,
+      `${BASE}image00013.jpeg?v=4`,
+      `${BASE}image00014.jpeg?v=4`,
+      `${BASE}image00015.jpeg?v=4`,
+      `${BASE}image00016.jpeg?v=4`,
+      `${BASE}image00017.jpeg?v=4`
+    ];
+
+    const uniqueImageSources=[...new Set(IMGS)];
+
+    if(uniqueImageSources.length!==IMGS.length){
+      IMGS.splice(0,IMGS.length,...uniqueImageSources);
+    }
 
     const VW=window.innerWidth;
     const mob=VW<=768;
     const galleryTopGap=mob ? 12 : 18;
     const galleryBottomGap=mob ? 18 : 24;
 
+    /*
+      Only the vertical length is increased.
+      All original X/Y positions, widths, overlaps, gaps, z-indexes and
+      animation delays stay unchanged.
+    */
+    const HEIGHT_SCALE=mob ? 1.14 : 1.18;
+
     const stage=document.createElement('div');
     stage.className='g-stage';
     gallery.appendChild(stage);
 
     /*
-      Loud.ae gallery behaviour from the reference video:
-      - Not a strict clean grid.
-      - Large editorial cards.
-      - Sideways overlapping between neighbouring cards.
-      - Uneven vertical gaps.
-      - Some portrait, some landscape, some square-ish.
-      - Images rise upward on load.
-      - Cards can be dragged individually.
-      - Footer begins immediately after the last visible card.
+      Original staggered row structure:
+      3 / 2 / 2 / 2 / 3 / 2 / 2
+      The original centre card in the second-last 3-card row is omitted,
+      keeping the final row as two cards.
     */
-
     const desktopLayout=[
-      {i:0,  x:4.8,  y:0.0,   w:31.0, r:1.27, z:22, d:0},
-      {i:1,  x:38.0, y:-6.0,  w:25.8, r:1.30, z:28, d:40},
-      {i:2,  x:66.2, y:2.2,   w:32.8, r:.88,  z:20, d:70},
+      // Row 1 — 3 cards
+      {x:4.8,  y:0.0,   w:31.0, r:1.27, z:22, d:0},
+      {x:38.0, y:-6.0,  w:25.8, r:1.30, z:28, d:40},
+      {x:66.2, y:2.2,   w:32.8, r:.88,  z:20, d:70},
 
-      {i:3,  x:15.0, y:28.8,  w:31.8, r:.78,  z:40, d:110},
-      {i:4,  x:51.8, y:24.8,  w:30.4, r:.78,  z:42, d:150},
+      // Row 2 — 2 cards
+      {x:15.0, y:28.8,  w:31.8, r:.78,  z:40, d:110},
+      {x:51.8, y:24.8,  w:30.4, r:.78,  z:42, d:150},
 
-      {i:5,  x:7.2,  y:50.5,  w:34.0, r:1.02, z:52, d:190},
-      {i:6,  x:66.0, y:45.5,  w:33.5, r:.82,  z:50, d:230},
+      // Row 3 — 2 cards
+      {x:7.2,  y:50.5,  w:34.0, r:1.02, z:52, d:190},
+      {x:66.0, y:45.5,  w:33.5, r:.82,  z:50, d:230},
 
-      {i:7,  x:40.5, y:63.0,  w:31.2, r:.98,  z:34, d:270},
-      {i:8,  x:72.0, y:68.8,  w:27.0, r:1.24, z:32, d:310},
+      // Row 4 — 2 cards
+      {x:40.5, y:63.0,  w:31.2, r:.98,  z:34, d:270},
+      {x:72.0, y:68.8,  w:27.0, r:1.24, z:32, d:310},
 
-      {i:9,  x:4.8,  y:78.5,  w:31.0, r:.80,  z:24, d:350},
-      {i:10, x:30.4, y:91.0,  w:30.0, r:1.02, z:44, d:390},
-      {i:11, x:64.0, y:91.8,  w:28.5, r:.96,  z:46, d:430},
+      // Row 5 — 3 cards
+      {x:4.8,  y:78.5,  w:31.0, r:.80,  z:24, d:350},
+      {x:30.4, y:91.0,  w:30.0, r:1.02, z:44, d:390},
+      {x:64.0, y:91.8,  w:28.5, r:.96,  z:46, d:430},
 
-      {i:12, x:67.5, y:109.5, w:31.5, r:1.00, z:58, d:470},
-      {i:13, x:39.5, y:119.2, w:31.0, r:.76,  z:36, d:510},
-      {i:14, x:6.2,  y:119.5, w:29.8, r:1.24, z:38, d:550},
+      // Row 6 — 2 cards
+      {x:67.5, y:109.5, w:31.5, r:1.00, z:58, d:470},
+      {x:6.2,  y:119.5, w:29.8, r:1.24, z:38, d:550},
 
-      {i:15, x:52.0, y:136.8, w:36.0, r:.76,  z:64, d:590},
-      {i:16, x:22.0, y:144.5, w:31.5, r:.92,  z:60, d:630}
+      // Row 7 — 2 cards
+      {x:52.0, y:136.8, w:36.0, r:.76,  z:64, d:590},
+      {x:22.0, y:144.5, w:31.5, r:.92,  z:60, d:630}
     ];
 
     const mobileLayout=[
-      {i:0,  x:-4.0, y:0.0,   w:38.0, r:1.32, z:20, d:0},
-      {i:1,  x:31.0, y:-9.0,  w:35.0, r:1.42, z:30, d:35},
-      {i:2,  x:64.0, y:3.0,   w:39.0, r:.88,  z:22, d:70},
+      // Row 1 — 3 cards
+      {x:-4.0, y:0.0,   w:38.0, r:1.32, z:20, d:0},
+      {x:31.0, y:-9.0,  w:35.0, r:1.42, z:30, d:35},
+      {x:64.0, y:3.0,   w:39.0, r:.88,  z:22, d:70},
 
-      {i:3,  x:13.0, y:34.0,  w:40.0, r:.78,  z:42, d:105},
-      {i:4,  x:49.0, y:29.0,  w:41.0, r:.78,  z:44, d:140},
+      // Row 2 — 2 cards
+      {x:13.0, y:34.0,  w:40.0, r:.78,  z:42, d:105},
+      {x:49.0, y:29.0,  w:41.0, r:.78,  z:44, d:140},
 
-      {i:5,  x:-2.0, y:56.0,  w:43.0, r:1.02, z:52, d:175},
-      {i:6,  x:59.0, y:52.0,  w:44.0, r:.82,  z:50, d:210},
+      // Row 3 — 2 cards
+      {x:-2.0, y:56.0,  w:43.0, r:1.02, z:52, d:175},
+      {x:59.0, y:52.0,  w:44.0, r:.82,  z:50, d:210},
 
-      {i:7,  x:29.0, y:73.0,  w:43.0, r:.98,  z:34, d:245},
-      {i:8,  x:68.0, y:82.0,  w:34.0, r:1.24, z:32, d:280},
+      // Row 4 — 2 cards
+      {x:29.0, y:73.0,  w:43.0, r:.98,  z:34, d:245},
+      {x:68.0, y:82.0,  w:34.0, r:1.24, z:32, d:280},
 
-      {i:9,  x:-6.0, y:92.0,  w:42.0, r:.80,  z:24, d:315},
-      {i:10, x:28.0, y:105.0, w:42.0, r:1.02, z:44, d:350},
-      {i:11, x:62.0, y:106.0, w:39.0, r:.96,  z:46, d:385},
+      // Row 5 — 3 cards
+      {x:-6.0, y:92.0,  w:42.0, r:.80,  z:24, d:315},
+      {x:28.0, y:105.0, w:42.0, r:1.02, z:44, d:350},
+      {x:62.0, y:106.0, w:39.0, r:.96,  z:46, d:385},
 
-      {i:12, x:55.0, y:129.0, w:46.0, r:1.00, z:58, d:420},
-      {i:13, x:30.0, y:139.0, w:43.0, r:.76,  z:36, d:455},
-      {i:14, x:-5.0, y:137.0, w:40.0, r:1.24, z:38, d:490},
+      // Row 6 — 2 cards
+      {x:55.0, y:129.0, w:46.0, r:1.00, z:58, d:420},
+      {x:-5.0, y:137.0, w:40.0, r:1.24, z:38, d:490},
 
-      {i:15, x:48.0, y:162.0, w:50.0, r:.76,  z:64, d:525},
-      {i:16, x:12.0, y:168.0, w:43.0, r:.92,  z:60, d:560}
+      // Row 7 — 2 cards
+      {x:48.0, y:162.0, w:50.0, r:.76,  z:64, d:525},
+      {x:12.0, y:168.0, w:43.0, r:.92,  z:60, d:560}
     ];
 
     const layout=mob ? mobileLayout : desktopLayout;
 
     /*
-      Keep every photo below the ticker when the gallery first loads.
-      The editorial layout contains a few negative Y positions, so the
-      full layout is shifted down only enough to clear the ticker.
+      Keep every photo below the ticker on initial load.
       Individual cards can still be dragged above it by the visitor.
     */
     const minLayoutTop=Math.min(...layout.map(cfg=>cfg.y*VW/100));
@@ -1449,16 +1464,18 @@ bgv.play().catch(()=>{
     const dragOffsets=[];
     let maxBottom=0;
 
-    layout.forEach((cfg,index)=>{
+    layout.slice(0,IMGS.length).forEach((cfg,index)=>{
 
       const left=cfg.x*VW/100;
       const top=(cfg.y*VW/100)+layoutTopOffset;
       const width=cfg.w*VW/100;
-      const height=width*cfg.r;
+      const height=width*cfg.r*HEIGHT_SCALE;
+      const src=IMGS[index];
 
       const card=document.createElement('div');
       card.className='g-card';
       card.dataset.dragIndex=String(index);
+      card.dataset.source=src;
       card.style.left=left+'px';
       card.style.top=top+'px';
       card.style.width=width+'px';
@@ -1470,9 +1487,8 @@ bgv.play().catch(()=>{
       inner.style.transitionDelay=cfg.d+'ms';
 
       const img=document.createElement('img');
-      const src=IMGS[cfg.i];
 
-      img.alt='Work '+(cfg.i+1);
+      img.alt='Work '+(index+1);
       img.decoding='async';
       img.width=Math.round(width);
       img.height=Math.round(height);
@@ -1517,11 +1533,6 @@ bgv.play().catch(()=>{
       maxBottom=Math.max(maxBottom,top+height);
     });
 
-    /*
-      The gallery height follows the actual bottom edge of the final card.
-      This removes the old empty area before the footer while keeping a
-      small, deliberate finishing gap.
-    */
     gallery.style.height=Math.max(
       1,
       Math.ceil(maxBottom+galleryBottomGap)
@@ -1542,28 +1553,24 @@ bgv.play().catch(()=>{
       });
     },{rootMargin:'700px 0px'});
 
-    stage.querySelectorAll('img[data-src]').forEach(img=>imageObserver.observe(img));
+    stage.querySelectorAll('img[data-src]').forEach(img=>{
+      imageObserver.observe(img);
+    });
 
-    /*
-      Loud.ae-style upward reveal:
-      cards do not animate when the page first loads above the fold.
-      Each visible row/card rises upward when it enters the viewport,
-      creating the loaded upward movement seen in the reference.
-    */
     const revealObserver=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
           const card=entry.target;
-          card.dataset.inView='1';
-
           const img=card.querySelector('img');
 
-          if(img && img.dataset.src){
+          card.dataset.inView='1';
+
+          if(img&&img.dataset.src){
             img.src=img.dataset.src;
             img.removeAttribute('data-src');
           }
 
-          if(card.dataset.imgReady==='1'){
+          if(img&&card.dataset.imgReady==='1'){
             img.classList.add('vis');
             card.classList.add('is-loaded');
           }
@@ -1580,9 +1587,11 @@ bgv.play().catch(()=>{
       link.rel='preload';
       link.as='image';
       link.href=src;
+
       if(index<4){
         link.setAttribute('fetchpriority','high');
       }
+
       document.head.appendChild(link);
     });
 
@@ -1646,21 +1655,16 @@ bgv.play().catch(()=>{
       });
     }
 
-    cards.forEach((card,index)=>{
+    cards.forEach(card=>{
       card.addEventListener('click',()=>{
         if(card.dataset.wasDragged==='1'){
           return;
         }
 
-        openLb(IMGS[layout[index].i]);
+        openLb(card.dataset.source);
       });
     });
 
-    /*
-      Lenis keeps page scrolling smooth, but the full gallery stage is not
-      translated upward automatically. Photos therefore load below the
-      ticker, while individual cards can still be dragged above it.
-    */
     function raf(time){
       if(lenis){
         lenis.raf(time);
@@ -1670,7 +1674,6 @@ bgv.play().catch(()=>{
     }
 
     requestAnimationFrame(raf);
-
   });
 
 })();

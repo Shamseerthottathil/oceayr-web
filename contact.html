@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact OCEAYR | Agency</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Fjalla+One&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+
+*,*::before,*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --white:#fff;
+  --muted:rgba(255,255,255,.58);
+  --line:rgba(255,255,255,.14);
+}
+
+html,
+body{
+  min-height:100%;
+  background:#000;
+  color:#fff;
+  font-family:'Inter',sans-serif;
+}
+
+body{
+  overflow-x:hidden;
+}
+
+.logo{
+  position:fixed;
+  top:24px;
+  left:32px;
+  z-index:100;
+  width:72px;
+  height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+}
+
+.logo img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.page-nav{
+  position:fixed;
+  top:39px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:90;
+  display:flex;
+  justify-content:center;
+  gap:44px;
+  white-space:nowrap;
+}
+
+.page-nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:9px;
+  letter-spacing:.38em;
+  text-transform:uppercase;
+  opacity:.44;
+  transition:opacity .25s ease;
+}
+
+.page-nav a:hover,
+.page-nav a.active{
+  opacity:1;
+}
+
+.page-footer{
+  border-top:1px solid var(--line);
+  padding:27px 5vw;
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  font-size:8px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.34);
+}
+
+@media(max-width:768px){
+  .logo{
+    top:16px;
+    left:14px;
+    width:62px;
+    height:45px;
+  }
+
+  .page-nav{
+    top:20px;
+    left:auto;
+    right:14px;
+    transform:none;
+    gap:12px;
+  }
+
+  .page-nav a{
+    font-size:7px;
+    letter-spacing:.14em;
+  }
+
+  .page-footer{
+    padding:23px 18px;
+    flex-direction:column;
+    text-align:center;
+    gap:7px;
+  }
+}
+
+
+.contact-page{
+  min-height:100vh;
+  padding:145px 6vw 90px;
+  background:
+    radial-gradient(circle at 12% 18%,rgba(255,255,255,.06),transparent 30%),
+    #000;
+}
+
+.contact-layout{
+  max-width:1480px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(340px,.78fr) minmax(540px,1.22fr);
+  gap:7vw;
+  align-items:start;
+}
+
+.contact-intro{
+  position:sticky;
+  top:140px;
+}
+
+.contact-kicker{
+  font-size:9px;
+  letter-spacing:.52em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.5);
+  margin-bottom:28px;
+}
+
+.contact-title{
+  font-family:'Fjalla One',sans-serif;
+  font-size:clamp(68px,7.5vw,130px);
+  line-height:.86;
+  text-transform:uppercase;
+}
+
+.contact-title .outline{
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.88);
+}
+
+.contact-description{
+  max-width:520px;
+  margin-top:37px;
+  color:rgba(255,255,255,.62);
+  font-size:15px;
+  line-height:1.75;
+}
+
+.contact-links{
+  margin-top:42px;
+  border-top:1px solid var(--line);
+}
+
+.contact-link{
+  min-height:76px;
+  display:grid;
+  grid-template-columns:92px minmax(0,1fr) auto;
+  align-items:center;
+  gap:18px;
+  border-bottom:1px solid var(--line);
+  color:#fff;
+  text-decoration:none;
+}
+
+.contact-link-label{
+  font-size:8px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.42);
+}
+
+.contact-link-value{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.06em;
+}
+
+.contact-link-arrow{
+  font-size:20px;
+  transition:transform .25s ease;
+}
+
+.contact-link:hover .contact-link-arrow{
+  transform:translateX(6px);
+}
+
+.query-panel{
+  padding:48px;
+  border:1px solid var(--line);
+  background:rgba(7,7,7,.9);
+  box-shadow:0 35px 90px rgba(0,0,0,.48);
+}
+
+.query-title{
+  font-family:'Fjalla One',sans-serif;
+  font-size:clamp(38px,4vw,64px);
+  line-height:.98;
+  text-transform:uppercase;
+  margin-bottom:37px;
+}
+
+.query-form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+.query-field{
+  position:relative;
+  min-height:108px;
+  margin:-1px 0 0 -1px;
+  border:1px solid var(--line);
+  transition:border-color .25s ease;
+}
+
+.query-field:focus-within{
+  border-color:#fff;
+  z-index:1;
+}
+
+.query-field.full{
+  grid-column:1/-1;
+}
+
+.query-field label{
+  display:block;
+  padding:18px 20px 6px;
+  color:rgba(255,255,255,.42);
+  font-size:8px;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+}
+
+.query-field input,
+.query-field textarea{
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#fff;
+  font-family:'Inter',sans-serif;
+  font-size:14px;
+  padding:5px 20px 18px;
+}
+
+.query-field textarea{
+  min-height:150px;
+  resize:vertical;
+}
+
+.query-send{
+  grid-column:1/-1;
+  min-height:78px;
+  margin:-1px 0 0 -1px;
+  padding:0 23px;
+  border:1px solid #fff;
+  background:#fff;
+  color:#000;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-family:'Inter',sans-serif;
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.38em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:opacity .25s ease;
+}
+
+.query-send:hover{
+  opacity:.82;
+}
+
+.query-send:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.query-note{
+  margin-top:16px;
+  color:rgba(255,255,255,.3);
+  font-size:9px;
+  letter-spacing:.08em;
+  text-align:center;
+}
+
+.query-success{
+  display:none;
+  min-height:470px;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.query-success-mark{
+  font-size:46px;
+  margin-bottom:18px;
+}
+
+.query-success h2{
+  font-family:'Fjalla One',sans-serif;
+  font-size:46px;
+  text-transform:uppercase;
+}
+
+.query-success p{
+  margin-top:12px;
+  color:rgba(255,255,255,.55);
+  line-height:1.65;
+}
+
+@media(max-width:900px){
+  .contact-page{
+    padding:112px 18px 60px;
+  }
+
+  .contact-layout{
+    grid-template-columns:1fr;
+    gap:58px;
+  }
+
+  .contact-intro{
+    position:static;
+  }
+
+  .contact-title{
+    font-size:clamp(68px,20vw,100px);
+  }
+
+  .contact-link{
+    grid-template-columns:72px minmax(0,1fr) auto;
+    gap:12px;
+  }
+
+  .contact-link-value{
+    font-size:11px;
+    letter-spacing:.025em;
+  }
+
+  .query-panel{
+    padding:25px 18px;
+  }
+
+  .query-form{
+    grid-template-columns:1fr;
+  }
+
+  .query-field.full,
+  .query-send{
+    grid-column:1;
+  }
+
+  .query-title{
+    font-size:39px;
+  }
+}
+</style>
+
+<!-- Vercel Web Analytics -->
+<script>
+  window.va =
+    window.va ||
+    function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body>
+<div class="logo" aria-label="OCEAYR Agency logo">
+  <img src="data:image/png;base64,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" alt="OCEAYR Agency logo">
+</div>
+
+<nav class="page-nav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html" class="active">Contact Us</a>
+</nav>
+
+<main class="contact-page">
+  <div class="contact-layout">
+    <section class="contact-intro">
+      <p class="contact-kicker">Contact OCEAYR</p>
+
+      <h1 class="contact-title">
+        Start A<br>
+        <span class="outline">Conversation.</span>
+      </h1>
+
+      <p class="contact-description">
+        Share your goals, your challenge and the experience you want
+        your audience to remember. Our team will respond within 24 hours.
+      </p>
+
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:info@oceayr.com">
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value">info@oceayr.com</span>
+          <span class="contact-link-arrow">→</span>
+        </a>
+
+        <a class="contact-link" href="tel:+971528749214">
+          <span class="contact-link-label">Call</span>
+          <span class="contact-link-value">+971 52 874 9214</span>
+          <span class="contact-link-arrow">→</span>
+        </a>
+
+        <a
+          class="contact-link"
+          href="https://www.instagram.com/oceayr.agency?igsh=NWJoZDZoeW05YWZx"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span class="contact-link-label">Instagram</span>
+          <span class="contact-link-value">@oceayr.agency</span>
+          <span class="contact-link-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="query-panel">
+      <div id="queryFormWrap">
+        <h2 class="query-title">Tell Us About Your Project</h2>
+
+        <div class="query-form">
+          <div class="query-field">
+            <label>Your Name *</label>
+            <input type="text" id="q-name" placeholder="First & Last name">
+          </div>
+
+          <div class="query-field">
+            <label>Company</label>
+            <input type="text" id="q-company" placeholder="Your company">
+          </div>
+
+          <div class="query-field">
+            <label>Email *</label>
+            <input type="email" id="q-email" placeholder="hello@company.com">
+          </div>
+
+          <div class="query-field">
+            <label>Mobile</label>
+            <input type="tel" id="q-mobile" placeholder="+971 00 000 0000">
+          </div>
+
+          <div class="query-field full">
+            <label>Tell us about your project</label>
+            <textarea
+              id="q-message"
+              placeholder="What are you looking for?"></textarea>
+          </div>
+
+          <button
+            class="query-send"
+            id="querySendButton"
+            onclick="sendQueryForm()">
+            <span id="querySendLabel">Send Brief</span>
+            <span id="querySendArrow">→</span>
+          </button>
+        </div>
+
+        <p class="query-note">
+          Sends directly to our team · We reply within 24 hours
+        </p>
+      </div>
+
+      <div class="query-success" id="querySuccess">
+        <div>
+          <div class="query-success-mark">✓</div>
+          <h2>Brief Received</h2>
+          <p>
+            Thank you for reaching out.<br>
+            Our team will get back to you within 24 hours.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="page-footer">
+  <span>Copyright © 2026 OCEAYR Agency</span>
+  <span>Designed & developed by OCEAYR Agency</span>
+</footer>
+
+<script>
+emailjs.init({
+  publicKey:'MfKifkzUlPhOg2uQg'
+});
+
+async function sendQueryForm(){
+  const name=document.getElementById('q-name').value.trim();
+  const company=document.getElementById('q-company').value.trim();
+  const email=document.getElementById('q-email').value.trim();
+  const mobile=document.getElementById('q-mobile').value.trim();
+  const message=document.getElementById('q-message').value.trim();
+
+  if(!name || !email){
+    alert('Name and Email are required');
+    return;
+  }
+
+  const button=document.getElementById('querySendButton');
+  const label=document.getElementById('querySendLabel');
+  const arrow=document.getElementById('querySendArrow');
+
+  button.disabled=true;
+  label.textContent='Sending...';
+  arrow.textContent='…';
+
+  const parameters={
+    name,
+    email,
+    company:company || 'Not provided',
+    mobile:mobile || 'Not provided',
+    message:message || 'No message provided',
+    time:new Date().toLocaleString(),
+    reply_to:email
+  };
+
+  try{
+    await emailjs.send(
+      'service_r4vas1a',
+      'template_vku1h9b',
+      parameters
+    );
+
+    document.getElementById('queryFormWrap').style.display='none';
+    document.getElementById('querySuccess').style.display='flex';
+  }catch(error){
+    console.error('EmailJS Error:',error);
+
+    button.disabled=false;
+    label.textContent='Error — Try Again';
+    arrow.textContent='→';
+
+    alert(
+      'EmailJS Error:\n\n' +
+      (error.text || error.message || JSON.stringify(error))
+    );
+  }
+}
+</script>
+</body>
+</html>
