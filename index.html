@@ -1877,5 +1877,23 @@ async function sendForm(){
 }
 </script>
 
+
+/* Open Join The Team when linked from About or Contact pages */
+window.addEventListener('DOMContentLoaded',()=>{
+  const params=new URLSearchParams(window.location.search);
+
+  if(params.get('open')==='join'){
+    setTimeout(()=>{
+      openJoinModal();
+    },250);
+
+    const cleanUrl=
+      window.location.pathname +
+      window.location.hash;
+
+    window.history.replaceState({},document.title,cleanUrl);
+  }
+});
+
 </body>
 </html>

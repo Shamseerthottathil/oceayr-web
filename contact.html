@@ -56,23 +56,25 @@ body{
 
 .page-nav{
   position:fixed;
-  top:39px;
+  top:37px;
   left:50%;
   transform:translateX(-50%);
   z-index:90;
   display:flex;
   justify-content:center;
-  gap:44px;
+  align-items:center;
+  gap:38px;
   white-space:nowrap;
 }
 
 .page-nav a{
   color:#fff;
   text-decoration:none;
-  font-size:9px;
-  letter-spacing:.38em;
+  font-size:10.5px;
+  font-weight:500;
+  letter-spacing:.31em;
   text-transform:uppercase;
-  opacity:.44;
+  opacity:.5;
   transition:opacity .25s ease;
 }
 
@@ -104,14 +106,15 @@ body{
   .page-nav{
     top:20px;
     left:auto;
-    right:14px;
+    right:12px;
     transform:none;
-    gap:12px;
+    gap:10px;
   }
 
   .page-nav a{
-    font-size:7px;
-    letter-spacing:.14em;
+    font-size:7.5px;
+    font-weight:500;
+    letter-spacing:.105em;
   }
 
   .page-footer{
@@ -135,8 +138,8 @@ body{
   max-width:1480px;
   margin:0 auto;
   display:grid;
-  grid-template-columns:minmax(340px,.78fr) minmax(540px,1.22fr);
-  gap:7vw;
+  grid-template-columns:minmax(360px,.72fr) minmax(560px,1.28fr);
+  gap:5.5vw;
   align-items:start;
 }
 
@@ -154,10 +157,16 @@ body{
 }
 
 .contact-title{
+  max-width:100%;
   font-family:'Fjalla One',sans-serif;
-  font-size:clamp(68px,7.5vw,130px);
-  line-height:.86;
+  font-size:clamp(56px,5.15vw,88px);
+  line-height:.91;
+  letter-spacing:-.015em;
   text-transform:uppercase;
+}
+
+.contact-title span{
+  display:block;
 }
 
 .contact-title .outline{
@@ -354,7 +363,9 @@ body{
   }
 
   .contact-title{
-    font-size:clamp(68px,20vw,100px);
+    font-size:clamp(54px,15.5vw,76px);
+    line-height:.92;
+    letter-spacing:-.012em;
   }
 
   .contact-link{
@@ -405,6 +416,7 @@ body{
 <nav class="page-nav">
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
+  <a href="index.html?open=join">Join The Team</a>
   <a href="contact.html" class="active">Contact Us</a>
 </nav>
 
