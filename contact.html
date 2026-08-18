@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact OCEAYR | Agency</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Fjalla+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Fjalla+One&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <style>
@@ -177,9 +177,12 @@ body{
 .contact-description{
   max-width:520px;
   margin-top:37px;
-  color:rgba(255,255,255,.62);
-  font-size:15px;
-  line-height:1.75;
+  color:rgba(255,255,255,.68);
+  font-family:'Manrope',sans-serif;
+  font-size:15.5px;
+  font-weight:400;
+  line-height:1.82;
+  letter-spacing:-.01em;
 }
 
 .contact-links{
@@ -209,9 +212,10 @@ body{
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
+  font-family:'Manrope',sans-serif;
   font-size:13px;
   font-weight:500;
-  letter-spacing:.06em;
+  letter-spacing:.035em;
 }
 
 .contact-link-arrow{
@@ -276,7 +280,7 @@ body{
   outline:0;
   background:transparent;
   color:#fff;
-  font-family:'Inter',sans-serif;
+  font-family:'Manrope',sans-serif;
   font-size:14px;
   padding:5px 20px 18px;
 }
@@ -395,6 +399,133 @@ body{
     font-size:39px;
   }
 }
+
+/* =========================================================
+   OCEAYR LIGHT EDITORIAL THEME
+========================================================= */
+:root{
+  --bg:#F7F6F2;
+  --bg-soft:#EFEDE7;
+  --text:#111111;
+  --muted:#555555;
+  --line:#D8D6D0;
+}
+
+html,
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+.logo img{
+  filter:invert(1);
+}
+
+.page-nav a{
+  color:var(--text);
+}
+
+.about-page,
+.contact-page{
+  background:
+    radial-gradient(circle at 78% 14%,rgba(255,255,255,.75),transparent 30%),
+    var(--bg);
+}
+
+.about-shell,
+.contact-layout{
+  color:var(--text);
+}
+
+.about-kicker,
+.contact-kicker{
+  color:var(--muted);
+}
+
+.about-title,
+.about-lead,
+.contact-title,
+.query-title{
+  color:var(--text);
+}
+
+.about-title .outline,
+.contact-title .outline{
+  color:transparent;
+  -webkit-text-stroke:1px var(--text);
+}
+
+.about-copy,
+.contact-links,
+.contact-link,
+.about-lead,
+.query-panel,
+.query-field,
+.query-form,
+.query-send{
+  border-color:var(--line);
+}
+
+.about-paragraphs p,
+.contact-description,
+.query-note{
+  color:var(--muted);
+}
+
+.about-action,
+.contact-link{
+  color:var(--text);
+}
+
+.about-action:hover{
+  background:var(--text);
+  color:#fff;
+}
+
+.contact-link-value{
+  color:var(--text);
+}
+
+.query-panel{
+  background:rgba(255,255,255,.28);
+  box-shadow:0 30px 80px rgba(17,17,17,.08);
+}
+
+.query-field input,
+.query-field textarea{
+  color:var(--text);
+  caret-color:var(--text);
+}
+
+.query-field input::placeholder,
+.query-field textarea::placeholder{
+  color:rgba(17,17,17,.42);
+}
+
+.query-field:focus-within{
+  border-color:var(--text);
+}
+
+.query-field label{
+  color:var(--muted);
+}
+
+.query-send{
+  color:#fff;
+  background:var(--text);
+  border-color:var(--text);
+}
+
+.query-send:hover{
+  opacity:.82;
+}
+
+.page-footer{
+  background:var(--bg-soft);
+  border-top-color:var(--line);
+  color:var(--text);
+}
+
 </style>
 
 <!-- Vercel Web Analytics -->

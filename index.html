@@ -1128,13 +1128,13 @@ body{
    Existing logo asset is white, so invert it to a clean black
    version for the light background. */
 .logo img{
-  filter:invert(1);
+  filter:none;
 }
 
 /* NAVIGATION */
 nav a{
-  color:var(--text);
-  opacity:.55;
+  color:#fff;
+  opacity:.62;
 }
 
 nav a:hover{
@@ -1146,9 +1146,9 @@ nav a::after{
   background:var(--text);
 }
 
-/* HERO */
+/* HERO — plain original video, no light colour overlay */
 .hero{
-  background:var(--bg);
+  background:#000;
 }
 
 .hero video{
@@ -1157,7 +1157,7 @@ nav a::after{
 }
 
 .hero::after{
-  display:none;
+  display:none !important;
 }
 
 .hero h1{
@@ -1377,7 +1377,7 @@ nav a::after{
 /* MOBILE LIGHT HERO */
 @media(max-width:768px){
   .hero::after{
-    display:none;
+    display:none !important;
   }
 }
 
@@ -1625,21 +1625,21 @@ bgv.play().catch(()=>{
       The version query helps browsers load the corrected gallery.
     */
     const IMGS=[
-      `${BASE}image00001.jpeg?v=5`,
-      `${BASE}image00002.jpeg?v=5`,
-      `${BASE}image00003.jpeg?v=5`,
-      `${BASE}image00004.jpeg?v=5`,
-      `${BASE}image00005.jpeg?v=5`,
-      `${BASE}image00006.jpeg?v=5`,
-      `${BASE}image00007.jpeg?v=5`,
-      `${BASE}image00009.jpeg?v=5`,
-      `${BASE}image00010.jpeg?v=5`,
-      `${BASE}image00011.jpeg?v=5`,
-      `${BASE}image00012.jpeg?v=5`,
-      `${BASE}image00013.jpeg?v=5`,
-      `${BASE}image00014.jpeg?v=5`,
-      `${BASE}image00015.jpeg?v=5`,
-      `${BASE}image00016.jpeg?v=5`
+      `${BASE}image00001.jpeg?v=7`,
+      `${BASE}image00002.jpeg?v=7`,
+      `${BASE}image00003.jpeg?v=7`,
+      `${BASE}image00004.jpeg?v=7`,
+      `${BASE}image00005.jpeg?v=7`,
+      `${BASE}image00006.jpeg?v=7`,
+      `${BASE}image00007.jpeg?v=7`,
+      `${BASE}image00009.jpeg?v=7`,
+      `${BASE}image00010.jpeg?v=7`,
+      `${BASE}image00011.jpeg?v=7`,
+      `${BASE}image00012.jpeg?v=7`,
+      `${BASE}image00013.jpeg?v=7`,
+      `${BASE}image00014.jpeg?v=7`,
+      `${BASE}image00015.jpeg?v=7`,
+      `${BASE}image00016.jpeg?v=7`
     ];
 
     const uniqueImageSources=[...new Set(IMGS)];
@@ -1694,17 +1694,15 @@ bgv.play().catch(()=>{
       {x:40.5, y:63.0,  w:31.2, r:.98,  z:34, d:270},
       {x:72.0, y:68.8,  w:27.0, r:1.24, z:32, d:310},
 
-      // Row 5 — 2 cards
+      // Row 5 — 3 cards
       {x:4.8,  y:78.5,  w:31.0, r:.80,  z:24, d:350},
+      {x:30.4, y:91.0,  w:30.0, r:1.02, z:44, d:390},
       {x:64.0, y:91.8,  w:28.5, r:.96,  z:46, d:430},
 
-      // Row 6 — 2 cards
+      // Row 6 — 3 cards
       {x:67.5, y:109.5, w:31.5, r:1.00, z:58, d:470},
-      {x:6.2,  y:119.5, w:29.8, r:1.24, z:38, d:550},
-
-      // Row 7 — 2 cards
-      {x:52.0, y:136.8, w:36.0, r:.76,  z:64, d:590},
-      {x:22.0, y:144.5, w:31.5, r:.92,  z:60, d:630}
+      {x:39.5, y:119.2, w:31.0, r:.76,  z:36, d:510},
+      {x:6.2,  y:119.5, w:29.8, r:1.24, z:38, d:550}
     ];
 
     const mobileLayout=[
@@ -1725,17 +1723,15 @@ bgv.play().catch(()=>{
       {x:29.0, y:73.0,  w:43.0, r:.98,  z:34, d:245},
       {x:68.0, y:82.0,  w:34.0, r:1.24, z:32, d:280},
 
-      // Row 5 — 2 cards
+      // Row 5 — 3 cards
       {x:-6.0, y:92.0,  w:42.0, r:.80,  z:24, d:315},
+      {x:28.0, y:105.0, w:42.0, r:1.02, z:44, d:350},
       {x:62.0, y:106.0, w:39.0, r:.96,  z:46, d:385},
 
-      // Row 6 — 2 cards
+      // Row 6 — 3 cards
       {x:55.0, y:129.0, w:46.0, r:1.00, z:58, d:420},
-      {x:-5.0, y:137.0, w:40.0, r:1.24, z:38, d:490},
-
-      // Row 7 — 2 cards
-      {x:48.0, y:162.0, w:50.0, r:.76,  z:64, d:525},
-      {x:12.0, y:168.0, w:43.0, r:.92,  z:60, d:560}
+      {x:30.0, y:139.0, w:43.0, r:.76,  z:36, d:455},
+      {x:-5.0, y:137.0, w:40.0, r:1.24, z:38, d:490}
     ];
 
     const layout=mob ? mobileLayout : desktopLayout;
