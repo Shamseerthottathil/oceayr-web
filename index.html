@@ -1152,17 +1152,12 @@ nav a::after{
 }
 
 .hero video{
-  opacity:.28;
-  filter:saturate(.72) contrast(.92) brightness(1.08);
+  opacity:.52;
+  filter:none;
 }
 
 .hero::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  background:rgba(247,246,242,.54);
+  display:none;
 }
 
 .hero h1{
@@ -1238,13 +1233,13 @@ nav a::after{
   color:var(--text);
 }
 
-/* GALLERY */
+/* GALLERY — LIGHT SURFACE, ORIGINAL MOSAIC GEOMETRY RETAINED */
 .gallery-section{
   background:var(--bg);
 }
 
 .g-inner{
-  background:#E3E0D8;
+  background:var(--bg);
 }
 
 /* LIGHTBOX remains dark intentionally for image focus */
@@ -1382,7 +1377,7 @@ nav a::after{
 /* MOBILE LIGHT HERO */
 @media(max-width:768px){
   .hero::after{
-    background:rgba(247,246,242,.50);
+    display:none;
   }
 }
 
@@ -1799,20 +1794,15 @@ bgv.play().catch(()=>{
 
       img.addEventListener('load',markImageReady,{once:true});
 
-      if(index<8){
-        img.src=src;
-        img.loading='eager';
+      img.src=src;
+      img.loading='eager';
 
-        if(index<4){
-          img.setAttribute('fetchpriority','high');
-        }
+      if(index<4){
+        img.setAttribute('fetchpriority','high');
+      }
 
-        if(img.complete&&img.naturalWidth){
-          markImageReady();
-        }
-      }else{
-        img.dataset.src=src;
-        img.loading='lazy';
+      if(img.complete&&img.naturalWidth){
+        markImageReady();
       }
 
       inner.appendChild(img);
