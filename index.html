@@ -1101,6 +1101,291 @@ nav a:hover::after{
     height:36px;
   }
 }
+
+/* =========================================================
+   OCEAYR LUXURY LIGHT EDITORIAL THEME
+   Existing functionality, gallery positions and video retained.
+========================================================= */
+
+:root{
+  --c:#111111;
+  --bg:#F7F6F2;
+  --bg-soft:#EFEDE7;
+  --text:#111111;
+  --muted:#555555;
+  --line:#D8D6D0;
+  --line-soft:rgba(17,17,17,.12);
+}
+
+/* PAGE */
+html,
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* LOGO
+   Existing logo asset is white, so invert it to a clean black
+   version for the light background. */
+.logo img{
+  filter:invert(1);
+}
+
+/* NAVIGATION */
+nav a{
+  color:var(--text);
+  opacity:.55;
+}
+
+nav a:hover{
+  color:var(--text);
+  opacity:1;
+}
+
+nav a::after{
+  background:var(--text);
+}
+
+/* HERO */
+.hero{
+  background:var(--bg);
+}
+
+.hero video{
+  opacity:.28;
+  filter:saturate(.72) contrast(.92) brightness(1.08);
+}
+
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:rgba(247,246,242,.54);
+}
+
+.hero h1{
+  z-index:1;
+  color:var(--text);
+}
+
+.outline{
+  color:transparent;
+  -webkit-text-stroke:1px var(--text);
+}
+
+/* SERVICES */
+.services{
+  background:var(--bg);
+  border-top-color:var(--line-soft);
+}
+
+.svc-eyebrow{
+  color:var(--text);
+  opacity:.48;
+}
+
+.svc-headline{
+  color:var(--text);
+}
+
+.svc-headline .hl.gold{
+  color:var(--text);
+}
+
+.svc-list{
+  border-top-color:var(--line);
+  border-left-color:var(--line);
+}
+
+.svc-item{
+  color:var(--text);
+  border-right-color:var(--line);
+  border-bottom-color:var(--line);
+  opacity:.58;
+}
+
+.svc-item:hover{
+  color:#fff;
+  background:var(--text);
+  border-color:var(--text);
+}
+
+.talk-btn{
+  color:var(--text);
+  border-color:rgba(17,17,17,.35);
+  background:transparent;
+}
+
+.talk-btn:hover{
+  color:#fff;
+  background:var(--text);
+  border-color:var(--text);
+}
+
+/* TICKER */
+.ticker-section{
+  background:var(--bg);
+}
+
+.ticker-wrap{
+  border-top-color:var(--line);
+  border-bottom-color:rgba(17,17,17,.22);
+}
+
+.ticker-track span{
+  color:var(--text);
+}
+
+/* GALLERY */
+.gallery-section{
+  background:var(--bg);
+}
+
+.g-inner{
+  background:#E3E0D8;
+}
+
+/* LIGHTBOX remains dark intentionally for image focus */
+.lb{
+  background:rgba(17,17,17,.96);
+}
+
+.lb-close{
+  color:#fff;
+  border-color:rgba(255,255,255,.22);
+}
+
+.lb-close:hover{
+  background:#fff;
+  border-color:#fff;
+  color:#111;
+}
+
+/* MODAL */
+.modal-overlay{
+  background:rgba(17,17,17,.38);
+}
+
+.modal{
+  background:var(--bg);
+  border-color:var(--line);
+  box-shadow:0 30px 90px rgba(17,17,17,.18);
+}
+
+.modal-close{
+  color:var(--text);
+}
+
+.modal-title{
+  color:var(--text);
+}
+
+.modal-title span{
+  color:var(--text);
+}
+
+.mf-field{
+  border-color:var(--line);
+}
+
+.mf-field:focus-within{
+  border-color:var(--text);
+}
+
+.mf-field label{
+  color:var(--text);
+}
+
+.mf-field input,
+.mf-field textarea{
+  color:var(--text);
+  caret-color:var(--text);
+}
+
+.mf-field input::placeholder,
+.mf-field textarea::placeholder{
+  color:rgba(17,17,17,.42);
+}
+
+.mf-send{
+  color:var(--text);
+  border-color:var(--line);
+}
+
+.mf-send:hover{
+  color:#fff;
+  background:var(--text);
+  border-color:var(--text);
+}
+
+.mf-note{
+  color:var(--text);
+}
+
+.mf-success .tick{
+  color:var(--text);
+}
+
+.mf-success p{
+  color:var(--text);
+}
+
+.mf-success small{
+  color:var(--text);
+}
+
+/* SOCIAL FLOATS */
+.social-float{
+  background:
+    radial-gradient(circle at 32% 18%, rgba(255,255,255,.9), rgba(255,255,255,0) 28%),
+    linear-gradient(145deg,#FFFFFF 0%,#F2F0EA 54%,#E8E5DD 100%);
+  border-color:rgba(17,17,17,.30);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.95),
+    inset 0 -14px 22px rgba(17,17,17,.06),
+    0 10px 34px rgba(17,17,17,.13);
+}
+
+.social-float::before{
+  border-color:rgba(17,17,17,.10);
+  background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,0) 45%);
+}
+
+.social-float:hover{
+  border-color:rgba(17,17,17,.7);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.95),
+    inset 0 -14px 22px rgba(17,17,17,.08),
+    0 16px 48px rgba(17,17,17,.18);
+}
+
+.ig-stroke,
+.wa-line,
+.call-line{
+  stroke:#111111;
+}
+
+.ig-dot,
+.wa-phone{
+  fill:#111111;
+}
+
+/* FOOTER */
+.footer{
+  background:var(--bg-soft);
+  border-top-color:var(--line);
+  color:var(--text);
+}
+
+/* MOBILE LIGHT HERO */
+@media(max-width:768px){
+  .hero::after{
+    background:rgba(247,246,242,.50);
+  }
+}
+
 </style>
 
 <!-- Vercel Web Analytics -->
@@ -1338,28 +1623,28 @@ bgv.play().catch(()=>{
     const BASE='https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/';
 
     /*
-      Explicit gallery source list with no repeated bedroom image.
-      image00008.jpeg is intentionally removed because image00005.jpeg
-      already represents that bedroom. Each remaining source appears once.
-      The version query helps browsers load the corrected list after deployment.
+      Explicit gallery source list with image00008.jpeg and image00017.jpeg removed.
+      image00008.jpeg is excluded because it repeats the bedroom photo,
+      and image00017.jpeg is excluded as requested.
+      Every remaining source appears exactly once.
+      The version query helps browsers load the corrected gallery.
     */
     const IMGS=[
-      `${BASE}image00001.jpeg?v=4`,
-      `${BASE}image00002.jpeg?v=4`,
-      `${BASE}image00003.jpeg?v=4`,
-      `${BASE}image00004.jpeg?v=4`,
-      `${BASE}image00005.jpeg?v=4`,
-      `${BASE}image00006.jpeg?v=4`,
-      `${BASE}image00007.jpeg?v=4`,
-      `${BASE}image00009.jpeg?v=4`,
-      `${BASE}image00010.jpeg?v=4`,
-      `${BASE}image00011.jpeg?v=4`,
-      `${BASE}image00012.jpeg?v=4`,
-      `${BASE}image00013.jpeg?v=4`,
-      `${BASE}image00014.jpeg?v=4`,
-      `${BASE}image00015.jpeg?v=4`,
-      `${BASE}image00016.jpeg?v=4`,
-      `${BASE}image00008.jpeg?v=4`
+      `${BASE}image00001.jpeg?v=5`,
+      `${BASE}image00002.jpeg?v=5`,
+      `${BASE}image00003.jpeg?v=5`,
+      `${BASE}image00004.jpeg?v=5`,
+      `${BASE}image00005.jpeg?v=5`,
+      `${BASE}image00006.jpeg?v=5`,
+      `${BASE}image00007.jpeg?v=5`,
+      `${BASE}image00009.jpeg?v=5`,
+      `${BASE}image00010.jpeg?v=5`,
+      `${BASE}image00011.jpeg?v=5`,
+      `${BASE}image00012.jpeg?v=5`,
+      `${BASE}image00013.jpeg?v=5`,
+      `${BASE}image00014.jpeg?v=5`,
+      `${BASE}image00015.jpeg?v=5`,
+      `${BASE}image00016.jpeg?v=5`
     ];
 
     const uniqueImageSources=[...new Set(IMGS)];
@@ -1375,20 +1660,26 @@ bgv.play().catch(()=>{
 
     /*
       Only the vertical length is increased.
-      All original X/Y positions, widths, overlaps, gaps, z-indexes and
-      animation delays stay unchanged.
+      Original X/Y positions, widths, image proportions, overlaps, gaps,
+      z-indexes and animation delays are retained.
     */
-    const HEIGHT_SCALE=mob ? 1.14 : 1.18;
+    /*
+      Previous gallery proportions restored:
+      original image heights, gaps, overlaps and vertical rhythm.
+      Only image00008.jpeg and image00017.jpeg are removed.
+    */
+    const HEIGHT_SCALE=1;
+    const VERTICAL_SPACING_SCALE=1;
 
     const stage=document.createElement('div');
     stage.className='g-stage';
     gallery.appendChild(stage);
 
     /*
-      Original staggered row structure:
-      3 / 2 / 2 / 2 / 3 / 2 / 2
-      The original centre card in the second-last 3-card row is omitted,
-      keeping the final row as two cards.
+      Balanced staggered row structure:
+      3 / 2 / 2 / 2 / 2 / 2 / 2
+      Removing the centre card from Row 5 keeps the original left/right
+      overlap character and preserves a two-card final row.
     */
     const desktopLayout=[
       // Row 1 — 3 cards
@@ -1408,9 +1699,8 @@ bgv.play().catch(()=>{
       {x:40.5, y:63.0,  w:31.2, r:.98,  z:34, d:270},
       {x:72.0, y:68.8,  w:27.0, r:1.24, z:32, d:310},
 
-      // Row 5 — 3 cards
+      // Row 5 — 2 cards
       {x:4.8,  y:78.5,  w:31.0, r:.80,  z:24, d:350},
-      {x:30.4, y:91.0,  w:30.0, r:1.02, z:44, d:390},
       {x:64.0, y:91.8,  w:28.5, r:.96,  z:46, d:430},
 
       // Row 6 — 2 cards
@@ -1440,9 +1730,8 @@ bgv.play().catch(()=>{
       {x:29.0, y:73.0,  w:43.0, r:.98,  z:34, d:245},
       {x:68.0, y:82.0,  w:34.0, r:1.24, z:32, d:280},
 
-      // Row 5 — 3 cards
+      // Row 5 — 2 cards
       {x:-6.0, y:92.0,  w:42.0, r:.80,  z:24, d:315},
-      {x:28.0, y:105.0, w:42.0, r:1.02, z:44, d:350},
       {x:62.0, y:106.0, w:39.0, r:.96,  z:46, d:385},
 
       // Row 6 — 2 cards
