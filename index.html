@@ -427,6 +427,32 @@ nav a:hover::after{
   to{transform:translateX(-50%)}
 }
 
+/* FEATURED LANDING SLIDER */
+(function initLandingSlider(){
+  const slides=[
+    {kicker:'OCEAYR SUMMER COLLABORATIONS 2026',title:'MAKE THIS<br><span>SUMMER VISIBLE.</span>',desc:'Limited paid collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.',primary:'EXPLORE SUMMER COLLABORATIONS',primaryHref:'#summer',secondary:'START A PROJECT',secondaryHref:'/contact'},
+    {kicker:'CREATIVE FOR HOSPITALITY',title:'MAKE YOUR<br><span>BRAND DESIRABLE.</span>',desc:'Strategy, photography, film and digital content designed around the guest, the experience and the commercial objective.',primary:'EXPLORE SERVICES',primaryHref:'#services',secondary:'START A PROJECT',secondaryHref:'/contact'},
+    {kicker:'OCEAYR — CREATIVE MARKETING AGENCY',title:'MORE THAN CONTENT.<br>MORE THAN TRENDS.<br><span>WE CREATE DEMAND.</span>',desc:'A UAE creative marketing agency helping hotels, resorts, restaurants and lifestyle brands build desirability through strategy, photography, film and digital content.',primary:'EXPLORE OUR WORK',primaryHref:'#gallery',secondary:'START A PROJECT',secondaryHref:'/contact'}
+  ];
+  const bgs=[...document.querySelectorAll('.slide-bg')],dots=[...document.querySelectorAll('.slide-dot')];
+  const kicker=document.getElementById('landingKicker'),title=document.getElementById('landingTitle'),desc=document.getElementById('landingDescription'),primary=document.getElementById('landingPrimary'),secondary=document.getElementById('landingSecondary'),number=document.getElementById('slideNumber');
+  let current=0,timer;
+  function render(i){const s=slides[i];current=i;kicker.textContent=s.kicker;title.innerHTML=s.title;desc.textContent=s.desc;primary.innerHTML=s.primary+' <span>→</span>';primary.href=s.primaryHref;secondary.textContent=s.secondary;secondary.href=s.secondaryHref;number.textContent=String(i+1).padStart(2,'0');bgs.forEach((b,n)=>b.classList.toggle('active',n===i));dots.forEach((d,n)=>d.classList.toggle('active',n===i));}
+  function restart(){clearInterval(timer);timer=setInterval(()=>render((current+1)%slides.length),7000);}
+  dots.forEach(d=>d.addEventListener('click',()=>{render(Number(d.dataset.slide));restart();}));
+  const landing=document.querySelector('.landing-slider');
+  landing.addEventListener('mouseenter',()=>clearInterval(timer));landing.addEventListener('mouseleave',restart);
+  render(0);restart();
+})();
+
+/* Light landing -> dark video navigation/logo transition */
+(function navTheme(){
+  const nav=document.querySelector('.site-nav'),logo=document.querySelector('.logo'),video=document.querySelector('.hero-video-section');
+  if(!nav||!video)return;
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{const dark=e.isIntersecting&&e.intersectionRatio>.2;nav.classList.toggle('on-dark',dark);if(logo)logo.classList.toggle('on-dark',dark);}),{threshold:[.2,.5]});
+  io.observe(video);
+})();
+
 /* =========================
    GALLERY - LOUD.AE EXACT MOSAIC STYLE ONLY
 ========================= */
@@ -1381,6 +1407,252 @@ nav a::after{
   }
 }
 
+
+/* FINAL HERO: plain original video + white hero title */
+.hero{
+  background:#000 !important;
+}
+
+.hero video{
+  opacity:.52 !important;
+  filter:none !important;
+}
+
+.hero::after{
+  display:none !important;
+  background:none !important;
+}
+
+.hero h1{
+  color:#fff !important;
+}
+
+.hero h1 .outline,
+.hero .outline{
+  color:transparent !important;
+  -webkit-text-stroke:1px rgba(255,255,255,.88) !important;
+}
+
+
+/* FINAL NAVIGATION */
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:34px;
+}
+
+nav a{
+  color:#fff !important;
+  opacity:.70;
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.30em;
+  text-transform:uppercase;
+  text-decoration:none;
+}
+
+nav a:hover{
+  opacity:1;
+}
+
+nav a.nav-cta{
+  color:#fff !important;
+  opacity:1;
+  padding:9px 13px;
+  border:1px solid rgba(255,255,255,.55);
+}
+
+nav a.nav-cta:hover{
+  background:#fff;
+  color:#111 !important;
+}
+
+@media(max-width:768px){
+  nav{
+    gap:8px;
+  }
+
+  nav a{
+    font-size:7px;
+    letter-spacing:.085em;
+  }
+
+  nav a.nav-cta{
+    padding:7px 8px;
+  }
+}
+
+
+.summer-section{
+  position:relative;
+  background:#EFEDE7;
+  color:#111;
+  padding:120px 7vw;
+  border-top:1px solid #D8D6D0;
+}
+
+.summer-grid{
+  max-width:1480px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(330px,.82fr) minmax(480px,1.18fr);
+  gap:8vw;
+  align-items:start;
+}
+
+.summer-kicker{
+  font-size:9px;
+  letter-spacing:.48em;
+  text-transform:uppercase;
+  opacity:.46;
+  margin-bottom:28px;
+}
+
+.summer-heading h2{
+  font-family:'Fjalla One',sans-serif;
+  font-size:clamp(70px,8vw,135px);
+  line-height:.86;
+  text-transform:uppercase;
+}
+
+.summer-heading h2 span{
+  color:transparent;
+  -webkit-text-stroke:1px #111;
+}
+
+.summer-copy{
+  border-top:1px solid #D8D6D0;
+  padding-top:32px;
+}
+
+.summer-copy p{
+  max-width:780px;
+  margin-bottom:24px;
+  font-family:'Manrope','Inter',sans-serif;
+  font-size:clamp(16px,1.25vw,20px);
+  line-height:1.8;
+  color:#555;
+}
+
+.summer-benefits{
+  border-top:1px solid #D8D6D0;
+  border-bottom:1px solid #D8D6D0;
+  margin-top:32px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+.summer-benefits span{
+  padding:17px 0;
+  border-bottom:1px solid #D8D6D0;
+  font-size:8px;
+  letter-spacing:.28em;
+  color:#111;
+}
+
+.summer-benefits span:nth-child(odd){
+  padding-right:20px;
+  border-right:1px solid #D8D6D0;
+}
+
+.summer-benefits span:nth-child(even){
+  padding-left:20px;
+}
+
+.summer-benefits span:nth-last-child(-n+2){
+  border-bottom:0;
+}
+
+.summer-actions{
+  margin-top:32px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:14px;
+}
+
+.summer-primary{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:45px;
+  min-width:340px;
+  padding:18px 20px;
+  background:#111;
+  color:#fff;
+  text-decoration:none;
+  font-size:9px;
+  letter-spacing:.30em;
+  text-transform:uppercase;
+}
+
+.summer-secondary{
+  color:#111;
+  text-decoration:none;
+  font-size:9px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  border-bottom:1px solid #111;
+  padding-bottom:5px;
+}
+
+.summer-note{
+  margin-top:20px;
+  font-size:9px !important;
+  line-height:1.6 !important;
+  opacity:.5;
+}
+
+@media(max-width:800px){
+  .summer-section{padding:88px 20px 76px;}
+  .summer-grid{grid-template-columns:1fr;gap:44px;}
+  .summer-heading h2{font-size:clamp(64px,20vw,96px);}
+  .summer-benefits{grid-template-columns:1fr;}
+  .summer-benefits span,
+  .summer-benefits span:nth-child(odd),
+  .summer-benefits span:nth-child(even){
+    padding:15px 0;
+    border-right:0;
+    border-bottom:1px solid #D8D6D0;
+  }
+  .summer-benefits span:last-child{border-bottom:0;}
+  .summer-primary{width:100%;min-width:0;}
+}
+
+
+/* ==========================================================
+   OCEAYR CLIENT-LEAD HOMEPAGE
+========================================================== */
+html,body{background:#F7F6F2;color:#111;}
+.site-nav{color:#111;transition:color .3s ease;background:transparent;}
+.site-nav a{color:#111 !important;opacity:.62;}
+.site-nav a:hover{opacity:1;}
+.site-nav a::after{background:#111;}
+.site-nav .nav-cta{border:1px solid rgba(17,17,17,.38);color:#111 !important;opacity:1;padding:9px 13px;}
+.site-nav .nav-cta:hover{background:#111;color:#fff !important;}
+.site-nav.on-dark a{color:#fff !important;}.site-nav.on-dark a::after{background:#fff;}.site-nav.on-dark .nav-cta{border-color:rgba(255,255,255,.5);color:#fff !important;}.site-nav.on-dark .nav-cta:hover{background:#fff;color:#111 !important;}
+.logo{filter:invert(1);transition:filter .3s ease;}.logo.on-dark{filter:none;}
+
+.landing-slider{position:relative;min-height:clamp(620px,92vh,900px);overflow:hidden;background:#EFEDE7;color:#111;}
+.slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.03);transition:opacity .9s ease,transform 1.4s ease;}.slide-bg.active{opacity:1;transform:scale(1);}
+.slide-bg-1{background-image:url('https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00014.jpeg?v=10');}.slide-bg-2{background-image:url('https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00005.jpeg?v=10');}.slide-bg-3{background-image:url('https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00012.jpeg?v=10');}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(247,246,242,.97) 0%,rgba(247,246,242,.88) 43%,rgba(247,246,242,.18) 76%,rgba(247,246,242,.04) 100%);}
+.landing-content{position:relative;z-index:2;min-height:clamp(620px,92vh,900px);display:flex;align-items:flex-end;justify-content:space-between;padding:0 7vw 7vh;}.landing-copy{max-width:820px;padding-bottom:20px;}.landing-kicker,.section-kicker{font-size:9px;letter-spacing:.48em;text-transform:uppercase;opacity:.48;margin-bottom:24px;}.landing-copy h1{font-family:'Fjalla One',sans-serif;font-size:clamp(70px,9.3vw,154px);line-height:.84;text-transform:uppercase;}.landing-copy h1 span{color:transparent;-webkit-text-stroke:1px #111;}.landing-description{max-width:640px;margin-top:30px;font-size:clamp(15px,1.25vw,19px);line-height:1.7;color:#4f4f4f;}.landing-actions{display:flex;align-items:center;gap:22px;margin-top:32px;flex-wrap:wrap;}.landing-primary{display:inline-flex;align-items:center;justify-content:space-between;gap:40px;background:#111;color:#fff;text-decoration:none;padding:18px 21px;font-size:9px;letter-spacing:.28em;text-transform:uppercase;}.landing-secondary{color:#111;text-decoration:none;font-size:9px;letter-spacing:.3em;text-transform:uppercase;border-bottom:1px solid #111;padding-bottom:5px;}.landing-meta{display:flex;flex-direction:column;align-items:flex-end;gap:18px;padding-bottom:25px;}.slide-count{font-size:10px;letter-spacing:.3em;}.slide-controls{display:flex;gap:9px;}.slide-dot{width:36px;height:2px;border:0;background:rgba(17,17,17,.25);cursor:pointer;padding:0;transition:all .3s;}.slide-dot.active{background:#111;width:58px;}
+
+.hero-video-section{position:relative;height:min(92vh,900px);min-height:620px;overflow:hidden;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;}.hero-video-section video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1!important;filter:none!important;}.hero-video-content{position:relative;z-index:2;width:100%;padding:0 7vw;}.hero-video-content p{font-size:9px;letter-spacing:.45em;opacity:.72;margin-bottom:24px;}.hero-video-content h2{font-family:'Fjalla One',sans-serif;font-size:clamp(45px,7vw,110px);line-height:.91;text-transform:uppercase;}.hero-video-content h2 span{color:transparent;-webkit-text-stroke:1px #fff;}
+.selected-intro{background:#F7F6F2;padding:110px 7vw 55px;display:grid;grid-template-columns:1fr .75fr;gap:8vw;align-items:end;}.selected-intro h2{font-family:'Fjalla One',sans-serif;font-size:clamp(60px,7vw,120px);line-height:.86;text-transform:uppercase;}.selected-intro>p{font-size:17px;line-height:1.75;color:#555;}
+.ticker-section{background:#F7F6F2!important;padding-bottom:0!important;}.ticker-wrap{border-top-color:#D8D6D0!important;border-bottom-color:#D8D6D0!important;}.ticker-track span{color:#111!important;}
+.gallery-section{background:#F7F6F2!important;}
+.services-new{background:#EFEDE7;color:#111;padding:125px 7vw;}.services-top{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:1fr .8fr;gap:8vw;align-items:end;border-bottom:1px solid #D8D6D0;padding-bottom:70px;}.services-top h2,.process-head h2,.about-snapshot h2,.start-project-band h2{font-family:'Fjalla One',sans-serif;font-size:clamp(64px,8vw,135px);line-height:.84;text-transform:uppercase;}.services-top h2 span,.process-head h2 span,.start-project-band h2 span{color:transparent;-webkit-text-stroke:1px #111;}.services-lead{font-size:18px;line-height:1.8;color:#555;max-width:640px;}.service-grid{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);border-left:1px solid #D8D6D0;border-top:1px solid #D8D6D0;}.service-card{min-height:340px;padding:26px;border-right:1px solid #D8D6D0;border-bottom:1px solid #D8D6D0;display:flex;flex-direction:column;transition:background .3s,color .3s;}.service-card>span{font-size:9px;letter-spacing:.25em;opacity:.45;}.service-card h3{font-family:'Fjalla One',sans-serif;font-size:34px;line-height:.95;margin-top:auto;}.service-card p{font-size:13px;line-height:1.65;color:#666;margin-top:24px;}.service-card:hover{background:#111;color:#fff;}.service-card:hover p{color:#bbb;}.section-cta{display:inline-flex;align-items:center;gap:45px;margin-top:38px;padding:17px 20px;background:#111;color:#fff;text-decoration:none;font-size:9px;letter-spacing:.3em;text-transform:uppercase;}
+.summer-section{position:relative;background:#EFEDE7;color:#111;padding:120px 7vw;border-top:1px solid #D8D6D0;}.summer-grid{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:minmax(330px,.82fr) minmax(480px,1.18fr);gap:8vw;align-items:start;}.summer-kicker{font-size:9px;letter-spacing:.48em;text-transform:uppercase;opacity:.46;margin-bottom:28px;}.summer-heading h2{font-family:'Fjalla One',sans-serif;font-size:clamp(70px,8vw,135px);line-height:.86;text-transform:uppercase;}.summer-heading h2 span{color:transparent;-webkit-text-stroke:1px #111;}.summer-copy{border-top:1px solid #D8D6D0;padding-top:32px;}.summer-copy p{max-width:780px;margin-bottom:24px;font-size:clamp(16px,1.25vw,20px);line-height:1.8;color:#555;}.summer-benefits{border-top:1px solid #D8D6D0;border-bottom:1px solid #D8D6D0;margin-top:32px;display:grid;grid-template-columns:1fr 1fr;}.summer-benefits span{padding:17px 0;border-bottom:1px solid #D8D6D0;font-size:8px;letter-spacing:.28em;color:#111;}.summer-benefits span:nth-child(odd){padding-right:20px;border-right:1px solid #D8D6D0;}.summer-benefits span:nth-child(even){padding-left:20px;}.summer-benefits span:nth-last-child(-n+2){border-bottom:0;}.summer-actions{margin-top:32px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;}.summer-primary{display:flex;justify-content:space-between;align-items:center;gap:45px;min-width:340px;padding:18px 20px;background:#111;color:#fff;text-decoration:none;font-size:9px;letter-spacing:.3em;text-transform:uppercase;}.summer-secondary{color:#111;text-decoration:none;font-size:9px;letter-spacing:.32em;text-transform:uppercase;border-bottom:1px solid #111;padding-bottom:5px;}.summer-note{margin-top:20px;font-size:9px!important;line-height:1.6!important;opacity:.5;}
+.process-section{background:#F7F6F2;padding:125px 7vw;color:#111;}.process-head{max-width:1480px;margin:0 auto 65px;border-bottom:1px solid #D8D6D0;padding-bottom:60px;}.process-grid{max-width:1480px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #D8D6D0;border-left:1px solid #D8D6D0;}.process-grid>div{padding:28px;min-height:260px;border-right:1px solid #D8D6D0;border-bottom:1px solid #D8D6D0;}.process-grid b{font-size:9px;letter-spacing:.25em;opacity:.45;}.process-grid h3{font-family:'Fjalla One',sans-serif;font-size:30px;margin-top:85px;}.process-grid p{font-size:13px;line-height:1.65;color:#666;margin-top:16px;}
+.about-snapshot{background:#111;color:#fff;padding:125px 7vw;display:grid;grid-template-columns:1fr .9fr;gap:8vw;align-items:end;}.about-snapshot h2{font-size:clamp(58px,7.5vw,120px);}.about-snapshot h2 span{-webkit-text-stroke:1px #fff;}.about-snapshot-copy p{font-size:17px;line-height:1.8;color:#bbb;max-width:690px;}.about-snapshot-copy .section-cta{background:#fff;color:#111;}
+.start-project-band{background:#F7F6F2;color:#111;text-align:center;padding:130px 7vw 145px;display:flex;flex-direction:column;align-items:center;}.start-project-band h2{font-size:clamp(78px,11vw,170px);}.start-project-band>p{max-width:620px;margin-top:28px;color:#555;font-size:17px;line-height:1.7;}.start-project-btn{margin-top:30px;background:#111;color:#fff;text-decoration:none;padding:19px 25px;font-size:9px;letter-spacing:.32em;text-transform:uppercase;display:inline-flex;gap:50px;}
+.footer{background:#F7F6F2;color:#111;border-top:1px solid #D8D6D0;display:flex;align-items:center;justify-content:space-between;gap:30px;padding:32px 7vw;font-size:8px;letter-spacing:.25em;text-transform:uppercase;}.footer-links{display:flex;gap:25px;flex-wrap:wrap;justify-content:center;}.footer-links a{color:#111;text-decoration:none;opacity:.55;}.footer-links a:hover{opacity:1;}
+@media(max-width:900px){.landing-content{padding:0 20px 35px;}.landing-content{display:block;padding-top:150px;}.landing-meta{align-items:flex-start;margin-top:30px;}.selected-intro,.services-top,.about-snapshot{grid-template-columns:1fr;}.selected-intro{gap:35px;padding:80px 20px 35px;}.services-new,.process-section,.about-snapshot,.start-project-band{padding-left:20px;padding-right:20px;}.services-top{gap:35px;}.service-grid{grid-template-columns:1fr 1fr;}.process-grid{grid-template-columns:1fr 1fr;}.footer{flex-direction:column;text-align:center;padding:28px 20px;}}
+@media(max-width:600px){.landing-slider,.landing-content{min-height:720px;}.slide-overlay{background:linear-gradient(90deg,rgba(247,246,242,.98),rgba(247,246,242,.82));}.landing-copy h1{font-size:18vw;}.landing-description{font-size:14px;}.landing-primary{width:100%;justify-content:space-between;}.hero-video-section{height:70vh;min-height:520px;}.hero-video-content{padding:0 20px;}.hero-video-content h2{font-size:12vw;}.service-grid,.process-grid{grid-template-columns:1fr;}.service-card{min-height:280px;}.footer-links{gap:14px;font-size:7px;}}
+
 </style>
 
 <!-- Vercel Web Analytics -->
@@ -1400,52 +1672,57 @@ nav a::after{
   <img src="data:image/png;base64,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" alt="OCEAYR Agency logo">
 </div>
 
-<nav>
-  <a href="/">Home</a>
-  <a href="/about">About Us</a>
-  <a href="#" onclick="openJoinModal();return false">Join The Team</a>
-  <a href="/contact">Contact Us</a>
+<nav class="site-nav">
+  <a href="#home">Home</a>
+  <a href="#gallery">Work</a>
+  <a href="#services">Services</a>
+  <a href="#summer" aria-label="Summer Collaborations 2026">Summer</a>
+  <a href="/about">About</a>
+  <a href="/contact" class="nav-cta">Start A Project</a>
 </nav>
 
-<section class="hero">
- <video
-  autoplay
-  muted
-  loop
-  playsinline
-  preload="auto"
-  id="bgv">
-
-  <source
-    src="/video/oceayr-background.mp4"
-    type="video/mp4">
-
-</video>
-
-  <h1>
-    OCEAYR<br>
-    <span class="outline">AGENCY</span>
-  </h1>
+<section class="landing-slider" id="home" aria-label="OCEAYR featured opportunities">
+  <div class="slide-bg slide-bg-1 active"></div>
+  <div class="slide-bg slide-bg-2"></div>
+  <div class="slide-bg slide-bg-3"></div>
+  <div class="slide-overlay"></div>
+  <div class="landing-content">
+    <div class="landing-copy">
+      <p class="landing-kicker" id="landingKicker">OCEAYR SUMMER COLLABORATIONS 2026</p>
+      <h1 id="landingTitle">MAKE THIS<br><span>SUMMER VISIBLE.</span></h1>
+      <p class="landing-description" id="landingDescription">Limited paid collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.</p>
+      <div class="landing-actions">
+        <a id="landingPrimary" class="landing-primary" href="#summer">EXPLORE SUMMER COLLABORATIONS <span>→</span></a>
+        <a id="landingSecondary" class="landing-secondary" href="/contact">START A PROJECT</a>
+      </div>
+    </div>
+    <div class="landing-meta">
+      <span class="slide-count"><b id="slideNumber">01</b> / 03</span>
+      <div class="slide-controls" aria-label="Featured slide controls">
+        <button type="button" class="slide-dot active" data-slide="0" aria-label="Slide 1"></button>
+        <button type="button" class="slide-dot" data-slide="1" aria-label="Slide 2"></button>
+        <button type="button" class="slide-dot" data-slide="2" aria-label="Slide 3"></button>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="services" id="services">
-  <p class="svc-eyebrow">Marketing Agency — UAE &amp; Beyond</p>
-
-  <h2 class="svc-headline">
-    <span class="hl">MORE THAN CONTENT.</span>
-    <span class="hl">MORE THAN TRENDS.</span>
-    <span class="hl gold">WE CREATE DEMAND.</span>
-  </h2>
-
-  <div class="svc-list">
-    <div class="svc-item">Content</div>
-    <div class="svc-item">SM Management</div>
-    <div class="svc-item">Strategy</div>
-    <div class="svc-item">Branding</div>
-    <div class="svc-item">Web Design</div>
+<section class="hero-video-section" id="video">
+  <video autoplay muted loop playsinline preload="auto" id="bgv">
+    <source src="/video/oceayr-background.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-content">
+    <p>OCEAYR — CREATIVE MARKETING AGENCY</p>
+    <h2>MORE THAN CONTENT.<br>MORE THAN TRENDS.<br><span>WE CREATE DEMAND.</span></h2>
   </div>
+</section>
 
-  <button class="talk-btn" onclick="openModal()">Talk To Us <span class="arr">→</span></button>
+<section class="selected-intro">
+  <div>
+    <p class="section-kicker">SELECTED VISUAL DIRECTION</p>
+    <h2>HOSPITALITY.<br>FOOD.<br>LIFESTYLE.</h2>
+  </div>
+  <p>A curated representation of the hospitality, food and lifestyle stories that shape the OCEAYR creative perspective.</p>
 </section>
 
 <div class="ticker-section">
@@ -1459,10 +1736,63 @@ nav a::after{
 
 <section class="gallery-section" id="gallery"></section>
 
+<section class="services-new" id="services">
+  <div class="services-top">
+    <div><p class="section-kicker">WHAT WE CREATE</p><h2>CREATIVE FOR<br><span>HOSPITALITY.</span></h2></div>
+    <p class="services-lead">Strategy, photography, film and digital content designed to make hospitality brands more desirable — and easier to choose.</p>
+  </div>
+  <div class="service-grid">
+    <article class="service-card"><span>01</span><h3>CREATIVE<br>STRATEGY</h3><p>Brand positioning, campaign concepts, creative direction and content strategy.</p></article>
+    <article class="service-card"><span>02</span><h3>PHOTOGRAPHY</h3><p>Hotel, resort, food, lifestyle, architecture and interior photography.</p></article>
+    <article class="service-card"><span>03</span><h3>FILM &amp;<br>VIDEO</h3><p>Campaign films, property films, social reels and short-form visual stories.</p></article>
+    <article class="service-card"><span>04</span><h3>DIGITAL<br>CONTENT</h3><p>Social content, campaign assets, website visuals and launch-ready creative.</p></article>
+    <article class="service-card"><span>05</span><h3>CAMPAIGN<br>DIRECTION</h3><p>Seasonal campaigns, staycations, restaurant launches and destination experiences.</p></article>
+  </div>
+  <a class="section-cta" href="/contact">DISCUSS A PROJECT <span>→</span></a>
+</section>
+
+<section class="summer-section" id="summer">
+  <div class="summer-grid">
+    <div class="summer-heading"><p class="summer-kicker">OCEAYR SUMMER COLLABORATIONS 2026</p><h2>MAKE THIS<br><span>SUMMER VISIBLE.</span></h2></div>
+    <div class="summer-copy">
+      <p>OCEAYR is opening a limited number of paid summer collaboration slots for hotels, resorts, restaurants and lifestyle destinations across the UAE.</p>
+      <p>Created for brands looking to promote a summer experience, refresh their digital presence or build a premium content library for the months ahead.</p>
+      <p>Each collaboration is shaped around the property, audience and commercial objective — combining creative direction, photography, film and campaign-ready content.</p>
+      <div class="summer-benefits"><span>STRATEGIC CREATIVE DIRECTION</span><span>PREMIUM PHOTO &amp; VIDEO PRODUCTION</span><span>CAMPAIGN-READY DIGITAL CONTENT</span><span>PRIORITY SUMMER SCHEDULING</span></div>
+      <div class="summer-actions"><a class="summer-primary" href="/contact">APPLY FOR A SUMMER COLLABORATION <span>→</span></a><a class="summer-secondary" href="/contact">DISCUSS THE OPPORTUNITY</a></div>
+      <p class="summer-note">Paid collaborations. Limited production availability. Scope and investment are customised for each brand.</p>
+    </div>
+  </div>
+</section>
+
+<section class="process-section">
+  <div class="process-head"><div><p class="section-kicker">HOW WE WORK</p><h2>FROM IDEA<br><span>TO IMPACT.</span></h2></div></div>
+  <div class="process-grid">
+    <div><b>01</b><h3>DISCOVERY</h3><p>We understand the brand, audience and commercial objective.</p></div>
+    <div><b>02</b><h3>DIRECTION</h3><p>We develop the campaign idea, mood and production plan.</p></div>
+    <div><b>03</b><h3>PRODUCTION</h3><p>Our team creates the photography, film and digital assets.</p></div>
+    <div><b>04</b><h3>DELIVERY</h3><p>Every asset is edited, organised and prepared for its intended channels.</p></div>
+  </div>
+</section>
+
+<section class="about-snapshot">
+  <div><p class="section-kicker">ABOUT OCEAYR</p><h2>CREATIVE THINKING.<br><span>PREMIUM EXECUTION.</span></h2></div>
+  <div class="about-snapshot-copy"><p>OCEAYR is a UAE creative marketing agency focused on luxury hospitality, food and lifestyle brands. We help hotels, resorts, restaurants, cafés, wellness spaces and destination-led businesses communicate with greater clarity, desirability and commercial confidence.</p><a class="section-cta" href="/about">DISCOVER OCEAYR <span>→</span></a></div>
+</section>
+
+<section class="start-project-band">
+  <p class="section-kicker">READY WHEN YOU ARE</p>
+  <h2>START A<br><span>PROJECT.</span></h2>
+  <p>Tell us what you are building, launching or trying to make more desirable.</p>
+  <a class="start-project-btn" href="/contact">START A PROJECT <span>→</span></a>
+</section>
+
 <footer class="footer">
-  <span>copyright © 2026 OCEAYR Agency</span>
-  <span>Designed & developed by OCEAYR Agency</span>
+  <div class="footer-left"><span>copyright © 2026 OCEAYR Agency</span></div>
+  <div class="footer-links"><a href="/about">About</a><a href="/contact">Start A Project</a><a href="#summer">Summer Collaborations</a><a href="#" onclick="openJoinModal();return false;">Join The Team</a></div>
+  <span>Designed &amp; developed by OCEAYR Agency</span>
 </footer>
+
 
 <div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
   <button class="lb-close" onclick="closeLb()">✕ &nbsp;Close</button>
@@ -1618,142 +1948,101 @@ bgv.play().catch(()=>{
     const BASE='https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/';
 
     /*
-      Explicit gallery source list with image00008.jpeg and image00017.jpeg removed.
-      image00008.jpeg is excluded because it repeats the bedroom photo,
-      and image00017.jpeg is excluded as requested.
-      Every remaining source appears exactly once.
-      The version query helps browsers load the corrected gallery.
+      Final gallery set:
+      image00008 and image00017 are intentionally excluded.
+      All other selected photos appear once.
     */
     const IMGS=[
-      `${BASE}image00001.jpeg?v=7`,
-      `${BASE}image00002.jpeg?v=7`,
-      `${BASE}image00003.jpeg?v=7`,
-      `${BASE}image00004.jpeg?v=7`,
-      `${BASE}image00005.jpeg?v=7`,
-      `${BASE}image00006.jpeg?v=7`,
-      `${BASE}image00007.jpeg?v=7`,
-      `${BASE}image00009.jpeg?v=7`,
-      `${BASE}image00010.jpeg?v=7`,
-      `${BASE}image00011.jpeg?v=7`,
-      `${BASE}image00012.jpeg?v=7`,
-      `${BASE}image00013.jpeg?v=7`,
-      `${BASE}image00014.jpeg?v=7`,
-      `${BASE}image00015.jpeg?v=7`,
-      `${BASE}image00016.jpeg?v=7`
+      `${BASE}image00001.jpeg?v=9`,
+      `${BASE}image00002.jpeg?v=9`,
+      `${BASE}image00003.jpeg?v=9`,
+      `${BASE}image00004.jpeg?v=9`,
+      `${BASE}image00005.jpeg?v=9`,
+      `${BASE}image00006.jpeg?v=9`,
+      `${BASE}image00007.jpeg?v=9`,
+      `${BASE}image00009.jpeg?v=9`,
+      `${BASE}image00010.jpeg?v=9`,
+      `${BASE}image00011.jpeg?v=9`,
+      `${BASE}image00012.jpeg?v=9`,
+      `${BASE}image00013.jpeg?v=9`,
+      `${BASE}image00014.jpeg?v=9`,
+      `${BASE}image00015.jpeg?v=9`,
+      `${BASE}image00016.jpeg?v=9`
     ];
-
-    const uniqueImageSources=[...new Set(IMGS)];
-
-    if(uniqueImageSources.length!==IMGS.length){
-      IMGS.splice(0,IMGS.length,...uniqueImageSources);
-    }
 
     const VW=window.innerWidth;
     const mob=VW<=768;
-    const galleryTopGap=mob ? 12 : 18;
     const galleryBottomGap=mob ? 18 : 24;
-
-    /*
-      Only the vertical length is increased.
-      Original X/Y positions, widths, image proportions, overlaps, gaps,
-      z-indexes and animation delays are retained.
-    */
-    /*
-      Previous gallery proportions restored:
-      original image heights, gaps, overlaps and vertical rhythm.
-      Only image00008.jpeg and image00017.jpeg are removed.
-    */
-    const HEIGHT_SCALE=1;
-    const VERTICAL_SPACING_SCALE=1;
+    const movementLimit=mob ? 44 : 74;
+    const totalStageShift=movementLimit*2;
 
     const stage=document.createElement('div');
     stage.className='g-stage';
     gallery.appendChild(stage);
 
     /*
-      Balanced staggered row structure:
-      3 / 2 / 2 / 2 / 2 / 2 / 2
-      Removing the centre card from Row 5 keeps the original left/right
-      overlap character and preserves a two-card final row.
+      Previous OCEAYR mosaic geometry:
+      large editorial cards, uneven vertical rhythm,
+      controlled overlap and 3/2/2/2/3/3 row structure.
     */
     const desktopLayout=[
-      // Row 1 — 3 cards
-      {x:4.8,  y:0.0,   w:31.0, r:1.27, z:22, d:0},
-      {x:38.0, y:-6.0,  w:25.8, r:1.30, z:28, d:40},
-      {x:66.2, y:2.2,   w:32.8, r:.88,  z:20, d:70},
+      {i:0,  x:4.8,  y:0.0,   w:31.0, r:1.27, z:22, d:0},
+      {i:1,  x:38.0, y:-6.0,  w:25.8, r:1.30, z:28, d:40},
+      {i:2,  x:66.2, y:2.2,   w:32.8, r:.88,  z:20, d:70},
 
-      // Row 2 — 2 cards
-      {x:15.0, y:28.8,  w:31.8, r:.78,  z:40, d:110},
-      {x:51.8, y:24.8,  w:30.4, r:.78,  z:42, d:150},
+      {i:3,  x:15.0, y:28.8,  w:31.8, r:.78,  z:40, d:110},
+      {i:4,  x:51.8, y:24.8,  w:30.4, r:.78,  z:42, d:150},
 
-      // Row 3 — 2 cards
-      {x:7.2,  y:50.5,  w:34.0, r:1.02, z:52, d:190},
-      {x:66.0, y:45.5,  w:33.5, r:.82,  z:50, d:230},
+      {i:5,  x:7.2,  y:50.5,  w:34.0, r:1.02, z:52, d:190},
+      {i:6,  x:66.0, y:45.5,  w:33.5, r:.82,  z:50, d:230},
 
-      // Row 4 — 2 cards
-      {x:40.5, y:63.0,  w:31.2, r:.98,  z:34, d:270},
-      {x:72.0, y:68.8,  w:27.0, r:1.24, z:32, d:310},
+      {i:7,  x:40.5, y:63.0,  w:31.2, r:.98,  z:34, d:270},
+      {i:8,  x:72.0, y:68.8,  w:27.0, r:1.24, z:32, d:310},
 
-      // Row 5 — 3 cards
-      {x:4.8,  y:78.5,  w:31.0, r:.80,  z:24, d:350},
-      {x:30.4, y:91.0,  w:30.0, r:1.02, z:44, d:390},
-      {x:64.0, y:91.8,  w:28.5, r:.96,  z:46, d:430},
+      {i:9,  x:4.8,  y:78.5,  w:31.0, r:.80,  z:24, d:350},
+      {i:10, x:30.4, y:91.0,  w:30.0, r:1.02, z:44, d:390},
+      {i:11, x:64.0, y:91.8,  w:28.5, r:.96,  z:46, d:430},
 
-      // Row 6 — 3 cards
-      {x:67.5, y:109.5, w:31.5, r:1.00, z:58, d:470},
-      {x:39.5, y:119.2, w:31.0, r:.76,  z:36, d:510},
-      {x:6.2,  y:119.5, w:29.8, r:1.24, z:38, d:550}
+      {i:12, x:67.5, y:109.5, w:31.5, r:1.00, z:58, d:470},
+      {i:13, x:39.5, y:119.2, w:31.0, r:.76,  z:36, d:510},
+      {i:14, x:6.2,  y:119.5, w:29.8, r:1.24, z:38, d:550}
     ];
 
     const mobileLayout=[
-      // Row 1 — 3 cards
-      {x:-4.0, y:0.0,   w:38.0, r:1.32, z:20, d:0},
-      {x:31.0, y:-9.0,  w:35.0, r:1.42, z:30, d:35},
-      {x:64.0, y:3.0,   w:39.0, r:.88,  z:22, d:70},
+      {i:0,  x:-4.0, y:0.0,   w:38.0, r:1.32, z:20, d:0},
+      {i:1,  x:31.0, y:-9.0,  w:35.0, r:1.42, z:30, d:35},
+      {i:2,  x:64.0, y:3.0,   w:39.0, r:.88,  z:22, d:70},
 
-      // Row 2 — 2 cards
-      {x:13.0, y:34.0,  w:40.0, r:.78,  z:42, d:105},
-      {x:49.0, y:29.0,  w:41.0, r:.78,  z:44, d:140},
+      {i:3,  x:13.0, y:34.0,  w:40.0, r:.78,  z:42, d:105},
+      {i:4,  x:49.0, y:29.0,  w:41.0, r:.78,  z:44, d:140},
 
-      // Row 3 — 2 cards
-      {x:-2.0, y:56.0,  w:43.0, r:1.02, z:52, d:175},
-      {x:59.0, y:52.0,  w:44.0, r:.82,  z:50, d:210},
+      {i:5,  x:-2.0, y:56.0,  w:43.0, r:1.02, z:52, d:175},
+      {i:6,  x:59.0, y:52.0,  w:44.0, r:.82,  z:50, d:210},
 
-      // Row 4 — 2 cards
-      {x:29.0, y:73.0,  w:43.0, r:.98,  z:34, d:245},
-      {x:68.0, y:82.0,  w:34.0, r:1.24, z:32, d:280},
+      {i:7,  x:29.0, y:73.0,  w:43.0, r:.98,  z:34, d:245},
+      {i:8,  x:68.0, y:82.0,  w:34.0, r:1.24, z:32, d:280},
 
-      // Row 5 — 3 cards
-      {x:-6.0, y:92.0,  w:42.0, r:.80,  z:24, d:315},
-      {x:28.0, y:105.0, w:42.0, r:1.02, z:44, d:350},
-      {x:62.0, y:106.0, w:39.0, r:.96,  z:46, d:385},
+      {i:9,  x:-6.0, y:92.0,  w:42.0, r:.80,  z:24, d:315},
+      {i:10, x:28.0, y:105.0, w:42.0, r:1.02, z:44, d:350},
+      {i:11, x:62.0, y:106.0, w:39.0, r:.96,  z:46, d:385},
 
-      // Row 6 — 3 cards
-      {x:55.0, y:129.0, w:46.0, r:1.00, z:58, d:420},
-      {x:30.0, y:139.0, w:43.0, r:.76,  z:36, d:455},
-      {x:-5.0, y:137.0, w:40.0, r:1.24, z:38, d:490}
+      {i:12, x:55.0, y:129.0, w:46.0, r:1.00, z:58, d:420},
+      {i:13, x:30.0, y:139.0, w:43.0, r:.76,  z:36, d:455},
+      {i:14, x:-5.0, y:137.0, w:40.0, r:1.24, z:38, d:490}
     ];
 
     const layout=mob ? mobileLayout : desktopLayout;
-
-    /*
-      Keep every photo below the ticker on initial load.
-      Individual cards can still be dragged above it by the visitor.
-    */
-    const minLayoutTop=Math.min(...layout.map(cfg=>cfg.y*VW/100));
-    const layoutTopOffset=Math.max(0,-minLayoutTop)+galleryTopGap;
-
     const cards=[];
     const dragOffsets=[];
     let maxBottom=0;
 
-    layout.slice(0,IMGS.length).forEach((cfg,index)=>{
+    layout.forEach((cfg,index)=>{
 
       const left=cfg.x*VW/100;
-      const top=(cfg.y*VW/100)+layoutTopOffset;
+      const top=cfg.y*VW/100;
       const width=cfg.w*VW/100;
-      const height=width*cfg.r*HEIGHT_SCALE;
-      const src=IMGS[index];
+      const height=width*cfg.r;
+      const src=IMGS[cfg.i];
 
       const card=document.createElement('div');
       card.className='g-card';
@@ -1770,11 +2059,12 @@ bgv.play().catch(()=>{
       inner.style.transitionDelay=cfg.d+'ms';
 
       const img=document.createElement('img');
-
-      img.alt='Work '+(index+1);
+      img.alt='Work '+(cfg.i+1);
       img.decoding='async';
       img.width=Math.round(width);
       img.height=Math.round(height);
+      img.src=src;
+      img.loading='eager';
 
       function revealIfReady(){
         if(card.dataset.imgReady==='1' && card.dataset.inView==='1'){
@@ -1783,22 +2073,13 @@ bgv.play().catch(()=>{
         }
       }
 
-      const markImageReady=()=>{
+      img.addEventListener('load',()=>{
         card.dataset.imgReady='1';
         revealIfReady();
-      };
-
-      img.addEventListener('load',markImageReady,{once:true});
-
-      img.src=src;
-      img.loading='eager';
-
-      if(index<4){
-        img.setAttribute('fetchpriority','high');
-      }
+      },{once:true});
 
       if(img.complete&&img.naturalWidth){
-        markImageReady();
+        card.dataset.imgReady='1';
       }
 
       inner.appendChild(img);
@@ -1807,46 +2088,21 @@ bgv.play().catch(()=>{
 
       cards.push(card);
       dragOffsets.push({x:0,y:0,moved:false});
-
       maxBottom=Math.max(maxBottom,top+height);
     });
 
     gallery.style.height=Math.max(
       1,
-      Math.ceil(maxBottom+galleryBottomGap)
+      Math.ceil(maxBottom-totalStageShift+galleryBottomGap)
     )+'px';
-
-    const imageObserver=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          const img=entry.target;
-
-          if(img.dataset.src){
-            img.src=img.dataset.src;
-            img.removeAttribute('data-src');
-          }
-
-          imageObserver.unobserve(img);
-        }
-      });
-    },{rootMargin:'700px 0px'});
-
-    stage.querySelectorAll('img[data-src]').forEach(img=>{
-      imageObserver.observe(img);
-    });
 
     const revealObserver=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
           const card=entry.target;
-          const img=card.querySelector('img');
-
           card.dataset.inView='1';
 
-          if(img&&img.dataset.src){
-            img.src=img.dataset.src;
-            img.removeAttribute('data-src');
-          }
+          const img=card.querySelector('img');
 
           if(img&&card.dataset.imgReady==='1'){
             img.classList.add('vis');
@@ -1856,22 +2112,9 @@ bgv.play().catch(()=>{
           revealObserver.unobserve(card);
         }
       });
-    },{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+    },{threshold:.04,rootMargin:'0px 0px -3% 0px'});
 
     cards.forEach(card=>revealObserver.observe(card));
-
-    IMGS.slice(0,8).forEach((src,index)=>{
-      const link=document.createElement('link');
-      link.rel='preload';
-      link.as='image';
-      link.href=src;
-
-      if(index<4){
-        link.setAttribute('fetchpriority','high');
-      }
-
-      document.head.appendChild(link);
-    });
 
     const lenis=window.Lenis ? new Lenis({
       lerp:.085,
