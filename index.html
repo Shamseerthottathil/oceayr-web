@@ -2,239 +2,179 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCEAYR Agency</title>
 
-<meta name="description"
-      content="OCEAYR Agency — Creative marketing for luxury hospitality, food and lifestyle brands.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;900&family=Kanit:wght@700;900&display=swap" rel="stylesheet">
 
-<title>OCEAYR | Creative Marketing Agency</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
-      rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
 <style>
 
 /* =========================================================
-   GLOBAL
+   RESET
 ========================================================= */
 
-:root {
-    --bg: #f5f5f0;
-    --bg-soft: #ecece5;
-    --white: #ffffff;
-    --text: #111111;
-    --muted: #707070;
-    --border: #c9c9c2;
-
-    --sans: "DM Sans", Arial, sans-serif;
-    --display: "Oswald", Arial, sans-serif;
-
-    --max-width: 1500px;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-* {
-    box-sizing: border-box;
+html{
+  scroll-behavior:smooth;
+  background:#000;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-
-    background: var(--bg);
-    color: var(--text);
-
-    font-family: var(--sans);
-
-    overflow-x: hidden;
-}
-
-body,
-section,
-header,
-footer {
-    background-color: var(--bg);
+body{
+  background:#f3f1ec;
+  color:#111;
+  font-family:Inter,sans-serif;
+  overflow-x:hidden;
 }
 
 img,
-video {
-    max-width: 100%;
+video{
+  max-width:100%;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button,
-input,
-textarea,
-select {
-    font-family: inherit;
+a{
+  color:inherit;
 }
 
 
 /* =========================================================
-   HEADER
+   COLOURS
 ========================================================= */
 
-.site-header {
-
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 92px;
-
-    z-index: 9999;
-
-    display: flex;
-    align-items: center;
-
-    background: rgba(245,245,240,.94);
-
-    backdrop-filter: blur(18px);
-
-    border-bottom: 1px solid rgba(17,17,17,.10);
-}
-
-.nav-container {
-
-    width: 100%;
-    max-width: var(--max-width);
-
-    margin: auto;
-
-    padding: 0 42px;
-
-    display: flex;
-    align-items: center;
-
-    justify-content: space-between;
+:root{
+  --black:#0b0b0b;
+  --offwhite:#f3f1ec;
+  --warm:#e9e6df;
+  --white:#fff;
+  --grey:#777;
+  --line:#cbc7bf;
 }
 
 
-/* LOGO */
+/* =========================================================
+   LOGO
+========================================================= */
 
-.logo {
-
-    width: 110px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
+.logo{
+  position:fixed;
+  top:24px;
+  left:28px;
+  width:78px;
+  height:55px;
+  z-index:5000;
+  pointer-events:none;
 }
 
-.logo img {
-
-    width: 100%;
-    height: auto;
-
-    display: block;
+.logo-mark{
+  position:relative;
+  width:76px;
+  height:52px;
+  font-family:Arial Black,Arial,sans-serif;
+  font-size:51px;
+  font-weight:900;
+  line-height:.8;
+  letter-spacing:-.20em;
+  color:#000;
 }
 
-.logo-fallback {
-
-    display: none;
-
-    font-family: var(--display);
-
-    font-size: 55px;
-
-    font-weight: 700;
-
-    letter-spacing: -5px;
-
-    line-height: .8;
+.logo-mark .o{
+  position:absolute;
+  left:0;
+  top:0;
 }
 
-
-/* NAVIGATION */
-
-.main-nav {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 31px;
-
-    margin-left: auto;
-}
-
-.main-nav a {
-
-    position: relative;
-
-    padding: 8px 0;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    letter-spacing: 2.5px;
-
-    text-transform: uppercase;
-
-    white-space: nowrap;
+.logo-mark .r{
+  position:absolute;
+  left:29px;
+  top:1px;
 }
 
 
-/* underline */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-.main-nav a:not(.start-project)::after {
+nav{
+  position:fixed;
+  top:26px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:4500;
 
-    content: "";
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    position: absolute;
-
-    left: 0;
-    bottom: 0;
-
-    width: 0;
-
-    height: 1.5px;
-
-    background: #111;
-
-    transition: width .25s ease;
+  gap:30px;
+  white-space:nowrap;
 }
 
-.main-nav a:hover::after,
-.main-nav a.active::after {
+nav a{
+  position:relative;
+  display:inline-block;
 
-    width: 100%;
+  padding:7px 0;
+
+  text-decoration:none;
+  text-transform:uppercase;
+
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.24em;
+
+  color:#111;
+  opacity:.72;
+
+  transition:.25s;
 }
 
+nav a::after{
+  content:"";
 
-/* START PROJECT */
+  position:absolute;
+  left:0;
+  bottom:0;
 
-.start-project {
+  width:0;
+  height:1px;
 
-    border: 1px solid #222;
+  background:#111;
 
-    padding: 15px 21px !important;
-
-    margin-left: 5px;
-
-    transition: all .25s ease;
+  transition:.3s;
 }
 
-.start-project:hover {
+nav a:hover,
+nav a.active{
+  opacity:1;
+}
 
-    background: #111;
+nav a:hover::after,
+nav a.active::after{
+  width:100%;
+}
 
-    color: #fff;
+nav .project-link{
+  padding:12px 19px;
+  border:1px solid #999;
+  opacity:1;
+}
+
+nav .project-link::after{
+  display:none;
+}
+
+nav .project-link:hover{
+  background:#111;
+  color:#fff;
+  border-color:#111;
 }
 
 
@@ -242,209 +182,160 @@ select {
    HERO SLIDER
 ========================================================= */
 
-.hero {
+.hero-slider{
+  position:relative;
+  width:100%;
+  height:min(760px,92vh);
+  min-height:600px;
 
-    position: relative;
-
-    margin-top: 92px;
-
-    width: 100%;
-
-    height: 760px;
-
-    overflow: hidden;
-
-    background: #ddd;
+  overflow:hidden;
+  background:#111;
 }
 
-.slide {
+.slide{
+  position:absolute;
+  inset:0;
 
-    position: absolute;
+  opacity:0;
+  visibility:hidden;
 
-    inset: 0;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition:
-        opacity 1s ease,
-        visibility 1s ease;
+  transition:
+    opacity 1s ease,
+    visibility 1s ease;
 }
 
-.slide.active {
-
-    opacity: 1;
-
-    visibility: visible;
+.slide.active{
+  opacity:1;
+  visibility:visible;
 }
 
+.slide img{
+  position:absolute;
+  inset:0;
 
-/* image */
+  width:100%;
+  height:100%;
 
-.slide img {
-
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    object-position: center center;
+  object-fit:cover;
 }
 
+.slide::after{
+  content:"";
 
-/* subtle image overlay only */
+  position:absolute;
+  inset:0;
 
-.slide::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,.52),
-            rgba(0,0,0,.12) 70%
-        );
-
-    z-index: 1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.15),
+      rgba(0,0,0,.05) 45%,
+      rgba(0,0,0,.42)
+    );
 }
 
+.slide-content{
+  position:absolute;
+  z-index:5;
 
-/* slide content */
+  left:7%;
+  bottom:12%;
 
-.slide-content {
+  max-width:760px;
 
-    position: absolute;
-
-    z-index: 2;
-
-    left: 7vw;
-
-    bottom: 105px;
-
-    max-width: 850px;
-
-    color: white;
+  color:#fff;
 }
 
-.slide-label {
+.slide-number{
+  margin-bottom:20px;
 
-    font-size: 13px;
-
-    letter-spacing: 5px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 24px;
+  font-size:10px;
+  letter-spacing:.35em;
+  text-transform:uppercase;
 }
 
-.slide-title {
+.slide-content h2{
+  font-family:"Bebas Neue",sans-serif;
 
-    margin: 0 0 25px;
+  font-size:clamp(60px,9vw,145px);
+  line-height:.82;
 
-    font-family: var(--display);
-
-    font-size: clamp(65px, 8vw, 135px);
-
-    font-weight: 600;
-
-    line-height: .86;
-
-    letter-spacing: -2px;
-
-    text-transform: uppercase;
+  text-transform:uppercase;
 }
 
-.slide-text {
+.slide-content h2 span{
+  display:block;
 
-    max-width: 650px;
+  color:transparent;
 
-    margin-bottom: 30px;
-
-    font-size: 19px;
-
-    line-height: 1.55;
+  -webkit-text-stroke:1px #fff;
 }
 
+.slide-content p{
+  max-width:560px;
 
-/* CTA */
+  margin-top:24px;
 
-.slide-button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 40px;
-
-    padding: 18px 25px;
-
-    background: #fff;
-
-    color: #111;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
+  font-size:15px;
+  line-height:1.65;
 }
 
-.slide-button span {
+.slide-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
 
-    font-size: 21px;
+  gap:45px;
+
+  margin-top:28px;
+
+  padding:16px 22px;
+
+  background:#fff;
+  color:#111;
+
+  text-decoration:none;
+  text-transform:uppercase;
+
+  font-size:9px;
+  letter-spacing:.23em;
+
+  transition:.3s;
 }
 
-
-/* slider indicators */
-
-.slider-controls {
-
-    position: absolute;
-
-    z-index: 5;
-
-    left: 7vw;
-
-    bottom: 34px;
-
-    display: flex;
-
-    gap: 12px;
+.slide-button:hover{
+  background:#111;
+  color:#fff;
 }
 
-.slider-dot {
+.slide-controls{
+  position:absolute;
 
-    width: 50px;
+  z-index:20;
 
-    height: 2px;
+  left:7%;
+  bottom:4.5%;
 
-    border: 0;
-
-    padding: 0;
-
-    background: rgba(255,255,255,.45);
-
-    cursor: pointer;
-
-    transition: background .3s ease;
+  display:flex;
+  gap:12px;
 }
 
-.slider-dot.active {
+.slide-dot{
+  width:40px;
+  height:2px;
 
-    background: white;
+  border:0;
+
+  background:rgba(255,255,255,.4);
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.slide-dot.active{
+  width:70px;
+  background:#fff;
 }
 
 
@@ -452,577 +343,154 @@ select {
    VIDEO
 ========================================================= */
 
-.video-section {
+.video-section{
+  position:relative;
 
-    padding: 90px 0 0;
+  width:100%;
+  height:min(820px,88vh);
+  min-height:580px;
 
-    background: var(--bg);
+  overflow:hidden;
+
+  background:#000;
+}
+
+/*
+   IMPORTANT:
+   This is the current GitHub-hosted video.
+   Do NOT replace with Cloudinary.
+*/
+
+#bgv{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+  object-position:center center;
+
+  background:#000;
+
+  opacity:1;
+  filter:none;
 }
 
 
-/* OCEAYR AGENCY TITLE */
+/*
+   OCEAYR AGENCY stays INSIDE
+   the middle of the video.
+*/
 
-.agency-title {
+.video-title{
+  position:absolute;
 
-    text-align: center;
+  z-index:10;
 
-    padding: 0 20px;
+  left:50%;
+  top:50%;
 
-    margin-bottom: 45px;
+  transform:translate(-50%,-50%);
+
+  width:94%;
+
+  text-align:center;
+
+  color:#fff;
+
+  pointer-events:none;
 }
 
-.agency-title-label {
+.video-title-main{
+  font-family:"Bebas Neue",sans-serif;
 
-    margin-bottom: 22px;
+  font-size:clamp(85px,16vw,250px);
 
-    color: #777;
+  line-height:.72;
 
-    font-size: 13px;
+  letter-spacing:-.01em;
 
-    letter-spacing: 6px;
+  font-weight:900;
 
-    text-transform: uppercase;
+  text-shadow:
+    0 2px 18px rgba(0,0,0,.15);
 }
 
-.agency-title-main {
+.video-title-outline{
+  font-family:"Bebas Neue",sans-serif;
 
-    margin: 0;
+  font-size:clamp(80px,15vw,230px);
 
-    font-family: var(--display);
+  line-height:.72;
 
-    font-size: clamp(90px, 14vw, 210px);
+  letter-spacing:0;
 
-    font-weight: 700;
+  color:transparent;
 
-    line-height: .72;
-
-    letter-spacing: -7px;
-
-    text-transform: uppercase;
-}
-
-
-/* VIDEO */
-
-.video-container {
-
-    width: 100%;
-
-    height: min(78vh, 850px);
-
-    overflow: hidden;
-
-    background: #ddd;
-}
-
-.background-video {
-
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    object-position: center center;
-
-    opacity: 1;
-
-    filter: none;
-}
-
-
-/* =========================================================
-   MORE THAN CONTENT
-========================================================= */
-
-.intro {
-
-    padding: 130px 7vw;
-
-    background: var(--bg);
-}
-
-.intro-inner {
-
-    max-width: var(--max-width);
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 90px;
-}
-
-.section-label {
-
-    color: #777;
-
-    font-size: 12px;
-
-    letter-spacing: 5px;
-
-    text-transform: uppercase;
-}
-
-.intro-title {
-
-    margin: 25px 0 0;
-
-    font-family: var(--display);
-
-    font-size: clamp(65px, 8vw, 120px);
-
-    line-height: .84;
-
-    text-transform: uppercase;
-}
-
-.outline {
-
-    color: transparent;
-
-    -webkit-text-stroke: 1.5px #111;
-}
-
-.intro-quote {
-
-    margin: 0 0 40px;
-
-    font-family: var(--display);
-
-    font-size: clamp(42px, 5vw, 75px);
-
-    line-height: .92;
-
-    text-transform: uppercase;
-}
-
-.intro-copy {
-
-    color: #505050;
-
-    font-size: 19px;
-
-    line-height: 1.7;
-
-    max-width: 700px;
+  -webkit-text-stroke:
+    clamp(1px,.12vw,2px)
+    rgba(255,255,255,.95);
 }
 
 
 /* =========================================================
-   SUMMER
+   MAIN MESSAGE
 ========================================================= */
 
-.summer {
+.message-section{
+  background:#f3f1ec;
 
-    padding: 125px 7vw;
-
-    background: var(--bg-soft);
+  padding:
+    110px
+    7vw
+    100px;
 }
 
-.summer-inner {
+.eyebrow{
+  margin-bottom:30px;
 
-    max-width: var(--max-width);
+  font-size:10px;
+  letter-spacing:.38em;
 
-    margin: auto;
+  text-transform:uppercase;
+
+  color:#777;
 }
 
-.summer-title {
+.main-headline{
+  max-width:1250px;
 
-    margin: 25px 0 55px;
+  font-family:"Bebas Neue",sans-serif;
 
-    max-width: 1100px;
+  font-size:clamp(60px,9vw,145px);
 
-    font-family: var(--display);
+  line-height:.82;
 
-    font-size: clamp(70px, 10vw, 155px);
-
-    line-height: .82;
-
-    text-transform: uppercase;
+  text-transform:uppercase;
 }
 
-.summer-copy {
-
-    max-width: 850px;
-
-    color: #4e4e4e;
-
-    font-size: 20px;
-
-    line-height: 1.65;
+.main-headline .outline{
+  color:transparent;
+  -webkit-text-stroke:1px #111;
 }
 
-.summer-points {
-
-    margin: 60px 0;
-
-    display: grid;
-
-    grid-template-columns: repeat(4,1fr);
-
-    gap: 18px;
+.main-headline .block{
+  display:block;
 }
 
-.summer-point {
+.message-copy{
+  max-width:700px;
 
-    padding-top: 18px;
+  margin-top:50px;
+  margin-left:auto;
 
-    border-top: 1px solid #aaa;
+  font-size:17px;
+  line-height:1.8;
 
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    line-height: 1.5;
-}
-
-.dark-button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 60px;
-
-    padding: 20px 28px;
-
-    min-width: 350px;
-
-    background: #111;
-
-    color: #fff;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-}
-
-.dark-button:hover {
-
-    transform: translateY(-2px);
-}
-
-.summer-secondary {
-
-    margin-left: 25px;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    border-bottom: 1px solid #111;
-
-    padding-bottom: 5px;
-}
-
-.summer-note {
-
-    margin-top: 25px;
-
-    color: #777;
-
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-.gallery {
-
-    padding: 120px 0 80px;
-
-    background: var(--bg);
-
-    overflow: hidden;
-}
-
-.gallery-heading {
-
-    max-width: var(--max-width);
-
-    margin: auto;
-
-    padding: 0 7vw 35px;
-}
-
-.gallery-heading h2 {
-
-    margin: 0;
-
-    font-family: var(--display);
-
-    font-size: clamp(65px, 9vw, 145px);
-
-    line-height: .82;
-
-    text-transform: uppercase;
-}
-
-.gallery-heading p {
-
-    max-width: 650px;
-
-    margin-top: 25px;
-
-    color: #666;
-
-    font-size: 17px;
-
-    line-height: 1.6;
-}
-
-
-/* shuffle */
-
-.shuffle-bar {
-
-    width: 100%;
-
-    height: 90px;
-
-    overflow: hidden;
-
-    border-top: 1px solid #222;
-
-    border-bottom: 1px solid #222;
-
-    margin-bottom: 35px;
-
-    display: flex;
-
-    align-items: center;
-}
-
-.shuffle-track {
-
-    display: flex;
-
-    width: max-content;
-
-    gap: 80px;
-
-    font-family: var(--display);
-
-    font-size: 43px;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-
-    animation: marquee 25s linear infinite;
-}
-
-@keyframes marquee {
-
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-50%);
-    }
-}
-
-
-/* gallery stage */
-
-.gallery-stage {
-
-    position: relative;
-
-    width: 100%;
-
-    max-width: 1500px;
-
-    height: 1390px;
-
-    margin: auto;
-
-    overflow: hidden;
-
-    touch-action: none;
-}
-
-
-/* cards */
-
-.gallery-card {
-
-    position: absolute;
-
-    overflow: hidden;
-
-    cursor: grab;
-
-    user-select: none;
-
-    touch-action: none;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.08);
-
-    transition:
-        box-shadow .25s ease;
-}
-
-.gallery-card:active {
-
-    cursor: grabbing;
-
-    box-shadow:
-        0 25px 60px rgba(0,0,0,.18);
-
-    z-index: 1000 !important;
-}
-
-.gallery-card img {
-
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    pointer-events: none;
-}
-
-
-/* desktop positions */
-
-.gallery-card:nth-child(1) {
-
-    left: 5%;
-    top: 15px;
-
-    width: 320px;
-    height: 440px;
-
-    transform: rotate(-1deg);
-
-    z-index: 4;
-}
-
-.gallery-card:nth-child(2) {
-
-    left: 29%;
-    top: 90px;
-
-    width: 360px;
-    height: 500px;
-
-    transform: rotate(.6deg);
-
-    z-index: 6;
-}
-
-.gallery-card:nth-child(3) {
-
-    right: 5%;
-    top: 20px;
-
-    width: 300px;
-    height: 430px;
-
-    transform: rotate(1deg);
-
-    z-index: 3;
-}
-
-.gallery-card:nth-child(4) {
-
-    left: 9%;
-    top: 485px;
-
-    width: 330px;
-    height: 460px;
-
-    transform: rotate(1deg);
-
-    z-index: 7;
-}
-
-.gallery-card:nth-child(5) {
-
-    left: 39%;
-    top: 570px;
-
-    width: 340px;
-    height: 460px;
-
-    transform: rotate(-1deg);
-
-    z-index: 5;
-}
-
-.gallery-card:nth-child(6) {
-
-    right: 8%;
-    top: 490px;
-
-    width: 320px;
-    height: 450px;
-
-    transform: rotate(-1deg);
-
-    z-index: 8;
-}
-
-.gallery-card:nth-child(7) {
-
-    left: 3%;
-    top: 950px;
-
-    width: 310px;
-    height: 430px;
-
-    transform: rotate(-1deg);
-
-    z-index: 3;
-}
-
-.gallery-card:nth-child(8) {
-
-    left: 31%;
-    top: 1010px;
-
-    width: 350px;
-    height: 450px;
-
-    transform: rotate(.8deg);
-
-    z-index: 5;
-}
-
-.gallery-card:nth-child(9) {
-
-    right: 4%;
-    top: 930px;
-
-    width: 330px;
-    height: 450px;
-
-    transform: rotate(1deg);
-
-    z-index: 4;
+  color:#444;
 }
 
 
@@ -1030,147 +498,391 @@ select {
    SERVICES
 ========================================================= */
 
-.services {
+.services{
+  background:#e9e6df;
 
-    padding: 125px 7vw;
-
-    background: var(--bg-soft);
+  padding:
+    90px
+    7vw
+    105px;
 }
 
-.services-inner {
+.services-title{
+  font-family:"Bebas Neue",sans-serif;
 
-    max-width: var(--max-width);
+  font-size:clamp(65px,9vw,140px);
 
-    margin: auto;
+  line-height:.8;
+
+  text-transform:uppercase;
 }
 
-.services-title {
+.service-list{
+  margin-top:65px;
 
-    margin: 25px 0 80px;
-
-    font-family: var(--display);
-
-    font-size: clamp(70px, 10vw, 150px);
-
-    line-height: .8;
-
-    text-transform: uppercase;
+  border-top:1px solid #c5c1b9;
 }
 
-.service {
+.service-item{
+  display:grid;
 
-    display: grid;
+  grid-template-columns:
+    70px
+    1fr
+    40px;
 
-    grid-template-columns: 90px 1fr 2fr;
+  align-items:center;
 
-    gap: 25px;
+  padding:25px 0;
 
-    padding: 27px 0;
+  border-bottom:1px solid #c5c1b9;
 
-    border-top: 1px solid #aaa;
+  transition:.3s;
 }
 
-.service-number {
-
-    color: #777;
-
-    font-size: 12px;
-
-    letter-spacing: 3px;
+.service-item:hover{
+  padding-left:14px;
+  background:#dedbd3;
 }
 
-.service-name {
-
-    font-family: var(--display);
-
-    font-size: 35px;
-
-    text-transform: uppercase;
+.service-number{
+  font-size:10px;
+  letter-spacing:.2em;
+  color:#888;
 }
 
-.service-description {
+.service-name{
+  font-family:Kanit,sans-serif;
 
-    max-width: 650px;
+  font-size:clamp(22px,3vw,40px);
 
-    color: #555;
+  text-transform:uppercase;
+}
 
-    font-size: 16px;
-
-    line-height: 1.65;
+.service-arrow{
+  font-size:22px;
 }
 
 
 /* =========================================================
-   PROCESS
+   SUMMER
 ========================================================= */
 
-.process {
+.summer{
+  position:relative;
 
-    padding: 125px 7vw;
+  background:#0b0b0b;
 
-    background: var(--bg);
+  color:#fff;
+
+  padding:
+    105px
+    7vw
+    110px;
+
+  overflow:hidden;
 }
 
-.process-title {
+.summer::before{
+  content:"2026";
 
-    margin: 25px 0 80px;
+  position:absolute;
 
-    font-family: var(--display);
+  right:-20px;
+  top:-60px;
 
-    font-size: clamp(65px, 9vw, 140px);
+  font-family:"Bebas Neue",sans-serif;
 
-    line-height: .82;
+  font-size:350px;
 
-    text-transform: uppercase;
+  color:rgba(255,255,255,.035);
 }
 
-.process-grid {
+.summer-label{
+  position:relative;
+  z-index:2;
 
-    max-width: var(--max-width);
+  font-size:10px;
+  letter-spacing:.4em;
 
-    margin: auto;
+  text-transform:uppercase;
 
-    display: grid;
-
-    grid-template-columns: repeat(4,1fr);
-
-    gap: 25px;
+  color:#999;
 }
 
-.process-item {
+.summer-title{
+  position:relative;
+  z-index:2;
 
-    padding-top: 20px;
+  margin-top:28px;
 
-    border-top: 1px solid #aaa;
+  max-width:1000px;
+
+  font-family:"Bebas Neue",sans-serif;
+
+  font-size:clamp(70px,10vw,155px);
+
+  line-height:.78;
+
+  text-transform:uppercase;
 }
 
-.process-number {
+.summer-title span{
+  display:block;
 
-    color: #777;
+  color:transparent;
 
-    font-size: 11px;
-
-    letter-spacing: 4px;
+  -webkit-text-stroke:1px #fff;
 }
 
-.process-item h3 {
+.summer-copy{
+  position:relative;
+  z-index:2;
 
-    margin: 25px 0 15px;
+  max-width:720px;
 
-    font-family: var(--display);
+  margin-top:45px;
 
-    font-size: 34px;
+  font-size:16px;
+  line-height:1.8;
 
-    text-transform: uppercase;
+  color:#c5c5c5;
 }
 
-.process-item p {
+.summer-benefits{
+  position:relative;
+  z-index:2;
 
-    color: #666;
+  display:grid;
 
-    font-size: 15px;
+  grid-template-columns:repeat(4,1fr);
 
-    line-height: 1.6;
+  margin-top:70px;
+
+  border:1px solid #333;
+}
+
+.summer-benefit{
+  min-height:155px;
+
+  padding:27px;
+
+  border-right:1px solid #333;
+
+  display:flex;
+  align-items:flex-end;
+
+  font-family:Kanit,sans-serif;
+
+  font-size:15px;
+
+  line-height:1.25;
+
+  text-transform:uppercase;
+}
+
+.summer-benefit:last-child{
+  border-right:0;
+}
+
+.summer-actions{
+  position:relative;
+  z-index:2;
+
+  display:flex;
+  align-items:center;
+
+  gap:30px;
+
+  margin-top:45px;
+}
+
+.summer-primary{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  gap:50px;
+
+  padding:18px 23px;
+
+  background:#fff;
+  color:#111;
+
+  text-decoration:none;
+
+  text-transform:uppercase;
+
+  font-size:9px;
+  letter-spacing:.25em;
+}
+
+.summer-secondary{
+  color:#fff;
+
+  text-decoration:none;
+
+  text-transform:uppercase;
+
+  font-size:9px;
+  letter-spacing:.25em;
+
+  border-bottom:1px solid #666;
+
+  padding-bottom:7px;
+}
+
+.summer-note{
+  position:relative;
+  z-index:2;
+
+  margin-top:27px;
+
+  font-size:10px;
+  letter-spacing:.08em;
+
+  color:#777;
+}
+
+
+/* =========================================================
+   SHUFFLE ART WORKS
+========================================================= */
+
+.ticker{
+  height:105px;
+
+  background:#0b0b0b;
+
+  color:#fff;
+
+  border-top:1px solid #292929;
+  border-bottom:1px solid #292929;
+
+  overflow:hidden;
+}
+
+.ticker-track{
+  height:100%;
+
+  display:flex;
+  align-items:center;
+
+  width:max-content;
+
+  animation:
+    tickerMove 24s linear infinite;
+}
+
+.ticker-track span{
+  white-space:nowrap;
+
+  padding-right:1em;
+
+  font-family:"Bebas Neue",sans-serif;
+
+  font-size:clamp(38px,5vw,72px);
+
+  letter-spacing:.04em;
+}
+
+@keyframes tickerMove{
+  from{
+    transform:translateX(0);
+  }
+
+  to{
+    transform:translateX(-50%);
+  }
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery-section{
+  position:relative;
+
+  width:100%;
+
+  min-height:1800px;
+
+  background:#0b0b0b;
+
+  overflow:hidden;
+
+  color:#fff;
+}
+
+.g-stage{
+  position:absolute;
+
+  left:0;
+  top:0;
+
+  width:100%;
+  height:100%;
+
+  will-change:transform;
+}
+
+.g-card{
+  position:absolute;
+
+  overflow:hidden;
+
+  cursor:grab;
+
+  touch-action:none;
+
+  background:#111;
+}
+
+.g-card:active{
+  cursor:grabbing;
+}
+
+.g-inner{
+  width:100%;
+  height:100%;
+
+  overflow:hidden;
+
+  transform:
+    translateY(50px)
+    scale(.985);
+
+  opacity:0;
+
+  transition:
+    transform 1s cubic-bezier(.16,1,.3,1),
+    opacity .9s ease;
+}
+
+.g-card.is-loaded .g-inner{
+  transform:
+    translateY(0)
+    scale(1);
+
+  opacity:1;
+}
+
+.g-card img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  display:block;
+
+  transition:
+    transform .8s cubic-bezier(.16,1,.3,1);
+}
+
+.g-card:hover img{
+  transform:scale(1.035);
 }
 
 
@@ -1178,59 +890,67 @@ select {
    ABOUT
 ========================================================= */
 
-.about {
+.about{
+  background:#f3f1ec;
 
-    padding: 125px 7vw;
-
-    background: var(--bg-soft);
+  padding:
+    110px
+    7vw
+    110px;
 }
 
-.about-inner {
+.about-grid{
+  display:grid;
 
-    max-width: var(--max-width);
+  grid-template-columns:.8fr 1.2fr;
 
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: .8fr 1.2fr;
-
-    gap: 100px;
+  gap:10vw;
 }
 
-.about-title {
+.about-title{
+  font-family:"Bebas Neue",sans-serif;
 
-    margin-top: 25px;
+  font-size:clamp(70px,10vw,150px);
 
-    font-family: var(--display);
+  line-height:.76;
 
-    font-size: clamp(70px, 9vw, 140px);
-
-    line-height: .82;
-
-    text-transform: uppercase;
+  text-transform:uppercase;
 }
 
-.about-copy h3 {
+.about-title span{
+  display:block;
 
-    margin: 0 0 35px;
+  color:transparent;
 
-    font-family: var(--display);
-
-    font-size: 52px;
-
-    line-height: .9;
-
-    text-transform: uppercase;
+  -webkit-text-stroke:1px #111;
 }
 
-.about-copy p {
+.about-copy{
+  border-top:1px solid #c8c4bc;
 
-    color: #555;
+  padding-top:30px;
+}
 
-    font-size: 18px;
+.about-copy h3{
+  margin-bottom:35px;
 
-    line-height: 1.7;
+  font-family:Kanit,sans-serif;
+
+  font-size:clamp(30px,4vw,58px);
+
+  line-height:.95;
+
+  text-transform:uppercase;
+}
+
+.about-copy p{
+  margin-bottom:25px;
+
+  font-size:16px;
+
+  line-height:1.8;
+
+  color:#444;
 }
 
 
@@ -1238,195 +958,218 @@ select {
    CONTACT
 ========================================================= */
 
-.contact {
+.contact{
+  background:#0b0b0b;
 
-    padding: 125px 7vw;
+  color:#fff;
 
-    background: var(--bg);
+  padding:
+    100px
+    7vw
+    100px;
 }
 
-.contact-inner {
+.contact-grid{
+  display:grid;
 
-    max-width: var(--max-width);
+  grid-template-columns:.85fr 1.15fr;
 
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: .9fr 1.1fr;
-
-    gap: 90px;
+  gap:8vw;
 }
 
-.contact-title {
+.contact-heading{
+  font-family:"Bebas Neue",sans-serif;
 
-    margin: 25px 0 40px;
+  font-size:clamp(70px,10vw,155px);
 
-    font-family: var(--display);
+  line-height:.75;
 
-    font-size: clamp(70px, 10vw, 150px);
-
-    line-height: .8;
-
-    text-transform: uppercase;
+  text-transform:uppercase;
 }
 
-.contact-intro {
+.contact-heading span{
+  display:block;
 
-    max-width: 600px;
+  color:transparent;
 
-    color: #666;
-
-    font-size: 18px;
-
-    line-height: 1.65;
+  -webkit-text-stroke:1px #fff;
 }
 
-.contact-info {
+.contact-description{
+  max-width:540px;
 
-    margin-top: 55px;
+  margin-top:35px;
 
-    border-top: 1px solid #aaa;
+  font-size:15px;
+
+  line-height:1.75;
+
+  color:#aaa;
 }
 
-.contact-row {
+.contact-email{
+  max-width:600px;
 
-    display: grid;
+  margin-top:55px;
+  padding-top:24px;
 
-    grid-template-columns: 120px 1fr;
+  border-top:1px solid #333;
 
-    padding: 18px 0;
+  display:flex;
 
-    border-bottom: 1px solid #ddd;
+  justify-content:space-between;
+
+  align-items:center;
 }
 
-.contact-row span:first-child {
-
-    color: #777;
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
+.contact-email-label{
+  font-size:9px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:#777;
 }
 
-.contact-row span:last-child {
-
-    font-weight: 600;
+.contact-email a{
+  color:#fff;
+  text-decoration:none;
+  font-size:17px;
 }
 
 
-/* FORM */
+/* =========================================================
+   FORM
+========================================================= */
 
-.contact-form {
-
-    border: 1px solid #bbb;
-
-    background: rgba(255,255,255,.35);
+.form-box{
+  border:1px solid #333;
 }
 
-.form-title {
+.form-grid{
+  display:grid;
 
-    padding: 28px;
-
-    border-bottom: 1px solid #bbb;
-
-    font-family: var(--display);
-
-    font-size: 45px;
-
-    line-height: .9;
-
-    text-transform: uppercase;
+  grid-template-columns:1fr 1fr;
 }
 
-.form-grid {
+.form-field{
+  min-height:120px;
 
-    display: grid;
+  padding:21px;
 
-    grid-template-columns: 1fr 1fr;
+  border-right:1px solid #333;
+  border-bottom:1px solid #333;
 }
 
-.form-field {
-
-    padding: 21px;
-
-    border-bottom: 1px solid #bbb;
+.form-field:nth-child(even){
+  border-right:0;
 }
 
-.form-field:nth-child(odd) {
-
-    border-right: 1px solid #bbb;
+.form-field.full{
+  grid-column:1/-1;
+  border-right:0;
 }
 
-.form-field.full {
+.form-field label{
+  display:block;
 
-    grid-column: 1 / -1;
+  margin-bottom:14px;
 
-    border-right: 0;
-}
+  font-size:8px;
 
-.form-field label {
+  letter-spacing:.3em;
 
-    display: block;
+  text-transform:uppercase;
 
-    margin-bottom: 11px;
-
-    color: #777;
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
+  color:#777;
 }
 
 .form-field input,
 .form-field textarea,
-.form-field select {
+.form-field select{
+  width:100%;
 
-    width: 100%;
+  border:0;
+  outline:0;
 
-    border: 0;
+  background:transparent;
 
-    outline: none;
+  color:#fff;
 
-    background: transparent;
+  font-family:Inter,sans-serif;
 
-    color: #111;
-
-    font-size: 16px;
+  font-size:14px;
 }
 
-.form-field textarea {
+.form-field textarea{
+  min-height:110px;
 
-    min-height: 145px;
-
-    resize: vertical;
+  resize:none;
 }
 
-.form-submit {
+.form-field select{
+  appearance:none;
+}
 
-    width: 100%;
+.form-field select option{
+  background:#111;
+  color:#fff;
+}
 
-    padding: 24px;
+.form-submit{
+  width:100%;
 
-    border: 0;
+  padding:22px;
 
-    background: #111;
+  border:0;
+  border-top:1px solid #333;
 
-    color: white;
+  background:#fff;
+  color:#111;
 
-    cursor: pointer;
+  cursor:pointer;
 
-    font-size: 11px;
+  display:flex;
 
-    font-weight: 700;
+  justify-content:space-between;
 
-    letter-spacing: 4px;
+  text-transform:uppercase;
 
-    text-transform: uppercase;
+  font-size:9px;
+  letter-spacing:.28em;
+}
+
+.form-submit:hover{
+  background:#ddd;
+}
+
+.form-note{
+  padding:13px;
+
+  text-align:center;
+
+  font-size:8px;
+  letter-spacing:.12em;
+
+  color:#666;
+}
+
+.form-success{
+  display:none;
+
+  padding:70px 25px;
+
+  text-align:center;
+}
+
+.form-success h3{
+  margin-bottom:15px;
+
+  font-family:"Bebas Neue",sans-serif;
+
+  font-size:50px;
+}
+
+.form-success p{
+  color:#888;
 }
 
 
@@ -1434,87 +1177,130 @@ select {
    FOOTER
 ========================================================= */
 
-.footer {
+footer{
+  background:#0b0b0b;
 
-    padding: 60px 7vw 30px;
+  color:#777;
 
-    background: var(--bg-soft);
+  border-top:1px solid #292929;
 
-    border-top: 1px solid #ccc;
+  padding:
+    28px
+    7vw;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:30px;
+
+  font-size:8px;
+
+  letter-spacing:.22em;
+
+  text-transform:uppercase;
 }
 
-.footer-top {
-
-    max-width: var(--max-width);
-
-    margin: auto;
-
-    display: flex;
-
-    align-items: flex-end;
-
-    justify-content: space-between;
-
-    gap: 40px;
+footer a{
+  color:#fff;
+  text-decoration:none;
 }
 
-.footer-logo {
-
-    font-family: var(--display);
-
-    font-size: 78px;
-
-    line-height: .75;
-
-    font-weight: 700;
-
-    letter-spacing: -5px;
+.footer-team{
+  border-bottom:1px solid #555;
+  padding-bottom:4px;
 }
 
-.footer-links {
 
-    display: flex;
+/* =========================================================
+   LIGHTBOX
+========================================================= */
 
-    gap: 30px;
+.lb{
+  position:fixed;
 
-    flex-wrap: wrap;
+  inset:0;
+
+  z-index:9000;
+
+  background:rgba(0,0,0,.94);
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:.3s;
 }
 
-.footer-links a {
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
+.lb.open{
+  opacity:1;
+  visibility:visible;
 }
 
-.footer-links a:hover {
+.lb img{
+  max-width:90vw;
+  max-height:88vh;
 
-    text-decoration: underline;
+  object-fit:contain;
 }
 
-.footer-bottom {
+.lb-close{
+  position:absolute;
 
-    max-width: var(--max-width);
+  top:25px;
+  right:25px;
 
-    margin: 65px auto 0;
+  padding:12px 17px;
 
-    padding-top: 20px;
+  border:1px solid #555;
 
-    border-top: 1px solid #ccc;
+  background:#111;
+  color:#fff;
 
-    display: flex;
+  cursor:pointer;
 
-    justify-content: space-between;
+  font-size:9px;
+  letter-spacing:.2em;
 
-    color: #777;
+  text-transform:uppercase;
+}
 
-    font-size: 9px;
 
-    letter-spacing: 2px;
+/* =========================================================
+   TABLET
+========================================================= */
 
-    text-transform: uppercase;
+@media(max-width:1000px){
+
+  nav{
+    gap:20px;
+  }
+
+  nav a{
+    font-size:9px;
+    letter-spacing:.16em;
+  }
+
+  .summer-benefits{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .summer-benefit:nth-child(2){
+    border-right:0;
+  }
+
+  .about-grid,
+  .contact-grid{
+    grid-template-columns:1fr;
+    gap:70px;
+  }
+
 }
 
 
@@ -1522,489 +1308,338 @@ select {
    MOBILE
 ========================================================= */
 
-@media (max-width: 900px) {
+@media(max-width:768px){
 
-    .site-header {
+  .logo{
+    top:17px;
+    left:14px;
 
-        height: 78px;
-    }
+    width:60px;
+    height:44px;
+  }
 
-    .nav-container {
+  .logo-mark{
+    width:60px;
+    height:42px;
 
-        padding: 0 18px;
-    }
+    font-size:40px;
+  }
 
-    .logo {
+  .logo-mark .r{
+    left:23px;
+  }
 
-        width: 78px;
-    }
 
-    .main-nav {
+  nav{
+    top:17px;
 
-        gap: 15px;
+    left:auto;
+    right:10px;
 
-        max-width: calc(100vw - 105px);
+    transform:none;
 
-        overflow-x: auto;
+    max-width:
+      calc(100vw - 78px);
 
-        margin-left: 12px;
+    overflow-x:auto;
 
-        scrollbar-width: none;
-    }
+    justify-content:flex-end;
 
-    .main-nav::-webkit-scrollbar {
+    gap:13px;
 
-        display: none;
-    }
+    scrollbar-width:none;
+  }
 
-    .main-nav a {
+  nav::-webkit-scrollbar{
+    display:none;
+  }
 
-        font-size: 8px;
+  nav a{
+    flex:0 0 auto;
 
-        letter-spacing: 1.4px;
-    }
+    font-size:7px;
 
-    .start-project {
+    letter-spacing:.1em;
+  }
 
-        padding: 11px 13px !important;
-    }
+  nav .project-link{
+    padding:9px 11px;
+  }
 
 
-    /* HERO */
+  /* HERO */
 
-    .hero {
+  .hero-slider{
+    height:76vh;
+    min-height:550px;
+  }
 
-        margin-top: 78px;
+  .slide-content{
+    left:7%;
+    right:7%;
+    bottom:14%;
+  }
 
-        height: 76vh;
+  .slide-content h2{
+    font-size:clamp(55px,16vw,100px);
+  }
 
-        min-height: 610px;
-    }
+  .slide-content p{
+    font-size:12px;
+  }
 
-    .slide img {
 
-        object-position: center center;
-    }
+  /* VIDEO */
 
-    .slide-content {
+  .video-section{
+    height:70vh;
+    min-height:480px;
+  }
 
-        left: 24px;
+  /*
+     KEEP CENTER CROP.
+     This is important for mobile.
+  */
 
-        right: 24px;
+  #bgv{
+    width:100%;
+    height:100%;
 
-        bottom: 85px;
-    }
+    object-fit:cover;
+    object-position:50% 50%;
+  }
 
-    .slide-label {
+  .video-title{
+    width:100%;
+  }
 
-        font-size: 9px;
+  .video-title-main{
+    font-size:clamp(65px,20vw,125px);
+  }
 
-        letter-spacing: 3px;
-    }
+  .video-title-outline{
+    font-size:clamp(62px,19vw,120px);
 
-    .slide-title {
+    -webkit-text-stroke:1px #fff;
+  }
 
-        font-size: 61px;
 
-        letter-spacing: -1px;
-    }
+  /* MESSAGE */
 
-    .slide-text {
+  .message-section{
+    padding:
+      75px
+      6vw
+      75px;
+  }
 
-        font-size: 16px;
-    }
+  .main-headline{
+    font-size:clamp(55px,16vw,100px);
+  }
 
-    .slide-button {
+  .message-copy{
+    margin-left:0;
 
-        padding: 16px 20px;
+    margin-top:38px;
 
-        font-size: 9px;
-    }
+    font-size:14px;
+  }
 
-    .slider-controls {
 
-        left: 24px;
+  /* SERVICES */
 
-        bottom: 28px;
-    }
+  .services{
+    padding:
+      70px
+      6vw
+      80px;
+  }
 
+  .services-title{
+    font-size:clamp(60px,17vw,105px);
+  }
 
-    /* VIDEO */
+  .service-item{
+    grid-template-columns:
+      40px 1fr 25px;
 
-    .video-section {
+    padding:20px 0;
+  }
 
-        padding-top: 65px;
-    }
+  .service-name{
+    font-size:21px;
+  }
 
-    .agency-title {
 
-        margin-bottom: 30px;
-    }
+  /* SUMMER */
 
-    .agency-title-label {
+  .summer{
+    padding:
+      75px
+      6vw
+      80px;
+  }
 
-        font-size: 9px;
+  .summer::before{
+    font-size:210px;
+  }
 
-        letter-spacing: 4px;
-    }
+  .summer-title{
+    font-size:clamp(65px,18vw,115px);
+  }
 
-    .agency-title-main {
+  .summer-copy{
+    font-size:14px;
+  }
 
-        font-size: 82px;
+  .summer-benefits{
+    grid-template-columns:1fr;
+  }
 
-        letter-spacing: -4px;
-    }
+  .summer-benefit{
+    min-height:110px;
 
-    .video-container {
+    border-right:0;
+    border-bottom:1px solid #333;
+  }
 
-        height: 57vh;
+  .summer-benefit:last-child{
+    border-bottom:0;
+  }
 
-        min-height: 420px;
-    }
+  .summer-actions{
+    flex-direction:column;
 
-    .background-video {
+    align-items:flex-start;
+  }
 
-        width: 100%;
+  .summer-primary{
+    width:100%;
+    gap:20px;
+  }
 
-        height: 100%;
 
-        object-fit: cover;
+  /* TICKER */
 
-        /*
-          This is the important mobile alignment.
-          It keeps the centre of the video visible
-          rather than showing the side portions.
-        */
+  .ticker{
+    height:78px;
+  }
 
-        object-position: center center;
-    }
+  .ticker-track span{
+    font-size:36px;
+  }
 
 
-    /* INTRO */
+  /* GALLERY */
 
-    .intro {
+  .gallery-section{
+    min-height:1800px;
+  }
 
-        padding: 80px 24px;
-    }
 
-    .intro-inner {
+  /* ABOUT */
 
-        grid-template-columns: 1fr;
+  .about{
+    padding:
+      75px
+      6vw
+      80px;
+  }
 
-        gap: 55px;
-    }
+  .about-title{
+    font-size:clamp(65px,18vw,115px);
+  }
 
-    .intro-title {
+  .about-copy h3{
+    font-size:34px;
+  }
 
-        font-size: 72px;
-    }
+  .about-copy p{
+    font-size:14px;
+  }
 
-    .intro-quote {
 
-        font-size: 46px;
-    }
+  /* CONTACT */
 
-    .intro-copy {
+  .contact{
+    padding:
+      75px
+      6vw
+      80px;
+  }
 
-        font-size: 17px;
-    }
+  .contact-heading{
+    font-size:clamp(65px,18vw,115px);
+  }
 
+  .contact-grid{
+    gap:60px;
+  }
 
-    /* SUMMER */
+  .contact-email{
+    flex-direction:column;
 
-    .summer {
+    align-items:flex-start;
 
-        padding: 80px 24px;
-    }
+    gap:15px;
+  }
 
-    .summer-title {
+  .form-grid{
+    grid-template-columns:1fr;
+  }
 
-        font-size: 75px;
-    }
+  .form-field{
+    border-right:0;
+  }
 
-    .summer-copy {
+  .form-field.full{
+    grid-column:auto;
+  }
 
-        font-size: 17px;
-    }
 
-    .summer-points {
+  /* FOOTER */
 
-        grid-template-columns: 1fr 1fr;
-    }
+  footer{
+    flex-direction:column;
 
-    .dark-button {
+    text-align:center;
 
-        min-width: 0;
+    padding:
+      25px
+      6vw;
 
-        width: 100%;
-    }
-
-    .summer-secondary {
-
-        display: inline-block;
-
-        margin: 25px 0 0;
-    }
-
-
-    /* GALLERY */
-
-    .gallery {
-
-        padding: 80px 0 60px;
-    }
-
-    .gallery-heading {
-
-        padding: 0 24px 25px;
-    }
-
-    .gallery-heading h2 {
-
-        font-size: 70px;
-    }
-
-    .shuffle-bar {
-
-        height: 65px;
-
-        margin-bottom: 20px;
-    }
-
-    .shuffle-track {
-
-        font-size: 30px;
-
-        gap: 45px;
-    }
-
-    .gallery-stage {
-
-        height: 1650px;
-    }
-
-    .gallery-card {
-
-        width: 205px;
-
-        height: 290px;
-    }
-
-    .gallery-card:nth-child(1) {
-
-        left: 4%;
-        top: 15px;
-    }
-
-    .gallery-card:nth-child(2) {
-
-        left: 37%;
-        top: 80px;
-
-        width: 225px;
-        height: 325px;
-    }
-
-    .gallery-card:nth-child(3) {
-
-        right: 2%;
-        top: 355px;
-
-        width: 200px;
-        height: 290px;
-    }
-
-    .gallery-card:nth-child(4) {
-
-        left: 5%;
-        top: 445px;
-
-        width: 220px;
-        height: 310px;
-    }
-
-    .gallery-card:nth-child(5) {
-
-        left: 43%;
-        top: 615px;
-
-        width: 220px;
-        height: 310px;
-    }
-
-    .gallery-card:nth-child(6) {
-
-        right: 3%;
-        top: 785px;
-
-        width: 205px;
-        height: 290px;
-    }
-
-    .gallery-card:nth-child(7) {
-
-        left: 5%;
-        top: 925px;
-    }
-
-    .gallery-card:nth-child(8) {
-
-        left: 38%;
-        top: 1100px;
-
-        width: 225px;
-        height: 315px;
-    }
-
-    .gallery-card:nth-child(9) {
-
-        right: 3%;
-        top: 1300px;
-
-        width: 205px;
-        height: 290px;
-    }
-
-
-    /* SERVICES */
-
-    .services,
-    .process,
-    .about,
-    .contact {
-
-        padding: 80px 24px;
-    }
-
-    .service {
-
-        grid-template-columns: 50px 1fr;
-
-        gap: 10px;
-    }
-
-    .service-description {
-
-        grid-column: 2;
-    }
-
-
-    /* PROCESS */
-
-    .process-grid {
-
-        grid-template-columns: 1fr 1fr;
-    }
-
-
-    /* ABOUT */
-
-    .about-inner {
-
-        grid-template-columns: 1fr;
-
-        gap: 50px;
-    }
-
-
-    /* CONTACT */
-
-    .contact-inner {
-
-        grid-template-columns: 1fr;
-
-        gap: 55px;
-    }
-
-    .form-grid {
-
-        grid-template-columns: 1fr;
-    }
-
-    .form-field:nth-child(odd) {
-
-        border-right: 0;
-    }
-
-    .form-field {
-
-        border-right: 0 !important;
-    }
-
-
-    /* FOOTER */
-
-    .footer-top {
-
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-
-    .footer-bottom {
-
-        flex-direction: column;
-
-        gap: 12px;
-    }
+    line-height:1.8;
+  }
 
 }
 
 
 /* =========================================================
-   SMALL MOBILE
+   SMALL PHONES
 ========================================================= */
 
-@media (max-width: 500px) {
+@media(max-width:420px){
 
-    .main-nav {
+  nav{
+    gap:9px;
+  }
 
-        gap: 11px;
-    }
+  nav a{
+    font-size:6.5px;
+  }
 
-    .main-nav a {
+  nav .project-link{
+    padding:8px 9px;
+  }
 
-        font-size: 7px;
+  .video-section{
+    height:70vh;
+    min-height:460px;
+  }
 
-        letter-spacing: 1px;
-    }
-
-    .start-project {
-
-        padding: 9px 10px !important;
-    }
-
-    .hero {
-
-        min-height: 590px;
-    }
-
-    .slide-title {
-
-        font-size: 55px;
-    }
-
-    .agency-title-main {
-
-        font-size: 70px;
-    }
-
-    .video-container {
-
-        height: 53vh;
-
-        min-height: 390px;
-    }
-
-    .summer-points {
-
-        grid-template-columns: 1fr;
-    }
-
-    .process-grid {
-
-        grid-template-columns: 1fr;
-    }
+  .gallery-section{
+    min-height:1750px;
+  }
 
 }
 
@@ -2015,1376 +1650,960 @@ select {
 <body>
 
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
+<!-- ======================================================
+     LOGO
+====================================================== -->
 
-<header class="site-header">
-
-    <div class="nav-container">
-
-        <a
-            href="#home"
-            class="logo"
-            aria-label="OCEAYR Home">
-
-            <!--
-              KEEP YOUR EXISTING OCEAYR LOGO PATH HERE.
-              If your current logo has a different path,
-              replace only this src.
-            -->
-
-            <img
-                src="/images/oceayr-logo.png"
-                alt="OCEAYR"
-                onerror="
-                    this.style.display='none';
-                    this.nextElementSibling.style.display='block';
-                ">
-
-            <span class="logo-fallback">
-                OR
-            </span>
-
-        </a>
+<div class="logo">
+  <div class="logo-mark">
+    <span class="o">O</span>
+    <span class="r">R</span>
+  </div>
+</div>
 
 
-        <nav class="main-nav">
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
 
-            <a
-                href="#home"
-                class="active">
-                Home
-            </a>
+<nav>
 
-            <a href="#about">
-                About Us
-            </a>
+  <a href="#home" class="active">
+    Home
+  </a>
 
-            <a href="#services">
-                Services
-            </a>
+  <a href="#about">
+    About Us
+  </a>
 
-            <a href="#summer">
-                Summer
-            </a>
+  <a href="#services">
+    Services
+  </a>
 
-            <a href="#contact">
-                Contact Us
-            </a>
+  <a href="#summer">
+    Summer
+  </a>
 
-            <a
-                href="#contact"
-                class="start-project">
+  <a href="#contact">
+    Contact Us
+  </a>
 
-                Start A Project
+  <a href="#contact" class="project-link">
+    Start A Project
+  </a>
 
-            </a>
-
-        </nav>
-
-    </div>
-
-</header>
+</nav>
 
 
-
-<!-- =========================================================
-     SLIDES
-========================================================= -->
+<!-- ======================================================
+     HERO SLIDES
+====================================================== -->
 
 <section
-    id="home"
-    class="hero">
+  class="hero-slider"
+  id="home"
+>
 
 
-    <!-- =====================================================
-         SLIDE 1
-    ====================================================== -->
+  <!-- SLIDE 1 -->
 
-    <article class="slide active">
+  <article class="slide active">
 
-        <img
-            src="https://images.pexels.com/photos/19239912/pexels-photo-19239912.jpeg?auto=compress&cs=tinysrgb&w=2000"
-            alt="Luxury poolside breakfast">
+    <img
+      src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2200&q=85"
+      alt="Luxury hotel"
+    >
 
-        <div class="slide-content">
+    <div class="slide-content">
 
-            <div class="slide-label">
-                OCEAYR SUMMER COLLABORATIONS 2026
-            </div>
+      <div class="slide-number">
+        01 / SUMMER COLLABORATIONS 2026
+      </div>
 
-            <h1 class="slide-title">
-                MAKE THIS<br>
-                SUMMER<br>
-                VISIBLE.
-            </h1>
+      <h2>
+        MAKE THIS
+        <span>SUMMER VISIBLE.</span>
+      </h2>
 
-            <p class="slide-text">
-                Limited paid collaborations for hotels,
-                resorts, restaurants and lifestyle
-                destinations across the UAE.
-            </p>
+      <p>
+        Limited paid collaborations for hotels,
+        resorts, restaurants and lifestyle destinations
+        across the UAE.
+      </p>
 
-            <a
-                href="#summer"
-                class="slide-button">
-
-                Explore Summer Collaborations
-
-                <span>→</span>
-
-            </a>
-
-        </div>
-
-    </article>
-
-
-
-    <!-- =====================================================
-         SLIDE 2
-    ====================================================== -->
-
-    <article class="slide">
-
-        <img
-            src="https://images.pexels.com/photos/14904586/pexels-photo-14904586.jpeg?auto=compress&cs=tinysrgb&w=2000"
-            alt="Luxury resort pool">
-
-        <div class="slide-content">
-
-            <div class="slide-label">
-                HOSPITALITY / LIFESTYLE
-            </div>
-
-            <h2 class="slide-title">
-                MAKE YOUR<br>
-                PROPERTY<br>
-                DESIRABLE.
-            </h2>
-
-            <p class="slide-text">
-                Premium photography, film and
-                digital storytelling designed around
-                the experience you sell.
-            </p>
-
-            <a
-                href="#services"
-                class="slide-button">
-
-                Explore Our Services
-
-                <span>→</span>
-
-            </a>
-
-        </div>
-
-    </article>
-
-
-
-    <!-- =====================================================
-         SLIDE 3
-    ====================================================== -->
-
-    <article class="slide">
-
-        <img
-            src="https://images.pexels.com/photos/3771844/pexels-photo-3771844.jpeg?auto=compress&cs=tinysrgb&w=2000"
-            alt="Luxury hotel breakfast">
-
-        <div class="slide-content">
-
-            <div class="slide-label">
-                CREATIVE CONTENT
-            </div>
-
-            <h2 class="slide-title">
-                SELL THE<br>
-                EXPERIENCE.
-            </h2>
-
-            <p class="slide-text">
-                From first impression to final enquiry,
-                we create visual stories built for brands
-                that want to be remembered.
-            </p>
-
-            <a
-                href="#contact"
-                class="slide-button">
-
-                Start A Project
-
-                <span>→</span>
-
-            </a>
-
-        </div>
-
-    </article>
-
-
-
-    <!-- controls -->
-
-    <div class="slider-controls">
-
-        <button
-            class="slider-dot active"
-            data-slide="0"
-            aria-label="Slide 1">
-        </button>
-
-        <button
-            class="slider-dot"
-            data-slide="1"
-            aria-label="Slide 2">
-        </button>
-
-        <button
-            class="slider-dot"
-            data-slide="2"
-            aria-label="Slide 3">
-        </button>
+      <a
+        href="#summer"
+        class="slide-button"
+      >
+        Explore Summer Collaborations
+        <span>→</span>
+      </a>
 
     </div>
+
+  </article>
+
+
+  <!-- SLIDE 2 -->
+
+  <article class="slide">
+
+    <img
+      src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2200&q=85"
+      alt="Restaurant experience"
+    >
+
+    <div class="slide-content">
+
+      <div class="slide-number">
+        02 / CREATIVE DIRECTION
+      </div>
+
+      <h2>
+        STORIES
+        <span>WORTH EXPERIENCING.</span>
+      </h2>
+
+      <p>
+        Strategy, photography, film and digital content
+        designed around the experience your audience
+        is choosing.
+      </p>
+
+      <a
+        href="#services"
+        class="slide-button"
+      >
+        Explore Services
+        <span>→</span>
+      </a>
+
+    </div>
+
+  </article>
+
+
+  <!-- SLIDE 3 -->
+
+  <article class="slide">
+
+    <img
+      src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2200&q=85"
+      alt="Luxury resort"
+    >
+
+    <div class="slide-content">
+
+      <div class="slide-number">
+        03 / OCEAYR
+      </div>
+
+      <h2>
+        CREATE
+        <span>DESIRABILITY.</span>
+      </h2>
+
+      <p>
+        We help hospitality, food and lifestyle brands
+        become more visible, more memorable and easier
+        to choose.
+      </p>
+
+      <a
+        href="#contact"
+        class="slide-button"
+      >
+        Start A Project
+        <span>→</span>
+      </a>
+
+    </div>
+
+  </article>
+
+
+  <div class="slide-controls">
+
+    <button
+      class="slide-dot active"
+      data-slide="0"
+    ></button>
+
+    <button
+      class="slide-dot"
+      data-slide="1"
+    ></button>
+
+    <button
+      class="slide-dot"
+      data-slide="2"
+    ></button>
+
+  </div>
 
 </section>
 
 
-
-<!-- =========================================================
+<!-- ======================================================
      VIDEO
-========================================================= -->
+====================================================== -->
 
 <section class="video-section">
 
+  <!-- YOUR CURRENT GITHUB VIDEO -->
 
-    <div class="agency-title">
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    id="bgv"
+  >
 
-        <div class="agency-title-label">
-            CREATIVE MARKETING AGENCY
-        </div>
+    <source
+      src="/video/oceayr-background.mp4"
+      type="video/mp4"
+    >
 
-        <h2 class="agency-title-main">
-            OCEAYR
-        </h2>
+  </video>
 
+
+  <!-- TITLE IS INSIDE THE VIDEO -->
+
+  <div class="video-title">
+
+    <div class="video-title-main">
+      OCEAYR
     </div>
 
-
-    <div class="video-container">
-
-        <!--
-          IMPORTANT:
-          Keep the same video file you already have
-          in your GitHub repository.
-
-          Expected location:
-
-          /video/oceayr-background.mp4
-        -->
-
-        <video
-            id="oceayrVideo"
-            class="background-video"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto">
-
-            <source
-                src="/video/oceayr-background.mp4"
-                type="video/mp4">
-
-            Your browser does not support HTML5 video.
-
-        </video>
-
+    <div class="video-title-outline">
+      AGENCY
     </div>
+
+  </div>
 
 </section>
 
 
+<!-- ======================================================
+     MAIN MESSAGE
+====================================================== -->
 
-<!-- =========================================================
-     MORE THAN CONTENT
-========================================================= -->
+<section class="message-section">
 
-<section class="intro">
+  <div class="eyebrow">
+    OCEAYR / CREATIVE MARKETING
+  </div>
 
-    <div class="intro-inner">
+  <h1 class="main-headline">
 
+    <span class="block">
+      MORE THAN
+    </span>
 
-        <div>
+    <span class="outline">
+      CONTENT.
+    </span>
 
-            <div class="section-label">
-                OCEAYR / UAE & BEYOND
-            </div>
+    <span class="block">
+      MORE THAN
+    </span>
 
-            <h2 class="intro-title">
+    <span class="outline">
+      TRENDS.
+    </span>
 
-                MORE THAN<br>
+    <span class="block">
+      WE CREATE
+    </span>
 
-                <span class="outline">
-                    CONTENT.
-                </span>
+    <span class="outline">
+      DEMAND.
+    </span>
 
-            </h2>
+  </h1>
 
-        </div>
+  <p class="message-copy">
 
+    OCEAYR is a UAE creative marketing agency helping
+    hotels, resorts, restaurants and lifestyle brands
+    build desirability through strategy, photography,
+    film and digital content.
 
-        <div>
-
-            <h2 class="intro-quote">
-
-                MORE THAN<br>
-                TRENDS.<br>
-                WE CREATE<br>
-                DEMAND.
-
-            </h2>
-
-            <div class="intro-copy">
-
-                <p>
-                    OCEAYR is a UAE creative marketing
-                    agency helping hotels, resorts,
-                    restaurants and lifestyle brands
-                    build desirability through strategy,
-                    photography, film and digital content.
-                </p>
-
-                <p>
-                    We combine creative direction with
-                    commercially focused storytelling
-                    to create content that looks premium
-                    and gives brands something meaningful
-                    to communicate.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
+  </p>
 
 </section>
 
 
-
-<!-- =========================================================
-     SUMMER COLLABORATION
-========================================================= -->
+<!-- ======================================================
+     SERVICES
+====================================================== -->
 
 <section
-    id="summer"
-    class="summer">
+  class="services"
+  id="services"
+>
 
-    <div class="summer-inner">
+  <div class="eyebrow">
+    WHAT WE DO
+  </div>
 
-        <div class="section-label">
-            OCEAYR SUMMER COLLABORATIONS 2026
-        </div>
-
-        <h2 class="summer-title">
-
-            MAKE THIS<br>
-            SUMMER VISIBLE.
-
-        </h2>
+  <h2 class="services-title">
+    OUR SERVICES
+  </h2>
 
 
-        <div class="summer-copy">
+  <div class="service-list">
 
-            <p>
-                OCEAYR is opening a limited number
-                of paid summer collaboration slots
-                for hotels, resorts, restaurants and
-                lifestyle destinations across the UAE.
-            </p>
+    <div class="service-item">
 
-            <p>
-                Created for brands looking to promote
-                a summer experience, refresh their
-                digital presence or build a premium
-                content library for the months ahead.
-            </p>
+      <div class="service-number">
+        01
+      </div>
 
-            <p>
-                Each collaboration is shaped around
-                the property, audience and commercial
-                objective.
-            </p>
+      <div class="service-name">
+        Creative Direction
+      </div>
 
-        </div>
-
-
-        <div class="summer-points">
-
-            <div class="summer-point">
-                CREATIVE<br>
-                DIRECTION
-            </div>
-
-            <div class="summer-point">
-                PHOTO & VIDEO<br>
-                PRODUCTION
-            </div>
-
-            <div class="summer-point">
-                CAMPAIGN-READY<br>
-                CONTENT
-            </div>
-
-            <div class="summer-point">
-                PRIORITY SUMMER<br>
-                SCHEDULING
-            </div>
-
-        </div>
-
-
-        <a
-            href="#contact"
-            class="dark-button">
-
-            APPLY FOR A SUMMER COLLABORATION
-
-            <span>→</span>
-
-        </a>
-
-
-        <a
-            href="#contact"
-            class="summer-secondary">
-
-            Discuss The Opportunity
-
-        </a>
-
-
-        <div class="summer-note">
-
-            Paid collaborations.
-            Limited production availability.
-            Scope and investment customised for each brand.
-
-        </div>
+      <div class="service-arrow">
+        →
+      </div>
 
     </div>
+
+
+    <div class="service-item">
+
+      <div class="service-number">
+        02
+      </div>
+
+      <div class="service-name">
+        Photography & Film
+      </div>
+
+      <div class="service-arrow">
+        →
+      </div>
+
+    </div>
+
+
+    <div class="service-item">
+
+      <div class="service-number">
+        03
+      </div>
+
+      <div class="service-name">
+        Campaign Strategy
+      </div>
+
+      <div class="service-arrow">
+        →
+      </div>
+
+    </div>
+
+
+    <div class="service-item">
+
+      <div class="service-number">
+        04
+      </div>
+
+      <div class="service-name">
+        Digital Content
+      </div>
+
+      <div class="service-arrow">
+        →
+      </div>
+
+    </div>
+
+
+    <div class="service-item">
+
+      <div class="service-number">
+        05
+      </div>
+
+      <div class="service-name">
+        Brand & Web
+      </div>
+
+      <div class="service-arrow">
+        →
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
 
-
-<!-- =========================================================
-     PHOTO GALLERY
-========================================================= -->
+<!-- ======================================================
+     SUMMER COLLABORATIONS
+====================================================== -->
 
 <section
-    id="work"
-    class="gallery">
+  class="summer"
+  id="summer"
+>
+
+  <div class="summer-label">
+    OCEAYR SUMMER COLLABORATIONS 2026
+  </div>
+
+  <h2 class="summer-title">
+
+    MAKE THIS
+
+    <span>
+      SUMMER VISIBLE.
+    </span>
+
+  </h2>
 
 
-    <div class="gallery-heading">
+  <p class="summer-copy">
 
-        <h2>
-            SELECTED<br>
-            VISUAL DIRECTION
-        </h2>
+    OCEAYR is opening a limited number of paid summer
+    collaboration slots for hotels, resorts, restaurants
+    and lifestyle destinations across the UAE.
+
+    <br><br>
+
+    Created for brands looking to promote a summer
+    experience, refresh their digital presence or build
+    a premium content library for the months ahead.
+
+    <br><br>
+
+    Each collaboration is shaped around the property,
+    audience and commercial objective — combining creative
+    direction, photography, film and campaign-ready content.
+
+  </p>
+
+
+  <div class="summer-benefits">
+
+    <div class="summer-benefit">
+      Strategic Creative Direction
+    </div>
+
+    <div class="summer-benefit">
+      Premium Photo & Video Production
+    </div>
+
+    <div class="summer-benefit">
+      Campaign-Ready Digital Content
+    </div>
+
+    <div class="summer-benefit">
+      Priority Summer Scheduling
+    </div>
+
+  </div>
+
+
+  <div class="summer-actions">
+
+    <a
+      href="#contact"
+      class="summer-primary"
+    >
+      Apply For A Summer Collaboration
+      <span>→</span>
+    </a>
+
+    <a
+      href="#contact"
+      class="summer-secondary"
+    >
+      Discuss The Opportunity
+    </a>
+
+  </div>
+
+
+  <p class="summer-note">
+
+    Paid collaborations. Limited production availability.
+    Scope and investment are customised for each brand.
+
+  </p>
+
+</section>
+
+
+<!-- ======================================================
+     SHUFFLE OUR ART WORKS
+====================================================== -->
+
+<div class="ticker">
+
+  <div class="ticker-track">
+
+    <span>
+      SHUFFLE OUR ART WORKS
+      &nbsp;&nbsp;&nbsp;
+      SHUFFLE OUR ART WORKS
+      &nbsp;&nbsp;&nbsp;
+      SHUFFLE OUR ART WORKS
+      &nbsp;&nbsp;&nbsp;
+      SHUFFLE OUR ART WORKS
+      &nbsp;&nbsp;&nbsp;
+    </span>
+
+    <span>
+      SHUFFLE OUR ART WORKS
+      &nbsp;&nbsp;&nbsp;
+      SHUFFLE OUR ART WORKS
+      &nbsp;&nbsp;&nbsp;
+      SHUFFLE OUR ART WORKS
+      &nbsp;&nbsp;&nbsp;
+      SHUFFLE OUR ART WORKS
+      &nbsp;&nbsp;&nbsp;
+    </span>
+
+  </div>
+
+</div>
+
+
+<!-- ======================================================
+     EXISTING GALLERY
+====================================================== -->
+
+<section
+  class="gallery-section"
+  id="gallery"
+></section>
+
+
+<!-- ======================================================
+     ABOUT
+====================================================== -->
+
+<section
+  class="about"
+  id="about"
+>
+
+  <div class="about-grid">
+
+
+    <div>
+
+      <div class="eyebrow">
+        ABOUT OCEAYR
+      </div>
+
+      <h2 class="about-title">
+
+        CREATIVE
+
+        <span>
+          THINKING.
+        </span>
+
+      </h2>
+
+    </div>
+
+
+    <div class="about-copy">
+
+      <h3>
+        Creative thinking.<br>
+        Premium execution.
+      </h3>
+
+
+      <p>
+
+        OCEAYR is a creative marketing agency focused
+        on luxury hospitality, food and lifestyle brands.
+        We help hotels, resorts, restaurants, cafés,
+        wellness spaces and destination-led businesses
+        communicate with greater clarity, desirability
+        and commercial confidence.
+
+      </p>
+
+
+      <p>
+
+        Our work begins by understanding the guest,
+        the brand promise and the experience being sold.
+        We then translate that insight into refined
+        strategy, distinctive visual storytelling,
+        campaign direction and digital content that
+        feels consistent from social media to website,
+        from launch material to in-property communication.
+
+      </p>
+
+
+      <p>
+
+        We combine editorial taste with an organised
+        production process. The result is work that looks
+        premium, remains practical to manage and supports
+        real business goals — stronger awareness, better
+        engagement, more qualified enquiries and a brand
+        people remember.
+
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     CONTACT
+====================================================== -->
+
+<section
+  class="contact"
+  id="contact"
+>
+
+  <div class="contact-grid">
+
+
+    <div>
+
+      <div class="eyebrow">
+        CONTACT OCEAYR
+      </div>
+
+      <h2 class="contact-heading">
+
+        START A
+
+        <span>
+          CONVERSATION.
+        </span>
+
+      </h2>
+
+
+      <p class="contact-description">
+
+        Tell us about your brand, your goals and what
+        you would like to create. We will review your
+        enquiry and get back to you.
+
+      </p>
+
+
+      <div class="contact-email">
+
+        <span class="contact-email-label">
+          Email
+        </span>
+
+        <a href="mailto:info@oceayr.com">
+          info@oceayr.com
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <div class="form-box">
+
+      <div id="formWrap">
+
+        <div class="form-grid">
+
+
+          <div class="form-field">
+
+            <label>
+              Your Name *
+            </label>
+
+            <input
+              type="text"
+              id="f-name"
+              placeholder="First & Last name"
+            >
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label>
+              Company
+            </label>
+
+            <input
+              type="text"
+              id="f-company"
+              placeholder="Your company"
+            >
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label>
+              Email *
+            </label>
+
+            <input
+              type="email"
+              id="f-email"
+              placeholder="hello@company.com"
+            >
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label>
+              Mobile
+            </label>
+
+            <input
+              type="tel"
+              id="f-mobile"
+              placeholder="+971 00 000 0000"
+            >
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label>
+              Brand Type
+            </label>
+
+            <select id="f-brand">
+
+              <option value="">
+                Select
+              </option>
+
+              <option>Hotel</option>
+              <option>Resort</option>
+              <option>Restaurant</option>
+              <option>Café</option>
+              <option>Lifestyle</option>
+              <option>Wellness</option>
+              <option>Other</option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label>
+              Service Required
+            </label>
+
+            <select id="f-service">
+
+              <option value="">
+                Select
+              </option>
+
+              <option>
+                Summer Collaboration
+              </option>
+
+              <option>
+                Photography & Film
+              </option>
+
+              <option>
+                Campaign Strategy
+              </option>
+
+              <option>
+                Social Content
+              </option>
+
+              <option>
+                Branding
+              </option>
+
+              <option>
+                Website
+              </option>
+
+              <option>
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label>
+              Property / Brand Location
+            </label>
+
+            <input
+              type="text"
+              id="f-location"
+              placeholder="Dubai, Abu Dhabi..."
+            >
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label>
+              Website / Instagram
+            </label>
+
+            <input
+              type="text"
+              id="f-social"
+              placeholder="@yourbrand or website"
+            >
+
+          </div>
+
+
+          <div class="form-field full">
+
+            <label>
+              Tell Us About Your Project
+            </label>
+
+            <textarea
+              id="f-msg"
+              placeholder="Tell us what you are looking to create..."
+            ></textarea>
+
+          </div>
+
+
+        </div>
+
+
+        <button
+          type="button"
+          class="form-submit"
+          id="sendBtn"
+          onclick="sendForm()"
+        >
+
+          <span id="sendLabel">
+            Send Project Brief
+          </span>
+
+          <span id="sendArr">
+            →
+          </span>
+
+        </button>
+
+
+        <div class="form-note">
+          Your project information is kept confidential.
+        </div>
+
+      </div>
+
+
+      <div
+        class="form-success"
+        id="successMsg"
+      >
+
+        <h3>
+          BRIEF RECEIVED.
+        </h3>
 
         <p>
-            A curated representation of hospitality,
-            food and lifestyle visual storytelling.
+          Thank you for reaching out to OCEAYR.
+          We will get back to you shortly.
         </p>
 
-    </div>
-
-
-    <!-- shuffle heading -->
-
-    <div class="shuffle-bar">
-
-        <div class="shuffle-track">
-
-            <span>
-                SHUFFLE OUR ART WORKS
-            </span>
-
-            <span>
-                SHUFFLE OUR ART WORKS
-            </span>
-
-            <span>
-                SHUFFLE OUR ART WORKS
-            </span>
-
-            <span>
-                SHUFFLE OUR ART WORKS
-            </span>
-
-        </div>
+      </div>
 
     </div>
 
-
-    <!--
-      IMPORTANT:
-
-      Keep your existing gallery images in:
-
-      /photos/image00001.jpeg
-      /photos/image00002.jpeg
-      ...
-
-      image00008.jpeg is intentionally not used.
-    -->
-
-    <div
-        id="galleryStage"
-        class="gallery-stage">
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00001.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00002.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00003.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00004.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00005.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00006.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00007.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <!-- image00008 removed -->
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00009.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00010.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00011.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00012.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00013.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00014.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00015.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00016.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-        <div class="gallery-card">
-            <img
-                src="/photos/image00017.jpeg"
-                alt="OCEAYR creative work"
-                onerror="this.parentElement.style.display='none';">
-        </div>
-
-
-    </div>
+  </div>
 
 </section>
 
 
-
-<!-- =========================================================
-     SERVICES
-========================================================= -->
-
-<section
-    id="services"
-    class="services">
-
-    <div class="services-inner">
-
-        <div class="section-label">
-            WHAT WE DO
-        </div>
-
-        <h2 class="services-title">
-            SERVICES
-        </h2>
-
-
-        <div class="service">
-
-            <div class="service-number">
-                01
-            </div>
-
-            <div class="service-name">
-                Strategy
-            </div>
-
-            <div class="service-description">
-                Creative strategy, campaign direction,
-                positioning and content planning designed
-                around your audience and business objective.
-            </div>
-
-        </div>
-
-
-        <div class="service">
-
-            <div class="service-number">
-                02
-            </div>
-
-            <div class="service-name">
-                Photography
-            </div>
-
-            <div class="service-description">
-                Hospitality, food, lifestyle, interiors,
-                architecture and campaign photography
-                created for digital and commercial use.
-            </div>
-
-        </div>
-
-
-        <div class="service">
-
-            <div class="service-number">
-                03
-            </div>
-
-            <div class="service-name">
-                Film
-            </div>
-
-            <div class="service-description">
-                Short-form video, reels, property stories,
-                brand films and campaign-led visual content.
-            </div>
-
-        </div>
-
-
-        <div class="service">
-
-            <div class="service-number">
-                04
-            </div>
-
-            <div class="service-name">
-                Digital
-            </div>
-
-            <div class="service-description">
-                Social content, digital campaigns,
-                website content and creative assets
-                designed for consistent communication.
-            </div>
-
-        </div>
-
-
-        <div class="service">
-
-            <div class="service-number">
-                05
-            </div>
-
-            <div class="service-name">
-                Branding
-            </div>
-
-            <div class="service-description">
-                Brand direction, visual identity,
-                communication systems and creative
-                foundations.
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     PROCESS
-========================================================= -->
-
-<section class="process">
-
-    <div class="section-label">
-        OUR APPROACH
-    </div>
-
-    <h2 class="process-title">
-        HOW WE<br>
-        WORK
-    </h2>
-
-
-    <div class="process-grid">
-
-
-        <div class="process-item">
-
-            <div class="process-number">
-                01
-            </div>
-
-            <h3>
-                Discovery
-            </h3>
-
-            <p>
-                We understand your brand, audience,
-                experience and commercial objective.
-            </p>
-
-        </div>
-
-
-        <div class="process-item">
-
-            <div class="process-number">
-                02
-            </div>
-
-            <h3>
-                Direction
-            </h3>
-
-            <p>
-                We develop the campaign idea,
-                visual direction and production plan.
-            </p>
-
-        </div>
-
-
-        <div class="process-item">
-
-            <div class="process-number">
-                03
-            </div>
-
-            <h3>
-                Production
-            </h3>
-
-            <p>
-                We create the photography, film
-                and digital assets required.
-            </p>
-
-        </div>
-
-
-        <div class="process-item">
-
-            <div class="process-number">
-                04
-            </div>
-
-            <h3>
-                Delivery
-            </h3>
-
-            <p>
-                Assets are edited, organised and
-                prepared for their intended channels.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     ABOUT
-========================================================= -->
-
-<section
-    id="about"
-    class="about">
-
-    <div class="about-inner">
-
-
-        <div>
-
-            <div class="section-label">
-                ABOUT OCEAYR
-            </div>
-
-            <h2 class="about-title">
-
-                CREATIVE<br>
-
-                <span class="outline">
-                    THINKING.
-                </span>
-
-            </h2>
-
-        </div>
-
-
-        <div class="about-copy">
-
-            <h3>
-                Creative thinking.<br>
-                Premium execution.
-            </h3>
-
-            <p>
-                OCEAYR is a UAE creative marketing
-                agency focused on luxury hospitality,
-                food and lifestyle brands.
-            </p>
-
-            <p>
-                We help hotels, resorts, restaurants,
-                cafés, wellness spaces and
-                destination-led businesses communicate
-                with greater clarity and desirability.
-            </p>
-
-            <p>
-                Our work combines strategy, creative
-                direction, photography, film, branding
-                and digital content.
-            </p>
-
-            <p>
-                The result is visual storytelling that
-                looks premium while supporting real
-                business goals.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     CONTACT
-========================================================= -->
-
-<section
-    id="contact"
-    class="contact">
-
-    <div class="contact-inner">
-
-
-        <div>
-
-            <div class="section-label">
-                CONTACT OCEAYR
-            </div>
-
-            <h2 class="contact-title">
-
-                START A<br>
-
-                <span class="outline">
-                    CONVERSATION.
-                </span>
-
-            </h2>
-
-            <p class="contact-intro">
-                Tell us about your property, upcoming
-                campaign or creative challenge.
-                We will get back to you to discuss
-                the right direction.
-            </p>
-
-
-            <div class="contact-info">
-
-
-                <div class="contact-row">
-
-                    <span>
-                        Email
-                    </span>
-
-                    <span>
-                        <a href="mailto:info@oceayr.com">
-                            info@oceayr.com
-                        </a>
-                    </span>
-
-                </div>
-
-
-                <div class="contact-row">
-
-                    <span>
-                        Instagram
-                    </span>
-
-                    <span>
-                        @oceayr
-                    </span>
-
-                </div>
-
-
-                <div class="contact-row">
-
-                    <span>
-                        Location
-                    </span>
-
-                    <span>
-                        UAE & Beyond
-                    </span>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =================================================
-             ENQUIRY FORM
-             NO BUDGET FIELD
-        ================================================== -->
-
-        <div class="contact-form">
-
-            <div class="form-title">
-
-                TELL US ABOUT<br>
-                YOUR PROJECT
-
-            </div>
-
-
-            <form
-                action="https://formsubmit.co/info@oceayr.com"
-                method="POST">
-
-
-                <input
-                    type="hidden"
-                    name="_subject"
-                    value="New OCEAYR Website Enquiry">
-
-
-                <input
-                    type="hidden"
-                    name="_captcha"
-                    value="false">
-
-
-                <input
-                    type="hidden"
-                    name="_template"
-                    value="table">
-
-
-                <div class="form-grid">
-
-
-                    <div class="form-field">
-
-                        <label>
-                            Your Name *
-                        </label>
-
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="First & Last name"
-                            required>
-
-                    </div>
-
-
-                    <div class="form-field">
-
-                        <label>
-                            Company
-                        </label>
-
-                        <input
-                            type="text"
-                            name="company"
-                            placeholder="Company name">
-
-                    </div>
-
-
-                    <div class="form-field">
-
-                        <label>
-                            Email *
-                        </label>
-
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="hello@company.com"
-                            required>
-
-                    </div>
-
-
-                    <div class="form-field">
-
-                        <label>
-                            Mobile
-                        </label>
-
-                        <input
-                            type="tel"
-                            name="mobile"
-                            placeholder="+971">
-
-                    </div>
-
-
-                    <div class="form-field">
-
-                        <label>
-                            Brand Type
-                        </label>
-
-                        <select name="brand_type">
-
-                            <option value="">
-                                Select
-                            </option>
-
-                            <option>
-                                Hotel
-                            </option>
-
-                            <option>
-                                Resort
-                            </option>
-
-                            <option>
-                                Restaurant
-                            </option>
-
-                            <option>
-                                Café
-                            </option>
-
-                            <option>
-                                Lifestyle
-                            </option>
-
-                            <option>
-                                Wellness
-                            </option>
-
-                            <option>
-                                Other
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="form-field">
-
-                        <label>
-                            Service Required
-                        </label>
-
-                        <select name="service">
-
-                            <option value="">
-                                Select
-                            </option>
-
-                            <option>
-                                Summer Collaboration
-                            </option>
-
-                            <option>
-                                Photography & Film
-                            </option>
-
-                            <option>
-                                Campaign Strategy
-                            </option>
-
-                            <option>
-                                Social Content
-                            </option>
-
-                            <option>
-                                Branding
-                            </option>
-
-                            <option>
-                                Website
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="form-field">
-
-                        <label>
-                            Property / Location
-                        </label>
-
-                        <input
-                            type="text"
-                            name="location"
-                            placeholder="Dubai, Abu Dhabi, UAE...">
-
-                    </div>
-
-
-                    <div class="form-field">
-
-                        <label>
-                            Preferred Date
-                        </label>
-
-                        <input
-                            type="text"
-                            name="production_date"
-                            placeholder="Month / preferred period">
-
-                    </div>
-
-
-                    <div class="form-field full">
-
-                        <label>
-                            Website / Instagram
-                        </label>
-
-                        <input
-                            type="text"
-                            name="website"
-                            placeholder="Website or Instagram">
-
-                    </div>
-
-
-                    <div class="form-field full">
-
-                        <label>
-                            Tell Us About Your Project
-                        </label>
-
-                        <textarea
-                            name="message"
-                            placeholder="Tell us about your property, objective or upcoming campaign..."></textarea>
-
-                    </div>
-
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="form-submit">
-
-                    SEND ENQUIRY →
-
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
+<!-- ======================================================
      FOOTER
-========================================================= -->
+====================================================== -->
 
-<footer class="footer">
+<footer>
 
-    <div class="footer-top">
+  <span>
+    © 2026 OCEAYR Agency
+  </span>
 
+  <span>
+    Creative Marketing / Hospitality / Lifestyle
+  </span>
 
-        <div class="footer-logo">
-            OCEAYR
-        </div>
-
-
-        <div class="footer-links">
-
-            <a href="#home">
-                Home
-            </a>
-
-            <a href="#about">
-                About Us
-            </a>
-
-            <a href="#services">
-                Services
-            </a>
-
-            <a href="#summer">
-                Summer
-            </a>
-
-            <a href="#contact">
-                Contact Us
-            </a>
-
-            <a href="/join.html">
-                Join The Team
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <span>
-            © 2026 OCEAYR Agency
-        </span>
-
-        <span>
-            UAE & Beyond
-        </span>
-
-    </div>
+  <a
+    href="mailto:careers@oceayr.com"
+    class="footer-team"
+  >
+    Join The Team
+  </a>
 
 </footer>
 
 
+<!-- ======================================================
+     LIGHTBOX
+====================================================== -->
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
+<div
+  class="lb"
+  id="lb"
+  onclick="if(event.target===this)closeLb()"
+>
+
+  <button
+    class="lb-close"
+    onclick="closeLb()"
+  >
+    Close
+  </button>
+
+  <img
+    id="lbImg"
+    src=""
+    alt=""
+  >
+
+</div>
+
 
 <script>
 
@@ -3393,154 +2612,896 @@ select {
 ========================================================= */
 
 const slides =
-    document.querySelectorAll(".slide");
+  document.querySelectorAll(".slide");
 
 const dots =
-    document.querySelectorAll(".slider-dot");
+  document.querySelectorAll(".slide-dot");
 
 let currentSlide = 0;
 
-let sliderInterval;
+let slideTimer;
 
 
-function showSlide(index) {
+function showSlide(index){
 
-    slides.forEach(
-        (slide, i) => {
+  currentSlide = index;
 
-            slide.classList.toggle(
-                "active",
-                i === index
-            );
+  slides.forEach(
+    (slide,i)=>{
+      slide.classList.toggle(
+        "active",
+        i === index
+      );
+    }
+  );
 
-        }
-    );
+  dots.forEach(
+    (dot,i)=>{
+      dot.classList.toggle(
+        "active",
+        i === index
+      );
+    }
+  );
 
-
-    dots.forEach(
-        (dot, i) => {
-
-            dot.classList.toggle(
-                "active",
-                i === index
-            );
-
-        }
-    );
-
-
-    currentSlide = index;
 }
 
 
-function nextSlide() {
+function nextSlide(){
 
-    currentSlide =
-        (currentSlide + 1) %
-        slides.length;
+  showSlide(
+    (currentSlide + 1) %
+    slides.length
+  );
 
-    showSlide(currentSlide);
-}
-
-
-function restartSlider() {
-
-    clearInterval(sliderInterval);
-
-    sliderInterval =
-        setInterval(
-            nextSlide,
-            6500
-        );
 }
 
 
 dots.forEach(
-    dot => {
+  dot=>{
 
-        dot.addEventListener(
-            "click",
-            () => {
+    dot.addEventListener(
+      "click",
+      ()=>{
 
-                showSlide(
-                    Number(
-                        dot.dataset.slide
-                    )
-                );
-
-                restartSlider();
-
-            }
+        showSlide(
+          Number(
+            dot.dataset.slide
+          )
         );
 
-    }
+        clearInterval(
+          slideTimer
+        );
+
+        slideTimer =
+          setInterval(
+            nextSlide,
+            6500
+          );
+
+      }
+    );
+
+  }
 );
 
 
-restartSlider();
+showSlide(0);
 
+slideTimer =
+  setInterval(
+    nextSlide,
+    6500
+  );
 
 
 /* =========================================================
-   VIDEO AUTOPLAY
+   GITHUB VIDEO
 ========================================================= */
 
-const video =
-    document.getElementById(
-        "oceayrVideo"
-    );
+const bgv =
+  document.getElementById("bgv");
 
 
-function playVideo() {
+if(bgv){
 
-    if (!video) {
-        return;
+  bgv.muted = true;
+
+  bgv.setAttribute(
+    "playsinline",
+    ""
+  );
+
+  /*
+     Try autoplay immediately.
+  */
+
+  bgv.play().catch(
+    ()=>{
+      /*
+        Some mobile browsers require
+        user interaction.
+      */
     }
+  );
 
-    video.muted = true;
 
-    const promise =
-        video.play();
+  /*
+     Retry after first interaction.
+  */
 
-    if (promise !== undefined) {
+  const startVideo =
+    ()=>{
+      bgv.play().catch(()=>{});
+    };
 
-        promise.catch(
-            () => {
-                /*
-                  Some mobile browsers may
-                  wait for the first interaction.
-                */
-            }
-        );
+
+  [
+    "touchstart",
+    "pointerdown",
+    "click"
+  ].forEach(
+    eventName=>{
+
+      window.addEventListener(
+        eventName,
+        startVideo,
+        {
+          once:true,
+          passive:true
+        }
+      );
 
     }
+  );
+
 }
 
 
-window.addEventListener(
-    "load",
-    playVideo
-);
+/* =========================================================
+   GALLERY
+========================================================= */
+
+(function(){
+
+  const gallery =
+    document.getElementById(
+      "gallery"
+    );
+
+  if(!gallery){
+    return;
+  }
 
 
-document.addEventListener(
-    "touchstart",
-    playVideo,
-    {
-        once: true,
-        passive: true
+  /*
+     EXISTING GITHUB PHOTO FOLDER.
+  */
+
+  const BASE =
+    "https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/";
+
+
+  /*
+     Existing 17 image collection.
+     No replacement images.
+  */
+
+  const IMGS =
+    Array.from(
+      {length:17},
+      (_,i)=>
+        BASE +
+        "image" +
+        String(
+          i + 1
+        ).padStart(
+          5,
+          "0"
+        ) +
+        ".jpeg"
+    );
+
+
+  const mobile =
+    window.innerWidth <= 768;
+
+  const vw =
+    window.innerWidth;
+
+
+  const stage =
+    document.createElement(
+      "div"
+    );
+
+  stage.className =
+    "g-stage";
+
+  gallery.appendChild(
+    stage
+  );
+
+
+  /*
+     OVERLAPPING LAYOUT.
+  */
+
+  const desktopLayout = [
+
+    {i:0,x:4.8,y:0,w:31,r:1.27,z:22,d:0},
+
+    {i:1,x:38,y:-6,w:25.8,r:1.30,z:28,d:40},
+
+    {i:2,x:66.2,y:2.2,w:32.8,r:.88,z:20,d:70},
+
+    {i:3,x:15,y:28.8,w:31.8,r:.78,z:40,d:110},
+
+    {i:4,x:51.8,y:24.8,w:30.4,r:.78,z:42,d:150},
+
+    {i:5,x:7.2,y:50.5,w:34,r:1.02,z:52,d:190},
+
+    {i:6,x:66,y:45.5,w:33.5,r:.82,z:50,d:230},
+
+    {i:7,x:40.5,y:63,w:31.2,r:.98,z:34,d:270},
+
+    {i:8,x:72,y:68.8,w:27,r:1.24,z:32,d:310},
+
+    {i:9,x:4.8,y:78.5,w:31,r:.80,z:24,d:350},
+
+    {i:10,x:30.4,y:91,w:30,r:1.02,z:44,d:390},
+
+    {i:11,x:64,y:91.8,w:28.5,r:.96,z:46,d:430},
+
+    {i:12,x:67.5,y:109.5,w:31.5,r:1,z:58,d:470},
+
+    {i:13,x:39.5,y:119.2,w:31,r:.76,z:36,d:510},
+
+    {i:14,x:6.2,y:119.5,w:29.8,r:1.24,z:38,d:550},
+
+    {i:15,x:52,y:136.8,w:36,r:.76,z:64,d:590},
+
+    {i:16,x:22,y:144.5,w:31.5,r:.92,z:60,d:630}
+
+  ];
+
+
+  const mobileLayout = [
+
+    {i:0,x:-4,y:0,w:38,r:1.32,z:20,d:0},
+
+    {i:1,x:31,y:-9,w:35,r:1.42,z:30,d:35},
+
+    {i:2,x:64,y:3,w:39,r:.88,z:22,d:70},
+
+    {i:3,x:13,y:34,w:40,r:.78,z:42,d:105},
+
+    {i:4,x:49,y:29,w:41,r:.78,z:44,d:140},
+
+    {i:5,x:-2,y:56,w:43,r:1.02,z:52,d:175},
+
+    {i:6,x:59,y:52,w:44,r:.82,z:50,d:210},
+
+    {i:7,x:29,y:73,w:43,r:.98,z:34,d:245},
+
+    {i:8,x:68,y:82,w:34,r:1.24,z:32,d:280},
+
+    {i:9,x:-6,y:92,w:42,r:.80,z:24,d:315},
+
+    {i:10,x:28,y:105,w:42,r:1.02,z:44,d:350},
+
+    {i:11,x:62,y:106,w:39,r:.96,z:46,d:385},
+
+    {i:12,x:55,y:129,w:46,r:1,z:58,d:420},
+
+    {i:13,x:30,y:139,w:43,r:.76,z:36,d:455},
+
+    {i:14,x:-5,y:137,w:40,r:1.24,z:38,d:490},
+
+    {i:15,x:48,y:162,w:50,r:.76,z:64,d:525},
+
+    {i:16,x:12,y:168,w:43,r:.92,z:60,d:560}
+
+  ];
+
+
+  const layout =
+    mobile
+      ? mobileLayout
+      : desktopLayout;
+
+
+  const cards = [];
+
+  const dragOffsets = [];
+
+  let maxBottom = 0;
+
+
+  layout.forEach(
+    (cfg,index)=>{
+
+      const left =
+        cfg.x *
+        vw /
+        100;
+
+      const top =
+        cfg.y *
+        vw /
+        100;
+
+      const width =
+        cfg.w *
+        vw /
+        100;
+
+      const height =
+        width *
+        cfg.r;
+
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+      card.className =
+        "g-card";
+
+      card.dataset.index =
+        index;
+
+
+      card.style.left =
+        left + "px";
+
+      card.style.top =
+        top + "px";
+
+      card.style.width =
+        width + "px";
+
+      card.style.height =
+        height + "px";
+
+      card.style.zIndex =
+        cfg.z;
+
+
+      const inner =
+        document.createElement(
+          "div"
+        );
+
+      inner.className =
+        "g-inner";
+
+      inner.style.transitionDelay =
+        cfg.d + "ms";
+
+
+      const img =
+        document.createElement(
+          "img"
+        );
+
+      img.src =
+        IMGS[cfg.i];
+
+      img.alt =
+        "OCEAYR artwork " +
+        (cfg.i + 1);
+
+      img.loading =
+        index < 8
+          ? "eager"
+          : "lazy";
+
+
+      img.addEventListener(
+        "load",
+        ()=>{
+          card.classList.add(
+            "is-loaded"
+          );
+        },
+        {
+          once:true
+        }
+      );
+
+
+      inner.appendChild(
+        img
+      );
+
+      card.appendChild(
+        inner
+      );
+
+      stage.appendChild(
+        card
+      );
+
+
+      cards.push(
+        card
+      );
+
+
+      dragOffsets.push({
+        x:0,
+        y:0,
+        moved:false
+      });
+
+
+      maxBottom =
+        Math.max(
+          maxBottom,
+          top + height
+        );
+
     }
-);
+  );
 
 
-document.addEventListener(
-    "click",
-    playVideo,
-    {
-        once: true
+  /*
+     Prevent unnecessary blank space.
+  */
+
+  gallery.style.height =
+    Math.ceil(
+      maxBottom +
+      (
+        mobile
+          ? 65
+          : 90
+      )
+    ) + "px";
+
+
+  /*
+     DRAGGING.
+  */
+
+  if(window.interact){
+
+    interact(
+      ".g-card"
+    ).draggable({
+
+      inertia:true,
+
+      listeners:{
+
+        start(event){
+
+          const index =
+            Number(
+              event.target.dataset.index
+            );
+
+          dragOffsets[index].moved =
+            false;
+
+          event.target.style.zIndex =
+            "9999";
+
+        },
+
+
+        move(event){
+
+          const index =
+            Number(
+              event.target.dataset.index
+            );
+
+          const d =
+            dragOffsets[index];
+
+
+          d.x +=
+            event.dx;
+
+          d.y +=
+            event.dy;
+
+
+          if(
+            Math.abs(d.x) > 4 ||
+            Math.abs(d.y) > 4
+          ){
+
+            d.moved =
+              true;
+
+          }
+
+
+          event.target.style.transform =
+            `translate3d(${d.x}px,${d.y}px,0)`;
+
+        },
+
+
+        end(event){
+
+          const index =
+            Number(
+              event.target.dataset.index
+            );
+
+          event.target.dataset.dragged =
+            dragOffsets[index].moved
+              ? "1"
+              : "0";
+
+
+          setTimeout(
+            ()=>{
+              event.target.dataset.dragged =
+                "0";
+            },
+            180
+          );
+
+        }
+
+      }
+
+    });
+
+  }
+
+
+  /*
+     LIGHTBOX.
+  */
+
+  cards.forEach(
+    (card,index)=>{
+
+      card.addEventListener(
+        "click",
+        ()=>{
+
+          if(
+            card.dataset.dragged ===
+            "1"
+          ){
+            return;
+          }
+
+
+          openLb(
+            IMGS[
+              layout[index].i
+            ]
+          );
+
+        }
+      );
+
     }
-);
+  );
 
+
+  /*
+     SUBTLE UPWARD MOVEMENT.
+  */
+
+  let autoUp = 0;
+
+  let lastTime =
+    performance.now();
+
+  const maxAutoUp =
+    mobile
+      ? 44
+      : 70;
+
+
+  function galleryTop(){
+
+    let el =
+      gallery;
+
+    let top = 0;
+
+    while(el){
+
+      top +=
+        el.offsetTop;
+
+      el =
+        el.offsetParent;
+
+    }
+
+    return top;
+
+  }
+
+
+  function animate(time){
+
+    const delta =
+      Math.min(
+        40,
+        time - lastTime
+      );
+
+    lastTime =
+      time;
+
+
+    const scroll =
+      window.scrollY ||
+      window.pageYOffset ||
+      0;
+
+
+    const top =
+      galleryTop();
+
+
+    const bottom =
+      top +
+      gallery.offsetHeight;
+
+
+    const visible =
+      scroll +
+      window.innerHeight >
+      top - 100 &&
+      scroll <
+      bottom + 100;
+
+
+    if(visible){
+
+      autoUp +=
+        delta *
+        (
+          mobile
+            ? .01
+            : .014
+        );
+
+      autoUp =
+        Math.min(
+          autoUp,
+          maxAutoUp
+        );
+
+    }
+
+
+    const scrollUp =
+      Math.min(
+        maxAutoUp,
+        Math.max(
+          0,
+          scroll - top
+        ) *
+        (
+          mobile
+            ? .045
+            : .055
+        )
+      );
+
+
+    stage.style.transform =
+      `translate3d(0,${-(autoUp + scrollUp)}px,0)`;
+
+
+    requestAnimationFrame(
+      animate
+    );
+
+  }
+
+
+  requestAnimationFrame(
+    animate
+  );
+
+})();
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+function openLb(src){
+
+  const lb =
+    document.getElementById(
+      "lb"
+    );
+
+  const img =
+    document.getElementById(
+      "lbImg"
+    );
+
+  img.src =
+    src;
+
+  lb.classList.add(
+    "open"
+  );
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+function closeLb(){
+
+  const lb =
+    document.getElementById(
+      "lb"
+    );
+
+  lb.classList.remove(
+    "open"
+  );
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+/* =========================================================
+   EMAILJS
+========================================================= */
+
+emailjs.init({
+  publicKey:"MfKifkzUlPhOg2uQg"
+});
+
+
+async function sendForm(){
+
+  const name =
+    document.getElementById(
+      "f-name"
+    ).value.trim();
+
+  const email =
+    document.getElementById(
+      "f-email"
+    ).value.trim();
+
+  if(!name || !email){
+
+    alert(
+      "Please enter your name and email."
+    );
+
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById(
+      "sendBtn"
+    );
+
+  button.disabled =
+    true;
+
+
+  document.getElementById(
+    "sendLabel"
+  ).textContent =
+    "Sending...";
+
+
+  const params = {
+
+    name:name,
+
+    email:email,
+
+    company:
+      document.getElementById(
+        "f-company"
+      ).value.trim(),
+
+    mobile:
+      document.getElementById(
+        "f-mobile"
+      ).value.trim(),
+
+    brand_type:
+      document.getElementById(
+        "f-brand"
+      ).value,
+
+    service:
+      document.getElementById(
+        "f-service"
+      ).value,
+
+    location:
+      document.getElementById(
+        "f-location"
+      ).value.trim(),
+
+    website_instagram:
+      document.getElementById(
+        "f-social"
+      ).value.trim(),
+
+    message:
+      document.getElementById(
+        "f-msg"
+      ).value.trim(),
+
+    reply_to:
+      email,
+
+    time:
+      new Date().toLocaleString()
+
+  };
+
+
+  try{
+
+    await emailjs.send(
+      "service_r4vas1a",
+      "template_vku1h9b",
+      params
+    );
+
+
+    document.getElementById(
+      "formWrap"
+    ).style.display =
+      "none";
+
+
+    document.getElementById(
+      "successMsg"
+    ).style.display =
+      "block";
+
+  }
+  catch(error){
+
+    console.error(
+      error
+    );
+
+
+    button.disabled =
+      false;
+
+
+    document.getElementById(
+      "sendLabel"
+    ).textContent =
+      "Try Again";
+
+
+    alert(
+      "Unable to send the enquiry. Please email info@oceayr.com."
+    );
+
+  }
+
+}
 
 
 /* =========================================================
@@ -3548,226 +3509,94 @@ document.addEventListener(
 ========================================================= */
 
 const navLinks =
-    document.querySelectorAll(
-        ".main-nav a:not(.start-project)"
-    );
+  document.querySelectorAll(
+    "nav a:not(.project-link)"
+  );
 
 
-const pageSections =
-    document.querySelectorAll(
-        "section[id]"
-    );
+const sections =
+  document.querySelectorAll(
+    "section[id]"
+  );
 
 
-const sectionObserver =
-    new IntersectionObserver(
-        entries => {
+const observer =
+  new IntersectionObserver(
+    entries=>{
 
-            entries.forEach(
-                entry => {
+      entries.forEach(
+        entry=>{
 
-                    if (
-                        entry.isIntersecting
-                    ) {
+          if(
+            entry.isIntersecting
+          ){
 
-                        navLinks.forEach(
-                            link => {
-
-                                link.classList.remove(
-                                    "active"
-                                );
-
-
-                                if (
-                                    link.getAttribute(
-                                        "href"
-                                    ) ===
-                                    "#" +
-                                    entry.target.id
-                                ) {
-
-                                    link.classList.add(
-                                        "active"
-                                    );
-
-                                }
-
-                            }
-                        );
-
-                    }
-
-                }
+            navLinks.forEach(
+              link=>{
+                link.classList.remove(
+                  "active"
+                );
+              }
             );
 
-        },
-        {
-            threshold: 0.35
+
+            const active =
+              document.querySelector(
+                `nav a[href="#${entry.target.id}"]`
+              );
+
+
+            if(active){
+
+              active.classList.add(
+                "active"
+              );
+
+            }
+
+          }
+
         }
-    );
+      );
 
-
-pageSections.forEach(
-    section =>
-        sectionObserver.observe(section)
-);
-
-
-
-/* =========================================================
-   DRAG GALLERY
-========================================================= */
-
-const galleryCards =
-    document.querySelectorAll(
-        ".gallery-card"
-    );
-
-
-galleryCards.forEach(
-    card => {
-
-        let dragging = false;
-
-        let startX = 0;
-        let startY = 0;
-
-        let initialLeft = 0;
-        let initialTop = 0;
-
-
-        card.addEventListener(
-            "pointerdown",
-            event => {
-
-                dragging = true;
-
-                card.setPointerCapture(
-                    event.pointerId
-                );
-
-
-                const cardRect =
-                    card.getBoundingClientRect();
-
-
-                const stage =
-                    document
-                        .getElementById(
-                            "galleryStage"
-                        )
-                        .getBoundingClientRect();
-
-
-                startX =
-                    event.clientX;
-
-                startY =
-                    event.clientY;
-
-
-                initialLeft =
-                    cardRect.left -
-                    stage.left;
-
-                initialTop =
-                    cardRect.top -
-                    stage.top;
-
-
-                card.style.zIndex =
-                    "1000";
-
-            }
-        );
-
-
-        card.addEventListener(
-            "pointermove",
-            event => {
-
-                if (!dragging) {
-                    return;
-                }
-
-
-                const deltaX =
-                    event.clientX -
-                    startX;
-
-                const deltaY =
-                    event.clientY -
-                    startY;
-
-
-                card.style.left =
-                    `${initialLeft + deltaX}px`;
-
-                card.style.top =
-                    `${initialTop + deltaY}px`;
-
-                card.style.transform =
-                    "rotate(0deg) scale(1.015)";
-
-            }
-        );
-
-
-        const releaseCard =
-            () => {
-
-                dragging = false;
-
-                card.style.transform = "";
-
-            };
-
-
-        card.addEventListener(
-            "pointerup",
-            releaseCard
-        );
-
-        card.addEventListener(
-            "pointercancel",
-            releaseCard
-        );
-
+    },
+    {
+      rootMargin:
+        "-35% 0px -55% 0px"
     }
+  );
+
+
+sections.forEach(
+  section=>{
+    observer.observe(
+      section
+    );
+  }
 );
 
 
-
 /* =========================================================
-   KEEP VIDEO PLAYING WHEN TAB RETURNS
+   ESCAPE LIGHTBOX
 ========================================================= */
 
 document.addEventListener(
-    "visibilitychange",
-    () => {
+  "keydown",
+  event=>{
 
-        if (!video) {
-            return;
-        }
+    if(
+      event.key ===
+      "Escape"
+    ){
 
-
-        if (
-            document.hidden
-        ) {
-
-            video.pause();
-
-        } else {
-
-            playVideo();
-
-        }
+      closeLb();
 
     }
+
+  }
 );
 
 </script>
-
 
 </body>
 </html>
