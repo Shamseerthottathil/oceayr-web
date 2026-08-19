@@ -4,39 +4,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>OCEAYR Agency</title>
+<title>OCEAYR Agency — Creative Marketing</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;900&family=Kanit:wght@700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
 <style>
 
 /* =========================================================
-   RESET
+   GLOBAL
 ========================================================= */
 
+:root{
+  --black:#0a0a0a;
+  --ink:#111111;
+  --cream:#f2f0eb;
+  --warm:#e8e4dc;
+  --grey:#77736d;
+  --line:rgba(0,0,0,.16);
+  --white:#ffffff;
+}
+
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
 }
 
 html{
   scroll-behavior:smooth;
-  background:#000;
+  background:var(--black);
 }
 
 body{
-  background:#f3f1ec;
-  color:#111;
-  font-family:Inter,sans-serif;
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:"DM Sans",Arial,sans-serif;
   overflow-x:hidden;
 }
 
 img,
 video{
+  display:block;
   max-width:100%;
 }
 
@@ -44,57 +58,40 @@ a{
   color:inherit;
 }
 
-
-/* =========================================================
-   COLOURS
-========================================================= */
-
-:root{
-  --black:#0b0b0b;
-  --offwhite:#f3f1ec;
-  --warm:#e9e6df;
-  --white:#fff;
-  --grey:#777;
-  --line:#cbc7bf;
+button,
+input,
+textarea,
+select{
+  font:inherit;
 }
 
 
 /* =========================================================
-   LOGO
+   FIXED LOGO
+   Compact OR mark
 ========================================================= */
 
-.logo{
+.site-logo{
   position:fixed;
   top:24px;
-  left:28px;
-  width:78px;
-  height:55px;
-  z-index:5000;
+  left:25px;
+
+  width:82px;
+  height:58px;
+
+  z-index:9000;
+
   pointer-events:none;
 }
 
-.logo-mark{
-  position:relative;
-  width:76px;
-  height:52px;
-  font-family:Arial Black,Arial,sans-serif;
-  font-size:51px;
-  font-weight:900;
-  line-height:.8;
-  letter-spacing:-.20em;
-  color:#000;
+.site-logo svg{
+  width:100%;
+  height:100%;
+  display:block;
 }
 
-.logo-mark .o{
-  position:absolute;
-  left:0;
-  top:0;
-}
-
-.logo-mark .r{
-  position:absolute;
-  left:29px;
-  top:1px;
+.site-logo path{
+  fill:#050505;
 }
 
 
@@ -102,98 +99,133 @@ a{
    NAVIGATION
 ========================================================= */
 
-nav{
+.site-nav{
   position:fixed;
-  top:26px;
+
+  top:20px;
   left:50%;
+
   transform:translateX(-50%);
-  z-index:4500;
+
+  z-index:8500;
 
   display:flex;
   align-items:center;
-  justify-content:center;
 
-  gap:30px;
-  white-space:nowrap;
+  gap:28px;
+
+  padding:10px 13px 10px 18px;
+
+  border:1px solid rgba(255,255,255,.35);
+
+  background:rgba(15,15,15,.58);
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  color:#fff;
+
+  border-radius:2px;
+
+  transition:
+    background .35s ease,
+    border-color .35s ease,
+    color .35s ease;
 }
 
-nav a{
-  position:relative;
-  display:inline-block;
+.site-nav.light{
+  background:rgba(255,255,255,.78);
+  border-color:rgba(0,0,0,.14);
+  color:#111;
+}
 
-  padding:7px 0;
+.site-nav a{
+  position:relative;
+
+  padding:6px 0;
+
+  color:inherit;
 
   text-decoration:none;
+
+  font-size:9px;
+  font-weight:500;
+
+  letter-spacing:.19em;
+
   text-transform:uppercase;
 
-  font-size:11px;
-  font-weight:500;
-  letter-spacing:.24em;
+  white-space:nowrap;
 
-  color:#111;
-  opacity:.72;
+  opacity:.84;
 
-  transition:.25s;
+  transition:opacity .25s;
 }
 
-nav a::after{
+.site-nav a:hover,
+.site-nav a.active{
+  opacity:1;
+}
+
+.site-nav a:not(.project)::after{
   content:"";
 
   position:absolute;
+
   left:0;
   bottom:0;
 
   width:0;
   height:1px;
 
-  background:#111;
+  background:currentColor;
 
-  transition:.3s;
+  transition:width .3s ease;
 }
 
-nav a:hover,
-nav a.active{
-  opacity:1;
-}
-
-nav a:hover::after,
-nav a.active::after{
+.site-nav a:hover::after,
+.site-nav a.active::after{
   width:100%;
 }
 
-nav .project-link{
-  padding:12px 19px;
-  border:1px solid #999;
+.site-nav .project{
+  padding:11px 16px;
+
+  border:1px solid currentColor;
+
   opacity:1;
 }
 
-nav .project-link::after{
+.site-nav .project::after{
   display:none;
 }
 
-nav .project-link:hover{
-  background:#111;
-  color:#fff;
-  border-color:#111;
+.site-nav .project:hover{
+  background:#fff;
+  color:#111;
+  border-color:#fff;
 }
 
 
 /* =========================================================
-   HERO SLIDER
+   HERO
 ========================================================= */
 
-.hero-slider{
+.hero{
   position:relative;
+
   width:100%;
-  height:min(760px,92vh);
-  min-height:600px;
+  height:100svh;
+  min-height:650px;
+
+  background:#111;
 
   overflow:hidden;
-  background:#111;
 }
 
-.slide{
+.hero-slide{
   position:absolute;
+
   inset:0;
 
   opacity:0;
@@ -204,137 +236,154 @@ nav .project-link:hover{
     visibility 1s ease;
 }
 
-.slide.active{
+.hero-slide.active{
   opacity:1;
   visibility:visible;
 }
 
-.slide img{
+.hero-slide img{
   position:absolute;
+
   inset:0;
 
   width:100%;
   height:100%;
 
   object-fit:cover;
+  object-position:center center;
 }
 
-.slide::after{
+.hero-slide::after{
   content:"";
 
   position:absolute;
+
   inset:0;
 
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.15),
-      rgba(0,0,0,.05) 45%,
-      rgba(0,0,0,.42)
+      rgba(0,0,0,.18) 0%,
+      rgba(0,0,0,.04) 35%,
+      rgba(0,0,0,.56) 100%
     );
 }
 
-.slide-content{
+.hero-content{
   position:absolute;
+
   z-index:5;
 
-  left:7%;
-  bottom:12%;
-
-  max-width:760px;
+  left:7vw;
+  right:7vw;
+  bottom:13%;
 
   color:#fff;
 }
 
-.slide-number{
+.hero-index{
   margin-bottom:20px;
 
   font-size:10px;
-  letter-spacing:.35em;
+
+  letter-spacing:.34em;
+
   text-transform:uppercase;
 }
 
-.slide-content h2{
+.hero-title{
+  max-width:1000px;
+
   font-family:"Bebas Neue",sans-serif;
 
-  font-size:clamp(60px,9vw,145px);
-  line-height:.82;
+  font-size:clamp(70px,10vw,155px);
+
+  line-height:.78;
+
+  letter-spacing:.01em;
 
   text-transform:uppercase;
 }
 
-.slide-content h2 span{
+.hero-title .outline{
   display:block;
 
   color:transparent;
 
-  -webkit-text-stroke:1px #fff;
+  -webkit-text-stroke:
+    1px #fff;
 }
 
-.slide-content p{
-  max-width:560px;
+.hero-description{
+  max-width:650px;
 
-  margin-top:24px;
+  margin-top:30px;
 
   font-size:15px;
-  line-height:1.65;
+
+  line-height:1.7;
 }
 
-.slide-button{
+.hero-button{
   display:inline-flex;
+
   align-items:center;
   justify-content:space-between;
 
-  gap:45px;
+  gap:65px;
 
   margin-top:28px;
 
-  padding:16px 22px;
+  padding:18px 23px;
 
   background:#fff;
   color:#111;
 
   text-decoration:none;
-  text-transform:uppercase;
 
   font-size:9px;
-  letter-spacing:.23em;
+
+  letter-spacing:.25em;
+
+  text-transform:uppercase;
 
   transition:.3s;
 }
 
-.slide-button:hover{
+.hero-button:hover{
   background:#111;
   color:#fff;
 }
 
-.slide-controls{
+.hero-dots{
   position:absolute;
 
-  z-index:20;
+  z-index:10;
 
-  left:7%;
-  bottom:4.5%;
+  left:7vw;
+  bottom:4%;
 
   display:flex;
-  gap:12px;
+
+  gap:20px;
 }
 
-.slide-dot{
-  width:40px;
+.hero-dot{
+  width:43px;
   height:2px;
 
   border:0;
 
-  background:rgba(255,255,255,.4);
+  background:rgba(255,255,255,.38);
 
   cursor:pointer;
 
-  transition:.3s;
+  transition:.35s;
 }
 
-.slide-dot.active{
+.hero-dot.active{
   width:70px;
+
   background:#fff;
 }
 
@@ -347,150 +396,218 @@ nav .project-link:hover{
   position:relative;
 
   width:100%;
-  height:min(820px,88vh);
-  min-height:580px;
+
+  height:88svh;
+  min-height:570px;
 
   overflow:hidden;
 
   background:#000;
 }
 
+
 /*
    IMPORTANT:
-   This is the current GitHub-hosted video.
-   Do NOT replace with Cloudinary.
+
+   The video is deliberately NOT width:100%.
+   We give it height:100% and auto width so a
+   landscape video is always centered.
+
+   This prevents the left side of the video from
+   appearing on mobile.
 */
 
 #bgv{
   position:absolute;
-  inset:0;
 
-  width:100%;
+  top:50%;
+  left:50%;
+
+  width:auto;
   height:100%;
 
-  display:block;
+  max-width:none;
+  max-height:none;
 
-  object-fit:cover;
-  object-position:center center;
+  transform:
+    translate(-50%,-50%);
+
+  object-fit:contain;
 
   background:#000;
 
   opacity:1;
-  filter:none;
+
+  z-index:1;
 }
 
 
 /*
-   OCEAYR AGENCY stays INSIDE
-   the middle of the video.
+   On wider screens the video fills the frame.
 */
+
+@media(min-width:769px){
+
+  #bgv{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+    object-position:center center;
+
+    transform:
+      translate(-50%,-50%);
+  }
+
+}
+
+
+/*
+   Mobile:
+   center-crop the actual video.
+*/
+
+@media(max-width:768px){
+
+  #bgv{
+
+    /*
+       Use the natural video width based
+       on its height.
+
+       The scale makes the middle of the
+       original video occupy the phone.
+    */
+
+    height:100%;
+    width:auto;
+
+    max-width:none;
+
+    object-fit:cover;
+
+    object-position:50% 50%;
+
+  }
+
+}
+
+
+/* =========================================================
+   VIDEO TITLE
+========================================================= */
 
 .video-title{
   position:absolute;
 
-  z-index:10;
+  z-index:5;
 
-  left:50%;
   top:50%;
+  left:50%;
 
-  transform:translate(-50%,-50%);
+  width:96%;
 
-  width:94%;
+  transform:
+    translate(-50%,-50%);
 
   text-align:center;
 
   color:#fff;
 
   pointer-events:none;
+
+  mix-blend-mode:normal;
 }
 
 .video-title-main{
   font-family:"Bebas Neue",sans-serif;
 
-  font-size:clamp(85px,16vw,250px);
+  font-size:clamp(90px,17vw,260px);
 
-  line-height:.72;
+  line-height:.68;
 
-  letter-spacing:-.01em;
+  font-weight:400;
 
-  font-weight:900;
+  letter-spacing:.01em;
 
   text-shadow:
-    0 2px 18px rgba(0,0,0,.15);
+    0 4px 25px rgba(0,0,0,.18);
 }
 
 .video-title-outline{
   font-family:"Bebas Neue",sans-serif;
 
-  font-size:clamp(80px,15vw,230px);
+  font-size:clamp(84px,16vw,245px);
 
-  line-height:.72;
-
-  letter-spacing:0;
+  line-height:.7;
 
   color:transparent;
 
   -webkit-text-stroke:
-    clamp(1px,.12vw,2px)
+    clamp(1px,.13vw,2px)
     rgba(255,255,255,.95);
 }
 
 
 /* =========================================================
-   MAIN MESSAGE
+   MESSAGE
 ========================================================= */
 
-.message-section{
-  background:#f3f1ec;
+.message{
+  padding:110px 7vw 100px;
 
-  padding:
-    110px
-    7vw
-    100px;
+  background:var(--cream);
 }
 
 .eyebrow{
-  margin-bottom:30px;
+  font-size:9px;
 
-  font-size:10px;
   letter-spacing:.38em;
 
   text-transform:uppercase;
 
-  color:#777;
+  color:#77736d;
 }
 
-.main-headline{
-  max-width:1250px;
+.message-title{
+  margin-top:32px;
+
+  max-width:1300px;
 
   font-family:"Bebas Neue",sans-serif;
 
-  font-size:clamp(60px,9vw,145px);
+  font-size:clamp(70px,9.5vw,155px);
 
-  line-height:.82;
+  line-height:.76;
 
   text-transform:uppercase;
 }
 
-.main-headline .outline{
+.message-title .outline{
   color:transparent;
-  -webkit-text-stroke:1px #111;
+
+  -webkit-text-stroke:
+    1px #111;
 }
 
-.main-headline .block{
+.message-title .line{
   display:block;
 }
 
-.message-copy{
-  max-width:700px;
+.message-text{
+  max-width:720px;
 
-  margin-top:50px;
-  margin-left:auto;
+  margin:
+    55px
+    0
+    0
+    auto;
 
-  font-size:17px;
-  line-height:1.8;
+  font-size:16px;
 
-  color:#444;
+  line-height:1.85;
+
+  color:#4c4944;
 }
 
 
@@ -499,20 +616,19 @@ nav .project-link:hover{
 ========================================================= */
 
 .services{
-  background:#e9e6df;
+  padding:95px 7vw 105px;
 
-  padding:
-    90px
-    7vw
-    105px;
+  background:var(--warm);
 }
 
 .services-title{
+  margin-top:28px;
+
   font-family:"Bebas Neue",sans-serif;
 
-  font-size:clamp(65px,9vw,140px);
+  font-size:clamp(75px,10vw,150px);
 
-  line-height:.8;
+  line-height:.78;
 
   text-transform:uppercase;
 }
@@ -520,41 +636,45 @@ nav .project-link:hover{
 .service-list{
   margin-top:65px;
 
-  border-top:1px solid #c5c1b9;
+  border-top:1px solid var(--line);
 }
 
-.service-item{
+.service{
   display:grid;
 
-  grid-template-columns:
-    70px
-    1fr
-    40px;
+  grid-template-columns:70px 1fr 30px;
 
   align-items:center;
 
-  padding:25px 0;
+  min-height:95px;
 
-  border-bottom:1px solid #c5c1b9;
+  border-bottom:1px solid var(--line);
 
-  transition:.3s;
+  transition:
+    padding .3s,
+    background .3s;
 }
 
-.service-item:hover{
-  padding-left:14px;
-  background:#dedbd3;
+.service:hover{
+  padding-left:15px;
+
+  background:rgba(255,255,255,.24);
 }
 
-.service-number{
-  font-size:10px;
+.service-no{
+  font-size:9px;
+
+  color:#85817b;
+
   letter-spacing:.2em;
-  color:#888;
 }
 
 .service-name{
-  font-family:Kanit,sans-serif;
+  font-family:"Bebas Neue",sans-serif;
 
-  font-size:clamp(22px,3vw,40px);
+  font-size:clamp(28px,3.4vw,50px);
+
+  letter-spacing:.02em;
 
   text-transform:uppercase;
 }
@@ -571,63 +691,50 @@ nav .project-link:hover{
 .summer{
   position:relative;
 
-  background:#0b0b0b;
+  padding:105px 7vw 105px;
+
+  background:#090909;
 
   color:#fff;
-
-  padding:
-    105px
-    7vw
-    110px;
 
   overflow:hidden;
 }
 
-.summer::before{
+.summer::after{
   content:"2026";
 
   position:absolute;
 
-  right:-20px;
-  top:-60px;
+  right:-30px;
+  top:-80px;
 
   font-family:"Bebas Neue",sans-serif;
 
-  font-size:350px;
+  font-size:330px;
 
   color:rgba(255,255,255,.035);
-}
 
-.summer-label{
-  position:relative;
-  z-index:2;
-
-  font-size:10px;
-  letter-spacing:.4em;
-
-  text-transform:uppercase;
-
-  color:#999;
+  pointer-events:none;
 }
 
 .summer-title{
   position:relative;
   z-index:2;
 
-  margin-top:28px;
+  margin-top:30px;
 
-  max-width:1000px;
+  max-width:1100px;
 
   font-family:"Bebas Neue",sans-serif;
 
-  font-size:clamp(70px,10vw,155px);
+  font-size:clamp(75px,10vw,160px);
 
-  line-height:.78;
+  line-height:.75;
 
   text-transform:uppercase;
 }
 
-.summer-title span{
+.summer-title .outline{
   display:block;
 
   color:transparent;
@@ -635,135 +742,123 @@ nav .project-link:hover{
   -webkit-text-stroke:1px #fff;
 }
 
-.summer-copy{
+.summer-text{
   position:relative;
   z-index:2;
 
-  max-width:720px;
+  max-width:760px;
 
-  margin-top:45px;
+  margin-top:42px;
 
-  font-size:16px;
-  line-height:1.8;
+  font-size:15px;
 
-  color:#c5c5c5;
+  line-height:1.85;
+
+  color:#b9b7b2;
 }
 
-.summer-benefits{
+.summer-grid{
   position:relative;
   z-index:2;
 
   display:grid;
 
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:
+    repeat(4,1fr);
 
-  margin-top:70px;
+  margin-top:65px;
 
-  border:1px solid #333;
+  border:1px solid #303030;
 }
 
-.summer-benefit{
-  min-height:155px;
+.summer-item{
+  min-height:160px;
 
-  padding:27px;
-
-  border-right:1px solid #333;
+  padding:25px;
 
   display:flex;
   align-items:flex-end;
 
-  font-family:Kanit,sans-serif;
+  border-right:1px solid #303030;
 
-  font-size:15px;
+  font-family:"Bebas Neue",sans-serif;
 
-  line-height:1.25;
+  font-size:22px;
+
+  line-height:1;
 
   text-transform:uppercase;
 }
 
-.summer-benefit:last-child{
+.summer-item:last-child{
   border-right:0;
 }
 
-.summer-actions{
+.summer-action{
   position:relative;
   z-index:2;
 
-  display:flex;
-  align-items:center;
-
-  gap:30px;
-
-  margin-top:45px;
-}
-
-.summer-primary{
   display:inline-flex;
 
+  gap:55px;
+
   align-items:center;
-  justify-content:space-between;
 
-  gap:50px;
+  margin-top:45px;
 
-  padding:18px 23px;
+  padding:18px 22px;
 
   background:#fff;
   color:#111;
 
   text-decoration:none;
 
-  text-transform:uppercase;
-
   font-size:9px;
-  letter-spacing:.25em;
-}
 
-.summer-secondary{
-  color:#fff;
-
-  text-decoration:none;
-
-  text-transform:uppercase;
-
-  font-size:9px;
   letter-spacing:.25em;
 
-  border-bottom:1px solid #666;
-
-  padding-bottom:7px;
+  text-transform:uppercase;
 }
 
-.summer-note{
+.summer-small{
   position:relative;
   z-index:2;
 
-  margin-top:27px;
+  margin-top:20px;
 
-  font-size:10px;
-  letter-spacing:.08em;
+  color:#686868;
 
-  color:#777;
+  font-size:9px;
+
+  letter-spacing:.12em;
 }
 
 
 /* =========================================================
-   SHUFFLE ART WORKS
+   SHUFFLE BAR
 ========================================================= */
 
-.ticker{
-  height:105px;
+.shuffle-bar{
+  position:relative;
 
-  background:#0b0b0b;
-
-  color:#fff;
-
-  border-top:1px solid #292929;
-  border-bottom:1px solid #292929;
+  height:112px;
 
   overflow:hidden;
+
+  background:#000;
+
+  border-top:1px solid #222;
+  border-bottom:1px solid #222;
+
+  color:#fff;
 }
 
-.ticker-track{
+.shuffle-track{
+  position:absolute;
+
+  left:0;
+  top:0;
+
   height:100%;
 
   display:flex;
@@ -772,29 +867,33 @@ nav .project-link:hover{
   width:max-content;
 
   animation:
-    tickerMove 24s linear infinite;
+    shuffleMove 24s linear infinite;
 }
 
-.ticker-track span{
+.shuffle-track span{
+  display:block;
+
   white-space:nowrap;
 
-  padding-right:1em;
+  padding-right:50px;
 
   font-family:"Bebas Neue",sans-serif;
 
-  font-size:clamp(38px,5vw,72px);
+  font-size:clamp(48px,6vw,85px);
 
-  letter-spacing:.04em;
+  letter-spacing:.02em;
 }
 
-@keyframes tickerMove{
-  from{
+@keyframes shuffleMove{
+
+  0%{
     transform:translateX(0);
   }
 
-  to{
+  100%{
     transform:translateX(-50%);
   }
+
 }
 
 
@@ -802,87 +901,209 @@ nav .project-link:hover{
    GALLERY
 ========================================================= */
 
-.gallery-section{
+.gallery{
   position:relative;
 
-  width:100%;
-
-  min-height:1800px;
-
-  background:#0b0b0b;
+  height:1500px;
 
   overflow:hidden;
 
-  color:#fff;
+  background:#000;
 }
 
-.g-stage{
+
+/*
+   Top and bottom masks make the movement feel
+   integrated rather than leaving blank areas.
+*/
+
+.gallery::before{
+  content:"";
+
+  position:absolute;
+
+  z-index:50;
+
+  left:0;
+  right:0;
+  top:0;
+
+  height:90px;
+
+  background:
+    linear-gradient(
+      #000,
+      transparent
+    );
+
+  pointer-events:none;
+}
+
+.gallery::after{
+  content:"";
+
+  position:absolute;
+
+  z-index:50;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  height:100px;
+
+  background:
+    linear-gradient(
+      transparent,
+      #000
+    );
+
+  pointer-events:none;
+}
+
+.gallery-stage{
   position:absolute;
 
   left:0;
   top:0;
 
   width:100%;
+
   height:100%;
 
   will-change:transform;
 }
 
-.g-card{
+.gallery-card{
   position:absolute;
 
   overflow:hidden;
 
-  cursor:grab;
-
-  touch-action:none;
-
   background:#111;
-}
 
-.g-card:active{
-  cursor:grabbing;
-}
+  cursor:pointer;
 
-.g-inner{
-  width:100%;
-  height:100%;
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.32);
 
-  overflow:hidden;
-
-  transform:
-    translateY(50px)
-    scale(.985);
-
-  opacity:0;
+  will-change:transform;
 
   transition:
-    transform 1s cubic-bezier(.16,1,.3,1),
-    opacity .9s ease;
+    box-shadow .35s ease;
 }
 
-.g-card.is-loaded .g-inner{
-  transform:
-    translateY(0)
-    scale(1);
-
-  opacity:1;
+.gallery-card:hover{
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.48);
 }
 
-.g-card img{
+.gallery-card img{
+  display:block;
+
   width:100%;
   height:100%;
 
   object-fit:cover;
 
-  display:block;
-
   transition:
-    transform .8s cubic-bezier(.16,1,.3,1);
+    transform 1s cubic-bezier(.16,1,.3,1);
 }
 
-.g-card:hover img{
-  transform:scale(1.035);
+.gallery-card:hover img{
+  transform:scale(1.045);
+}
+
+
+/* Individual desktop positions */
+
+.gc1{
+  width:31%;
+  height:405px;
+
+  left:4%;
+  top:70px;
+
+  transform:translateY(45px);
+}
+
+.gc2{
+  width:26%;
+  height:335px;
+
+  left:38%;
+  top:5px;
+
+  transform:translateY(-5px);
+}
+
+.gc3{
+  width:31%;
+  height:360px;
+
+  right:3%;
+  top:90px;
+
+  transform:translateY(70px);
+}
+
+.gc4{
+  width:31%;
+  height:350px;
+
+  left:14%;
+  top:365px;
+
+  transform:translateY(110px);
+}
+
+.gc5{
+  width:31%;
+  height:370px;
+
+  right:13%;
+  top:405px;
+
+  transform:translateY(45px);
+}
+
+.gc6{
+  width:32%;
+  height:400px;
+
+  left:3%;
+  top:680px;
+
+  transform:translateY(80px);
+}
+
+.gc7{
+  width:31%;
+  height:360px;
+
+  right:3%;
+  top:710px;
+
+  transform:translateY(125px);
+}
+
+.gc8{
+  width:30%;
+  height:400px;
+
+  left:37%;
+  top:800px;
+
+  transform:translateY(50px);
+}
+
+.gc9{
+  width:27%;
+  height:340px;
+
+  right:8%;
+  top:1010px;
+
+  transform:translateY(80px);
 }
 
 
@@ -891,33 +1112,32 @@ nav .project-link:hover{
 ========================================================= */
 
 .about{
-  background:#f3f1ec;
+  padding:110px 7vw;
 
-  padding:
-    110px
-    7vw
-    110px;
+  background:var(--cream);
 }
 
 .about-grid{
   display:grid;
 
-  grid-template-columns:.8fr 1.2fr;
+  grid-template-columns:.85fr 1.15fr;
 
-  gap:10vw;
+  gap:9vw;
 }
 
 .about-title{
+  margin-top:28px;
+
   font-family:"Bebas Neue",sans-serif;
 
-  font-size:clamp(70px,10vw,150px);
+  font-size:clamp(75px,10vw,155px);
 
-  line-height:.76;
+  line-height:.75;
 
   text-transform:uppercase;
 }
 
-.about-title span{
+.about-title .outline{
   display:block;
 
   color:transparent;
@@ -926,7 +1146,7 @@ nav .project-link:hover{
 }
 
 .about-copy{
-  border-top:1px solid #c8c4bc;
+  border-top:1px solid var(--line);
 
   padding-top:30px;
 }
@@ -934,23 +1154,23 @@ nav .project-link:hover{
 .about-copy h3{
   margin-bottom:35px;
 
-  font-family:Kanit,sans-serif;
+  font-family:"Playfair Display",serif;
 
-  font-size:clamp(30px,4vw,58px);
+  font-size:clamp(30px,4vw,55px);
 
-  line-height:.95;
+  font-weight:400;
 
-  text-transform:uppercase;
+  line-height:1;
 }
 
 .about-copy p{
-  margin-bottom:25px;
+  margin-bottom:24px;
 
-  font-size:16px;
+  color:#4d4a45;
 
-  line-height:1.8;
+  font-size:15px;
 
-  color:#444;
+  line-height:1.85;
 }
 
 
@@ -959,14 +1179,11 @@ nav .project-link:hover{
 ========================================================= */
 
 .contact{
-  background:#0b0b0b;
+  padding:105px 7vw;
+
+  background:#080808;
 
   color:#fff;
-
-  padding:
-    100px
-    7vw
-    100px;
 }
 
 .contact-grid{
@@ -977,17 +1194,19 @@ nav .project-link:hover{
   gap:8vw;
 }
 
-.contact-heading{
+.contact-title{
+  margin-top:30px;
+
   font-family:"Bebas Neue",sans-serif;
 
-  font-size:clamp(70px,10vw,155px);
+  font-size:clamp(75px,10vw,155px);
 
-  line-height:.75;
+  line-height:.74;
 
   text-transform:uppercase;
 }
 
-.contact-heading span{
+.contact-title .outline{
   display:block;
 
   color:transparent;
@@ -995,44 +1214,46 @@ nav .project-link:hover{
   -webkit-text-stroke:1px #fff;
 }
 
-.contact-description{
-  max-width:540px;
+.contact-copy{
+  max-width:570px;
 
   margin-top:35px;
 
+  color:#999;
+
   font-size:15px;
 
-  line-height:1.75;
-
-  color:#aaa;
+  line-height:1.8;
 }
 
-.contact-email{
-  max-width:600px;
-
+.email-line{
   margin-top:55px;
-  padding-top:24px;
 
-  border-top:1px solid #333;
+  padding-top:25px;
 
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
+  border-top:1px solid #303030;
 }
 
-.contact-email-label{
-  font-size:9px;
+.email-line span{
+  display:block;
+
+  margin-bottom:13px;
+
+  color:#666;
+
+  font-size:8px;
+
   letter-spacing:.3em;
+
   text-transform:uppercase;
-  color:#777;
 }
 
-.contact-email a{
+.email-line a{
   color:#fff;
+
   text-decoration:none;
-  font-size:17px;
+
+  font-size:16px;
 }
 
 
@@ -1040,8 +1261,8 @@ nav .project-link:hover{
    FORM
 ========================================================= */
 
-.form-box{
-  border:1px solid #333;
+.form{
+  border:1px solid #303030;
 }
 
 .form-grid{
@@ -1050,41 +1271,42 @@ nav .project-link:hover{
   grid-template-columns:1fr 1fr;
 }
 
-.form-field{
-  min-height:120px;
+.field{
+  min-height:115px;
 
-  padding:21px;
+  padding:20px;
 
-  border-right:1px solid #333;
-  border-bottom:1px solid #333;
+  border-right:1px solid #303030;
+  border-bottom:1px solid #303030;
 }
 
-.form-field:nth-child(even){
+.field:nth-child(even){
   border-right:0;
 }
 
-.form-field.full{
-  grid-column:1/-1;
+.field.full{
+  grid-column:1 / -1;
+
   border-right:0;
 }
 
-.form-field label{
+.field label{
   display:block;
 
-  margin-bottom:14px;
+  margin-bottom:13px;
+
+  color:#666;
 
   font-size:8px;
 
   letter-spacing:.3em;
 
   text-transform:uppercase;
-
-  color:#777;
 }
 
-.form-field input,
-.form-field textarea,
-.form-field select{
+.field input,
+.field textarea,
+.field select{
   width:100%;
 
   border:0;
@@ -1094,33 +1316,30 @@ nav .project-link:hover{
 
   color:#fff;
 
-  font-family:Inter,sans-serif;
-
-  font-size:14px;
+  font-size:13px;
 }
 
-.form-field textarea{
-  min-height:110px;
+.field textarea{
+  height:105px;
 
   resize:none;
 }
 
-.form-field select{
+.field select{
   appearance:none;
 }
 
-.form-field select option{
+.field select option{
   background:#111;
   color:#fff;
 }
 
-.form-submit{
+.submit{
   width:100%;
 
-  padding:22px;
+  padding:21px;
 
   border:0;
-  border-top:1px solid #333;
 
   background:#fff;
   color:#111;
@@ -1131,13 +1350,16 @@ nav .project-link:hover{
 
   justify-content:space-between;
 
+  font-size:9px;
+
+  letter-spacing:.28em;
+
   text-transform:uppercase;
 
-  font-size:9px;
-  letter-spacing:.28em;
+  transition:.3s;
 }
 
-.form-submit:hover{
+.submit:hover{
   background:#ddd;
 }
 
@@ -1146,30 +1368,31 @@ nav .project-link:hover{
 
   text-align:center;
 
-  font-size:8px;
-  letter-spacing:.12em;
+  color:#5e5e5e;
 
-  color:#666;
+  font-size:8px;
+
+  letter-spacing:.1em;
 }
 
-.form-success{
+.success{
   display:none;
 
-  padding:70px 25px;
+  padding:75px 25px;
 
   text-align:center;
 }
 
-.form-success h3{
-  margin-bottom:15px;
-
+.success h3{
   font-family:"Bebas Neue",sans-serif;
 
-  font-size:50px;
+  font-size:55px;
 }
 
-.form-success p{
-  color:#888;
+.success p{
+  margin-top:15px;
+
+  color:#777;
 }
 
 
@@ -1178,38 +1401,35 @@ nav .project-link:hover{
 ========================================================= */
 
 footer{
-  background:#0b0b0b;
-
-  color:#777;
-
-  border-top:1px solid #292929;
-
-  padding:
-    28px
-    7vw;
+  padding:28px 7vw;
 
   display:flex;
 
+  align-items:center;
   justify-content:space-between;
 
-  align-items:center;
+  gap:25px;
 
-  gap:30px;
+  background:#080808;
+
+  color:#666;
+
+  border-top:1px solid #262626;
 
   font-size:8px;
 
-  letter-spacing:.22em;
+  letter-spacing:.2em;
 
   text-transform:uppercase;
 }
 
 footer a{
   color:#fff;
-  text-decoration:none;
-}
 
-.footer-team{
+  text-decoration:none;
+
   border-bottom:1px solid #555;
+
   padding-bottom:4px;
 }
 
@@ -1218,19 +1438,19 @@ footer a{
    LIGHTBOX
 ========================================================= */
 
-.lb{
+.lightbox{
   position:fixed;
 
+  z-index:99999;
+
   inset:0;
-
-  z-index:9000;
-
-  background:rgba(0,0,0,.94);
 
   display:flex;
 
   align-items:center;
   justify-content:center;
+
+  background:rgba(0,0,0,.95);
 
   opacity:0;
   visibility:hidden;
@@ -1238,69 +1458,39 @@ footer a{
   transition:.3s;
 }
 
-.lb.open{
+.lightbox.open{
   opacity:1;
   visibility:visible;
 }
 
-.lb img{
+.lightbox img{
   max-width:90vw;
   max-height:88vh;
 
   object-fit:contain;
 }
 
-.lb-close{
+.close-lightbox{
   position:absolute;
 
   top:25px;
   right:25px;
 
-  padding:12px 17px;
+  padding:11px 16px;
 
   border:1px solid #555;
 
   background:#111;
+
   color:#fff;
 
   cursor:pointer;
 
-  font-size:9px;
+  font-size:8px;
+
   letter-spacing:.2em;
 
   text-transform:uppercase;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media(max-width:1000px){
-
-  nav{
-    gap:20px;
-  }
-
-  nav a{
-    font-size:9px;
-    letter-spacing:.16em;
-  }
-
-  .summer-benefits{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .summer-benefit:nth-child(2){
-    border-right:0;
-  }
-
-  .about-grid,
-  .contact-grid{
-    grid-template-columns:1fr;
-    gap:70px;
-  }
-
 }
 
 
@@ -1310,136 +1500,161 @@ footer a{
 
 @media(max-width:768px){
 
-  .logo{
-    top:17px;
-    left:14px;
+  .site-logo{
+    top:20px;
+    left:15px;
 
-    width:60px;
-    height:44px;
-  }
-
-  .logo-mark{
-    width:60px;
-    height:42px;
-
-    font-size:40px;
-  }
-
-  .logo-mark .r{
-    left:23px;
+    width:64px;
+    height:46px;
   }
 
 
-  nav{
-    top:17px;
+  .site-nav{
 
-    left:auto;
+    top:14px;
+    left:88px;
     right:10px;
 
     transform:none;
 
-    max-width:
-      calc(100vw - 78px);
+    justify-content:flex-start;
 
     overflow-x:auto;
 
-    justify-content:flex-end;
+    max-width:none;
 
-    gap:13px;
+    gap:15px;
+
+    padding:
+      8px
+      10px
+      8px
+      14px;
+
+    border-radius:4px;
 
     scrollbar-width:none;
   }
 
-  nav::-webkit-scrollbar{
+  .site-nav::-webkit-scrollbar{
     display:none;
   }
 
-  nav a{
+  .site-nav a{
     flex:0 0 auto;
 
     font-size:7px;
 
-    letter-spacing:.1em;
+    letter-spacing:.11em;
   }
 
-  nav .project-link{
+  .site-nav .project{
     padding:9px 11px;
   }
 
 
   /* HERO */
 
-  .hero-slider{
-    height:76vh;
-    min-height:550px;
+  .hero{
+    min-height:650px;
   }
 
-  .slide-content{
-    left:7%;
-    right:7%;
-    bottom:14%;
+  .hero-content{
+    left:7vw;
+    right:7vw;
+    bottom:13%;
   }
 
-  .slide-content h2{
-    font-size:clamp(55px,16vw,100px);
+  .hero-title{
+    font-size:
+      clamp(
+        62px,
+        17vw,
+        105px
+      );
   }
 
-  .slide-content p{
+  .hero-description{
+    max-width:95%;
+
     font-size:12px;
+  }
+
+  .hero-button{
+    gap:25px;
+
+    width:100%;
   }
 
 
   /* VIDEO */
 
   .video-section{
-    height:70vh;
-    min-height:480px;
-  }
+    height:72svh;
 
-  /*
-     KEEP CENTER CROP.
-     This is important for mobile.
-  */
+    min-height:500px;
+  }
 
   #bgv{
-    width:100%;
+
+    /*
+       Force the mobile video to be centered.
+       The original video's centre is at 50%.
+    */
+
+    top:50%;
+    left:50%;
+
     height:100%;
 
-    object-fit:cover;
-    object-position:50% 50%;
-  }
+    width:auto;
 
-  .video-title{
-    width:100%;
+    max-width:none;
+
+    transform:
+      translate(-50%,-50%)
+      scale(1.08);
+
+    object-fit:cover;
+
+    object-position:center center;
   }
 
   .video-title-main{
-    font-size:clamp(65px,20vw,125px);
+    font-size:
+      clamp(
+        72px,
+        21vw,
+        130px
+      );
   }
 
   .video-title-outline{
-    font-size:clamp(62px,19vw,120px);
-
-    -webkit-text-stroke:1px #fff;
+    font-size:
+      clamp(
+        68px,
+        20vw,
+        125px
+      );
   }
 
 
   /* MESSAGE */
 
-  .message-section{
-    padding:
-      75px
-      6vw
-      75px;
+  .message{
+    padding:75px 6vw 70px;
   }
 
-  .main-headline{
-    font-size:clamp(55px,16vw,100px);
+  .message-title{
+    font-size:
+      clamp(
+        58px,
+        17vw,
+        100px
+      );
   }
 
-  .message-copy{
-    margin-left:0;
-
+  .message-text{
     margin-top:38px;
 
     font-size:14px;
@@ -1449,105 +1664,184 @@ footer a{
   /* SERVICES */
 
   .services{
-    padding:
-      70px
-      6vw
-      80px;
+    padding:70px 6vw 75px;
   }
 
   .services-title{
-    font-size:clamp(60px,17vw,105px);
+    font-size:
+      clamp(
+        65px,
+        18vw,
+        105px
+      );
   }
 
-  .service-item{
+  .service{
     grid-template-columns:
-      40px 1fr 25px;
+      38px 1fr 22px;
 
-    padding:20px 0;
+    min-height:78px;
   }
 
   .service-name{
-    font-size:21px;
+    font-size:23px;
   }
 
 
   /* SUMMER */
 
   .summer{
-    padding:
-      75px
-      6vw
-      80px;
-  }
-
-  .summer::before{
-    font-size:210px;
+    padding:75px 6vw 80px;
   }
 
   .summer-title{
-    font-size:clamp(65px,18vw,115px);
+    font-size:
+      clamp(
+        65px,
+        18vw,
+        110px
+      );
   }
 
-  .summer-copy{
-    font-size:14px;
-  }
-
-  .summer-benefits{
+  .summer-grid{
     grid-template-columns:1fr;
   }
 
-  .summer-benefit{
-    min-height:110px;
+  .summer-item{
+    min-height:105px;
 
     border-right:0;
-    border-bottom:1px solid #333;
+
+    border-bottom:1px solid #303030;
   }
 
-  .summer-benefit:last-child{
+  .summer-item:last-child{
     border-bottom:0;
   }
 
-  .summer-actions{
-    flex-direction:column;
-
-    align-items:flex-start;
-  }
-
-  .summer-primary{
+  .summer-action{
     width:100%;
-    gap:20px;
+
+    justify-content:space-between;
+
+    gap:15px;
   }
 
 
-  /* TICKER */
+  /* SHUFFLE */
 
-  .ticker{
-    height:78px;
+  .shuffle-bar{
+    height:82px;
   }
 
-  .ticker-track span{
-    font-size:36px;
+  .shuffle-track span{
+    font-size:42px;
   }
 
 
   /* GALLERY */
 
-  .gallery-section{
-    min-height:1800px;
+  .gallery{
+    height:1650px;
+  }
+
+  .gallery-card{
+    box-shadow:
+      0 12px 35px rgba(0,0,0,.42);
+  }
+
+  .gc1{
+    width:42%;
+    height:340px;
+
+    left:-4%;
+    top:55px;
+  }
+
+  .gc2{
+    width:36%;
+    height:290px;
+
+    left:31%;
+    top:10px;
+  }
+
+  .gc3{
+    width:42%;
+    height:330px;
+
+    right:-4%;
+    top:65px;
+  }
+
+  .gc4{
+    width:43%;
+    height:325px;
+
+    left:9%;
+    top:320px;
+  }
+
+  .gc5{
+    width:42%;
+    height:340px;
+
+    right:7%;
+    top:350px;
+  }
+
+  .gc6{
+    width:45%;
+    height:360px;
+
+    left:-4%;
+    top:605px;
+  }
+
+  .gc7{
+    width:43%;
+    height:330px;
+
+    right:-3%;
+    top:640px;
+  }
+
+  .gc8{
+    width:43%;
+    height:350px;
+
+    left:29%;
+    top:760px;
+  }
+
+  .gc9{
+    width:38%;
+    height:315px;
+
+    right:4%;
+    top:1010px;
   }
 
 
   /* ABOUT */
 
   .about{
-    padding:
-      75px
-      6vw
-      80px;
+    padding:75px 6vw 80px;
+  }
+
+  .about-grid{
+    grid-template-columns:1fr;
+
+    gap:60px;
   }
 
   .about-title{
-    font-size:clamp(65px,18vw,115px);
+    font-size:
+      clamp(
+        65px,
+        18vw,
+        110px
+      );
   }
 
   .about-copy h3{
@@ -1562,37 +1856,33 @@ footer a{
   /* CONTACT */
 
   .contact{
-    padding:
-      75px
-      6vw
-      80px;
-  }
-
-  .contact-heading{
-    font-size:clamp(65px,18vw,115px);
+    padding:75px 6vw 80px;
   }
 
   .contact-grid{
+    grid-template-columns:1fr;
+
     gap:60px;
   }
 
-  .contact-email{
-    flex-direction:column;
-
-    align-items:flex-start;
-
-    gap:15px;
+  .contact-title{
+    font-size:
+      clamp(
+        65px,
+        18vw,
+        110px
+      );
   }
 
   .form-grid{
     grid-template-columns:1fr;
   }
 
-  .form-field{
+  .field{
     border-right:0;
   }
 
-  .form-field.full{
+  .field.full{
     grid-column:auto;
   }
 
@@ -1604,41 +1894,59 @@ footer a{
 
     text-align:center;
 
-    padding:
-      25px
-      6vw;
+    line-height:1.7;
 
-    line-height:1.8;
+    padding:25px 6vw;
   }
 
 }
 
 
 /* =========================================================
-   SMALL PHONES
+   VERY SMALL PHONES
 ========================================================= */
 
-@media(max-width:420px){
+@media(max-width:390px){
 
-  nav{
-    gap:9px;
+  .site-logo{
+    width:58px;
   }
 
-  nav a{
+  .site-nav{
+    left:75px;
+
+    gap:11px;
+  }
+
+  .site-nav a{
     font-size:6.5px;
   }
 
-  nav .project-link{
-    padding:8px 9px;
+  .site-nav .project{
+    padding:
+      8px 9px;
   }
 
   .video-section{
-    height:70vh;
-    min-height:460px;
+    height:68svh;
   }
 
-  .gallery-section{
-    min-height:1750px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto !important;
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
   }
 
 }
@@ -1651,14 +1959,62 @@ footer a{
 
 
 <!-- ======================================================
-     LOGO
+     OR LOGO
 ====================================================== -->
 
-<div class="logo">
-  <div class="logo-mark">
-    <span class="o">O</span>
-    <span class="r">R</span>
-  </div>
+<div class="site-logo">
+
+<svg
+  viewBox="0 0 120 80"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-label="OCEAYR"
+>
+
+  <!-- O -->
+  <path
+    d="
+      M5 39
+      C5 17 19 4 41 4
+      C63 4 76 17 76 39
+      C76 61 63 75 41 75
+      C19 75 5 61 5 39
+      Z
+
+      M28 39
+      C28 50 32 57 41 57
+      C50 57 54 50 54 39
+      C54 28 50 22 41 22
+      C32 22 28 28 28 39
+      Z
+    "
+  />
+
+  <!-- R -->
+  <path
+    d="
+      M65 5
+      H92
+      C108 5 116 13 116 25
+      C116 34 111 40 102 43
+      L118 72
+      H94
+      L82 48
+      H82
+      V72
+      H65
+      Z
+
+      M82 21
+      V34
+      H91
+      C96 34 99 32 99 27
+      C99 23 96 21 91 21
+      Z
+    "
+  />
+
+</svg>
+
 </div>
 
 
@@ -1666,9 +2022,12 @@ footer a{
      NAVIGATION
 ====================================================== -->
 
-<nav>
+<nav class="site-nav">
 
-  <a href="#home" class="active">
+  <a
+    href="#home"
+    class="active"
+  >
     Home
   </a>
 
@@ -1688,7 +2047,10 @@ footer a{
     Contact Us
   </a>
 
-  <a href="#contact" class="project-link">
+  <a
+    href="#contact"
+    class="project"
+  >
     Start A Project
   </a>
 
@@ -1696,44 +2058,51 @@ footer a{
 
 
 <!-- ======================================================
-     HERO SLIDES
+     HERO SLIDER
 ====================================================== -->
 
 <section
-  class="hero-slider"
+  class="hero"
   id="home"
 >
 
 
   <!-- SLIDE 1 -->
 
-  <article class="slide active">
+  <article class="hero-slide active">
 
     <img
-      src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2200&q=85"
+      src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2200&q=88"
       alt="Luxury hotel"
     >
 
-    <div class="slide-content">
+    <div class="hero-content">
 
-      <div class="slide-number">
+      <div class="hero-index">
         01 / SUMMER COLLABORATIONS 2026
       </div>
 
-      <h2>
-        MAKE THIS
-        <span>SUMMER VISIBLE.</span>
-      </h2>
+      <h1 class="hero-title">
 
-      <p>
+        MAKE THIS
+
+        <span class="outline">
+          SUMMER VISIBLE.
+        </span>
+
+      </h1>
+
+      <p class="hero-description">
+
         Limited paid collaborations for hotels,
         resorts, restaurants and lifestyle destinations
         across the UAE.
+
       </p>
 
       <a
         href="#summer"
-        class="slide-button"
+        class="hero-button"
       >
         Explore Summer Collaborations
         <span>→</span>
@@ -1746,33 +2115,40 @@ footer a{
 
   <!-- SLIDE 2 -->
 
-  <article class="slide">
+  <article class="hero-slide">
 
     <img
-      src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2200&q=85"
-      alt="Restaurant experience"
+      src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2200&q=88"
+      alt="Luxury restaurant experience"
     >
 
-    <div class="slide-content">
+    <div class="hero-content">
 
-      <div class="slide-number">
+      <div class="hero-index">
         02 / CREATIVE DIRECTION
       </div>
 
-      <h2>
-        STORIES
-        <span>WORTH EXPERIENCING.</span>
-      </h2>
+      <h1 class="hero-title">
 
-      <p>
+        STORIES
+
+        <span class="outline">
+          WORTH EXPERIENCING.
+        </span>
+
+      </h1>
+
+      <p class="hero-description">
+
         Strategy, photography, film and digital content
         designed around the experience your audience
         is choosing.
+
       </p>
 
       <a
         href="#services"
-        class="slide-button"
+        class="hero-button"
       >
         Explore Services
         <span>→</span>
@@ -1785,33 +2161,39 @@ footer a{
 
   <!-- SLIDE 3 -->
 
-  <article class="slide">
+  <article class="hero-slide">
 
     <img
-      src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2200&q=85"
-      alt="Luxury resort"
+      src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2200&q=88"
+      alt="Luxury resort pool"
     >
 
-    <div class="slide-content">
+    <div class="hero-content">
 
-      <div class="slide-number">
-        03 / OCEAYR
+      <div class="hero-index">
+        03 / OCEAYR AGENCY
       </div>
 
-      <h2>
-        CREATE
-        <span>DESIRABILITY.</span>
-      </h2>
+      <h1 class="hero-title">
 
-      <p>
-        We help hospitality, food and lifestyle brands
-        become more visible, more memorable and easier
-        to choose.
+        CREATE
+
+        <span class="outline">
+          DESIRABILITY.
+        </span>
+
+      </h1>
+
+      <p class="hero-description">
+
+        Premium creative strategy and content for
+        hospitality, food and lifestyle brands.
+
       </p>
 
       <a
         href="#contact"
-        class="slide-button"
+        class="hero-button"
       >
         Start A Project
         <span>→</span>
@@ -1822,20 +2204,20 @@ footer a{
   </article>
 
 
-  <div class="slide-controls">
+  <div class="hero-dots">
 
     <button
-      class="slide-dot active"
+      class="hero-dot active"
       data-slide="0"
     ></button>
 
     <button
-      class="slide-dot"
+      class="hero-dot"
       data-slide="1"
     ></button>
 
     <button
-      class="slide-dot"
+      class="hero-dot"
       data-slide="2"
     ></button>
 
@@ -1850,17 +2232,16 @@ footer a{
 
 <section class="video-section">
 
-  <!-- YOUR CURRENT GITHUB VIDEO -->
-
   <video
+    id="bgv"
     autoplay
     muted
     loop
     playsinline
     preload="auto"
-    id="bgv"
   >
 
+    <!-- CURRENT GITHUB VIDEO -->
     <source
       src="/video/oceayr-background.mp4"
       type="video/mp4"
@@ -1869,7 +2250,8 @@ footer a{
   </video>
 
 
-  <!-- TITLE IS INSIDE THE VIDEO -->
+  <!-- IMPORTANT:
+       TITLE IS INSIDE THE VIDEO -->
 
   <div class="video-title">
 
@@ -1887,49 +2269,49 @@ footer a{
 
 
 <!-- ======================================================
-     MAIN MESSAGE
+     MESSAGE
 ====================================================== -->
 
-<section class="message-section">
+<section class="message">
 
   <div class="eyebrow">
     OCEAYR / CREATIVE MARKETING
   </div>
 
-  <h1 class="main-headline">
+  <h2 class="message-title">
 
-    <span class="block">
+    <span class="line">
       MORE THAN
     </span>
 
-    <span class="outline">
+    <span class="line outline">
       CONTENT.
     </span>
 
-    <span class="block">
+    <span class="line">
       MORE THAN
     </span>
 
-    <span class="outline">
+    <span class="line outline">
       TRENDS.
     </span>
 
-    <span class="block">
+    <span class="line">
       WE CREATE
     </span>
 
-    <span class="outline">
-      DEMAND.
+    <span class="line outline">
+      DESIRE.
     </span>
 
-  </h1>
+  </h2>
 
-  <p class="message-copy">
+  <p class="message-text">
 
-    OCEAYR is a UAE creative marketing agency helping
-    hotels, resorts, restaurants and lifestyle brands
-    build desirability through strategy, photography,
-    film and digital content.
+    OCEAYR is a creative marketing agency built around
+    hospitality, food and lifestyle. We combine strategic
+    thinking with premium visual storytelling to make
+    brands more visible, more memorable and easier to choose.
 
   </p>
 
@@ -1956,87 +2338,87 @@ footer a{
 
   <div class="service-list">
 
-    <div class="service-item">
+    <div class="service">
 
-      <div class="service-number">
+      <span class="service-no">
         01
-      </div>
+      </span>
 
-      <div class="service-name">
+      <span class="service-name">
         Creative Direction
-      </div>
+      </span>
 
-      <div class="service-arrow">
+      <span class="service-arrow">
         →
-      </div>
+      </span>
 
     </div>
 
 
-    <div class="service-item">
+    <div class="service">
 
-      <div class="service-number">
+      <span class="service-no">
         02
-      </div>
+      </span>
 
-      <div class="service-name">
+      <span class="service-name">
         Photography & Film
-      </div>
+      </span>
 
-      <div class="service-arrow">
+      <span class="service-arrow">
         →
-      </div>
+      </span>
 
     </div>
 
 
-    <div class="service-item">
+    <div class="service">
 
-      <div class="service-number">
+      <span class="service-no">
         03
-      </div>
+      </span>
 
-      <div class="service-name">
+      <span class="service-name">
         Campaign Strategy
-      </div>
+      </span>
 
-      <div class="service-arrow">
+      <span class="service-arrow">
         →
-      </div>
+      </span>
 
     </div>
 
 
-    <div class="service-item">
+    <div class="service">
 
-      <div class="service-number">
+      <span class="service-no">
         04
-      </div>
+      </span>
 
-      <div class="service-name">
-        Digital Content
-      </div>
+      <span class="service-name">
+        Social & Digital Content
+      </span>
 
-      <div class="service-arrow">
+      <span class="service-arrow">
         →
-      </div>
+      </span>
 
     </div>
 
 
-    <div class="service-item">
+    <div class="service">
 
-      <div class="service-number">
+      <span class="service-no">
         05
-      </div>
+      </span>
 
-      <div class="service-name">
+      <span class="service-name">
         Brand & Web
-      </div>
+      </span>
 
-      <div class="service-arrow">
+      <span class="service-arrow">
         →
-      </div>
+      </span>
 
     </div>
 
@@ -2046,7 +2428,7 @@ footer a{
 
 
 <!-- ======================================================
-     SUMMER COLLABORATIONS
+     SUMMER
 ====================================================== -->
 
 <section
@@ -2054,7 +2436,7 @@ footer a{
   id="summer"
 >
 
-  <div class="summer-label">
+  <div class="eyebrow">
     OCEAYR SUMMER COLLABORATIONS 2026
   </div>
 
@@ -2062,113 +2444,83 @@ footer a{
 
     MAKE THIS
 
-    <span>
+    <span class="outline">
       SUMMER VISIBLE.
     </span>
 
   </h2>
 
+  <p class="summer-text">
 
-  <p class="summer-copy">
-
-    OCEAYR is opening a limited number of paid summer
-    collaboration slots for hotels, resorts, restaurants
-    and lifestyle destinations across the UAE.
-
-    <br><br>
-
-    Created for brands looking to promote a summer
-    experience, refresh their digital presence or build
-    a premium content library for the months ahead.
+    We are opening a limited number of paid summer
+    collaboration opportunities for hotels, resorts,
+    restaurants and lifestyle destinations across the UAE.
 
     <br><br>
 
-    Each collaboration is shaped around the property,
-    audience and commercial objective — combining creative
-    direction, photography, film and campaign-ready content.
+    From summer stay experiences and poolside moments to
+    dining, wellness and destination stories, we create
+    campaign-ready content designed to make people stop,
+    discover and enquire.
 
   </p>
 
 
-  <div class="summer-benefits">
+  <div class="summer-grid">
 
-    <div class="summer-benefit">
-      Strategic Creative Direction
+    <div class="summer-item">
+      Creative Direction
     </div>
 
-    <div class="summer-benefit">
-      Premium Photo & Video Production
+    <div class="summer-item">
+      Photo & Film
     </div>
 
-    <div class="summer-benefit">
-      Campaign-Ready Digital Content
+    <div class="summer-item">
+      Social Content
     </div>
 
-    <div class="summer-benefit">
-      Priority Summer Scheduling
+    <div class="summer-item">
+      Campaign Storytelling
     </div>
 
   </div>
 
 
-  <div class="summer-actions">
+  <a
+    href="#contact"
+    class="summer-action"
+  >
+    Apply For A Summer Collaboration
+    <span>→</span>
+  </a>
 
-    <a
-      href="#contact"
-      class="summer-primary"
-    >
-      Apply For A Summer Collaboration
-      <span>→</span>
-    </a>
 
-    <a
-      href="#contact"
-      class="summer-secondary"
-    >
-      Discuss The Opportunity
-    </a>
-
+  <div class="summer-small">
+    Limited paid collaborations · Scope customised per brand
   </div>
-
-
-  <p class="summer-note">
-
-    Paid collaborations. Limited production availability.
-    Scope and investment are customised for each brand.
-
-  </p>
 
 </section>
 
 
 <!-- ======================================================
-     SHUFFLE OUR ART WORKS
+     SHUFFLE ART WORKS
 ====================================================== -->
 
-<div class="ticker">
+<div class="shuffle-bar">
 
-  <div class="ticker-track">
+  <div class="shuffle-track">
 
     <span>
-      SHUFFLE OUR ART WORKS
-      &nbsp;&nbsp;&nbsp;
-      SHUFFLE OUR ART WORKS
-      &nbsp;&nbsp;&nbsp;
-      SHUFFLE OUR ART WORKS
-      &nbsp;&nbsp;&nbsp;
-      SHUFFLE OUR ART WORKS
-      &nbsp;&nbsp;&nbsp;
+      SHUFFLE OUR ART WORKS&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+      SHUFFLE OUR ART WORKS&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+      SHUFFLE OUR ART WORKS&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
     </span>
 
     <span>
-      SHUFFLE OUR ART WORKS
-      &nbsp;&nbsp;&nbsp;
-      SHUFFLE OUR ART WORKS
-      &nbsp;&nbsp;&nbsp;
-      SHUFFLE OUR ART WORKS
-      &nbsp;&nbsp;&nbsp;
-      SHUFFLE OUR ART WORKS
-      &nbsp;&nbsp;&nbsp;
+      SHUFFLE OUR ART WORKS&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+      SHUFFLE OUR ART WORKS&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+      SHUFFLE OUR ART WORKS&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
     </span>
 
   </div>
@@ -2177,13 +2529,93 @@ footer a{
 
 
 <!-- ======================================================
-     EXISTING GALLERY
+     PHOTO GALLERY
 ====================================================== -->
 
 <section
-  class="gallery-section"
+  class="gallery"
   id="gallery"
-></section>
+>
+
+  <div class="gallery-stage">
+
+
+    <!-- SAME GITHUB PHOTO COLLECTION -->
+
+    <div class="gallery-card gc1">
+      <img
+        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00001.jpeg"
+        alt="OCEAYR artwork"
+      >
+    </div>
+
+
+    <div class="gallery-card gc2">
+      <img
+        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00002.jpeg"
+        alt="OCEAYR artwork"
+      >
+    </div>
+
+
+    <div class="gallery-card gc3">
+      <img
+        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00003.jpeg"
+        alt="OCEAYR artwork"
+      >
+    </div>
+
+
+    <div class="gallery-card gc4">
+      <img
+        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00004.jpeg"
+        alt="OCEAYR artwork"
+      >
+    </div>
+
+
+    <div class="gallery-card gc5">
+      <img
+        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00005.jpeg"
+        alt="OCEAYR artwork"
+      >
+    </div>
+
+
+    <div class="gallery-card gc6">
+      <img
+        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00006.jpeg"
+        alt="OCEAYR artwork"
+      >
+    </div>
+
+
+    <div class="gallery-card gc7">
+      <img
+        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00007.jpeg"
+        alt="OCEAYR artwork"
+      >
+    </div>
+
+
+    <div class="gallery-card gc8">
+      <img
+        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00008.jpeg"
+        alt="OCEAYR artwork"
+      >
+    </div>
+
+
+    <div class="gallery-card gc9">
+      <img
+        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00009.jpeg"
+        alt="OCEAYR artwork"
+      >
+    </div>
+
+  </div>
+
+</section>
 
 
 <!-- ======================================================
@@ -2197,7 +2629,6 @@ footer a{
 
   <div class="about-grid">
 
-
     <div>
 
       <div class="eyebrow">
@@ -2208,7 +2639,7 @@ footer a{
 
         CREATIVE
 
-        <span>
+        <span class="outline">
           THINKING.
         </span>
 
@@ -2224,40 +2655,27 @@ footer a{
         Premium execution.
       </h3>
 
-
       <p>
 
-        OCEAYR is a creative marketing agency focused
-        on luxury hospitality, food and lifestyle brands.
-        We help hotels, resorts, restaurants, cafés,
-        wellness spaces and destination-led businesses
-        communicate with greater clarity, desirability
-        and commercial confidence.
+        OCEAYR is a UAE creative marketing agency
+        focused on hospitality, food and lifestyle.
 
       </p>
 
-
       <p>
 
-        Our work begins by understanding the guest,
-        the brand promise and the experience being sold.
-        We then translate that insight into refined
-        strategy, distinctive visual storytelling,
-        campaign direction and digital content that
-        feels consistent from social media to website,
-        from launch material to in-property communication.
+        We bring together creative direction,
+        photography, film, campaign strategy and
+        digital content to help brands communicate
+        their experiences with greater impact.
 
       </p>
 
-
       <p>
 
-        We combine editorial taste with an organised
-        production process. The result is work that looks
-        premium, remains practical to manage and supports
-        real business goals — stronger awareness, better
-        engagement, more qualified enquiries and a brand
-        people remember.
+        Our approach is simple: understand the experience,
+        find the story and create work people want to stop
+        and look at.
 
       </p>
 
@@ -2283,32 +2701,31 @@ footer a{
     <div>
 
       <div class="eyebrow">
-        CONTACT OCEAYR
+        START A PROJECT
       </div>
 
-      <h2 class="contact-heading">
+      <h2 class="contact-title">
 
-        START A
+        LET'S
 
-        <span>
-          CONVERSATION.
+        <span class="outline">
+          CREATE.
         </span>
 
       </h2>
 
+      <p class="contact-copy">
 
-      <p class="contact-description">
+        Tell us about your brand, your objectives and
+        the experience you want people to discover.
 
-        Tell us about your brand, your goals and what
-        you would like to create. We will review your
-        enquiry and get back to you.
+        We'll review your brief and get back to you.
 
       </p>
 
+      <div class="email-line">
 
-      <div class="contact-email">
-
-        <span class="contact-email-label">
+        <span>
           Email
         </span>
 
@@ -2323,14 +2740,14 @@ footer a{
 
     <!-- FORM -->
 
-    <div class="form-box">
+    <div class="form">
 
       <div id="formWrap">
 
         <div class="form-grid">
 
 
-          <div class="form-field">
+          <div class="field">
 
             <label>
               Your Name *
@@ -2339,13 +2756,13 @@ footer a{
             <input
               type="text"
               id="f-name"
-              placeholder="First & Last name"
+              placeholder="First & last name"
             >
 
           </div>
 
 
-          <div class="form-field">
+          <div class="field">
 
             <label>
               Company
@@ -2354,13 +2771,13 @@ footer a{
             <input
               type="text"
               id="f-company"
-              placeholder="Your company"
+              placeholder="Company name"
             >
 
           </div>
 
 
-          <div class="form-field">
+          <div class="field">
 
             <label>
               Email *
@@ -2375,7 +2792,7 @@ footer a{
           </div>
 
 
-          <div class="form-field">
+          <div class="field">
 
             <label>
               Mobile
@@ -2384,13 +2801,13 @@ footer a{
             <input
               type="tel"
               id="f-mobile"
-              placeholder="+971 00 000 0000"
+              placeholder="+971..."
             >
 
           </div>
 
 
-          <div class="form-field">
+          <div class="field">
 
             <label>
               Brand Type
@@ -2415,10 +2832,10 @@ footer a{
           </div>
 
 
-          <div class="form-field">
+          <div class="field">
 
             <label>
-              Service Required
+              Service
             </label>
 
             <select id="f-service">
@@ -2432,6 +2849,10 @@ footer a{
               </option>
 
               <option>
+                Creative Direction
+              </option>
+
+              <option>
                 Photography & Film
               </option>
 
@@ -2440,7 +2861,7 @@ footer a{
               </option>
 
               <option>
-                Social Content
+                Digital Content
               </option>
 
               <option>
@@ -2460,10 +2881,10 @@ footer a{
           </div>
 
 
-          <div class="form-field">
+          <div class="field">
 
             <label>
-              Property / Brand Location
+              Location
             </label>
 
             <input
@@ -2475,7 +2896,7 @@ footer a{
           </div>
 
 
-          <div class="form-field">
+          <div class="field">
 
             <label>
               Website / Instagram
@@ -2484,13 +2905,13 @@ footer a{
             <input
               type="text"
               id="f-social"
-              placeholder="@yourbrand or website"
+              placeholder="@yourbrand"
             >
 
           </div>
 
 
-          <div class="form-field full">
+          <div class="field full">
 
             <label>
               Tell Us About Your Project
@@ -2503,13 +2924,12 @@ footer a{
 
           </div>
 
-
         </div>
 
 
         <button
           type="button"
-          class="form-submit"
+          class="submit"
           id="sendBtn"
           onclick="sendForm()"
         >
@@ -2518,7 +2938,7 @@ footer a{
             Send Project Brief
           </span>
 
-          <span id="sendArr">
+          <span>
             →
           </span>
 
@@ -2533,7 +2953,7 @@ footer a{
 
 
       <div
-        class="form-success"
+        class="success"
         id="successMsg"
       >
 
@@ -2543,7 +2963,6 @@ footer a{
 
         <p>
           Thank you for reaching out to OCEAYR.
-          We will get back to you shortly.
         </p>
 
       </div>
@@ -2569,10 +2988,7 @@ footer a{
     Creative Marketing / Hospitality / Lifestyle
   </span>
 
-  <a
-    href="mailto:careers@oceayr.com"
-    class="footer-team"
-  >
+  <a href="mailto:careers@oceayr.com">
     Join The Team
   </a>
 
@@ -2584,20 +3000,19 @@ footer a{
 ====================================================== -->
 
 <div
-  class="lb"
-  id="lb"
-  onclick="if(event.target===this)closeLb()"
+  class="lightbox"
+  id="lightbox"
 >
 
   <button
-    class="lb-close"
-    onclick="closeLb()"
+    class="close-lightbox"
+    onclick="closeLightbox()"
   >
     Close
   </button>
 
   <img
-    id="lbImg"
+    id="lightboxImage"
     src=""
     alt=""
   >
@@ -2611,72 +3026,81 @@ footer a{
    HERO SLIDER
 ========================================================= */
 
-const slides =
-  document.querySelectorAll(".slide");
+const heroSlides =
+  document.querySelectorAll(
+    ".hero-slide"
+  );
 
-const dots =
-  document.querySelectorAll(".slide-dot");
+const heroDots =
+  document.querySelectorAll(
+    ".hero-dot"
+  );
 
-let currentSlide = 0;
+let heroIndex = 0;
 
-let slideTimer;
+let heroTimer;
 
 
-function showSlide(index){
+function showHero(index){
 
-  currentSlide = index;
+  heroIndex = index;
 
-  slides.forEach(
+  heroSlides.forEach(
     (slide,i)=>{
+
       slide.classList.toggle(
         "active",
         i === index
       );
+
     }
   );
 
-  dots.forEach(
+
+  heroDots.forEach(
     (dot,i)=>{
+
       dot.classList.toggle(
         "active",
         i === index
       );
+
     }
   );
 
 }
 
 
-function nextSlide(){
+function nextHero(){
 
-  showSlide(
-    (currentSlide + 1) %
-    slides.length
+  showHero(
+    (heroIndex + 1) %
+    heroSlides.length
   );
 
 }
 
 
-dots.forEach(
+heroDots.forEach(
   dot=>{
 
     dot.addEventListener(
       "click",
       ()=>{
 
-        showSlide(
+        showHero(
           Number(
             dot.dataset.slide
           )
         );
 
         clearInterval(
-          slideTimer
+          heroTimer
         );
 
-        slideTimer =
+        heroTimer =
           setInterval(
-            nextSlide,
+            nextHero,
             6500
           );
 
@@ -2687,672 +3111,427 @@ dots.forEach(
 );
 
 
-showSlide(0);
+showHero(0);
 
-slideTimer =
+heroTimer =
   setInterval(
-    nextSlide,
+    nextHero,
     6500
   );
 
 
 /* =========================================================
-   GITHUB VIDEO
+   VIDEO AUTOPLAY
 ========================================================= */
 
-const bgv =
-  document.getElementById("bgv");
-
-
-if(bgv){
-
-  bgv.muted = true;
-
-  bgv.setAttribute(
-    "playsinline",
-    ""
-  );
-
-  /*
-     Try autoplay immediately.
-  */
-
-  bgv.play().catch(
-    ()=>{
-      /*
-        Some mobile browsers require
-        user interaction.
-      */
-    }
+const video =
+  document.getElementById(
+    "bgv"
   );
 
 
-  /*
-     Retry after first interaction.
-  */
+function playVideo(){
 
-  const startVideo =
-    ()=>{
-      bgv.play().catch(()=>{});
-    };
+  if(!video){
+    return;
+  }
 
+  video.muted = true;
 
-  [
-    "touchstart",
-    "pointerdown",
-    "click"
-  ].forEach(
-    eventName=>{
-
-      window.addEventListener(
-        eventName,
-        startVideo,
-        {
-          once:true,
-          passive:true
-        }
-      );
-
-    }
+  video.play().catch(
+    ()=>{}
   );
 
 }
 
 
+playVideo();
+
+
+[
+  "touchstart",
+  "pointerdown",
+  "click"
+].forEach(
+  eventName=>{
+
+    window.addEventListener(
+      eventName,
+      playVideo,
+      {
+        once:true,
+        passive:true
+      }
+    );
+
+  }
+);
+
+
 /* =========================================================
-   GALLERY
+   NAVIGATION — DARK/LIGHT READABILITY
 ========================================================= */
 
-(function(){
+const nav =
+  document.querySelector(
+    ".site-nav"
+  );
 
-  const gallery =
-    document.getElementById(
-      "gallery"
+
+const darkSections =
+  document.querySelectorAll(
+    ".video-section, .summer, .shuffle-bar, .gallery, .contact"
+  );
+
+
+const navObserver =
+  new IntersectionObserver(
+    entries=>{
+
+      let dark = false;
+
+      entries.forEach(
+        entry=>{
+
+          if(
+            entry.isIntersecting
+          ){
+
+            dark = true;
+
+          }
+
+        }
+      );
+
+
+      if(dark){
+
+        nav.classList.remove(
+          "light"
+        );
+
+      }
+
+      else{
+
+        nav.classList.add(
+          "light"
+        );
+
+      }
+
+    },
+    {
+      threshold:.18
+    }
+  );
+
+
+darkSections.forEach(
+  section=>{
+    navObserver.observe(
+      section
     );
+  }
+);
+
+
+/* =========================================================
+   ACTIVE NAV
+========================================================= */
+
+const navLinks =
+  document.querySelectorAll(
+    ".site-nav a:not(.project)"
+  );
+
+const pageSections =
+  document.querySelectorAll(
+    "section[id]"
+  );
+
+
+const sectionObserver =
+  new IntersectionObserver(
+    entries=>{
+
+      entries.forEach(
+        entry=>{
+
+          if(
+            entry.isIntersecting
+          ){
+
+            navLinks.forEach(
+              link=>{
+                link.classList.remove(
+                  "active"
+                );
+              }
+            );
+
+
+            const link =
+              document.querySelector(
+                `.site-nav a[href="#${entry.target.id}"]`
+              );
+
+
+            if(link){
+
+              link.classList.add(
+                "active"
+              );
+
+            }
+
+          }
+
+        }
+      );
+
+    },
+    {
+      rootMargin:
+        "-40% 0px -50% 0px"
+    }
+  );
+
+
+pageSections.forEach(
+  section=>{
+    sectionObserver.observe(
+      section
+    );
+  }
+);
+
+
+/* =========================================================
+   GALLERY — OVERLAPPING + UPWARD MOVEMENT
+========================================================= */
+
+const gallery =
+  document.querySelector(
+    ".gallery"
+  );
+
+const galleryStage =
+  document.querySelector(
+    ".gallery-stage"
+  );
+
+
+const galleryCards =
+  document.querySelectorAll(
+    ".gallery-card"
+  );
+
+
+/*
+   Individual vertical starting offsets.
+   These create the layered collage.
+*/
+
+const baseOffsets = [
+
+  45,
+  -5,
+  70,
+  110,
+  45,
+  80,
+  125,
+  50,
+  80
+
+];
+
+
+function updateGallery(){
 
   if(!gallery){
     return;
   }
 
 
-  /*
-     EXISTING GITHUB PHOTO FOLDER.
-  */
+  const rect =
+    gallery.getBoundingClientRect();
 
-  const BASE =
-    "https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/";
-
-
-  /*
-     Existing 17 image collection.
-     No replacement images.
-  */
-
-  const IMGS =
-    Array.from(
-      {length:17},
-      (_,i)=>
-        BASE +
-        "image" +
-        String(
-          i + 1
-        ).padStart(
-          5,
-          "0"
-        ) +
-        ".jpeg"
-    );
-
-
-  const mobile =
-    window.innerWidth <= 768;
-
-  const vw =
-    window.innerWidth;
-
-
-  const stage =
-    document.createElement(
-      "div"
-    );
-
-  stage.className =
-    "g-stage";
-
-  gallery.appendChild(
-    stage
-  );
+  const viewport =
+    window.innerHeight;
 
 
   /*
-     OVERLAPPING LAYOUT.
+     Progress while the gallery moves
+     through the viewport.
   */
 
-  const desktopLayout = [
-
-    {i:0,x:4.8,y:0,w:31,r:1.27,z:22,d:0},
-
-    {i:1,x:38,y:-6,w:25.8,r:1.30,z:28,d:40},
-
-    {i:2,x:66.2,y:2.2,w:32.8,r:.88,z:20,d:70},
-
-    {i:3,x:15,y:28.8,w:31.8,r:.78,z:40,d:110},
-
-    {i:4,x:51.8,y:24.8,w:30.4,r:.78,z:42,d:150},
-
-    {i:5,x:7.2,y:50.5,w:34,r:1.02,z:52,d:190},
-
-    {i:6,x:66,y:45.5,w:33.5,r:.82,z:50,d:230},
-
-    {i:7,x:40.5,y:63,w:31.2,r:.98,z:34,d:270},
-
-    {i:8,x:72,y:68.8,w:27,r:1.24,z:32,d:310},
-
-    {i:9,x:4.8,y:78.5,w:31,r:.80,z:24,d:350},
-
-    {i:10,x:30.4,y:91,w:30,r:1.02,z:44,d:390},
-
-    {i:11,x:64,y:91.8,w:28.5,r:.96,z:46,d:430},
-
-    {i:12,x:67.5,y:109.5,w:31.5,r:1,z:58,d:470},
-
-    {i:13,x:39.5,y:119.2,w:31,r:.76,z:36,d:510},
-
-    {i:14,x:6.2,y:119.5,w:29.8,r:1.24,z:38,d:550},
-
-    {i:15,x:52,y:136.8,w:36,r:.76,z:64,d:590},
-
-    {i:16,x:22,y:144.5,w:31.5,r:.92,z:60,d:630}
-
-  ];
-
-
-  const mobileLayout = [
-
-    {i:0,x:-4,y:0,w:38,r:1.32,z:20,d:0},
-
-    {i:1,x:31,y:-9,w:35,r:1.42,z:30,d:35},
-
-    {i:2,x:64,y:3,w:39,r:.88,z:22,d:70},
-
-    {i:3,x:13,y:34,w:40,r:.78,z:42,d:105},
-
-    {i:4,x:49,y:29,w:41,r:.78,z:44,d:140},
-
-    {i:5,x:-2,y:56,w:43,r:1.02,z:52,d:175},
-
-    {i:6,x:59,y:52,w:44,r:.82,z:50,d:210},
-
-    {i:7,x:29,y:73,w:43,r:.98,z:34,d:245},
-
-    {i:8,x:68,y:82,w:34,r:1.24,z:32,d:280},
-
-    {i:9,x:-6,y:92,w:42,r:.80,z:24,d:315},
-
-    {i:10,x:28,y:105,w:42,r:1.02,z:44,d:350},
-
-    {i:11,x:62,y:106,w:39,r:.96,z:46,d:385},
-
-    {i:12,x:55,y:129,w:46,r:1,z:58,d:420},
-
-    {i:13,x:30,y:139,w:43,r:.76,z:36,d:455},
-
-    {i:14,x:-5,y:137,w:40,r:1.24,z:38,d:490},
-
-    {i:15,x:48,y:162,w:50,r:.76,z:64,d:525},
-
-    {i:16,x:12,y:168,w:43,r:.92,z:60,d:560}
-
-  ];
-
-
-  const layout =
-    mobile
-      ? mobileLayout
-      : desktopLayout;
-
-
-  const cards = [];
-
-  const dragOffsets = [];
-
-  let maxBottom = 0;
-
-
-  layout.forEach(
-    (cfg,index)=>{
-
-      const left =
-        cfg.x *
-        vw /
-        100;
-
-      const top =
-        cfg.y *
-        vw /
-        100;
-
-      const width =
-        cfg.w *
-        vw /
-        100;
-
-      const height =
-        width *
-        cfg.r;
-
-
-      const card =
-        document.createElement(
-          "div"
-        );
-
-      card.className =
-        "g-card";
-
-      card.dataset.index =
-        index;
-
-
-      card.style.left =
-        left + "px";
-
-      card.style.top =
-        top + "px";
-
-      card.style.width =
-        width + "px";
-
-      card.style.height =
-        height + "px";
-
-      card.style.zIndex =
-        cfg.z;
-
-
-      const inner =
-        document.createElement(
-          "div"
-        );
-
-      inner.className =
-        "g-inner";
-
-      inner.style.transitionDelay =
-        cfg.d + "ms";
-
-
-      const img =
-        document.createElement(
-          "img"
-        );
-
-      img.src =
-        IMGS[cfg.i];
-
-      img.alt =
-        "OCEAYR artwork " +
-        (cfg.i + 1);
-
-      img.loading =
-        index < 8
-          ? "eager"
-          : "lazy";
-
-
-      img.addEventListener(
-        "load",
-        ()=>{
-          card.classList.add(
-            "is-loaded"
-          );
-        },
-        {
-          once:true
-        }
-      );
-
-
-      inner.appendChild(
-        img
-      );
-
-      card.appendChild(
-        inner
-      );
-
-      stage.appendChild(
-        card
-      );
-
-
-      cards.push(
-        card
-      );
-
-
-      dragOffsets.push({
-        x:0,
-        y:0,
-        moved:false
-      });
-
-
-      maxBottom =
-        Math.max(
-          maxBottom,
-          top + height
-        );
-
-    }
-  );
-
-
-  /*
-     Prevent unnecessary blank space.
-  */
-
-  gallery.style.height =
-    Math.ceil(
-      maxBottom +
-      (
-        mobile
-          ? 65
-          : 90
+  const progress =
+    Math.max(
+      0,
+      Math.min(
+        1,
+        (viewport - rect.top) /
+        (viewport + rect.height)
       )
-    ) + "px";
+    );
 
 
   /*
-     DRAGGING.
+     Strong upward movement.
   */
 
-  if(window.interact){
-
-    interact(
-      ".g-card"
-    ).draggable({
-
-      inertia:true,
-
-      listeners:{
-
-        start(event){
-
-          const index =
-            Number(
-              event.target.dataset.index
-            );
-
-          dragOffsets[index].moved =
-            false;
-
-          event.target.style.zIndex =
-            "9999";
-
-        },
+  const movement =
+    progress *
+    (
+      window.innerWidth <= 768
+        ? 260
+        : 360
+    );
 
 
-        move(event){
-
-          const index =
-            Number(
-              event.target.dataset.index
-            );
-
-          const d =
-            dragOffsets[index];
-
-
-          d.x +=
-            event.dx;
-
-          d.y +=
-            event.dy;
-
-
-          if(
-            Math.abs(d.x) > 4 ||
-            Math.abs(d.y) > 4
-          ){
-
-            d.moved =
-              true;
-
-          }
-
-
-          event.target.style.transform =
-            `translate3d(${d.x}px,${d.y}px,0)`;
-
-        },
-
-
-        end(event){
-
-          const index =
-            Number(
-              event.target.dataset.index
-            );
-
-          event.target.dataset.dragged =
-            dragOffsets[index].moved
-              ? "1"
-              : "0";
-
-
-          setTimeout(
-            ()=>{
-              event.target.dataset.dragged =
-                "0";
-            },
-            180
-          );
-
-        }
-
-      }
-
-    });
-
-  }
-
-
-  /*
-     LIGHTBOX.
-  */
-
-  cards.forEach(
+  galleryCards.forEach(
     (card,index)=>{
 
-      card.addEventListener(
-        "click",
-        ()=>{
+      const individual =
+        baseOffsets[index] || 0;
 
-          if(
-            card.dataset.dragged ===
-            "1"
-          ){
-            return;
-          }
+      /*
+         Different speeds create depth.
+      */
 
-
-          openLb(
-            IMGS[
-              layout[index].i
-            ]
-          );
-
-        }
-      );
-
-    }
-  );
-
-
-  /*
-     SUBTLE UPWARD MOVEMENT.
-  */
-
-  let autoUp = 0;
-
-  let lastTime =
-    performance.now();
-
-  const maxAutoUp =
-    mobile
-      ? 44
-      : 70;
-
-
-  function galleryTop(){
-
-    let el =
-      gallery;
-
-    let top = 0;
-
-    while(el){
-
-      top +=
-        el.offsetTop;
-
-      el =
-        el.offsetParent;
-
-    }
-
-    return top;
-
-  }
-
-
-  function animate(time){
-
-    const delta =
-      Math.min(
-        40,
-        time - lastTime
-      );
-
-    lastTime =
-      time;
-
-
-    const scroll =
-      window.scrollY ||
-      window.pageYOffset ||
-      0;
-
-
-    const top =
-      galleryTop();
-
-
-    const bottom =
-      top +
-      gallery.offsetHeight;
-
-
-    const visible =
-      scroll +
-      window.innerHeight >
-      top - 100 &&
-      scroll <
-      bottom + 100;
-
-
-    if(visible){
-
-      autoUp +=
-        delta *
+      const depth =
+        0.65 +
         (
-          mobile
-            ? .01
-            : .014
-        );
-
-      autoUp =
-        Math.min(
-          autoUp,
-          maxAutoUp
-        );
-
-    }
-
-
-    const scrollUp =
-      Math.min(
-        maxAutoUp,
-        Math.max(
-          0,
-          scroll - top
+          index % 4
         ) *
-        (
-          mobile
-            ? .045
-            : .055
-        )
-      );
+        .10;
 
 
-    stage.style.transform =
-      `translate3d(0,${-(autoUp + scrollUp)}px,0)`;
+      const y =
+        individual -
+        movement *
+        depth;
 
 
-    requestAnimationFrame(
-      animate
-    );
+      card.style.transform =
+        `translate3d(0,${y}px,0)`;
 
-  }
-
-
-  requestAnimationFrame(
-    animate
+    }
   );
-
-})();
-
-
-/* =========================================================
-   LIGHTBOX
-========================================================= */
-
-function openLb(src){
-
-  const lb =
-    document.getElementById(
-      "lb"
-    );
-
-  const img =
-    document.getElementById(
-      "lbImg"
-    );
-
-  img.src =
-    src;
-
-  lb.classList.add(
-    "open"
-  );
-
-  document.body.style.overflow =
-    "hidden";
 
 }
 
 
-function closeLb(){
+let galleryTick =
+  false;
 
-  const lb =
-    document.getElementById(
-      "lb"
+
+function requestGalleryUpdate(){
+
+  if(!galleryTick){
+
+    requestAnimationFrame(
+      ()=>{
+
+        updateGallery();
+
+        galleryTick =
+          false;
+
+      }
     );
 
-  lb.classList.remove(
+    galleryTick =
+      true;
+
+  }
+
+}
+
+
+window.addEventListener(
+  "scroll",
+  requestGalleryUpdate,
+  {
+    passive:true
+  }
+);
+
+
+window.addEventListener(
+  "resize",
+  requestGalleryUpdate
+);
+
+
+updateGallery();
+
+
+/* =========================================================
+   GALLERY LIGHTBOX
+========================================================= */
+
+galleryCards.forEach(
+  card=>{
+
+    card.addEventListener(
+      "click",
+      ()=>{
+
+        const image =
+          card.querySelector(
+            "img"
+          );
+
+        if(!image){
+          return;
+        }
+
+        const lightbox =
+          document.getElementById(
+            "lightbox"
+          );
+
+        const lightboxImage =
+          document.getElementById(
+            "lightboxImage"
+          );
+
+
+        lightboxImage.src =
+          image.src;
+
+
+        lightbox.classList.add(
+          "open"
+        );
+
+
+        document.body.style.overflow =
+          "hidden";
+
+      }
+    );
+
+  }
+);
+
+
+function closeLightbox(){
+
+  const lightbox =
+    document.getElementById(
+      "lightbox"
+    );
+
+
+  lightbox.classList.remove(
     "open"
   );
+
 
   document.body.style.overflow =
     "";
@@ -3360,26 +3539,71 @@ function closeLb(){
 }
 
 
+document
+  .getElementById("lightbox")
+  .addEventListener(
+    "click",
+    event=>{
+
+      if(
+        event.target.id ===
+        "lightbox"
+      ){
+
+        closeLightbox();
+
+      }
+
+    }
+  );
+
+
+document.addEventListener(
+  "keydown",
+  event=>{
+
+    if(
+      event.key ===
+      "Escape"
+    ){
+
+      closeLightbox();
+
+    }
+
+  }
+);
+
+
 /* =========================================================
    EMAILJS
 ========================================================= */
 
 emailjs.init({
-  publicKey:"MfKifkzUlPhOg2uQg"
+  publicKey:
+    "MfKifkzUlPhOg2uQg"
 });
 
 
 async function sendForm(){
 
   const name =
-    document.getElementById(
-      "f-name"
-    ).value.trim();
+    document
+      .getElementById(
+        "f-name"
+      )
+      .value
+      .trim();
+
 
   const email =
-    document.getElementById(
-      "f-email"
-    ).value.trim();
+    document
+      .getElementById(
+        "f-email"
+      )
+      .value
+      .trim();
+
 
   if(!name || !email){
 
@@ -3397,17 +3621,22 @@ async function sendForm(){
       "sendBtn"
     );
 
+
+  const label =
+    document.getElementById(
+      "sendLabel"
+    );
+
+
   button.disabled =
     true;
 
 
-  document.getElementById(
-    "sendLabel"
-  ).textContent =
+  label.textContent =
     "Sending...";
 
 
-  const params = {
+  const templateParams = {
 
     name:name,
 
@@ -3449,10 +3678,7 @@ async function sendForm(){
       ).value.trim(),
 
     reply_to:
-      email,
-
-    time:
-      new Date().toLocaleString()
+      email
 
   };
 
@@ -3462,7 +3688,7 @@ async function sendForm(){
     await emailjs.send(
       "service_r4vas1a",
       "template_vku1h9b",
-      params
+      templateParams
     );
 
 
@@ -3478,6 +3704,7 @@ async function sendForm(){
       "block";
 
   }
+
   catch(error){
 
     console.error(
@@ -3489,9 +3716,7 @@ async function sendForm(){
       false;
 
 
-    document.getElementById(
-      "sendLabel"
-    ).textContent =
+    label.textContent =
       "Try Again";
 
 
@@ -3502,99 +3727,6 @@ async function sendForm(){
   }
 
 }
-
-
-/* =========================================================
-   ACTIVE NAVIGATION
-========================================================= */
-
-const navLinks =
-  document.querySelectorAll(
-    "nav a:not(.project-link)"
-  );
-
-
-const sections =
-  document.querySelectorAll(
-    "section[id]"
-  );
-
-
-const observer =
-  new IntersectionObserver(
-    entries=>{
-
-      entries.forEach(
-        entry=>{
-
-          if(
-            entry.isIntersecting
-          ){
-
-            navLinks.forEach(
-              link=>{
-                link.classList.remove(
-                  "active"
-                );
-              }
-            );
-
-
-            const active =
-              document.querySelector(
-                `nav a[href="#${entry.target.id}"]`
-              );
-
-
-            if(active){
-
-              active.classList.add(
-                "active"
-              );
-
-            }
-
-          }
-
-        }
-      );
-
-    },
-    {
-      rootMargin:
-        "-35% 0px -55% 0px"
-    }
-  );
-
-
-sections.forEach(
-  section=>{
-    observer.observe(
-      section
-    );
-  }
-);
-
-
-/* =========================================================
-   ESCAPE LIGHTBOX
-========================================================= */
-
-document.addEventListener(
-  "keydown",
-  event=>{
-
-    if(
-      event.key ===
-      "Escape"
-    ){
-
-      closeLb();
-
-    }
-
-  }
-);
 
 </script>
 
