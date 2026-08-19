@@ -2,3733 +2,2748 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCEAYR | Agency</title>
 
-<title>OCEAYR Agency — Creative Marketing</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Bebas+Neue&family=Fjalla+One&family=Kanit:wght@700;900&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
 <style>
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-:root{
-  --black:#0a0a0a;
-  --ink:#111111;
-  --cream:#f2f0eb;
-  --warm:#e8e4dc;
-  --grey:#77736d;
-  --line:rgba(0,0,0,.16);
-  --white:#ffffff;
-}
-
-*{
+*,*::before,*::after{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
 }
 
-html{
-  scroll-behavior:smooth;
-  background:var(--black);
+:root{
+  --c:#FFFFFF;
 }
 
+html,
 body{
-  margin:0;
-  background:var(--cream);
-  color:var(--ink);
-  font-family:"DM Sans",Arial,sans-serif;
+  background:#000;
+  color:#fff;
+  font-family:'Inter',sans-serif;
   overflow-x:hidden;
+  cursor:default;
+  user-select:none;
 }
 
-img,
-video{
-  display:block;
-  max-width:100%;
-}
+/* =========================
+   LOGO - ATTACHED WHITE OR STYLE
+========================= */
 
-a{
-  color:inherit;
-}
-
-button,
-input,
-textarea,
-select{
-  font:inherit;
-}
-
-
-/* =========================================================
-   FIXED LOGO
-   Compact OR mark
-========================================================= */
-
-.site-logo{
+.logo{
   position:fixed;
   top:24px;
-  left:25px;
-
-  width:82px;
-  height:58px;
-
-  z-index:9000;
-
-  pointer-events:none;
-}
-
-.site-logo svg{
-  width:100%;
-  height:100%;
-  display:block;
-}
-
-.site-logo path{
-  fill:#050505;
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.site-nav{
-  position:fixed;
-
-  top:20px;
-  left:50%;
-
-  transform:translateX(-50%);
-
-  z-index:8500;
-
+  left:32px;
+  z-index:3000;
+  width:72px;
+  height:52px;
   display:flex;
   align-items:center;
-
-  gap:28px;
-
-  padding:10px 13px 10px 18px;
-
-  border:1px solid rgba(255,255,255,.35);
-
-  background:rgba(15,15,15,.58);
-
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-
-  color:#fff;
-
-  border-radius:2px;
-
-  transition:
-    background .35s ease,
-    border-color .35s ease,
-    color .35s ease;
+  justify-content:center;
+  pointer-events:none;
+  line-height:1;
 }
 
-.site-nav.light{
-  background:rgba(255,255,255,.78);
-  border-color:rgba(0,0,0,.14);
-  color:#111;
+.logo img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
 }
 
-.site-nav a{
-  position:relative;
+/* =========================
+   NAV
+========================= */
 
-  padding:6px 0;
-
-  color:inherit;
-
-  text-decoration:none;
-
-  font-size:9px;
+nav{
+  position:fixed;
+  top:38px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:44px;
+  font-size:11.5px;
   font-weight:500;
-
-  letter-spacing:.19em;
-
+  letter-spacing:.34em;
   text-transform:uppercase;
-
-  white-space:nowrap;
-
-  opacity:.84;
-
-  transition:opacity .25s;
+  z-index:2500;
 }
 
-.site-nav a:hover,
-.site-nav a.active{
+nav a{
+  color:#fff;
+  text-decoration:none;
+  opacity:.45;
+  position:relative;
+  padding-bottom:3px;
+  transition:all .3s;
+}
+
+nav a:hover{
   opacity:1;
 }
 
-.site-nav a:not(.project)::after{
-  content:"";
-
+nav a::after{
+  content:'';
   position:absolute;
-
-  left:0;
   bottom:0;
-
+  left:0;
   width:0;
   height:1px;
-
-  background:currentColor;
-
-  transition:width .3s ease;
+  background:var(--c);
+  transition:width .4s;
 }
 
-.site-nav a:hover::after,
-.site-nav a.active::after{
+nav a:hover::after{
   width:100%;
 }
 
-.site-nav .project{
-  padding:11px 16px;
 
-  border:1px solid currentColor;
+.contact-nav{
+  position:relative;
+}
 
+.contact-card{
+  position:absolute;
+  top:30px;
+  left:50%;
+  transform:translateX(-50%) translateY(-8px);
+  width:330px;
+  padding:28px 26px 24px;
+  background:rgba(7,7,7,.97);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 22px 60px rgba(0,0,0,.68),
+    inset 0 1px 0 rgba(255,255,255,.025);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:
+    opacity .28s ease,
+    transform .28s ease,
+    visibility .28s ease;
+  text-align:left;
+  backdrop-filter:blur(14px);
+}
+
+.contact-card::before{
+  content:'';
+  position:absolute;
+  top:-1px;
+  left:26px;
+  right:26px;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--c),
+    transparent
+  );
+  opacity:.85;
+}
+
+.contact-nav:hover .contact-card,
+.contact-nav.open .contact-card{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+
+.contact-card-title{
+  font-family:'Fjalla One',sans-serif;
+  font-size:30px;
+  line-height:.92;
+  letter-spacing:.045em;
+  text-transform:uppercase;
+  color:#fff;
+  margin-bottom:22px;
+}
+
+.contact-card-title span{
+  color:var(--c);
+}
+
+.contact-detail{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  min-height:58px;
+  padding:13px 15px;
+  margin-top:-1px;
+  border:1px solid rgba(255,255,255,.12);
+  text-decoration:none;
+  transition:
+    background .3s ease,
+    border-color .3s ease,
+    color .3s ease;
+}
+
+.contact-detail::after{
+  display:none !important;
+}
+
+.contact-detail-label{
+  flex:0 0 auto;
+  font-family:'Fjalla One',sans-serif;
+  font-size:13px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--c);
+}
+
+.contact-detail-value{
+  min-width:0;
+  font-family:'Inter',sans-serif;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.09em;
+  text-transform:none;
+  color:#fff;
+  opacity:.78;
+  white-space:nowrap;
+  text-align:right;
+}
+
+.contact-detail:hover{
+  background:var(--c);
+  border-color:var(--c);
+}
+
+.contact-detail:hover .contact-detail-label,
+.contact-detail:hover .contact-detail-value{
+  color:#000;
   opacity:1;
 }
 
-.site-nav .project::after{
-  display:none;
+.contact-card-note{
+  margin-top:13px;
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#fff;
+  opacity:.28;
+  text-align:center;
 }
 
-.site-nav .project:hover{
-  background:#fff;
-  color:#111;
-  border-color:#fff;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
+/* =========================
+   HERO - KEPT SAME AS GIVEN CODE
+========================= */
 
 .hero{
   position:relative;
-
-  width:100%;
-  height:100svh;
-  min-height:650px;
-
-  background:#111;
-
-  overflow:hidden;
-}
-
-.hero-slide{
-  position:absolute;
-
-  inset:0;
-
-  opacity:0;
-  visibility:hidden;
-
-  transition:
-    opacity 1s ease,
-    visibility 1s ease;
-}
-
-.hero-slide.active{
-  opacity:1;
-  visibility:visible;
-}
-
-.hero-slide img{
-  position:absolute;
-
-  inset:0;
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-  object-position:center center;
-}
-
-.hero-slide::after{
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.18) 0%,
-      rgba(0,0,0,.04) 35%,
-      rgba(0,0,0,.56) 100%
-    );
-}
-
-.hero-content{
-  position:absolute;
-
-  z-index:5;
-
-  left:7vw;
-  right:7vw;
-  bottom:13%;
-
-  color:#fff;
-}
-
-.hero-index{
-  margin-bottom:20px;
-
-  font-size:10px;
-
-  letter-spacing:.34em;
-
-  text-transform:uppercase;
-}
-
-.hero-title{
-  max-width:1000px;
-
-  font-family:"Bebas Neue",sans-serif;
-
-  font-size:clamp(70px,10vw,155px);
-
-  line-height:.78;
-
-  letter-spacing:.01em;
-
-  text-transform:uppercase;
-}
-
-.hero-title .outline{
-  display:block;
-
-  color:transparent;
-
-  -webkit-text-stroke:
-    1px #fff;
-}
-
-.hero-description{
-  max-width:650px;
-
-  margin-top:30px;
-
-  font-size:15px;
-
-  line-height:1.7;
-}
-
-.hero-button{
-  display:inline-flex;
-
-  align-items:center;
-  justify-content:space-between;
-
-  gap:65px;
-
-  margin-top:28px;
-
-  padding:18px 23px;
-
-  background:#fff;
-  color:#111;
-
-  text-decoration:none;
-
-  font-size:9px;
-
-  letter-spacing:.25em;
-
-  text-transform:uppercase;
-
-  transition:.3s;
-}
-
-.hero-button:hover{
-  background:#111;
-  color:#fff;
-}
-
-.hero-dots{
-  position:absolute;
-
-  z-index:10;
-
-  left:7vw;
-  bottom:4%;
-
+  height:100vh;
   display:flex;
-
-  gap:20px;
-}
-
-.hero-dot{
-  width:43px;
-  height:2px;
-
-  border:0;
-
-  background:rgba(255,255,255,.38);
-
-  cursor:pointer;
-
-  transition:.35s;
-}
-
-.hero-dot.active{
-  width:70px;
-
-  background:#fff;
-}
-
-
-/* =========================================================
-   VIDEO
-========================================================= */
-
-.video-section{
-  position:relative;
-
-  width:100%;
-
-  height:88svh;
-  min-height:570px;
-
+  justify-content:center;
+  align-items:center;
   overflow:hidden;
-
   background:#000;
 }
 
-
-/*
-   IMPORTANT:
-
-   The video is deliberately NOT width:100%.
-   We give it height:100% and auto width so a
-   landscape video is always centered.
-
-   This prevents the left side of the video from
-   appearing on mobile.
-*/
-
-#bgv{
+.hero video{
   position:absolute;
-
-  top:50%;
-  left:50%;
-
-  width:auto;
+  inset:0;
+  width:100%;
   height:100%;
+  object-fit:cover;
+  opacity:.52;
+  pointer-events:none;
+  transform:translate3d(0,0,0);
+  will-change:transform;
+}
 
-  max-width:none;
-  max-height:none;
+.hero h1{
+  position:relative;
+  z-index:1;
+  font-family:'Inter',sans-serif;
+  font-size:11vw;
+  font-weight:900;
+  line-height:.82;
+  text-align:center;
+  color:#fff;
+}
 
-  transform:
-    translate(-50%,-50%);
+.outline{
+  color:transparent;
+  -webkit-text-stroke:1px #fff;
+}
 
-  object-fit:contain;
+/* =========================
+   SERVICES
+========================= */
 
+.services{
   background:#000;
+  border-top:1px solid rgba(255,255,255,.12);
+  padding:120px 40px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
 
+.svc-eyebrow{
+  font-size:10px;
+  letter-spacing:.45em;
+  text-transform:uppercase;
+  opacity:.4;
+  margin-bottom:32px;
+  color:#fff;
+}
+
+.svc-headline{
+  font-family:'Fjalla One',sans-serif;
+  font-size:clamp(42px,6.5vw,110px);
+  line-height:1.02;
+  letter-spacing:.03em;
+  max-width:1120px;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  gap:.08em;
+}
+
+.svc-headline .hl{
+  display:block;
+  white-space:nowrap;
+}
+
+.svc-headline .hl.gold{
+  color:var(--c);
+}
+
+.svc-list{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:0;
+  margin-top:64px;
+  width:100%;
+  max-width:1120px;
+  border-top:1px solid rgba(255,255,255,.12);
+  border-left:1px solid rgba(255,255,255,.12);
+}
+
+.svc-item{
+  padding:22px 36px;
+  font-size:10px;
+  letter-spacing:.38em;
+  text-transform:uppercase;
+  border-right:1px solid rgba(255,255,255,.12);
+  border-bottom:1px solid rgba(255,255,255,.12);
+  opacity:.55;
+  transition:all .3s;
+  cursor:default;
+  color:#fff;
+}
+
+.svc-item:hover{
   opacity:1;
+  color:#000;
+  background:var(--c);
+}
 
+.talk-btn{
+  margin-top:60px;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  padding:18px 44px;
+  border:1px solid rgba(255,255,255,.35);
+  font-size:11px;
+  letter-spacing:.38em;
+  text-transform:uppercase;
+  color:#fff;
+  cursor:pointer;
+  background:transparent;
+  transition:all .35s;
+  font-family:'Inter',sans-serif;
+  font-weight:500;
+}
+
+.talk-btn:hover{
+  background:var(--c);
+  border-color:var(--c);
+  color:#000;
+}
+
+.talk-btn .arr{
+  font-size:18px;
+  transition:transform .3s;
+}
+
+.talk-btn:hover .arr{
+  transform:translateX(5px);
+}
+
+/* =========================
+   TICKER
+========================= */
+
+.ticker-section{
+  position:relative;
+  z-index:1;
+  background:#000;
+  padding-bottom:80px;
+}
+
+.ticker-wrap{
+  height:96px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  border-top:1px solid rgba(255,255,255,.12);
+  border-bottom:2px solid rgba(255,255,255,.22);
+}
+
+.ticker-track{
+  display:flex;
+  flex-shrink:0;
+  width:max-content;
+  animation:ticker 22s linear infinite;
+}
+
+.ticker-track span{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:34px;
+  color:#fff;
+  white-space:nowrap;
+  letter-spacing:.28em;
+  padding-right:1.6em;
+  flex-shrink:0;
+  opacity:.82;
+}
+
+@keyframes ticker{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* FEATURED LANDING SLIDER */
+(function initLandingSlider(){
+  const slides=[
+    {kicker:'OCEAYR SUMMER COLLABORATIONS 2026',title:'MAKE THIS<br><span>SUMMER VISIBLE.</span>',desc:'Limited paid collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.',primary:'EXPLORE SUMMER COLLABORATIONS',primaryHref:'#summer',secondary:'START A PROJECT',secondaryHref:'/contact'},
+    {kicker:'CREATIVE FOR HOSPITALITY',title:'MAKE YOUR<br><span>BRAND DESIRABLE.</span>',desc:'Strategy, photography, film and digital content designed around the guest, the experience and the commercial objective.',primary:'EXPLORE SERVICES',primaryHref:'#services',secondary:'START A PROJECT',secondaryHref:'/contact'},
+    {kicker:'OCEAYR — CREATIVE MARKETING AGENCY',title:'MORE THAN CONTENT.<br>MORE THAN TRENDS.<br><span>WE CREATE DEMAND.</span>',desc:'A UAE creative marketing agency helping hotels, resorts, restaurants and lifestyle brands build desirability through strategy, photography, film and digital content.',primary:'EXPLORE OUR WORK',primaryHref:'#gallery',secondary:'START A PROJECT',secondaryHref:'/contact'}
+  ];
+  const bgs=[...document.querySelectorAll('.slide-bg')],dots=[...document.querySelectorAll('.slide-dot')];
+  const kicker=document.getElementById('landingKicker'),title=document.getElementById('landingTitle'),desc=document.getElementById('landingDescription'),primary=document.getElementById('landingPrimary'),secondary=document.getElementById('landingSecondary'),number=document.getElementById('slideNumber');
+  let current=0,timer;
+  function render(i){const s=slides[i];current=i;kicker.textContent=s.kicker;title.innerHTML=s.title;desc.textContent=s.desc;primary.innerHTML=s.primary+' <span>→</span>';primary.href=s.primaryHref;secondary.textContent=s.secondary;secondary.href=s.secondaryHref;number.textContent=String(i+1).padStart(2,'0');bgs.forEach((b,n)=>b.classList.toggle('active',n===i));dots.forEach((d,n)=>d.classList.toggle('active',n===i));}
+  function restart(){clearInterval(timer);timer=setInterval(()=>render((current+1)%slides.length),7000);}
+  dots.forEach(d=>d.addEventListener('click',()=>{render(Number(d.dataset.slide));restart();}));
+  const landing=document.querySelector('.landing-slider');
+  landing.addEventListener('mouseenter',()=>clearInterval(timer));landing.addEventListener('mouseleave',restart);
+  render(0);restart();
+})();
+
+/* Light landing -> dark video navigation/logo transition */
+(function navTheme(){
+  const nav=document.querySelector('.site-nav'),logo=document.querySelector('.logo'),video=document.querySelector('.hero-video-section');
+  if(!nav||!video)return;
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{const dark=e.isIntersecting&&e.intersectionRatio>.2;nav.classList.toggle('on-dark',dark);if(logo)logo.classList.toggle('on-dark',dark);}),{threshold:[.2,.5]});
+  io.observe(video);
+})();
+
+/* =========================
+   GALLERY - LOUD.AE EXACT MOSAIC STYLE ONLY
+========================= */
+
+.gallery-section{
+  position:relative;
+  z-index:20;
+  width:100%;
+  background:#000;
+  overflow:visible;
+  margin:0;
+  padding:0;
+}
+
+.g-stage{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:100%;
+  overflow:visible;
+  will-change:transform;
+}
+
+.g-card{
+  position:absolute;
+  overflow:visible;
+  cursor:grab;
+  touch-action:none;
+  transform:translate3d(0,0,0);
+  will-change:transform;
+}
+
+.g-card:active{
+  cursor:grabbing;
+}
+
+.g-inner{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  background:#0d0d0d;
+  opacity:0;
+  transform:translate3d(0,150px,0);
+  transition:
+    opacity .55s ease,
+    transform 1.35s cubic-bezier(.16,1,.3,1);
+  will-change:opacity,transform;
+}
+
+.g-card.is-loaded .g-inner{
+  opacity:1;
+  transform:translate3d(0,0,0);
+}
+
+.g-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .38s ease;
+}
+
+.g-card img.vis{
+  opacity:1;
+}
+
+@media(max-width:768px){
+  .g-inner{
+    transform:translate3d(0,105px,0);
+  }
+}
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lb{
+  position:fixed;
+  inset:0;
+  z-index:9500;
+  background:rgba(0,0,0,.96);
+  backdrop-filter:blur(20px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s;
+}
+
+.lb.open{
+  opacity:1;
+  pointer-events:all;
+}
+
+.lb img{
+  max-width:88vw;
+  max-height:88vh;
+  object-fit:contain;
+  transform:scale(.92);
+  opacity:0;
+  transition:transform .4s cubic-bezier(.25,1,.5,1),opacity .3s;
+  display:block;
+}
+
+.lb.open img{
+  transform:scale(1);
+  opacity:1;
+}
+
+.lb-close{
+  position:absolute;
+  top:24px;
+  right:32px;
+  background:none;
+  border:1px solid rgba(255,255,255,.2);
+  color:#fff;
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+  letter-spacing:.38em;
+  text-transform:uppercase;
+  padding:10px 22px;
+  cursor:pointer;
+  transition:all .25s;
+}
+
+.lb-close:hover{
+  background:var(--c);
+  border-color:var(--c);
+  color:#000;
+}
+
+.lb-hint{
+  position:absolute;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:8px;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  opacity:.22;
+  pointer-events:none;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9000;
+  background:rgba(0,0,0,.88);
+  backdrop-filter:blur(8px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .4s;
+}
+
+.modal-overlay.open{
+  opacity:1;
+  pointer-events:all;
+}
+
+.modal{
+  background:#0a0a0a;
+  border:1px solid rgba(255,255,255,.12);
+  width:min(600px,92vw);
+  padding:52px 48px 44px;
+  position:relative;
+  transform:translateY(24px);
+  transition:transform .4s;
+}
+
+.modal-overlay.open .modal{
+  transform:translateY(0);
+}
+
+.modal-close{
+  position:absolute;
+  top:20px;
+  right:24px;
+  font-size:22px;
+  background:none;
+  border:none;
+  color:#fff;
+  opacity:.4;
+  cursor:pointer;
+  transition:opacity .25s;
+  font-family:'Inter',sans-serif;
+}
+
+.modal-close:hover{
+  opacity:1;
+}
+
+.modal-title{
+  font-family:'Fjalla One',sans-serif;
+  font-size:clamp(32px,4vw,52px);
+  letter-spacing:.05em;
+  margin-bottom:36px;
+  line-height:1;
+  color:#fff;
+}
+
+.modal-title span{
+  color:var(--c);
+}
+
+.mf{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+}
+
+.mf-field{
+  position:relative;
+  border:1px solid rgba(255,255,255,.12);
+  margin:-1px 0 0 -1px;
+  transition:border-color .25s;
+}
+
+.mf-field:focus-within{
+  border-color:var(--c);
   z-index:1;
 }
 
-
-/*
-   On wider screens the video fills the frame.
-*/
-
-@media(min-width:769px){
-
-  #bgv{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-    object-position:center center;
-
-    transform:
-      translate(-50%,-50%);
-  }
-
-}
-
-
-/*
-   Mobile:
-   center-crop the actual video.
-*/
-
-@media(max-width:768px){
-
-  #bgv{
-
-    /*
-       Use the natural video width based
-       on its height.
-
-       The scale makes the middle of the
-       original video occupy the phone.
-    */
-
-    height:100%;
-    width:auto;
-
-    max-width:none;
-
-    object-fit:cover;
-
-    object-position:50% 50%;
-
-  }
-
-}
-
-
-/* =========================================================
-   VIDEO TITLE
-========================================================= */
-
-.video-title{
-  position:absolute;
-
-  z-index:5;
-
-  top:50%;
-  left:50%;
-
-  width:96%;
-
-  transform:
-    translate(-50%,-50%);
-
-  text-align:center;
-
-  color:#fff;
-
-  pointer-events:none;
-
-  mix-blend-mode:normal;
-}
-
-.video-title-main{
-  font-family:"Bebas Neue",sans-serif;
-
-  font-size:clamp(90px,17vw,260px);
-
-  line-height:.68;
-
-  font-weight:400;
-
-  letter-spacing:.01em;
-
-  text-shadow:
-    0 4px 25px rgba(0,0,0,.18);
-}
-
-.video-title-outline{
-  font-family:"Bebas Neue",sans-serif;
-
-  font-size:clamp(84px,16vw,245px);
-
-  line-height:.7;
-
-  color:transparent;
-
-  -webkit-text-stroke:
-    clamp(1px,.13vw,2px)
-    rgba(255,255,255,.95);
-}
-
-
-/* =========================================================
-   MESSAGE
-========================================================= */
-
-.message{
-  padding:110px 7vw 100px;
-
-  background:var(--cream);
-}
-
-.eyebrow{
-  font-size:9px;
-
-  letter-spacing:.38em;
-
-  text-transform:uppercase;
-
-  color:#77736d;
-}
-
-.message-title{
-  margin-top:32px;
-
-  max-width:1300px;
-
-  font-family:"Bebas Neue",sans-serif;
-
-  font-size:clamp(70px,9.5vw,155px);
-
-  line-height:.76;
-
-  text-transform:uppercase;
-}
-
-.message-title .outline{
-  color:transparent;
-
-  -webkit-text-stroke:
-    1px #111;
-}
-
-.message-title .line{
+.mf-field label{
   display:block;
-}
-
-.message-text{
-  max-width:720px;
-
-  margin:
-    55px
-    0
-    0
-    auto;
-
-  font-size:16px;
-
-  line-height:1.85;
-
-  color:#4c4944;
-}
-
-
-/* =========================================================
-   SERVICES
-========================================================= */
-
-.services{
-  padding:95px 7vw 105px;
-
-  background:var(--warm);
-}
-
-.services-title{
-  margin-top:28px;
-
-  font-family:"Bebas Neue",sans-serif;
-
-  font-size:clamp(75px,10vw,150px);
-
-  line-height:.78;
-
+  padding:16px 18px 3px;
+  font-size:8.5px;
+  letter-spacing:.35em;
   text-transform:uppercase;
-}
-
-.service-list{
-  margin-top:65px;
-
-  border-top:1px solid var(--line);
-}
-
-.service{
-  display:grid;
-
-  grid-template-columns:70px 1fr 30px;
-
-  align-items:center;
-
-  min-height:95px;
-
-  border-bottom:1px solid var(--line);
-
-  transition:
-    padding .3s,
-    background .3s;
-}
-
-.service:hover{
-  padding-left:15px;
-
-  background:rgba(255,255,255,.24);
-}
-
-.service-no{
-  font-size:9px;
-
-  color:#85817b;
-
-  letter-spacing:.2em;
-}
-
-.service-name{
-  font-family:"Bebas Neue",sans-serif;
-
-  font-size:clamp(28px,3.4vw,50px);
-
-  letter-spacing:.02em;
-
-  text-transform:uppercase;
-}
-
-.service-arrow{
-  font-size:22px;
-}
-
-
-/* =========================================================
-   SUMMER
-========================================================= */
-
-.summer{
-  position:relative;
-
-  padding:105px 7vw 105px;
-
-  background:#090909;
-
-  color:#fff;
-
-  overflow:hidden;
-}
-
-.summer::after{
-  content:"2026";
-
-  position:absolute;
-
-  right:-30px;
-  top:-80px;
-
-  font-family:"Bebas Neue",sans-serif;
-
-  font-size:330px;
-
-  color:rgba(255,255,255,.035);
-
-  pointer-events:none;
-}
-
-.summer-title{
-  position:relative;
-  z-index:2;
-
-  margin-top:30px;
-
-  max-width:1100px;
-
-  font-family:"Bebas Neue",sans-serif;
-
-  font-size:clamp(75px,10vw,160px);
-
-  line-height:.75;
-
-  text-transform:uppercase;
-}
-
-.summer-title .outline{
-  display:block;
-
-  color:transparent;
-
-  -webkit-text-stroke:1px #fff;
-}
-
-.summer-text{
-  position:relative;
-  z-index:2;
-
-  max-width:760px;
-
-  margin-top:42px;
-
-  font-size:15px;
-
-  line-height:1.85;
-
-  color:#b9b7b2;
-}
-
-.summer-grid{
-  position:relative;
-  z-index:2;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  margin-top:65px;
-
-  border:1px solid #303030;
-}
-
-.summer-item{
-  min-height:160px;
-
-  padding:25px;
-
-  display:flex;
-  align-items:flex-end;
-
-  border-right:1px solid #303030;
-
-  font-family:"Bebas Neue",sans-serif;
-
-  font-size:22px;
-
-  line-height:1;
-
-  text-transform:uppercase;
-}
-
-.summer-item:last-child{
-  border-right:0;
-}
-
-.summer-action{
-  position:relative;
-  z-index:2;
-
-  display:inline-flex;
-
-  gap:55px;
-
-  align-items:center;
-
-  margin-top:45px;
-
-  padding:18px 22px;
-
-  background:#fff;
-  color:#111;
-
-  text-decoration:none;
-
-  font-size:9px;
-
-  letter-spacing:.25em;
-
-  text-transform:uppercase;
-}
-
-.summer-small{
-  position:relative;
-  z-index:2;
-
-  margin-top:20px;
-
-  color:#686868;
-
-  font-size:9px;
-
-  letter-spacing:.12em;
-}
-
-
-/* =========================================================
-   SHUFFLE BAR
-========================================================= */
-
-.shuffle-bar{
-  position:relative;
-
-  height:112px;
-
-  overflow:hidden;
-
-  background:#000;
-
-  border-top:1px solid #222;
-  border-bottom:1px solid #222;
-
+  opacity:.38;
+  font-weight:500;
   color:#fff;
 }
 
-.shuffle-track{
-  position:absolute;
-
-  left:0;
-  top:0;
-
-  height:100%;
-
-  display:flex;
-  align-items:center;
-
-  width:max-content;
-
-  animation:
-    shuffleMove 24s linear infinite;
-}
-
-.shuffle-track span{
+.mf-field input,
+.mf-field textarea{
   display:block;
-
-  white-space:nowrap;
-
-  padding-right:50px;
-
-  font-family:"Bebas Neue",sans-serif;
-
-  font-size:clamp(48px,6vw,85px);
-
-  letter-spacing:.02em;
-}
-
-@keyframes shuffleMove{
-
-  0%{
-    transform:translateX(0);
-  }
-
-  100%{
-    transform:translateX(-50%);
-  }
-
-}
-
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-.gallery{
-  position:relative;
-
-  height:1500px;
-
-  overflow:hidden;
-
-  background:#000;
-}
-
-
-/*
-   Top and bottom masks make the movement feel
-   integrated rather than leaving blank areas.
-*/
-
-.gallery::before{
-  content:"";
-
-  position:absolute;
-
-  z-index:50;
-
-  left:0;
-  right:0;
-  top:0;
-
-  height:90px;
-
-  background:
-    linear-gradient(
-      #000,
-      transparent
-    );
-
-  pointer-events:none;
-}
-
-.gallery::after{
-  content:"";
-
-  position:absolute;
-
-  z-index:50;
-
-  left:0;
-  right:0;
-  bottom:0;
-
-  height:100px;
-
-  background:
-    linear-gradient(
-      transparent,
-      #000
-    );
-
-  pointer-events:none;
-}
-
-.gallery-stage{
-  position:absolute;
-
-  left:0;
-  top:0;
-
   width:100%;
-
-  height:100%;
-
-  will-change:transform;
-}
-
-.gallery-card{
-  position:absolute;
-
-  overflow:hidden;
-
-  background:#111;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 15px 45px rgba(0,0,0,.32);
-
-  will-change:transform;
-
-  transition:
-    box-shadow .35s ease;
-}
-
-.gallery-card:hover{
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.48);
-}
-
-.gallery-card img{
-  display:block;
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  transition:
-    transform 1s cubic-bezier(.16,1,.3,1);
-}
-
-.gallery-card:hover img{
-  transform:scale(1.045);
-}
-
-
-/* Individual desktop positions */
-
-.gc1{
-  width:31%;
-  height:405px;
-
-  left:4%;
-  top:70px;
-
-  transform:translateY(45px);
-}
-
-.gc2{
-  width:26%;
-  height:335px;
-
-  left:38%;
-  top:5px;
-
-  transform:translateY(-5px);
-}
-
-.gc3{
-  width:31%;
-  height:360px;
-
-  right:3%;
-  top:90px;
-
-  transform:translateY(70px);
-}
-
-.gc4{
-  width:31%;
-  height:350px;
-
-  left:14%;
-  top:365px;
-
-  transform:translateY(110px);
-}
-
-.gc5{
-  width:31%;
-  height:370px;
-
-  right:13%;
-  top:405px;
-
-  transform:translateY(45px);
-}
-
-.gc6{
-  width:32%;
-  height:400px;
-
-  left:3%;
-  top:680px;
-
-  transform:translateY(80px);
-}
-
-.gc7{
-  width:31%;
-  height:360px;
-
-  right:3%;
-  top:710px;
-
-  transform:translateY(125px);
-}
-
-.gc8{
-  width:30%;
-  height:400px;
-
-  left:37%;
-  top:800px;
-
-  transform:translateY(50px);
-}
-
-.gc9{
-  width:27%;
-  height:340px;
-
-  right:8%;
-  top:1010px;
-
-  transform:translateY(80px);
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about{
-  padding:110px 7vw;
-
-  background:var(--cream);
-}
-
-.about-grid{
-  display:grid;
-
-  grid-template-columns:.85fr 1.15fr;
-
-  gap:9vw;
-}
-
-.about-title{
-  margin-top:28px;
-
-  font-family:"Bebas Neue",sans-serif;
-
-  font-size:clamp(75px,10vw,155px);
-
-  line-height:.75;
-
-  text-transform:uppercase;
-}
-
-.about-title .outline{
-  display:block;
-
-  color:transparent;
-
-  -webkit-text-stroke:1px #111;
-}
-
-.about-copy{
-  border-top:1px solid var(--line);
-
-  padding-top:30px;
-}
-
-.about-copy h3{
-  margin-bottom:35px;
-
-  font-family:"Playfair Display",serif;
-
-  font-size:clamp(30px,4vw,55px);
-
-  font-weight:400;
-
-  line-height:1;
-}
-
-.about-copy p{
-  margin-bottom:24px;
-
-  color:#4d4a45;
-
-  font-size:15px;
-
-  line-height:1.85;
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact{
-  padding:105px 7vw;
-
-  background:#080808;
-
-  color:#fff;
-}
-
-.contact-grid{
-  display:grid;
-
-  grid-template-columns:.85fr 1.15fr;
-
-  gap:8vw;
-}
-
-.contact-title{
-  margin-top:30px;
-
-  font-family:"Bebas Neue",sans-serif;
-
-  font-size:clamp(75px,10vw,155px);
-
-  line-height:.74;
-
-  text-transform:uppercase;
-}
-
-.contact-title .outline{
-  display:block;
-
-  color:transparent;
-
-  -webkit-text-stroke:1px #fff;
-}
-
-.contact-copy{
-  max-width:570px;
-
-  margin-top:35px;
-
-  color:#999;
-
-  font-size:15px;
-
-  line-height:1.8;
-}
-
-.email-line{
-  margin-top:55px;
-
-  padding-top:25px;
-
-  border-top:1px solid #303030;
-}
-
-.email-line span{
-  display:block;
-
-  margin-bottom:13px;
-
-  color:#666;
-
-  font-size:8px;
-
-  letter-spacing:.3em;
-
-  text-transform:uppercase;
-}
-
-.email-line a{
-  color:#fff;
-
-  text-decoration:none;
-
-  font-size:16px;
-}
-
-
-/* =========================================================
-   FORM
-========================================================= */
-
-.form{
-  border:1px solid #303030;
-}
-
-.form-grid{
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-}
-
-.field{
-  min-height:115px;
-
-  padding:20px;
-
-  border-right:1px solid #303030;
-  border-bottom:1px solid #303030;
-}
-
-.field:nth-child(even){
-  border-right:0;
-}
-
-.field.full{
-  grid-column:1 / -1;
-
-  border-right:0;
-}
-
-.field label{
-  display:block;
-
-  margin-bottom:13px;
-
-  color:#666;
-
-  font-size:8px;
-
-  letter-spacing:.3em;
-
-  text-transform:uppercase;
-}
-
-.field input,
-.field textarea,
-.field select{
-  width:100%;
-
-  border:0;
-  outline:0;
-
   background:transparent;
-
+  border:none;
+  outline:none;
   color:#fff;
-
-  font-size:13px;
+  font-family:'Inter',sans-serif;
+  font-size:14px;
+  padding:3px 18px 16px;
+  caret-color:var(--c);
 }
 
-.field textarea{
-  height:105px;
+.mf-field.full{
+  grid-column:1/-1;
+}
 
+.mf-field textarea{
   resize:none;
+  min-height:100px;
+  padding-top:6px;
 }
 
-.field select{
-  appearance:none;
-}
-
-.field select option{
-  background:#111;
-  color:#fff;
-}
-
-.submit{
-  width:100%;
-
-  padding:21px;
-
-  border:0;
-
-  background:#fff;
-  color:#111;
-
-  cursor:pointer;
-
+.mf-send{
+  grid-column:1/-1;
+  border:1px solid rgba(255,255,255,.12);
+  margin:-1px 0 0 -1px;
   display:flex;
-
   justify-content:space-between;
-
-  font-size:9px;
-
-  letter-spacing:.28em;
-
-  text-transform:uppercase;
-
-  transition:.3s;
-}
-
-.submit:hover{
-  background:#ddd;
-}
-
-.form-note{
-  padding:13px;
-
-  text-align:center;
-
-  color:#5e5e5e;
-
-  font-size:8px;
-
-  letter-spacing:.1em;
-}
-
-.success{
-  display:none;
-
-  padding:75px 25px;
-
-  text-align:center;
-}
-
-.success h3{
-  font-family:"Bebas Neue",sans-serif;
-
-  font-size:55px;
-}
-
-.success p{
-  margin-top:15px;
-
-  color:#777;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-  padding:28px 7vw;
-
-  display:flex;
-
   align-items:center;
-  justify-content:space-between;
-
-  gap:25px;
-
-  background:#080808;
-
-  color:#666;
-
-  border-top:1px solid #262626;
-
-  font-size:8px;
-
-  letter-spacing:.2em;
-
-  text-transform:uppercase;
-}
-
-footer a{
+  padding:22px;
+  cursor:pointer;
+  background:transparent;
   color:#fff;
-
-  text-decoration:none;
-
-  border-bottom:1px solid #555;
-
-  padding-bottom:4px;
+  font-family:'Inter',sans-serif;
+  font-size:10px;
+  letter-spacing:.38em;
+  text-transform:uppercase;
+  transition:all .35s;
+  width:100%;
 }
 
+.mf-send:hover{
+  background:var(--c);
+  border-color:var(--c);
+  color:#000;
+}
 
-/* =========================================================
-   LIGHTBOX
-========================================================= */
+.mf-send:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
 
-.lightbox{
+.mf-send .arr{
+  font-size:20px;
+  transition:transform .25s;
+}
+
+.mf-send:hover .arr{
+  transform:translateX(5px);
+}
+
+.mf-note{
+  margin-top:14px;
+  font-size:10px;
+  opacity:.28;
+  letter-spacing:.08em;
+  text-align:center;
+  color:#fff;
+}
+
+.mf-success{
+  display:none;
+  text-align:center;
+  padding:40px 0;
+}
+
+.mf-success .tick{
+  font-size:40px;
+  margin-bottom:16px;
+  color:var(--c);
+}
+
+.mf-success p{
+  font-family:'Fjalla One',sans-serif;
+  font-size:22px;
+  letter-spacing:.05em;
+  opacity:.9;
+  line-height:1.5;
+  color:#fff;
+}
+
+.mf-success small{
+  display:block;
+  margin-top:8px;
+  font-size:11px;
+  opacity:.35;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:#fff;
+}
+
+/* =========================
+   SOCIAL FLOAT ICONS - OCEAYR THEME
+   Black: #000000
+   Gold:  #FFFFFF
+========================= */
+
+.social-floats{
   position:fixed;
-
-  z-index:99999;
-
-  inset:0;
-
+  right:28px;
+  bottom:28px;
+  z-index:3000;
   display:flex;
+  align-items:center;
+  gap:12px;
+}
 
+.social-float{
+  position:relative;
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  display:flex;
   align-items:center;
   justify-content:center;
-
-  background:rgba(0,0,0,.95);
-
-  opacity:0;
-  visibility:hidden;
-
-  transition:.3s;
+  text-decoration:none;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 32% 18%, rgba(255,255,255,.12), rgba(255,255,255,0) 28%),
+    linear-gradient(145deg,#000 0%,#000 54%,#000 100%);
+  border:1px solid rgba(255,255,255,.48);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.12),
+    inset 0 -14px 22px rgba(0,0,0,.45),
+    0 10px 34px rgba(0,0,0,.46),
+    0 0 22px rgba(255,255,255,.12);
+  transition:
+    bottom .28s cubic-bezier(.4,0,.2,1),
+    transform .3s cubic-bezier(.4,0,.2,1),
+    box-shadow .3s cubic-bezier(.4,0,.2,1),
+    border-color .3s cubic-bezier(.4,0,.2,1),
+    filter .3s cubic-bezier(.4,0,.2,1);
 }
 
-.lightbox.open{
-  opacity:1;
-  visibility:visible;
-}
-
-.lightbox img{
-  max-width:90vw;
-  max-height:88vh;
-
-  object-fit:contain;
-}
-
-.close-lightbox{
+.social-float::before{
+  content:'';
   position:absolute;
+  inset:2px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.13);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,0) 45%);
+  pointer-events:none;
+  z-index:1;
+}
 
-  top:25px;
-  right:25px;
+.social-float:hover{
+  transform:translateY(-4px) scale(1.04);
+  border-color:rgba(255,255,255,.88);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.16),
+    inset 0 -14px 22px rgba(0,0,0,.45),
+    0 16px 48px rgba(0,0,0,.58),
+    0 0 34px rgba(255,255,255,.34);
+  filter:saturate(1.08) contrast(1.04);
+}
 
-  padding:11px 16px;
+.social-float svg{
+  position:relative;
+  z-index:2;
+  display:block;
+}
 
-  border:1px solid #555;
+/* Instagram icon uses the same quote color: #FFFFFF */
+.ig-float svg{
+  width:38px;
+  height:38px;
+}
 
-  background:#111;
+.ig-stroke{
+  fill:none;
+  stroke:var(--c);
+  stroke-width:3.3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter:url(#goldSocialGlow);
+}
 
-  color:#fff;
+.ig-dot{
+  fill:var(--c);
+  filter:url(#goldSocialGlow);
+}
 
-  cursor:pointer;
+/* WhatsApp icon uses the same quote color: #FFFFFF */
+.wa-float svg{
+  width:39px;
+  height:39px;
+}
 
-  font-size:8px;
+.wa-line{
+  fill:none;
+  stroke:var(--c);
+  stroke-width:2.6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter:url(#goldSocialGlow);
+}
 
-  letter-spacing:.2em;
-
-  text-transform:uppercase;
+.wa-phone{
+  fill:var(--c);
+  filter:url(#goldSocialGlow);
 }
 
 
-/* =========================================================
+.call-float svg{
+  width:37px;
+  height:37px;
+}
+
+.call-line{
+  fill:none;
+  stroke:var(--c);
+  stroke-width:2.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter:url(#goldSocialGlow);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+  background:#000;
+  border-top:1px solid rgba(255,255,255,.12);
+  padding:28px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:9px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  opacity:.3;
+}
+
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 @media(max-width:768px){
 
-  .site-logo{
-    top:20px;
-    left:15px;
-
-    width:64px;
-    height:46px;
+  .logo{
+    top:16px;
+    left:14px;
+    width:62px;
+    height:45px;
   }
 
-
-  .site-nav{
-
-    top:14px;
-    left:88px;
-    right:10px;
-
-    transform:none;
-
-    justify-content:flex-start;
-
-    overflow-x:auto;
-
-    max-width:none;
-
-    gap:15px;
-
-    padding:
-      8px
-      10px
-      8px
-      14px;
-
-    border-radius:4px;
-
-    scrollbar-width:none;
+  nav{
+    top:18px;
+    gap:9px;
+    font-size:8px;
+    font-weight:500;
+    letter-spacing:.105em;
+    padding-left:48px;
   }
 
-  .site-nav::-webkit-scrollbar{
-    display:none;
+  .contact-card{
+    position:fixed;
+    top:54px;
+    left:50%;
+    transform:translateX(-50%) translateY(-8px);
+    width:min(340px,calc(100vw - 24px));
+    min-width:0;
+    padding:25px 20px 21px;
   }
 
-  .site-nav a{
-    flex:0 0 auto;
-
-    font-size:7px;
-
-    letter-spacing:.11em;
+  .contact-nav.open .contact-card{
+    transform:translateX(-50%) translateY(0);
   }
 
-  .site-nav .project{
-    padding:9px 11px;
+  .contact-card-title{
+    font-size:27px;
+    margin-bottom:19px;
   }
 
-
-  /* HERO */
-
-  .hero{
-    min-height:650px;
+  .contact-detail{
+    min-height:56px;
+    padding:12px 13px;
+    gap:12px;
   }
 
-  .hero-content{
-    left:7vw;
-    right:7vw;
-    bottom:13%;
-  }
-
-  .hero-title{
-    font-size:
-      clamp(
-        62px,
-        17vw,
-        105px
-      );
-  }
-
-  .hero-description{
-    max-width:95%;
-
+  .contact-detail-label{
     font-size:12px;
   }
 
-  .hero-button{
-    gap:25px;
+  .contact-detail-value{
+    font-size:10px;
+    letter-spacing:.055em;
+  }
 
+  .hero{
+    width:100vw;
+    height:100svh;
+    min-height:100vh;
+  }
+
+  .hero video{
+    position:absolute;
+    inset:0;
     width:100%;
-  }
-
-
-  /* VIDEO */
-
-  .video-section{
-    height:72svh;
-
-    min-height:500px;
-  }
-
-  #bgv{
-
-    /*
-       Force the mobile video to be centered.
-       The original video's centre is at 50%.
-    */
-
-    top:50%;
-    left:50%;
-
     height:100%;
-
-    width:auto;
-
-    max-width:none;
-
-    transform:
-      translate(-50%,-50%)
-      scale(1.08);
-
     object-fit:cover;
-
-    object-position:center center;
   }
 
-  .video-title-main{
-    font-size:
-      clamp(
-        72px,
-        21vw,
-        130px
-      );
+  .hero h1{
+    font-size:16vw;
   }
-
-  .video-title-outline{
-    font-size:
-      clamp(
-        68px,
-        20vw,
-        125px
-      );
-  }
-
-
-  /* MESSAGE */
-
-  .message{
-    padding:75px 6vw 70px;
-  }
-
-  .message-title{
-    font-size:
-      clamp(
-        58px,
-        17vw,
-        100px
-      );
-  }
-
-  .message-text{
-    margin-top:38px;
-
-    font-size:14px;
-  }
-
-
-  /* SERVICES */
 
   .services{
-    padding:70px 6vw 75px;
+    padding:80px 12px;
   }
 
-  .services-title{
-    font-size:
-      clamp(
-        65px,
-        18vw,
-        105px
-      );
+  .svc-eyebrow{
+    font-size:9px;
+    letter-spacing:.38em;
+    margin-bottom:30px;
   }
 
-  .service{
-    grid-template-columns:
-      38px 1fr 22px;
-
-    min-height:78px;
+  .svc-headline{
+    font-size:clamp(30px,8.7vw,42px);
+    line-height:1.04;
+    gap:.08em;
+    width:calc(100vw - 18px);
+    max-width:none;
+    letter-spacing:.005em;
   }
 
-  .service-name{
-    font-size:23px;
+  .svc-headline .hl{
+    white-space:nowrap;
   }
 
-
-  /* SUMMER */
-
-  .summer{
-    padding:75px 6vw 80px;
+  .svc-list{
+    margin-top:40px;
   }
 
-  .summer-title{
-    font-size:
-      clamp(
-        65px,
-        18vw,
-        110px
-      );
+  .svc-item{
+    padding:16px 20px;
+    font-size:9px;
+    letter-spacing:.25em;
   }
 
-  .summer-grid{
+  .talk-btn{
+    padding:15px 32px;
+    font-size:10px;
+  }
+
+  .ticker-section{
+    padding-bottom:55px;
+  }
+
+  .ticker-wrap{
+    height:62px;
+  }
+
+  .ticker-track span{
+    font-size:20px;
+    letter-spacing:.2em;
+    padding-right:1.2em;
+  }
+
+  .modal{
+    padding:36px 24px 30px;
+  }
+
+  .mf{
     grid-template-columns:1fr;
   }
 
-  .summer-item{
-    min-height:105px;
-
-    border-right:0;
-
-    border-bottom:1px solid #303030;
-  }
-
-  .summer-item:last-child{
-    border-bottom:0;
-  }
-
-  .summer-action{
-    width:100%;
-
-    justify-content:space-between;
-
-    gap:15px;
-  }
-
-
-  /* SHUFFLE */
-
-  .shuffle-bar{
-    height:82px;
-  }
-
-  .shuffle-track span{
-    font-size:42px;
-  }
-
-
-  /* GALLERY */
-
-  .gallery{
-    height:1650px;
-  }
-
-  .gallery-card{
-    box-shadow:
-      0 12px 35px rgba(0,0,0,.42);
-  }
-
-  .gc1{
-    width:42%;
-    height:340px;
-
-    left:-4%;
-    top:55px;
-  }
-
-  .gc2{
-    width:36%;
-    height:290px;
-
-    left:31%;
-    top:10px;
-  }
-
-  .gc3{
-    width:42%;
-    height:330px;
-
-    right:-4%;
-    top:65px;
-  }
-
-  .gc4{
-    width:43%;
-    height:325px;
-
-    left:9%;
-    top:320px;
-  }
-
-  .gc5{
-    width:42%;
-    height:340px;
-
-    right:7%;
-    top:350px;
-  }
-
-  .gc6{
-    width:45%;
-    height:360px;
-
-    left:-4%;
-    top:605px;
-  }
-
-  .gc7{
-    width:43%;
-    height:330px;
-
-    right:-3%;
-    top:640px;
-  }
-
-  .gc8{
-    width:43%;
-    height:350px;
-
-    left:29%;
-    top:760px;
-  }
-
-  .gc9{
-    width:38%;
-    height:315px;
-
-    right:4%;
-    top:1010px;
-  }
-
-
-  /* ABOUT */
-
-  .about{
-    padding:75px 6vw 80px;
-  }
-
-  .about-grid{
-    grid-template-columns:1fr;
-
-    gap:60px;
-  }
-
-  .about-title{
-    font-size:
-      clamp(
-        65px,
-        18vw,
-        110px
-      );
-  }
-
-  .about-copy h3{
-    font-size:34px;
-  }
-
-  .about-copy p{
-    font-size:14px;
-  }
-
-
-  /* CONTACT */
-
-  .contact{
-    padding:75px 6vw 80px;
-  }
-
-  .contact-grid{
-    grid-template-columns:1fr;
-
-    gap:60px;
-  }
-
-  .contact-title{
-    font-size:
-      clamp(
-        65px,
-        18vw,
-        110px
-      );
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .field{
-    border-right:0;
-  }
-
-  .field.full{
-    grid-column:auto;
-  }
-
-
-  /* FOOTER */
-
-  footer{
+  .footer{
+    padding:24px 20px;
     flex-direction:column;
-
+    gap:6px;
     text-align:center;
-
-    line-height:1.7;
-
-    padding:25px 6vw;
   }
 
+  .lb img{
+    max-width:96vw;
+    max-height:80vh;
+  }
+
+  .lb-close{
+    top:14px;
+    right:14px;
+    padding:9px 14px;
+    font-size:8px;
+  }
+  .social-floats{
+    right:20px;
+    bottom:20px;
+    gap:10px;
+  }
+
+  .social-float{
+    width:50px;
+    height:50px;
+    border-radius:13px;
+  }
+
+  .social-float::before{
+    border-radius:13px;
+  }
+
+  .ig-float svg{
+    width:37px;
+    height:37px;
+  }
+
+  .wa-float svg{
+    width:38px;
+    height:38px;
+  }
+
+
+  .call-float svg{
+    width:36px;
+    height:36px;
+  }
+}
+
+/* =========================================================
+   OCEAYR LUXURY LIGHT EDITORIAL THEME
+   Existing functionality, gallery positions and video retained.
+========================================================= */
+
+:root{
+  --c:#111111;
+  --bg:#F7F6F2;
+  --bg-soft:#EFEDE7;
+  --text:#111111;
+  --muted:#555555;
+  --line:#D8D6D0;
+  --line-soft:rgba(17,17,17,.12);
+}
+
+/* PAGE */
+html,
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* LOGO
+   Existing logo asset is white, so invert it to a clean black
+   version for the light background. */
+.logo img{
+  filter:none;
+}
+
+/* NAVIGATION */
+nav a{
+  color:#fff;
+  opacity:.62;
+}
+
+nav a:hover{
+  color:var(--text);
+  opacity:1;
+}
+
+nav a::after{
+  background:var(--text);
+}
+
+/* HERO — plain original video, no light colour overlay */
+.hero{
+  background:#000;
+}
+
+.hero video{
+  opacity:.52;
+  filter:none;
+}
+
+.hero::after{
+  display:none !important;
+}
+
+.hero h1{
+  z-index:1;
+  color:var(--text);
+}
+
+.outline{
+  color:transparent;
+  -webkit-text-stroke:1px var(--text);
+}
+
+/* SERVICES */
+.services{
+  background:var(--bg);
+  border-top-color:var(--line-soft);
+}
+
+.svc-eyebrow{
+  color:var(--text);
+  opacity:.48;
+}
+
+.svc-headline{
+  color:var(--text);
+}
+
+.svc-headline .hl.gold{
+  color:var(--text);
+}
+
+.svc-list{
+  border-top-color:var(--line);
+  border-left-color:var(--line);
+}
+
+.svc-item{
+  color:var(--text);
+  border-right-color:var(--line);
+  border-bottom-color:var(--line);
+  opacity:.58;
+}
+
+.svc-item:hover{
+  color:#fff;
+  background:var(--text);
+  border-color:var(--text);
+}
+
+.talk-btn{
+  color:var(--text);
+  border-color:rgba(17,17,17,.35);
+  background:transparent;
+}
+
+.talk-btn:hover{
+  color:#fff;
+  background:var(--text);
+  border-color:var(--text);
+}
+
+/* TICKER */
+.ticker-section{
+  background:var(--bg);
+}
+
+.ticker-wrap{
+  border-top-color:var(--line);
+  border-bottom-color:rgba(17,17,17,.22);
+}
+
+.ticker-track span{
+  color:var(--text);
+}
+
+/* GALLERY — LIGHT SURFACE, ORIGINAL MOSAIC GEOMETRY RETAINED */
+.gallery-section{
+  background:var(--bg);
+}
+
+.g-inner{
+  background:var(--bg);
+}
+
+/* LIGHTBOX remains dark intentionally for image focus */
+.lb{
+  background:rgba(17,17,17,.96);
+}
+
+.lb-close{
+  color:#fff;
+  border-color:rgba(255,255,255,.22);
+}
+
+.lb-close:hover{
+  background:#fff;
+  border-color:#fff;
+  color:#111;
+}
+
+/* MODAL */
+.modal-overlay{
+  background:rgba(17,17,17,.38);
+}
+
+.modal{
+  background:var(--bg);
+  border-color:var(--line);
+  box-shadow:0 30px 90px rgba(17,17,17,.18);
+}
+
+.modal-close{
+  color:var(--text);
+}
+
+.modal-title{
+  color:var(--text);
+}
+
+.modal-title span{
+  color:var(--text);
+}
+
+.mf-field{
+  border-color:var(--line);
+}
+
+.mf-field:focus-within{
+  border-color:var(--text);
+}
+
+.mf-field label{
+  color:var(--text);
+}
+
+.mf-field input,
+.mf-field textarea{
+  color:var(--text);
+  caret-color:var(--text);
+}
+
+.mf-field input::placeholder,
+.mf-field textarea::placeholder{
+  color:rgba(17,17,17,.42);
+}
+
+.mf-send{
+  color:var(--text);
+  border-color:var(--line);
+}
+
+.mf-send:hover{
+  color:#fff;
+  background:var(--text);
+  border-color:var(--text);
+}
+
+.mf-note{
+  color:var(--text);
+}
+
+.mf-success .tick{
+  color:var(--text);
+}
+
+.mf-success p{
+  color:var(--text);
+}
+
+.mf-success small{
+  color:var(--text);
+}
+
+/* SOCIAL FLOATS */
+.social-float{
+  background:
+    radial-gradient(circle at 32% 18%, rgba(255,255,255,.9), rgba(255,255,255,0) 28%),
+    linear-gradient(145deg,#FFFFFF 0%,#F2F0EA 54%,#E8E5DD 100%);
+  border-color:rgba(17,17,17,.30);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.95),
+    inset 0 -14px 22px rgba(17,17,17,.06),
+    0 10px 34px rgba(17,17,17,.13);
+}
+
+.social-float::before{
+  border-color:rgba(17,17,17,.10);
+  background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,0) 45%);
+}
+
+.social-float:hover{
+  border-color:rgba(17,17,17,.7);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.95),
+    inset 0 -14px 22px rgba(17,17,17,.08),
+    0 16px 48px rgba(17,17,17,.18);
+}
+
+.ig-stroke,
+.wa-line,
+.call-line{
+  stroke:#111111;
+}
+
+.ig-dot,
+.wa-phone{
+  fill:#111111;
+}
+
+/* FOOTER */
+.footer{
+  background:var(--bg-soft);
+  border-top-color:var(--line);
+  color:var(--text);
+}
+
+/* MOBILE LIGHT HERO */
+@media(max-width:768px){
+  .hero::after{
+    display:none !important;
+  }
 }
 
 
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
+/* FINAL HERO: plain original video + white hero title */
+.hero{
+  background:#000 !important;
+}
 
-@media(max-width:390px){
+.hero video{
+  opacity:.52 !important;
+  filter:none !important;
+}
 
-  .site-logo{
-    width:58px;
+.hero::after{
+  display:none !important;
+  background:none !important;
+}
+
+.hero h1{
+  color:#fff !important;
+}
+
+.hero h1 .outline,
+.hero .outline{
+  color:transparent !important;
+  -webkit-text-stroke:1px rgba(255,255,255,.88) !important;
+}
+
+
+/* FINAL NAVIGATION */
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:34px;
+}
+
+nav a{
+  color:#fff !important;
+  opacity:.70;
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.30em;
+  text-transform:uppercase;
+  text-decoration:none;
+}
+
+nav a:hover{
+  opacity:1;
+}
+
+nav a.nav-cta{
+  color:#fff !important;
+  opacity:1;
+  padding:9px 13px;
+  border:1px solid rgba(255,255,255,.55);
+}
+
+nav a.nav-cta:hover{
+  background:#fff;
+  color:#111 !important;
+}
+
+@media(max-width:768px){
+  nav{
+    gap:8px;
+  }
+
+  nav a{
+    font-size:7px;
+    letter-spacing:.085em;
+  }
+
+  nav a.nav-cta{
+    padding:7px 8px;
+  }
+}
+
+
+.summer-section{
+  position:relative;
+  background:#EFEDE7;
+  color:#111;
+  padding:120px 7vw;
+  border-top:1px solid #D8D6D0;
+}
+
+.summer-grid{
+  max-width:1480px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(330px,.82fr) minmax(480px,1.18fr);
+  gap:8vw;
+  align-items:start;
+}
+
+.summer-kicker{
+  font-size:9px;
+  letter-spacing:.48em;
+  text-transform:uppercase;
+  opacity:.46;
+  margin-bottom:28px;
+}
+
+.summer-heading h2{
+  font-family:'Fjalla One',sans-serif;
+  font-size:clamp(70px,8vw,135px);
+  line-height:.86;
+  text-transform:uppercase;
+}
+
+.summer-heading h2 span{
+  color:transparent;
+  -webkit-text-stroke:1px #111;
+}
+
+.summer-copy{
+  border-top:1px solid #D8D6D0;
+  padding-top:32px;
+}
+
+.summer-copy p{
+  max-width:780px;
+  margin-bottom:24px;
+  font-family:'Manrope','Inter',sans-serif;
+  font-size:clamp(16px,1.25vw,20px);
+  line-height:1.8;
+  color:#555;
+}
+
+.summer-benefits{
+  border-top:1px solid #D8D6D0;
+  border-bottom:1px solid #D8D6D0;
+  margin-top:32px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+.summer-benefits span{
+  padding:17px 0;
+  border-bottom:1px solid #D8D6D0;
+  font-size:8px;
+  letter-spacing:.28em;
+  color:#111;
+}
+
+.summer-benefits span:nth-child(odd){
+  padding-right:20px;
+  border-right:1px solid #D8D6D0;
+}
+
+.summer-benefits span:nth-child(even){
+  padding-left:20px;
+}
+
+.summer-benefits span:nth-last-child(-n+2){
+  border-bottom:0;
+}
+
+.summer-actions{
+  margin-top:32px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:14px;
+}
+
+.summer-primary{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:45px;
+  min-width:340px;
+  padding:18px 20px;
+  background:#111;
+  color:#fff;
+  text-decoration:none;
+  font-size:9px;
+  letter-spacing:.30em;
+  text-transform:uppercase;
+}
+
+.summer-secondary{
+  color:#111;
+  text-decoration:none;
+  font-size:9px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  border-bottom:1px solid #111;
+  padding-bottom:5px;
+}
+
+.summer-note{
+  margin-top:20px;
+  font-size:9px !important;
+  line-height:1.6 !important;
+  opacity:.5;
+}
+
+@media(max-width:800px){
+  .summer-section{padding:88px 20px 76px;}
+  .summer-grid{grid-template-columns:1fr;gap:44px;}
+  .summer-heading h2{font-size:clamp(64px,20vw,96px);}
+  .summer-benefits{grid-template-columns:1fr;}
+  .summer-benefits span,
+  .summer-benefits span:nth-child(odd),
+  .summer-benefits span:nth-child(even){
+    padding:15px 0;
+    border-right:0;
+    border-bottom:1px solid #D8D6D0;
+  }
+  .summer-benefits span:last-child{border-bottom:0;}
+  .summer-primary{width:100%;min-width:0;}
+}
+
+
+/* ==========================================================
+   OCEAYR CLIENT-LEAD HOMEPAGE
+========================================================== */
+html,body{background:#F7F6F2;color:#111;}
+.site-nav{color:#111;transition:color .3s ease;background:transparent;}
+.site-nav a{color:#111 !important;opacity:.62;}
+.site-nav a:hover{opacity:1;}
+.site-nav a::after{background:#111;}
+.site-nav .nav-cta{border:1px solid rgba(17,17,17,.38);color:#111 !important;opacity:1;padding:9px 13px;}
+.site-nav .nav-cta:hover{background:#111;color:#fff !important;}
+.site-nav.on-dark a{color:#fff !important;}.site-nav.on-dark a::after{background:#fff;}.site-nav.on-dark .nav-cta{border-color:rgba(255,255,255,.5);color:#fff !important;}.site-nav.on-dark .nav-cta:hover{background:#fff;color:#111 !important;}
+.logo{filter:invert(1);transition:filter .3s ease;}.logo.on-dark{filter:none;}
+
+.landing-slider{position:relative;min-height:clamp(620px,92vh,900px);overflow:hidden;background:#EFEDE7;color:#111;}
+.slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.03);transition:opacity .9s ease,transform 1.4s ease;}.slide-bg.active{opacity:1;transform:scale(1);}
+.slide-bg-1{background-image:url('https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00014.jpeg?v=10');}.slide-bg-2{background-image:url('https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00005.jpeg?v=10');}.slide-bg-3{background-image:url('https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00012.jpeg?v=10');}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(247,246,242,.97) 0%,rgba(247,246,242,.88) 43%,rgba(247,246,242,.18) 76%,rgba(247,246,242,.04) 100%);}
+.landing-content{position:relative;z-index:2;min-height:clamp(620px,92vh,900px);display:flex;align-items:flex-end;justify-content:space-between;padding:0 7vw 7vh;}.landing-copy{max-width:820px;padding-bottom:20px;}.landing-kicker,.section-kicker{font-size:9px;letter-spacing:.48em;text-transform:uppercase;opacity:.48;margin-bottom:24px;}.landing-copy h1{font-family:'Fjalla One',sans-serif;font-size:clamp(70px,9.3vw,154px);line-height:.84;text-transform:uppercase;}.landing-copy h1 span{color:transparent;-webkit-text-stroke:1px #111;}.landing-description{max-width:640px;margin-top:30px;font-size:clamp(15px,1.25vw,19px);line-height:1.7;color:#4f4f4f;}.landing-actions{display:flex;align-items:center;gap:22px;margin-top:32px;flex-wrap:wrap;}.landing-primary{display:inline-flex;align-items:center;justify-content:space-between;gap:40px;background:#111;color:#fff;text-decoration:none;padding:18px 21px;font-size:9px;letter-spacing:.28em;text-transform:uppercase;}.landing-secondary{color:#111;text-decoration:none;font-size:9px;letter-spacing:.3em;text-transform:uppercase;border-bottom:1px solid #111;padding-bottom:5px;}.landing-meta{display:flex;flex-direction:column;align-items:flex-end;gap:18px;padding-bottom:25px;}.slide-count{font-size:10px;letter-spacing:.3em;}.slide-controls{display:flex;gap:9px;}.slide-dot{width:36px;height:2px;border:0;background:rgba(17,17,17,.25);cursor:pointer;padding:0;transition:all .3s;}.slide-dot.active{background:#111;width:58px;}
+
+
+.selected-intro{background:#F7F6F2;padding:110px 7vw 55px;display:grid;grid-template-columns:1fr .75fr;gap:8vw;align-items:end;}.selected-intro h2{font-family:'Fjalla One',sans-serif;font-size:clamp(60px,7vw,120px);line-height:.86;text-transform:uppercase;}.selected-intro>p{font-size:17px;line-height:1.75;color:#555;}
+.ticker-section{background:#F7F6F2!important;padding-bottom:0!important;}.ticker-wrap{border-top-color:#D8D6D0!important;border-bottom-color:#D8D6D0!important;}.ticker-track span{color:#111!important;}
+.gallery-section{background:#F7F6F2!important;}
+.services-new{background:#EFEDE7;color:#111;padding:125px 7vw;}.services-top{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:1fr .8fr;gap:8vw;align-items:end;border-bottom:1px solid #D8D6D0;padding-bottom:70px;}.services-top h2,.process-head h2,.about-snapshot h2,.start-project-band h2{font-family:'Fjalla One',sans-serif;font-size:clamp(64px,8vw,135px);line-height:.84;text-transform:uppercase;}.services-top h2 span,.process-head h2 span,.start-project-band h2 span{color:transparent;-webkit-text-stroke:1px #111;}.services-lead{font-size:18px;line-height:1.8;color:#555;max-width:640px;}.service-grid{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);border-left:1px solid #D8D6D0;border-top:1px solid #D8D6D0;}.service-card{min-height:340px;padding:26px;border-right:1px solid #D8D6D0;border-bottom:1px solid #D8D6D0;display:flex;flex-direction:column;transition:background .3s,color .3s;}.service-card>span{font-size:9px;letter-spacing:.25em;opacity:.45;}.service-card h3{font-family:'Fjalla One',sans-serif;font-size:34px;line-height:.95;margin-top:auto;}.service-card p{font-size:13px;line-height:1.65;color:#666;margin-top:24px;}.service-card:hover{background:#111;color:#fff;}.service-card:hover p{color:#bbb;}.section-cta{display:inline-flex;align-items:center;gap:45px;margin-top:38px;padding:17px 20px;background:#111;color:#fff;text-decoration:none;font-size:9px;letter-spacing:.3em;text-transform:uppercase;}
+.summer-section{position:relative;background:#EFEDE7;color:#111;padding:120px 7vw;border-top:1px solid #D8D6D0;}.summer-grid{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:minmax(330px,.82fr) minmax(480px,1.18fr);gap:8vw;align-items:start;}.summer-kicker{font-size:9px;letter-spacing:.48em;text-transform:uppercase;opacity:.46;margin-bottom:28px;}.summer-heading h2{font-family:'Fjalla One',sans-serif;font-size:clamp(70px,8vw,135px);line-height:.86;text-transform:uppercase;}.summer-heading h2 span{color:transparent;-webkit-text-stroke:1px #111;}.summer-copy{border-top:1px solid #D8D6D0;padding-top:32px;}.summer-copy p{max-width:780px;margin-bottom:24px;font-size:clamp(16px,1.25vw,20px);line-height:1.8;color:#555;}.summer-benefits{border-top:1px solid #D8D6D0;border-bottom:1px solid #D8D6D0;margin-top:32px;display:grid;grid-template-columns:1fr 1fr;}.summer-benefits span{padding:17px 0;border-bottom:1px solid #D8D6D0;font-size:8px;letter-spacing:.28em;color:#111;}.summer-benefits span:nth-child(odd){padding-right:20px;border-right:1px solid #D8D6D0;}.summer-benefits span:nth-child(even){padding-left:20px;}.summer-benefits span:nth-last-child(-n+2){border-bottom:0;}.summer-actions{margin-top:32px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;}.summer-primary{display:flex;justify-content:space-between;align-items:center;gap:45px;min-width:340px;padding:18px 20px;background:#111;color:#fff;text-decoration:none;font-size:9px;letter-spacing:.3em;text-transform:uppercase;}.summer-secondary{color:#111;text-decoration:none;font-size:9px;letter-spacing:.32em;text-transform:uppercase;border-bottom:1px solid #111;padding-bottom:5px;}.summer-note{margin-top:20px;font-size:9px!important;line-height:1.6!important;opacity:.5;}
+.process-section{background:#F7F6F2;padding:125px 7vw;color:#111;}.process-head{max-width:1480px;margin:0 auto 65px;border-bottom:1px solid #D8D6D0;padding-bottom:60px;}.process-grid{max-width:1480px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #D8D6D0;border-left:1px solid #D8D6D0;}.process-grid>div{padding:28px;min-height:260px;border-right:1px solid #D8D6D0;border-bottom:1px solid #D8D6D0;}.process-grid b{font-size:9px;letter-spacing:.25em;opacity:.45;}.process-grid h3{font-family:'Fjalla One',sans-serif;font-size:30px;margin-top:85px;}.process-grid p{font-size:13px;line-height:1.65;color:#666;margin-top:16px;}
+.about-snapshot{background:#111;color:#fff;padding:125px 7vw;display:grid;grid-template-columns:1fr .9fr;gap:8vw;align-items:end;}.about-snapshot h2{font-size:clamp(58px,7.5vw,120px);}.about-snapshot h2 span{-webkit-text-stroke:1px #fff;}.about-snapshot-copy p{font-size:17px;line-height:1.8;color:#bbb;max-width:690px;}.about-snapshot-copy .section-cta{background:#fff;color:#111;}
+.start-project-band{background:#F7F6F2;color:#111;text-align:center;padding:130px 7vw 145px;display:flex;flex-direction:column;align-items:center;}.start-project-band h2{font-size:clamp(78px,11vw,170px);}.start-project-band>p{max-width:620px;margin-top:28px;color:#555;font-size:17px;line-height:1.7;}.start-project-btn{margin-top:30px;background:#111;color:#fff;text-decoration:none;padding:19px 25px;font-size:9px;letter-spacing:.32em;text-transform:uppercase;display:inline-flex;gap:50px;}
+.footer{background:#F7F6F2;color:#111;border-top:1px solid #D8D6D0;display:flex;align-items:center;justify-content:space-between;gap:30px;padding:32px 7vw;font-size:8px;letter-spacing:.25em;text-transform:uppercase;}.footer-links{display:flex;gap:25px;flex-wrap:wrap;justify-content:center;}.footer-links a{color:#111;text-decoration:none;opacity:.55;}.footer-links a:hover{opacity:1;}
+@media(max-width:900px){.landing-content{padding:0 20px 35px;}.landing-content{display:block;padding-top:150px;}.landing-meta{align-items:flex-start;margin-top:30px;}.selected-intro,.services-top,.about-snapshot{grid-template-columns:1fr;}.selected-intro{gap:35px;padding:80px 20px 35px;}.services-new,.process-section,.about-snapshot,.start-project-band{padding-left:20px;padding-right:20px;}.services-top{gap:35px;}.service-grid{grid-template-columns:1fr 1fr;}.process-grid{grid-template-columns:1fr 1fr;}.footer{flex-direction:column;text-align:center;padding:28px 20px;}}
+@media(max-width:600px){.landing-slider,.landing-content{min-height:720px;}.slide-overlay{background:linear-gradient(90deg,rgba(247,246,242,.98),rgba(247,246,242,.82));}.landing-copy h1{font-size:18vw;}.landing-description{font-size:14px;}.landing-primary{width:100%;justify-content:space-between;}.hero-video-section{height:70vh;min-height:520px;}.hero-video-content{padding:0 20px;}.hero-video-content h2{font-size:12vw;}.service-grid,.process-grid{grid-template-columns:1fr;}.service-card{min-height:280px;}.footer-links{gap:14px;font-size:7px;}}
+
+/* =========================
+   HERO - KEPT SAME AS GIVEN CODE
+========================= */
+
+.hero-video-section{
+  position:relative;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  background:#000;
+}
+
+.hero-video-section video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.52;
+  pointer-events:none;
+  transform:translate3d(0,0,0);
+  will-change:transform;
+}
+
+.hero-video-section h1{
+  position:relative;
+  z-index:1;
+  font-family:'Inter',sans-serif;
+  font-size:11vw;
+  font-weight:900;
+  line-height:.82;
+  text-align:center;
+  color:#fff;
+}
+
+.outline{
+  color:transparent;
+  -webkit-text-stroke:1px #fff;
+}
+
+/* EXACT JULY-27 HERO MEDIA BEHAVIOUR — used inside the new homepage */
+.hero-video-section{
+  position:relative !important;
+  height:100vh !important;
+  min-height:100vh !important;
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  overflow:hidden !important;
+  background:#000 !important;
+}
+.hero-video-section video{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:50% 50% !important;
+  opacity:.52 !important;
+  filter:none !important;
+  pointer-events:none !important;
+  transform:none !important;
+}
+.hero-video-section h1{
+  position:relative !important;
+  z-index:2 !important;
+  font-family:'Inter',sans-serif !important;
+  font-size:11vw !important;
+  font-weight:900 !important;
+  line-height:.82 !important;
+  text-align:center !important;
+  color:#fff !important;
+  margin:0 !important;
+}
+.hero-video-section h1 .outline{
+  color:transparent !important;
+  -webkit-text-stroke:1px #fff !important;
+}
+@media(max-width:768px){
+  .hero-video-section{
+    height:100svh !important;
+    min-height:100vh !important;
+  }
+  .hero-video-section video{
+    width:100vw !important;
+    height:100% !important;
+    object-fit:cover !important;
+    object-position:50% 50% !important;
+  }
+  .hero-video-section h1{
+    font-size:16vw !important;
+  }
+}
+
+/* FINAL MEDIA LOCK — July 27 logo must remain unchanged */
+.logo{filter:none !important;}
+.logo img{width:100% !important;height:100% !important;object-fit:contain !important;}
+
+
+/* ==========================================================
+   FINAL NAVIGATION + JULY 27 HERO TITLE LOCK
+   Keeps all client links visible without horizontal overflow.
+========================================================== */
+.site-nav{
+  position:fixed !important;
+  top:28px !important;
+  left:clamp(118px,14vw,220px) !important;
+  right:clamp(18px,3vw,48px) !important;
+  width:auto !important;
+  display:flex !important;
+  justify-content:flex-end !important;
+  align-items:center !important;
+  gap:clamp(18px,2.6vw,42px) !important;
+  padding:0 !important;
+  white-space:nowrap !important;
+  overflow:visible !important;
+  font-size:clamp(9px,.72vw,12px) !important;
+  letter-spacing:.24em !important;
+}
+
+.site-nav a{
+  flex:0 0 auto !important;
+  padding:0 0 5px !important;
+  line-height:1 !important;
+}
+
+.site-nav .nav-cta{
+  padding:13px 20px !important;
+  min-width:145px !important;
+  text-align:center !important;
+  letter-spacing:.18em !important;
+}
+
+/* The navigation changes colour according to the section, but never gets
+   a background box. */
+.site-nav,
+.site-nav.on-dark{
+  background:transparent !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+
+/* Exact July-27 OCEAYR AGENCY title: Inter / 900 / 11vw / .82 line-height,
+   centered over the clean GitHub video. */
+.hero-video-section h1,
+.hero-video-section h1:not(.anything){
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  width:100% !important;
+  margin:0 !important;
+  padding:0 !important;
+  font-family:'Inter',sans-serif !important;
+  font-size:11vw !important;
+  font-weight:900 !important;
+  line-height:.82 !important;
+  letter-spacing:normal !important;
+  text-align:center !important;
+  text-transform:none !important;
+  color:#fff !important;
+  z-index:20 !important;
+}
+
+.hero-video-section h1 .outline{
+  display:inline-block !important;
+  color:transparent !important;
+  -webkit-text-fill-color:transparent !important;
+  -webkit-text-stroke:1px #fff !important;
+  text-shadow:none !important;
+}
+
+@media(max-width:1100px){
+  .site-nav{
+    left:105px !important;
+    right:14px !important;
+    gap:clamp(11px,2vw,22px) !important;
+    font-size:9px !important;
+    letter-spacing:.16em !important;
+  }
+  .site-nav .nav-cta{
+    min-width:128px !important;
+    padding:12px 13px !important;
+    letter-spacing:.12em !important;
+  }
+}
+
+@media(max-width:768px){
+  .logo{
+    top:16px !important;
+    left:12px !important;
+    width:62px !important;
+    height:45px !important;
   }
 
   .site-nav{
-    left:75px;
-
-    gap:11px;
+    top:18px !important;
+    left:79px !important;
+    right:9px !important;
+    justify-content:flex-end !important;
+    gap:clamp(5px,1.7vw,9px) !important;
+    font-size:clamp(6.7px,1.85vw,8px) !important;
+    letter-spacing:.075em !important;
   }
 
   .site-nav a{
-    font-size:6.5px;
+    padding-bottom:4px !important;
   }
 
-  .site-nav .project{
-    padding:
-      8px 9px;
+  .site-nav .nav-cta{
+    min-width:82px !important;
+    padding:9px 7px !important;
+    letter-spacing:.055em !important;
   }
 
-  .video-section{
-    height:68svh;
+  /* Keep the exact July-27 mobile title scale and centre. */
+  .hero-video-section h1,
+  .hero-video-section h1:not(.anything){
+    font-size:16vw !important;
+    line-height:.82 !important;
+    top:50% !important;
+    left:50% !important;
+    transform:translate(-50%,-50%) !important;
   }
-
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-  *,
-  *::before,
-  *::after{
-    scroll-behavior:auto !important;
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    transition-duration:.01ms !important;
+@media(max-width:380px){
+  .site-nav{
+    left:72px !important;
+    right:6px !important;
+    gap:4px !important;
+    font-size:6.35px !important;
+    letter-spacing:.045em !important;
   }
-
+  .site-nav .nav-cta{
+    min-width:76px !important;
+    padding:8px 5px !important;
+    letter-spacing:.035em !important;
+  }
+  .logo{
+    width:58px !important;
+    height:42px !important;
+  }
 }
 
 </style>
-</head>
 
+<!-- Vercel Web Analytics -->
+<script>
+  window.va =
+    window.va ||
+    function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
 
 <body>
 
-
-<!-- ======================================================
-     OR LOGO
-====================================================== -->
-
-<div class="site-logo">
-
-<svg
-  viewBox="0 0 120 80"
-  xmlns="http://www.w3.org/2000/svg"
-  aria-label="OCEAYR"
->
-
-  <!-- O -->
-  <path
-    d="
-      M5 39
-      C5 17 19 4 41 4
-      C63 4 76 17 76 39
-      C76 61 63 75 41 75
-      C19 75 5 61 5 39
-      Z
-
-      M28 39
-      C28 50 32 57 41 57
-      C50 57 54 50 54 39
-      C54 28 50 22 41 22
-      C32 22 28 28 28 39
-      Z
-    "
-  />
-
-  <!-- R -->
-  <path
-    d="
-      M65 5
-      H92
-      C108 5 116 13 116 25
-      C116 34 111 40 102 43
-      L118 72
-      H94
-      L82 48
-      H82
-      V72
-      H65
-      Z
-
-      M82 21
-      V34
-      H91
-      C96 34 99 32 99 27
-      C99 23 96 21 91 21
-      Z
-    "
-  />
-
-</svg>
-
+<div class="logo" aria-label="OCEAYR Agency logo">
+  <img src="data:image/png;base64,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" alt="OCEAYR Agency logo">
 </div>
-
-
-<!-- ======================================================
-     NAVIGATION
-====================================================== -->
 
 <nav class="site-nav">
-
-  <a
-    href="#home"
-    class="active"
-  >
-    Home
-  </a>
-
-  <a href="#about">
-    About Us
-  </a>
-
-  <a href="#services">
-    Services
-  </a>
-
-  <a href="#summer">
-    Summer
-  </a>
-
-  <a href="#contact">
-    Contact Us
-  </a>
-
-  <a
-    href="#contact"
-    class="project"
-  >
-    Start A Project
-  </a>
-
+  <a href="#home">Home</a>
+  <a href="/about">About Us</a>
+  <a href="#services">Services</a>
+  <a href="#summer" aria-label="Summer Collaborations 2026">Summer</a>
+  <a href="/contact">Contact Us</a>
+  <a href="/contact" class="nav-cta">Start A Project</a>
 </nav>
 
-
-<!-- ======================================================
-     HERO SLIDER
-====================================================== -->
-
-<section
-  class="hero"
-  id="home"
->
-
-
-  <!-- SLIDE 1 -->
-
-  <article class="hero-slide active">
-
-    <img
-      src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2200&q=88"
-      alt="Luxury hotel"
-    >
-
-    <div class="hero-content">
-
-      <div class="hero-index">
-        01 / SUMMER COLLABORATIONS 2026
+<section class="landing-slider" id="home" aria-label="OCEAYR featured opportunities">
+  <div class="slide-bg slide-bg-1 active"></div>
+  <div class="slide-bg slide-bg-2"></div>
+  <div class="slide-bg slide-bg-3"></div>
+  <div class="slide-overlay"></div>
+  <div class="landing-content">
+    <div class="landing-copy">
+      <p class="landing-kicker" id="landingKicker">OCEAYR SUMMER COLLABORATIONS 2026</p>
+      <h1 id="landingTitle">MAKE THIS<br><span>SUMMER VISIBLE.</span></h1>
+      <p class="landing-description" id="landingDescription">Limited paid collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.</p>
+      <div class="landing-actions">
+        <a id="landingPrimary" class="landing-primary" href="#summer">EXPLORE SUMMER COLLABORATIONS <span>→</span></a>
+        <a id="landingSecondary" class="landing-secondary" href="/contact">START A PROJECT</a>
       </div>
-
-      <h1 class="hero-title">
-
-        MAKE THIS
-
-        <span class="outline">
-          SUMMER VISIBLE.
-        </span>
-
-      </h1>
-
-      <p class="hero-description">
-
-        Limited paid collaborations for hotels,
-        resorts, restaurants and lifestyle destinations
-        across the UAE.
-
-      </p>
-
-      <a
-        href="#summer"
-        class="hero-button"
-      >
-        Explore Summer Collaborations
-        <span>→</span>
-      </a>
-
     </div>
-
-  </article>
-
-
-  <!-- SLIDE 2 -->
-
-  <article class="hero-slide">
-
-    <img
-      src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2200&q=88"
-      alt="Luxury restaurant experience"
-    >
-
-    <div class="hero-content">
-
-      <div class="hero-index">
-        02 / CREATIVE DIRECTION
+    <div class="landing-meta">
+      <span class="slide-count"><b id="slideNumber">01</b> / 03</span>
+      <div class="slide-controls" aria-label="Featured slide controls">
+        <button type="button" class="slide-dot active" data-slide="0" aria-label="Slide 1"></button>
+        <button type="button" class="slide-dot" data-slide="1" aria-label="Slide 2"></button>
+        <button type="button" class="slide-dot" data-slide="2" aria-label="Slide 3"></button>
       </div>
-
-      <h1 class="hero-title">
-
-        STORIES
-
-        <span class="outline">
-          WORTH EXPERIENCING.
-        </span>
-
-      </h1>
-
-      <p class="hero-description">
-
-        Strategy, photography, film and digital content
-        designed around the experience your audience
-        is choosing.
-
-      </p>
-
-      <a
-        href="#services"
-        class="hero-button"
-      >
-        Explore Services
-        <span>→</span>
-      </a>
-
     </div>
-
-  </article>
-
-
-  <!-- SLIDE 3 -->
-
-  <article class="hero-slide">
-
-    <img
-      src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2200&q=88"
-      alt="Luxury resort pool"
-    >
-
-    <div class="hero-content">
-
-      <div class="hero-index">
-        03 / OCEAYR AGENCY
-      </div>
-
-      <h1 class="hero-title">
-
-        CREATE
-
-        <span class="outline">
-          DESIRABILITY.
-        </span>
-
-      </h1>
-
-      <p class="hero-description">
-
-        Premium creative strategy and content for
-        hospitality, food and lifestyle brands.
-
-      </p>
-
-      <a
-        href="#contact"
-        class="hero-button"
-      >
-        Start A Project
-        <span>→</span>
-      </a>
-
-    </div>
-
-  </article>
-
-
-  <div class="hero-dots">
-
-    <button
-      class="hero-dot active"
-      data-slide="0"
-    ></button>
-
-    <button
-      class="hero-dot"
-      data-slide="1"
-    ></button>
-
-    <button
-      class="hero-dot"
-      data-slide="2"
-    ></button>
-
   </div>
-
 </section>
 
+<section class="hero-video-section">
+ <video
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="auto"
+  id="bgv">
 
-<!-- ======================================================
-     VIDEO
-====================================================== -->
+  <source
+    src="/video/oceayr-background.mp4"
+    type="video/mp4">
 
-<section class="video-section">
+</video>
 
-  <video
-    id="bgv"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto"
-  >
-
-    <!-- CURRENT GITHUB VIDEO -->
-    <source
-      src="/video/oceayr-background.mp4"
-      type="video/mp4"
-    >
-
-  </video>
-
-
-  <!-- IMPORTANT:
-       TITLE IS INSIDE THE VIDEO -->
-
-  <div class="video-title">
-
-    <div class="video-title-main">
-      OCEAYR
-    </div>
-
-    <div class="video-title-outline">
-      AGENCY
-    </div>
-
-  </div>
-
+  <h1>
+    OCEAYR<br>
+    <span class="outline">AGENCY</span>
+  </h1>
 </section>
 
-
-<!-- ======================================================
-     MESSAGE
-====================================================== -->
-
-<section class="message">
-
-  <div class="eyebrow">
-    OCEAYR / CREATIVE MARKETING
+<section class="selected-intro">
+  <div>
+    <p class="section-kicker">SELECTED VISUAL DIRECTION</p>
+    <h2>HOSPITALITY.<br>FOOD.<br>LIFESTYLE.</h2>
   </div>
-
-  <h2 class="message-title">
-
-    <span class="line">
-      MORE THAN
-    </span>
-
-    <span class="line outline">
-      CONTENT.
-    </span>
-
-    <span class="line">
-      MORE THAN
-    </span>
-
-    <span class="line outline">
-      TRENDS.
-    </span>
-
-    <span class="line">
-      WE CREATE
-    </span>
-
-    <span class="line outline">
-      DESIRE.
-    </span>
-
-  </h2>
-
-  <p class="message-text">
-
-    OCEAYR is a creative marketing agency built around
-    hospitality, food and lifestyle. We combine strategic
-    thinking with premium visual storytelling to make
-    brands more visible, more memorable and easier to choose.
-
-  </p>
-
+  <p>A curated representation of the hospitality, food and lifestyle stories that shape the OCEAYR creative perspective.</p>
 </section>
 
-
-<!-- ======================================================
-     SERVICES
-====================================================== -->
-
-<section
-  class="services"
-  id="services"
->
-
-  <div class="eyebrow">
-    WHAT WE DO
+<div class="ticker-section">
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span>Shuffle Our Art Works &nbsp;&nbsp;&nbsp; Shuffle Our Art Works &nbsp;&nbsp;&nbsp; Shuffle Our Art Works &nbsp;&nbsp;&nbsp; Shuffle Our Art Works &nbsp;&nbsp;&nbsp;</span>
+      <span>Shuffle Our Art Works &nbsp;&nbsp;&nbsp; Shuffle Our Art Works &nbsp;&nbsp;&nbsp; Shuffle Our Art Works &nbsp;&nbsp;&nbsp; Shuffle Our Art Works &nbsp;&nbsp;&nbsp;</span>
+    </div>
   </div>
-
-  <h2 class="services-title">
-    OUR SERVICES
-  </h2>
-
-
-  <div class="service-list">
-
-    <div class="service">
-
-      <span class="service-no">
-        01
-      </span>
-
-      <span class="service-name">
-        Creative Direction
-      </span>
-
-      <span class="service-arrow">
-        →
-      </span>
-
-    </div>
-
-
-    <div class="service">
-
-      <span class="service-no">
-        02
-      </span>
-
-      <span class="service-name">
-        Photography & Film
-      </span>
-
-      <span class="service-arrow">
-        →
-      </span>
-
-    </div>
-
-
-    <div class="service">
-
-      <span class="service-no">
-        03
-      </span>
-
-      <span class="service-name">
-        Campaign Strategy
-      </span>
-
-      <span class="service-arrow">
-        →
-      </span>
-
-    </div>
-
-
-    <div class="service">
-
-      <span class="service-no">
-        04
-      </span>
-
-      <span class="service-name">
-        Social & Digital Content
-      </span>
-
-      <span class="service-arrow">
-        →
-      </span>
-
-    </div>
-
-
-    <div class="service">
-
-      <span class="service-no">
-        05
-      </span>
-
-      <span class="service-name">
-        Brand & Web
-      </span>
-
-      <span class="service-arrow">
-        →
-      </span>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ======================================================
-     SUMMER
-====================================================== -->
-
-<section
-  class="summer"
-  id="summer"
->
-
-  <div class="eyebrow">
-    OCEAYR SUMMER COLLABORATIONS 2026
-  </div>
-
-  <h2 class="summer-title">
-
-    MAKE THIS
-
-    <span class="outline">
-      SUMMER VISIBLE.
-    </span>
-
-  </h2>
-
-  <p class="summer-text">
-
-    We are opening a limited number of paid summer
-    collaboration opportunities for hotels, resorts,
-    restaurants and lifestyle destinations across the UAE.
-
-    <br><br>
-
-    From summer stay experiences and poolside moments to
-    dining, wellness and destination stories, we create
-    campaign-ready content designed to make people stop,
-    discover and enquire.
-
-  </p>
-
-
-  <div class="summer-grid">
-
-    <div class="summer-item">
-      Creative Direction
-    </div>
-
-    <div class="summer-item">
-      Photo & Film
-    </div>
-
-    <div class="summer-item">
-      Social Content
-    </div>
-
-    <div class="summer-item">
-      Campaign Storytelling
-    </div>
-
-  </div>
-
-
-  <a
-    href="#contact"
-    class="summer-action"
-  >
-    Apply For A Summer Collaboration
-    <span>→</span>
-  </a>
-
-
-  <div class="summer-small">
-    Limited paid collaborations · Scope customised per brand
-  </div>
-
-</section>
-
-
-<!-- ======================================================
-     SHUFFLE ART WORKS
-====================================================== -->
-
-<div class="shuffle-bar">
-
-  <div class="shuffle-track">
-
-    <span>
-      SHUFFLE OUR ART WORKS&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-      SHUFFLE OUR ART WORKS&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-      SHUFFLE OUR ART WORKS&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-    </span>
-
-    <span>
-      SHUFFLE OUR ART WORKS&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-      SHUFFLE OUR ART WORKS&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-      SHUFFLE OUR ART WORKS&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-    </span>
-
-  </div>
-
 </div>
 
+<section class="gallery-section" id="gallery"></section>
 
-<!-- ======================================================
-     PHOTO GALLERY
-====================================================== -->
-
-<section
-  class="gallery"
-  id="gallery"
->
-
-  <div class="gallery-stage">
-
-
-    <!-- SAME GITHUB PHOTO COLLECTION -->
-
-    <div class="gallery-card gc1">
-      <img
-        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00001.jpeg"
-        alt="OCEAYR artwork"
-      >
-    </div>
-
-
-    <div class="gallery-card gc2">
-      <img
-        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00002.jpeg"
-        alt="OCEAYR artwork"
-      >
-    </div>
-
-
-    <div class="gallery-card gc3">
-      <img
-        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00003.jpeg"
-        alt="OCEAYR artwork"
-      >
-    </div>
-
-
-    <div class="gallery-card gc4">
-      <img
-        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00004.jpeg"
-        alt="OCEAYR artwork"
-      >
-    </div>
-
-
-    <div class="gallery-card gc5">
-      <img
-        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00005.jpeg"
-        alt="OCEAYR artwork"
-      >
-    </div>
-
-
-    <div class="gallery-card gc6">
-      <img
-        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00006.jpeg"
-        alt="OCEAYR artwork"
-      >
-    </div>
-
-
-    <div class="gallery-card gc7">
-      <img
-        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00007.jpeg"
-        alt="OCEAYR artwork"
-      >
-    </div>
-
-
-    <div class="gallery-card gc8">
-      <img
-        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00008.jpeg"
-        alt="OCEAYR artwork"
-      >
-    </div>
-
-
-    <div class="gallery-card gc9">
-      <img
-        src="https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00009.jpeg"
-        alt="OCEAYR artwork"
-      >
-    </div>
-
+<section class="services-new" id="services">
+  <div class="services-top">
+    <div><p class="section-kicker">WHAT WE CREATE</p><h2>CREATIVE FOR<br><span>HOSPITALITY.</span></h2></div>
+    <p class="services-lead">Strategy, photography, film and digital content designed to make hospitality brands more desirable — and easier to choose.</p>
   </div>
-
+  <div class="service-grid">
+    <article class="service-card"><span>01</span><h3>CREATIVE<br>STRATEGY</h3><p>Brand positioning, campaign concepts, creative direction and content strategy.</p></article>
+    <article class="service-card"><span>02</span><h3>PHOTOGRAPHY</h3><p>Hotel, resort, food, lifestyle, architecture and interior photography.</p></article>
+    <article class="service-card"><span>03</span><h3>FILM &amp;<br>VIDEO</h3><p>Campaign films, property films, social reels and short-form visual stories.</p></article>
+    <article class="service-card"><span>04</span><h3>DIGITAL<br>CONTENT</h3><p>Social content, campaign assets, website visuals and launch-ready creative.</p></article>
+    <article class="service-card"><span>05</span><h3>CAMPAIGN<br>DIRECTION</h3><p>Seasonal campaigns, staycations, restaurant launches and destination experiences.</p></article>
+  </div>
+  <a class="section-cta" href="/contact">DISCUSS A PROJECT <span>→</span></a>
 </section>
 
-
-<!-- ======================================================
-     ABOUT
-====================================================== -->
-
-<section
-  class="about"
-  id="about"
->
-
-  <div class="about-grid">
-
-    <div>
-
-      <div class="eyebrow">
-        ABOUT OCEAYR
-      </div>
-
-      <h2 class="about-title">
-
-        CREATIVE
-
-        <span class="outline">
-          THINKING.
-        </span>
-
-      </h2>
-
+<section class="summer-section" id="summer">
+  <div class="summer-grid">
+    <div class="summer-heading"><p class="summer-kicker">OCEAYR SUMMER COLLABORATIONS 2026</p><h2>MAKE THIS<br><span>SUMMER VISIBLE.</span></h2></div>
+    <div class="summer-copy">
+      <p>OCEAYR is opening a limited number of paid summer collaboration slots for hotels, resorts, restaurants and lifestyle destinations across the UAE.</p>
+      <p>Created for brands looking to promote a summer experience, refresh their digital presence or build a premium content library for the months ahead.</p>
+      <p>Each collaboration is shaped around the property, audience and commercial objective — combining creative direction, photography, film and campaign-ready content.</p>
+      <div class="summer-benefits"><span>STRATEGIC CREATIVE DIRECTION</span><span>PREMIUM PHOTO &amp; VIDEO PRODUCTION</span><span>CAMPAIGN-READY DIGITAL CONTENT</span><span>PRIORITY SUMMER SCHEDULING</span></div>
+      <div class="summer-actions"><a class="summer-primary" href="/contact">APPLY FOR A SUMMER COLLABORATION <span>→</span></a><a class="summer-secondary" href="/contact">DISCUSS THE OPPORTUNITY</a></div>
+      <p class="summer-note">Paid collaborations. Limited production availability. Scope and investment are customised for each brand.</p>
     </div>
-
-
-    <div class="about-copy">
-
-      <h3>
-        Creative thinking.<br>
-        Premium execution.
-      </h3>
-
-      <p>
-
-        OCEAYR is a UAE creative marketing agency
-        focused on hospitality, food and lifestyle.
-
-      </p>
-
-      <p>
-
-        We bring together creative direction,
-        photography, film, campaign strategy and
-        digital content to help brands communicate
-        their experiences with greater impact.
-
-      </p>
-
-      <p>
-
-        Our approach is simple: understand the experience,
-        find the story and create work people want to stop
-        and look at.
-
-      </p>
-
-    </div>
-
   </div>
-
 </section>
 
-
-<!-- ======================================================
-     CONTACT
-====================================================== -->
-
-<section
-  class="contact"
-  id="contact"
->
-
-  <div class="contact-grid">
-
-
-    <div>
-
-      <div class="eyebrow">
-        START A PROJECT
-      </div>
-
-      <h2 class="contact-title">
-
-        LET'S
-
-        <span class="outline">
-          CREATE.
-        </span>
-
-      </h2>
-
-      <p class="contact-copy">
-
-        Tell us about your brand, your objectives and
-        the experience you want people to discover.
-
-        We'll review your brief and get back to you.
-
-      </p>
-
-      <div class="email-line">
-
-        <span>
-          Email
-        </span>
-
-        <a href="mailto:info@oceayr.com">
-          info@oceayr.com
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <!-- FORM -->
-
-    <div class="form">
-
-      <div id="formWrap">
-
-        <div class="form-grid">
-
-
-          <div class="field">
-
-            <label>
-              Your Name *
-            </label>
-
-            <input
-              type="text"
-              id="f-name"
-              placeholder="First & last name"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Company
-            </label>
-
-            <input
-              type="text"
-              id="f-company"
-              placeholder="Company name"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Email *
-            </label>
-
-            <input
-              type="email"
-              id="f-email"
-              placeholder="hello@company.com"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Mobile
-            </label>
-
-            <input
-              type="tel"
-              id="f-mobile"
-              placeholder="+971..."
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Brand Type
-            </label>
-
-            <select id="f-brand">
-
-              <option value="">
-                Select
-              </option>
-
-              <option>Hotel</option>
-              <option>Resort</option>
-              <option>Restaurant</option>
-              <option>Café</option>
-              <option>Lifestyle</option>
-              <option>Wellness</option>
-              <option>Other</option>
-
-            </select>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Service
-            </label>
-
-            <select id="f-service">
-
-              <option value="">
-                Select
-              </option>
-
-              <option>
-                Summer Collaboration
-              </option>
-
-              <option>
-                Creative Direction
-              </option>
-
-              <option>
-                Photography & Film
-              </option>
-
-              <option>
-                Campaign Strategy
-              </option>
-
-              <option>
-                Digital Content
-              </option>
-
-              <option>
-                Branding
-              </option>
-
-              <option>
-                Website
-              </option>
-
-              <option>
-                Other
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Location
-            </label>
-
-            <input
-              type="text"
-              id="f-location"
-              placeholder="Dubai, Abu Dhabi..."
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Website / Instagram
-            </label>
-
-            <input
-              type="text"
-              id="f-social"
-              placeholder="@yourbrand"
-            >
-
-          </div>
-
-
-          <div class="field full">
-
-            <label>
-              Tell Us About Your Project
-            </label>
-
-            <textarea
-              id="f-msg"
-              placeholder="Tell us what you are looking to create..."
-            ></textarea>
-
-          </div>
-
-        </div>
-
-
-        <button
-          type="button"
-          class="submit"
-          id="sendBtn"
-          onclick="sendForm()"
-        >
-
-          <span id="sendLabel">
-            Send Project Brief
-          </span>
-
-          <span>
-            →
-          </span>
-
-        </button>
-
-
-        <div class="form-note">
-          Your project information is kept confidential.
-        </div>
-
-      </div>
-
-
-      <div
-        class="success"
-        id="successMsg"
-      >
-
-        <h3>
-          BRIEF RECEIVED.
-        </h3>
-
-        <p>
-          Thank you for reaching out to OCEAYR.
-        </p>
-
-      </div>
-
-    </div>
-
+<section class="process-section">
+  <div class="process-head"><div><p class="section-kicker">HOW WE WORK</p><h2>FROM IDEA<br><span>TO IMPACT.</span></h2></div></div>
+  <div class="process-grid">
+    <div><b>01</b><h3>DISCOVERY</h3><p>We understand the brand, audience and commercial objective.</p></div>
+    <div><b>02</b><h3>DIRECTION</h3><p>We develop the campaign idea, mood and production plan.</p></div>
+    <div><b>03</b><h3>PRODUCTION</h3><p>Our team creates the photography, film and digital assets.</p></div>
+    <div><b>04</b><h3>DELIVERY</h3><p>Every asset is edited, organised and prepared for its intended channels.</p></div>
   </div>
-
 </section>
 
+<section class="about-snapshot">
+  <div><p class="section-kicker">ABOUT OCEAYR</p><h2>CREATIVE THINKING.<br><span>PREMIUM EXECUTION.</span></h2></div>
+  <div class="about-snapshot-copy"><p>OCEAYR is a UAE creative marketing agency focused on luxury hospitality, food and lifestyle brands. We help hotels, resorts, restaurants, cafés, wellness spaces and destination-led businesses communicate with greater clarity, desirability and commercial confidence.</p><a class="section-cta" href="/about">DISCOVER OCEAYR <span>→</span></a></div>
+</section>
 
-<!-- ======================================================
-     FOOTER
-====================================================== -->
+<section class="start-project-band">
+  <p class="section-kicker">READY WHEN YOU ARE</p>
+  <h2>START A<br><span>PROJECT.</span></h2>
+  <p>Tell us what you are building, launching or trying to make more desirable.</p>
+  <a class="start-project-btn" href="/contact">START A PROJECT <span>→</span></a>
+</section>
 
-<footer>
-
-  <span>
-    © 2026 OCEAYR Agency
-  </span>
-
-  <span>
-    Creative Marketing / Hospitality / Lifestyle
-  </span>
-
-  <a href="mailto:careers@oceayr.com">
-    Join The Team
-  </a>
-
+<footer class="footer">
+  <div class="footer-left"><span>copyright © 2026 OCEAYR Agency</span></div>
+  <div class="footer-links"><a href="/about">About</a><a href="/contact">Start A Project</a><a href="#summer">Summer Collaborations</a><a href="#" onclick="openJoinModal();return false;">Join The Team</a></div>
+  <span>Designed &amp; developed by OCEAYR Agency</span>
 </footer>
 
 
-<!-- ======================================================
-     LIGHTBOX
-====================================================== -->
-
-<div
-  class="lightbox"
-  id="lightbox"
->
-
-  <button
-    class="close-lightbox"
-    onclick="closeLightbox()"
-  >
-    Close
-  </button>
-
-  <img
-    id="lightboxImage"
-    src=""
-    alt=""
-  >
-
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
+  <button class="lb-close" onclick="closeLb()">✕ &nbsp;Close</button>
+  <img id="lbImg" src="" alt="">
+  <span class="lb-hint">Click backdrop or ESC to close</span>
 </div>
 
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <div class="modal-title">
+      ELEVATE<br>
+      <span>YOUR BRAND</span>
+    </div>
+
+    <div id="formWrap">
+      <div class="mf">
+        <div class="mf-field">
+          <label>Your Name *</label>
+          <input type="text" id="f-name" placeholder="First & Last name">
+        </div>
+
+        <div class="mf-field">
+          <label>Company</label>
+          <input type="text" id="f-company" placeholder="Your company">
+        </div>
+
+        <div class="mf-field">
+          <label>Email *</label>
+          <input type="email" id="f-email" placeholder="hello@company.com">
+        </div>
+
+        <div class="mf-field">
+          <label>Mobile</label>
+          <input type="tel" id="f-mobile" placeholder="+971 00 000 0000">
+        </div>
+
+        <div class="mf-field full">
+          <label>Tell us about your project</label>
+          <textarea id="f-msg" placeholder="What are you looking for?"></textarea>
+        </div>
+
+        <button class="mf-send" id="sendBtn" onclick="sendForm()">
+          <span id="sendLabel">Send Brief</span>
+          <span class="arr" id="sendArr">→</span>
+        </button>
+      </div>
+
+      <p class="mf-note" id="formNote">Sends directly to our team · We reply within 24 hours</p>
+    </div>
+
+    <div class="mf-success" id="successMsg">
+      <div class="tick">✓</div>
+      <p>We received your query and<br>will get back to you in 24 hrs.</p>
+      <small>Thank you for reaching out!</small>
+    </div>
+  </div>
+</div>
+
+<div class="social-floats" aria-label="Social links">
+  <a href="https://www.instagram.com/oceayr.agency?igsh=NWJoZDZoeW05YWZx" class="social-float ig-float" target="_blank" rel="noopener noreferrer" aria-label="Open OCEAYR Agency Instagram">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
+      <defs>
+        <filter id="goldSocialGlow" x="-55%" y="-55%" width="210%" height="210%">
+          <feGaussianBlur stdDeviation="1.05" result="blur"/>
+          <feColorMatrix in="blur" type="matrix"
+            values="0 0 0 0 1
+                    0 0 0 0 1
+                    0 0 0 0 1
+                    0 0 0 1.35 0" result="glow"/>
+          <feMerge>
+            <feMergeNode in="glow"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <rect class="ig-stroke" x="9.5" y="9.5" width="29" height="29" rx="8.4"></rect>
+      <circle class="ig-stroke" cx="24" cy="24" r="6.8"></circle>
+      <circle class="ig-dot" cx="33.1" cy="14.9" r="2.25"></circle>
+    </svg>
+  </a>
+
+  <a href="https://wa.me/971528749214" class="social-float wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
+      <path class="wa-line" d="M24.2 7.9c-8.8 0-16 7.1-16 15.8 0 3 .86 5.8 2.35 8.18L8.3 40.15l8.55-2.25a16.1 16.1 0 0 0 7.35 1.77c8.84 0 16-7.08 16-15.84S33.04 7.9 24.2 7.9Z"/>
+      <path class="wa-phone" d="M18.15 15.65c-.37-.83-.75-.85-1.1-.87h-.92c-.32 0-.84.12-1.28.59-.44.47-1.66 1.61-1.66 3.9 0 2.3 1.7 4.51 1.94 4.82.24.31 3.29 5.22 8.26 7.12 4.14 1.58 4.98 1.26 5.88 1.18.9-.08 2.9-1.16 3.31-2.28.41-1.12.41-2.08.29-2.28-.12-.2-.45-.33-.94-.57-.49-.24-2.9-1.41-3.35-1.57-.45-.16-.77-.24-1.1.24-.33.48-1.26 1.57-1.55 1.89-.29.32-.57.36-1.06.12-.49-.24-2.05-.75-3.9-2.37-1.44-1.27-2.42-2.84-2.7-3.32-.29-.48-.03-.74.22-.98.22-.22.49-.57.73-.86.24-.29.33-.49.49-.82.16-.32.08-.61-.04-.85-.12-.24-1.1-2.65-1.52-3.09Z"/>
+    </svg>
+  </a>
+
+  <a href="tel:+971528749214" class="social-float call-float" aria-label="Call OCEAYR Agency">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
+      <path class="call-line" d="M17.2 9.5c.8-.4 1.8-.1 2.2.7l3.1 6.2c.4.8.2 1.7-.5 2.2l-3.1 2.4c1.9 4.2 5.4 7.7 9.6 9.6l2.4-3.1c.5-.7 1.5-.9 2.2-.5l6.2 3.1c.8.4 1.1 1.4.7 2.2l-2.2 4.4c-.5 1-1.6 1.6-2.7 1.5-13.8-1.4-24.7-12.3-26.1-26.1-.1-1.1.5-2.2 1.5-2.7l4.7-2.3Z"/>
+    </svg>
+  </a>
+</div>
 
 <script>
+/* =========================
+   EMAILJS INIT
+========================= */
 
-/* =========================================================
-   HERO SLIDER
-========================================================= */
+emailjs.init({
+  publicKey:'MfKifkzUlPhOg2uQg'
+});
 
-const heroSlides =
-  document.querySelectorAll(
-    ".hero-slide"
-  );
+/* =========================
+   HERO VIDEO
+========================= */
 
-const heroDots =
-  document.querySelectorAll(
-    ".hero-dot"
-  );
+const bgv=document.getElementById('bgv');
 
-let heroIndex = 0;
+bgv.muted=true;
+bgv.load();
 
-let heroTimer;
+bgv.play().catch(()=>{
+  ['touchstart','click','pointerdown'].forEach(ev=>{
+    window.addEventListener(ev,()=>bgv.play().catch(()=>{}),{once:true});
+  });
+});
 
+/* =========================
+   GALLERY - LOUD.AE EXACT MOSAIC STYLE ONLY
+   Only the photo gallery implementation is replaced.
+========================= */
 
-function showHero(index){
+(function initGallery(){
 
-  heroIndex = index;
-
-  heroSlides.forEach(
-    (slide,i)=>{
-
-      slide.classList.toggle(
-        "active",
-        i === index
-      );
-
+  function ensureLenis(){
+    if(window.Lenis){
+      return Promise.resolve(true);
     }
-  );
 
+    return new Promise(resolve=>{
+      const s=document.createElement('script');
+      s.src='https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js';
+      s.onload=()=>resolve(true);
+      s.onerror=()=>resolve(false);
+      document.head.appendChild(s);
+    });
+  }
 
-  heroDots.forEach(
-    (dot,i)=>{
+  ensureLenis().then(()=>{
 
-      dot.classList.toggle(
-        "active",
-        i === index
-      );
+    const gallery=document.getElementById('gallery');
 
+    if(!gallery){
+      return;
     }
-  );
 
-}
+    gallery.innerHTML='';
 
-
-function nextHero(){
-
-  showHero(
-    (heroIndex + 1) %
-    heroSlides.length
-  );
-
-}
-
-
-heroDots.forEach(
-  dot=>{
-
-    dot.addEventListener(
-      "click",
-      ()=>{
-
-        showHero(
-          Number(
-            dot.dataset.slide
-          )
-        );
-
-        clearInterval(
-          heroTimer
-        );
-
-        heroTimer =
-          setInterval(
-            nextHero,
-            6500
-          );
-
-      }
+    const BASE='https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/';
+    const IMGS=Array.from({length:17},(_,i)=>
+      `${BASE}image${String(i+1).padStart(5,'0')}.jpeg`
     );
 
-  }
-);
+    const VW=window.innerWidth;
+    const mob=VW<=768;
 
+    const stage=document.createElement('div');
+    stage.className='g-stage';
+    gallery.appendChild(stage);
 
-showHero(0);
+    /*
+      Loud.ae gallery behaviour from the reference video:
+      - Not a strict clean grid.
+      - Large editorial cards.
+      - Sideways overlapping between neighbouring cards.
+      - Uneven vertical gaps.
+      - Some portrait, some landscape, some square-ish.
+      - Images rise upward on load.
+      - Cards can be dragged individually.
+      - Footer begins immediately after the last visible card.
+    */
 
-heroTimer =
-  setInterval(
-    nextHero,
-    6500
-  );
+    const desktopLayout=[
+      {i:0,  x:4.8,  y:0.0,   w:31.0, r:1.27, z:22, d:0},
+      {i:1,  x:38.0, y:-6.0,  w:25.8, r:1.30, z:28, d:40},
+      {i:2,  x:66.2, y:2.2,   w:32.8, r:.88,  z:20, d:70},
 
+      {i:3,  x:15.0, y:28.8,  w:31.8, r:.78,  z:40, d:110},
+      {i:4,  x:51.8, y:24.8,  w:30.4, r:.78,  z:42, d:150},
 
-/* =========================================================
-   VIDEO AUTOPLAY
-========================================================= */
+      {i:5,  x:7.2,  y:50.5,  w:34.0, r:1.02, z:52, d:190},
+      {i:6,  x:66.0, y:45.5,  w:33.5, r:.82,  z:50, d:230},
 
-const video =
-  document.getElementById(
-    "bgv"
-  );
+      {i:7,  x:40.5, y:63.0,  w:31.2, r:.98,  z:34, d:270},
+      {i:8,  x:72.0, y:68.8,  w:27.0, r:1.24, z:32, d:310},
 
+      {i:9,  x:4.8,  y:78.5,  w:31.0, r:.80,  z:24, d:350},
+      {i:10, x:30.4, y:91.0,  w:30.0, r:1.02, z:44, d:390},
+      {i:11, x:64.0, y:91.8,  w:28.5, r:.96,  z:46, d:430},
 
-function playVideo(){
+      {i:12, x:67.5, y:109.5, w:31.5, r:1.00, z:58, d:470},
+      {i:13, x:39.5, y:119.2, w:31.0, r:.76,  z:36, d:510},
+      {i:14, x:6.2,  y:119.5, w:29.8, r:1.24, z:38, d:550},
 
-  if(!video){
-    return;
-  }
+      {i:15, x:52.0, y:136.8, w:36.0, r:.76,  z:64, d:590},
+      {i:16, x:22.0, y:144.5, w:31.5, r:.92,  z:60, d:630}
+    ];
 
-  video.muted = true;
+    const mobileLayout=[
+      {i:0,  x:-4.0, y:0.0,   w:38.0, r:1.32, z:20, d:0},
+      {i:1,  x:31.0, y:-9.0,  w:35.0, r:1.42, z:30, d:35},
+      {i:2,  x:64.0, y:3.0,   w:39.0, r:.88,  z:22, d:70},
 
-  video.play().catch(
-    ()=>{}
-  );
+      {i:3,  x:13.0, y:34.0,  w:40.0, r:.78,  z:42, d:105},
+      {i:4,  x:49.0, y:29.0,  w:41.0, r:.78,  z:44, d:140},
 
-}
+      {i:5,  x:-2.0, y:56.0,  w:43.0, r:1.02, z:52, d:175},
+      {i:6,  x:59.0, y:52.0,  w:44.0, r:.82,  z:50, d:210},
 
+      {i:7,  x:29.0, y:73.0,  w:43.0, r:.98,  z:34, d:245},
+      {i:8,  x:68.0, y:82.0,  w:34.0, r:1.24, z:32, d:280},
 
-playVideo();
+      {i:9,  x:-6.0, y:92.0,  w:42.0, r:.80,  z:24, d:315},
+      {i:10, x:28.0, y:105.0, w:42.0, r:1.02, z:44, d:350},
+      {i:11, x:62.0, y:106.0, w:39.0, r:.96,  z:46, d:385},
 
+      {i:12, x:55.0, y:129.0, w:46.0, r:1.00, z:58, d:420},
+      {i:13, x:30.0, y:139.0, w:43.0, r:.76,  z:36, d:455},
+      {i:14, x:-5.0, y:137.0, w:40.0, r:1.24, z:38, d:490},
 
-[
-  "touchstart",
-  "pointerdown",
-  "click"
-].forEach(
-  eventName=>{
+      {i:15, x:48.0, y:162.0, w:50.0, r:.76,  z:64, d:525},
+      {i:16, x:12.0, y:168.0, w:43.0, r:.92,  z:60, d:560}
+    ];
 
-    window.addEventListener(
-      eventName,
-      playVideo,
-      {
-        once:true,
-        passive:true
+    const layout=mob ? mobileLayout : desktopLayout;
+    const cards=[];
+    const dragOffsets=[];
+    let maxBottom=0;
+
+    layout.forEach((cfg,index)=>{
+
+      const left=cfg.x*VW/100;
+      const top=cfg.y*VW/100;
+      const width=cfg.w*VW/100;
+      const height=width*cfg.r;
+
+      const card=document.createElement('div');
+      card.className='g-card';
+      card.dataset.dragIndex=String(index);
+      card.style.left=left+'px';
+      card.style.top=top+'px';
+      card.style.width=width+'px';
+      card.style.height=height+'px';
+      card.style.zIndex=String(cfg.z);
+
+      const inner=document.createElement('div');
+      inner.className='g-inner';
+      inner.style.transitionDelay=cfg.d+'ms';
+
+      const img=document.createElement('img');
+      const src=IMGS[cfg.i];
+
+      img.alt='Work '+(cfg.i+1);
+      img.decoding='async';
+      img.width=Math.round(width);
+      img.height=Math.round(height);
+
+      function revealIfReady(){
+        if(card.dataset.imgReady==='1' && card.dataset.inView==='1'){
+          img.classList.add('vis');
+          card.classList.add('is-loaded');
+        }
       }
-    );
 
-  }
-);
+      const markImageReady=()=>{
+        card.dataset.imgReady='1';
+        revealIfReady();
+      };
 
+      img.addEventListener('load',markImageReady,{once:true});
 
-/* =========================================================
-   NAVIGATION — DARK/LIGHT READABILITY
-========================================================= */
+      if(index<8){
+        img.src=src;
+        img.loading='eager';
 
-const nav =
-  document.querySelector(
-    ".site-nav"
-  );
+        if(index<4){
+          img.setAttribute('fetchpriority','high');
+        }
 
+        if(img.complete&&img.naturalWidth){
+          markImageReady();
+        }
+      }else{
+        img.dataset.src=src;
+        img.loading='lazy';
+      }
 
-const darkSections =
-  document.querySelectorAll(
-    ".video-section, .summer, .shuffle-bar, .gallery, .contact"
-  );
+      inner.appendChild(img);
+      card.appendChild(inner);
+      stage.appendChild(card);
 
+      cards.push(card);
+      dragOffsets.push({x:0,y:0,moved:false});
 
-const navObserver =
-  new IntersectionObserver(
-    entries=>{
+      maxBottom=Math.max(maxBottom,top+height);
+    });
 
-      let dark = false;
+    /*
+      No blank bottom:
+      The gallery height is based only on the last card's real bottom.
+      A tiny buffer keeps the footer clean without creating dead space.
+    */
+    /*
+      Keep enough height for slow continuous upward gallery movement,
+      but avoid a large empty area before the footer.
+    */
+    gallery.style.height=Math.ceil(maxBottom+(mob?70:110))+'px';
 
-      entries.forEach(
-        entry=>{
+    const imageObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const img=entry.target;
 
-          if(
-            entry.isIntersecting
-          ){
-
-            dark = true;
-
+          if(img.dataset.src){
+            img.src=img.dataset.src;
+            img.removeAttribute('data-src');
           }
 
+          imageObserver.unobserve(img);
         }
-      );
+      });
+    },{rootMargin:'700px 0px'});
 
+    stage.querySelectorAll('img[data-src]').forEach(img=>imageObserver.observe(img));
 
-      if(dark){
+    /*
+      Loud.ae-style upward reveal:
+      cards do not animate when the page first loads above the fold.
+      Each visible row/card rises upward when it enters the viewport,
+      creating the loaded upward movement seen in the reference.
+    */
+    const revealObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const card=entry.target;
+          card.dataset.inView='1';
 
-        nav.classList.remove(
-          "light"
-        );
+          const img=card.querySelector('img');
 
+          if(img && img.dataset.src){
+            img.src=img.dataset.src;
+            img.removeAttribute('data-src');
+          }
+
+          if(card.dataset.imgReady==='1'){
+            img.classList.add('vis');
+            card.classList.add('is-loaded');
+          }
+
+          revealObserver.unobserve(card);
+        }
+      });
+    },{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+
+    cards.forEach(card=>revealObserver.observe(card));
+
+    IMGS.slice(0,8).forEach((src,index)=>{
+      const link=document.createElement('link');
+      link.rel='preload';
+      link.as='image';
+      link.href=src;
+      if(index<4){
+        link.setAttribute('fetchpriority','high');
       }
+      document.head.appendChild(link);
+    });
 
-      else{
+    const lenis=window.Lenis ? new Lenis({
+      lerp:.085,
+      smoothWheel:true,
+      smoothTouch:false
+    }) : null;
 
-        nav.classList.add(
-          "light"
-        );
+    if(window.interact){
+      interact('.g-card').draggable({
+        inertia:true,
+        listeners:{
+          start(e){
+            const i=parseInt(e.target.dataset.dragIndex,10);
 
-      }
-
-    },
-    {
-      threshold:.18
-    }
-  );
-
-
-darkSections.forEach(
-  section=>{
-    navObserver.observe(
-      section
-    );
-  }
-);
-
-
-/* =========================================================
-   ACTIVE NAV
-========================================================= */
-
-const navLinks =
-  document.querySelectorAll(
-    ".site-nav a:not(.project)"
-  );
-
-const pageSections =
-  document.querySelectorAll(
-    "section[id]"
-  );
-
-
-const sectionObserver =
-  new IntersectionObserver(
-    entries=>{
-
-      entries.forEach(
-        entry=>{
-
-          if(
-            entry.isIntersecting
-          ){
-
-            navLinks.forEach(
-              link=>{
-                link.classList.remove(
-                  "active"
-                );
-              }
-            );
-
-
-            const link =
-              document.querySelector(
-                `.site-nav a[href="#${entry.target.id}"]`
-              );
-
-
-            if(link){
-
-              link.classList.add(
-                "active"
-              );
-
+            if(dragOffsets[i]){
+              dragOffsets[i].moved=false;
             }
 
+            if(lenis&&typeof lenis.stop==='function'){
+              lenis.stop();
+            }
+
+            e.target.style.zIndex='9999';
+          },
+
+          move(e){
+            const i=parseInt(e.target.dataset.dragIndex,10);
+            const d=dragOffsets[i];
+
+            if(!d){
+              return;
+            }
+
+            d.x+=e.dx;
+            d.y+=e.dy;
+
+            if(Math.abs(d.x)>4||Math.abs(d.y)>4){
+              d.moved=true;
+            }
+
+            e.target.style.transform=`translate3d(${d.x}px,${d.y}px,0)`;
+          },
+
+          end(e){
+            const i=parseInt(e.target.dataset.dragIndex,10);
+            const d=dragOffsets[i];
+
+            e.target.dataset.wasDragged=d&&d.moved?'1':'0';
+
+            setTimeout(()=>{
+              e.target.dataset.wasDragged='0';
+            },150);
+
+            if(lenis&&typeof lenis.start==='function'){
+              lenis.start();
+            }
           }
-
         }
-      );
-
-    },
-    {
-      rootMargin:
-        "-40% 0px -50% 0px"
+      });
     }
-  );
 
-
-pageSections.forEach(
-  section=>{
-    sectionObserver.observe(
-      section
-    );
-  }
-);
-
-
-/* =========================================================
-   GALLERY — OVERLAPPING + UPWARD MOVEMENT
-========================================================= */
-
-const gallery =
-  document.querySelector(
-    ".gallery"
-  );
-
-const galleryStage =
-  document.querySelector(
-    ".gallery-stage"
-  );
-
-
-const galleryCards =
-  document.querySelectorAll(
-    ".gallery-card"
-  );
-
-
-/*
-   Individual vertical starting offsets.
-   These create the layered collage.
-*/
-
-const baseOffsets = [
-
-  45,
-  -5,
-  70,
-  110,
-  45,
-  80,
-  125,
-  50,
-  80
-
-];
-
-
-function updateGallery(){
-
-  if(!gallery){
-    return;
-  }
-
-
-  const rect =
-    gallery.getBoundingClientRect();
-
-  const viewport =
-    window.innerHeight;
-
-
-  /*
-     Progress while the gallery moves
-     through the viewport.
-  */
-
-  const progress =
-    Math.max(
-      0,
-      Math.min(
-        1,
-        (viewport - rect.top) /
-        (viewport + rect.height)
-      )
-    );
-
-
-  /*
-     Strong upward movement.
-  */
-
-  const movement =
-    progress *
-    (
-      window.innerWidth <= 768
-        ? 260
-        : 360
-    );
-
-
-  galleryCards.forEach(
-    (card,index)=>{
-
-      const individual =
-        baseOffsets[index] || 0;
-
-      /*
-         Different speeds create depth.
-      */
-
-      const depth =
-        0.65 +
-        (
-          index % 4
-        ) *
-        .10;
-
-
-      const y =
-        individual -
-        movement *
-        depth;
-
-
-      card.style.transform =
-        `translate3d(0,${y}px,0)`;
-
-    }
-  );
-
-}
-
-
-let galleryTick =
-  false;
-
-
-function requestGalleryUpdate(){
-
-  if(!galleryTick){
-
-    requestAnimationFrame(
-      ()=>{
-
-        updateGallery();
-
-        galleryTick =
-          false;
-
-      }
-    );
-
-    galleryTick =
-      true;
-
-  }
-
-}
-
-
-window.addEventListener(
-  "scroll",
-  requestGalleryUpdate,
-  {
-    passive:true
-  }
-);
-
-
-window.addEventListener(
-  "resize",
-  requestGalleryUpdate
-);
-
-
-updateGallery();
-
-
-/* =========================================================
-   GALLERY LIGHTBOX
-========================================================= */
-
-galleryCards.forEach(
-  card=>{
-
-    card.addEventListener(
-      "click",
-      ()=>{
-
-        const image =
-          card.querySelector(
-            "img"
-          );
-
-        if(!image){
+    cards.forEach((card,index)=>{
+      card.addEventListener('click',()=>{
+        if(card.dataset.wasDragged==='1'){
           return;
         }
 
-        const lightbox =
-          document.getElementById(
-            "lightbox"
-          );
+        openLb(IMGS[layout[index].i]);
+      });
+    });
 
-        const lightboxImage =
-          document.getElementById(
-            "lightboxImage"
-          );
+    let lastTime=performance.now();
+    let autoUp=0;
+    let maxAutoUp=0;
 
+    function recalcMovementLimit(){
+      /*
+        This creates a safe movement limit based on the added gallery buffer.
+        It prevents the last row from moving too far up and leaving a large blank bottom.
+      */
+      maxAutoUp=mob ? 44 : 74;
+    }
 
-        lightboxImage.src =
-          image.src;
+    recalcMovementLimit();
+    window.addEventListener('resize',recalcMovementLimit);
 
+    function getGalleryTop(){
+      let el=gallery;
+      let top=0;
 
-        lightbox.classList.add(
-          "open"
-        );
-
-
-        document.body.style.overflow =
-          "hidden";
-
+      while(el){
+        top+=el.offsetTop;
+        el=el.offsetParent;
       }
-    );
 
+      return top;
+    }
+
+    /*
+      Continuous loud.ae-style upward movement:
+      - stage moves slowly upward all the time when gallery is visible
+      - scroll still works normally
+      - cards keep the same overlap and gaps because the whole stage moves together
+      - dragging still works because drag transform remains on each card
+    */
+    function raf(time){
+
+      if(lenis){
+        lenis.raf(time);
+      }
+
+      const delta=Math.min(40,time-lastTime);
+      lastTime=time;
+
+      const scrollY=window.scrollY || window.pageYOffset || 0;
+      const vh=window.innerHeight || document.documentElement.clientHeight;
+      const gTop=getGalleryTop();
+      const gBottom=gTop+gallery.offsetHeight;
+
+      const galleryIsNear=scrollY+vh>gTop-120 && scrollY<gBottom+120;
+
+      if(galleryIsNear){
+        autoUp+=delta*(mob?0.010:0.014);
+
+        if(autoUp>maxAutoUp){
+          autoUp=maxAutoUp;
+        }
+      }
+
+      /*
+        Additional small scroll-linked upward movement.
+        This keeps movement visible while scrolling without breaking layout.
+      */
+      const localScroll=Math.max(0,scrollY-gTop);
+      const scrollUp=Math.min(maxAutoUp,localScroll*(mob?0.045:0.055));
+
+      stage.style.transform=`translate3d(0,${-(autoUp+scrollUp)}px,0)`;
+
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+  });
+
+})();
+
+function toggleContactInfo(event){
+  event.preventDefault();
+  event.stopPropagation();
+
+  const contactNav=document.getElementById('contactNav');
+
+  if(contactNav){
+    contactNav.classList.toggle('open');
   }
-);
-
-
-function closeLightbox(){
-
-  const lightbox =
-    document.getElementById(
-      "lightbox"
-    );
-
-
-  lightbox.classList.remove(
-    "open"
-  );
-
-
-  document.body.style.overflow =
-    "";
-
 }
 
+document.addEventListener('click',event=>{
+  const contactNav=document.getElementById('contactNav');
 
-document
-  .getElementById("lightbox")
-  .addEventListener(
-    "click",
-    event=>{
-
-      if(
-        event.target.id ===
-        "lightbox"
-      ){
-
-        closeLightbox();
-
-      }
-
-    }
-  );
-
-
-document.addEventListener(
-  "keydown",
-  event=>{
-
-    if(
-      event.key ===
-      "Escape"
-    ){
-
-      closeLightbox();
-
-    }
-
+  if(contactNav && !contactNav.contains(event.target)){
+    contactNav.classList.remove('open');
   }
-);
-
-
-/* =========================================================
-   EMAILJS
-========================================================= */
-
-emailjs.init({
-  publicKey:
-    "MfKifkzUlPhOg2uQg"
 });
 
+/* =========================
+   LIGHTBOX
+========================= */
+
+function openLb(src){
+
+  document.getElementById('lbImg').src=src;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeLb(){
+
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow='';
+
+  setTimeout(()=>{
+    document.getElementById('lbImg').src='';
+  },300);
+}
+
+/* =========================
+   MODAL
+========================= */
+
+function openModal(){
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+
+  setTimeout(()=>{
+
+    ['f-name','f-company','f-email','f-mobile','f-msg'].forEach(id=>{
+      const el=document.getElementById(id);
+      if(el)el.value='';
+    });
+
+    document.getElementById('formWrap').style.display='';
+    document.getElementById('successMsg').style.display='none';
+
+    const btn=document.getElementById('sendBtn');
+
+    btn.disabled=false;
+
+    document.getElementById('sendLabel').textContent='Send Brief';
+    document.getElementById('sendArr').textContent='→';
+    document.getElementById('formNote').style.display='';
+
+  },400);
+}
+
+function openJoinModal(){
+
+  alert('Join The Team — coming soon!\nEmail: careers@oceayr.com');
+}
+
+document.addEventListener('keydown',e=>{
+
+  if(e.key==='Escape'){
+    closeLb();
+    closeModal();
+  }
+});
+
+/* =========================
+   EMAILJS SEND FORM
+========================= */
 
 async function sendForm(){
 
-  const name =
-    document
-      .getElementById(
-        "f-name"
-      )
-      .value
-      .trim();
+  const n=document.getElementById('f-name').value.trim();
+  const em=document.getElementById('f-email').value.trim();
+  const co=document.getElementById('f-company').value.trim();
+  const mo=document.getElementById('f-mobile').value.trim();
+  const ms=document.getElementById('f-msg').value.trim();
 
-
-  const email =
-    document
-      .getElementById(
-        "f-email"
-      )
-      .value
-      .trim();
-
-
-  if(!name || !email){
-
-    alert(
-      "Please enter your name and email."
-    );
-
+  if(!n || !em){
+    alert('Name and Email are required');
     return;
-
   }
 
+  const btn=document.getElementById('sendBtn');
 
-  const button =
-    document.getElementById(
-      "sendBtn"
-    );
+  btn.disabled=true;
 
+  document.getElementById('sendLabel').textContent='Sending...';
+  document.getElementById('sendArr').textContent='…';
 
-  const label =
-    document.getElementById(
-      "sendLabel"
-    );
-
-
-  button.disabled =
-    true;
-
-
-  label.textContent =
-    "Sending...";
-
-
-  const templateParams = {
-
-    name:name,
-
-    email:email,
-
-    company:
-      document.getElementById(
-        "f-company"
-      ).value.trim(),
-
-    mobile:
-      document.getElementById(
-        "f-mobile"
-      ).value.trim(),
-
-    brand_type:
-      document.getElementById(
-        "f-brand"
-      ).value,
-
-    service:
-      document.getElementById(
-        "f-service"
-      ).value,
-
-    location:
-      document.getElementById(
-        "f-location"
-      ).value.trim(),
-
-    website_instagram:
-      document.getElementById(
-        "f-social"
-      ).value.trim(),
-
-    message:
-      document.getElementById(
-        "f-msg"
-      ).value.trim(),
-
-    reply_to:
-      email
-
+  const params={
+    name:n,
+    email:em,
+    company:co || 'Not provided',
+    mobile:mo || 'Not provided',
+    message:ms || 'No message provided',
+    time:new Date().toLocaleString(),
+    reply_to:em
   };
-
 
   try{
 
-    await emailjs.send(
-      "service_r4vas1a",
-      "template_vku1h9b",
-      templateParams
+    const result=await emailjs.send(
+      'service_r4vas1a',
+      'template_vku1h9b',
+      params
     );
 
+    console.log('EmailJS Success:',result);
 
-    document.getElementById(
-      "formWrap"
-    ).style.display =
-      "none";
+    document.getElementById('formWrap').style.display='none';
+    document.getElementById('formNote').style.display='none';
+    document.getElementById('successMsg').style.display='block';
 
+    setTimeout(closeModal,3500);
 
-    document.getElementById(
-      "successMsg"
-    ).style.display =
-      "block";
+  }catch(err){
 
-  }
+    console.error('EmailJS Error:',err);
 
-  catch(error){
+    btn.disabled=false;
 
-    console.error(
-      error
-    );
-
-
-    button.disabled =
-      false;
-
-
-    label.textContent =
-      "Try Again";
-
+    document.getElementById('sendLabel').textContent='Error — Try Again';
+    document.getElementById('sendArr').textContent='→';
 
     alert(
-      "Unable to send the enquiry. Please email info@oceayr.com."
+      'EmailJS Error:\n\n' +
+      (err.text || err.message || JSON.stringify(err))
     );
-
   }
-
 }
+</script>
 
+
+<script>
+/* Open Join The Team when linked from About or Contact pages */
+window.addEventListener('DOMContentLoaded',()=>{
+  const params=new URLSearchParams(window.location.search);
+
+  if(params.get('open')==='join'){
+    setTimeout(()=>{
+      openJoinModal();
+    },250);
+
+    const cleanUrl=
+      window.location.pathname +
+      window.location.hash;
+
+    window.history.replaceState({},document.title,cleanUrl);
+  }
+});
 </script>
 
 </body>
 </html>
+
