@@ -1,15 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>OCEAYR | Agency</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Bebas+Neue&family=Fjalla+One&family=Kanit:wght@700;900&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&amp;family=Bebas+Neue&amp;family=Fjalla+One&amp;family=Kanit:wght@700;900&amp;family=Bodoni+Moda:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-
 <style>
 *,*::before,*::after{
   box-sizing:border-box;
@@ -430,9 +428,9 @@ nav a:hover::after{
 /* FEATURED LANDING SLIDER */
 (function initLandingSlider(){
   const slides=[
-    {kicker:'OCEAYR SUMMER COLLABORATIONS 2026',title:'MAKE THIS<br><span>SUMMER VISIBLE.</span>',desc:'Limited paid collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.',primary:'EXPLORE SUMMER COLLABORATIONS',primaryHref:'#summer',secondary:'START A PROJECT',secondaryHref:'/contact'},
-    {kicker:'CREATIVE FOR HOSPITALITY',title:'MAKE YOUR<br><span>BRAND DESIRABLE.</span>',desc:'Strategy, photography, film and digital content designed around the guest, the experience and the commercial objective.',primary:'EXPLORE SERVICES',primaryHref:'#services',secondary:'START A PROJECT',secondaryHref:'/contact'},
-    {kicker:'OCEAYR — CREATIVE MARKETING AGENCY',title:'MORE THAN CONTENT.<br>MORE THAN TRENDS.<br><span>WE CREATE DEMAND.</span>',desc:'A UAE creative marketing agency helping hotels, resorts, restaurants and lifestyle brands build desirability through strategy, photography, film and digital content.',primary:'EXPLORE OUR WORK',primaryHref:'#gallery',secondary:'START A PROJECT',secondaryHref:'/contact'}
+    {kicker:'OCEAYR SUMMER COLLABORATIONS 2026',title:'MAKE THIS<br><span>SUMMER VISIBLE.</span>',desc:'Limited summer collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.',primary:'EXPLORE SUMMER COLLABORATIONS',primaryHref:'#home',secondary:'START A PROJECT',secondaryHref:'/contact'},
+    {kicker:'02 / HOSPITALITY STORYTELLING',title:'TURN STAYS<br><span>INTO STORIES.</span>',desc:'Create a visual world around the stay — from arrival and interiors to poolside moments, dining and the details guests remember.',primary:'EXPLORE SERVICES',primaryHref:'#services',secondary:'START A PROJECT',secondaryHref:'/contact'},
+    {kicker:'03 / BRAND DESIRABILITY',title:'MAKE EVERY<br><span>DETAIL DESIRABLE.</span>',desc:'Photography, film and digital experiences designed to make your property, restaurant or lifestyle brand easier to discover and choose.',primary:'START A PROJECT',primaryHref:'/contact',secondary:'EXPLORE OUR WORK',secondaryHref:'#gallery'}
   ];
   const bgs=[...document.querySelectorAll('.slide-bg')],dots=[...document.querySelectorAll('.slide-dot')];
   const kicker=document.getElementById('landingKicker'),title=document.getElementById('landingTitle'),desc=document.getElementById('landingDescription'),primary=document.getElementById('landingPrimary'),secondary=document.getElementById('landingSecondary'),number=document.getElementById('slideNumber');
@@ -1636,7 +1634,9 @@ html,body{background:#F7F6F2;color:#111;}
 
 .landing-slider{position:relative;min-height:clamp(620px,92vh,900px);overflow:hidden;background:#EFEDE7;color:#111;}
 .slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.03);transition:opacity .9s ease,transform 1.4s ease;}.slide-bg.active{opacity:1;transform:scale(1);}
-.slide-bg-1{background-image:url('https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00014.jpeg?v=10');}.slide-bg-2{background-image:url('https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00005.jpeg?v=10');}.slide-bg-3{background-image:url('https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/image00012.jpeg?v=10');}
+.slide-bg-1{background-image:url('https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2200&q=90') !important;}
+.slide-bg-2{background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2200&q=90') !important;}
+.slide-bg-3{background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2200&q=90') !important;}
 .slide-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(247,246,242,.97) 0%,rgba(247,246,242,.88) 43%,rgba(247,246,242,.18) 76%,rgba(247,246,242,.04) 100%);}
 .landing-content{position:relative;z-index:2;min-height:clamp(620px,92vh,900px);display:flex;align-items:flex-end;justify-content:space-between;padding:0 7vw 7vh;}.landing-copy{max-width:820px;padding-bottom:20px;}.landing-kicker,.section-kicker{font-size:9px;letter-spacing:.48em;text-transform:uppercase;opacity:.48;margin-bottom:24px;}.landing-copy h1{font-family:'Fjalla One',sans-serif;font-size:clamp(70px,9.3vw,154px);line-height:.84;text-transform:uppercase;}.landing-copy h1 span{color:transparent;-webkit-text-stroke:1px #111;}.landing-description{max-width:640px;margin-top:30px;font-size:clamp(15px,1.25vw,19px);line-height:1.7;color:#4f4f4f;}.landing-actions{display:flex;align-items:center;gap:22px;margin-top:32px;flex-wrap:wrap;}.landing-primary{display:inline-flex;align-items:center;justify-content:space-between;gap:40px;background:#111;color:#fff;text-decoration:none;padding:18px 21px;font-size:9px;letter-spacing:.28em;text-transform:uppercase;}.landing-secondary{color:#111;text-decoration:none;font-size:9px;letter-spacing:.3em;text-transform:uppercase;border-bottom:1px solid #111;padding-bottom:5px;}.landing-meta{display:flex;flex-direction:column;align-items:flex-end;gap:18px;padding-bottom:25px;}.slide-count{font-size:10px;letter-spacing:.3em;}.slide-controls{display:flex;gap:9px;}.slide-dot{width:36px;height:2px;border:0;background:rgba(17,17,17,.25);cursor:pointer;padding:0;transition:all .3s;}.slide-dot.active{background:#111;width:58px;}
 
@@ -2061,8 +2061,124 @@ html,body{background:#F7F6F2;color:#111;}
   }
 }
 
-</style>
 
+/* ==========================================================
+   OCEAYR FINAL POLISH — 19 AUG 2026
+   Only requested refinements: transparent OR logo, video first,
+   three full-image slides below video, tighter spacing, refined titles.
+========================================================== */
+:root{--bg:#F7F6F2;--soft:#EFEDE7;--ink:#111;--muted:#5D5D59;--line:#D7D5CF;}
+html,body{background:var(--bg)!important;color:var(--ink)!important;overflow-x:hidden!important;}
+
+/* Transparent OR logo — no white box */
+.logo{position:fixed!important;z-index:5000!important;left:28px!important;top:18px!important;width:94px!important;height:70px!important;background:transparent!important;padding:0!important;box-shadow:none!important;}
+.logo img{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important;background:transparent!important;}
+.logo.on-dark img{filter:invert(1)!important;}
+
+/* Navigation stays clean — no box */
+.site-nav{position:fixed!important;z-index:4900!important;top:30px!important;left:130px!important;right:18px!important;width:auto!important;display:flex!important;justify-content:flex-end!important;align-items:center!important;gap:clamp(13px,2.25vw,36px)!important;background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;white-space:nowrap!important;}
+.site-nav a{color:#222!important;opacity:.78!important;text-decoration:none!important;position:relative!important;padding:0 0 6px!important;font-size:clamp(8px,.72vw,11px)!important;letter-spacing:.20em!important;}
+.site-nav a:hover,.site-nav a:focus-visible{opacity:1!important;}
+.site-nav a::after{content:""!important;position:absolute!important;left:0!important;bottom:0!important;width:0!important;height:1.5px!important;background:#111!important;transition:width .28s ease!important;}
+.site-nav a:hover::after,.site-nav a:focus-visible::after,.site-nav a.active::after{width:100%!important;}
+.site-nav .nav-cta{border:1px solid rgba(17,17,17,.40)!important;padding:13px 18px!important;min-width:145px!important;text-align:center!important;opacity:1!important;}
+.site-nav .nav-cta::after{display:none!important;}
+.site-nav.on-dark a{color:#fff!important;}.site-nav.on-dark a::after{background:#fff!important;}.site-nav.on-dark .nav-cta{border-color:rgba(255,255,255,.65)!important;color:#fff!important;}
+
+/* VIDEO FIRST — unchanged clean GitHub video behaviour */
+.hero-video-section{order:1!important;position:relative!important;width:100%!important;height:100vh!important;min-height:680px!important;overflow:hidden!important;background:#000!important;display:flex!important;align-items:center!important;justify-content:center!important;margin:0!important;padding:0!important;}
+.hero-video-section video{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:50% 50%!important;opacity:.52!important;filter:none!important;transform:none!important;display:block!important;}
+.hero-video-section h1{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;width:100%!important;margin:0!important;padding:0 16px!important;font-family:'Inter',sans-serif!important;font-size:clamp(68px,11vw,175px)!important;font-weight:900!important;line-height:.82!important;letter-spacing:normal!important;text-align:center!important;color:#fff!important;z-index:20!important;}
+.hero-video-section h1 .outline{color:transparent!important;-webkit-text-fill-color:transparent!important;-webkit-text-stroke:1.25px #fff!important;}
+
+/* SLIDES DIRECTLY BELOW VIDEO — no oversized blank area */
+.landing-slider{order:2!important;position:relative!important;min-height:0!important;height:min(82vh,820px)!important;overflow:hidden!important;background:#111!important;color:#fff!important;margin:0!important;}
+.slide-bg{position:absolute!important;inset:0!important;background-size:cover!important;background-repeat:no-repeat!important;background-position:center!important;opacity:0!important;transform:scale(1.015)!important;transition:opacity .75s ease,transform 1.1s ease!important;}
+.slide-bg.active{opacity:1!important;transform:scale(1)!important;}
+.slide-overlay{display:none!important;background:none!important;}
+.landing-content{min-height:100%!important;height:100%!important;padding:0 5vw 6vh!important;display:flex!important;align-items:flex-end!important;justify-content:space-between!important;position:relative!important;z-index:2!important;}
+.landing-copy{max-width:min(760px,78vw)!important;background:rgba(10,10,10,.42)!important;backdrop-filter:blur(3px)!important;-webkit-backdrop-filter:blur(3px)!important;padding:28px 30px 30px!important;color:#fff!important;box-shadow:none!important;}
+.landing-kicker{font-size:10px!important;letter-spacing:.40em!important;text-transform:uppercase!important;color:#fff!important;opacity:.82!important;margin-bottom:20px!important;}
+.landing-copy h1{font-family:'Bebas Neue',sans-serif!important;font-size:clamp(70px,8.8vw,145px)!important;line-height:.83!important;letter-spacing:.01em!important;color:#fff!important;text-transform:uppercase!important;}
+.landing-copy h1 span{color:transparent!important;-webkit-text-stroke:1px rgba(255,255,255,.95)!important;}
+.landing-description{max-width:650px!important;margin-top:24px!important;font-size:clamp(14px,1.15vw,18px)!important;line-height:1.65!important;color:rgba(255,255,255,.88)!important;}
+.landing-actions{margin-top:25px!important;display:flex!important;align-items:center!important;gap:18px!important;flex-wrap:wrap!important;}
+.landing-primary{background:#fff!important;color:#111!important;padding:17px 20px!important;min-width:290px!important;}
+.landing-secondary{color:#fff!important;border-bottom:1px solid rgba(255,255,255,.85)!important;}
+.landing-meta{padding-bottom:8px!important;color:#fff!important;align-items:flex-end!important;}
+.slide-dot{background:rgba(255,255,255,.42)!important;}.slide-dot.active{background:#fff!important;}
+.slide-count{color:#fff!important;}
+
+/* Clean, compact visual-direction intro */
+.selected-intro{order:3!important;background:var(--bg)!important;padding:74px 7vw 42px!important;display:grid!important;grid-template-columns:1fr .75fr!important;gap:7vw!important;align-items:end!important;}
+.section-kicker{font-size:9px!important;letter-spacing:.42em!important;}
+.selected-intro h2,.services-top h2,.process-head h2,.about-snapshot h2,.start-project-band h2,.summer-heading h2{font-family:'Bebas Neue',sans-serif!important;font-weight:400!important;letter-spacing:.015em!important;}
+.selected-intro h2{font-size:clamp(60px,7vw,120px)!important;line-height:.84!important;}
+
+/* Shuffle strip remains immediately above gallery */
+.ticker-section{order:4!important;background:var(--bg)!important;margin:0!important;padding:0!important;position:relative!important;z-index:300!important;}
+.ticker-wrap{border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important;overflow:hidden!important;background:var(--bg)!important;height:116px!important;display:flex!important;align-items:center!important;}
+.ticker-track span{color:#111!important;font-family:'Bebas Neue',sans-serif!important;font-size:clamp(48px,6vw,100px)!important;line-height:.9!important;letter-spacing:.02em!important;}
+
+/* Gallery: starts after ticker, no upward collision */
+.gallery-section{order:5!important;position:relative!important;z-index:20!important;margin:0!important;padding:0!important;background:#111!important;overflow:visible!important;isolation:isolate!important;}
+.gallery-section::before{display:none!important;}
+.g-stage{position:relative!important;z-index:1!important;overflow:visible!important;}
+
+/* Remaining sections — tighter, premium typography */
+.services-new{order:6!important;background:var(--soft)!important;color:#111!important;padding:96px 7vw 100px!important;}
+.services-top h2,.process-head h2,.about-snapshot h2,.start-project-band h2{font-size:clamp(64px,8vw,135px)!important;line-height:.82!important;}
+.service-card h3,.process-grid h3{font-family:'Bebas Neue',sans-serif!important;font-weight:400!important;letter-spacing:.015em!important;}
+.service-card h3{font-size:36px!important;line-height:.9!important;}
+.process-section{order:7!important;background:var(--bg)!important;padding:96px 7vw 100px!important;}
+.process-grid h3{font-size:36px!important;}
+.about-snapshot{order:8!important;background:#111!important;color:#fff!important;padding:100px 7vw!important;}
+.about-snapshot h2{font-size:clamp(58px,7.4vw,122px)!important;line-height:.82!important;}
+.start-project-band{order:9!important;padding:100px 7vw 115px!important;}
+.footer{order:10!important;}
+
+/* Prevent accidental giant gaps caused by nested/empty sections */
+main,body>section{margin-bottom:0!important;}
+
+@media(max-width:900px){
+  .logo{left:16px!important;top:16px!important;width:76px!important;height:56px!important;}
+  .site-nav{left:105px!important;right:10px!important;top:20px!important;gap:clamp(7px,1.8vw,14px)!important;justify-content:flex-end!important;}
+  .site-nav a{font-size:clamp(7px,1.65vw,9px)!important;letter-spacing:.08em!important;padding-bottom:5px!important;}
+  .site-nav .nav-cta{min-width:102px!important;padding:11px 9px!important;letter-spacing:.055em!important;}
+  .hero-video-section{height:100svh!important;min-height:560px!important;}
+  .hero-video-section video{width:100vw!important;height:100%!important;object-fit:cover!important;object-position:50% 50%!important;}
+  .hero-video-section h1{font-size:16vw!important;line-height:.82!important;}
+  .landing-slider{height:78svh!important;min-height:600px!important;}
+  .landing-content{padding:0 18px 26px!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-end!important;}
+  .landing-copy{max-width:none!important;width:100%!important;padding:22px 20px 24px!important;}
+  .landing-copy h1{font-size:19vw!important;line-height:.84!important;}
+  .landing-description{font-size:14px!important;line-height:1.55!important;}
+  .landing-primary{width:100%!important;min-width:0!important;justify-content:space-between!important;}
+  .landing-secondary{font-size:9px!important;}
+  .landing-meta{margin-top:12px!important;padding:0!important;align-items:flex-start!important;}
+  .selected-intro{grid-template-columns:1fr!important;gap:26px!important;padding:64px 20px 34px!important;}
+  .ticker-wrap{height:88px!important;}
+  .ticker-track span{font-size:52px!important;}
+  .services-new,.process-section,.about-snapshot,.start-project-band{padding-left:20px!important;padding-right:20px!important;}
+  .services-top,.about-snapshot{grid-template-columns:1fr!important;gap:34px!important;}
+  .service-grid,.process-grid{grid-template-columns:1fr!important;}
+  .service-card{min-height:250px!important;}
+  .about-snapshot{padding-top:78px!important;padding-bottom:78px!important;}
+}
+@media(max-width:600px){
+  .site-nav{left:98px!important;right:7px!important;gap:clamp(5px,1.4vw,8px)!important;}
+  .site-nav a{font-size:clamp(6.4px,1.7vw,8px)!important;letter-spacing:.035em!important;}
+  .site-nav .nav-cta{min-width:86px!important;padding:9px 6px!important;font-size:6.5px!important;}
+  .logo{width:72px!important;height:53px!important;left:13px!important;top:15px!important;}
+  .hero-video-section{height:100svh!important;min-height:600px!important;}
+  .hero-video-section video{object-position:50% 50%!important;}
+  .landing-slider{height:76svh!important;min-height:570px!important;}
+  .landing-kicker{font-size:8px!important;letter-spacing:.28em!important;}
+  .landing-copy h1{font-size:18vw!important;}
+  .landing-actions{gap:14px!important;}
+}
+
+</style>
 <!-- Vercel Web Analytics -->
 <script>
   window.va =
@@ -2071,284 +2187,408 @@ html,body{background:#F7F6F2;color:#111;}
       (window.vaq = window.vaq || []).push(arguments);
     };
 </script>
-<script defer src="/_vercel/insights/script.js"></script>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<style id="oceayr-final-refinements">
+.logo{background:transparent!important;box-shadow:none!important;mix-blend-mode:normal!important;}
+.logo img{background:transparent!important;}
+.site-nav{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:clamp(20px,2.8vw,48px)!important;padding-right:clamp(18px,3vw,48px)!important;white-space:nowrap!important;}
+.site-nav a{font-family:'Inter',sans-serif!important;font-size:10px!important;letter-spacing:.34em!important;text-transform:uppercase!important;position:relative!important;}
+.site-nav a:hover::after,.site-nav a:focus-visible::after{width:100%!important;}
+.site-nav .nav-cta{flex:0 0 auto!important;padding:12px 18px!important;min-width:165px!important;text-align:center!important;}
+.landing-copy h1,.selected-intro h2,.services-top h2,.process-head h2,.about-snapshot h2,.start-project-band h2,.summer-heading h2{font-family:'Bodoni Moda',serif!important;font-weight:600!important;letter-spacing:.015em!important;word-spacing:.09em!important;line-height:.86!important;text-transform:uppercase!important;}
+.landing-copy h1{font-size:clamp(66px,8.7vw,148px)!important;letter-spacing:.01em!important;word-spacing:.11em!important;}
+.landing-copy h1 span,.services-top h2 span,.process-head h2 span,.about-snapshot h2 span,.start-project-band h2 span{color:transparent!important;-webkit-text-fill-color:transparent!important;-webkit-text-stroke:1px #111!important;}
+.service-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;}
+.service-card{position:relative!important;isolation:isolate!important;overflow:hidden!important;min-height:350px!important;background:#222!important;color:#fff!important;border-color:rgba(216,214,208,.45)!important;}
+.service-card::before{content:''!important;position:absolute!important;inset:0!important;z-index:-2!important;background-size:cover!important;background-position:center!important;transform:scale(1.01)!important;transition:transform .7s cubic-bezier(.16,1,.3,1)!important;}
+.service-card::after{content:''!important;position:absolute!important;inset:0!important;z-index:-1!important;background:linear-gradient(180deg,rgba(0,0,0,.10) 0%,rgba(0,0,0,.28) 45%,rgba(0,0,0,.82) 100%)!important;}
+.service-card:hover::before{transform:scale(1.06)!important;}
+.service-card>span,.service-card h3,.service-card p{position:relative!important;z-index:2!important;color:#fff!important;}
+.service-card>span{opacity:.72!important;}
+.service-card h3{font-family:'Bodoni Moda',serif!important;font-size:clamp(27px,2.3vw,40px)!important;line-height:.9!important;letter-spacing:.015em!important;word-spacing:.08em!important;font-weight:700!important;}
+.service-card p{color:rgba(255,255,255,.86)!important;font-size:12px!important;line-height:1.6!important;}
+.service-card:hover{background:#222!important;color:#fff!important;}
+.service-card-01::before{background-image:url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=85')!important;}
+.service-card-02::before{background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=85')!important;}
+.service-card-03::before{background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=85')!important;}
+.service-card-04::before{background-image:url('https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1400&q=85')!important;}
+.service-card-05::before{background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85')!important;}
+.services-new,.service-grid{width:100%!important;max-width:100%!important;}
+@media(max-width:900px){.site-nav{justify-content:center!important;gap:13px!important;padding:10px 14px 0!important;overflow:visible!important}.site-nav a{font-size:8px!important;letter-spacing:.18em!important}.site-nav .nav-cta{min-width:auto!important;padding:9px 10px!important}.landing-copy h1{font-size:clamp(48px,14vw,88px)!important;word-spacing:.06em!important}.service-card h3{font-size:31px!important}}
+@media(max-width:600px){.site-nav{gap:10px!important;padding-left:90px!important;padding-right:10px!important;justify-content:flex-start!important}.site-nav a{font-size:7px!important;letter-spacing:.12em!important}.site-nav .nav-cta{padding:8px 9px!important;min-width:116px!important}.landing-copy h1{font-size:15vw!important;line-height:.9!important;word-spacing:.04em!important}.service-card{min-height:270px!important}}
+</style>
+<style id="oceayr-21-aug-final">
+/* ==========================================================
+   21 AUG 2026 — FINAL REQUESTED REFINEMENTS
+   Video + original gallery mechanics remain untouched.
+========================================================== */
+
+/* Automatic logo/nav contrast */
+.logo img{filter:none!important;transition:filter .28s ease!important;}
+.logo.on-dark img{filter:invert(1) contrast(1.05)!important;}
+.site-nav{transition:color .28s ease!important;}
+
+/* Keep the approved Bodoni Moda editorial treatment across the new light/dark sections. */
+.landing-copy h1,
+.selected-intro h2,
+.services-top h2,
+.process-head h2,
+.about-snapshot h2,
+.start-project-band h2{
+  font-family:'Bodoni Moda',serif!important;
+  font-weight:600!important;
+  letter-spacing:.015em!important;
+  word-spacing:.12em!important;
+  line-height:.86!important;
+  text-transform:uppercase!important;
+}
+.landing-copy h1{font-size:clamp(64px,8.2vw,142px)!important;}
+.landing-copy h1 span,
+.selected-intro h2 span,
+.services-top h2 span,
+.process-head h2 span,
+.start-project-band h2 span{
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  -webkit-text-stroke:1px currentColor!important;
+}
+.about-snapshot h2 span{-webkit-text-stroke:1px #fff!important;}
+
+/* Service cards: no numbers, tighter editorial fit. */
+.service-card>span{display:none!important;}
+.service-card h3{
+  font-family:'Bodoni Moda',serif!important;
+  font-weight:700!important;
+  font-size:clamp(24px,1.95vw,32px)!important;
+  line-height:.92!important;
+  letter-spacing:.01em!important;
+  word-spacing:.06em!important;
+  margin-top:auto!important;
+  overflow-wrap:normal!important;
+  hyphens:none!important;
+}
+.service-card p{font-size:12px!important;line-height:1.55!important;margin-top:18px!important;}
+.service-card-01::before{background-image:url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=88')!important;}
+.service-card-02::before{background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=88')!important;}
+/* Better digital-content visual: laptop / web work */
+.service-card-03::before{background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=88')!important;}
+.service-card-04::before{background-image:url('https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1400&q=88')!important;}
+.service-card-05::before{background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=88')!important;}
+
+/* From Idea to Impact: richer content + lifestyle image, while keeping the approved heading style. */
+.process-section{
+  position:relative!important;
+  overflow:hidden!important;
+  background-image:linear-gradient(rgba(247,246,242,.89),rgba(247,246,242,.94)),url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2200&q=88')!important;
+  background-size:cover!important;
+  background-position:center!important;
+}
+.process-head{position:relative!important;z-index:2!important;display:grid!important;grid-template-columns:1fr .72fr!important;gap:7vw!important;align-items:end!important;}
+.process-intro{max-width:620px!important;color:#555!important;font-size:16px!important;line-height:1.8!important;}
+.process-intro p+p{margin-top:18px!important;}
+.process-grid{position:relative!important;z-index:2!important;}
+.process-grid b{display:none!important;}
+.process-grid h3{font-family:'Bodoni Moda',serif!important;font-weight:700!important;font-size:clamp(25px,2vw,34px)!important;line-height:.95!important;margin-top:72px!important;letter-spacing:.02em!important;}
+.process-grid p{font-size:12px!important;line-height:1.65!important;}
+
+/* Slides: three working states, visible imagery and no faded image wash. */
+.landing-slider{background:#111!important;}
+.slide-bg{opacity:0!important;background-size:cover!important;background-repeat:no-repeat!important;transition:opacity .75s ease,transform 1.1s ease!important;}
+.slide-bg.active{opacity:1!important;}
+.slide-bg-1{background-image:url('https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2400&q=92')!important;background-position:center!important;}
+.slide-bg-2{background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2400&q=92')!important;background-position:center!important;}
+.slide-bg-3{background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2400&q=92')!important;background-position:center!important;}
+.slide-overlay{display:none!important;background:none!important;}
+.landing-copy{background:rgba(10,10,10,.42)!important;backdrop-filter:blur(2px)!important;-webkit-backdrop-filter:blur(2px)!important;color:#fff!important;}
+.landing-kicker{color:#fff!important;opacity:.86!important;}
+.landing-copy h1{color:#fff!important;}
+.landing-copy h1 span{-webkit-text-stroke:1px rgba(255,255,255,.96)!important;}
+.landing-description{color:rgba(255,255,255,.92)!important;}
+.landing-primary{background:#fff!important;color:#111!important;}
+.landing-secondary{color:#fff!important;border-color:rgba(255,255,255,.9)!important;}
+
+/* Mobile: prevent service headings from overflowing the cards. */
+@media(max-width:900px){
+  .process-head{grid-template-columns:1fr!important;gap:32px!important;}
+  .service-card h3{font-size:clamp(26px,5vw,34px)!important;}
+}
+@media(max-width:600px){
+  .landing-copy h1{font-size:17.5vw!important;word-spacing:.10em!important;}
+  .process-section{background-position:center!important;}
+  .process-intro{font-size:14px!important;line-height:1.7!important;}
+  .service-card h3{font-size:30px!important;}
+}
+</style>
+
+<style id="oceayr-21-aug-final-fixes">
+/* FINAL LAYOUT FIXES — requested only */
+html,body{overflow-x:hidden!important;}
+.logo{background:transparent!important;box-shadow:none!important;mix-blend-mode:normal!important;z-index:5000!important;}
+.logo img{background:transparent!important;transition:filter .35s ease!important;}
+.logo.on-dark img{filter:invert(1) contrast(1.03)!important;}
+.logo:not(.on-dark) img{filter:none!important;}
+
+/* Slider must be the first visual section, immediately followed by the original video. */
+.landing-slider{order:1!important;position:relative!important;width:100%!important;min-height:clamp(700px,92vh,940px)!important;height:92vh!important;margin:0!important;overflow:hidden!important;}
+.hero-video-section{order:2!important;position:relative!important;width:100%!important;margin:0!important;}
+.landing-content{height:100%!important;min-height:100%!important;padding:115px 5vw 58px!important;display:flex!important;align-items:flex-start!important;justify-content:center!important;}
+.landing-copy{margin-top:5vh!important;max-width:min(820px,78vw)!important;padding:30px 34px 32px!important;background:rgba(8,8,8,.38)!important;backdrop-filter:blur(3px)!important;-webkit-backdrop-filter:blur(3px)!important;}
+.landing-copy h1{font-family:'Bodoni Moda',serif!important;font-weight:600!important;font-size:clamp(64px,8.4vw,142px)!important;line-height:.84!important;letter-spacing:.01em!important;word-spacing:.12em!important;white-space:normal!important;overflow:visible!important;}
+.landing-copy h1 span{color:transparent!important;-webkit-text-fill-color:transparent!important;-webkit-text-stroke:1px rgba(255,255,255,.96)!important;}
+.landing-description{max-width:720px!important;line-height:1.65!important;margin-top:28px!important;}
+.landing-meta{position:absolute!important;right:5vw!important;bottom:48px!important;z-index:5!important;}
+.slide-controls{display:flex!important;gap:16px!important;}
+.slide-dot{cursor:pointer!important;}
+
+/* Services: five distinct, client-facing names. */
+.service-card-01 h3{font-size:clamp(24px,1.9vw,32px)!important;}
+.service-card-02 h3{font-size:clamp(24px,1.9vw,32px)!important;}
+.service-card-03 h3{font-size:clamp(24px,1.9vw,32px)!important;}
+.service-card-04 h3{font-size:clamp(24px,1.9vw,32px)!important;}
+.service-card-05 h3{font-size:clamp(24px,1.9vw,32px)!important;}
+
+/* More visible lifestyle process image. */
+.process-section{background-image:linear-gradient(rgba(247,246,242,.34),rgba(247,246,242,.48)),url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2200&q=92')!important;background-size:cover!important;background-position:center!important;}
+.process-section .process-head,.process-section .process-grid{position:relative!important;z-index:2!important;}
+.process-intro{color:#222!important;}
+.process-intro p{background:rgba(247,246,242,.72)!important;padding:8px 12px!important;}
+
+/* Complete the project CTA area without a large dead zone. */
+.start-project-band{padding:115px 7vw 100px!important;min-height:620px!important;justify-content:center!important;}
+.start-project-band .start-project-support{max-width:700px!important;margin-top:14px!important;color:#555!important;line-height:1.75!important;}
+
+@media(max-width:900px){
+ .landing-slider{height:82svh!important;min-height:650px!important;}
+ .landing-content{padding:105px 20px 34px!important;justify-content:center!important;}
+ .landing-copy{margin-top:2vh!important;max-width:100%!important;width:100%!important;padding:24px 20px 26px!important;}
+ .landing-copy h1{font-size:14.5vw!important;line-height:.86!important;word-spacing:.08em!important;}
+ .landing-description{font-size:14px!important;}
+ .landing-meta{right:20px!important;bottom:26px!important;}
+ .process-section{background-image:linear-gradient(rgba(247,246,242,.48),rgba(247,246,242,.58)),url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1800&q=92')!important;}
+}
+@media(max-width:600px){
+ .landing-slider{height:88svh!important;min-height:650px!important;}
+ .landing-content{padding:92px 14px 30px!important;}
+ .landing-copy{padding:20px 16px 22px!important;}
+ .landing-copy h1{font-size:15.2vw!important;line-height:.88!important;word-spacing:.04em!important;}
+ .landing-kicker{font-size:8px!important;letter-spacing:.24em!important;}
+ .landing-description{font-size:13px!important;line-height:1.55!important;margin-top:18px!important;}
+ .landing-actions{gap:10px!important;flex-wrap:wrap!important;}
+ .landing-primary{min-width:0!important;flex:1 1 100%!important;}
+ .landing-secondary{flex:0 0 auto!important;}
+ .landing-meta{bottom:18px!important;right:14px!important;}
+ .hero-video-section{height:78svh!important;min-height:500px!important;}
+ .hero-video-section video{object-position:50% 50%!important;}
+ .service-card h3{font-size:29px!important;}
+ .start-project-band{min-height:580px!important;padding:90px 20px 80px!important;}
+ .start-project-band h2{font-size:17vw!important;line-height:.88!important;}
+}
+</style>
 </head>
-
 <body>
-
-<div class="logo" aria-label="OCEAYR Agency logo">
-  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEFCAIAAADMgK1SAAABY2lDQ1BrQ0dDb2xvclNwYWNlRGlzcGxheVAzAAAokX2QsUvDUBDGv1aloHUQHRwcMolDlJIKuji0FURxCFXB6pS+pqmQxkeSIgU3/4GC/4EKzm4Whzo6OAiik+jm5KTgouV5L4mkInqP435877vjOCA5bnBu9wOoO75bXMorm6UtJfWMBL0gDObxnK6vSv6uP+P9PvTeTstZv///jcGK6TGqn5QZxl0fSKjE+p7PJe8Tj7m0FHFLshXyieRyyOeBZ71YIL4mVljNqBC/EKvlHt3q4brdYNEOcvu06WysyTmUE1jEDjxw2DDQhAId2T/8s4G/gF1yN+FSn4UafOrJkSInmMTLcMAwA5VYQ4ZSk3eO7ncX3U+NtYMnYKEjhLiItZUOcDZHJ2vH2tQ8MDIEXLW54RqB1EeZrFaB11NguASM3lDPtlfNauH26Tww8CjE2ySQOgS6LSE+joToHlPzA3DpfAEDp2ITpJYOWwAAAARjSUNQDA0AAW4D4+8AAAB4ZVhJZk1NACoAAAAIAAUBEgADAAAAAQABAAABGgAFAAAAAQAAAEoBGwAFAAAAAQAAAFIBKAADAAAAAQACAACHaQAEAAAAAQAAAFoAAAAAAAAASAAAAAEAAABIAAAAAQACoAIABAAAAAEAAAEgoAMABAAAAAEAAAEFAAAAAD1bQnIAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAcaURPVAAAAAIAAAAAAAAAgwAAACgAAACDAAAAggAAH0jzuD89AAAfFElEQVR4AeydeawVRb7HL7IvLmwCAsJlXFCJJi7gOjooKk99D9HhDToGGZw8J2/UGJ03hujoC28BnDi+KA6iRuMkalQgAVRwG0VQBBUR2TdZLtx939D5433P+d1bp051VXVVd/U5fc7tTuXcX1dXV1f96vepX1X1ckvq66v5UFdXJQ21tZVCqKmp0ITq6nIKNdXlLFRXHTMPVZVHTUJl5VGTUFFRFixUVpR1qVBVXmYVupRyAlS2hKcLsiFdBJstYESaOWNI6cuYCV3B0hCQAXRa0KdY0YXEBV3ZHBReBEzKmOC7hF0NZqlDnAfzyuawqUgLBo/5WarrquI1OUtdqCZ9cqgINCABzDFjacBqFaSZA6byZlG3gQokVbxJeXjSTNInaQpXA6aAYegoOC5+V+PEgJYQeD9mBRifmNm3W9Xzph9siMgKZiJgiGKSLJdp3Oozyc0CsGCMCXQxVwZa3JCGeZpxCNDeuTTuOFwrgIqSUzQakAMmHSWy9Q/edwmy15UJgPFQQWa8sXjeTZnI5nRRSo0upIeiNnrpRR1GRl3+JH+9BpSABWYMyPGYCYAJRLGjDDASTNCiNLaA2aY3L4k3pV718S+/t0ZJjK0GdIA5YYwhZCjYkiZ09rb8+Ka3VaiQoVA8tiskS3aLVQMpwBoaaljArhDYyFAqCENEYReuzIQrBhVLzGKYIBg6i4+6YYTr+u5Ky8O4giBNkEQWqwZKGFpMEADDrhQtFilAJezW4REQM8y8yRhFGiHqhvElSkigKg8xpjoan3ihOsluSA2IgHnpohiGk1QQoOJ3ARgFLz/mMRrA2DNZhoKtKdvqV5M/Sqg5GpNDtvVN0us1YApYYD/GAGOCOVdCSilmhlwFTia9qG+kVOn8WdIEhRhZU3ksCRoNWAAWzJUxrgRBgMdqN8tSO58qDoyQ/kT+WlayQIv3XErgjS+smNqq8iRoNCACRjMx1UDRhDGMIaVDRAEwtmuFFp+YDFGPR/ijtubOX5GN+vhIXkYCfjcKOUz5oyhPV8tTDhgwc8UYA0kv8ORYyfw9N3PZvJlDGigxZn455ylDlt95ebpahkrAXDGm58p71IouJDaHSpMyj61uC4Bt+qirZluerpY+OGCGw8V6vMHZuZBoLphjpsEm0kOuDDdqg3NVTlU+UZe/0PPXAWYyH/PFDIBRMKeLpTTBLFKKkswTDYTUQEljYy0CsaT51U/JcFR6fwyRDDAmMH7MBQ1pIeufnJ5oIFINdAAWHWOMK0Ewp4ullGIWqXaSzH01IG2UJJJpwAIw32UP5uV4byZw5d1l/JgLVHpKz98SCC/72lOSQNAAs6REkGogAxiNFU1cmSFphJmXKGmMQBfSCDGqXUOoBLOIz660VZLIotGABDAiTTMfY4eYy9IIDXg8XzYTU0WqQBLi2emGgDlP5grRorGkpCJSDSgBM3Rlvt4MgFFgSJgIDCdVYpbAOTlJhokGHGpAB5g5YxrMGGBMUDHjjQdF3kgWQ4w51EWSFTTAz58TObwGSpqa6mhM6PvLRoZ6QRguMq4EgXGiEdgpmjThVRAsh2KlMZg2krNUGkgBRsEXMCuHxiBsxOvSnaNEqcDDI03AIvmUTFZVLIkPpgGhf0x2Q2ogA5hzV0aMATAKjBOpQMBID3kj+cQh6x/49GDm6z2L9RQxEbza1scEVmAXOTELMHPGeHfHnJVUYIAxQdNgSKM5KhyCRSKm0NtJqFTB7Ra6/qMuvwiY1YiRMJNyxSIZV4IgtSSWRnpUGmmuIDrdPH1uUkor5TCyvr7WMsStz7Itf7zS5w0wPUt0lLczVXpzDBLAzEhLAHOJaElzU50mNDXWCoEfHDKZ+SuvwMAwFLw5UIw5SEnKXGpA1V5B4+saGoSQ+aZg0DzzmYMPYMQezxiDyitI62/IFUsmzSRAZC6NLM7XCqC6vJ4i0IXdfOIR/upKwNhkjAleoqQxQpkYOYaCcHrOdl1Bwg9r8ybX1TawYGugjVUNVkF0OF5CQsZ0GcCINClU3kgGhiFXLBk7MeaCCkhbqFjFBcE2n6z0jK46TCckcyqdbq3oQuIEMG0XJvFgzGWpBODEDxp5WSANDSnYje+uru21NeliJ4Z0CzE53d87+RpMHBLwCAhyEMAAHuZmQka0KwCmQ1HBXhfjxN/CFAqJCSEhi+Ff/Tjwoy+DFAQWWdLcXE9B5a/08YwolmNIgWUoCAo782+hIjoxpDXn7HSXjdJYXxdpiHqImwEsJGYhuWKnC1wF3i0irpi9BiGksbE+5yH1lRdXoamhPtIQtXJKGlvqEZgfg0AuS3NzLDU+lAXolHESWHDVMLb5uAJSP5yI5Ki+j3dn67YqdZQ+9x2EyytKAOuATX8DWgYYqFPNzcx5c9QqznpQVXlUQEaCkGK+2nEtLWDScqoqFct4l+Yetb/y5i8OEXlXlpK1mGmOmhMlpIxlG1vgKlQn77vx0GdhQ+LFxjzGB7CWEIwF82bxMAgLooQC550ooQBC8fK0W6iANTU1hAw+gJFD42dcGq/FDpmkF+yA7ebJAoITFfsC2xp3o+Vmnj9lbJ4+lZIZRlSCYrLD23AY2QgwYMauwSjSCCwxBE0y6SH+XF6OvR3HFlE7g7akC8nN8++SgGEQyII4Aeu8RcbieYv3hYcSSynSRAqXCLybLyCj6miDrtBK9aDVqu2gSL6krL1EFzqlhNGVmm6ZBaY7DSc4RMn0abxHWeY5FqSGGCAyL4B51chi7NWYAOaS/yzAeNhI9kVOaD/WroEFIcO876oqkheQxIvKbsI2NzbwIe8KDFmAhuaGSEPINQzf08MCxggkParM0Tw+ZHs4P9285PqUIhtBh3xZ+cgAE5976BxKONdMbjKMlC5k7ktIyAQ+gBn6McKMaVxvavqjLJNE8GggcmsIaUw2p8uHYXrbiM9R71hPFeMSMIZZGEV4rEreEl0yWQKY9aK0oSmq8Agf7wMYGwEGE4CBYQ1Zsi5JToBOpDhgy1ScGUCOhfAI6XMoaW1poCBNF4wr/ixvtnoNJoCZaSABzLrv1hue71GvJZvEZAADZi3pwONBsklG/Fn0hD79Ss/VVMbMvDI9X9TpNUUtiEO2+uHbMWpZahtCZHNzY0EHCWBezIQ6S3f5xvAFDDkordPsXhx/Oalsa1iq9Mpy2o9+HWYlbQJppFQ5mkhqffNfTVa+h6QFFiILmi4UvkSlypRD4x7y0MgqPWo8GOUmNzhHgKlKpYqPLWAazZscUtU3DvGS8jc1tmSHYgZMMzfjVaNqqqbWBgQ+pUbOwJYnwFS1UJU5U+AIXJnqogHiVfWKQ7ykOtl0AbYuDZhvI6Xco5kbZMl88yzQBCoPGXV89AZq8oSdyIngpnS7lvbDDMlU6Fx6UA3lQsbrhojkwTR+zMTWTevZqUeTPJM0NhoQjds1cglgHauDUhSVgHlT6xvVFiSWXgBYf5XkqJ8GosbJTf46lyWMEjt7XmYwjoV8eTAvYHyMt5mDVdvrJL05JzE2GnADgGsvJ5aqCwGWZeIKmjuWKzxHBecTgDH+6pCRg40x5SJxgEpZnWJfX9FYCYaWliZFkAxg7C+qUbW3PJrEmZcPrbQUXWKVKnh3EkZW3gfjM80ZYCnGFEGliKjjo2taytm3/B6FqEBSxctVqrqu53Ly07lk3uvqThG61LzvchXRFTtwsizAvLX15kuw8b9ZaTwjZlVDUnzWuQq0gqXRX9fiaASr8PwSvzXATrUUTLdmZ3nB64oxjgHjETXpoc2aKpKuxfTSni7DGgltDrzGTGTTYuefw66Ik3eU7gOYt8lVDcz7NNWQUnVurOO1eLiFzSi3/JPjsL8rfggTwPzMJQEsQqQTwDpfZvG6MiEm1l4oQhPx49P9pYvfKL0DrehiWlubIw3WHkzgiu0mgOVKAwlgLjUQKV3I3BlgjDRByJXZ5d6T5OuKLs0rvGcQmjuGu22tjZrQ2toYaUgAyxcnga+bANbxDr4GZg1RwqFI6ULmkQCWeK0oNRAzwJqbWg2D8XxeQ47vIYEf390EsMA9fbGemACm9GC+OHkTFCRgfDcTZV9erAjp6xUvwMLP4tzmEPWihW3+JTzTPBiu5AQw1xpIAPPXgC0G0aUv8bpIIOeKLuTj2rxynaFDVTjJylaf3vbNR0y095p88Whra6Hgm9J5AjlgDhmzNYi4pXdChcNMbPWTD5y8C995BkzAhh+UCoec70oAY00itKVDK0FWQuax3XVba29u/BDdRGatYyJAqybJokkTL6i85BBm3ni3MTrASO/M9L3GESaGZRtzIUwdTc41gYpPEw0MXp8TPibugLkFSZWbP2B8izIYTEyH0mROifiWOV/OADIrpyi01rVYBUvnHKCoBXVKV8fMDjDWtNSnmmBG9spOjK0gctXJSWtbvVVQ5aOKj61CHBUsAcyRY1EZEOIdNVX4QUuQHOzcF3xdJ5mGQvTK0Zu4qU74YSov25dfX55iOxrQg6nU6rUqVcpCiU8Ao5bioeJl+3YsNoRUsy+KdwyYvbpNe9C85Ww5RMxbOZUjEVuDFluExyn+cntbk1Voa2viQsftMnbfLLyQACbak0CIrQcTTo/BbrEBZsWPb2KOLpCWAKbsp3048TX0bEVnejXfE4UEto2kH2DIjtrWNDhgsfBXWR4m0y6q9nIR7xKzgvFgguJosgfj5md9gq2zXTqXErNIQeDzp0OIYWn4q+hlGRK2Jp5Kz4PK54mrs1KZCbZXzwCcAMa3QjC5YACDMRED7e0wvpTpk6HzRsbHUBrhFDqLP0Ul45+e8FfRQ8Uf5WEIL1Oj4pkDCPiCb1MTnoBJPepK8er8M5Co0/Dg8elTcizQSheDbyBqzVz9uvFjhQQY0zUYg4yPh8KyKZKUzgCjXUoDVCAghlKyU2hX+muSRnoiIgmA8L8EBoHU3t4KAXlCQDwBdvx4mxoeHhgeJJXMp48vYFBvrujq6MJI/2F+CxswwAPMmN4JMLQBCDx+HD1QBiokQ2JGoAoPiqdkyCGducooVfFgwPHW1tbW3NzcnsYLMjZCTg2Yqmym8fCX8pBz5yZtqQLCrDAAg8WXlx/ZtWvbhg3r3n13xeLFzz744H233nrLL35x1VVXXXb55RMvvfTiiRMvRIBwxRWTrr76ihkzpv/hDw8+//yiDz9cvXHj53v27KipqaCGkbaZEAlEGxtrV65cvmDB/5qHhQvnP/nkk392sSEfbAvT23PPPff6669/9tln69at++KLL7777rtjx8qiows5y+kCdTEALId0OfBjsQAM/EBrcBekOxoB1tdX79+/G0QtWvR/v//9vbfd9i8g56yzxo0YMXTw4JMHDOjTq9cJJ5xQImzdupUgsmfPbn369DjppH5Dhw4cNWr4OeeciXN/+ctbgeXLL78A3n74YW9DQw2uSI4O1+UBQzzKACDHjz9j0KBTDMPgwQPTYfAQF9tgbkN+w4YNKy0tHTt27JlnnnnxxRffdNNNs2fPfuyxx1asWLFp06bDhw83NcFvt2OelsIjvdysHUNqXFlMh4i55Qpo8SH4fCwWgNE0CSaOWlVXl+/c+f2KFcvmzXt8+vR/BlFDhpzSu3d3kEMb+EHAriYgJR0lgU7p3r2kR48S8Dlhwvhf//pXTz21cPXqVQcO7KEBIUGOAtAuClNbW9m3b8+Oq+b1TzduYwXp3r37SSedBOrOP//8u++++5lnnvn8c3Qc++vqajCAJNJozmbp6+IFWLah80afS7kgAct0ouhxYRAwjg0bPl+yZPHkydeMGDGsV68eDCpmVRAYOXykRhY4REris2/f3qWlY+6441dvv/3m5s1fl5UdhOMi34VGhTOAC40JYJraMSfet29fOLe77rpr2bJl27d/X1FxDGshxmiloOJD7oeCyitmeZJcQuW9VhDM8ujBMoCVlR3eunXLnDmzYfF9+vSCPTG0AAO/qzE1zSGWmzcNDuES558/4U9/mrt16+aqqmMYOsLU4Mfq6qr69UsVJrZbD3jk9AYPh7/0C7c2ceLFTz315z17dlVWlputgInG5PsARO4StGN1xyJE6fECAabsORTTWb6fCyDDRUAF6TEhFsYwDKvetOnL3/zmbnBFLDFrhs2wwCIjFUaPHvnQQw8AMyxvoFEBGJZP4Oi6dyfzjfTiLjOHW4NDu+CCC1566SW4MuiZvJkaNh4wWzPiz+Vl23yKM33WV6VMYAsAlfeU9ISnZe3aT2bPnjVw4MkYDQr2xdCCkMsNCyc/+9mYBQv++/DhA+gIsG75u9/9G5YuaFSZ48KEqTi8GTDr3bv3DTdM+fjjD+vra3GTmq1/eEgLAwZ/Li8XJzAe1flUM9eAwTOAt4MH92Epe+zYsbAAmBHm69hohINdCGwLY2QBzu3ZsydKMmBAPwxWX3rpBRhlRUXZt99+NWXKteTKiPwAOef+FAwgoUb8jhgx4umnnz506BDdoZaZSAKGDycypRmdklPA4LgwOPz73z+YNOmiQYMGwZrRyxJLzP4YWhBYZA4EcIWr4KJp1FMTs1NPHTJ9+rQtW77Gev3evbuffvqpcePG9uiBAqfGrvHfUBFaAkGlsOZ/5513fv31JgVjCWBGtATALHLA4LLAFbwWZl9Hjvzwl788iVVyfrrFE8XLebRgKgYKgJnMpZdOfPHFJYcPHzx69MiyZW9fccVlcHKFwhiqgLqANPixU045ZcqUKbhpRk+BZNtKAljBAgauCDA8S4GVumHDBjNyeJwEmaWJg4DFj7lzH9m5czsW5bZs2Xz77dMxXCwgxkiH0HC/fv0uvPDCdevWZtMF20oAK1jA0Hi4obRt25ZZs+7s3z8142LtLUDFdjuTxOgvVmIwXPzii/VYLTh06IeZM/+1EBmDQjEsP/fcc7du3ZrNWAJYwQKG20o7dmy95ZapWKBDA9PsJd39M6CyhJhQRWVKTxE7StS/f1/cX9q4cQMYwz3xwmUMfmzq1Km498gxlgAWG8CyhxN8w2RkzLvwjB/mXVjS2LVrx9SpN/Tr1yebrphwJC8GTzyfolevXuPHj//kk0/q6uqOHDmCZQMYa7pehbDowdUEs7J58/6zqqoC87Eff2znSGPDxagMLvtaxX8V60UOE8Doxhcww9O6kydf07t3T7gsdru24GYvnGWmhlhjxozZuHEjbpNj4XvmzJlYP6DFOj5Z/GXc2V++fCkeXPSsK1JHWfymnxvUowLsxx9bjx07PG3azfBdNCyEzRFa5B/ib4KqEqL7x/O1W7ZsgR/buXPnddddB8ZQKVX6eMajwOeccw6eUMND97kxtWK/SmYExzuhSACD78LCBt4NwQsj3A3kggcMRpmelXXD/fGrr75627ZtVVVVeIZ9woQJoK7gGMNNiEce+Y8jRw4Vu+nnxhtHDxhGhliRB1145eSvf30Gb23x97vi2ZEHLlX//v3vuOOO3bt3V1ZWvvHGG6eddlrgrPJ1InqEMWNGv/vuKjysiIAHqWS3yHJjnQV6FTlUkXgwcEUP8uI1qk8//QjvcaUfjciX8eTiugMHDnz88cfLysqw4DF37tw+ffoU0GSMioqb5vfd9+94P5oGiglgls48h4BR/4dfvCWBxx1g4IU2K7FmEsPC008/HS/z19fXHzhw4Prrr8dkzDqXfJ9QWlr6wQdrYFh48DIBLL6AUdtUV1e++eYbuAlLZkOrGm5NKFZTHTB2zTXXYKmjoaEBX8vAu/1uKxtdbig5MocysS46Z85s3NyjTwxYWliBDu1cFdvAg9GSuveXH0eayS2NjfUfffTB2WefyZsFmlC68WnMZcqKjIPOwlCH3/iskBi7OMpHupVxCbzg+MADD8CJYXv44YcxUOSLx18OJcF9M6Q/8cQTBwwYgFkc27CLDediw9oDNtxzy9kNAIw4duzYRmOQqN+kNLMlf8N1l08Y2PzLqXyj2bYC8GB4HBZvT/EmBZmsXIgMtgsDZbbLsGH5I4bJfP6IlMbzacLIyPyss85au3YtvtW2b98+PIiENUZWPD5n+Lf58+fj41BYeNywYQNupuHRW/xChvfDhlvY+IjNiy++iGT333//5ZdfDgLTxe+4BxBRRUaNOg3jDgAGJ5YAZuPDcwpY+9KlS0ePHi3YlkObAF3IHP06endcCM/74BMUTzzxxJIlSzARWr58+VtvvfXCCy88+uijWN+79tprR44cifEPCqBij7f+MDIwwN0wfBkUd5Ree+214cOHe3ND4cEhKEIyLAdhw3vdwoZxJjbcXqupqcENACyf7Nq1a/HixXgKHk7Pm6erGNwqv/nmf/rHP37EUx15BwyrZdGEVvgA18G/qM482NGjR2fMmAHTF1rdFWDE7ahRo/DFso8//vjbb7/FugI+V1ZRUQFzrO3cICMG8VhA37x58yuvvDJ58mQs90XKGOqIz6qtXLkSeEAPl1xyiXS147zzzoPLghUfT2/4yho2MAnXB+qwQcAuNpLxCxm87d27d/Xq1ZdddpkrZXraKPVVEgxAcOWoAYsGHn9Dd40Wsep/3VCA/fQTjKPjq9QY24wbNw4tRyRAgDWENAj+9KFDh+JLgO+8887Bgwdhc7A8WGf6C7qZj+dgkMMCngDCshjmRXv27IFXue222zD5iQ4zDAtBPi4H1/Tqq69KnRhGjxgQAq40WR0/KZ4MNqD7zTffYNyIWRzTsMBJmF20Hb4sAKVFBNhxPJ6aDvkAzLnjkmYohy0UYFAWTdXwyPy0adMwHnMLGOWGbPGpzUWLFu3fvx/mC6io46dunhElCDSSJgiBGtzdggULYEbwsc4NNN2TdMMbjR9+CBttgfPE0qL3KgQYTxdVxJcvJKOK4+lH9DJYDuG7njBcsXPRIyxd+hZ06BwwhhYPGJlNrmCT8uA8MgLA4L7oy7jr139aWlpKPJBhkc2FtwOsp8FY0XnDa8HIfoLT7BxTpd0XfjJeSyWn5u7tGIY1wYYwTovCCaDWQPeee+7BABU8Yx7onTUBsC+//DIYYKgncYh1FLw0iWuF1y2jC1mhd5g//39SQ8TWdLD8P5EaLL2AsfWz6AFzTpF1hqE8GDRFgM2f/1/oVlmDQXACGMZdEydOhEOAyYIumpNQX95JlxFgeA4IjKWsp731/fffx6O63rkiX3hbGT6WljfxeRncE0NpMRQ8++yzBQbwcG0wwFBJ1B1kkgYwGscaj5C5bZn59MgKHRnWOaIAjLHHPFgCWPrjyVmvkSuXI9EJ4aUvfOrMYXuTscInwCLxjw5ABuYtrFUg0MSPjzGX4cdWrVoB6+ctzKH87LPPYqEFC4CYL7GKUP54lwwr8uSIAv8CMyzh4FFjhwqn4uG5xNQQ0bUHY4B1CFEtEgojNGtXE80qSGsoD4aHDxHef/9dPNfrykZhNzTIxJhz1apV6LxhUun14475njlL0pQADGa0cOHCk092Vma+7jfeeCMW/eDEcDsLy/f8ISeApRxxS8ucOXNwS5rPPLw8fPipqWX6BDCnq/mhAIMnwar4E0886vwb7jDNe++9F2vvsCcAlu7vlV5UCpIqkp73379/75w5s8MbpTcHjBK/+uor9Av4xViUT+AEMNCFzHG7DzcG+MzDyOQMR44cEekQMfFg2Z//NxgiYgKGtyqFz7CFaWmcC/eF9sYQ6Pvvvwda6cFh6k6RChjbeJpYw5LWrHnPoY2yWmNYiBvuWJLB7QSseWB6Rg4ZCZwARh4MN6zxrx7YRZ0I+IBx6iMCiQeLjweDceOjAPhWlNsH5/FNUnz3N9t9wa7ceDDkk2astbz8KB4ddD6Tga2DK0yTwBjuv9GtCwLAIWCYyzmfRg4ZMgjfpYsIMLaWGP3KIU3GimIOhle//va3l/E0kpMelGUyadIkrMtzg8P0CNEdYGlWUyuKWOvD+yZuGUNuF110Eb6LhtXO9evX43Et5x4M/hyA4cErpjEnAr5kjP8U4QowRpQgJIB1DBRNPAa+2/7b3852+04KunzcRMIrgAAAAzkuOPNgrGpHjhyaMeN2t+WHrePt5jVr1mB8i28K4PkmZv2uPBj6Gyz3Ox8iDhs21AlgAlHCbgKYEWCkJvwj1htuuNbV+BB9PzY8cv7ee+9hrY9DizBzDxgeqV2+fKn3f7swJIIJuMmG/xuEh5swDcMjWiwTug9G7jjkLwA744wzWM7hBWgegIUZIgogqXa7HGDozrEY6A2sm+cFJKNdur+8b98u/AdkJx4ADUxW8vOfX7l7985O9+UeKr46kFEFTO5xozi8jVIOqAjGhPPmzcMcrLq6Gv/WBPE0SgRgGJR2LooGRAzjQ+Tw/PPPY7nSVZmphPivokHugxnf1yLkogcsLrMv2DBCCYzMSxcDSTBHioeO8FU2yPggthO6eEPBBzExUKEHL4SrO99FFcrL8f3QmQ4BQ13AGL5JiicnwRAmk6x2eEoLu+EBw+xu1qxZbh9GQSGxTI9HXqznYAlg2lXHFGAUYG18YPGCQD0QPBhWOFauXJ62J2ZCwQXyYHgxCf+mGf0oLooLtbU3ZEJnOYXyhNzFB7D++MeHnK/T4F1JfDgR96y2b99OX/+FavB1N7xlExIw3MLGyPPKK68MrmvPmVA+3q8ZO/b0VKdru0wfI8Di5bvIg/0/AAAA//9ebk/qAAAeL0lEQVTtnXeUFUW+x0UUREARiSYGMKGAioosHhfBgOFhQs8aCAoiggmervGxBpBH1HV1zQq6CLIew4rAO0oyICggOWdmyAzMMIlB/3ife38zRc+9c/t2qL63Z6b69OlTt293dXX179Pfql+FPqqoKE+thYUH1ap2WgOHDuWzFhcXsHPnzsyXXvrbUVqXJk0aLV++tLAwX5JRdCj3yGpJpzVJfsKHDxcePLh/+vQptWvXrFatmpZbkXjOO++8xYsXHzp0aMuWLeeee+4xxxxD5G3atFm6dGlxcXGRjyU/P3/ixIlNmjTRklqJ5Oijj65Zs2bXrtcUFRUcKoyuRXmHHK5RkxDDsN8WYzmOD7aPKsG/hYcOhW49KsZA7QHjYLk3ApmZm7t3v/noo4+qXl2PcWLhV1xx+YYN63jMJCOSsIAB41640NatGwGsevXqWkyWvGBp1qzZlClTCgoKsrKyunbtyh4ib9269ZIlS6DOIV+FhYVyJKcQlYR/+eWXtm3bakmqNZITTzxx6NAXYb9iAhY6rhTqrgETILHLTZvWXX31lViORsBuu+2Wbdu2AFh+fk4KACsoyOVGcnOzmzRpICJjtTlv4Shf1Ro1avTee+9ByPbt2++55x4rYA7pksMUY+ge2rV69eru3bsfd9xx3tJmcxaSOHnypPz8gwYwxYaWQCxgih8JxGxLhKUoj8C6dauuuqoTgCFi/hdMkHgefnjgjh1ZAIbppwYwLnTgwN7LL7+sRo0a/u+CGEQJ69atO2rUKPDYuXNn//79KYPxFwpGudEJYEiWQou8yMvL27dv348//njHHXfwIiA2iVBLgomEzG/evPncuT8GVESUwmEwRcTwapfwWT5gMVzF/IQu1pUrl7Zv304VrOQl7e2Ri1GihKNHj9y7d3fKiohyX9nZu/v376tLFsT0jz322KeeegqWdu/e/dhjj4k8nn/++Q4Bgy4pSR48eDA7O3v9+vWTJk06++yzJXvJaj+5Hf+MSPMFF1xw4EB2Xl5uEApmADvi54hhKeanoMVO/BBLly5u27Y1VKinHv/kHO4RwHg1T5nyHx4zgJVcN+A6mNwO25dffrFWrVr+rTZi+NHqFlu4AhKUZ/jw4fBGVpxzzjmoUE5OzoHosj+6SJgt+2GJ49nuiS6o3+zZswcPHnzppZdyejRuPZ4Y63MhWtT7+uuv5417+DAb/U6OYAALu3Z5UTBsEdOP+jkKFy789eyzz1TlQzEs65NzHlYKBrQUiFIGmDg5KCW+8sqoOnXqOE+wkyMfeeQRAIOcd999V24QzO66664XXnjh+ejyt+gyZMiQ/yld2PHss88+88wzvXr1at++PY4HydWA0JK7IPLTTz/9yy+/xCAqVBGxUgCGCVpFTADDTc/DmDv3xzPOOE0LYFKsIqrNmzeijakEjLvLyzswZsyIE044wQk2To4RKhRglO4oIgpjeMMpi1oXlJPl+OhCAM75tzZuzZraWg7s00zmX3755Zs3bybnIy9drQpm1S59dbCKgZZ3BaP5iJNnzvyuUaMGFIiiZSL7h5jkX7FIAMvM3BqlK0VFRLSLVwYey3/84xXkIkkqHf8t74tHH30U/wQK9tVXX4kHRfYTjSgSP2WRn5IJ6i85zPE1vR8Izz179sRFSc5HGDOAaW1Mc+TksOoYFhltaC6YNWvGCSfUEQWLYua9elBqVUdlZW1LJWAiyAD22mtjg1AwAKNmBWBSBwMn7xwEdmbLli1nzpxJaZbCuRbA4lXLuidav4h0V/C0ViTtcqdgijGMMhoumD17Zu3aOAYiT94AZrV/0aKHH3445ICRTsgfNGgQrk4cnng4eLv5VzArTvFhT1wpGisvYOLbYCtvfV51c+bMQsGUYYlVqZ+uAlYFI+aoiEUdmwF7EeWmULC//32MdgUDMLztubm5KJi46UOlYJIY5Ovbb7+lFRsFI+c9NDTHI2S/xytgFQ8tdwqGLcqqAPvhhzn169dzBZLNwVHGIkXESgAYt8nt4ORAFkJbRMTpQmv46NGjaREgnYgt/aQ8tIPZ4xT/rwHMUZsYGOBFbNq0sQ0zbv+inLl9e2aK3fS8NXB1jB07Emtzm2D74xVgn332GSUxUWn7U1LwL8ngKmxRMJyHa9euhS4WxBYY6OArL1D1PpWAVypU0c5PoKJql0cFI8d5BgBGO1jLls312sTq1Stzcw+kuIhIh/og2sEoImK4NCaPGzcuZT53h48DwOhWsmzZMtooonxFNgqwtOIUj2JVBWzJkt/atDnf4RN1eNi0ad/s378vZYDhDv3jD+oekZ4cND05TKTDw8RNT7eMESNGiBfR4YlBH0ZiTjnllO+++47iK1UvluKiSPOXFOd4gRrARHy0bB256VWBgaxXCrZixbIOHdqLF9GnTaja/5tvviF9EeUqQQ9XkfuiN/299/bQCBi3gxE/8cQT6AM1nMcff1ycHD5zyf/p0tiNO+ett96igY7kKcBgTAALGV0IWlVSMCtga9euvuqqzlEHvV83vQJs8ODHdu7cLgoWqQwE7EWk9gVjANauXVu9IgOuI0eOxCuHB/zBBx8Uy/ZPiIcYVN6SBu6xcePGr776KrpK2qJ0UfmKVL2OrB5bqOKLdt72VGyc4l8HXhQsKi/5dGvq3LkTj7yUMe8NzWI3xNO7d8+tWzcLYBHrDxgwuqSAMYCdckojD7Zrc0rDhg2pelGx2bFjR58+fdIImEpktWrVWrRoMXbs2F27dkVcGtGB1eKzPUJX+suHBrCov54Hg0v9L3+5g+dH/wQtBUUiue66azduXB996hHnXtCARb01kZGjdABUhqglgClPnz4dwDIzM7t166ZkREvkbiMBLXo5tmvX7v3334cuPPJoF2kDszJoiY6lTcEqG1qiZu4UTCotomB79uwaNuylY4+trgsw7KZFi4w1a1YBGKafAsAo8ebk7Pv888m1akWGk+haMOiLLrpo4cKF2PHGjRsZ4Z9ewBhefe211/7000+MLiNJFA5hDMBYDGDxhTq9ezwCRimORslffpmHUWqRL2Xcc+f+SMz0rgi4DoaFRfq27t698+mnn2QomkqAzwB0sXTq1GnVqlV4EWhoooWNPT6j9XA6VCNcZ5xxBuNlmBoEvRKuCLAU0eXNWvVS4TQoWOXULl8KFq0mFTBBDQ8eBdPYi3X48GH4OQAsopYB1sEigLHStM1EIBoBExLuv//+bdu2YdDoGHvSAhjd5J988skNGzaAEzWuw4cPRySrdMqd8ulKTx3MAFbaT0oVEcU6Kc41b96Mt7PGF/Sf/nQZzc1SOyq5nGBWThocdTqxpNl6fIQu3jFU+erV0zYSTOjCpTFmzBhamfDRMzNH6uniimjX3XffzZhooAItuIqoVnRJiFYa6mCVGS0NCoafo3v3WzXKFwbasOHJ06dPhYpIEVGgCgywffv2fPzxeNKvJj4QQnxuGf01fvx4jJlRjLfddlvqASP9yBfjlGkkkGIhhVVEjAXSStq7VJkwJpDSIqIBLKFuRBRAVWA0Gig1h6FDh+7aRZ0hEMBwzUfppaKfR0tDt243+sQp/vSMjAw8Clg2s6xddtllHCBuehtXBy3RGjkkKhYGSdMWh2MD7YIrhZYBTLQlNVvvTg4Ao1vT1KlTNNIlxopRLlgwT1qBIyKmW8GiHpR8XCk4VJhLWK8CQ1GHDh1AC2fd/PnzmYFUzJ1b4y/EjTbo6PwAx1OKI8AcAbT/suhljMsR/1lnnbVp0ya0VHRM0DKApQYtDUVEoqCUyKgwjXUwLIPR+6NGDd+/n2EU0VqTbsDwVNPKygynjz32CJfT/oIYPHgw841SKps8eTLYiHxxIXBi2lAcDzELE7zRcbFLly56e1QBNtwyhc7evXuZypXVAJZKtDQAxvg8RKxTpytq1IjMva5x6dDhkiVLFpa4OgIATLS3WbPTSbPGtwM2jUYxAp+efjQxDxw4kPgVNnRgX7RokTRDISmU3NhKgHGZ+BuZmVTRqCszmzdvznzdOfuzVXdeo2CpxMxzETGiLQBAcWv48Jfq1q0lBoGFabEMVLFfv760AlNQjAoOVT6rD9B7mKoX+btp04ZbbrmJpGpKb8lNUwhkelAMGoqYRB6i2MN/sr3wwgtXrFihvHni02PLHhYYY7ZtynVaMtAaSd++fbdv30pOKgWzcySmyMlh796w9mO0PzLs//oCDLqY8+znn39o1Ki+PFH/gBGDREKvjsmTP4Eu3BLyPRctjNG4DGAjR/5vnTrHW63QTxh+JM1EwsyHaBeAQQvVLVEk+ZfOSrQ+K67iA3x7hWM4WID0kyTrufXq1Zsx4/8i7yn5vkmM2zDmpwFMa/99X4CJvLBt06aVSIEuyxAjY2LThQt/FanUQheRoGDjxn1w6qlNNWqXoovA119/jeMOxhhwCV0CGOZOzgDPypUr47lSezhRqm1WPPyHqYnxAQraDADMTruEtMABc6I5RsFKC2y8Fykojh//foMGERGzvst9WgbGSgeL1q3PW7NmRUnHjtKL+oHt66+/Qhu1Oza4WepaZ5555tatTO1YtGDBAj4RJhlCnrBg5XRQZBCxwik+QEERDJjF2mfWxZxOTjZo0ODjjz9OTheMGcDCo2DK0GGgVatz9Pq7xUoYbH/xxRcsXrxg375dFBRFM6Mzn6qhnyUfDSQx4hThGAJiKOwkwPHs5CMPEyaMt9KllCfGIj38JCoQwh/IUCtSyQzYjGtkp1pgDMCWL18ez5V1D/0/pk2bRtmS4z0kI/4UEsBO2p1xYFLzpIR8uLjgd0rdidQsQMCcaFdlO8ZXEVEAw4IJ4JOgViOPM/4x+9mDhbRte97IkS8zrgS3h8AjLIGc1NBi3rukR0HIX3j8ly9f/MQTg6grKu3SWETk7qCLTutUolAhuv9deeWVEKLo4gDCODnsAeNcOlvQ/eKmm27SO40HiSF57777No7fP34vKsR1FFP1Uj8NYCFUMIx4/vyfzz038n0dXa9eYVKIhQqm6b7xxuv//e9P6T3ItAJUpXgZYy54WUSygArqZCt7YGzv3p24+99++42OHdvXrHnkG5baXwS0cTEBNdpF89dHH33UtGlTgcp6IfEiWvUqPgxgxMBchQzZ5Fzl4pfc8LOlNti5c2d694NWQvkKqohY2XTJuaNfg4Jh06x8dqhXrx4URawm5ccgODeeVTDjM7Nvv/3mokUL1q1bw/DnHTu27dyZuWfPDkqAbAnjks7K2rJq1bL5838aPvwlHDC0IlSvrtkjb701bJdpZObMmYOXgibmjh07RpwbvBXKqiRFRNz0dFmK50r2/B5doJTluuuuIzOtV/EfpiY2bNiwvIP7DWDOCfF5pDbAYGzOnBkiYv5NwT4GwMNWcMrdfPPNzHjBF4CYZ+LDDz98/fXXqQWhJBSxGOaY6HsOMXZvf61E/8IPf0lUNF716NFDwGAWRMQn/tXAwQCGF9ECWKQ/Z+ka27I3Y8aMjAycMYxn1VMZIwFExTfKSAPSn6oiYtXVLiFTG2CUEvkW6/PPD4m+uPU0Nycy7nJtrtydiWLwv5/LKY1q1aoVbkNqUFu2bCFMfazcxFx88cX0UbTIl6KLQCxgxHb77bfLZ1n8p1bFgPuEdxDvgoQiprkOZgCLe7TxD9vJHgCjCrRs2RJ6TmmRCGUT8QFlvlzIusQfmYI96BWd1umHwRyjjz/+uM2H/C655JI1a9Y4B2zevHn0C+EGNd4FLwXqh1ITK1/EtAFW1dHSrGBACGMHD+Z89dUXzA2m0SbKjUpKaPwVY38xP8s9V8tOkS+qSXyYnHoXgMHDySefjHxJ/DEp4SdfgnUOGCVJPP4DBgzAfaIlwSoSpjDgk5pMGVC+iBnAQuhFhC7xm+O+w8GAy14qDgoD9XQrWYDW5Llz59K1lwkCrr76apx+wlUMXdy1W8Com+EmZVwZlUmJTem2/zxkEM3GDWsArJyZOTQAZrTrSA5oq4MpwGBs5crlHTt2EKvybw2hjQHP4TvvvMNny+kYReFQtVzF0yVZ4UrBotMWFjDSBLWh4gS6GgEjPU89+d979+yAsVgdM4CFU8EQMbXSsDt16n9OO+0UJnUr19pCy4zzhFHQYqgVk14gXxMmTAA2zhXFLveW2ekKMNr3eGdRUKRXPic6T5jDIzMyzpg3b27Ogb107CjDmC/Ajry5fXq3K83p2hRM6KIaJiutUqNHj2SCDb3vXYfWE+hhoMJyyy230G8Qx8asWbPwHCYtDHOKK8DIRvqp0O6MQtKNUL6uRCQab42G+y2b1xfk5xjAguNZG2AKLQlIv8G//nXwiSdq/u6WRgtzG5VQhOuc/rgMxcexgdOCOT0jwFmWcqPlf1eAlRYHIq58BrkwjQIxELNsy72E250nnXTStGnf4Jcq404sfUXGPNBkP412lZ8D2gArNYhIQZHO79IVkB66dO+QkVcaLcOtJWk5XtIPY+3bt6e3IXTh2KClm/3WJdG1OMYzYPQAlq/4ETnxJLqEq/0SD6NO+YhHGY+iASz8dTBxeEAagS1bNvTqdffxx9OFypUBhOtgMUec8jKhDd0FoevWW2/F/cBf1iVRujnGM2C4E+mByWzBEjlRJbqKq/2U3ilffPDBe/T9PVJKdA1Y+W/u4ApdFSvmQBSM4gQKJj1uqaxv3Lj2/vv7HHdcDVePPyQHCzwkhvaoG264gSZaukEw4zwTHkqbspUuG9PnL8+AYVJ09fziiy9snCjesotuN0xcR03MABYQt4EAZi0ughnfaGWkybBhL+Dz4Il6M4W0nAUV4qRhrAffXF63jvEyOWwhrVy6AgIMlz3d9JnA66ab/sumqc1bFtE4PnToizk5+3Ensiara1nHGkvYKJhdDgQOGPUxKTHSyf2f/3z9rLNa2lihNxMJ4iy0QtKJQdNfic7E69evZypsumvg4aDJi4tyQPySKDEc6VnB8HMAGAxMnz6VCTaEeSJMdC23+/lSKd8rxdXBQEwDmF4pCxwwNfCRAPP1fvrpBDorUiULuftezBdrvuaaa5iGDV85lS7au+jCD3KJ6LIxej+A8chhDB2joHjnnXdKu7NbimyOr1+/Hp+YOZibHXEnmjpY+J0c1iKiuDrYiuMeQVu1agUfNGnSpIlYqs2DT9lfMWAAPxqVkZExaNAgOshDF0M86FFx6qmnqiMJlLskSjMH+1EwGMPVwQrtdHRKdBVv++kl0qJFxpLFCwxgeuWL2AJXMAWbFBTZUiujGfpf//ro/PNbIWXYRLpIE0JIgAoQppmLBqIuXbp8//331LgoFjJRFK55n51uKdBdeulFTF6iMsRbgLJijx532/TZ98AY5WFUkWlSaXtAJzEL2ZZaW3y9y7rHrgZSGkPVPSZ1gCl7EtIwFKTsmWeeaty4IT3QecapLzRKRUtdF8zYw5BEBm7SAYpuSkyhcd999+EG8GC1MafoAoxZEn79dT59R0htzCV8/mTcDTVMQQLALIxZcYoPV114nLw+0gCYkAZmBBijuXTpogED+oNZqVvBp524Ox0zFcBAizkz+K4XPXdxKTBqC8Yo1NH2ZdU3d7FbjtYFGKXE3NwDDzzwgDhaLFfwG+ROqeAx3wmfE+P1F2c98WjJHgOYXQ6kDTDax6hPw1hubvaOHVl8y++5555h7rcg5o62MT3oorjVuXNnZvykbyFQ0YgMXcgX5UPKirqEQhdg2D3WzwBqfJs29+XhL+6UzJ86dQoAw5hFwcSADGB2IMW9j0oOThtgomOylbYyKmbMAPXNN1/37HlPy5YthTSrfauyHGpjb0BypFIeAuxRUUmYWT0QKHrE01tXuj7hRhC0+CQkIsYMNrCnTlSx2V860b8MkKMOtnbtSpw91nt3GyaveDHxZbYhQ55T1UJ1a4mu7nA/lWEm22Hu1PLMJRFg1v1eTLC8a1WeeEIBmBiZOIhp7WGuKGZoeuONN/jSMcPscZrJUKsYM8Iakhq99RSwRJGYfBcHxtNPP/3JJ58wzy6TEMKVLEIX2iU/UTOxYIlESEt6RRtTZgZV5rr64w9mlToytMdDOFq65uvPv5I5pEpdUdLmc8t77fPPP8/O3utYwQxgdq+DUADGW5kVU+PtjvUQpqbBB/L4Gvpvvy2cNOkTSo/33de7a9drmJipRYsWfBy1Pm039epRbQAzjAx4WAjjA8REUB6mlGLyiYyMDMQQHyAv5n79+o0YMYIByMw8wzATVRQUotiqBdJgjGO4EFGxcCFgI2YWwtGlBp2/ZK1VqyYrHlHW2rVrJVhr/vnPHTdsWCMFYw9cySm//477IdImtmfPrnfeeatp08Z169Z2cPXYVNU5vhZrfFL5rg2dp/j2pwFMi7SGArCoxUQ66WBDomMARjWALTdJGytbKgYo2+LFiyGEeTnRN1Sod+/e9Ljt2rUrw/WpR7Ht1q0b3zfp06cP36GdOHHi7Nmz8YzxPaGsrCxxXUCRKJXIFAOu2K/QkgB/sROfNbPZDBgwgNh69erFtdgyJ1zpcg9FWVl79+557729eAX07XsfvS6ZMSF+7du397hx7zERqrxKPAPGiTTZS55kZm597bVX+/fv99BDAwYOfFBWPEZO1oEP9meNP/KRRx56+eWhZLVkvsXIrEqVKGz3LrdEVYUOCwVgyawtMiYqPCteBi8r7w7ta9mUFBcVsqq0yc9EW2fmnggk6/4qRIuzTCuTIQYw1+gqC3YX0E4XERrAtHZr8sBP0lMqBGDiEnBNQkCiV2LWQQDjMk7GmBwZZhKdcT7+pxwTv5WiuI5tmRd2UoOragcYwFxzawAri6UBzC4HDGBVDrCyeFhrU97CduZV1fQq/n4NYJUTsPgyodpjAIvHILg9BrAqBJhutETxjILZ5YABrLIBhlLRHqD0yhowgAWnVIlirhCAuWYgIP+hRBtyJ0e5gAWDllEwO+0S5Axgruk1gJXFNbmRJXq7V4X9BrAKBpgIlHQKkeKfNWwtEJb863qODbe+RAOYXQ4YwAxgbomKOd7OvKqCRtnfY8gBc239gda+0l4Hs0qW8mRYFaxs4S2GBI0/DVROc8AA5prhNNbBDGD2chHCfw1gFR4wqIuImKlrhbLjrwHMAOaw6Oi0UBRCGUljkkILmGu7T0HtK2x1MKVaaqCq2qM1YNDyngMGMNckh6cOpigygKVRo+wvbQCrqIBFql6Br97f3PZmV3X+NYCFHbASH0Z0LKbVi2gAqxCUhhAw1xafstpXWupg5QIWcJkQbTTapScHDGCueU5lHcwqWdaWZQNYRXkFGMAqGGBS7woSMD1v7ooCQNDpNIAZwGKcJQYwnTlgAKswgFlVyxrW50vUaVhBK0NFid8AZgBTCmYA058DoQLMta2n2H+Yei+iODnQK1mVWBkFMwrm4QMiBrDY6bWtgCm6CBjADGAGsFhaZOCWq22qANNfNKooAASdTlNEdC2bqW8HiykfBqBgBrCgcsAAViEBsxYXdYSDMq+g9SH88RvADGCmY1SA75eQAObaylPoP4ytTLqqRPk8WOpg1q17vQrQesIvIGlPoQEsKdsGMIOo9xxIO2BJ7TvtBxjAvJtX2gUk7QkwgCUF2ABmAPOeA2kELKllh+QAA5h380q7gKQ9AQawpBgbwAxg3nMgLYAltelQHWAA825eaReQtCfAAJYUZgOYAcx7DqQYsKTWHMIDDGDezSvtApL2BBjAkiJtADOAec+BlAGW1I5De8ARwHx2y/BwurUPh4RNT460i5KrBBjAkoJtAPP+/nZli5Xy4BQAltSCQ32AB9nReIo/BTNgpD8HDGBJ8NZIi4eoDGAVXdYMYJUSsPS/uSs6GLrSbwAzgBkaA8wBA1iaAYsvBCba48Z/GKDF6Hq1V5F4DGAGMENjgDlgAKsAgLnRLplFNECLqSLKo+s2DWAGMENjgDlgAFOARRqUPXjSPZwi07DFT8bmXqnUrNcxgQAtRtervYrEYwAzgBkaA8wBA1gJYB6EyMMpVu0yClYVRMwAZgAL8P1dFRCyv8cqDljq6l0id0bB7M2x8v1rAEuRY8MAVvngcXJHVRowD5Uon6cYBXNilJXpGAOYUTBTBwswBwxgBrAAzasyaZG3ezGApQcwfW3KMU3MpqtUuN4XBjADWLgs0ptQhPYsA5gBzAAWYA4ECpjqhRS6gE9noOfT/XsR42Mob0/oMjyF33ML170bwNKjYIqKYCpjAb6SQ1sYC2fCqhxgnsVHy4mKKxVwC1hxcYGDtai42KyhyAEDWJoVTJHmMOAMSKNgYcmBowoLD7LydCWgdZtfWBi6tYibTd/qP3udcRiuekiVrYBx4/8PtiMFHHcQt8sAAAAASUVORK5CYII=" alt="OCEAYR Agency logo">
+<div aria-label="OCEAYR Agency logo" class="logo">
+<img alt="OCEAYR" src="data:image/png;base64,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"/>
+</div><section aria-label="OCEAYR featured opportunities" class="landing-slider" id="home">
+<div class="slide-bg slide-bg-1 active"></div>
+<div class="slide-bg slide-bg-2"></div>
+<div class="slide-bg slide-bg-3"></div>
+<div class="slide-overlay"></div>
+<div class="landing-content">
+<div class="landing-copy">
+<p class="landing-kicker" id="landingKicker">OCEAYR SUMMER COLLABORATIONS 2026</p>
+<h1 id="landingTitle">MAKE THIS<br/><span>SUMMER VISIBLE.</span></h1>
+<p class="landing-description" id="landingDescription">Limited summer collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.</p>
+<div class="landing-actions">
+<a class="landing-primary" href="#summer" id="landingPrimary">EXPLORE SUMMER COLLABORATIONS <span>→</span></a>
+<a class="landing-secondary" href="/contact" id="landingSecondary">START A PROJECT</a>
 </div>
-
-<nav class="site-nav">
-  <a href="#home">Home</a>
-  <a href="/about">About Us</a>
-  <a href="#services">Services</a>
-  <a href="#summer" aria-label="Summer Collaborations 2026">Summer</a>
-  <a href="/contact">Contact Us</a>
-  <a href="/contact" class="nav-cta">Start A Project</a>
-</nav>
-
-<section class="landing-slider" id="home" aria-label="OCEAYR featured opportunities">
-  <div class="slide-bg slide-bg-1 active"></div>
-  <div class="slide-bg slide-bg-2"></div>
-  <div class="slide-bg slide-bg-3"></div>
-  <div class="slide-overlay"></div>
-  <div class="landing-content">
-    <div class="landing-copy">
-      <p class="landing-kicker" id="landingKicker">OCEAYR SUMMER COLLABORATIONS 2026</p>
-      <h1 id="landingTitle">MAKE THIS<br><span>SUMMER VISIBLE.</span></h1>
-      <p class="landing-description" id="landingDescription">Limited paid collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.</p>
-      <div class="landing-actions">
-        <a id="landingPrimary" class="landing-primary" href="#summer">EXPLORE SUMMER COLLABORATIONS <span>→</span></a>
-        <a id="landingSecondary" class="landing-secondary" href="/contact">START A PROJECT</a>
-      </div>
-    </div>
-    <div class="landing-meta">
-      <span class="slide-count"><b id="slideNumber">01</b> / 03</span>
-      <div class="slide-controls" aria-label="Featured slide controls">
-        <button type="button" class="slide-dot active" data-slide="0" aria-label="Slide 1"></button>
-        <button type="button" class="slide-dot" data-slide="1" aria-label="Slide 2"></button>
-        <button type="button" class="slide-dot" data-slide="2" aria-label="Slide 3"></button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="hero-video-section">
- <video
-  autoplay
-  muted
-  loop
-  playsinline
-  preload="auto"
-  id="bgv">
-
-  <source
-    src="/video/oceayr-background.mp4"
-    type="video/mp4">
-
+</div>
+<div class="landing-meta">
+<span class="slide-count"><b id="slideNumber">01</b> / 03</span>
+<div aria-label="Featured slide controls" class="slide-controls">
+<button aria-label="Slide 1" class="slide-dot active" data-slide="0" type="button"></button>
+<button aria-label="Slide 2" class="slide-dot" data-slide="1" type="button"></button>
+<button aria-label="Slide 3" class="slide-dot" data-slide="2" type="button"></button>
+</div>
+</div>
+</div>
+</section><section class="hero-video-section">
+<video autoplay="" id="bgv" loop="" muted="" playsinline="" preload="auto">
+<source src="/video/oceayr-background.mp4" type="video/mp4"/>
 </video>
-
-  <h1>
-    OCEAYR<br>
-    <span class="outline">AGENCY</span>
-  </h1>
+<h1>
+    OCEAYR<br/>
+<span class="outline">AGENCY</span>
+</h1>
 </section>
-
+<nav class="site-nav">
+<a href="#home">Home</a>
+<a href="/about">About Us</a>
+<a href="#services">Services</a>
+<a aria-label="Summer Collaborations 2026" href="#home">Summer</a>
+<a href="/contact">Contact Us</a>
+<a class="nav-cta" href="/contact">Start A Project</a>
+</nav>
 <section class="selected-intro">
-  <div>
-    <p class="section-kicker">SELECTED VISUAL DIRECTION</p>
-    <h2>HOSPITALITY.<br>FOOD.<br>LIFESTYLE.</h2>
-  </div>
-  <p>A curated representation of the hospitality, food and lifestyle stories that shape the OCEAYR creative perspective.</p>
+<div>
+<p class="section-kicker">SELECTED VISUAL DIRECTION</p>
+<h2>HOSPITALITY.<br/>FOOD.<br/>LIFESTYLE.</h2>
+</div>
+<p>A curated representation of the hospitality, food and lifestyle stories that shape the OCEAYR creative perspective.</p>
 </section>
-
 <div class="ticker-section">
-  <div class="ticker-wrap">
-    <div class="ticker-track">
-      <span>Shuffle Our Art Works &nbsp;&nbsp;&nbsp; Shuffle Our Art Works &nbsp;&nbsp;&nbsp; Shuffle Our Art Works &nbsp;&nbsp;&nbsp; Shuffle Our Art Works &nbsp;&nbsp;&nbsp;</span>
-      <span>Shuffle Our Art Works &nbsp;&nbsp;&nbsp; Shuffle Our Art Works &nbsp;&nbsp;&nbsp; Shuffle Our Art Works &nbsp;&nbsp;&nbsp; Shuffle Our Art Works &nbsp;&nbsp;&nbsp;</span>
-    </div>
-  </div>
+<div class="ticker-wrap">
+<div class="ticker-track">
+<span>Shuffle Our Art Works     Shuffle Our Art Works     Shuffle Our Art Works     Shuffle Our Art Works    </span>
+<span>Shuffle Our Art Works     Shuffle Our Art Works     Shuffle Our Art Works     Shuffle Our Art Works    </span>
 </div>
-
+</div>
+</div>
 <section class="gallery-section" id="gallery"></section>
-
 <section class="services-new" id="services">
-  <div class="services-top">
-    <div><p class="section-kicker">WHAT WE CREATE</p><h2>CREATIVE FOR<br><span>HOSPITALITY.</span></h2></div>
-    <p class="services-lead">Strategy, photography, film and digital content designed to make hospitality brands more desirable — and easier to choose.</p>
-  </div>
-  <div class="service-grid">
-    <article class="service-card"><span>01</span><h3>CREATIVE<br>STRATEGY</h3><p>Brand positioning, campaign concepts, creative direction and content strategy.</p></article>
-    <article class="service-card"><span>02</span><h3>PHOTOGRAPHY</h3><p>Hotel, resort, food, lifestyle, architecture and interior photography.</p></article>
-    <article class="service-card"><span>03</span><h3>FILM &amp;<br>VIDEO</h3><p>Campaign films, property films, social reels and short-form visual stories.</p></article>
-    <article class="service-card"><span>04</span><h3>DIGITAL<br>CONTENT</h3><p>Social content, campaign assets, website visuals and launch-ready creative.</p></article>
-    <article class="service-card"><span>05</span><h3>CAMPAIGN<br>DIRECTION</h3><p>Seasonal campaigns, staycations, restaurant launches and destination experiences.</p></article>
-  </div>
-  <a class="section-cta" href="/contact">DISCUSS A PROJECT <span>→</span></a>
+<div class="services-top">
+<div><p class="section-kicker">WHAT WE CREATE</p><h2>CREATIVE FOR<br/><span>HOSPITALITY.</span></h2></div>
+<p class="services-lead">Strategy, photography, film and digital content designed to make hospitality brands more desirable — and easier to choose.</p>
+</div>
+<div class="service-grid">
+<article class="service-card service-card-01"><h3>CREATIVE<br/>STRATEGY</h3><p>Brand positioning, campaign concepts, creative direction and content strategy.</p></article>
+<article class="service-card service-card-02"><h3>PHOTOGRAPHY<br/>&amp; FILM</h3><p>Hotel, resort, food, lifestyle, architecture, interiors, campaign films and social reels.</p></article>
+<article class="service-card service-card-03"><h3>DIGITAL<br/>CONTENT</h3><p>Social content, campaign assets, website visuals and launch-ready creative.</p></article>
+<article class="service-card service-card-04"><h3>CAMPAIGN<br/>DIRECTION</h3><p>Seasonal campaigns, staycations, restaurant launches and destination experiences.</p></article>
+<article class="service-card service-card-05"><h3>WEB DESIGN<br/>EXPERIENCES</h3><p>Luxury website design, landing pages and digital experiences built to turn attention into enquiries.</p></article>
+</div>
+<a class="section-cta" href="/contact">DISCUSS A PROJECT <span>→</span></a>
 </section>
-
-<section class="summer-section" id="summer">
-  <div class="summer-grid">
-    <div class="summer-heading"><p class="summer-kicker">OCEAYR SUMMER COLLABORATIONS 2026</p><h2>MAKE THIS<br><span>SUMMER VISIBLE.</span></h2></div>
-    <div class="summer-copy">
-      <p>OCEAYR is opening a limited number of paid summer collaboration slots for hotels, resorts, restaurants and lifestyle destinations across the UAE.</p>
-      <p>Created for brands looking to promote a summer experience, refresh their digital presence or build a premium content library for the months ahead.</p>
-      <p>Each collaboration is shaped around the property, audience and commercial objective — combining creative direction, photography, film and campaign-ready content.</p>
-      <div class="summer-benefits"><span>STRATEGIC CREATIVE DIRECTION</span><span>PREMIUM PHOTO &amp; VIDEO PRODUCTION</span><span>CAMPAIGN-READY DIGITAL CONTENT</span><span>PRIORITY SUMMER SCHEDULING</span></div>
-      <div class="summer-actions"><a class="summer-primary" href="/contact">APPLY FOR A SUMMER COLLABORATION <span>→</span></a><a class="summer-secondary" href="/contact">DISCUSS THE OPPORTUNITY</a></div>
-      <p class="summer-note">Paid collaborations. Limited production availability. Scope and investment are customised for each brand.</p>
-    </div>
-  </div>
-</section>
-
 <section class="process-section">
-  <div class="process-head"><div><p class="section-kicker">HOW WE WORK</p><h2>FROM IDEA<br><span>TO IMPACT.</span></h2></div></div>
-  <div class="process-grid">
-    <div><b>01</b><h3>DISCOVERY</h3><p>We understand the brand, audience and commercial objective.</p></div>
-    <div><b>02</b><h3>DIRECTION</h3><p>We develop the campaign idea, mood and production plan.</p></div>
-    <div><b>03</b><h3>PRODUCTION</h3><p>Our team creates the photography, film and digital assets.</p></div>
-    <div><b>04</b><h3>DELIVERY</h3><p>Every asset is edited, organised and prepared for its intended channels.</p></div>
-  </div>
+<div class="process-head">
+<div>
+<p class="section-kicker">HOW WE WORK</p>
+<h2>FROM VISION<br/><span>TO IMPACT.</span></h2>
+</div>
+<div class="process-intro">
+<p>We turn a clear brand ambition into a focused creative direction — one that feels distinctive, desirable and commercially useful.</p>
+<p>From discovery and direction to production and delivery, every step is built to create work your guests, customers and audience want to experience.</p>
+</div>
+</div>
+<div class="process-grid">
+<div><h3>DISCOVERY</h3><p>We understand the brand, audience, positioning and commercial objective before anything is produced.</p></div>
+<div><h3>DIRECTION</h3><p>We develop the campaign idea, visual language, mood and production plan around the desired outcome.</p></div>
+<div><h3>PRODUCTION</h3><p>Our team creates the photography, film, digital content and supporting assets with purpose and consistency.</p></div>
+<div><h3>DELIVERY</h3><p>Every asset is edited, organised and prepared for the channels where your audience will experience it.</p></div>
+</div>
 </section>
-
 <section class="about-snapshot">
-  <div><p class="section-kicker">ABOUT OCEAYR</p><h2>CREATIVE THINKING.<br><span>PREMIUM EXECUTION.</span></h2></div>
-  <div class="about-snapshot-copy"><p>OCEAYR is a UAE creative marketing agency focused on luxury hospitality, food and lifestyle brands. We help hotels, resorts, restaurants, cafés, wellness spaces and destination-led businesses communicate with greater clarity, desirability and commercial confidence.</p><a class="section-cta" href="/about">DISCOVER OCEAYR <span>→</span></a></div>
+<div><p class="section-kicker">ABOUT OCEAYR</p><h2>CREATIVE THINKING.<br/><span>PREMIUM EXECUTION.</span></h2></div>
+<div class="about-snapshot-copy"><p>OCEAYR is a UAE creative marketing agency focused on luxury hospitality, food and lifestyle brands. We help hotels, resorts, restaurants, cafés, wellness spaces and destination-led businesses communicate with greater clarity, desirability and commercial confidence.</p><a class="section-cta" href="/about">DISCOVER OCEAYR <span>→</span></a></div>
 </section>
-
 <section class="start-project-band">
-  <p class="section-kicker">READY WHEN YOU ARE</p>
-  <h2>START A<br><span>PROJECT.</span></h2>
-  <p>Tell us what you are building, launching or trying to make more desirable.</p>
-  <a class="start-project-btn" href="/contact">START A PROJECT <span>→</span></a>
+<p class="section-kicker">Tell us what you are building, launching or trying to make more desirable.</p><p class="start-project-support">Share a little about your business and the kind of work you need. We will come back with a focused direction and the right next step.</p>
+<h2>LET'S CREATE<br/><span>WHAT'S NEXT.</span></h2>
+<p>Tell us what you are building, launching or trying to make more desirable.</p>
+<a class="start-project-btn" href="/contact">START A PROJECT <span>→</span></a>
 </section>
-
 <footer class="footer">
-  <div class="footer-left"><span>copyright © 2026 OCEAYR Agency</span></div>
-  <div class="footer-links"><a href="/about">About</a><a href="/contact">Start A Project</a><a href="#summer">Summer Collaborations</a><a href="#" onclick="openJoinModal();return false;">Join The Team</a></div>
-  <span>Designed &amp; developed by OCEAYR Agency</span>
+<div class="footer-left"><span>copyright © 2026 OCEAYR Agency</span></div>
+<div class="footer-links"><a href="/about">About</a><a href="/contact">Start A Project</a><a href="#home">Summer Collaborations</a><a href="#" onclick="openJoinModal();return false;">Join The Team</a></div>
+<span>Designed &amp; developed by OCEAYR Agency</span>
 </footer>
-
-
 <div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
-  <button class="lb-close" onclick="closeLb()">✕ &nbsp;Close</button>
-  <img id="lbImg" src="" alt="">
-  <span class="lb-hint">Click backdrop or ESC to close</span>
+<button class="lb-close" onclick="closeLb()">✕  Close</button>
+<img alt="" id="lbImg" src=""/>
+<span class="lb-hint">Click backdrop or ESC to close</span>
 </div>
-
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-
-    <div class="modal-title">
-      ELEVATE<br>
-      <span>YOUR BRAND</span>
-    </div>
-
-    <div id="formWrap">
-      <div class="mf">
-        <div class="mf-field">
-          <label>Your Name *</label>
-          <input type="text" id="f-name" placeholder="First & Last name">
-        </div>
-
-        <div class="mf-field">
-          <label>Company</label>
-          <input type="text" id="f-company" placeholder="Your company">
-        </div>
-
-        <div class="mf-field">
-          <label>Email *</label>
-          <input type="email" id="f-email" placeholder="hello@company.com">
-        </div>
-
-        <div class="mf-field">
-          <label>Mobile / WhatsApp</label>
-          <input type="tel" id="f-mobile" placeholder="+971 00 000 0000">
-        </div>
-
-        <div class="mf-field">
-          <label>Brand Type</label>
-          <select id="f-brand">
-            <option value="">Select</option>
-            <option>Hotel</option>
-            <option>Resort</option>
-            <option>Restaurant</option>
-            <option>Café</option>
-            <option>Lifestyle Brand</option>
-            <option>Wellness / Spa</option>
-            <option>Destination / Experience</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="mf-field">
-          <label>Service Required</label>
-          <select id="f-service">
-            <option value="">Select</option>
-            <option>Summer Collaboration</option>
-            <option>Photography &amp; Film</option>
-            <option>Creative Strategy</option>
-            <option>Social / Digital Content</option>
-            <option>Campaign Direction</option>
-            <option>Branding</option>
-            <option>Website</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="mf-field">
-          <label>Property / Brand Location</label>
-          <input type="text" id="f-location" placeholder="Dubai, Abu Dhabi, UAE...">
-        </div>
-
-        <div class="mf-field">
-          <label>Website / Instagram</label>
-          <input type="text" id="f-link" placeholder="Website or Instagram URL">
-        </div>
-
-        <div class="mf-field full">
-          <label>Project Details</label>
-          <textarea id="f-msg" placeholder="Tell us about the brand, experience, campaign or content you have in mind..."></textarea>
-        </div>
-
-        <button class="mf-send" id="sendBtn" onclick="sendForm()">
-          <span id="sendLabel">Send Brief</span>
-          <span class="arr" id="sendArr">→</span>
-        </button>
-      </div>
-
-      <p class="mf-note" id="formNote">Sends directly to our team · We reply within 24 hours</p>
-    </div>
-
-    <div class="mf-success" id="successMsg">
-      <div class="tick">✓</div>
-      <p>We received your query and<br>will get back to you in 24 hrs.</p>
-      <small>Thank you for reaching out!</small>
-    </div>
-  </div>
+<div class="modal">
+<button class="modal-close" onclick="closeModal()">✕</button>
+<div class="modal-title">
+      ELEVATE<br/>
+<span>YOUR BRAND</span>
 </div>
-
-<div class="social-floats" aria-label="Social links">
-  <a href="https://www.instagram.com/oceayr.agency?igsh=NWJoZDZoeW05YWZx" class="social-float ig-float" target="_blank" rel="noopener noreferrer" aria-label="Open OCEAYR Agency Instagram">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
-      <defs>
-        <filter id="goldSocialGlow" x="-55%" y="-55%" width="210%" height="210%">
-          <feGaussianBlur stdDeviation="1.05" result="blur"/>
-          <feColorMatrix in="blur" type="matrix"
-            values="0 0 0 0 1
+<div id="formWrap">
+<div class="mf">
+<div class="mf-field">
+<label>What can we create for you?</label>
+<input id="f-name" placeholder="First &amp; Last name" type="text"/>
+</div>
+<div class="mf-field">
+<label>Company</label>
+<input id="f-company" placeholder="Your company" type="text"/>
+</div>
+<div class="mf-field">
+<label>Email *</label>
+<input id="f-email" placeholder="hello@company.com" type="email"/>
+</div>
+<div class="mf-field">
+<label>Mobile / WhatsApp</label>
+<input id="f-mobile" placeholder="+971 00 000 0000" type="tel"/>
+</div>
+<div class="mf-field">
+<label>Brand Type</label>
+<select id="f-brand"><option value="">Select business type</option><option value="Hotel / Resort">Hotel / Resort</option><option value="Restaurant / Café">Restaurant / Café</option><option value="Lifestyle / Retail">Lifestyle / Retail</option><option value="Wellness / Spa">Wellness / Spa</option><option value="Destination / Experience">Destination / Experience</option><option value="Other">Other</option></select>
+</div>
+<div class="mf-field">
+<label>Service Required</label>
+<select id="f-service"><option value="">Select project requirement</option><option value="Creative Strategy">Creative Strategy</option><option value="Photography &amp; Film">Photography &amp; Film</option><option value="Digital Content">Digital Content</option><option value="Campaign Direction">Campaign Direction</option><option value="Web Design &amp; Digital Experience">Web Design &amp; Digital Experience</option><option value="Branding">Branding</option><option value="Summer Collaboration">Summer Collaboration</option><option value="Other">Other</option></select>
+</div>
+<div class="mf-field">
+<label>Property / Brand Location</label>
+<input id="f-location" placeholder="Dubai, Abu Dhabi, UAE..." type="text"/>
+</div>
+<div class="mf-field">
+<label>Website / Instagram</label>
+<input id="f-link" placeholder="Website or Instagram URL" type="text"/>
+</div>
+<div class="mf-field full">
+<label>Project Details</label>
+<textarea id="f-msg" placeholder="Tell us about the brand, experience, campaign or content you have in mind..."></textarea>
+</div>
+<button class="mf-send" id="sendBtn" onclick="sendForm()">
+<span id="sendLabel">Send Brief</span>
+<span class="arr" id="sendArr">→</span>
+</button>
+</div>
+<p class="mf-note" id="formNote">Sends directly to our team · We reply within 24 hours</p>
+</div>
+<div class="mf-success" id="successMsg">
+<div class="tick">✓</div>
+<p>We received your query and<br/>will get back to you in 24 hrs.</p>
+<small>Thank you for reaching out!</small>
+</div>
+</div>
+</div>
+<div aria-label="Social links" class="social-floats">
+<a aria-label="Open OCEAYR Agency Instagram" class="social-float ig-float" href="https://www.instagram.com/oceayr.agency?igsh=NWJoZDZoeW05YWZx" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<filter height="210%" id="goldSocialGlow" width="210%" x="-55%" y="-55%">
+<fegaussianblur result="blur" stddeviation="1.05"></fegaussianblur>
+<fecolormatrix in="blur" result="glow" type="matrix" values="0 0 0 0 1
                     0 0 0 0 1
                     0 0 0 0 1
-                    0 0 0 1.35 0" result="glow"/>
-          <feMerge>
-            <feMergeNode in="glow"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-      <rect class="ig-stroke" x="9.5" y="9.5" width="29" height="29" rx="8.4"></rect>
-      <circle class="ig-stroke" cx="24" cy="24" r="6.8"></circle>
-      <circle class="ig-dot" cx="33.1" cy="14.9" r="2.25"></circle>
-    </svg>
-  </a>
-
-  <a href="https://wa.me/971528749214" class="social-float wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
-      <path class="wa-line" d="M24.2 7.9c-8.8 0-16 7.1-16 15.8 0 3 .86 5.8 2.35 8.18L8.3 40.15l8.55-2.25a16.1 16.1 0 0 0 7.35 1.77c8.84 0 16-7.08 16-15.84S33.04 7.9 24.2 7.9Z"/>
-      <path class="wa-phone" d="M18.15 15.65c-.37-.83-.75-.85-1.1-.87h-.92c-.32 0-.84.12-1.28.59-.44.47-1.66 1.61-1.66 3.9 0 2.3 1.7 4.51 1.94 4.82.24.31 3.29 5.22 8.26 7.12 4.14 1.58 4.98 1.26 5.88 1.18.9-.08 2.9-1.16 3.31-2.28.41-1.12.41-2.08.29-2.28-.12-.2-.45-.33-.94-.57-.49-.24-2.9-1.41-3.35-1.57-.45-.16-.77-.24-1.1.24-.33.48-1.26 1.57-1.55 1.89-.29.32-.57.36-1.06.12-.49-.24-2.05-.75-3.9-2.37-1.44-1.27-2.42-2.84-2.7-3.32-.29-.48-.03-.74.22-.98.22-.22.49-.57.73-.86.24-.29.33-.49.49-.82.16-.32.08-.61-.04-.85-.12-.24-1.1-2.65-1.52-3.09Z"/>
-    </svg>
-  </a>
-
-  <a href="tel:+971528749214" class="social-float call-float" aria-label="Call OCEAYR Agency">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
-      <path class="call-line" d="M17.2 9.5c.8-.4 1.8-.1 2.2.7l3.1 6.2c.4.8.2 1.7-.5 2.2l-3.1 2.4c1.9 4.2 5.4 7.7 9.6 9.6l2.4-3.1c.5-.7 1.5-.9 2.2-.5l6.2 3.1c.8.4 1.1 1.4.7 2.2l-2.2 4.4c-.5 1-1.6 1.6-2.7 1.5-13.8-1.4-24.7-12.3-26.1-26.1-.1-1.1.5-2.2 1.5-2.7l4.7-2.3Z"/>
-    </svg>
-  </a>
+                    0 0 0 1.35 0"></fecolormatrix>
+<femerge>
+<femergenode in="glow"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+</defs>
+<rect class="ig-stroke" height="29" rx="8.4" width="29" x="9.5" y="9.5"></rect>
+<circle class="ig-stroke" cx="24" cy="24" r="6.8"></circle>
+<circle class="ig-dot" cx="33.1" cy="14.9" r="2.25"></circle>
+</svg>
+</a>
+<a aria-label="Chat on WhatsApp" class="social-float wa-float" href="https://wa.me/971528749214" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path class="wa-line" d="M24.2 7.9c-8.8 0-16 7.1-16 15.8 0 3 .86 5.8 2.35 8.18L8.3 40.15l8.55-2.25a16.1 16.1 0 0 0 7.35 1.77c8.84 0 16-7.08 16-15.84S33.04 7.9 24.2 7.9Z"></path>
+<path class="wa-phone" d="M18.15 15.65c-.37-.83-.75-.85-1.1-.87h-.92c-.32 0-.84.12-1.28.59-.44.47-1.66 1.61-1.66 3.9 0 2.3 1.7 4.51 1.94 4.82.24.31 3.29 5.22 8.26 7.12 4.14 1.58 4.98 1.26 5.88 1.18.9-.08 2.9-1.16 3.31-2.28.41-1.12.41-2.08.29-2.28-.12-.2-.45-.33-.94-.57-.49-.24-2.9-1.41-3.35-1.57-.45-.16-.77-.24-1.1.24-.33.48-1.26 1.57-1.55 1.89-.29.32-.57.36-1.06.12-.49-.24-2.05-.75-3.9-2.37-1.44-1.27-2.42-2.84-2.7-3.32-.29-.48-.03-.74.22-.98.22-.22.49-.57.73-.86.24-.29.33-.49.49-.82.16-.32.08-.61-.04-.85-.12-.24-1.1-2.65-1.52-3.09Z"></path>
+</svg>
+</a>
+<a aria-label="Call OCEAYR Agency" class="social-float call-float" href="tel:+971528749214">
+<svg aria-hidden="true" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path class="call-line" d="M17.2 9.5c.8-.4 1.8-.1 2.2.7l3.1 6.2c.4.8.2 1.7-.5 2.2l-3.1 2.4c1.9 4.2 5.4 7.7 9.6 9.6l2.4-3.1c.5-.7 1.5-.9 2.2-.5l6.2 3.1c.8.4 1.1 1.4.7 2.2l-2.2 4.4c-.5 1-1.6 1.6-2.7 1.5-13.8-1.4-24.7-12.3-26.1-26.1-.1-1.1.5-2.2 1.5-2.7l4.7-2.3Z"></path>
+</svg>
+</a>
 </div>
-
 <script>
 /* =========================
    EMAILJS INIT
@@ -2937,8 +3177,6 @@ async function sendForm(){
   }
 }
 </script>
-
-
 <script>
 /* Open Join The Team when linked from About or Contact pages */
 window.addEventListener('DOMContentLoaded',()=>{
@@ -2958,11 +3196,41 @@ window.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 
+
+<script>
+/* FINAL AUTOMATIC LOGO + NAV CONTRAST */
+(function(){
+  const logo=document.querySelector('.logo');
+  const nav=document.querySelector('.site-nav');
+  if(!logo||!nav)return;
+  const darkSections=['.landing-slider','.hero-video-section','.gallery-section','.about-snapshot'];
+  const lightSections=['.selected-intro','.services-new','.process-section','.start-project-band','.footer'];
+  const sections=[...darkSections,...lightSections].map(s=>document.querySelector(s)).filter(Boolean);
+  function update(){
+    const y=window.innerHeight*.12;
+    let current=null;
+    sections.forEach(el=>{
+      const r=el.getBoundingClientRect();
+      if(r.top<=y && r.bottom>y) current=el;
+    });
+    if(!current){
+      const nearest=sections.map(el=>({el,d:Math.abs(el.getBoundingClientRect().top-y)})).sort((a,b)=>a.d-b.d)[0];
+      current=nearest?.el||null;
+    }
+    const dark=!!current && darkSections.some(s=>current.matches(s));
+    logo.classList.toggle('on-dark',dark);
+    nav.classList.toggle('on-dark',dark);
+  }
+  let raf=0;
+  function schedule(){cancelAnimationFrame(raf);raf=requestAnimationFrame(update);}
+  addEventListener('scroll',schedule,{passive:true});
+  addEventListener('resize',schedule,{passive:true});
+  addEventListener('load',schedule);
+  update();
+})();
+</script>
 </body>
 </html>
-
-
-
 <style>
 /* Last-resort layout guard: gallery never overlaps the Shuffle ticker. */
 .ticker-section + .gallery-section{
