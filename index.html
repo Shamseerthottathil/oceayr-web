@@ -426,31 +426,6 @@ nav a:hover::after{
 }
 
 /* FEATURED LANDING SLIDER */
-(function initLandingSlider(){
-  const slides=[
-    {kicker:'OCEAYR SUMMER COLLABORATIONS 2026',title:'MAKE THIS<br><span>SUMMER VISIBLE.</span>',desc:'Limited summer collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.',primary:'EXPLORE SUMMER COLLABORATIONS',primaryHref:'#home',secondary:'START A PROJECT',secondaryHref:'/contact'},
-    {kicker:'02 / HOSPITALITY STORYTELLING',title:'TURN STAYS<br><span>INTO STORIES.</span>',desc:'Create a visual world around the stay — from arrival and interiors to poolside moments, dining and the details guests remember.',primary:'EXPLORE SERVICES',primaryHref:'#services',secondary:'START A PROJECT',secondaryHref:'/contact'},
-    {kicker:'03 / BRAND DESIRABILITY',title:'MAKE EVERY<br><span>DETAIL DESIRABLE.</span>',desc:'Photography, film and digital experiences designed to make your property, restaurant or lifestyle brand easier to discover and choose.',primary:'START A PROJECT',primaryHref:'/contact',secondary:'EXPLORE OUR WORK',secondaryHref:'#gallery'}
-  ];
-  const bgs=[...document.querySelectorAll('.slide-bg')],dots=[...document.querySelectorAll('.slide-dot')];
-  const kicker=document.getElementById('landingKicker'),title=document.getElementById('landingTitle'),desc=document.getElementById('landingDescription'),primary=document.getElementById('landingPrimary'),secondary=document.getElementById('landingSecondary'),number=document.getElementById('slideNumber');
-  let current=0,timer;
-  function render(i){const s=slides[i];current=i;kicker.textContent=s.kicker;title.innerHTML=s.title;desc.textContent=s.desc;primary.innerHTML=s.primary+' <span>→</span>';primary.href=s.primaryHref;secondary.textContent=s.secondary;secondary.href=s.secondaryHref;number.textContent=String(i+1).padStart(2,'0');bgs.forEach((b,n)=>b.classList.toggle('active',n===i));dots.forEach((d,n)=>d.classList.toggle('active',n===i));}
-  function restart(){clearInterval(timer);timer=setInterval(()=>render((current+1)%slides.length),7000);}
-  dots.forEach(d=>d.addEventListener('click',()=>{render(Number(d.dataset.slide));restart();}));
-  const landing=document.querySelector('.landing-slider');
-  landing.addEventListener('mouseenter',()=>clearInterval(timer));landing.addEventListener('mouseleave',restart);
-  render(0);restart();
-})();
-
-/* Light landing -> dark video navigation/logo transition */
-(function navTheme(){
-  const nav=document.querySelector('.site-nav'),logo=document.querySelector('.logo'),video=document.querySelector('.hero-video-section');
-  if(!nav||!video)return;
-  const io=new IntersectionObserver(entries=>entries.forEach(e=>{const dark=e.isIntersecting&&e.intersectionRatio>.2;nav.classList.toggle('on-dark',dark);if(logo)logo.classList.toggle('on-dark',dark);}),{threshold:[.2,.5]});
-  io.observe(video);
-})();
-
 /* =========================
    GALLERY - LOUD.AE EXACT MOSAIC STYLE ONLY
 ========================= */
@@ -2384,6 +2359,208 @@ html,body{overflow-x:hidden!important;}
  .start-project-band h2{font-size:17vw!important;line-height:.88!important;}
 }
 </style>
+
+<style id="oceayr-final-21-aug-ordered-fixes">
+/* =========================================================
+   FINAL ORDER + PRESENTATION FIXES
+   Keep existing video, gallery mechanics and imagery.
+========================================================= */
+
+/* Video is the first visual section; summer landing follows it. */
+.hero-video-section{
+  order:1 !important;
+}
+.landing-slider{
+  order:2 !important;
+  min-height:clamp(700px,92vh,940px) !important;
+  height:92vh !important;
+}
+
+/* Let the summer slide breathe so the buttons are always visible. */
+.landing-content{
+  min-height:100% !important;
+  height:100% !important;
+  padding:96px 5vw 72px !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+}
+.landing-copy{
+  width:min(780px,78vw) !important;
+  max-width:780px !important;
+  margin:32px 0 0 5vw !important;
+  padding:28px 36px 30px !important;
+  background:rgba(7,16,20,.48) !important;
+  backdrop-filter:blur(4px) !important;
+  -webkit-backdrop-filter:blur(4px) !important;
+}
+.landing-copy h1{
+  font-family:'Bodoni Moda',serif !important;
+  font-weight:600 !important;
+  font-size:clamp(62px,8.2vw,138px) !important;
+  line-height:.82 !important;
+  letter-spacing:.01em !important;
+  word-spacing:.08em !important;
+}
+.landing-description{
+  margin-top:28px !important;
+  max-width:760px !important;
+}
+.landing-actions{
+  display:flex !important;
+  align-items:center !important;
+  flex-wrap:wrap !important;
+  gap:24px !important;
+  margin-top:30px !important;
+}
+.landing-primary{
+  min-width:360px !important;
+  min-height:56px !important;
+  padding:18px 24px !important;
+}
+.landing-secondary{
+  color:#fff !important;
+  border-color:#fff !important;
+}
+.landing-meta{
+  right:5vw !important;
+  bottom:42px !important;
+}
+
+/* About OCEAYR comes immediately after summer. */
+.selected-intro{order:4 !important;}
+.ticker-section{order:5 !important;}
+.gallery-section{order:6 !important;}
+.services-new{order:7 !important;}
+.process-section{order:8 !important;}
+.about-snapshot{order:3 !important;}
+.start-project-band{order:9 !important;}
+.footer{order:10 !important;}
+
+/* The body is made a flex stack so the explicit visual order is reliable. */
+body{
+  display:flex !important;
+  flex-direction:column !important;
+}
+.logo,.site-nav,.floating-actions,.modal-overlay,.lb{
+  flex:none !important;
+}
+
+/* Make the service heading fit cleanly, especially Photography & Film. */
+.service-card h3{
+  font-family:'Bodoni Moda',serif !important;
+  font-weight:600 !important;
+  letter-spacing:-.015em !important;
+  line-height:.86 !important;
+  word-spacing:.06em !important;
+}
+.service-card-01 h3,
+.service-card-02 h3,
+.service-card-03 h3,
+.service-card-04 h3,
+.service-card-05 h3{
+  font-size:clamp(23px,2vw,34px) !important;
+}
+.service-card-02 h3{
+  font-size:clamp(22px,1.82vw,31px) !important;
+}
+
+/* Final CTA wording */
+.start-project-band h2{
+  font-family:'Bodoni Moda',serif !important;
+  font-weight:600 !important;
+  font-size:clamp(62px,8vw,136px) !important;
+  line-height:.84 !important;
+  letter-spacing:.01em !important;
+}
+
+/* Crisp transparent logo — no white tile/background. */
+.logo{
+  background:transparent !important;
+  box-shadow:none !important;
+  mix-blend-mode:normal !important;
+  width:92px !important;
+  height:61px !important;
+}
+.logo img{
+  background:transparent !important;
+  filter:none !important;
+  transition:filter .35s ease !important;
+}
+.logo.on-dark img{
+  filter:invert(1) contrast(1.08) !important;
+}
+.logo:not(.on-dark) img{
+  filter:none !important;
+}
+
+/* Mobile: keep both summer buttons visible and the headline complete. */
+@media(max-width:900px){
+  .landing-slider{
+    height:88svh !important;
+    min-height:680px !important;
+  }
+  .landing-content{
+    padding:88px 14px 38px !important;
+    align-items:center !important;
+  }
+  .landing-copy{
+    width:100% !important;
+    max-width:none !important;
+    margin:10px 0 0 !important;
+    padding:22px 18px 24px !important;
+  }
+  .landing-copy h1{
+    font-size:14vw !important;
+    line-height:.86 !important;
+  }
+  .landing-description{
+    font-size:14px !important;
+    line-height:1.55 !important;
+    margin-top:18px !important;
+  }
+  .landing-actions{
+    gap:14px !important;
+    margin-top:20px !important;
+  }
+  .landing-primary{
+    min-width:0 !important;
+    width:100% !important;
+    min-height:52px !important;
+    flex:1 1 100% !important;
+  }
+  .landing-secondary{
+    margin-left:2px !important;
+  }
+  .landing-meta{
+    right:16px !important;
+    bottom:20px !important;
+  }
+  .logo{
+    left:18px !important;
+    top:18px !important;
+    width:78px !important;
+    height:54px !important;
+  }
+}
+@media(max-width:600px){
+  .landing-slider{
+    height:92svh !important;
+    min-height:700px !important;
+  }
+  .landing-copy h1{
+    font-size:13.8vw !important;
+    word-spacing:.03em !important;
+  }
+  .landing-kicker{
+    font-size:8px !important;
+    letter-spacing:.22em !important;
+  }
+  .service-card-02 h3{
+    font-size:29px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div aria-label="OCEAYR Agency logo" class="logo">
@@ -2483,7 +2660,7 @@ html,body{overflow-x:hidden!important;}
 </section>
 <section class="start-project-band">
 <p class="section-kicker">Tell us what you are building, launching or trying to make more desirable.</p><p class="start-project-support">Share a little about your business and the kind of work you need. We will come back with a focused direction and the right next step.</p>
-<h2>LET'S CREATE<br/><span>WHAT'S NEXT.</span></h2>
+<h2>ELEVATE<br/><span>YOUR BRAND.</span></h2>
 <p>Tell us what you are building, launching or trying to make more desirable.</p>
 <a class="start-project-btn" href="/contact">START A PROJECT <span>→</span></a>
 </section>
@@ -3229,6 +3406,201 @@ window.addEventListener('DOMContentLoaded',()=>{
   update();
 })();
 </script>
+
+<script>
+(function(){
+  function initOceayrFinalFixes(){
+    const body=document.body;
+    const landing=document.querySelector('.landing-slider');
+    const hero=document.querySelector('.hero-video-section');
+    const nav=document.querySelector('.site-nav');
+    const logo=document.querySelector('.logo');
+    const selected=document.querySelector('.selected-intro');
+    const ticker=document.querySelector('.ticker-section');
+    const gallery=document.querySelector('.gallery-section');
+    const services=document.querySelector('.services-new');
+    const process=document.querySelector('.process-section');
+    const about=document.querySelector('.about-snapshot');
+    const start=document.querySelector('.start-project-band');
+    const footer=document.querySelector('.footer');
+
+    /* ---------------------------------------------------------
+       1. Exact requested visual order:
+          VIDEO -> SUMMER -> ABOUT -> rest
+    --------------------------------------------------------- */
+    if(body && hero && landing){
+      const ordered=[hero,landing,about,selected,ticker,gallery,services,process,start,footer];
+      ordered.forEach(el=>{
+        if(el) body.appendChild(el);
+      });
+    }
+
+    /* Give the summer section a stable target for the button. */
+    if(landing){
+      landing.id='summer';
+      const homeLinks=document.querySelectorAll('.site-nav a[href="#home"], .footer-links a[href="#home"]');
+      homeLinks.forEach(a=>a.setAttribute('href','#summer'));
+    }
+
+    /* ---------------------------------------------------------
+       2. Working three-slide summer carousel.
+          The previous slider function was accidentally inside
+          CSS, so it never executed. This is a real JS instance.
+    --------------------------------------------------------- */
+    const bgs=[...document.querySelectorAll('.slide-bg')];
+    const dots=[...document.querySelectorAll('.slide-dot')];
+    const kicker=document.getElementById('landingKicker');
+    const title=document.getElementById('landingTitle');
+    const desc=document.getElementById('landingDescription');
+    const primary=document.getElementById('landingPrimary');
+    const secondary=document.getElementById('landingSecondary');
+    const number=document.getElementById('slideNumber');
+
+    const slides=[
+      {
+        kicker:'OCEAYR SUMMER COLLABORATIONS 2026',
+        title:'MAKE THIS<br><span>SUMMER VISIBLE.</span>',
+        desc:'Limited summer collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.',
+        primary:'EXPLORE SUMMER COLLABORATIONS',
+        primaryHref:'#summer',
+        secondary:'START A PROJECT',
+        secondaryHref:'/contact'
+      },
+      {
+        kicker:'02 / HOSPITALITY STORYTELLING',
+        title:'TURN STAYS<br><span>INTO STORIES.</span>',
+        desc:'Create a visual world around the stay — from arrival and interiors to poolside moments, dining and the details guests remember.',
+        primary:'EXPLORE SERVICES',
+        primaryHref:'#services',
+        secondary:'START A PROJECT',
+        secondaryHref:'/contact'
+      },
+      {
+        kicker:'03 / BRAND DESIRABILITY',
+        title:'MAKE EVERY<br><span>DETAIL DESIRABLE.</span>',
+        desc:'Photography, film and digital experiences designed to make your property, restaurant or lifestyle brand easier to discover and choose.',
+        primary:'START A PROJECT',
+        primaryHref:'/contact',
+        secondary:'EXPLORE OUR WORK',
+        secondaryHref:'#gallery'
+      }
+    ];
+
+    let current=0;
+    let timer=null;
+
+    function renderSlide(i){
+      if(!slides.length)return;
+      current=(i+slides.length)%slides.length;
+      const slide=slides[current];
+
+      if(kicker) kicker.textContent=slide.kicker;
+      if(title) title.innerHTML=slide.title;
+      if(desc) desc.textContent=slide.desc;
+      if(primary){
+        primary.innerHTML=slide.primary+' <span>→</span>';
+        primary.href=slide.primaryHref;
+      }
+      if(secondary){
+        secondary.textContent=slide.secondary;
+        secondary.href=slide.secondaryHref;
+      }
+      if(number) number.textContent=String(current+1).padStart(2,'0');
+
+      bgs.forEach((bg,i)=>bg.classList.toggle('active',i===current));
+      dots.forEach((dot,i)=>dot.classList.toggle('active',i===current));
+    }
+
+    function restartSlider(){
+      clearInterval(timer);
+      timer=setInterval(()=>renderSlide(current+1),7000);
+    }
+
+    dots.forEach(dot=>{
+      dot.addEventListener('click',function(e){
+        e.preventDefault();
+        renderSlide(Number(this.dataset.slide)||0);
+        restartSlider();
+      });
+    });
+
+    const slider=document.querySelector('.landing-slider');
+    if(slider){
+      slider.addEventListener('mouseenter',()=>clearInterval(timer));
+      slider.addEventListener('mouseleave',restartSlider);
+      slider.addEventListener('touchstart',()=>clearInterval(timer),{passive:true});
+      slider.addEventListener('touchend',restartSlider,{passive:true});
+    }
+
+    renderSlide(0);
+    restartSlider();
+
+    /* ---------------------------------------------------------
+       3. Automatic black/white logo + nav contrast.
+          Dark sections: video, summer imagery, about, gallery.
+          Light sections: services, process, CTA/footer.
+    --------------------------------------------------------- */
+    const darkSections=[
+      hero,
+      landing,
+      about,
+      gallery
+    ].filter(Boolean);
+
+    const lightSections=[
+      selected,
+      services,
+      process,
+      start,
+      footer
+    ].filter(Boolean);
+
+    darkSections.forEach(el=>el.dataset.logoTheme='dark');
+    lightSections.forEach(el=>el.dataset.logoTheme='light');
+
+    function updateTheme(){
+      const y=window.innerHeight*0.18;
+      let active=null;
+
+      const all=[...darkSections,...lightSections];
+      for(const section of all){
+        const r=section.getBoundingClientRect();
+        if(r.top<=y && r.bottom>y){
+          active=section;
+          break;
+        }
+      }
+
+      /* If the logo is above the first section, use the first section. */
+      if(!active && all.length){
+        const first=all.sort((a,b)=>a.getBoundingClientRect().top-b.getBoundingClientRect().top)[0];
+        active=first;
+      }
+
+      const dark=active && active.dataset.logoTheme==='dark';
+
+      if(logo) logo.classList.toggle('on-dark',!!dark);
+      if(nav) nav.classList.toggle('on-dark',!!dark);
+    }
+
+    updateTheme();
+    window.addEventListener('scroll',updateTheme,{passive:true});
+    window.addEventListener('resize',updateTheme);
+
+    /* Make nav visible against the light/dark section without a box. */
+    if(nav){
+      nav.style.background='transparent';
+    }
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initOceayrFinalFixes);
+  }else{
+    initOceayrFinalFixes();
+  }
+})();
+</script>
+
 </body>
 </html>
 <style>
