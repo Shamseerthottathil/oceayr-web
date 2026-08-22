@@ -3338,6 +3338,810 @@ body{
 }
 </style>
 
+
+<style id="oceayr-bodoni-final-mobile-fix">
+/* ==========================================================
+   OCEAYR FINAL — BODONI MODA DISPLAY SYSTEM
+   Fixes incomplete/clipped headlines after typography change.
+   Keeps logo, video, gallery, images and slider mechanics intact.
+========================================================== */
+
+:root{
+  --display-font:'Bodoni Moda', Georgia, serif;
+}
+
+/* All major editorial headings use the selected luxury typeface. */
+.landing-copy h1,
+.selected-intro h2,
+.services-top h2,
+.process-head h2,
+.about-snapshot h2,
+.start-project-band h2,
+.summer-heading h2,
+.summer-details-panel h2,
+.hero-video-section h1,
+.service-card h3,
+.process-grid h3,
+.modal-title{
+  font-family:var(--display-font)!important;
+}
+
+/* Never clip a heading because of an inherited fixed-height/overflow rule. */
+.landing-copy,
+.landing-copy h1,
+.selected-intro,
+.services-top,
+.process-head,
+.about-snapshot,
+.start-project-band,
+.summer-heading,
+.summer-details-panel,
+.service-card,
+.process-grid>div{
+  overflow:visible!important;
+}
+
+/* Desktop: editorial but controlled. */
+.landing-copy h1{
+  font-size:clamp(58px,7.2vw,128px)!important;
+  line-height:.82!important;
+  letter-spacing:-.015em!important;
+  word-spacing:.06em!important;
+  max-width:9.5em!important;
+}
+
+.selected-intro h2,
+.services-top h2,
+.process-head h2,
+.about-snapshot h2,
+.start-project-band h2,
+.summer-heading h2{
+  font-size:clamp(56px,6.7vw,116px)!important;
+  line-height:.82!important;
+  letter-spacing:-.018em!important;
+  word-spacing:.045em!important;
+}
+
+.service-card h3,
+.process-grid h3{
+  font-size:clamp(27px,2.15vw,38px)!important;
+  line-height:.9!important;
+  letter-spacing:-.01em!important;
+  word-spacing:.03em!important;
+}
+
+.hero-video-section h1{
+  font-size:clamp(60px,8.4vw,148px)!important;
+  line-height:.78!important;
+  letter-spacing:-.015em!important;
+}
+
+/* Keep outline words elegant and readable. */
+.landing-copy h1 span,
+.selected-intro h2 span,
+.services-top h2 span,
+.process-head h2 span,
+.about-snapshot h2 span,
+.start-project-band h2 span,
+.summer-heading h2 span,
+.summer-details-panel h2 span,
+.hero-video-section h1 .outline{
+  -webkit-text-fill-color:transparent!important;
+  -webkit-text-stroke:.75px currentColor!important;
+}
+
+/* The final CTA should always read as a complete phrase. */
+.start-project-band h2{
+  white-space:normal!important;
+  max-width:100%!important;
+}
+
+/* ==========================================================
+   MOBILE — fit complete headlines without changing the design.
+========================================================== */
+@media(max-width:768px){
+  .landing-slider{
+    min-height:clamp(650px,100svh,820px)!important;
+    height:auto!important;
+  }
+
+  .landing-content{
+    min-height:clamp(650px,100svh,820px)!important;
+    height:auto!important;
+    padding:92px 20px 42px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:flex-end!important;
+  }
+
+  .landing-copy{
+    width:100%!important;
+    max-width:none!important;
+    padding-bottom:0!important;
+  }
+
+  .landing-copy h1{
+    width:100%!important;
+    max-width:100%!important;
+    font-size:clamp(47px,11.5vw,78px)!important;
+    line-height:.82!important;
+    letter-spacing:-.02em!important;
+    word-spacing:.035em!important;
+    white-space:normal!important;
+    overflow:visible!important;
+  }
+
+  .landing-copy h1 br{display:block!important;}
+
+  .landing-description{
+    max-width:100%!important;
+    margin-top:26px!important;
+    font-size:14px!important;
+    line-height:1.55!important;
+  }
+
+  .landing-actions{
+    width:100%!important;
+    margin-top:24px!important;
+    gap:16px!important;
+  }
+
+  .landing-primary{
+    width:100%!important;
+    min-height:54px!important;
+    padding:16px 17px!important;
+  }
+
+  .landing-secondary{
+    margin-left:1px!important;
+  }
+
+  .landing-meta{
+    margin-top:24px!important;
+    padding-bottom:0!important;
+    align-items:flex-start!important;
+  }
+
+  .selected-intro,
+  .services-new,
+  .process-section,
+  .about-snapshot,
+  .start-project-band,
+  .summer-section{
+    padding-left:20px!important;
+    padding-right:20px!important;
+  }
+
+  .selected-intro h2,
+  .services-top h2,
+  .process-head h2,
+  .about-snapshot h2,
+  .start-project-band h2,
+  .summer-heading h2{
+    width:100%!important;
+    max-width:100%!important;
+    font-size:clamp(48px,12.5vw,74px)!important;
+    line-height:.84!important;
+    letter-spacing:-.025em!important;
+    word-spacing:.035em!important;
+    white-space:normal!important;
+    overflow:visible!important;
+  }
+
+  .service-grid{
+    grid-template-columns:1fr!important;
+  }
+
+  .service-card{
+    min-height:290px!important;
+    padding:24px!important;
+  }
+
+  .service-card h3{
+    font-size:clamp(30px,9.2vw,44px)!important;
+    line-height:.88!important;
+    max-width:100%!important;
+    overflow:visible!important;
+  }
+
+  .process-grid{
+    grid-template-columns:1fr!important;
+  }
+
+  .process-grid h3{
+    font-size:clamp(30px,9vw,42px)!important;
+    line-height:.9!important;
+  }
+
+  .start-project-band h2{
+    font-size:clamp(52px,14vw,82px)!important;
+    line-height:.84!important;
+  }
+
+  /* Explicitly keep the final CTA phrase complete. */
+  .start-project-band h2::after{content:none!important;}
+
+  /* Video title remains centred and complete on phones. */
+  .hero-video-section{
+    height:72svh!important;
+    min-height:500px!important;
+    max-height:680px!important;
+    overflow:hidden!important;
+  }
+
+  .hero-video-section video{
+    position:absolute!important;
+    width:100%!important;
+    height:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    inset:0!important;
+    object-fit:cover!important;
+    object-position:50% 50%!important;
+    transform:none!important;
+  }
+
+  .hero-video-section h1{
+    left:50%!important;
+    top:50%!important;
+    width:100%!important;
+    max-width:100%!important;
+    padding:0 14px!important;
+    transform:translate(-50%,-50%)!important;
+    font-size:clamp(52px,15vw,82px)!important;
+    line-height:.77!important;
+    letter-spacing:-.02em!important;
+    white-space:normal!important;
+    overflow:visible!important;
+  }
+
+  .hero-video-section h1 .outline{
+    -webkit-text-stroke:.7px #fff!important;
+  }
+
+  .summer-details-panel h2{
+    font-size:clamp(48px,13vw,76px)!important;
+    line-height:.84!important;
+  }
+}
+
+@media(max-width:480px){
+  .landing-content{
+    min-height:650px!important;
+    padding:88px 16px 34px!important;
+  }
+
+  .landing-copy h1{
+    font-size:clamp(44px,11.7vw,60px)!important;
+    line-height:.84!important;
+  }
+
+  .selected-intro h2,
+  .services-top h2,
+  .process-head h2,
+  .about-snapshot h2,
+  .start-project-band h2,
+  .summer-heading h2{
+    font-size:clamp(45px,12.8vw,64px)!important;
+    line-height:.85!important;
+  }
+
+  .start-project-band h2{
+    font-size:clamp(48px,13.5vw,68px)!important;
+  }
+
+  .hero-video-section{
+    height:68svh!important;
+    min-height:470px!important;
+    max-height:560px!important;
+  }
+
+  .hero-video-section h1{
+    font-size:clamp(48px,14.5vw,68px)!important;
+  }
+}
+</style>
+
+
+<style id="oceayr-headline-complete-final">
+/* FINAL HEADLINE REPAIR — explicit block lines prevent the outline line from
+   being collapsed/clipped by inherited span rules. */
+.landing-copy h1#landingTitle{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:0!important;
+  overflow:visible!important;
+  font-family:'Bodoni Moda',Georgia,serif!important;
+  font-weight:600!important;
+  text-transform:uppercase!important;
+  letter-spacing:-.02em!important;
+  line-height:.82!important;
+  white-space:normal!important;
+}
+.landing-copy h1#landingTitle .title-solid,
+.landing-copy h1#landingTitle .title-outline{
+  display:block!important;
+  width:max-content!important;
+  max-width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  overflow:visible!important;
+  visibility:visible!important;
+  opacity:1!important;
+  line-height:.82!important;
+  white-space:normal!important;
+}
+.landing-copy h1#landingTitle .title-solid{
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  -webkit-text-stroke:0!important;
+}
+.landing-copy h1#landingTitle .title-outline{
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  -webkit-text-stroke:1px rgba(255,255,255,.96)!important;
+}
+@media (min-width:769px){
+  .landing-copy h1#landingTitle{font-size:clamp(64px,7.5vw,128px)!important;}
+  .landing-copy h1#landingTitle .title-outline{margin-top:-.01em!important;}
+}
+@media (max-width:768px){
+  .landing-copy h1#landingTitle{
+    font-size:clamp(48px,12.8vw,70px)!important;
+    line-height:.84!important;
+    letter-spacing:-.025em!important;
+  }
+  .landing-copy h1#landingTitle .title-solid,
+  .landing-copy h1#landingTitle .title-outline{
+    width:auto!important;
+    max-width:100%!important;
+    line-height:.84!important;
+  }
+  .landing-copy h1#landingTitle .title-outline{
+    margin-top:.02em!important;
+  }
+}
+@media (max-width:480px){
+  .landing-copy h1#landingTitle{
+    font-size:clamp(44px,12.2vw,60px)!important;
+    line-height:.85!important;
+  }
+  .landing-copy h1#landingTitle .title-solid,
+  .landing-copy h1#landingTitle .title-outline{line-height:.85!important;}
+}
+</style>
+
+
+<style id="oceayr-22-aug-slider-gallery-final">
+/* ==========================================================
+   OCEAYR — 22 AUG 2026 FINAL SLIDER + GALLERY REFINEMENT
+   1) Restore the original strong "Shuffle Our Art Works" font.
+   2) Remove visible slide numbers/dots.
+   3) Auto-advance every 3 seconds + click/tap + swipe.
+   4) Premium cinematic transition.
+   5) Add clean breathing room above gallery images.
+   6) Keep OCEAYR AGENCY hero title complete and responsive.
+========================================================== */
+
+/* ---- SHUFFLE OUR ART WORKS: restore the earlier Bebas treatment ---- */
+.ticker-track span{
+  font-family:'Bebas Neue',sans-serif !important;
+  font-weight:400 !important;
+  text-transform:uppercase !important;
+  font-size:clamp(44px,5.7vw,96px) !important;
+  line-height:.9 !important;
+  letter-spacing:.025em !important;
+  word-spacing:.02em !important;
+}
+
+/* ---- No slide numbers / no visible navigation bars ---- */
+.landing-meta,
+.slide-count,
+.slide-controls{
+  display:none !important;
+}
+
+/* ---- Cinematic summer slider ---- */
+.landing-slider{
+  cursor:pointer;
+  isolation:isolate;
+}
+
+.slide-bg{
+  opacity:0 !important;
+  transform:scale(1.075) translate3d(1.2%,0,0) !important;
+  filter:blur(2px) saturate(.94) !important;
+  transition:
+    opacity 1.05s cubic-bezier(.22,.61,.36,1),
+    transform 1.65s cubic-bezier(.16,1,.3,1),
+    filter 1.05s ease !important;
+  will-change:opacity,transform,filter;
+}
+
+.slide-bg.active{
+  opacity:1 !important;
+  transform:scale(1) translate3d(0,0,0) !important;
+  filter:blur(0) saturate(1) !important;
+}
+
+/* Soft cinematic light sweep during a change */
+.landing-slider::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  opacity:0;
+  background:linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255,255,255,.10) 42%,
+    rgba(255,255,255,.24) 50%,
+    transparent 59%
+  );
+  transform:translateX(-120%);
+}
+
+.landing-slider.is-changing::after{
+  animation:oceayrLightSweep 1.15s cubic-bezier(.22,.61,.36,1) both;
+}
+
+@keyframes oceayrLightSweep{
+  0%{opacity:0;transform:translateX(-120%);}
+  18%{opacity:1;}
+  72%{opacity:.7;}
+  100%{opacity:0;transform:translateX(120%);}
+}
+
+/* Text enters with a restrained luxury editorial motion */
+.landing-slider.is-changing .landing-copy{
+  animation:oceayrSlideCopy .85s cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes oceayrSlideCopy{
+  0%{
+    opacity:.18;
+    transform:translate3d(34px,8px,0);
+  }
+  100%{
+    opacity:1;
+    transform:translate3d(0,0,0);
+  }
+}
+
+/* The slide itself is clickable; don't make buttons feel like a
+   carousel control. Their normal links still work. */
+.landing-copy a{
+  cursor:pointer;
+}
+
+/* ---- Complete hero title: OCEAYR / AGENCY ---- */
+.hero-video-section h1,
+.hero-video-section h1:not(.anything){
+  width:100% !important;
+  max-width:100% !important;
+  padding:0 18px !important;
+  font-family:'Inter',sans-serif !important;
+  font-weight:900 !important;
+  font-size:clamp(58px,8.6vw,154px) !important;
+  line-height:.82 !important;
+  letter-spacing:0 !important;
+  white-space:normal !important;
+  overflow:visible !important;
+  text-align:center !important;
+}
+.hero-video-section h1 .outline{
+  display:inline-block !important;
+  white-space:nowrap !important;
+}
+
+/* ---- Gallery: deliberate breathing room above first row ---- */
+.gallery-section{
+  padding:18px 0 0 !important;
+  background:#111 !important;
+}
+
+.gallery-section .g-stage{
+  margin-top:0 !important;
+}
+
+@media(max-width:768px){
+  .ticker-wrap{
+    height:88px !important;
+  }
+
+  .ticker-track span{
+    font-size:clamp(40px,12vw,62px) !important;
+    letter-spacing:.015em !important;
+  }
+
+  .gallery-section{
+    padding:12px 0 0 !important;
+  }
+
+  .hero-video-section h1,
+  .hero-video-section h1:not(.anything){
+    font-size:clamp(48px,12.5vw,82px) !important;
+    line-height:.80 !important;
+    padding:0 10px !important;
+  }
+
+  .hero-video-section h1 .outline{
+    -webkit-text-stroke:1px #fff !important;
+  }
+
+  .landing-slider{
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+}
+
+@media(max-width:390px){
+  .hero-video-section h1,
+  .hero-video-section h1:not(.anything){
+    font-size:clamp(44px,12vw,62px) !important;
+  }
+
+  .gallery-section{
+    padding-top:10px !important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .slide-bg,
+  .landing-slider.is-changing .landing-copy,
+  .landing-slider.is-changing::after{
+    animation:none !important;
+    transition:none !important;
+  }
+}
+</style>
+
+
+<style id="oceayr-23-aug-luxury-type-and-slider-fix">
+/* ==========================================================
+   OCEAYR — LUXURY TYPOGRAPHY + CINEMATIC SLIDER FINAL FIX
+   Main identity: Bodoni Moda.
+   Editorial/service titles: Cormorant Garamond.
+========================================================== */
+
+/* Main OCEAYR / AGENCY title — the stronger of the supplied luxury fonts. */
+.hero-video-section h1,
+.hero-video-section h1:not(.anything){
+  font-family:'Bodoni Moda',Georgia,serif!important;
+  font-weight:600!important;
+  font-size:clamp(62px,9.1vw,154px)!important;
+  line-height:.76!important;
+  letter-spacing:-.018em!important;
+  text-transform:uppercase!important;
+  white-space:nowrap!important;
+}
+.hero-video-section h1 .outline{
+  -webkit-text-stroke:1px rgba(255,255,255,.94)!important;
+  -webkit-text-fill-color:transparent!important;
+}
+
+/* Other major titles: softer editorial luxury rather than the heavy Bodoni lock. */
+.landing-copy h1,
+.selected-intro h2,
+.services-top h2,
+.process-head h2,
+.about-snapshot h2,
+.start-project-band h2,
+.summer-heading h2,
+.summer-details-panel h2,
+.service-card h3,
+.process-grid h3,
+.modal-title,
+.ticker-track span{
+  font-family:'Cormorant Garamond',Georgia,serif!important;
+  font-weight:600!important;
+  text-transform:uppercase!important;
+}
+
+/* Service cards: every title stays completely inside its card. */
+.service-grid{
+  align-items:stretch!important;
+}
+.service-card{
+  min-width:0!important;
+  overflow:hidden!important;
+}
+.service-card h3{
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  font-size:clamp(27px,1.9vw,38px)!important;
+  line-height:.86!important;
+  letter-spacing:-.018em!important;
+  word-spacing:.015em!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  hyphens:none!important;
+}
+.service-card-02 h3,
+.service-card-03 h3,
+.service-card-05 h3{
+  font-size:clamp(25px,1.72vw,34px)!important;
+}
+.service-card p{
+  max-width:100%!important;
+}
+
+/* Slide titles: deliberately controlled line widths so no word is cropped. */
+.landing-copy h1#landingTitle{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  width:100%!important;
+  max-width:100%!important;
+  overflow:visible!important;
+  font-size:clamp(55px,7.2vw,126px)!important;
+  line-height:.79!important;
+  letter-spacing:-.02em!important;
+}
+.landing-copy h1#landingTitle .title-solid,
+.landing-copy h1#landingTitle .title-outline{
+  display:block!important;
+  width:auto!important;
+  max-width:100%!important;
+  overflow:visible!important;
+  line-height:.79!important;
+}
+.landing-copy h1#landingTitle .title-solid{
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  -webkit-text-stroke:0!important;
+}
+.landing-copy h1#landingTitle .title-outline{
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  -webkit-text-stroke:.9px rgba(255,255,255,.95)!important;
+}
+
+/* Remove all old bottom slide bars / controls visually. */
+.landing-meta,
+.slide-controls,
+.slide-count,
+.slide-dot{
+  display:none!important;
+}
+
+/* ==========================================================
+   CINEMATIC SLIDE TRANSITION
+   A diagonal luxury curtain + depth + blur + content lift.
+========================================================== */
+.landing-slider{
+  cursor:pointer!important;
+  isolation:isolate!important;
+}
+.landing-slider .slide-bg{
+  opacity:1!important;
+  clip-path:inset(0 100% 0 0)!important;
+  transform:scale(1.085)!important;
+  filter:blur(5px)!important;
+  transition:
+    clip-path 1.05s cubic-bezier(.76,0,.18,1),
+    transform 1.35s cubic-bezier(.16,1,.3,1),
+    filter .85s ease!important;
+  will-change:clip-path,transform,filter!important;
+}
+.landing-slider .slide-bg.active{
+  opacity:1!important;
+  clip-path:inset(0 0 0 0)!important;
+  transform:scale(1)!important;
+  filter:blur(0)!important;
+}
+
+/* Fine light sweep when the slide changes. */
+.landing-slider::after{
+  content:"";
+  position:absolute;
+  inset:-20% -15%;
+  z-index:3;
+  pointer-events:none;
+  background:linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255,255,255,.20) 47%,
+    rgba(255,255,255,.055) 51%,
+    transparent 63%
+  );
+  transform:translateX(-120%) skewX(-12deg);
+  opacity:0;
+}
+.landing-slider.is-changing::after{
+  animation:oceayrLightSweep 1.05s cubic-bezier(.65,0,.2,1) both;
+}
+@keyframes oceayrLightSweep{
+  0%{transform:translateX(-120%) skewX(-12deg);opacity:0;}
+  15%{opacity:1;}
+  75%{opacity:.65;}
+  100%{transform:translateX(120%) skewX(-12deg);opacity:0;}
+}
+
+/* Content enters after the image curtain, giving the slide a premium reveal. */
+.landing-copy,
+.landing-kicker,
+.landing-description,
+.landing-actions{
+  will-change:transform,opacity;
+}
+.landing-slider.is-changing .landing-copy{
+  animation:oceayrCopyReveal 1.0s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes oceayrCopyReveal{
+  0%{opacity:.15;transform:translate3d(34px,0,0);}
+  45%{opacity:.72;transform:translate3d(8px,0,0);}
+  100%{opacity:1;transform:translate3d(0,0,0);}
+}
+
+/* Desktop service cards get slightly more breathing room. */
+@media(min-width:901px){
+  .service-card{padding:28px 26px 26px!important;}
+  .service-card h3{margin-top:auto!important;margin-bottom:2px!important;}
+}
+
+/* Tablet/mobile: preserve complete words and comfortable margins. */
+@media(max-width:900px){
+  .hero-video-section h1{
+    font-size:clamp(54px,14vw,104px)!important;
+    line-height:.78!important;
+    white-space:normal!important;
+    width:100%!important;
+    padding:0 12px!important;
+  }
+  .landing-copy h1#landingTitle{
+    font-size:clamp(46px,11.6vw,76px)!important;
+    line-height:.82!important;
+    letter-spacing:-.018em!important;
+  }
+  .landing-copy h1#landingTitle .title-solid,
+  .landing-copy h1#landingTitle .title-outline{line-height:.82!important;}
+  .service-card h3,
+  .service-card-02 h3,
+  .service-card-03 h3,
+  .service-card-05 h3{
+    font-size:clamp(29px,7.4vw,42px)!important;
+    line-height:.86!important;
+  }
+}
+
+@media(max-width:600px){
+  .hero-video-section h1{
+    font-size:clamp(48px,15.5vw,70px)!important;
+    line-height:.80!important;
+  }
+  .landing-copy h1#landingTitle{
+    font-size:clamp(43px,11.8vw,62px)!important;
+    line-height:.84!important;
+  }
+  .landing-copy h1#landingTitle .title-solid,
+  .landing-copy h1#landingTitle .title-outline{line-height:.84!important;}
+  .service-card{
+    overflow:hidden!important;
+  }
+  .service-card h3,
+  .service-card-02 h3,
+  .service-card-03 h3,
+  .service-card-05 h3{
+    font-size:clamp(27px,8.8vw,38px)!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .landing-slider .slide-bg{transition:none!important;}
+  .landing-slider.is-changing::after,
+  .landing-slider.is-changing .landing-copy{animation:none!important;}
+}
+</style>
+
 </head>
 <body>
 <div aria-label="OCEAYR Agency logo" class="logo">
@@ -3350,7 +4154,7 @@ body{
 <div class="landing-content">
 <div class="landing-copy">
 <p class="landing-kicker" id="landingKicker">OCEAYR SUMMER COLLABORATIONS 2026</p>
-<h1 id="landingTitle">MAKE THIS<br/><span>SUMMER VISIBLE.</span></h1>
+<h1 id="landingTitle"><span class="title-solid">MAKE THIS</span><span class="title-outline">SUMMER VISIBLE.</span></h1>
 <p class="landing-description" id="landingDescription">Limited summer collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.</p>
 <div class="landing-actions">
 <a class="landing-primary" href="#summer" id="landingPrimary">EXPLORE SUMMER COLLABORATIONS <span>→</span></a>
@@ -4252,111 +5056,11 @@ window.addEventListener('DOMContentLoaded',()=>{
           The previous slider function was accidentally inside
           CSS, so it never executed. This is a real JS instance.
     --------------------------------------------------------- */
-    const bgs=[...document.querySelectorAll('.slide-bg')];
-    const dots=[...document.querySelectorAll('.slide-dot')];
-    const kicker=document.getElementById('landingKicker');
-    const title=document.getElementById('landingTitle');
-    const desc=document.getElementById('landingDescription');
-    const primary=document.getElementById('landingPrimary');
-    const secondary=document.getElementById('landingSecondary');
-    const number=document.getElementById('slideNumber');
-
-    const slides=[
-      {
-        kicker:'OCEAYR SUMMER COLLABORATIONS 2026',
-        title:'MAKE THIS<br><span>SUMMER VISIBLE.</span>',
-        desc:'Limited summer collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.',
-        primary:'EXPLORE SUMMER COLLABORATIONS',
-        primaryHref:'#summer-details',
-        secondary:'START A PROJECT',
-        secondaryHref:'/contact'
-      },
-      {
-        kicker:'02 / HOSPITALITY STORYTELLING',
-        title:'TURN STAYS<br><span>INTO STORIES.</span>',
-        desc:'Create a visual world around the stay — from arrival and interiors to poolside moments, dining and the details guests remember.',
-        primary:'EXPLORE SERVICES',
-        primaryHref:'#services',
-        secondary:'START A PROJECT',
-        secondaryHref:'/contact'
-      },
-      {
-        kicker:'03 / BRAND DESIRABILITY',
-        title:'MAKE EVERY<br><span>DETAIL DESIRABLE.</span>',
-        desc:'Photography, film and digital experiences designed to make your property, restaurant or lifestyle brand easier to discover and choose.',
-        primary:'START A PROJECT',
-        primaryHref:'/contact',
-        secondary:'EXPLORE OUR WORK',
-        secondaryHref:'#gallery'
-      }
-    ];
-
-    let current=0;
-    let timer=null;
-
-    function renderSlide(i){
-      if(!slides.length)return;
-      current=(i+slides.length)%slides.length;
-      const slide=slides[current];
-
-      if(kicker) kicker.textContent=slide.kicker;
-      if(title) title.innerHTML=slide.title;
-      if(desc) desc.textContent=slide.desc;
-      if(primary){
-        primary.innerHTML=slide.primary+' <span>→</span>';
-        primary.href=slide.primaryHref;
-      }
-      if(secondary){
-        secondary.textContent=slide.secondary;
-        secondary.href=slide.secondaryHref;
-      }
-      if(number) number.textContent=String(current+1).padStart(2,'0');
-
-      bgs.forEach((bg,i)=>bg.classList.toggle('active',i===current));
-      dots.forEach((dot,i)=>dot.classList.toggle('active',i===current));
-    }
-
-    function restartSlider(){
-      clearInterval(timer);
-      timer=setInterval(()=>renderSlide(current+1),7000);
-    }
-
-    dots.forEach(dot=>{
-      dot.addEventListener('click',function(e){
-        e.preventDefault();
-        renderSlide(Number(this.dataset.slide)||0);
-        restartSlider();
-      });
-    });
-
-    const slider=document.querySelector('.landing-slider');
-    if(slider){
-      slider.addEventListener('mouseenter',()=>clearInterval(timer));
-      slider.addEventListener('mouseleave',restartSlider);
-      slider.addEventListener('touchstart',()=>clearInterval(timer),{passive:true});
-      slider.addEventListener('touchend',restartSlider,{passive:true});
-
-      let touchStartX=0;
-      let touchStartY=0;
-      slider.addEventListener('touchstart',e=>{
-        const t=e.changedTouches[0];
-        touchStartX=t.clientX;
-        touchStartY=t.clientY;
-      },{passive:true});
-      slider.addEventListener('touchend',e=>{
-        const t=e.changedTouches[0];
-        const dx=t.clientX-touchStartX;
-        const dy=t.clientY-touchStartY;
-        if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)){
-          renderSlide(current+(dx<0?1:-1));
-        }
-        restartSlider();
-      },{passive:true});
-    }
-
-    renderSlide(0);
-    restartSlider();
-
+    /* ---------------------------------------------------------
+       2. Legacy carousel controls intentionally disabled.
+          The final cinematic slider is initialized by
+          #oceayr-22-aug-slider-final-js below.
+       --------------------------------------------------------- */
     /* ---------------------------------------------------------
        3. Automatic black/white logo + nav contrast.
           Dark sections: video, summer imagery, about, gallery.
@@ -4472,6 +5176,373 @@ window.addEventListener('DOMContentLoaded',()=>{
   document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
 })();
 </script>
+
+
+
+
+
+<script id="oceayr-23-aug-slider-controller">
+/* ==========================================================
+   OCEAYR — CINEMATIC SLIDER CONTROLLER
+   5-second autoplay + click/tap + swipe + keyboard.
+   No visible slide numbers or bottom bars.
+========================================================== */
+(function(){
+  function initOceayrSlider(){
+    const slider=document.querySelector('.landing-slider');
+    if(!slider) return;
+
+    const bgs=[...slider.querySelectorAll('.slide-bg')];
+    const kicker=document.getElementById('landingKicker');
+    const title=document.getElementById('landingTitle');
+    const desc=document.getElementById('landingDescription');
+    const primary=document.getElementById('landingPrimary');
+    const secondary=document.getElementById('landingSecondary');
+    if(!bgs.length || !title) return;
+
+    const slides=[
+      {
+        kicker:'OCEAYR SUMMER COLLABORATIONS 2026',
+        title:'<span class="title-solid">MAKE THIS</span><span class="title-outline">SUMMER VISIBLE.</span>',
+        desc:'Limited summer collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.',
+        primary:'EXPLORE SUMMER COLLABORATIONS', primaryHref:'#summer-details',
+        secondary:'START A PROJECT', secondaryHref:'/contact'
+      },
+      {
+        kicker:'HOSPITALITY STORYTELLING',
+        title:'<span class="title-solid">TURN STAYS</span><span class="title-outline">INTO STORIES.</span>',
+        desc:'Create a visual world around the stay — from arrival and interiors to poolside moments, dining and the details guests remember.',
+        primary:'EXPLORE SERVICES', primaryHref:'#services',
+        secondary:'START A PROJECT', secondaryHref:'/contact'
+      },
+      {
+        kicker:'BRAND DESIRABILITY',
+        title:'<span class="title-solid">MAKE EVERY</span><span class="title-outline">DETAIL DESIRABLE.</span>',
+        desc:'Photography, film and digital experiences designed to make your property, restaurant or lifestyle brand easier to discover and choose.',
+        primary:'START A PROJECT', primaryHref:'/contact',
+        secondary:'EXPLORE OUR WORK', secondaryHref:'#gallery'
+      }
+    ];
+
+    let current=0, timer=null, locked=false;
+    let startX=0, startY=0, startTime=0;
+
+    function animateChange(){
+      slider.classList.remove('is-changing');
+      void slider.offsetWidth;
+      slider.classList.add('is-changing');
+      clearTimeout(animateChange.t);
+      animateChange.t=setTimeout(()=>slider.classList.remove('is-changing'),1250);
+    }
+
+    function render(index,animate){
+      current=(index+slides.length)%slides.length;
+      const s=slides[current];
+      if(kicker) kicker.textContent=s.kicker;
+      title.innerHTML=s.title;
+      if(desc) desc.textContent=s.desc;
+      if(primary){primary.innerHTML=s.primary+' <span>→</span>';primary.href=s.primaryHref;}
+      if(secondary){secondary.textContent=s.secondary;secondary.href=s.secondaryHref;}
+      bgs.forEach((bg,i)=>bg.classList.toggle('active',i===current));
+      if(animate) animateChange();
+    }
+
+    function restart(){
+      clearTimeout(timer);
+      timer=setTimeout(function tick(){
+        go(1);
+      },5000);
+    }
+
+    function go(direction){
+      if(locked) return;
+      locked=true;
+      render(current+direction,true);
+      setTimeout(()=>locked=false,900);
+      restart();
+    }
+
+    /* Any click/tap on the image/empty area advances. Real links remain usable. */
+    slider.addEventListener('click',e=>{
+      if(e.target.closest('a,button,input,textarea,select')) return;
+      go(1);
+    });
+
+    /* Touch / pointer swipe. */
+    slider.addEventListener('pointerdown',e=>{
+      startX=e.clientX; startY=e.clientY; startTime=Date.now();
+    },{passive:true});
+    slider.addEventListener('pointerup',e=>{
+      const dx=e.clientX-startX, dy=e.clientY-startY;
+      const elapsed=Date.now()-startTime;
+      if(Math.abs(dx)>48 && Math.abs(dx)>Math.abs(dy)*1.15 && elapsed<900){
+        go(dx<0?1:-1);
+      }
+    },{passive:true});
+
+    slider.tabIndex=0;
+    slider.addEventListener('keydown',e=>{
+      if(e.key==='ArrowRight'){e.preventDefault();go(1);}
+      if(e.key==='ArrowLeft'){e.preventDefault();go(-1);}
+    });
+
+    document.addEventListener('visibilitychange',()=>{
+      if(document.hidden) clearTimeout(timer);
+      else restart();
+    });
+
+    /* Ensure the old controls can never reappear. */
+    slider.querySelectorAll('.landing-meta,.slide-controls,.slide-count,.slide-dot').forEach(el=>el.setAttribute('aria-hidden','true'));
+    render(0,false);
+    restart();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initOceayrSlider);
+  else initOceayrSlider();
+})();
+</script>
+
+
+<style id="oceayr-final-typography-video-fix-22-aug-2026">
+/* =========================================================
+   OCEAYR — FINAL TYPOGRAPHY + MOBILE VIDEO FIX
+   1. All editorial headlines use the original ELEVATE YOUR BRAND
+      condensed headline treatment: Bebas Neue.
+   2. Main OCEAYR / AGENCY identity keeps the original Inter 900
+      treatment from the earlier approved version.
+   3. Mobile video is a true centre crop: no stretching, no side
+      drift, and a controlled mobile height.
+========================================================= */
+
+/* ----- MAIN IDENTITY: OCEAYR / AGENCY ----- */
+.hero-video-section h1,
+.hero-video-section h1:not(.anything){
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  width:100% !important;
+  margin:0 !important;
+  padding:0 18px !important;
+  font-family:'Inter',Arial,sans-serif !important;
+  font-size:11vw !important;
+  font-weight:900 !important;
+  line-height:.82 !important;
+  letter-spacing:0 !important;
+  text-align:center !important;
+  text-transform:none !important;
+  white-space:nowrap !important;
+  color:#fff !important;
+  z-index:20 !important;
+  overflow:visible !important;
+}
+
+.hero-video-section h1 .outline{
+  display:inline-block !important;
+  color:transparent !important;
+  -webkit-text-fill-color:transparent !important;
+  -webkit-text-stroke:1px rgba(255,255,255,.96) !important;
+  text-shadow:none !important;
+}
+
+/* ----- ALL OTHER LARGE HEADLINES: ORIGINAL ELEVATE STYLE ----- */
+.landing-copy h1,
+.selected-intro h2,
+.services-top h2,
+.process-head h2,
+.about-snapshot h2,
+.start-project-band h2,
+.summer-heading h2,
+.summer-details-panel h2,
+.service-card h3,
+.process-grid h3,
+.modal-title,
+.ticker-track span{
+  font-family:'Bebas Neue',Arial,sans-serif !important;
+  font-weight:400 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.015em !important;
+  word-spacing:.02em !important;
+  -webkit-font-smoothing:antialiased !important;
+}
+
+/* The "ELEVATE YOUR BRAND" closing headline uses the same
+   condensed family and proportions as the old approved version. */
+.start-project-band h2{
+  font-family:'Bebas Neue',Arial,sans-serif !important;
+  font-weight:400 !important;
+  font-size:clamp(64px,8.8vw,138px) !important;
+  line-height:.84 !important;
+  letter-spacing:.015em !important;
+}
+
+/* Section/editorial headings use the same family but are scaled to
+   their available composition so they cannot crop. */
+.selected-intro h2,
+.services-top h2,
+.process-head h2,
+.about-snapshot h2,
+.summer-heading h2{
+  font-family:'Bebas Neue',Arial,sans-serif !important;
+  font-weight:400 !important;
+  font-size:clamp(58px,7.4vw,126px) !important;
+  line-height:.84 !important;
+  letter-spacing:.01em !important;
+}
+
+/* Summer slide headline: keep the existing solid/outline treatment,
+   but use the old condensed headline face. */
+.landing-copy h1#landingTitle{
+  font-family:'Bebas Neue',Arial,sans-serif !important;
+  font-weight:400 !important;
+  font-size:clamp(58px,7.3vw,126px) !important;
+  line-height:.79 !important;
+  letter-spacing:.01em !important;
+  word-spacing:.015em !important;
+}
+
+.landing-copy h1#landingTitle .title-solid,
+.landing-copy h1#landingTitle .title-outline{
+  font-family:'Bebas Neue',Arial,sans-serif !important;
+  line-height:.79 !important;
+}
+
+/* Service cards: same headline family, with a deliberately smaller
+   size because the five-card layout is narrow. This keeps every word
+   completely visible, including PHOTOGRAPHY & FILM. */
+.service-card h3{
+  font-family:'Bebas Neue',Arial,sans-serif !important;
+  font-weight:400 !important;
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  font-size:clamp(24px,1.72vw,32px) !important;
+  line-height:.88 !important;
+  letter-spacing:.01em !important;
+  word-spacing:.01em !important;
+  white-space:normal !important;
+  overflow-wrap:normal !important;
+  word-break:normal !important;
+  hyphens:none !important;
+}
+.service-card-02 h3{font-size:clamp(23px,1.58vw,30px) !important;}
+.service-card-03 h3{font-size:clamp(21px,1.42vw,28px) !important;}
+.service-card-05 h3{font-size:clamp(22px,1.5vw,29px) !important;}
+
+.process-grid h3{
+  font-family:'Bebas Neue',Arial,sans-serif !important;
+  font-size:clamp(26px,2.1vw,36px) !important;
+  line-height:.9 !important;
+}
+
+.modal-title{
+  font-family:'Bebas Neue',Arial,sans-serif !important;
+  font-weight:400 !important;
+  font-size:clamp(40px,5vw,72px) !important;
+  line-height:.88 !important;
+  letter-spacing:.025em !important;
+}
+
+.summer-details-panel h2{
+  font-family:'Bebas Neue',Arial,sans-serif !important;
+  font-size:clamp(58px,7.4vw,118px) !important;
+  line-height:.84 !important;
+}
+
+/* ----- MOBILE: HEADLINES ----- */
+@media (max-width:900px){
+  .hero-video-section h1,
+  .hero-video-section h1:not(.anything){
+    font-size:15.5vw !important;
+    line-height:.82 !important;
+    padding:0 12px !important;
+  }
+
+  .landing-copy h1#landingTitle{
+    font-size:clamp(52px,15vw,92px) !important;
+    line-height:.80 !important;
+  }
+
+  .selected-intro h2,
+  .services-top h2,
+  .process-head h2,
+  .about-snapshot h2,
+  .start-project-band h2,
+  .summer-heading h2{
+    font-size:clamp(54px,14vw,88px) !important;
+    line-height:.84 !important;
+  }
+
+  .service-card h3,
+  .service-card-01 h3,
+  .service-card-02 h3,
+  .service-card-03 h3,
+  .service-card-04 h3,
+  .service-card-05 h3{
+    font-family:'Bebas Neue',Arial,sans-serif !important;
+    font-size:clamp(30px,8.2vw,46px) !important;
+    line-height:.88 !important;
+  }
+
+  .process-grid h3{
+    font-size:clamp(28px,8vw,42px) !important;
+  }
+
+  .start-project-band h2{
+    font-size:clamp(58px,15vw,94px) !important;
+  }
+}
+
+/* ----- MOBILE VIDEO: TRUE CENTRE CROP ----- */
+@media (max-width:768px){
+  .hero-video-section{
+    position:relative !important;
+    width:100% !important;
+    height:76svh !important;
+    min-height:540px !important;
+    max-height:760px !important;
+    overflow:hidden !important;
+    background:#000 !important;
+  }
+
+  .hero-video-section video{
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    min-width:100% !important;
+    min-height:100% !important;
+    max-width:none !important;
+    max-height:none !important;
+    display:block !important;
+    object-fit:cover !important;
+    object-position:50% 50% !important;
+    transform:none !important;
+    transform-origin:center center !important;
+  }
+
+  .hero-video-section h1{
+    top:50% !important;
+  }
+}
+
+@media (max-width:480px){
+  .hero-video-section{
+    height:70svh !important;
+    min-height:500px !important;
+    max-height:650px !important;
+  }
+
+  .hero-video-section video{
+    object-position:center center !important;
+  }
+
+  .hero-video-section h1,
+  .hero-video-section h1:not(.anything){
+    font-size:15.8vw !important;
+    padding:0 8px !important;
+  }
+}
+</style>
 
 </body>
 </html>
