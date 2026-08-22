@@ -2561,6 +2561,602 @@ body{
 }
 </style>
 
+
+<style id="oceayr-mobile-and-ux-fixes">
+/* =========================================================
+   OCEAYR — MOBILE / RESPONSIVE / UX FIXES
+   This block intentionally overrides only the problem areas.
+========================================================= */
+
+/* Keep the existing desktop navigation visually identical. */
+.desktop-nav-links{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:clamp(18px,2.6vw,42px);
+}
+.mobile-menu-toggle,
+.mobile-nav-panel{
+  display:none;
+}
+
+/* The Summer CTA now opens a useful detail panel instead of a dead anchor. */
+.summer-details-modal{
+  position:fixed;
+  inset:0;
+  z-index:7000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+.summer-details-modal.open{display:flex;}
+.summer-details-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.summer-details-panel{
+  position:relative;
+  z-index:2;
+  width:min(920px,100%);
+  max-height:min(88svh,820px);
+  overflow:auto;
+  background:#F7F6F2;
+  color:#111;
+  padding:clamp(34px,5vw,70px);
+  border:1px solid rgba(17,17,17,.15);
+  box-shadow:0 30px 90px rgba(0,0,0,.35);
+}
+.summer-details-close{
+  position:absolute;
+  top:16px;
+  right:18px;
+  width:42px;
+  height:42px;
+  border:1px solid rgba(17,17,17,.25);
+  background:transparent;
+  color:#111;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+}
+.summer-details-panel h2{
+  margin-top:18px;
+  font-family:'Bodoni Moda',serif;
+  font-weight:600;
+  font-size:clamp(58px,8vw,118px);
+  line-height:.82;
+  letter-spacing:.01em;
+}
+.summer-details-panel h2 span{
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  -webkit-text-stroke:1px #111;
+}
+.summer-details-lead{
+  max-width:720px;
+  margin-top:28px;
+  font-size:clamp(16px,1.4vw,20px);
+  line-height:1.7;
+  color:#555;
+}
+.summer-details-grid{
+  margin-top:38px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #D8D6D0;
+  border-left:1px solid #D8D6D0;
+}
+.summer-details-grid>div{
+  padding:24px;
+  border-right:1px solid #D8D6D0;
+  border-bottom:1px solid #D8D6D0;
+}
+.summer-details-grid strong{
+  font-size:9px;
+  letter-spacing:.25em;
+}
+.summer-details-grid p{
+  margin-top:16px;
+  color:#555;
+  line-height:1.65;
+  font-size:13px;
+}
+.summer-details-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:55px;
+  margin-top:30px;
+  padding:18px 22px;
+  background:#111;
+  color:#fff;
+  text-decoration:none;
+  font-size:9px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+}
+
+/* Remove slide numbers completely; dots remain clickable. */
+.landing-meta .slide-count{display:none!important;}
+.landing-meta{gap:0!important;}
+.slide-controls{gap:10px!important;}
+.slide-dot{
+  width:44px!important;
+  height:2px!important;
+  cursor:pointer!important;
+}
+.slide-dot.active{width:62px!important;}
+
+/* The video must crop from the centre on narrow screens, not stretch. */
+.hero-video-section video{
+  object-fit:cover!important;
+  object-position:50% 50%!important;
+  width:100%!important;
+  height:100%!important;
+}
+.hero-video-section{
+  overflow:hidden!important;
+}
+
+/* Services cards: clean desktop, horizontal snap cards on mobile. */
+.service-card-03 h3{
+  font-size:clamp(22px,1.75vw,30px)!important;
+}
+.service-card p{
+  overflow-wrap:anywhere;
+}
+.services-top h2{
+  max-width:900px;
+}
+.services-lead{
+  max-width:560px!important;
+}
+
+/* Prevent headings from ever being clipped by viewport width. */
+.selected-intro h2,
+.services-top h2,
+.process-head h2,
+.about-snapshot h2,
+.start-project-band h2{
+  max-width:100%!important;
+  overflow-wrap:normal!important;
+}
+
+/* Better form grid on small screens. */
+.mf{
+  width:100%;
+}
+.mf-field select{
+  min-height:24px;
+}
+
+/* =========================================================
+   TABLET / MOBILE
+========================================================= */
+@media (max-width: 768px){
+
+  /* Replace the impossible 6-item desktop nav with a clean menu. */
+  .site-nav{
+    top:14px!important;
+    left:auto!important;
+    right:14px!important;
+    width:auto!important;
+    z-index:5005!important;
+  }
+  .desktop-nav-links{display:none!important;}
+  .mobile-menu-toggle{
+    display:flex!important;
+    width:48px;
+    height:42px;
+    padding:0;
+    border:1px solid rgba(255,255,255,.42);
+    background:rgba(0,0,0,.08);
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+  }
+  .mobile-menu-toggle span{
+    display:block;
+    width:20px;
+    height:1px;
+    background:#fff;
+    transition:transform .25s,opacity .25s,background .25s;
+  }
+  .site-nav:not(.on-dark) .mobile-menu-toggle{
+    border-color:rgba(17,17,17,.25);
+    background:rgba(247,246,242,.35);
+  }
+  .site-nav:not(.on-dark) .mobile-menu-toggle span{background:#111;}
+  .site-nav.menu-open .mobile-menu-toggle span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  .site-nav.menu-open .mobile-menu-toggle span:nth-child(2){opacity:0;}
+  .site-nav.menu-open .mobile-menu-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+  .mobile-nav-panel{
+    position:fixed;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    top:0;
+    right:0;
+    width:min(86vw,360px);
+    height:100svh;
+    padding:92px 28px 30px;
+    background:#F7F6F2;
+    color:#111;
+    z-index:5000;
+    transform:translateX(105%);
+    transition:transform .35s cubic-bezier(.16,1,.3,1);
+    box-shadow:-20px 0 60px rgba(0,0,0,.16);
+  }
+  .mobile-nav-panel.open{transform:translateX(0);}
+  .mobile-nav-panel a{
+    display:flex;
+    align-items:center;
+    min-height:60px;
+    border-bottom:1px solid #D8D6D0;
+    color:#111!important;
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+  }
+  .mobile-nav-panel .mobile-nav-cta{
+    margin-top:22px;
+    padding:0 18px;
+    min-height:56px;
+    background:#111;
+    color:#fff!important;
+    justify-content:space-between;
+    border:0;
+  }
+
+  /* Video: use a stable mobile hero height and true centre crop. */
+  .hero-video-section{
+    height:78svh!important;
+    min-height:540px!important;
+    max-height:760px!important;
+  }
+  .hero-video-section video{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:50% 50%!important;
+  }
+  .hero-video-section h1{
+    font-size:16vw!important;
+    line-height:.82!important;
+    max-width:100%!important;
+  }
+
+  /* Summer slide: full-width, no horizontal overflow, buttons visible. */
+  .landing-slider{
+    height:auto!important;
+    min-height:690px!important;
+    max-height:none!important;
+  }
+  .landing-content{
+    min-height:690px!important;
+    height:auto!important;
+    padding:92px 16px 28px!important;
+    justify-content:flex-end!important;
+    align-items:stretch!important;
+  }
+  .landing-copy{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding:22px 18px 20px!important;
+    background:rgba(17,17,17,.52)!important;
+    box-shadow:none!important;
+    backdrop-filter:blur(8px)!important;
+    -webkit-backdrop-filter:blur(8px)!important;
+  }
+  .landing-kicker{
+    font-size:7px!important;
+    letter-spacing:.25em!important;
+    color:#fff!important;
+  }
+  .landing-copy h1{
+    font-size:15.5vw!important;
+    line-height:.83!important;
+    letter-spacing:.01em!important;
+    word-spacing:.04em!important;
+    max-width:100%!important;
+  }
+  .landing-description{
+    margin-top:18px!important;
+    font-size:14px!important;
+    line-height:1.55!important;
+    color:#fff!important;
+    max-width:100%!important;
+  }
+  .landing-actions{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:13px!important;
+    margin-top:20px!important;
+  }
+  .landing-primary{
+    width:100%!important;
+    min-width:0!important;
+    min-height:50px!important;
+    padding:16px 17px!important;
+  }
+  .landing-secondary{
+    align-self:flex-start!important;
+    color:#fff!important;
+    font-size:8px!important;
+    letter-spacing:.22em!important;
+  }
+  .landing-meta{
+    position:absolute!important;
+    left:18px!important;
+    right:18px!important;
+    bottom:18px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    margin:0!important;
+  }
+  .slide-controls{
+    display:flex!important;
+    width:auto!important;
+  }
+  .slide-dot{background:rgba(255,255,255,.55)!important;}
+  .slide-dot.active{background:#fff!important;}
+
+  /* Services: one readable card at a time, swipe horizontally. */
+  .services-new{
+    padding:72px 0 82px!important;
+    overflow:hidden!important;
+  }
+  .services-top{
+    display:block!important;
+    padding:0 20px 36px!important;
+    border-bottom:1px solid #D8D6D0!important;
+  }
+  .services-top h2{
+    font-size:17vw!important;
+    line-height:.82!important;
+    margin-top:14px!important;
+  }
+  .services-lead{
+    margin-top:28px!important;
+    font-size:15px!important;
+    line-height:1.65!important;
+  }
+  .service-grid{
+    display:flex!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scroll-snap-type:x mandatory!important;
+    -webkit-overflow-scrolling:touch!important;
+    gap:0!important;
+    border:0!important;
+    padding:24px 20px 10px!important;
+    scrollbar-width:none!important;
+  }
+  .service-grid::-webkit-scrollbar{display:none;}
+  .service-card{
+    flex:0 0 82vw!important;
+    min-height:430px!important;
+    margin-right:12px!important;
+    padding:24px!important;
+    scroll-snap-align:start!important;
+    border:1px solid rgba(216,214,208,.45)!important;
+  }
+  .service-card h3,
+  .service-card-02 h3,
+  .service-card-03 h3,
+  .service-card-04 h3,
+  .service-card-05 h3{
+    font-size:clamp(31px,9vw,48px)!important;
+    line-height:.88!important;
+    word-spacing:.04em!important;
+  }
+  .service-card p{
+    font-size:14px!important;
+    line-height:1.6!important;
+    max-width:92%!important;
+  }
+  .services-new>.section-cta{
+    margin-left:20px!important;
+    margin-right:20px!important;
+  }
+
+  /* Other content sections: no clipped giant headlines. */
+  .selected-intro{
+    padding:70px 20px 40px!important;
+  }
+  .selected-intro h2{
+    font-size:18vw!important;
+    line-height:.82!important;
+  }
+  .selected-intro>p{
+    font-size:15px!important;
+    line-height:1.7!important;
+  }
+  .ticker-wrap{height:72px!important;}
+  .ticker-track span{font-size:38px!important;}
+
+  .gallery-section{
+    width:100%!important;
+    overflow:hidden!important;
+  }
+
+  .process-section{
+    padding:78px 20px 82px!important;
+  }
+  .process-head{
+    margin-bottom:34px!important;
+    padding-bottom:34px!important;
+  }
+  .process-head h2{
+    font-size:18vw!important;
+    line-height:.82!important;
+  }
+  .process-intro p{
+    font-size:15px!important;
+    line-height:1.7!important;
+  }
+  .process-grid{
+    display:flex!important;
+    overflow-x:auto!important;
+    scroll-snap-type:x mandatory!important;
+    border:0!important;
+    scrollbar-width:none!important;
+  }
+  .process-grid::-webkit-scrollbar{display:none;}
+  .process-grid>div{
+    flex:0 0 82vw!important;
+    min-height:280px!important;
+    scroll-snap-align:start!important;
+    border:1px solid #D8D6D0!important;
+    margin-right:12px!important;
+    padding:24px!important;
+  }
+  .process-grid h3{margin-top:70px!important;font-size:34px!important;}
+
+  .about-snapshot{
+    padding:78px 20px 84px!important;
+    display:block!important;
+  }
+  .about-snapshot h2{
+    font-size:16.5vw!important;
+    line-height:.82!important;
+  }
+  .about-snapshot-copy{
+    margin-top:30px!important;
+  }
+  .about-snapshot-copy p{
+    font-size:15px!important;
+    line-height:1.7!important;
+  }
+
+  .start-project-band{
+    min-height:620px!important;
+    padding:84px 20px 90px!important;
+  }
+  .start-project-band h2{
+    font-size:18vw!important;
+    line-height:.84!important;
+    text-align:center!important;
+  }
+  .start-project-band>p,
+  .start-project-support{
+    font-size:15px!important;
+    line-height:1.65!important;
+    max-width:92%!important;
+  }
+
+  /* Form modal: one column, comfortable touch targets. */
+  .modal{
+    width:calc(100vw - 24px)!important;
+    max-height:calc(100svh - 24px)!important;
+    overflow:auto!important;
+    padding:28px 18px!important;
+  }
+  .modal-title{
+    font-size:clamp(42px,12vw,66px)!important;
+    line-height:.86!important;
+  }
+  .mf{
+    grid-template-columns:1fr!important;
+  }
+  .mf-field.full{
+    grid-column:1!important;
+  }
+  .mf-field{
+    min-height:76px!important;
+  }
+  .mf-field input,
+  .mf-field textarea,
+  .mf-field select{
+    font-size:16px!important;
+  }
+  .mf-field textarea{
+    min-height:150px!important;
+  }
+
+  /* Summer details modal. */
+  .summer-details-modal{padding:10px!important;}
+  .summer-details-panel{
+    max-height:92svh!important;
+    padding:42px 20px 26px!important;
+  }
+  .summer-details-panel h2{
+    font-size:16vw!important;
+  }
+  .summer-details-grid{
+    grid-template-columns:1fr!important;
+  }
+  .summer-details-grid>div{
+    padding:18px 0!important;
+    border-left:0!important;
+    border-right:0!important;
+  }
+  .summer-details-cta{
+    width:100%;
+    justify-content:space-between;
+  }
+
+  /* Footer stays compact and never creates sideways scroll. */
+  .footer{
+    padding:28px 20px!important;
+    gap:18px!important;
+    text-align:center!important;
+  }
+  .footer-links{
+    max-width:100%!important;
+    justify-content:center!important;
+  }
+}
+
+@media(max-width:390px){
+  .logo{
+    left:12px!important;
+    top:13px!important;
+    width:64px!important;
+    height:47px!important;
+  }
+  .mobile-menu-toggle{
+    width:44px;
+    height:40px;
+  }
+  .hero-video-section{
+    height:74svh!important;
+    min-height:510px!important;
+  }
+  .landing-slider,
+  .landing-content{
+    min-height:650px!important;
+  }
+  .landing-copy h1{
+    font-size:14.5vw!important;
+  }
+  .service-card{
+    flex-basis:84vw!important;
+  }
+}
+
+/* Respect reduced motion. */
+@media(prefers-reduced-motion:reduce){
+  .slide-bg,
+  .mobile-nav-panel,
+  .mobile-menu-toggle span{
+    transition:none!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div aria-label="OCEAYR Agency logo" class="logo">
@@ -2589,7 +3185,22 @@ body{
 </div>
 </div>
 </div>
-</section><section class="hero-video-section">
+</section>
+<div class="summer-details-modal" id="summerDetailsModal" aria-hidden="true">
+  <div class="summer-details-backdrop" data-close-summer></div>
+  <section class="summer-details-panel" role="dialog" aria-modal="true" aria-labelledby="summerDetailsTitle">
+    <button class="summer-details-close" type="button" aria-label="Close summer collaborations" data-close-summer>×</button>
+    <p class="section-kicker">OCEAYR SUMMER COLLABORATIONS 2026</p>
+    <h2 id="summerDetailsTitle">MAKE THIS<br/><span>SUMMER VISIBLE.</span></h2>
+    <p class="summer-details-lead">A focused creative collaboration for hotels, resorts, restaurants and lifestyle destinations looking to turn summer demand into stronger visual presence.</p>
+    <div class="summer-details-grid">
+      <div><strong>WHAT WE CAN CREATE</strong><p>Hero photography, short-form film, social content, campaign concepts, destination storytelling and digital launch assets.</p></div>
+      <div><strong>BUILT FOR</strong><p>Hotels, resorts, restaurants, cafés, wellness spaces and experience-led brands across the UAE.</p></div>
+      <div><strong>THE APPROACH</strong><p>One clear creative direction, premium execution and a practical content system designed around the guest journey.</p></div>
+    </div>
+    <a class="summer-details-cta" href="/contact">START A SUMMER PROJECT <span>→</span></a>
+  </section>
+</div><section class="hero-video-section">
 <video autoplay="" id="bgv" loop="" muted="" playsinline="" preload="auto">
 <source src="/video/oceayr-background.mp4" type="video/mp4"/>
 </video>
@@ -2598,14 +3209,27 @@ body{
 <span class="outline">AGENCY</span>
 </h1>
 </section>
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Primary navigation">
+<button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="mobileNavPanel" aria-label="Open navigation">
+<span></span><span></span><span></span>
+</button>
+<div class="desktop-nav-links">
 <a href="#home">Home</a>
 <a href="/about">About Us</a>
 <a href="#services">Services</a>
-<a aria-label="Summer Collaborations 2026" href="#home">Summer</a>
+<a aria-label="Summer Collaborations 2026" href="#summer">Summer</a>
 <a href="/contact">Contact Us</a>
 <a class="nav-cta" href="/contact">Start A Project</a>
+</div>
 </nav>
+<div class="mobile-nav-panel" id="mobileNavPanel" aria-hidden="true">
+<a href="#home">Home</a>
+<a href="/about">About Us</a>
+<a href="#services">Services</a>
+<a href="#summer">Summer</a>
+<a href="/contact">Contact Us</a>
+<a class="mobile-nav-cta" href="/contact">Start A Project <span>→</span></a>
+</div>
 <section class="selected-intro">
 <div>
 <p class="section-kicker">SELECTED VISUAL DIRECTION</p>
@@ -2630,7 +3254,7 @@ body{
 <div class="service-grid">
 <article class="service-card service-card-01"><h3>CREATIVE<br/>STRATEGY</h3><p>Brand positioning, campaign concepts, creative direction and content strategy.</p></article>
 <article class="service-card service-card-02"><h3>PHOTOGRAPHY<br/>&amp; FILM</h3><p>Hotel, resort, food, lifestyle, architecture, interiors, campaign films and social reels.</p></article>
-<article class="service-card service-card-03"><h3>DIGITAL<br/>CONTENT</h3><p>Social content, campaign assets, website visuals and launch-ready creative.</p></article>
+<article class="service-card service-card-03"><h3>SOCIAL MEDIA<br/>MANAGEMENT</h3><p>Social strategy, content planning, campaign assets and launch-ready creative built for hospitality brands.</p></article>
 <article class="service-card service-card-04"><h3>CAMPAIGN<br/>DIRECTION</h3><p>Seasonal campaigns, staycations, restaurant launches and destination experiences.</p></article>
 <article class="service-card service-card-05"><h3>WEB DESIGN<br/>EXPERIENCES</h3><p>Luxury website design, landing pages and digital experiences built to turn attention into enquiries.</p></article>
 </div>
@@ -2700,15 +3324,15 @@ body{
 <input id="f-mobile" placeholder="+971 00 000 0000" type="tel"/>
 </div>
 <div class="mf-field">
-<label>Brand Type</label>
+<label>Business Type</label>
 <select id="f-brand"><option value="">Select business type</option><option value="Hotel / Resort">Hotel / Resort</option><option value="Restaurant / Café">Restaurant / Café</option><option value="Lifestyle / Retail">Lifestyle / Retail</option><option value="Wellness / Spa">Wellness / Spa</option><option value="Destination / Experience">Destination / Experience</option><option value="Other">Other</option></select>
 </div>
 <div class="mf-field">
-<label>Service Required</label>
-<select id="f-service"><option value="">Select project requirement</option><option value="Creative Strategy">Creative Strategy</option><option value="Photography &amp; Film">Photography &amp; Film</option><option value="Digital Content">Digital Content</option><option value="Campaign Direction">Campaign Direction</option><option value="Web Design &amp; Digital Experience">Web Design &amp; Digital Experience</option><option value="Branding">Branding</option><option value="Summer Collaboration">Summer Collaboration</option><option value="Other">Other</option></select>
+<label>Services Needed</label>
+<select id="f-service"><option value="">Select the services you need</option><option value="Creative Strategy">Creative Strategy</option><option value="Photography &amp; Film">Photography &amp; Film</option><option value="Digital Content">Digital Content</option><option value="Campaign Direction">Campaign Direction</option><option value="Web Design &amp; Digital Experience">Web Design &amp; Digital Experience</option><option value="Branding">Branding</option><option value="Summer Collaboration">Summer Collaboration</option><option value="Other">Other</option></select>
 </div>
 <div class="mf-field">
-<label>Property / Brand Location</label>
+<label>Business / Property Location</label>
 <input id="f-location" placeholder="Dubai, Abu Dhabi, UAE..." type="text"/>
 </div>
 <div class="mf-field">
@@ -3462,7 +4086,7 @@ window.addEventListener('DOMContentLoaded',()=>{
         title:'MAKE THIS<br><span>SUMMER VISIBLE.</span>',
         desc:'Limited summer collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.',
         primary:'EXPLORE SUMMER COLLABORATIONS',
-        primaryHref:'#summer',
+        primaryHref:'#summer-details',
         secondary:'START A PROJECT',
         secondaryHref:'/contact'
       },
@@ -3530,6 +4154,23 @@ window.addEventListener('DOMContentLoaded',()=>{
       slider.addEventListener('mouseleave',restartSlider);
       slider.addEventListener('touchstart',()=>clearInterval(timer),{passive:true});
       slider.addEventListener('touchend',restartSlider,{passive:true});
+
+      let touchStartX=0;
+      let touchStartY=0;
+      slider.addEventListener('touchstart',e=>{
+        const t=e.changedTouches[0];
+        touchStartX=t.clientX;
+        touchStartY=t.clientY;
+      },{passive:true});
+      slider.addEventListener('touchend',e=>{
+        const t=e.changedTouches[0];
+        const dx=t.clientX-touchStartX;
+        const dy=t.clientY-touchStartY;
+        if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)){
+          renderSlide(current+(dx<0?1:-1));
+        }
+        restartSlider();
+      },{passive:true});
     }
 
     renderSlide(0);
@@ -3598,6 +4239,56 @@ window.addEventListener('DOMContentLoaded',()=>{
   }else{
     initOceayrFinalFixes();
   }
+})();
+</script>
+
+
+<script id="oceayr-mobile-ux-js">
+(function(){
+  const nav=document.querySelector('.site-nav');
+  const toggle=document.getElementById('mobileMenuToggle');
+  const panel=document.getElementById('mobileNavPanel');
+
+  function closeMenu(){
+    if(!nav||!toggle||!panel)return;
+    nav.classList.remove('menu-open');
+    toggle.setAttribute('aria-expanded','false');
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden','true');
+  }
+  function openMenu(){
+    if(!nav||!toggle||!panel)return;
+    nav.classList.add('menu-open');
+    toggle.setAttribute('aria-expanded','true');
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden','false');
+  }
+  if(toggle){
+    toggle.addEventListener('click',()=>{
+      if(panel && panel.classList.contains('open')) closeMenu();
+      else openMenu();
+    });
+  }
+  if(panel){
+    panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+  }
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape') closeMenu();
+  });
+  window.addEventListener('resize',()=>{
+    if(window.innerWidth>768) closeMenu();
+  });
+})();
+
+(function(){
+  const modal=document.getElementById('summerDetailsModal');
+  if(!modal)return;
+  const openers=document.querySelectorAll('[href="#summer-details"]');
+  const close=()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';};
+  const open=()=>{modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';};
+  openers.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();open();}));
+  modal.querySelectorAll('[data-close-summer]').forEach(el=>el.addEventListener('click',close));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
 })();
 </script>
 
