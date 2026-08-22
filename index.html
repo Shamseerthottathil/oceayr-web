@@ -6,6 +6,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>OCEAYR | Agency</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&amp;family=Bebas+Neue&amp;family=Fjalla+One&amp;family=Kanit:wght@700;900&amp;family=Bodoni+Moda:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <style>
@@ -3154,6 +3155,186 @@ body{
   .mobile-menu-toggle span{
     transition:none!important;
   }
+}
+</style>
+
+
+<style id="oceayr-cormorant-mobile-final">
+/* ==========================================================
+   OCEAYR — CORMORANT GARAMOND + MOBILE VIDEO FINAL
+   Keeps logo, gallery mechanics, imagery and content structure.
+========================================================== */
+
+/* Luxury editorial display typography */
+.landing-copy h1,
+.selected-intro h2,
+.services-top h2,
+.process-head h2,
+.about-snapshot h2,
+.start-project-band h2,
+.summer-heading h2,
+.summer-details-panel h2,
+.service-card h3,
+.process-grid h3,
+.ticker-track span{
+  font-family:'Cormorant Garamond',serif!important;
+  font-weight:600!important;
+  letter-spacing:.01em!important;
+  word-spacing:.045em!important;
+  text-transform:uppercase!important;
+}
+
+/* Main editorial headlines: slightly smaller and more breathable */
+.landing-copy h1{
+  font-size:clamp(58px,7.4vw,128px)!important;
+  line-height:.80!important;
+  letter-spacing:.005em!important;
+  word-spacing:.06em!important;
+}
+.selected-intro h2,
+.services-top h2,
+.process-head h2,
+.about-snapshot h2,
+.start-project-band h2,
+.summer-heading h2{
+  font-size:clamp(58px,7.2vw,122px)!important;
+  line-height:.80!important;
+}
+
+/* Fine, elegant outline treatment */
+.landing-copy h1 span,
+.selected-intro h2 span,
+.services-top h2 span,
+.process-head h2 span,
+.about-snapshot h2 span,
+.start-project-band h2 span,
+.summer-heading h2 span,
+.summer-details-panel h2 span{
+  -webkit-text-stroke:.75px currentColor!important;
+  -webkit-text-fill-color:transparent!important;
+  color:transparent!important;
+}
+
+.service-card h3{
+  font-size:clamp(25px,2vw,34px)!important;
+  line-height:.88!important;
+  letter-spacing:.005em!important;
+  word-spacing:.04em!important;
+}
+.process-grid h3{font-size:clamp(25px,2vw,34px)!important;line-height:.9!important;}
+
+/* Video title: same two-line OCEAYR / AGENCY composition, refined type */
+.hero-video-section h1,
+.hero-video-section h1:not(.anything){
+  font-family:'Cormorant Garamond',serif!important;
+  font-weight:700!important;
+  letter-spacing:.015em!important;
+  line-height:.76!important;
+  font-size:clamp(62px,9.2vw,150px)!important;
+  text-transform:uppercase!important;
+}
+.hero-video-section h1 .outline{
+  -webkit-text-stroke:1px #fff!important;
+  -webkit-text-fill-color:transparent!important;
+}
+
+/* Deterministic centre crop: the video itself is centred, never left/right biased. */
+.hero-video-section{
+  position:relative!important;
+  overflow:hidden!important;
+  width:100%!important;
+  isolation:isolate!important;
+}
+.hero-video-section video{
+  position:absolute!important;
+  top:50%!important;
+  left:50%!important;
+  width:auto!important;
+  height:100%!important;
+  min-width:100%!important;
+  min-height:100%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:50% 50%!important;
+  transform:translate(-50%,-50%)!important;
+  display:block!important;
+  margin:0!important;
+}
+
+@media(max-width:768px){
+  /* Compact luxury typography for phones */
+  .landing-copy h1{
+    font-size:clamp(48px,13.5vw,70px)!important;
+    line-height:.80!important;
+    letter-spacing:0!important;
+    word-spacing:.035em!important;
+  }
+  .selected-intro h2,
+  .services-top h2,
+  .process-head h2,
+  .about-snapshot h2,
+  .start-project-band h2,
+  .summer-heading h2{
+    font-size:clamp(46px,13vw,68px)!important;
+    line-height:.82!important;
+    letter-spacing:0!important;
+    word-spacing:.035em!important;
+  }
+  .service-card h3{
+    font-size:clamp(27px,8vw,38px)!important;
+    line-height:.88!important;
+    letter-spacing:0!important;
+    word-spacing:.025em!important;
+  }
+  .process-grid h3{font-size:30px!important;line-height:.9!important;}
+
+  /* Mobile video: use viewport height and a true geometric centre crop. */
+  .hero-video-section{
+    height:72svh!important;
+    min-height:500px!important;
+    max-height:680px!important;
+  }
+  .hero-video-section video{
+    top:50%!important;
+    left:50%!important;
+    width:auto!important;
+    height:100%!important;
+    min-width:100vw!important;
+    min-height:100%!important;
+    object-fit:cover!important;
+    object-position:50% 50%!important;
+    transform:translate3d(-50%,-50%,0)!important;
+  }
+  .hero-video-section h1,
+  .hero-video-section h1:not(.anything){
+    width:100%!important;
+    max-width:100%!important;
+    padding:0 16px!important;
+    font-size:clamp(58px,15vw,82px)!important;
+    line-height:.77!important;
+    letter-spacing:.01em!important;
+  }
+  .hero-video-section h1 .outline{-webkit-text-stroke:.8px #fff!important;}
+}
+
+@media(max-width:480px){
+  .hero-video-section{
+    height:70svh!important;
+    min-height:480px!important;
+    max-height:590px!important;
+  }
+  .hero-video-section h1,
+  .hero-video-section h1:not(.anything){
+    font-size:18vw!important;
+    line-height:.76!important;
+  }
+  .landing-copy h1{font-size:13vw!important;line-height:.80!important;}
+  .selected-intro h2,
+  .services-top h2,
+  .process-head h2,
+  .about-snapshot h2,
+  .start-project-band h2,
+  .summer-heading h2{font-size:13vw!important;line-height:.82!important;}
 }
 </style>
 
