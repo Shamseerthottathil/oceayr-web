@@ -5884,6 +5884,160 @@ window.addEventListener('DOMContentLoaded',()=>{
 }
 </style>
 
+
+<style id="oceayr-mobile-video-final-fix">
+/*
+  OCEAYR — MOBILE HERO VIDEO FINAL FIX
+  Scope: ONLY .hero-video-section and its video/title.
+  Desktop and every other section remain unchanged.
+
+  Mobile behaviour:
+  - The landscape source keeps its original aspect ratio.
+  - Video height is tied to the mobile hero height.
+  - Width remains automatic (never forced to viewport width).
+  - The video is centred horizontally.
+  - The hero clips the left/right edges to create a true
+    portrait centre crop, with no stretching or distortion.
+*/
+
+@media screen and (max-width: 768px){
+
+  .hero-video-section{
+    position:relative !important;
+    width:100vw !important;
+    height:100svh !important;
+    min-height:560px !important;
+    max-height:820px !important;
+    overflow:hidden !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    background:#000 !important;
+  }
+
+  .hero-video-section video#bgv{
+    position:absolute !important;
+
+    top:50% !important;
+    left:50% !important;
+    right:auto !important;
+    bottom:auto !important;
+
+    /*
+      IMPORTANT:
+      Do NOT use width:100%.
+      Automatic width preserves the video's native
+      landscape aspect ratio while its height fills
+      the portrait hero.
+    */
+    width:auto !important;
+    height:100% !important;
+
+    min-width:0 !important;
+    min-height:100% !important;
+
+    max-width:none !important;
+    max-height:none !important;
+
+    margin:0 !important;
+    padding:0 !important;
+
+    display:block !important;
+
+    object-fit:contain !important;
+    object-position:center center !important;
+
+    transform:translate3d(-50%, -50%, 0) !important;
+    transform-origin:center center !important;
+
+    opacity:.52 !important;
+    filter:none !important;
+
+    pointer-events:none !important;
+  }
+
+  .hero-video-section h1,
+  .hero-video-section h1:not(.anything){
+    position:absolute !important;
+
+    top:50% !important;
+    left:50% !important;
+
+    width:100% !important;
+
+    margin:0 !important;
+    padding:0 8px !important;
+
+    transform:translate3d(-50%, -50%, 0) !important;
+
+    font-family:'Inter',Arial,sans-serif !important;
+    font-size:16vw !important;
+    font-weight:900 !important;
+    line-height:.82 !important;
+    letter-spacing:0 !important;
+
+    text-align:center !important;
+    white-space:nowrap !important;
+
+    color:#fff !important;
+
+    z-index:20 !important;
+  }
+
+  .hero-video-section h1 .outline{
+    color:transparent !important;
+    -webkit-text-fill-color:transparent !important;
+    -webkit-text-stroke:1px rgba(255,255,255,.96) !important;
+  }
+}
+
+/*
+  Smaller iPhones.
+  Same crop method; only hero sizing/title size is adjusted.
+*/
+@media screen and (max-width:480px){
+
+  .hero-video-section{
+    height:100svh !important;
+    min-height:560px !important;
+    max-height:820px !important;
+  }
+
+  .hero-video-section video#bgv{
+    top:50% !important;
+    left:50% !important;
+    width:auto !important;
+    height:100% !important;
+    min-width:0 !important;
+    min-height:100% !important;
+    max-width:none !important;
+    max-height:none !important;
+
+    object-fit:contain !important;
+    object-position:center center !important;
+
+    transform:translate3d(-50%, -50%, 0) !important;
+  }
+
+  .hero-video-section h1,
+  .hero-video-section h1:not(.anything){
+    font-size:15.8vw !important;
+    padding:0 8px !important;
+  }
+}
+
+/*
+  Very small phones.
+*/
+@media screen and (max-width:380px){
+
+  .hero-video-section h1,
+  .hero-video-section h1:not(.anything){
+    font-size:15.2vw !important;
+  }
+}
+</style>
+
 </body>
 </html>
 <style>
