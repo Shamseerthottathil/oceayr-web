@@ -4323,6 +4323,342 @@ body{
 }
 </style>
 
+<style id="oceayr-24-aug-2026-final-request-fixes">
+/* ==========================================================
+   OCEAYR — 24 AUG 2026 FINAL REQUEST FIXES
+   1. True portrait centre-crop for the hero video on mobile.
+   2. Premium, compact Shuffle Our Art Works treatment.
+   3. Replace "CREATIVE FOR HOSPITALITY" with a stronger headline.
+   4. Mobile service-card slider dots.
+   5. Mobile process / approach slider dots.
+   6. Summer slider: 6-second autoplay, swipe + easy manual bars.
+   7. Updated hospitality imagery; no repeated remote images in the
+      new service / summer / process treatments.
+   8. Two bedroom gallery sources are swapped to café imagery when
+      those source files are present.
+========================================================== */
+
+/* ----------------------------------------------------------
+   1) MOBILE HERO VIDEO — TRUE CENTRE CROP
+   The important part is width:auto + height:100%.
+   This preserves the source aspect ratio and lets the hero clip
+   the left/right edges. No stretching and no side drift.
+---------------------------------------------------------- */
+.hero-video-section{
+  overflow:hidden!important;
+  background:#000!important;
+}
+
+@media(max-width:768px){
+  .hero-video-section{
+    width:100vw!important;
+    height:100svh!important;
+    min-height:560px!important;
+    max-height:820px!important;
+    overflow:hidden!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    position:relative!important;
+  }
+
+  .hero-video-section video#bgv,
+  .hero-video-section video{
+    position:absolute!important;
+    top:50%!important;
+    left:50%!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:auto!important;
+    height:100%!important;
+    min-width:0!important;
+    min-height:100%!important;
+    max-width:none!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    transform:translate3d(-50%,-50%,0)!important;
+    transform-origin:center center!important;
+  }
+}
+
+@media(max-width:480px){
+  .hero-video-section{
+    height:100svh!important;
+    min-height:540px!important;
+    max-height:780px!important;
+  }
+
+  .hero-video-section video#bgv,
+  .hero-video-section video{
+    width:auto!important;
+    height:100%!important;
+    min-width:0!important;
+    min-height:100%!important;
+    transform:translate3d(-50%,-50%,0)!important;
+    object-position:center center!important;
+  }
+}
+
+/* ----------------------------------------------------------
+   2) SHUFFLE ART WORKS — intentionally different from the
+   main editorial headlines. Small, airy, premium label style.
+---------------------------------------------------------- */
+.ticker-wrap{
+  height:94px!important;
+  display:flex!important;
+  align-items:center!important;
+  overflow:hidden!important;
+  background:#F7F6F2!important;
+  border-top:1px solid #D7D5CF!important;
+  border-bottom:1px solid #D7D5CF!important;
+}
+
+.ticker-track span{
+  font-family:'Montserrat',Arial,sans-serif!important;
+  font-weight:300!important;
+  font-size:clamp(20px,2.15vw,34px)!important;
+  letter-spacing:.34em!important;
+  word-spacing:.12em!important;
+  line-height:1!important;
+  text-transform:uppercase!important;
+  color:#111!important;
+  opacity:.78!important;
+}
+
+/* ----------------------------------------------------------
+   3) STRONGER WHAT-WE-CREATE HEADLINE
+---------------------------------------------------------- */
+.services-top h2{
+  font-family:'Bodoni Moda',Georgia,serif!important;
+  font-weight:600!important;
+  letter-spacing:-.015em!important;
+  line-height:.82!important;
+  text-transform:uppercase!important;
+}
+
+/* ----------------------------------------------------------
+   4) MOBILE SERVICE CAROUSEL INDICATOR
+---------------------------------------------------------- */
+.mobile-service-dots,
+.mobile-approach-dots{
+  display:none;
+}
+
+@media(max-width:768px){
+  .service-grid{
+    display:flex!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scroll-snap-type:x mandatory!important;
+    scroll-behavior:smooth!important;
+    scrollbar-width:none!important;
+    -webkit-overflow-scrolling:touch!important;
+    border:0!important;
+    padding:24px 20px 12px!important;
+    gap:12px!important;
+    touch-action:pan-x!important;
+  }
+  .service-grid::-webkit-scrollbar{display:none!important;}
+  .service-card{
+    flex:0 0 82vw!important;
+    min-height:430px!important;
+    margin:0!important;
+    scroll-snap-align:start!important;
+    scroll-snap-stop:always!important;
+  }
+
+  .mobile-service-dots,
+  .mobile-approach-dots{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:7px!important;
+    margin:14px auto 0!important;
+    padding:4px 0!important;
+  }
+
+  .mobile-service-dot,
+  .mobile-approach-dot{
+    width:7px!important;
+    height:7px!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:50%!important;
+    background:#C9C7C0!important;
+    cursor:pointer!important;
+    transition:all .25s ease!important;
+  }
+
+  .mobile-service-dot.active,
+  .mobile-approach-dot.active{
+    width:22px!important;
+    border-radius:99px!important;
+    background:#111!important;
+  }
+}
+
+/* ----------------------------------------------------------
+   5) ABOUT / OUR APPROACH — same mobile indicator treatment.
+   Current homepage process-grid is also treated as the approach
+   carousel; if the About page uses .approach-grid or .our-approach-grid,
+   the same controller below will handle it automatically.
+---------------------------------------------------------- */
+@media(max-width:768px){
+  .process-grid,
+  .approach-grid,
+  .our-approach-grid{
+    display:flex!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scroll-snap-type:x mandatory!important;
+    scroll-behavior:smooth!important;
+    scrollbar-width:none!important;
+    -webkit-overflow-scrolling:touch!important;
+    border:0!important;
+    gap:12px!important;
+    touch-action:pan-x!important;
+  }
+  .process-grid::-webkit-scrollbar,
+  .approach-grid::-webkit-scrollbar,
+  .our-approach-grid::-webkit-scrollbar{display:none!important;}
+
+  .process-grid>div,
+  .approach-grid>div,
+  .our-approach-grid>div{
+    flex:0 0 82vw!important;
+    scroll-snap-align:start!important;
+    scroll-snap-stop:always!important;
+    margin:0!important;
+  }
+}
+
+/* ----------------------------------------------------------
+   6) SUMMER SLIDER — EASY MANUAL BAR + 6 SECOND AUTOPLAY
+---------------------------------------------------------- */
+.landing-meta{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-end!important;
+  gap:14px!important;
+}
+
+.landing-meta .slide-count{
+  display:none!important;
+}
+
+.landing-meta .slide-controls{
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  width:min(300px,30vw)!important;
+}
+
+.landing-meta .slide-dot{
+  position:relative!important;
+  display:block!important;
+  flex:1 1 0!important;
+  width:auto!important;
+  min-width:52px!important;
+  height:7px!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:99px!important;
+  background:rgba(255,255,255,.34)!important;
+  cursor:pointer!important;
+  transition:background .25s ease,transform .25s ease!important;
+  -webkit-tap-highlight-color:transparent!important;
+}
+
+.landing-meta .slide-dot:hover{
+  background:rgba(255,255,255,.68)!important;
+}
+
+.landing-meta .slide-dot.active{
+  width:auto!important;
+  background:#fff!important;
+  transform:scaleY(1.15)!important;
+}
+
+.landing-meta .slide-dot:focus-visible{
+  outline:2px solid #fff!important;
+  outline-offset:4px!important;
+}
+
+@media(max-width:768px){
+  .landing-meta{
+    width:100%!important;
+    align-items:center!important;
+    justify-content:center!important;
+    margin-top:18px!important;
+    position:relative!important;
+    right:auto!important;
+    bottom:auto!important;
+    padding:0 4px!important;
+  }
+
+  .landing-meta .slide-controls{
+    width:min(88vw,360px)!important;
+    gap:7px!important;
+  }
+
+  .landing-meta .slide-dot{
+    min-width:0!important;
+    height:6px!important;
+    flex:1 1 0!important;
+  }
+}
+
+/* ----------------------------------------------------------
+   7) NEW HOSPITALITY-LED SERVICE IMAGERY
+---------------------------------------------------------- */
+.service-card-01::before{
+  background-image:url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=90')!important;
+}
+.service-card-02::before{
+  background-image:url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1600&q=90')!important;
+}
+.service-card-03::before{
+  background-image:url('https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=1600&q=90')!important;
+}
+.service-card-04::before{
+  background-image:url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=90')!important;
+}
+.service-card-05::before{
+  background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=90')!important;
+}
+
+/* Summer slider imagery — distinct from service-card imagery. */
+.slide-bg-1{
+  background-image:url('https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2400&q=92')!important;
+}
+.slide-bg-2{
+  background-image:url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=2400&q=92')!important;
+}
+.slide-bg-3{
+  background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2400&q=92')!important;
+}
+
+/* A subtle image treatment for the campaign-direction card only. */
+.service-card-04::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  background:linear-gradient(135deg,rgba(0,0,0,.08),rgba(0,0,0,.38))!important;
+}
+.service-card-04>*{position:relative!important;z-index:2!important;}
+
+/* ----------------------------------------------------------
+   8) GALLERY — replace the two bedroom source files with café
+   imagery when those existing filenames are present. This does not
+   duplicate the new service/summer imagery.
+---------------------------------------------------------- */
+</style>
 </head>
 <body>
 <div aria-label="OCEAYR Agency logo" class="logo">
@@ -4407,7 +4743,7 @@ body{
 <section class="gallery-section" id="gallery"></section>
 <section class="services-new" id="services">
 <div class="services-top">
-<div><p class="section-kicker">WHAT WE CREATE</p><h2>CREATIVE FOR<br/><span>HOSPITALITY.</span></h2></div>
+<div><p class="section-kicker">WHAT WE CREATE</p><h2>MADE TO<br/><span>BE DESIRED.</span></h2></div>
 <p class="services-lead">Strategy, photography, film and digital content designed to make hospitality brands more desirable — and easier to choose.</p>
 </div>
 <div class="service-grid">
@@ -5355,124 +5691,10 @@ window.addEventListener('DOMContentLoaded',()=>{
 
 
 
-<script id="oceayr-23-aug-slider-controller">
-/* ==========================================================
-   OCEAYR — CINEMATIC SLIDER CONTROLLER
-   5-second autoplay + click/tap + swipe + keyboard.
-   No visible slide numbers or bottom bars.
-========================================================== */
-(function(){
-  function initOceayrSlider(){
-    const slider=document.querySelector('.landing-slider');
-    if(!slider) return;
-
-    const bgs=[...slider.querySelectorAll('.slide-bg')];
-    const kicker=document.getElementById('landingKicker');
-    const title=document.getElementById('landingTitle');
-    const desc=document.getElementById('landingDescription');
-    const primary=document.getElementById('landingPrimary');
-    const secondary=document.getElementById('landingSecondary');
-    if(!bgs.length || !title) return;
-
-    const slides=[
-      {
-        kicker:'OCEAYR SUMMER COLLABORATIONS 2026',
-        title:'<span class="title-solid">MAKE THIS</span><span class="title-outline">SUMMER VISIBLE.</span>',
-        desc:'Limited summer collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.',
-        primary:'EXPLORE SUMMER COLLABORATIONS', primaryHref:'#summer-details',
-        secondary:'START A PROJECT', secondaryHref:'/contact'
-      },
-      {
-        kicker:'HOSPITALITY STORYTELLING',
-        title:'<span class="title-solid">TURN STAYS</span><span class="title-outline">INTO STORIES.</span>',
-        desc:'Create a visual world around the stay — from arrival and interiors to poolside moments, dining and the details guests remember.',
-        primary:'EXPLORE SERVICES', primaryHref:'#services',
-        secondary:'START A PROJECT', secondaryHref:'/contact'
-      },
-      {
-        kicker:'BRAND DESIRABILITY',
-        title:'<span class="title-solid">MAKE EVERY</span><span class="title-outline">DETAIL DESIRABLE.</span>',
-        desc:'Photography, film and digital experiences designed to make your property, restaurant or lifestyle brand easier to discover and choose.',
-        primary:'START A PROJECT', primaryHref:'/contact',
-        secondary:'EXPLORE OUR WORK', secondaryHref:'#gallery'
-      }
-    ];
-
-    let current=0, timer=null, locked=false;
-    let startX=0, startY=0, startTime=0;
-
-    function animateChange(){
-      slider.classList.remove('is-changing');
-      void slider.offsetWidth;
-      slider.classList.add('is-changing');
-      clearTimeout(animateChange.t);
-      animateChange.t=setTimeout(()=>slider.classList.remove('is-changing'),1250);
-    }
-
-    function render(index,animate){
-      current=(index+slides.length)%slides.length;
-      const s=slides[current];
-      if(kicker) kicker.textContent=s.kicker;
-      title.innerHTML=s.title;
-      if(desc) desc.textContent=s.desc;
-      if(primary){primary.innerHTML=s.primary+' <span>→</span>';primary.href=s.primaryHref;}
-      if(secondary){secondary.textContent=s.secondary;secondary.href=s.secondaryHref;}
-      bgs.forEach((bg,i)=>bg.classList.toggle('active',i===current));
-      if(animate) animateChange();
-    }
-
-    function restart(){
-      clearTimeout(timer);
-      timer=setTimeout(function tick(){
-        go(1);
-      },5000);
-    }
-
-    function go(direction){
-      if(locked) return;
-      locked=true;
-      render(current+direction,true);
-      setTimeout(()=>locked=false,900);
-      restart();
-    }
-
-    /* Any click/tap on the image/empty area advances. Real links remain usable. */
-    slider.addEventListener('click',e=>{
-      if(e.target.closest('a,button,input,textarea,select')) return;
-      go(1);
-    });
-
-    /* Touch / pointer swipe. */
-    slider.addEventListener('pointerdown',e=>{
-      startX=e.clientX; startY=e.clientY; startTime=Date.now();
-    },{passive:true});
-    slider.addEventListener('pointerup',e=>{
-      const dx=e.clientX-startX, dy=e.clientY-startY;
-      const elapsed=Date.now()-startTime;
-      if(Math.abs(dx)>48 && Math.abs(dx)>Math.abs(dy)*1.15 && elapsed<900){
-        go(dx<0?1:-1);
-      }
-    },{passive:true});
-
-    slider.tabIndex=0;
-    slider.addEventListener('keydown',e=>{
-      if(e.key==='ArrowRight'){e.preventDefault();go(1);}
-      if(e.key==='ArrowLeft'){e.preventDefault();go(-1);}
-    });
-
-    document.addEventListener('visibilitychange',()=>{
-      if(document.hidden) clearTimeout(timer);
-      else restart();
-    });
-
-    /* Ensure the old controls can never reappear. */
-    slider.querySelectorAll('.landing-meta,.slide-controls,.slide-count,.slide-dot').forEach(el=>el.setAttribute('aria-hidden','true'));
-    render(0,false);
-    restart();
-  }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initOceayrSlider);
-  else initOceayrSlider();
-})();
+<script id="oceayr-23-aug-slider-controller-disabled">
+/* Legacy 23-Aug slider controller disabled.
+   The 24-Aug final controller below owns the summer slider so there is
+   only one autoplay timer and one swipe/click handler. */
 </script>
 
 
@@ -6037,6 +6259,241 @@ window.addEventListener('DOMContentLoaded',()=>{
   }
 }
 </style>
+
+<script id="oceayr-24-aug-2026-final-request-js">
+(function(){
+  'use strict';
+
+  const CAFE_IMAGES=[
+    'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1800&q=90',
+    'https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1800&q=90'
+  ];
+
+  function addDotsForScroller(scroller, className, itemSelector, mountAfter){
+    if(!scroller || scroller.dataset.dotsReady==='1') return;
+    const items=[...scroller.querySelectorAll(itemSelector)];
+    if(items.length<2) return;
+
+    const dots=document.createElement('div');
+    dots.className=className;
+    dots.setAttribute('aria-label','Slide navigation');
+
+    items.forEach((item,index)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.className=className==='mobile-service-dots'?'mobile-service-dot':'mobile-approach-dot';
+      dot.setAttribute('aria-label','Go to slide '+(index+1));
+      if(index===0) dot.classList.add('active');
+      dot.addEventListener('click',()=>{
+        item.scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'});
+      });
+      dots.appendChild(dot);
+    });
+
+    const parent=mountAfter || scroller.parentElement;
+    if(parent){
+      parent.insertBefore(dots,scroller.nextSibling);
+    }
+
+    const update=()=>{
+      const left=scroller.scrollLeft;
+      let best=0, bestDistance=Infinity;
+      items.forEach((item,index)=>{
+        const d=Math.abs(item.offsetLeft-left);
+        if(d<bestDistance){bestDistance=d;best=index;}
+      });
+      [...dots.children].forEach((dot,index)=>dot.classList.toggle('active',index===best));
+    };
+
+    scroller.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});
+    window.addEventListener('resize',update,{passive:true});
+    scroller.dataset.dotsReady='1';
+  }
+
+  function initMobileIndicators(){
+    if(window.innerWidth>768) return;
+
+    const serviceGrid=document.querySelector('.service-grid');
+    addDotsForScroller(serviceGrid,'mobile-service-dots','.service-card');
+
+    const processGrid=document.querySelector('.process-grid');
+    addDotsForScroller(processGrid,'mobile-approach-dots','> div'.replace('> ',''));
+
+    ['.approach-grid','.our-approach-grid'].forEach(selector=>{
+      document.querySelectorAll(selector).forEach(el=>{
+        addDotsForScroller(el,'mobile-approach-dots','> div'.replace('> ',''));
+      });
+    });
+  }
+
+  function initSummerSlider(){
+    const slider=document.querySelector('.landing-slider');
+    if(!slider || slider.dataset.finalController==='1') return;
+
+    const bgs=[...slider.querySelectorAll('.slide-bg')];
+    const dots=[...slider.querySelectorAll('.slide-dot')];
+    const kicker=document.getElementById('landingKicker');
+    const title=document.getElementById('landingTitle');
+    const desc=document.getElementById('landingDescription');
+    const primary=document.getElementById('landingPrimary');
+    const secondary=document.getElementById('landingSecondary');
+    if(!bgs.length || !title) return;
+
+    const slides=[
+      {
+        kicker:'OCEAYR SUMMER COLLABORATIONS 2026',
+        title:'<span class="title-solid">MAKE THIS</span><span class="title-outline">SUMMER VISIBLE.</span>',
+        desc:'Limited summer collaborations for hotels, resorts, restaurants and lifestyle destinations across the UAE.',
+        primary:'EXPLORE SUMMER COLLABORATIONS', primaryHref:'#summer-details',
+        secondary:'START A PROJECT', secondaryHref:'/contact'
+      },
+      {
+        kicker:'HOSPITALITY STORYTELLING',
+        title:'<span class="title-solid">TURN STAYS</span><span class="title-outline">INTO STORIES.</span>',
+        desc:'Create a visual world around the stay — from arrival and interiors to poolside moments, dining and the details guests remember.',
+        primary:'EXPLORE SERVICES', primaryHref:'#services',
+        secondary:'START A PROJECT', secondaryHref:'/contact'
+      },
+      {
+        kicker:'BRAND DESIRABILITY',
+        title:'<span class="title-solid">MAKE EVERY</span><span class="title-outline">DETAIL DESIRABLE.</span>',
+        desc:'Photography, film and digital experiences designed to make your property, restaurant or lifestyle brand easier to discover and choose.',
+        primary:'START A PROJECT', primaryHref:'/contact',
+        secondary:'EXPLORE OUR WORK', secondaryHref:'#gallery'
+      }
+    ];
+
+    let current=0;
+    let timer=null;
+    let locked=false;
+    let startX=0,startY=0,startTime=0;
+
+    function render(index,animate){
+      current=(index+slides.length)%slides.length;
+      const slide=slides[current];
+      if(kicker) kicker.textContent=slide.kicker;
+      if(title) title.innerHTML=slide.title;
+      if(desc) desc.textContent=slide.desc;
+      if(primary){
+        primary.innerHTML=slide.primary+' <span>→</span>';
+        primary.href=slide.primaryHref;
+      }
+      if(secondary){
+        secondary.textContent=slide.secondary;
+        secondary.href=slide.secondaryHref;
+      }
+      bgs.forEach((bg,i)=>bg.classList.toggle('active',i===current));
+      dots.forEach((dot,i)=>dot.classList.toggle('active',i===current));
+      if(animate){
+        slider.classList.remove('is-changing');
+        void slider.offsetWidth;
+        slider.classList.add('is-changing');
+        clearTimeout(slider._sweepTimer);
+        slider._sweepTimer=setTimeout(()=>slider.classList.remove('is-changing'),1200);
+      }
+    }
+
+    function restart(){
+      clearTimeout(timer);
+      timer=setTimeout(()=>go(1),6000);
+    }
+
+    function go(direction){
+      if(locked) return;
+      locked=true;
+      render(current+direction,true);
+      setTimeout(()=>{locked=false;},850);
+      restart();
+    }
+
+    dots.forEach((dot,index)=>{
+      dot.addEventListener('click',e=>{
+        e.preventDefault();
+        e.stopPropagation();
+        render(index,true);
+        restart();
+      });
+    });
+
+    slider.addEventListener('pointerdown',e=>{
+      startX=e.clientX;
+      startY=e.clientY;
+      startTime=Date.now();
+    },{passive:true});
+
+    slider.addEventListener('pointerup',e=>{
+      const dx=e.clientX-startX;
+      const dy=e.clientY-startY;
+      const elapsed=Date.now()-startTime;
+      if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)*1.15 && elapsed<1000){
+        go(dx<0?1:-1);
+      }
+    },{passive:true});
+
+    slider.addEventListener('click',e=>{
+      if(e.target.closest('a,button,input,textarea,select')) return;
+      go(1);
+    });
+
+    document.addEventListener('visibilitychange',()=>{
+      if(document.hidden) clearTimeout(timer);
+      else restart();
+    });
+
+    render(0,false);
+    restart();
+    slider.dataset.finalController='1';
+  }
+
+  function replaceBedroomImages(){
+    const imgs=[...document.querySelectorAll('.gallery-section img')];
+    if(!imgs.length) return;
+
+    const targets=imgs.filter(img=>{
+      const src=(img.currentSrc||img.src||img.getAttribute('data-src')||'').toLowerCase();
+      return src.includes('image00005') || src.includes('image00008');
+    });
+
+    targets.slice(0,2).forEach((img,index)=>{
+      const cafe=CAFE_IMAGES[index];
+      img.src=cafe;
+      img.setAttribute('data-src',cafe);
+      img.classList.add('vis');
+    });
+  }
+
+  function init(){
+    initSummerSlider();
+    initMobileIndicators();
+    replaceBedroomImages();
+
+    /* Gallery images are injected asynchronously, so retry briefly. */
+    let tries=0;
+    const galleryTimer=setInterval(()=>{
+      replaceBedroomImages();
+      tries++;
+      if(tries>20) clearInterval(galleryTimer);
+    },500);
+
+    const observer=new MutationObserver(()=>{
+      replaceBedroomImages();
+      if(window.innerWidth<=768) initMobileIndicators();
+    });
+    const gallery=document.querySelector('.gallery-section');
+    if(gallery) observer.observe(gallery,{childList:true,subtree:true});
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',init,{once:true});
+  }else{
+    init();
+  }
+
+  window.addEventListener('resize',()=>{
+    if(window.innerWidth<=768) initMobileIndicators();
+  },{passive:true});
+})();
+</script>
 
 </body>
 </html>
