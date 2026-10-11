@@ -4759,7 +4759,7 @@ body{
 <div class="process-head">
 <div>
 <p class="section-kicker">HOW WE WORK</p>
-<h2>FROM VISION<br/><span>TO IMPACT.</span></h2>
+<h2>IDEAS INTO<br/><span>IMPACT.</span></h2>
 </div>
 <div class="process-intro">
 <p>We turn a clear brand ambition into a focused creative direction — one that feels distinctive, desirable and commercially useful.</p>
@@ -6862,5 +6862,136 @@ window.addEventListener('DOMContentLoaded',()=>{
   .process-section .process-head{
     padding-top:28px!important;
   }
+}
+</style>
+
+
+<style id="oceayr-process-layout-final-correction">
+/* Keep process copy together on the left; reveal the active photo on the right. */
+.process-section{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  background:#F7F6F2!important;
+}
+.process-section .process-bg-layer{
+  background-size:56% 100%!important;
+  background-position:right center!important;
+  background-repeat:no-repeat!important;
+  transform:none!important;
+}
+.process-section .process-bg-layer::before{
+  display:none!important;
+}
+.process-section::after{
+  background:linear-gradient(90deg,
+    rgba(247,246,242,.98) 0%,
+    rgba(247,246,242,.94) 33%,
+    rgba(247,246,242,.72) 48%,
+    rgba(247,246,242,.16) 70%,
+    rgba(247,246,242,.04) 100%)!important;
+}
+.process-section .process-head{
+  width:47%!important;
+  max-width:700px!important;
+  margin:0 auto 52px 0!important;
+  padding:70px 0 24px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  gap:24px!important;
+  border:0!important;
+  position:relative!important;
+  z-index:3!important;
+}
+.process-section .process-head>div:first-child{
+  width:100%!important;
+}
+.process-section .process-head h2{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  height:auto!important;
+  overflow:visible!important;
+  text-align:left!important;
+  font-size:clamp(64px,7vw,112px)!important;
+  line-height:.86!important;
+  margin:0!important;
+}
+.process-section .process-head h2 span{
+  display:block!important;
+  white-space:normal!important;
+  margin-top:.04em!important;
+}
+.process-section .process-intro{
+  width:100%!important;
+  max-width:620px!important;
+  margin:0!important;
+}
+.process-section .process-intro p{
+  background:rgba(247,246,242,.84)!important;
+  color:#262522!important;
+  padding:10px 13px!important;
+  margin:0 0 12px!important;
+  backdrop-filter:blur(2px)!important;
+  -webkit-backdrop-filter:blur(2px)!important;
+}
+.process-section .process-grid{
+  position:relative!important;
+  z-index:3!important;
+}
+.process-section .process-grid>div{
+  background:rgba(247,246,242,.16)!important;
+  border:1px solid rgba(255,255,255,.72)!important;
+  box-shadow:0 8px 24px rgba(17,17,17,.04)!important;
+  backdrop-filter:blur(1px)!important;
+  -webkit-backdrop-filter:blur(1px)!important;
+}
+.process-section .process-grid>div.is-active{
+  background:rgba(247,246,242,.38)!important;
+  border-color:rgba(255,255,255,.96)!important;
+  box-shadow:0 14px 36px rgba(17,17,17,.12),inset 0 0 0 1px rgba(17,17,17,.05)!important;
+}
+@media(max-width:900px){
+  .process-section .process-bg-layer{
+    background-size:100% 48%!important;
+    background-position:center top!important;
+  }
+  .process-section::after{
+    background:linear-gradient(180deg,
+      rgba(247,246,242,.10) 0%,
+      rgba(247,246,242,.28) 30%,
+      rgba(247,246,242,.91) 49%,
+      #F7F6F2 70%,
+      #F7F6F2 100%)!important;
+  }
+  .process-section .process-head{
+    width:100%!important;
+    max-width:100%!important;
+    padding:360px 0 22px!important;
+    margin:0 auto 32px!important;
+    gap:20px!important;
+  }
+  .process-section .process-head h2{
+    font-size:clamp(54px,10vw,82px)!important;
+  }
+}
+@media(max-width:600px){
+  .process-section .process-bg-layer{
+    background-size:100% 37%!important;
+    background-position:center top!important;
+  }
+  .process-section .process-head{
+    padding-top:270px!important;
+  }
+  .process-section .process-grid>div.is-active{
+    background:rgba(247,246,242,.5)!important;
+  }
+}
+/* Replace the outdated restaurant photo with a premium resort / hospitality scene. */
+.slide-bg-2{
+  background-image:url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=2400&q=92')!important;
+  background-position:center 54%!important;
+  background-size:cover!important;
 }
 </style>
