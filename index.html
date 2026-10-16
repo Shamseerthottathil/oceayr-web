@@ -7212,18 +7212,15 @@ html,body{
   box-shadow:none!important;
 }
 
-/* Mobile hero: use the viewport as the crop window.
-   Height determines the video's natural width; centre it so only the middle
-   of the landscape footage shows. Do not stretch the video to portrait ratio. */
+/* Mobile hero: the video element fills the full crop window.
+   object-fit:cover crops the landscape source to the centred portrait viewport. */
 @media screen and (max-width:768px){
   .hero-video-section{
     position:relative!important;
     left:auto!important;
     right:auto!important;
-    align-self:stretch!important;
-    flex:0 0 100vw!important;
     width:100vw!important;
-    max-width:none!important;
+    max-width:100vw!important;
     min-width:0!important;
     height:100svh!important;
     min-height:520px!important;
@@ -7241,25 +7238,23 @@ html,body{
   .hero-video-section video#bgv,
   .hero-video-section video{
     position:absolute!important;
-    top:50%!important;
-    left:50%!important;
-    right:auto!important;
-    bottom:auto!important;
-    width:auto!important;
+    inset:0!important;
+    width:100%!important;
     height:100%!important;
     min-width:0!important;
-    min-height:100%!important;
+    min-height:0!important;
     max-width:none!important;
     max-height:none!important;
     margin:0!important;
     padding:0!important;
     display:block!important;
     object-fit:cover!important;
-    object-position:center center!important;
-    transform:translate3d(-50%,-50%,0)!important;
+    object-position:50% 50%!important;
+    transform:none!important;
     transform-origin:center center!important;
     opacity:1!important;
     filter:none!important;
+    -webkit-filter:none!important;
     border:0!important;
     outline:0!important;
     box-shadow:none!important;
@@ -7283,22 +7278,22 @@ html,body{
   }
   .hero-video-section video#bgv,
   .hero-video-section video{
-    width:auto!important;
+    inset:0!important;
+    width:100%!important;
     height:100%!important;
-    min-width:0!important;
-    min-height:100%!important;
-    transform:translate3d(-50%,-50%,0)!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+    transform:none!important;
   }
 }
 
-/* Process section: restore crossfading photo layers, which are switched by
-   the existing card-click and autoplay script. These use /PHOTOS assets on Lab. */
+/* Process section: restore the slideshow layers and improve legibility
+   with discrete ivory panels rather than washing out the entire photograph. */
 .process-section{
   position:relative!important;
   isolation:isolate!important;
   overflow:hidden!important;
   background:#F7F6F2!important;
-  background-image:none!important;
 }
 .process-section .process-bg-layer{
   display:block!important;
@@ -7330,17 +7325,57 @@ html,body{
   z-index:1!important;
   pointer-events:none!important;
   background:linear-gradient(90deg,
-    rgba(247,246,242,.97) 0%,
-    rgba(247,246,242,.9) 34%,
-    rgba(247,246,242,.66) 53%,
-    rgba(247,246,242,.28) 78%,
-    rgba(247,246,242,.18) 100%)!important;
+    rgba(247,246,242,.24) 0%,
+    rgba(247,246,242,.18) 48%,
+    rgba(247,246,242,.10) 100%)!important;
 }
 .process-section .process-head,
 .process-section .process-grid{
   position:relative!important;
   z-index:2!important;
 }
+.process-section .process-head>div:first-child,
+.process-section .process-intro{
+  background:rgba(247,246,242,.91)!important;
+  border:1px solid rgba(17,17,17,.10)!important;
+  border-radius:2px!important;
+  padding:clamp(18px,2.8vw,30px)!important;
+  -webkit-backdrop-filter:blur(5px)!important;
+  backdrop-filter:blur(5px)!important;
+  box-shadow:0 8px 28px rgba(17,17,17,.055)!important;
+}
+.process-section .process-intro p,
+.process-section .process-intro p+p{
+  background:transparent!important;
+  padding:0!important;
+  margin:0!important;
+  color:#333!important;
+}
+.process-section .process-intro p+p{margin-top:16px!important;}
+.process-section .process-head h2,
+.process-section .process-head .section-kicker{
+  position:relative!important;
+  z-index:1!important;
+}
+.process-section .process-grid>div,
+.process-section .process-grid>div.is-active{
+  position:relative!important;
+  z-index:2!important;
+  background:rgba(247,246,242,.94)!important;
+  color:#111!important;
+  border:1px solid rgba(17,17,17,.18)!important;
+  box-shadow:0 8px 24px rgba(17,17,17,.08)!important;
+  -webkit-backdrop-filter:blur(3px)!important;
+  backdrop-filter:blur(3px)!important;
+}
+.process-section .process-grid>div.is-active{
+  background:rgba(255,255,255,.98)!important;
+  border-color:rgba(17,17,17,.38)!important;
+  box-shadow:0 12px 32px rgba(17,17,17,.13)!important;
+}
+.process-section .process-grid h3{color:#111!important;}
+.process-section .process-grid p{color:#4C4C48!important;}
+
 @media(max-width:900px){
   .process-section{
     position:relative!important;
@@ -7360,10 +7395,9 @@ html,body{
   .process-section .process-bg-layer.is-active{opacity:1!important;}
   .process-section::after{
     background:linear-gradient(180deg,
-      rgba(247,246,242,.18) 0%,
-      rgba(247,246,242,.3) 30%,
-      rgba(247,246,242,.68) 66%,
-      rgba(247,246,242,.88) 100%)!important;
+      rgba(247,246,242,.34) 0%,
+      rgba(247,246,242,.48) 42%,
+      rgba(247,246,242,.70) 100%)!important;
   }
   .process-section .process-head,
   .process-section .process-grid{
@@ -7373,15 +7407,25 @@ html,body{
   .process-section .process-head{
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
-    gap:24px!important;
+    gap:18px!important;
     width:100%!important;
     max-width:100%!important;
     height:auto!important;
     max-height:none!important;
     margin:0 auto 32px!important;
-    padding:0 0 26px!important;
+    padding:0!important;
     border:0!important;
     overflow:visible!important;
+  }
+  .process-section .process-head>div:first-child,
+  .process-section .process-intro{
+    padding:20px!important;
+    background:rgba(247,246,242,.93)!important;
+    border:1px solid rgba(17,17,17,.10)!important;
+    border-radius:2px!important;
+    box-shadow:0 8px 24px rgba(17,17,17,.06)!important;
+    -webkit-backdrop-filter:blur(5px)!important;
+    backdrop-filter:blur(5px)!important;
   }
   .process-section .process-head h2{
     width:100%!important;
@@ -7410,13 +7454,8 @@ html,body{
     color:#333!important;
     font-size:15px!important;
     line-height:1.7!important;
-    padding:0!important;
-    margin:0!important;
-    background:transparent!important;
-    box-shadow:none!important;
-    -webkit-backdrop-filter:none!important;
-    backdrop-filter:none!important;
   }
+  .process-section .process-intro p{padding:0!important;margin:0!important;background:transparent!important;}
   .process-section .process-intro p+p{margin-top:16px!important;}
 
   .process-section .process-grid{
@@ -7446,7 +7485,7 @@ html,body{
     padding:24px!important;
     scroll-snap-align:start!important;
     scroll-snap-stop:always!important;
-    background:rgba(247,246,242,.92)!important;
+    background:rgba(247,246,242,.94)!important;
     color:#111!important;
     border:1px solid rgba(17,17,17,.18)!important;
     box-shadow:0 8px 24px rgba(17,17,17,.08)!important;
@@ -7455,7 +7494,7 @@ html,body{
     transform:none!important;
   }
   .process-section .process-grid>div.is-active{
-    background:rgba(255,255,255,.96)!important;
+    background:rgba(255,255,255,.98)!important;
     border-color:rgba(17,17,17,.38)!important;
     box-shadow:0 12px 32px rgba(17,17,17,.13)!important;
   }
@@ -7471,6 +7510,17 @@ html,body{
     font-size:14px!important;
     line-height:1.65!important;
     margin-top:14px!important;
+  }
+}
+@media(max-width:480px){
+  .process-section{padding:62px 18px 70px!important;}
+  .process-section .process-head>div:first-child,
+  .process-section .process-intro{padding:18px!important;}
+  .process-section .process-grid>div,
+  .process-section .process-grid>div.is-active{
+    flex-basis:82vw!important;
+    width:82vw!important;
+    padding:22px!important;
   }
 }
 
