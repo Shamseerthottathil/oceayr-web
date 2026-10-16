@@ -6620,10 +6620,10 @@ window.addEventListener('DOMContentLoaded',()=>{
     if(cards.length!==4) return;
 
     const steps=[
-      {name:'Discovery',src:'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/Lab/PHOTOS/Slide%20Image-1.jpeg'},
-      {name:'Direction',src:'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/Lab/PHOTOS/Slide%20Image-2.jpeg'},
-      {name:'Production',src:'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/Lab/PHOTOS/Slide%20Image-3.jpeg'},
-      {name:'Delivery',src:'https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/Lab/PHOTOS/Slide%20Image-4.jpeg'}
+      {name:'Discovery',src:'/PHOTOS/Slide%20Image-1.jpeg'},
+      {name:'Direction',src:'/PHOTOS/Slide%20Image-2.jpeg'},
+      {name:'Production',src:'/PHOTOS/Slide%20Image-3.jpeg'},
+      {name:'Delivery',src:'/PHOTOS/Slide%20Image-4.jpeg'}
     ];
 
     const layers=[document.createElement('div'),document.createElement('div')];
@@ -7105,9 +7105,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     order:5!important;position:relative!important;background:#F7F6F2!important;background-image:none!important;
     color:#111!important;padding:76px 20px 84px!important;overflow:hidden!important;
   }
-  .process-section .process-bg-layer,.process-section::before,.process-section::after{
-    display:none!important;content:none!important;background:none!important;border:0!important;box-shadow:none!important;
-  }
+  /* Keep the process background layers active on mobile; the later overlay
+     controls readability without hiding the photographs. */
   .process-section .process-head{
     display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:26px!important;
     width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;
@@ -7171,26 +7170,24 @@ window.addEventListener('DOMContentLoaded',()=>{
 </style>
 
 
-<style id="oceayr-lab-video-process-cta-final-2026-10-16">
-/* Final Lab-only fix: full-bleed mobile video, image-led process section,
-   and a calmer, clearer final CTA. Preserve production monochrome palette. */
 
-/* Mobile video: size the section to its parent width and crop the landscape video
-   centrally. Avoid 100vw breakout margins, which were causing side gutters/bands. */
+<style id="oceayr-lab-video-process-cta-final-2026-10-16">
+/* Final Lab-only correction: viewport-centred hero crop and working process-photo sequence. */
+
+/* Keep document and direct child sections flush to viewport edges. */
 html,body{
   width:100%!important;
   max-width:100%!important;
   margin:0!important;
   overflow-x:hidden!important;
 }
+
+/* Desktop/video base: full section, no frame or shade. */
 .hero-video-section{
   position:relative!important;
-  left:auto!important;
-  right:auto!important;
   width:100%!important;
   max-width:100%!important;
   min-width:0!important;
-  flex:0 0 auto!important;
   align-self:stretch!important;
   margin:0!important;
   padding:0!important;
@@ -7199,70 +7196,103 @@ html,body{
   box-shadow:none!important;
   overflow:hidden!important;
   background:#000!important;
-  transform:none!important;
 }
-.hero-video-section::before,
-.hero-video-section::after{
+.hero-video-section::before,.hero-video-section::after{
   content:none!important;
   display:none!important;
 }
 .hero-video-section video#bgv,
 .hero-video-section video{
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  min-width:0!important;
-  min-height:0!important;
-  max-width:none!important;
-  max-height:none!important;
-  margin:0!important;
-  padding:0!important;
   display:block!important;
-  object-fit:cover!important;
-  object-position:50% 50%!important;
   opacity:1!important;
   filter:none!important;
   -webkit-filter:none!important;
-  transform:none!important;
   border:0!important;
   outline:0!important;
   box-shadow:none!important;
 }
-@media(max-width:768px){
+
+/* Mobile hero: use the viewport as the crop window.
+   Height determines the video's natural width; centre it so only the middle
+   of the landscape footage shows. Do not stretch the video to portrait ratio. */
+@media screen and (max-width:768px){
   .hero-video-section{
-    width:100%!important;
-    max-width:100%!important;
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    align-self:stretch!important;
+    flex:0 0 100vw!important;
+    width:100vw!important;
+    max-width:none!important;
+    min-width:0!important;
     height:100svh!important;
     min-height:520px!important;
     max-height:900px!important;
-    margin:0!important;
+    margin-left:calc(50% - 50vw)!important;
+    margin-right:0!important;
     padding:0!important;
     border:0!important;
+    outline:0!important;
+    box-shadow:none!important;
     overflow:hidden!important;
+    background:#000!important;
+    transform:none!important;
   }
   .hero-video-section video#bgv,
   .hero-video-section video{
-    top:0!important;
-    left:0!important;
-    right:0!important;
-    bottom:0!important;
-    width:100%!important;
+    position:absolute!important;
+    top:50%!important;
+    left:50%!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:auto!important;
     height:100%!important;
+    min-width:0!important;
+    min-height:100%!important;
+    max-width:none!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    display:block!important;
     object-fit:cover!important;
     object-position:center center!important;
+    transform:translate3d(-50%,-50%,0)!important;
+    transform-origin:center center!important;
+    opacity:1!important;
+    filter:none!important;
+    border:0!important;
+    outline:0!important;
+    box-shadow:none!important;
+  }
+  .hero-video-section h1{
+    left:50%!important;
+    top:50%!important;
+    width:100%!important;
+    max-width:100%!important;
+    transform:translate3d(-50%,-50%,0)!important;
+    padding:0 12px!important;
+    text-align:center!important;
+    white-space:normal!important;
   }
 }
-@media(max-width:480px){
+@media screen and (max-width:480px){
   .hero-video-section{
     height:100svh!important;
     min-height:520px!important;
     max-height:820px!important;
   }
+  .hero-video-section video#bgv,
+  .hero-video-section video{
+    width:auto!important;
+    height:100%!important;
+    min-width:0!important;
+    min-height:100%!important;
+    transform:translate3d(-50%,-50%,0)!important;
+  }
 }
 
-/* Process step backgrounds: re-enable the existing cross-fading image layers.
-   The original JavaScript changes the image on card click/focus and on a timer. */
+/* Process section: restore crossfading photo layers, which are switched by
+   the existing card-click and autoplay script. These use /PHOTOS assets on Lab. */
 .process-section{
   position:relative!important;
   isolation:isolate!important;
@@ -7277,8 +7307,8 @@ html,body{
   z-index:0!important;
   pointer-events:none!important;
   background-repeat:no-repeat!important;
-  background-position:right center!important;
-  background-size:56% 100%!important;
+  background-position:center center!important;
+  background-size:cover!important;
   opacity:0!important;
   transform:none!important;
   transition:opacity .8s cubic-bezier(.22,.61,.36,1)!important;
@@ -7300,11 +7330,11 @@ html,body{
   z-index:1!important;
   pointer-events:none!important;
   background:linear-gradient(90deg,
-    #F7F6F2 0%,
-    rgba(247,246,242,.97) 34%,
-    rgba(247,246,242,.78) 49%,
-    rgba(247,246,242,.28) 72%,
-    rgba(247,246,242,.16) 100%)!important;
+    rgba(247,246,242,.97) 0%,
+    rgba(247,246,242,.9) 34%,
+    rgba(247,246,242,.66) 53%,
+    rgba(247,246,242,.28) 78%,
+    rgba(247,246,242,.18) 100%)!important;
 }
 .process-section .process-head,
 .process-section .process-grid{
@@ -7313,25 +7343,32 @@ html,body{
 }
 @media(max-width:900px){
   .process-section{
+    position:relative!important;
     background:#F7F6F2!important;
     padding:72px 20px 80px!important;
   }
   .process-section .process-bg-layer,
   .process-section .process-bg-layer.is-active{
     display:block!important;
+    position:absolute!important;
     inset:0!important;
     background-size:cover!important;
-    background-position:center center!important;
+    background-position:center 42%!important;
     background-repeat:no-repeat!important;
-    opacity:0!important;
   }
+  .process-section .process-bg-layer{opacity:0!important;}
   .process-section .process-bg-layer.is-active{opacity:1!important;}
   .process-section::after{
     background:linear-gradient(180deg,
-      rgba(247,246,242,.48) 0%,
-      rgba(247,246,242,.60) 36%,
-      rgba(247,246,242,.80) 70%,
-      rgba(247,246,242,.90) 100%)!important;
+      rgba(247,246,242,.18) 0%,
+      rgba(247,246,242,.3) 30%,
+      rgba(247,246,242,.68) 66%,
+      rgba(247,246,242,.88) 100%)!important;
+  }
+  .process-section .process-head,
+  .process-section .process-grid{
+    position:relative!important;
+    z-index:2!important;
   }
   .process-section .process-head{
     display:grid!important;
@@ -7382,7 +7419,6 @@ html,body{
   }
   .process-section .process-intro p+p{margin-top:16px!important;}
 
-  /* Warm, slightly translucent cards retain photo context but keep text legible. */
   .process-section .process-grid{
     display:flex!important;
     width:100%!important;
@@ -7409,6 +7445,7 @@ html,body{
     margin:0!important;
     padding:24px!important;
     scroll-snap-align:start!important;
+    scroll-snap-stop:always!important;
     background:rgba(247,246,242,.92)!important;
     color:#111!important;
     border:1px solid rgba(17,17,17,.18)!important;
@@ -7436,18 +7473,8 @@ html,body{
     margin-top:14px!important;
   }
 }
-@media(max-width:480px){
-  .process-section{padding:62px 18px 70px!important;}
-  .process-section .process-grid>div,
-  .process-section .process-grid>div.is-active{
-    flex-basis:82vw!important;
-    width:82vw!important;
-    padding:22px!important;
-  }
-}
 
-/* Final CTA: sentence-case editorial lead, comfortable line length,
-   clear separation from the main display headline and no repeated sentence. */
+/* Final CTA: restrained sentence-case lead; no duplicate supporting sentence. */
 .start-project-band .start-project-intro{
   display:block!important;
   max-width:820px!important;
@@ -7457,7 +7484,6 @@ html,body{
   font-weight:400!important;
   line-height:1.55!important;
   letter-spacing:0!important;
-  word-spacing:normal!important;
   text-align:center!important;
   text-transform:none!important;
   color:#4F4F4A!important;
@@ -7472,38 +7498,23 @@ html,body{
   letter-spacing:0!important;
   color:#595954!important;
 }
-.start-project-band h2{
-  margin-top:22px!important;
-  margin-bottom:0!important;
-}
+.start-project-band h2{margin-top:22px!important;margin-bottom:0!important;}
 .start-project-band .start-project-btn{margin-top:28px!important;}
 @media(max-width:600px){
   .start-project-band .start-project-intro{
-    max-width:34ch!important;
-    font-size:20px!important;
-    line-height:1.48!important;
-    letter-spacing:0!important;
-    margin-bottom:16px!important;
+    max-width:34ch!important;font-size:20px!important;line-height:1.48!important;
+    letter-spacing:0!important;margin-bottom:16px!important;
   }
   .start-project-band .start-project-support{
-    max-width:34ch!important;
-    font-size:15px!important;
-    line-height:1.7!important;
-    margin-bottom:14px!important;
+    max-width:34ch!important;font-size:15px!important;line-height:1.7!important;margin-bottom:14px!important;
   }
   .start-project-band h2{
-    font-size:clamp(54px,14.4vw,82px)!important;
-    line-height:.86!important;
-    letter-spacing:-.02em!important;
-    word-spacing:normal!important;
-    margin-top:20px!important;
+    font-size:clamp(54px,14.4vw,82px)!important;line-height:.86!important;
+    letter-spacing:-.02em!important;word-spacing:normal!important;margin-top:20px!important;
   }
   .start-project-band .start-project-btn{
-    width:100%!important;
-    max-width:420px!important;
-    justify-content:space-between!important;
-    margin-top:24px!important;
-    padding:19px 20px!important;
+    width:100%!important;max-width:420px!important;justify-content:space-between!important;
+    margin-top:24px!important;padding:19px 20px!important;
   }
 }
 </style>
