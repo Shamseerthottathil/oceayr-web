@@ -6995,31 +6995,32 @@ window.addEventListener('DOMContentLoaded',()=>{
 
 </style>
 
-<style id="oceayr-lab-approved-functional-fixes-2026-10-16">
-/* Lab-only refinements requested on 16 Oct 2026.
-   Keep main's original black/off-white design system and typography. */
+<style id="oceayr-lab-mobile-video-process-slider-fix-2026-10-16">
+/* OCEAYR Lab refinement: replace only the final Lab override block.
+   Preserve the production monochrome palette and original editorial typography. */
 
-/* 1. Keep the approved pool image on slide 1; remove the unwanted restaurant image.
-   Slide 2 uses the approved uploaded hospitality photo. Slide 3 uses a hotel-suite visual. */
+/* FEATURED SLIDER — distinct, content-rich real hospitality photographs.
+   Slide 1 remains the existing pool image. Slides 2 and 3 are replaced. */
 .slide-bg-1{
-  background-image:url('https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2400&q=92')!important;
+  background-image:url('https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2400&q=90')!important;
   background-position:center 52%!important;
   background-size:cover!important;
   background-repeat:no-repeat!important;
 }
 .slide-bg-2{
-  background-image:url('/PHOTOS/luxury-hospitality.jpg')!important;
+  background-image:url('https://images.unsplash.com/photo-1776761604095-e8dd031864d7?auto=format&fit=crop&w=2400&q=90')!important;
   background-position:center 54%!important;
   background-size:cover!important;
   background-repeat:no-repeat!important;
 }
 .slide-bg-3{
-  background-image:url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=2400&q=92')!important;
+  background-image:url('https://images.unsplash.com/photo-1742844552264-71e01c8dd7c0?auto=format&fit=crop&w=2400&q=90')!important;
   background-position:center 52%!important;
   background-size:cover!important;
   background-repeat:no-repeat!important;
 }
-/* Use the actual image uploaded to PHOTOS for Web Design Experiences. */
+
+/* Keep the actual user-uploaded image on the Web Design Experiences service card. */
 .service-card-05::before{
   background-image:url('/PHOTOS/oceayr-advanced-web-design.jpeg')!important;
   background-position:center!important;
@@ -7027,47 +7028,22 @@ window.addEventListener('DOMContentLoaded',()=>{
   background-repeat:no-repeat!important;
 }
 
-/* 2. Reliable layout order:
-   video -> About -> featured slider -> services -> process ->
-   Shuffle Our Art Works + photo gallery -> Elevate Your Brand -> footer. */
-.hero-video-section{order:1!important;}
-.about-snapshot{order:2!important;}
-.landing-slider{order:3!important;}
-.services-new{order:4!important;}
-.process-section{order:5!important;}
-.ticker-section{order:6!important;}
-.gallery-section{
-  order:7!important;
-  width:100%!important;
-  max-width:100%!important;
-  margin:0!important;
-  padding:0!important;
-  border:0!important;
-  outline:0!important;
-  box-shadow:none!important;
-  background:#111!important;
-  overflow:visible!important;
-}
-.start-project-band{order:8!important;}
-.footer{order:9!important;}
-
-/* Remove decorative framing around the video and gallery, not the gallery mosaic. */
+/* VIDEO — zero border, no wash layer, no viewport-width gaps. */
 .hero-video-section{
   position:relative!important;
   width:100%!important;
   max-width:100%!important;
+  min-width:0!important;
   margin:0!important;
   padding:0!important;
   border:0!important;
   outline:0!important;
   box-shadow:none!important;
-  background:#000!important;
   overflow:hidden!important;
+  background:#000!important;
 }
 .hero-video-section::before,
-.hero-video-section::after,
-.gallery-section::before,
-.gallery-section::after{
+.hero-video-section::after{
   content:none!important;
   display:none!important;
   background:none!important;
@@ -7075,75 +7051,9 @@ window.addEventListener('DOMContentLoaded',()=>{
   outline:0!important;
   box-shadow:none!important;
 }
-.gallery-section .g-stage,
-.gallery-section .g-card,
-.gallery-section .g-inner{
-  border:0!important;
-  outline:0!important;
-  box-shadow:none!important;
-}
-.gallery-section .g-inner{background:var(--bg,#F7F6F2)!important;}
-
-/* 3. Restore complete headline lines.
-   Explicit stroke colours avoid currentColor becoming transparent on outlined spans. */
-.services-top,
-.services-top>div,
-.process-section,
-.process-head,
-.process-head>div,
-.about-snapshot,
-.about-snapshot>div:first-child,
-.start-project-band{
-  min-height:0!important;
-  max-height:none!important;
-  overflow:visible!important;
-}
-.services-top h2,
-.process-head h2,
-.about-snapshot h2,
-.start-project-band h2{
-  display:block!important;
-  position:relative!important;
-  width:100%!important;
-  max-width:100%!important;
-  height:auto!important;
-  min-height:0!important;
-  max-height:none!important;
-  margin-top:0!important;
-  margin-bottom:0!important;
-  padding:0!important;
-  overflow:visible!important;
-  clip-path:none!important;
-  contain:none!important;
-  white-space:normal!important;
-  overflow-wrap:normal!important;
-  word-break:normal!important;
-}
-.services-top h2 span,
-.process-head h2 span,
-.about-snapshot h2 span,
-.start-project-band h2 span{
-  display:block!important;
-  position:relative!important;
-  width:auto!important;
-  max-width:100%!important;
-  height:auto!important;
-  min-height:0!important;
-  max-height:none!important;
-  margin:0!important;
-  padding:0!important;
-  overflow:visible!important;
-  white-space:normal!important;
-  line-height:inherit!important;
-  color:transparent!important;
-  -webkit-text-fill-color:transparent!important;
-  -webkit-text-stroke:1px #111!important;
-}
-.about-snapshot h2 span{-webkit-text-stroke:1px #fff!important;}
-
-/* 4. Full-opacity video, centred cover crop on narrow screens, no edge bars. */
 .hero-video-section video#bgv,
 .hero-video-section video{
+  display:block!important;
   opacity:1!important;
   filter:none!important;
   -webkit-filter:none!important;
@@ -7151,32 +7061,40 @@ window.addEventListener('DOMContentLoaded',()=>{
   border:0!important;
   outline:0!important;
   box-shadow:none!important;
-  display:block!important;
 }
 @media(max-width:768px){
   .hero-video-section{
-    order:1!important;
-    width:100%!important;
-    max-width:100%!important;
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    width:100vw!important;
+    max-width:none!important;
+    min-width:0!important;
     height:100svh!important;
-    min-height:540px!important;
+    min-height:520px!important;
     max-height:900px!important;
-    margin:0!important;
+    margin-left:calc(50% - 50vw)!important;
+    margin-right:0!important;
     padding:0!important;
     border:0!important;
     outline:0!important;
     box-shadow:none!important;
     overflow:hidden!important;
     background:#000!important;
+    transform:none!important;
   }
   .hero-video-section video#bgv,
   .hero-video-section video{
     position:absolute!important;
-    inset:0!important;
+    top:0!important;
+    left:0!important;
+    right:0!important;
+    bottom:0!important;
+    display:block!important;
     width:100%!important;
     height:100%!important;
-    min-width:100%!important;
-    min-height:100%!important;
+    min-width:0!important;
+    min-height:0!important;
     max-width:none!important;
     max-height:none!important;
     margin:0!important;
@@ -7190,64 +7108,216 @@ window.addEventListener('DOMContentLoaded',()=>{
     outline:0!important;
     box-shadow:none!important;
   }
+}
 
-  /* Fit the complete headline while preserving the production outline font style. */
-  .services-top h2,
-  .process-head h2,
-  .about-snapshot h2,
-  .start-project-band h2{
-    font-size:clamp(34px,9.2vw,58px)!important;
-    line-height:.92!important;
-    letter-spacing:-.02em!important;
-    word-spacing:normal!important;
-    max-width:100%!important;
-    overflow:visible!important;
+/* PROCESS SECTION — remove the oversized mobile photo layer that collides with
+   the title and copy. The heading now lives in its own clear, normal-flow area. */
+.process-section{
+  position:relative!important;
+  background:#F7F6F2!important;
+  background-image:none!important;
+  color:#111!important;
+}
+.process-section .process-bg-layer,
+.process-section::before,
+.process-section::after{
+  display:none!important;
+  content:none!important;
+  background:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.process-section .process-head{
+  position:relative!important;
+  width:100%!important;
+  max-width:1480px!important;
+  height:auto!important;
+  max-height:none!important;
+  margin:0 auto 52px!important;
+  padding:0 0 38px!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(260px,.72fr)!important;
+  gap:clamp(28px,6vw,92px)!important;
+  align-items:end!important;
+  border-bottom:1px solid #D8D6D0!important;
+  overflow:visible!important;
+}
+.process-section .process-head>div,
+.process-section .process-head h2{
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:visible!important;
+  clip-path:none!important;
+  contain:none!important;
+}
+.process-section .process-head h2{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  font-size:clamp(60px,7.5vw,116px)!important;
+  line-height:.84!important;
+  letter-spacing:-.025em!important;
+  word-spacing:normal!important;
+  white-space:normal!important;
+  overflow-wrap:normal!important;
+}
+.process-section .process-head h2 span{
+  display:block!important;
+  position:relative!important;
+  width:auto!important;
+  height:auto!important;
+  max-width:100%!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:inherit!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  -webkit-text-stroke:1px #111!important;
+  overflow:visible!important;
+}
+.process-section .process-intro{
+  max-width:620px!important;
+  margin:0!important;
+  padding:0!important;
+  color:#555!important;
+  font-size:16px!important;
+  line-height:1.8!important;
+}
+.process-section .process-intro p{
+  margin:0!important;
+  color:#555!important;
+}
+.process-section .process-intro p+p{margin-top:18px!important;}
+
+/* Warm white cards against the production off-white section; strong dark text. */
+.process-section .process-grid>div,
+.process-section .process-grid>div.is-active{
+  background:#FFFFFF!important;
+  color:#111111!important;
+  border:1px solid #D8D6D0!important;
+  box-shadow:0 8px 24px rgba(17,17,17,.055)!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  opacity:1!important;
+}
+.process-section .process-grid h3{
+  color:#111111!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+.process-section .process-grid p{
+  color:#555555!important;
+  opacity:1!important;
+}
+
+/* Mobile process layout: remove photo-first padding, establish a clean heading,
+   then readable copy and swipeable cards within the same warm neutral theme. */
+@media(max-width:900px){
+  .process-section{
+    padding:76px 20px 84px!important;
+    overflow:hidden!important;
   }
-  .services-top h2 span,
-  .process-head h2 span,
-  .about-snapshot h2 span,
-  .start-project-band h2 span{
+  .process-section .process-bg-layer{display:none!important;}
+  .process-section .process-head{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:26px!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin:0 auto 34px!important;
+    padding:0 0 28px!important;
+    border-bottom:1px solid #D8D6D0!important;
+  }
+  .process-section .process-head h2{
+    width:100%!important;
+    max-width:100%!important;
+    font-size:clamp(44px,11.7vw,76px)!important;
+    line-height:.88!important;
+    letter-spacing:-.03em!important;
+    word-spacing:normal!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  .process-section .process-head h2 span{
     font-size:inherit!important;
     line-height:inherit!important;
     letter-spacing:inherit!important;
     -webkit-text-stroke-width:.8px!important;
   }
-
-  /* High contrast on mobile over the process section's photo/background. */
+  .process-section .process-intro{
+    width:100%!important;
+    max-width:100%!important;
+    padding:0!important;
+    margin:0!important;
+    font-size:16px!important;
+    line-height:1.7!important;
+  }
+  .process-section .process-grid{
+    display:flex!important;
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    gap:12px!important;
+    padding:0 0 10px!important;
+    margin:0!important;
+    scroll-snap-type:x mandatory!important;
+    overscroll-behavior-x:contain!important;
+    -webkit-overflow-scrolling:touch!important;
+    background:transparent!important;
+    border:0!important;
+  }
   .process-section .process-grid>div,
   .process-section .process-grid>div.is-active{
-    background:rgba(17,17,17,.94)!important;
-    color:#fff!important;
-    border:1px solid rgba(216,214,208,.72)!important;
-    box-shadow:0 10px 26px rgba(0,0,0,.20)!important;
-    -webkit-backdrop-filter:none!important;
-    backdrop-filter:none!important;
+    flex:0 0 min(82vw,360px)!important;
+    width:min(82vw,360px)!important;
+    min-width:0!important;
+    min-height:245px!important;
+    margin:0!important;
+    padding:24px!important;
+    scroll-snap-align:start!important;
+    scroll-snap-stop:always!important;
+    background:#FFFFFF!important;
+    color:#111111!important;
+    border:1px solid #D8D6D0!important;
+    box-shadow:0 8px 22px rgba(17,17,17,.06)!important;
   }
   .process-section .process-grid h3{
-    color:#fff!important;
-    text-shadow:none!important;
+    margin-top:46px!important;
+    margin-bottom:0!important;
+    font-size:clamp(29px,8vw,38px)!important;
+    line-height:.92!important;
+    color:#111!important;
   }
   .process-section .process-grid p{
-    color:rgba(255,255,255,.82)!important;
+    margin-top:16px!important;
+    font-size:14px!important;
+    line-height:1.65!important;
+    color:#555!important;
   }
 }
 @media(max-width:480px){
   .hero-video-section{
-    width:100%!important;
     height:100svh!important;
     min-height:520px!important;
     max-height:820px!important;
   }
-  .hero-video-section video#bgv,
-  .hero-video-section video{
-    inset:0!important;
-    width:100%!important;
-    height:100%!important;
-    min-width:100%!important;
-    min-height:100%!important;
-    transform:none!important;
-    object-fit:cover!important;
-    object-position:center center!important;
+  .process-section{
+    padding:64px 18px 72px!important;
+  }
+  .process-section .process-head h2{
+    font-size:clamp(40px,11.4vw,62px)!important;
+  }
+  .process-section .process-intro{font-size:15px!important;}
+  .process-section .process-grid>div,
+  .process-section .process-grid>div.is-active{
+    flex-basis:82vw!important;
+    width:82vw!important;
+    padding:22px!important;
   }
 }
 </style>
