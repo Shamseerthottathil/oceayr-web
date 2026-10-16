@@ -6996,85 +6996,14 @@ window.addEventListener('DOMContentLoaded',()=>{
 </style>
 
 <style id="oceayr-lab-approved-functional-fixes-2026-10-16">
-/* LAB ONLY: preserve production theme and fonts; address the approved layout issues. */
+/* Lab-only refinements requested on 16 Oct 2026.
+   Keep main's original black/off-white design system and typography. */
 
-/* Clear, undimmed hero video: remove opacity shading and any decorative section-edge overlay. */
-.hero-video-section{
-  order:1!important;
-  border:0!important;
-  outline:0!important;
-  box-shadow:none!important;
-  background:#000!important;
-  overflow:hidden!important;
-}
-.hero-video-section video#bgv,
-.hero-video-section video{
-  opacity:1!important;
-  filter:none!important;
-  -webkit-filter:none!important;
-  mix-blend-mode:normal!important;
-  border:0!important;
-  outline:0!important;
-  box-shadow:none!important;
-}
-.hero-video-section::before,
-.hero-video-section::after{
-  content:none!important;
-  display:none!important;
-  background:none!important;
-  border:0!important;
-  box-shadow:none!important;
-}
-
-/* Layout order: video -> About OCEAYR -> gallery heading -> gallery.
-   Keep the existing featured slider and service/process sections after the gallery. */
-.about-snapshot{order:2!important;}
-.ticker-section{order:3!important;}
-.gallery-section{
-  order:4!important;
-  width:100%!important;
-  max-width:100%!important;
-  margin:0!important;
-  padding:0!important;
-  border:0!important;
-  outline:0!important;
-  box-shadow:none!important;
-  background:#111!important;
-}
-.landing-slider{order:5!important;}
-.services-new{order:6!important;}
-.process-section{order:7!important;}
-.start-project-band{order:9!important;}
-.footer{order:10!important;}
-
-/* Remove visual frames around the photo-gallery section without changing
-   the existing mosaic layout or its image/card effects. */
-.gallery-section::before,
-.gallery-section::after{
-  content:none!important;
-  display:none!important;
-  background:none!important;
-  border:0!important;
-  box-shadow:none!important;
-}
-.gallery-section .g-stage{
-  border:0!important;
-  outline:0!important;
-  box-shadow:none!important;
-}
-.gallery-section .g-card,
-.gallery-section .g-inner{
-  border:0!important;
-  outline:0!important;
-}
-.gallery-section .g-inner{
-  background:var(--bg,#F7F6F2)!important;
-}
-
-/* Use the image files already uploaded to PHOTOS, not the old generic image URLs. */
+/* 1. Keep the approved pool image on slide 1; remove the unwanted restaurant image.
+   Slide 2 uses the approved uploaded hospitality photo. Slide 3 uses a hotel-suite visual. */
 .slide-bg-1{
-  background-image:url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=2400&q=92')!important;
-  background-position:center 54%!important;
+  background-image:url('https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2400&q=92')!important;
+  background-position:center 52%!important;
   background-size:cover!important;
   background-repeat:no-repeat!important;
 }
@@ -7085,11 +7014,12 @@ window.addEventListener('DOMContentLoaded',()=>{
   background-repeat:no-repeat!important;
 }
 .slide-bg-3{
-  background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2400&q=92')!important;
-  background-position:center!important;
+  background-image:url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=2400&q=92')!important;
+  background-position:center 52%!important;
   background-size:cover!important;
   background-repeat:no-repeat!important;
 }
+/* Use the actual image uploaded to PHOTOS for Web Design Experiences. */
 .service-card-05::before{
   background-image:url('/PHOTOS/oceayr-advanced-web-design.jpeg')!important;
   background-position:center!important;
@@ -7097,12 +7027,75 @@ window.addEventListener('DOMContentLoaded',()=>{
   background-repeat:no-repeat!important;
 }
 
-/* Restore full headlines: allow the heading and outlined second line to grow naturally. */
+/* 2. Reliable layout order:
+   video -> About -> featured slider -> services -> process ->
+   Shuffle Our Art Works + photo gallery -> Elevate Your Brand -> footer. */
+.hero-video-section{order:1!important;}
+.about-snapshot{order:2!important;}
+.landing-slider{order:3!important;}
+.services-new{order:4!important;}
+.process-section{order:5!important;}
+.ticker-section{order:6!important;}
+.gallery-section{
+  order:7!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:#111!important;
+  overflow:visible!important;
+}
+.start-project-band{order:8!important;}
+.footer{order:9!important;}
+
+/* Remove decorative framing around the video and gallery, not the gallery mosaic. */
+.hero-video-section{
+  position:relative!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:#000!important;
+  overflow:hidden!important;
+}
+.hero-video-section::before,
+.hero-video-section::after,
+.gallery-section::before,
+.gallery-section::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+.gallery-section .g-stage,
+.gallery-section .g-card,
+.gallery-section .g-inner{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+.gallery-section .g-inner{background:var(--bg,#F7F6F2)!important;}
+
+/* 3. Restore complete headline lines.
+   Explicit stroke colours avoid currentColor becoming transparent on outlined spans. */
 .services-top,
+.services-top>div,
 .process-section,
 .process-head,
+.process-head>div,
 .about-snapshot,
+.about-snapshot>div:first-child,
 .start-project-band{
+  min-height:0!important;
+  max-height:none!important;
   overflow:visible!important;
 }
 .services-top h2,
@@ -7116,37 +7109,57 @@ window.addEventListener('DOMContentLoaded',()=>{
   height:auto!important;
   min-height:0!important;
   max-height:none!important;
+  margin-top:0!important;
+  margin-bottom:0!important;
+  padding:0!important;
   overflow:visible!important;
   clip-path:none!important;
   contain:none!important;
   white-space:normal!important;
   overflow-wrap:normal!important;
+  word-break:normal!important;
 }
 .services-top h2 span,
 .process-head h2 span,
 .about-snapshot h2 span,
 .start-project-band h2 span{
   display:block!important;
+  position:relative!important;
   width:auto!important;
   max-width:100%!important;
   height:auto!important;
   min-height:0!important;
   max-height:none!important;
+  margin:0!important;
+  padding:0!important;
   overflow:visible!important;
   white-space:normal!important;
   line-height:inherit!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  -webkit-text-stroke:1px #111!important;
 }
 .about-snapshot h2 span{-webkit-text-stroke:1px #fff!important;}
 
-/* Mobile: crop the video to the viewport from the centre. No letterbox strips,
-   side borders or transforms that can shift the video outside its frame. */
+/* 4. Full-opacity video, centred cover crop on narrow screens, no edge bars. */
+.hero-video-section video#bgv,
+.hero-video-section video{
+  opacity:1!important;
+  filter:none!important;
+  -webkit-filter:none!important;
+  mix-blend-mode:normal!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  display:block!important;
+}
 @media(max-width:768px){
   .hero-video-section{
     order:1!important;
     width:100%!important;
     max-width:100%!important;
     height:100svh!important;
-    min-height:560px!important;
+    min-height:540px!important;
     max-height:900px!important;
     margin:0!important;
     padding:0!important;
@@ -7177,33 +7190,18 @@ window.addEventListener('DOMContentLoaded',()=>{
     outline:0!important;
     box-shadow:none!important;
   }
-  .hero-video-section h1{
-    max-width:100%!important;
-    height:auto!important;
-    max-height:none!important;
-    overflow:visible!important;
-    white-space:normal!important;
-    line-height:.86!important;
-  }
-  .about-snapshot{order:2!important;overflow:visible!important;}
-  .ticker-section{order:3!important;}
-  .gallery-section{order:4!important;width:100%!important;padding:0!important;margin:0!important;}
-  .landing-slider{order:5!important;}
-  .services-new{order:6!important;}
-  .process-section{order:7!important;}
-  .start-project-band{order:9!important;}
 
-  /* Make the outline line legible and complete instead of overflowing the viewport. */
+  /* Fit the complete headline while preserving the production outline font style. */
   .services-top h2,
   .process-head h2,
   .about-snapshot h2,
   .start-project-band h2{
-    font-size:clamp(34px,8.4vw,54px)!important;
-    line-height:.94!important;
+    font-size:clamp(34px,9.2vw,58px)!important;
+    line-height:.92!important;
     letter-spacing:-.02em!important;
     word-spacing:normal!important;
-    padding:0!important;
-    margin:0!important;
+    max-width:100%!important;
+    overflow:visible!important;
   }
   .services-top h2 span,
   .process-head h2 span,
@@ -7214,12 +7212,30 @@ window.addEventListener('DOMContentLoaded',()=>{
     letter-spacing:inherit!important;
     -webkit-text-stroke-width:.8px!important;
   }
+
+  /* High contrast on mobile over the process section's photo/background. */
+  .process-section .process-grid>div,
+  .process-section .process-grid>div.is-active{
+    background:rgba(17,17,17,.94)!important;
+    color:#fff!important;
+    border:1px solid rgba(216,214,208,.72)!important;
+    box-shadow:0 10px 26px rgba(0,0,0,.20)!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+  .process-section .process-grid h3{
+    color:#fff!important;
+    text-shadow:none!important;
+  }
+  .process-section .process-grid p{
+    color:rgba(255,255,255,.82)!important;
+  }
 }
 @media(max-width:480px){
   .hero-video-section{
     width:100%!important;
     height:100svh!important;
-    min-height:540px!important;
+    min-height:520px!important;
     max-height:820px!important;
   }
   .hero-video-section video#bgv,
@@ -7229,9 +7245,9 @@ window.addEventListener('DOMContentLoaded',()=>{
     height:100%!important;
     min-width:100%!important;
     min-height:100%!important;
+    transform:none!important;
     object-fit:cover!important;
     object-position:center center!important;
-    transform:none!important;
   }
 }
 </style>
