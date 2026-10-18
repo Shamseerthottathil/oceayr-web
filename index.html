@@ -8877,4 +8877,215 @@ html,body{
   paint-order:normal !important;
 }
 
+
+/* OCEAYR CONSISTENT SOLID HEADLINE SYSTEM — LAB FINAL */
+/* Last-in-file headline system: consistent Optima Regular, consistent line sizing,
+   and solid text on every relevant editorial headline. */
+
+#home.landing-slider .landing-copy h1#landingTitle,
+#home.landing-slider .landing-copy h1#landingTitle .title-solid,
+#home.landing-slider .landing-copy h1#landingTitle .title-outline,
+.services-top h2,
+.services-top h2 span,
+.process-head h2,
+.process-head h2 span,
+.about-snapshot h2,
+.about-snapshot h2 span,
+.start-project-band h2,
+.start-project-band h2 span,
+.summer-details-panel h2,
+.summer-details-panel h2 span,
+.modal-title,
+.modal-title span {
+  font-family: Optima, "Optima Nova", "Optima LT Std", "Segoe UI", serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-synthesis: none !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  text-transform: none !important;
+  text-wrap: balance !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+/* Standardize the main editorial heading scale across sections. */
+.services-top h2,
+.process-head h2,
+.about-snapshot h2,
+.start-project-band h2,
+.summer-details-panel h2 {
+  font-size: clamp(38px, 4.8vw, 72px) !important;
+  line-height: 1.06 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+.services-top h2 span,
+.process-head h2 span,
+.about-snapshot h2 span,
+.start-project-band h2 span,
+.summer-details-panel h2 span {
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1em !important;
+  line-height: 1.06 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+  paint-order: normal !important;
+}
+
+/* Solid dark text for light backgrounds. */
+.services-top h2,
+.services-top h2 span,
+.process-head h2,
+.process-head h2 span,
+.start-project-band h2,
+.start-project-band h2 span,
+.summer-details-panel h2,
+.summer-details-panel h2 span,
+.modal-title span {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+/* Solid white text for the dark About section. */
+.about-snapshot h2,
+.about-snapshot h2 span {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Featured slide lines: same Optima size, weight, and solid white fill. */
+#home.landing-slider .landing-copy h1#landingTitle {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  font-size: clamp(36px, 5.3vw, 78px) !important;
+  line-height: 1.06 !important;
+}
+#home.landing-slider .landing-copy h1#landingTitle .title-solid,
+#home.landing-slider .landing-copy h1#landingTitle .title-outline {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
+  font-size: 1em !important;
+  line-height: 1.08 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+  paint-order: normal !important;
+}
+
+/* The video title keeps its identity font, but AGENCY is solid like OCEAYR. */
+.hero-video-section h1 .outline {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+}
+
+/* The close-out heading now matches the site's editorial family and scale.
+   Keep YOUR BRAND on one line on mobile, rather than wrapping into two words. */
+.start-project-band h2 {
+  font-size: clamp(38px, 4.8vw, 72px) !important;
+  line-height: 1.06 !important;
+  text-align: center !important;
+}
+.start-project-band h2 span {
+  white-space: nowrap !important;
+}
+
+/* Mobile: all main editorial headings share the same size range and solid style. */
+@media (max-width: 900px) {
+  .services-top h2,
+  .process-head h2,
+  .about-snapshot h2,
+  .start-project-band h2,
+  .summer-details-panel h2 {
+    font-size: clamp(30px, 7vw, 48px) !important;
+    line-height: 1.08 !important;
+  }
+  .services-top h2 span,
+  .process-head h2 span,
+  .about-snapshot h2 span,
+  .start-project-band h2 span,
+  .summer-details-panel h2 span {
+    font-size: 1em !important;
+    line-height: 1.08 !important;
+  }
+  #home.landing-slider .landing-copy h1#landingTitle {
+    font-size: clamp(30px, 8.2vw, 40px) !important;
+    line-height: 1.08 !important;
+  }
+}
+@media (max-width: 600px) {
+  .services-top h2,
+  .process-head h2,
+  .about-snapshot h2,
+  .start-project-band h2,
+  .summer-details-panel h2 {
+    font-size: clamp(29px, 8.2vw, 38px) !important;
+    line-height: 1.1 !important;
+  }
+  .services-top h2 span,
+  .process-head h2 span,
+  .about-snapshot h2 span,
+  .start-project-band h2 span,
+  .summer-details-panel h2 span {
+    font-size: 1em !important;
+    line-height: 1.1 !important;
+  }
+  #home.landing-slider .landing-copy h1#landingTitle {
+    font-size: clamp(29px, 8.1vw, 37px) !important;
+    line-height: 1.1 !important;
+  }
+  #home.landing-slider .landing-copy h1#landingTitle .title-solid,
+  #home.landing-slider .landing-copy h1#landingTitle .title-outline {
+    font-size: 1em !important;
+    line-height: 1.12 !important;
+  }
+  .start-project-band h2 span {
+    white-space: nowrap !important;
+  }
+  .summer-details-panel h2 {
+    font-size: clamp(30px, 8vw, 38px) !important;
+  }
+}
+
+/* Keep the previous solid system from re-introducing outline fill. */
+#home.landing-slider .landing-copy h1#landingTitle .title-outline,
+.hero-video-section h1 .outline,
+.services-top h2 span,
+.process-head h2 span,
+.about-snapshot h2 span,
+.start-project-band h2 span,
+.summer-details-panel h2 span,
+.modal-title span {
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+}
+
 </style>
