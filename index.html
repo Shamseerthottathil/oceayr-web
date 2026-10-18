@@ -4940,9 +4940,14 @@ bgv.play().catch(()=>{
     gallery.innerHTML='';
 
     const BASE='https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/main/PHOTOS/';
-    const IMGS=Array.from({length:17},(_,i)=>
-      `${BASE}image${String(i+1).padStart(5,'0')}.jpeg`
-    );
+    const LAB_PHOTOS='https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/Lab/PHOTOS/';
+    const IMGS=Array.from({length:17},(_,i)=>{
+      const number=i+1;
+      /* Replace only the two gallery tiles highlighted for the coffee imagery. */
+      if(number===5) return LAB_PHOTOS+'image00035.jpeg';
+      if(number===8) return LAB_PHOTOS+'image00036.jpeg';
+      return `${BASE}image${String(number).padStart(5,'0')}.jpeg`;
+    });
 
     const VW=window.innerWidth;
     const mob=VW<=768;
@@ -6267,11 +6272,6 @@ window.addEventListener('DOMContentLoaded',()=>{
 (function(){
   'use strict';
 
-  const CAFE_IMAGES=[
-    'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1800&q=90',
-    'https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1800&q=90'
-  ];
-
   function addDotsForScroller(scroller, className, itemSelector, mountAfter){
     if(!scroller || scroller.dataset.dotsReady==='1') return;
     const items=[...scroller.querySelectorAll(itemSelector)];
@@ -6464,38 +6464,14 @@ window.addEventListener('DOMContentLoaded',()=>{
     slider.dataset.finalController='1';
   }
 
-  function replaceBedroomImages(){
-    const imgs=[...document.querySelectorAll('.gallery-section img')];
-    if(!imgs.length) return;
-
-    const targets=imgs.filter(img=>{
-      const src=(img.currentSrc||img.src||img.getAttribute('data-src')||'').toLowerCase();
-      return src.includes('image00005') || src.includes('image00008');
-    });
-
-    targets.slice(0,2).forEach((img,index)=>{
-      const cafe=CAFE_IMAGES[index];
-      img.src=cafe;
-      img.setAttribute('data-src',cafe);
-      img.classList.add('vis');
-    });
-  }
 
   function init(){
     initSummerSlider();
     initMobileIndicators();
-    replaceBedroomImages();
 
-    /* Gallery images are injected asynchronously, so retry briefly. */
-    let tries=0;
-    const galleryTimer=setInterval(()=>{
-      replaceBedroomImages();
-      tries++;
-      if(tries>20) clearInterval(galleryTimer);
-    },500);
-
+    /* Gallery target images are assigned directly by the gallery IMGS array.
+       Keep only the mobile-indicator observer; do not overwrite gallery photo URLs. */
     const observer=new MutationObserver(()=>{
-      replaceBedroomImages();
       if(window.innerWidth<=768) initMobileIndicators();
     });
     const gallery=document.querySelector('.gallery-section');
