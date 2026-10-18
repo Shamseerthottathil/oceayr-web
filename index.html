@@ -8046,3 +8046,80 @@ html,body{
   .process-section .process-intro p+p{margin-top:16px!important;}
 }
 </style>
+
+<style id="oceayr-process-image-guard-specificity-fix-2026-10-18">
+/* Fix the legacy high-specificity display guard which was overriding the
+   approved desktop split layout. Text stays left; image sits on the right. */
+.process-section>div.process-image-frame:not(.process-bg-layer):not(.process-head):not(.process-grid){
+  position:absolute!important;
+  top:0!important;
+  right:0!important;
+  left:auto!important;
+  bottom:auto!important;
+  width:54%!important;
+  height:clamp(440px,44vw,660px)!important;
+  max-width:none!important;
+  max-height:none!important;
+  margin:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+}
+/* Keep the two paragraphs plain on white; do not introduce a text panel. */
+.process-section .process-head>div:first-child,
+.process-section .process-intro,
+.process-section .process-intro p,
+.process-section .process-intro p+p{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  outline:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+/* On tablet and mobile, stack the image in normal flow beneath the intro,
+   and keep it full-width without forced height or cropping. */
+@media(max-width:900px){
+  .process-section>div.process-image-frame:not(.process-bg-layer):not(.process-head):not(.process-grid){
+    position:relative!important;
+    top:auto!important;
+    right:auto!important;
+    left:auto!important;
+    bottom:auto!important;
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-width:100%!important;
+    max-height:none!important;
+    margin:0 0 26px!important;
+    z-index:2!important;
+    overflow:visible!important;
+    pointer-events:none!important;
+  }
+  .process-section>div.process-image-frame:not(.process-bg-layer):not(.process-head):not(.process-grid) .process-bg-layer{
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-width:100%!important;
+    max-height:none!important;
+    object-fit:contain!important;
+    transform:none!important;
+  }
+  .process-section>div.process-image-frame:not(.process-bg-layer):not(.process-head):not(.process-grid) .process-bg-layer.is-active{
+    display:block!important;
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    height:auto!important;
+    max-width:100%!important;
+    max-height:none!important;
+    visibility:visible!important;
+    opacity:1!important;
+  }
+}
+</style>
