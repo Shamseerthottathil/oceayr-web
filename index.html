@@ -6366,6 +6366,12 @@ window.addEventListener('DOMContentLoaded',()=>{
       }
     ];
 
+    const slideImages = [
+      null,
+      "https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/Lab/PHOTOS/Turn%20stays%20into%20Stories.jpeg",
+      "https://raw.githubusercontent.com/Shamseerthottathil/oceayr-web/Lab/PHOTOS/Make%20Every%20Detail%20Desirable.jpeg"
+    ];
+
     let current=0;
     let timer=null;
     let locked=false;
@@ -6385,7 +6391,17 @@ window.addEventListener('DOMContentLoaded',()=>{
         secondary.textContent=slide.secondary;
         secondary.href=slide.secondaryHref;
       }
-      bgs.forEach((bg,i)=>bg.classList.toggle('active',i===current));
+      bgs.forEach((bg,i)=>{
+        bg.classList.toggle('active',i===current);
+        const imageUrl=slideImages[i];
+        if(imageUrl){
+          /* Inline important assignment wins over every legacy duplicate CSS rule. */
+          bg.style.setProperty('background-image','url("'+imageUrl+'")','important');
+          bg.style.setProperty('background-size','cover','important');
+          bg.style.setProperty('background-position','center center','important');
+          bg.style.setProperty('background-repeat','no-repeat','important');
+        }
+      });
       dots.forEach((dot,i)=>dot.classList.toggle('active',i===current));
       if(animate){
         slider.classList.remove('is-changing');
