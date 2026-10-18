@@ -7735,3 +7735,80 @@ html,body{
   visibility:visible!important;
 }
 </style>
+
+<style id="oceayr-process-image-fit-screen-2026-10-18">
+/* Correct the process-image sizing: use the full available content width while
+   preserving each photograph's intrinsic aspect ratio. No fixed tiny dimensions,
+   no object-fit:cover crop, no transform/zoom, and no artificial enlargement cap. */
+.process-section .process-image-frame{
+  display:block!important;
+  width:100%!important;
+  max-width:1480px!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  margin:0 auto clamp(28px,3.2vw,44px)!important;
+  padding:0!important;
+  overflow:visible!important;
+  background:transparent!important;
+}
+.process-section .process-image-frame .process-bg-layer{
+  position:relative!important;
+  inset:auto!important;
+  display:block!important;
+  grid-area:auto!important;
+  width:100%!important;
+  height:auto!important;
+  min-width:0!important;
+  min-height:0!important;
+  max-width:100%!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:0!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  aspect-ratio:auto!important;
+  background:none!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  transform:none!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transition:opacity .65s ease!important;
+}
+.process-section .process-image-frame .process-bg-layer.is-active{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-width:100%!important;
+  max-height:none!important;
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+}
+/* The inactive image is kept out of layout so it cannot add excess blank height. */
+.process-section .process-image-frame .process-bg-layer:not(.is-active){
+  display:none!important;
+}
+@media(max-width:900px){
+  .process-section .process-image-frame{
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:0 auto 26px!important;
+  }
+  .process-section .process-image-frame .process-bg-layer.is-active{
+    width:100%!important;
+    height:auto!important;
+    max-width:100%!important;
+    max-height:none!important;
+    object-fit:contain!important;
+  }
+}
+@media(max-width:480px){
+  .process-section .process-image-frame{margin-bottom:22px!important;}
+}
+</style>
