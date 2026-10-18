@@ -6668,6 +6668,10 @@ window.addEventListener('DOMContentLoaded',()=>{
     let currentIndex=0;
     let activeLayer=0;
     let timer=null;
+    let gridSettleTimer=null;
+    let programmaticScrollTimer=null;
+    let syncingGridScroll=false;
+    let imagePointerStart=null;
     const interval=5600;
 
     function updateCards(index){
@@ -6683,7 +6687,25 @@ window.addEventListener('DOMContentLoaded',()=>{
       section.dataset.activeProcessStep=steps[index].name.toLowerCase();
     }
 
-    function showStep(index){
+    function scrollCardIntoView(index){
+      if(window.innerWidth>900 || grid.scrollWidth<=grid.clientWidth+2) return;
+      const card=cards[index];
+      if(!card) return;
+      const gridRect=grid.getBoundingClientRect();
+      const cardRect=card.getBoundingClientRect();
+      const left=Math.max(0,Math.min(
+        grid.scrollWidth-grid.clientWidth,
+        grid.scrollLeft+cardRect.left-gridRect.left
+      ));
+      if(Math.abs(left-grid.scrollLeft)<3) return;
+      syncingGridScroll=true;
+      if(programmaticScrollTimer) clearTimeout(programmaticScrollTimer);
+      grid.scrollTo({left,behavior:'smooth'});
+      programmaticScrollTimer=setTimeout(()=>{syncingGridScroll=false;},750);
+    }
+
+    function showStep(index,options){
+      const settings=Object.assign({scrollCard:true},options||{});
       index=(index+steps.length)%steps.length;
       if(index!==currentIndex){
         const nextLayer=1-activeLayer;
@@ -6696,7 +6718,48 @@ window.addEventListener('DOMContentLoaded',()=>{
         currentIndex=index;
       }
       updateCards(index);
+      /* Timer, card click, keyboard, and image swipe all keep the matching card in view. */
+      if(settings.scrollCard) scrollCardIntoView(index);
     }
+
+    /* A user can swipe/scroll the card rail; the nearest card then drives the image too. */
+    grid.addEventListener('scroll',()=>{
+      if(window.innerWidth>900 || syncingGridScroll) return;
+      if(gridSettleTimer) clearTimeout(gridSettleTimer);
+      gridSettleTimer=setTimeout(()=>{
+        if(syncingGridScroll) return;
+        const gridRect=grid.getBoundingClientRect();
+        const centre=gridRect.left+gridRect.width/2;
+        let nearestIndex=currentIndex;
+        let nearestDistance=Infinity;
+        cards.forEach((card,index)=>{
+          const rect=card.getBoundingClientRect();
+          const distance=Math.abs((rect.left+rect.right)/2-centre);
+          if(distance<nearestDistance){nearestDistance=distance;nearestIndex=index;}
+        });
+        if(nearestIndex!==currentIndex) showStep(nearestIndex,{scrollCard:false});
+        startTimer();
+      },140);
+    },{passive:true});
+
+    /* Swiping the photograph advances/reverses the same step rail. */
+    frame.style.setProperty('pointer-events','auto','important');
+    frame.style.setProperty('touch-action','pan-y','important');
+    frame.addEventListener('pointerdown',event=>{
+      imagePointerStart={x:event.clientX,y:event.clientY,time:Date.now()};
+    },{passive:true});
+    frame.addEventListener('pointerup',event=>{
+      if(!imagePointerStart) return;
+      const dx=event.clientX-imagePointerStart.x;
+      const dy=event.clientY-imagePointerStart.y;
+      const elapsed=Date.now()-imagePointerStart.time;
+      imagePointerStart=null;
+      if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)*1.15 && elapsed<1200){
+        showStep(currentIndex+(dx<0?1:-1));
+        startTimer();
+      }
+    },{passive:true});
+    frame.addEventListener('pointercancel',()=>{imagePointerStart=null;},{passive:true});
 
     function stopTimer(){if(timer){clearInterval(timer);timer=null;}}
     function startTimer(){
@@ -8613,5 +8676,140 @@ html,body{
     text-wrap: balance !important;
   }
 }
+
+
+/* OCEAYR OPTIMA REGULAR ALL-SCREEN HEADLINE SYSTEM — Lab */
+/* Use Optima Regular consistently for editorial headlines on desktop and mobile.
+   Device fallback is intentional where Optima is not installed. */
+.landing-copy h1#landingTitle,
+.landing-copy h1#landingTitle .title-solid,
+.landing-copy h1#landingTitle .title-outline,
+.services-top h2,
+.services-top h2 span,
+.process-head h2,
+.process-head h2 span,
+.about-snapshot h2,
+.about-snapshot h2 span,
+.start-project-band h2,
+.start-project-band h2 span,
+.summer-heading h2,
+.summer-heading h2 span {
+  font-family: Optima, "Optima Nova", "Optima LT Std", "Segoe UI", serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-synthesis: none !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  text-wrap: balance !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+.landing-copy h1#landingTitle {
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  width:100%!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  margin:0!important;
+  overflow:visible!important;
+  font-size:clamp(42px,5.6vw,88px)!important;
+  line-height:1.04!important;
+}
+.landing-copy h1#landingTitle .title-solid,
+.landing-copy h1#landingTitle .title-outline {
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  line-height:1.08!important;
+  white-space:normal!important;
+  overflow:visible!important;
+}
+.landing-copy h1#landingTitle .title-solid {
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  -webkit-text-stroke:0!important;
+}
+.landing-copy h1#landingTitle .title-outline {
+  margin-top:.06em!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  -webkit-text-stroke:1.15px rgba(255,255,255,.98)!important;
+  paint-order:stroke fill!important;
+}
+.services-top h2,
+.process-head h2,
+.about-snapshot h2,
+.summer-heading h2 {
+  font-size:clamp(36px,4.5vw,76px)!important;
+  line-height:1.08!important;
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+.services-top h2 span,
+.process-head h2 span,
+.summer-heading h2 span {
+  display:block!important;
+  font-size:.96em!important;
+  line-height:1.1!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  -webkit-text-stroke:1px #111!important;
+  paint-order:stroke fill!important;
+  overflow:visible!important;
+}
+.about-snapshot h2 span {
+  display:block!important;
+  font-size:.96em!important;
+  line-height:1.1!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  -webkit-text-stroke:1px rgba(255,255,255,.98)!important;
+  paint-order:stroke fill!important;
+  overflow:visible!important;
+}
+.start-project-band h2 {
+  font-size:clamp(48px,7.3vw,116px)!important;
+  line-height:1.06!important;
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+.start-project-band h2 span {
+  display:block!important;
+  font-size:.96em!important;
+  line-height:1.1!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  -webkit-text-stroke:1px #111!important;
+  paint-order:stroke fill!important;
+  overflow:visible!important;
+}
+@media(max-width:900px){
+  .landing-copy h1#landingTitle {font-size:clamp(34px,7.8vw,58px)!important;line-height:1.05!important;}
+  .landing-copy h1#landingTitle .title-solid {font-size:1em!important;line-height:1.08!important;}
+  .landing-copy h1#landingTitle .title-outline {font-size:.9em!important;line-height:1.12!important;}
+  .services-top h2,.process-head h2,.about-snapshot h2,.summer-heading h2 {font-size:clamp(32px,6.2vw,54px)!important;line-height:1.08!important;}
+  .start-project-band h2 {font-size:clamp(38px,7.2vw,66px)!important;line-height:1.08!important;}
+}
+@media(max-width:600px){
+  .landing-copy h1#landingTitle {font-size:clamp(29px,8.1vw,38px)!important;line-height:1.08!important;}
+  .landing-copy h1#landingTitle .title-solid {font-size:1em!important;line-height:1.12!important;}
+  .landing-copy h1#landingTitle .title-outline {font-size:.9em!important;line-height:1.14!important;margin-top:.08em!important;}
+  .services-top h2,.process-head h2,.about-snapshot h2,.summer-heading h2 {font-size:clamp(29px,8.5vw,39px)!important;line-height:1.1!important;}
+  .start-project-band h2 {font-size:clamp(36px,9.6vw,48px)!important;line-height:1.1!important;}
+  .services-top h2 span,.process-head h2 span,.about-snapshot h2 span,.summer-heading h2 span,.start-project-band h2 span {font-size:.94em!important;line-height:1.12!important;}
+}
+/* Process image/card carousel synchronization on mobile. */
+.process-section .process-grid {
+  scroll-behavior:smooth!important;
+  scroll-snap-type:x mandatory!important;
+}
+.process-section .process-grid>div {scroll-snap-align:start!important;scroll-snap-stop:always!important;}
+.process-section .process-image-frame {touch-action:pan-y!important;}
 
 </style>
