@@ -8123,3 +8123,62 @@ html,body{
   }
 }
 </style>
+
+<style id="oceayr-process-copy-width-and-cards-below-image-2026-10-18">
+/* Final desktop alignment correction.
+   Keep the photo on the right and fit all intro copy into the left column. */
+.process-section .process-head{
+  width:42%!important;
+  max-width:620px!important;
+  min-width:0!important;
+  margin-left:0!important;
+  margin-right:auto!important;
+  box-sizing:border-box!important;
+}
+.process-section .process-head>div:first-child,
+.process-section .process-intro{
+  width:100%!important;
+  max-width:600px!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+}
+.process-section .process-intro p,
+.process-section .process-intro p+p{
+  max-width:100%!important;
+  box-sizing:border-box!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  white-space:normal!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  padding:0!important;
+}
+
+/* The image frame remains absolutely positioned at the right. Move only the
+   process grid down far enough so its top edge clears the entire image.
+   No card backgrounds, borders, text, or interactions are changed. */
+@media(min-width:901px){
+  .process-section .process-grid{
+    margin-top:clamp(180px,12vw,230px)!important;
+  }
+}
+
+/* Keep mobile's existing stacked text -> image -> cards flow unchanged. */
+@media(max-width:900px){
+  .process-section .process-head{
+    width:100%!important;
+    max-width:100%!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  .process-section .process-head>div:first-child,
+  .process-section .process-intro{
+    width:100%!important;
+    max-width:100%!important;
+  }
+  .process-section .process-grid{
+    margin-top:0!important;
+  }
+}
+</style>
