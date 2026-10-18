@@ -6923,21 +6923,33 @@ window.addEventListener('DOMContentLoaded',()=>{
 </style>
 
 
-<style id="oceayr-featured-slide-image-mapping-2026-10-18">
-/* Match the two featured-story slides to their named local PHOTOS assets. */
-#home.landing-slider .slide-bg-2 {
-  background-image:url('/PHOTOS/Turn%20stays%20into%20Stories.jpeg')!important;
-  background-position:center center!important;
-  background-size:cover!important;
-  background-repeat:no-repeat!important;
-}
-#home.landing-slider .slide-bg-3 {
-  background-image:url('/PHOTOS/Make%20Every%20Detail%20Desirable.jpeg')!important;
-  background-position:center center!important;
-  background-size:cover!important;
-  background-repeat:no-repeat!important;
-}
-</style>
+
+
+<script id="oceayr-featured-slide-local-images-2026-10-18">
+/* Set the two named local slide assets inline with !important so legacy
+   slide-bg declarations elsewhere in this file cannot override them. */
+(function () {
+  const assignments = [
+    ['#home.landing-slider .slide-bg-2', '/PHOTOS/Turn%20stays%20into%20Stories.jpeg'],
+    ['#home.landing-slider .slide-bg-3', '/PHOTOS/Make%20Every%20Detail%20Desirable.jpeg']
+  ];
+  function applyFeaturedSlideImages() {
+    assignments.forEach(([selector, path]) => {
+      document.querySelectorAll(selector).forEach((element) => {
+        element.style.setProperty('background-image', 'url("' + path + '")', 'important');
+        element.style.setProperty('background-size', 'cover', 'important');
+        element.style.setProperty('background-position', 'center center', 'important');
+        element.style.setProperty('background-repeat', 'no-repeat', 'important');
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyFeaturedSlideImages, { once: true });
+  } else {
+    applyFeaturedSlideImages();
+  }
+})();
+</script>
 
 </body>
 </html>
