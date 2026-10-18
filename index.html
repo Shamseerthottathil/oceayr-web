@@ -6869,6 +6869,148 @@ window.addEventListener('DOMContentLoaded',()=>{
 }
 </style>
 
+
+<style id="oceayr-mobile-overlap-fix-2026-10-18">
+/* Correct the visible iPhone overlap issues from the latest screenshots. */
+@media (max-width: 600px) {
+  /* Keep the brand mark clear of section links and keep the menu independently positioned. */
+  .logo {
+    position:fixed!important;
+    z-index:6001!important;
+    top:18px!important;
+    left:16px!important;
+    width:70px!important;
+    height:48px!important;
+    padding:3px!important;
+    background:#000!important;
+  }
+  .site-nav {
+    position:fixed!important;
+    top:18px!important;
+    right:16px!important;
+    left:auto!important;
+    width:auto!important;
+    padding:0!important;
+    z-index:6002!important;
+  }
+  .mobile-menu-toggle {
+    width:48px!important;
+    height:44px!important;
+    background:rgba(0,0,0,.68)!important;
+    border-color:rgba(255,255,255,.55)!important;
+  }
+  .mobile-menu-toggle span { background:#fff!important; }
+
+  /* Do not let fixed social buttons cover slide copy, CTAs, or the browser's lower controls.
+     Keep the contact icons in normal document flow at the end of the page on mobile. */
+  .social-floats {
+    position:relative!important;
+    inset:auto!important;
+    z-index:2!important;
+    display:flex!important;
+    flex-wrap:wrap!important;
+    justify-content:center!important;
+    width:100%!important;
+    padding:22px 16px calc(24px + env(safe-area-inset-bottom))!important;
+    margin:0!important;
+    gap:10px!important;
+    background:#F7F6F2!important;
+  }
+  .social-float {
+    position:relative!important;
+    flex:0 0 48px!important;
+    width:48px!important;
+    height:48px!important;
+    min-width:48px!important;
+    min-height:48px!important;
+  }
+
+  /* The hero card should be compact and readable, with breathing room below the CTA. */
+  .landing-slider { min-height:0!important; height:auto!important; }
+  .landing-content {
+    min-height:0!important;
+    height:auto!important;
+    padding:100px 16px 32px!important;
+    gap:18px!important;
+  }
+  .landing-copy {
+    padding:22px 18px 24px!important;
+    margin:0!important;
+    background:rgba(12,12,12,.78)!important;
+  }
+  .landing-copy h1#landingTitle {
+    font-size:clamp(36px,9.2vw,43px)!important;
+    line-height:.98!important;
+    letter-spacing:-.025em!important;
+  }
+  .landing-copy h1#landingTitle .title-solid {
+    font-size:1em!important;
+    line-height:.98!important;
+    white-space:normal!important;
+  }
+  .landing-copy h1#landingTitle .title-outline {
+    font-size:clamp(30px,7.8vw,36px)!important;
+    line-height:1.02!important;
+    letter-spacing:-.025em!important;
+    margin-top:.08em!important;
+  }
+  .landing-description {
+    margin-top:20px!important;
+    font-size:15px!important;
+    line-height:1.55!important;
+  }
+  .landing-actions {
+    gap:18px!important;
+    margin-top:22px!important;
+  }
+  .landing-primary {
+    min-height:56px!important;
+    padding:16px 14px!important;
+    font-size:9px!important;
+    letter-spacing:.16em!important;
+  }
+  .landing-secondary {
+    font-size:9px!important;
+    letter-spacing:.22em!important;
+  }
+  .landing-meta { padding:0!important; }
+
+  /* Stack About content deliberately; its CTA must not sit beside or under the logo. */
+  .about-snapshot {
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:24px!important;
+    padding:58px 20px 54px!important;
+  }
+  .about-snapshot>div,
+  .about-snapshot-copy {
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+  }
+  .about-snapshot .section-cta {
+    display:flex!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-height:56px!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    margin:24px 0 0!important;
+    padding:17px 16px!important;
+    gap:16px!important;
+  }
+  .about-snapshot h2 {
+    font-size:clamp(38px,9.7vw,47px)!important;
+    line-height:.98!important;
+  }
+  .about-snapshot h2 span {
+    font-size:.92em!important;
+    line-height:1.02!important;
+  }
+}
+</style>
+
 </body>
 </html>
 <style>
