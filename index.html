@@ -7720,3 +7720,18 @@ html,body{
   .process-section .process-image-frame .process-bg-layer{transition:none!important;}
 }
 </style>
+
+<style id="oceayr-process-image-frame-display-guard">
+/* The legacy process cleanup hides unknown direct children. Explicitly allow the
+   new contained image frame while continuing to hide other unintended elements. */
+.process-section>div.process-image-frame:not(.process-bg-layer):not(.process-head):not(.process-grid){
+  display:grid!important;
+  visibility:visible!important;
+  opacity:1!important;
+  position:relative!important;
+  z-index:2!important;
+}
+.process-section>div.process-image-frame .process-bg-layer{
+  visibility:visible!important;
+}
+</style>
