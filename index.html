@@ -8553,4 +8553,65 @@ html,body{
   }
 }
 
+
+/* LAB MOBILE HEADLINE VISIBILITY FIX — 18 Oct 2026
+   The outline text was invisible because currentColor inherited transparent.
+   Keep Optima Regular but set a real stroke colour for each background. */
+@media (max-width: 600px) {
+  .landing-copy h1#landingTitle .title-outline {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    -webkit-text-stroke: 1.15px rgba(255,255,255,.98) !important;
+    paint-order: stroke fill !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    line-height: 1.12 !important;
+  }
+
+  /* Light editorial sections use a dark outline. */
+  .services-top h2 span,
+  .process-head h2 span,
+  .start-project-band h2 span,
+  .summer-heading h2 span {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    -webkit-text-stroke: 1.1px #111111 !important;
+    paint-order: stroke fill !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    line-height: 1.12 !important;
+  }
+
+  /* The About section has a dark background, so use a white outline. */
+  .about-snapshot h2 span {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    -webkit-text-stroke: 1.1px rgba(255,255,255,.98) !important;
+    paint-order: stroke fill !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    line-height: 1.12 !important;
+  }
+
+  /* Preserve each deliberate two-line headline and prevent clipping. */
+  .services-top h2,
+  .process-head h2,
+  .about-snapshot h2,
+  .start-project-band h2,
+  .summer-heading h2 {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    line-height: 1.08 !important;
+    text-wrap: balance !important;
+  }
+}
+
 </style>
