@@ -4719,7 +4719,7 @@ body{
 <a href="#home">Home</a>
 <a href="/about">About Us</a>
 <a href="#services">Services</a>
-<a aria-label="Collaboration" href="#summer">Collaboration</a>
+<a aria-label="Collaborations" href="#home">Collaborations</a>
 <a href="/contact">Contact Us</a>
 <a class="nav-cta" href="/contact">Start A Project</a>
 </div>
@@ -4728,7 +4728,7 @@ body{
 <a href="#home">Home</a>
 <a href="/about">About Us</a>
 <a href="#services">Services</a>
-<a href="#summer">Collaboration</a>
+<a href="#home">Collaborations</a>
 <a href="/contact">Contact Us</a>
 <a class="mobile-nav-cta" href="/contact">Start A Project <span>→</span></a>
 </div>
@@ -9086,6 +9086,106 @@ html,body{
 .modal-title span {
   -webkit-text-stroke: 0 !important;
   text-shadow: none !important;
+}
+
+
+/* OCEAYR SECONDARY HEADLINES + ELEVATE CONSISTENCY — LAB */
+/* Main homepage and featured-slide titles are intentionally excluded.
+   Standardize the other editorial section headlines in Optima Regular. */
+.services-top h2,.services-top h2 span,
+.process-head h2,.process-head h2 span,
+.about-snapshot h2,.about-snapshot h2 span,
+.start-project-band h2,.start-project-band h2 span {
+  font-family: Optima, "Optima Nova", "Optima LT Std", "Segoe UI", serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-synthesis: none !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  text-transform: uppercase !important;
+  text-wrap: balance !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+.services-top h2,.process-head h2,.start-project-band h2 {
+  font-size: clamp(38px, 4.8vw, 72px) !important;
+  line-height: 1.08 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  margin-block: 0 !important;
+}
+.services-top h2 span,.process-head h2 span,.start-project-band h2 span {
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1em !important;
+  line-height: 1.08 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+  paint-order: normal !important;
+}
+.about-snapshot h2,.about-snapshot h2 span {
+  font-size: clamp(38px, 4.8vw, 72px) !important;
+  line-height: 1.08 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+}
+.about-snapshot h2 span {
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1em !important;
+  line-height: 1.08 !important;
+  white-space: normal !important;
+}
+/* ELEVATE / YOUR BRAND: same Optima face, same size, solid fill, no forced widening. */
+.start-project-band h2 {
+  text-align: center !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+}
+.start-project-band h2 span {
+  font-size: 1em !important;
+  line-height: 1.08 !important;
+  white-space: normal !important;
+}
+@media (max-width: 900px) {
+  .services-top h2,.process-head h2,.about-snapshot h2,.start-project-band h2 {
+    font-size: clamp(30px, 7vw, 48px) !important;
+    line-height: 1.1 !important;
+  }
+  .services-top h2 span,.process-head h2 span,.about-snapshot h2 span,.start-project-band h2 span {
+    font-size: 1em !important;
+    line-height: 1.1 !important;
+  }
+}
+@media (max-width: 600px) {
+  .services-top h2,.process-head h2,.about-snapshot h2,.start-project-band h2 {
+    font-size: clamp(29px, 8.2vw, 38px) !important;
+    line-height: 1.12 !important;
+  }
+  .services-top h2 span,.process-head h2 span,.about-snapshot h2 span,.start-project-band h2 span {
+    font-size: 1em !important;
+    line-height: 1.12 !important;
+  }
 }
 
 </style>
