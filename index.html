@@ -6981,8 +6981,7 @@ window.addEventListener('DOMContentLoaded',()=>{
 
 
 
-</body>
-</html>
+
 <style>
 /* Last-resort layout guard: gallery never overlaps the Shuffle ticker. */
 .ticker-section + .gallery-section{
@@ -9189,3 +9188,251 @@ html,body{
 }
 
 </style>
+
+<style id="oceayr-final-global-headline-fix-lab-2026-10-18">
+/* FINAL LAB HEADLINE SYSTEM
+   Overrides legacy conflicting type rules after the existing CSS cascade.
+   Main homepage title is explicitly included in this correction. */
+:root {
+  --oceayr-headline-font: Optima, "Optima Nova", "Optima LT Std", "Segoe UI", serif;
+}
+
+/* MAIN COMPANY IDENTITY: OCEAYR / AGENCY — Optima Regular, both lines solid. */
+body .hero-video-section h1,
+body .hero-video-section h1:not(.anything) {
+  font-family: var(--oceayr-headline-font) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-synthesis: none !important;
+  font-size: clamp(46px, 8vw, 112px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  white-space: normal !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+}
+body .hero-video-section h1 > .outline {
+  display: inline-block !important;
+  font-family: var(--oceayr-headline-font) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-size: 1em !important;
+  line-height: inherit !important;
+  letter-spacing: 0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+}
+@media (max-width: 768px) {
+  body .hero-video-section h1,
+  body .hero-video-section h1:not(.anything) {
+    font-size: clamp(34px, 10.4vw, 56px) !important;
+    line-height: 1.04 !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
+/* FEATURED SLIDER HEADLINES — both lines share solid white Optima Regular. */
+body #home.landing-slider .landing-copy h1#landingTitle,
+body #home.landing-slider .landing-copy h1#landingTitle .title-solid,
+body #home.landing-slider .landing-copy h1#landingTitle .title-outline {
+  font-family: var(--oceayr-headline-font) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-synthesis: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  text-transform: uppercase !important;
+}
+body #home.landing-slider .landing-copy h1#landingTitle {
+  font-size: clamp(38px, 5.8vw, 76px) !important;
+  line-height: 1.05 !important;
+}
+body #home.landing-slider .landing-copy h1#landingTitle .title-solid,
+body #home.landing-slider .landing-copy h1#landingTitle .title-outline {
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1em !important;
+  line-height: 1.08 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+}
+
+/* Standard editorial headlines: Optima Regular, solid fill, consistent scale. */
+body .selected-intro h2,
+body .services-top h2,
+body .process-head h2,
+body .about-snapshot h2,
+body #start-project.start-project-band h2,
+body .summer-details-panel h2 {
+  font-family: var(--oceayr-headline-font) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-synthesis: none !important;
+  font-size: clamp(38px, 4.8vw, 72px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  text-transform: uppercase !important;
+  text-wrap: balance !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Solid dark line treatment on light sections and collaboration panel. */
+body .selected-intro h2,
+body .services-top h2,
+body .process-head h2,
+body #start-project.start-project-band h2,
+body .summer-details-panel h2,
+body .selected-intro h2 > span,
+body .services-top h2 > span,
+body .process-head h2 > span,
+body #start-project.start-project-band h2 > span,
+body .summer-details-panel h2 > span {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+  paint-order: normal !important;
+}
+
+/* About section is dark: both lines solid white. */
+body .about-snapshot h2,
+body .about-snapshot h2 > span {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+  paint-order: normal !important;
+}
+
+/* ELEVATE / YOUR BRAND — same face, same scale, solid and constrained to its box. */
+body #start-project.start-project-band h2 {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  font-size: clamp(40px, 5.5vw, 78px) !important;
+  line-height: 1.08 !important;
+  text-align: center !important;
+}
+body #start-project.start-project-band h2 > span {
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--oceayr-headline-font) !important;
+  font-size: 1em !important;
+  font-weight: 400 !important;
+  line-height: 1.08 !important;
+  white-space: normal !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+}
+body .services-top h2 > span,
+body .process-head h2 > span,
+body .selected-intro h2 > span,
+body .summer-details-panel h2 > span {
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--oceayr-headline-font) !important;
+  font-size: 1em !important;
+  font-weight: 400 !important;
+  line-height: 1.08 !important;
+  white-space: normal !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+}
+@media (max-width: 900px) {
+  body #home.landing-slider .landing-copy h1#landingTitle {
+    font-size: clamp(30px, 8.1vw, 42px) !important;
+    line-height: 1.08 !important;
+  }
+  body .selected-intro h2,
+  body .services-top h2,
+  body .process-head h2,
+  body .about-snapshot h2,
+  body #start-project.start-project-band h2,
+  body .summer-details-panel h2 {
+    font-size: clamp(30px, 7.2vw, 48px) !important;
+    line-height: 1.1 !important;
+  }
+  body #start-project.start-project-band h2 {
+    font-size: clamp(30px, 8.1vw, 38px) !important;
+  }
+  body .selected-intro h2 > span,
+  body .services-top h2 > span,
+  body .process-head h2 > span,
+  body .about-snapshot h2 > span,
+  body #start-project.start-project-band h2 > span,
+  body .summer-details-panel h2 > span {
+    font-size: 1em !important;
+    line-height: 1.1 !important;
+  }
+}
+@media (max-width: 600px) {
+  body #home.landing-slider .landing-copy h1#landingTitle {
+    font-size: clamp(29px, 8vw, 36px) !important;
+  }
+  body .selected-intro h2,
+  body .services-top h2,
+  body .process-head h2,
+  body .about-snapshot h2,
+  body #start-project.start-project-band h2,
+  body .summer-details-panel h2 {
+    font-size: clamp(29px, 8.1vw, 37px) !important;
+    line-height: 1.12 !important;
+  }
+  body #start-project.start-project-band h2 {
+    font-size: clamp(28px, 7.7vw, 35px) !important;
+  }
+  body .selected-intro h2 > span,
+  body .services-top h2 > span,
+  body .process-head h2 > span,
+  body .about-snapshot h2 > span,
+  body #start-project.start-project-band h2 > span,
+  body .summer-details-panel h2 > span {
+    font-size: 1em !important;
+    line-height: 1.12 !important;
+  }
+}
+</style>
+</body>
+</html>
