@@ -998,6 +998,7 @@ nav a:hover::after{
     font-size:10px;
     letter-spacing:.055em;
   }
+
   .hero{
     width:100vw;
     height:100svh;
@@ -1996,7 +1997,8 @@ html,body{background:#F7F6F2;color:#111;}
 .landing-content{
   align-items:flex-end !important;
 }
-.landing-copy{  background:rgba(247,246,242,.90);
+.landing-copy{
+  background:rgba(247,246,242,.90);
   backdrop-filter:blur(4px);
   -webkit-backdrop-filter:blur(4px);
   padding:28px 30px 30px;
@@ -2996,6 +2998,7 @@ body{
     margin-left:20px!important;
     margin-right:20px!important;
   }
+
   /* Other content sections: no clipped giant headlines. */
   .selected-intro{
     padding:70px 20px 40px!important;
@@ -3994,7 +3997,8 @@ body{
   font-size:clamp(25px,1.72vw,34px)!important;
 }
 .service-card p{
-  max-width:100%!important;}
+  max-width:100%!important;
+}
 
 /* Slide titles: deliberately controlled line widths so no word is cropped. */
 .landing-copy h2#landingTitle{
@@ -4994,6 +4998,7 @@ bgv.play().catch(()=>{
       {i:0,  x:4.8,  y:0.0,   w:31.0, r:1.27, z:22, d:0},
       {i:1,  x:38.0, y:-6.0,  w:25.8, r:1.30, z:28, d:40},
       {i:2,  x:66.2, y:2.2,   w:32.8, r:.88,  z:20, d:70},
+
       {i:3,  x:15.0, y:28.8,  w:31.8, r:.78,  z:40, d:110},
       {i:4,  x:51.8, y:24.8,  w:30.4, r:.78,  z:42, d:150},
 
@@ -5992,7 +5997,8 @@ window.addEventListener('DOMContentLoaded',()=>{
   letter-spacing:.025em!important;
   word-spacing:.02em!important;
   -webkit-font-smoothing:antialiased!important;
-}@media(max-width:768px){
+}
+@media(max-width:768px){
   .ticker-wrap{height:88px!important;}
   .ticker-track span{
     font-size:clamp(40px,12vw,62px)!important;
@@ -6991,7 +6997,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     transform:translate(-50%,-50%)!important;
     padding:0 12px!important;
     font-size:clamp(54px,12.5vw,92px)!important;
-    line-height:.84!important;    text-align:center!important;
+    line-height:.84!important;
+    text-align:center!important;
   }
 }
 </style>
@@ -7034,6 +7041,17 @@ html:not([lang="ar"]):not(#a):not(#b) body .about-snapshot h2 span{
   -webkit-text-stroke:0!important;-webkit-text-stroke-width:0!important;
   background:none!important;background-image:none!important;
   translate:none!important;animation:none!important}
+
+/* 7. Photography / Social strip: same font style as the hero "OCEAYR / AGENCY" title (Inter Black; outline line + solid line) */
+html body .hl-strip .hl-row-a .hl-track{
+  font-family:Inter,Arial,sans-serif!important;font-weight:900!important;letter-spacing:-.01em!important;
+  font-size:clamp(26px,4.8vw,80px)!important;line-height:1.05!important;
+  color:transparent!important;-webkit-text-fill-color:transparent!important;-webkit-text-stroke:1px rgba(17,17,17,.96)!important}
+html body .hl-strip .hl-row-b .hl-track{
+  font-family:Inter,Arial,sans-serif!important;font-weight:900!important;letter-spacing:-.01em!important;
+  font-size:clamp(18px,2.8vw,46px)!important;line-height:1.05!important;
+  color:#111!important;-webkit-text-fill-color:#111!important;-webkit-text-stroke:0!important;opacity:1!important}
+html body .hl-strip .hl-row-b{margin-top:clamp(14px,2.2vw,34px)!important}
 </style>
 <script id="oceayr-fixes-js">(function(){
 /* Centre "For + current word" without changing the slide animation: the word box takes the width of the visible word. */
@@ -7991,6 +8009,7 @@ html,body{
   .process-section .process-image-frame .process-bg-layer{transition:none!important;}
 }
 </style>
+
 <style id="oceayr-process-image-frame-display-guard">
 /* The legacy process cleanup hides unknown direct children. Explicitly allow the
    new contained image frame while continuing to hide other unintended elements. */
@@ -8989,7 +9008,8 @@ function init(){
   function translateSlider(ar){const map=ar?EN2AR:AR2EN;[$('#landingKicker'),$('#landingDescription'),$('#landingTitle .title-solid'),$('#landingTitle .title-outline'),$('#landingPrimary'),$('#landingSecondary')].filter(Boolean).forEach(el=>{const raw=el.textContent.replace(/\s+/g,' ').trim().replace(/\s*[→←]$/,'');const to=map[raw];if(to===undefined)return;if(el.id==='landingPrimary')el.innerHTML=to+' <span>'+(ar?'←':'→')+'</span>';else el.textContent=to})}
   ['landingKicker','landingTitle','landingDescription','landingPrimary','landingSecondary'].forEach(id=>{const el=document.getElementById(id);if(el)new MutationObserver(()=>{if(root.lang==='ar')translateSlider(true)}).observe(el,{childList:true,characterData:true,subtree:true})});
   const descEl=$('meta[name="description"]');const META={en:{title:document.title,desc:descEl?descEl.content:''},ar:{title:'OCEAYR | وكالة تسويق ومحتوى للضيافة في الإمارات',desc:'تنتج OCEAYR التصوير والفيديو والمحتوى الاجتماعي والحملات للفنادق والمنتجعات والمطاعم في الإمارات. ابدأ مشروعك اليوم.'}};
-  const WA={en:"Hi OCEAYR, I'd like to discuss a project for [venue].",ar:'مرحباً OCEAYR، أود مناقشة مشروع لـ [اسم المكان].'};  const nav=$('.site-nav'),wa=$('.wa-float'),menuBtn=$('#mobileMenuToggle');const langBtn=document.createElement('button');langBtn.type='button';langBtn.className='lang-toggle';langBtn.id='langBtn';if(nav)nav.appendChild(langBtn);
+  const WA={en:"Hi OCEAYR, I'd like to discuss a project for [venue].",ar:'مرحباً OCEAYR، أود مناقشة مشروع لـ [اسم المكان].'};
+  const nav=$('.site-nav'),wa=$('.wa-float'),menuBtn=$('#mobileMenuToggle');const langBtn=document.createElement('button');langBtn.type='button';langBtn.className='lang-toggle';langBtn.id='langBtn';if(nav)nav.appendChild(langBtn);
   function setLang(lang,save){const ar=lang==='ar';root.lang=ar?'ar':'en';root.dir=ar?'rtl':'ltr';REG.forEach(r=>{r.el.innerHTML=ar?r.ar:r.en});ATTR.forEach(r=>r.el.setAttribute(r.attr,ar?r.ar:r.en));translateSlider(ar);document.title=META[lang].title;if(descEl)descEl.content=META[lang].desc;if(wa){wa.href='https://wa.me/971528749214?text='+encodeURIComponent(WA[lang]);wa.setAttribute('aria-label',ar?'تواصل عبر واتساب':'Chat on WhatsApp')}langBtn.textContent=ar?'EN':'عربي';langBtn.lang=ar?'en':'ar';langBtn.setAttribute('aria-label',ar?'Switch to English':'التبديل إلى العربية');if(menuBtn)menuBtn.setAttribute('aria-label',ar?'فتح القائمة':'Open navigation');if(save){try{localStorage.setItem('oceayr-lang',lang)}catch(e){}}}
   langBtn.addEventListener('click',()=>setLang(root.lang==='ar'?'en':'ar',true));setLang(root.lang==='ar'?'ar':'en',false);touchLens();stepProcess();
 }
