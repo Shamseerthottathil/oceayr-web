@@ -30,7 +30,8 @@ window.setInterval=function(f,ms){var a=[].slice.call(arguments,2);
 if(ms===5600){return si.apply(window,[function(){if(!window.__procPause)f.apply(null,a)},ms])}
 return si.apply(window,[f,ms].concat(a))};})();
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&amp;family=Bebas+Neue&amp;family=Fjalla+One&amp;family=Kanit:wght@700;900&amp;family=Bodoni+Moda:wght@400;500;600;700;800&amp;family=Montserrat:wght@300&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&amp;family=Bebas+Neue&amp;family=Fjalla+One&amp;family=Kanit:wght@700;900&amp;family=Bodoni+Moda:wght@400;500;600;700;800&amp;family=Montserrat:wght@300&amp;family=Michroma&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
@@ -997,7 +998,6 @@ nav a:hover::after{
     font-size:10px;
     letter-spacing:.055em;
   }
-
   .hero{
     width:100vw;
     height:100svh;
@@ -1996,8 +1996,7 @@ html,body{background:#F7F6F2;color:#111;}
 .landing-content{
   align-items:flex-end !important;
 }
-.landing-copy{
-  background:rgba(247,246,242,.90);
+.landing-copy{  background:rgba(247,246,242,.90);
   backdrop-filter:blur(4px);
   -webkit-backdrop-filter:blur(4px);
   padding:28px 30px 30px;
@@ -2997,7 +2996,6 @@ body{
     margin-left:20px!important;
     margin-right:20px!important;
   }
-
   /* Other content sections: no clipped giant headlines. */
   .selected-intro{
     padding:70px 20px 40px!important;
@@ -3996,8 +3994,7 @@ body{
   font-size:clamp(25px,1.72vw,34px)!important;
 }
 .service-card p{
-  max-width:100%!important;
-}
+  max-width:100%!important;}
 
 /* Slide titles: deliberately controlled line widths so no word is cropped. */
 .landing-copy h2#landingTitle{
@@ -4997,7 +4994,6 @@ bgv.play().catch(()=>{
       {i:0,  x:4.8,  y:0.0,   w:31.0, r:1.27, z:22, d:0},
       {i:1,  x:38.0, y:-6.0,  w:25.8, r:1.30, z:28, d:40},
       {i:2,  x:66.2, y:2.2,   w:32.8, r:.88,  z:20, d:70},
-
       {i:3,  x:15.0, y:28.8,  w:31.8, r:.78,  z:40, d:110},
       {i:4,  x:51.8, y:24.8,  w:30.4, r:.78,  z:42, d:150},
 
@@ -5996,8 +5992,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   letter-spacing:.025em!important;
   word-spacing:.02em!important;
   -webkit-font-smoothing:antialiased!important;
-}
-@media(max-width:768px){
+}@media(max-width:768px){
   .ticker-wrap{height:88px!important;}
   .ticker-track span{
     font-size:clamp(40px,12vw,62px)!important;
@@ -6996,8 +6991,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     transform:translate(-50%,-50%)!important;
     padding:0 12px!important;
     font-size:clamp(54px,12.5vw,92px)!important;
-    line-height:.84!important;
-    text-align:center!important;
+    line-height:.84!important;    text-align:center!important;
   }
 }
 </style>
@@ -7006,6 +7000,56 @@ window.addEventListener('DOMContentLoaded',()=>{
 
 
 
+
+<style id="oceayr-fixes-css">
+/* 1. Hero rotator ("For cafés"): original effect untouched; only the position is centred on the visible text */
+.hero-rotator .rotator-words{transition:none!important}
+@media(max-width:768px){.hero-rotator .rot-line{letter-spacing:.2em}}
+
+/* 3. Slide headlines: second line solid, same font/size as first line */
+html body .landing-copy h2#landingTitle .title-outline,
+html:not([lang="ar"]):not(#a) body .landing-copy #landingTitle .title-outline{
+  font-family:Optima,"Optima Nova","Optima LT Std","Segoe UI",serif!important;
+  font-size:1em!important;font-weight:400!important;line-height:1.08!important;letter-spacing:inherit!important;
+  color:#fff!important;-webkit-text-fill-color:#fff!important;-webkit-text-stroke:0!important;
+  background:none!important;background-image:none!important;translate:none!important;animation:none!important;
+  margin-top:.06em!important}
+
+/* 4. MADE TO BE DESIRED / IDEAS INTO IMPACT / ELEVATE YOUR BRAND: second line uses the first line's font, outline effect kept */
+html:not([lang="ar"]):not(#a) body :is(.services-top,.process-head,.about-snapshot,.start-project-band) h2 span,
+html:not([lang="ar"]):not(#a) body .start-project-band#start-project h2 span{
+  font-family:'Bebas Neue','Fjalla One',Impact,sans-serif!important;
+  font-size:1em!important;line-height:.95!important;letter-spacing:.025em!important;font-weight:400!important}
+
+/* 5. Shuffle Our Art Works in Michroma */
+html:not([lang="ar"]):not(#a) body .ticker-section .ticker-wrap .ticker-track span{
+  font-family:'Michroma','Segoe UI',Arial,sans-serif!important;
+  font-size:clamp(26px,3.6vw,56px)!important;letter-spacing:.04em!important;line-height:1!important;font-weight:400!important;color:#444!important}
+@media(max-width:768px){html:not([lang="ar"]):not(#a) body .ticker-section .ticker-wrap .ticker-track span{font-size:clamp(20px,5.2vw,30px)!important}}
+
+/* 6. ABOUT: "PREMIUM EXECUTION." solid, same as the first line */
+html.hl-hover:not([lang="ar"]):not(#a):not(#b) body .about-snapshot h2 span,
+html:not([lang="ar"]):not(#a):not(#b) body .about-snapshot h2 span{
+  color:inherit!important;-webkit-text-fill-color:currentColor!important;
+  -webkit-text-stroke:0!important;-webkit-text-stroke-width:0!important;
+  background:none!important;background-image:none!important;
+  translate:none!important;animation:none!important}
+</style>
+<script id="oceayr-fixes-js">(function(){
+/* Centre "For + current word" without changing the slide animation: the word box takes the width of the visible word. */
+function fit(){var box=document.getElementById('heroRotator');if(!box)return;
+  function apply(){var on=box.querySelector('.on');if(!on)return;
+    var probe=document.createElement('span');probe.textContent=on.textContent;
+    var cs=getComputedStyle(on);
+    probe.style.cssText='position:absolute;left:-9999px;top:0;visibility:hidden;white-space:nowrap;font:'+cs.font+';letter-spacing:'+cs.letterSpacing+';text-transform:'+cs.textTransform;
+    box.parentNode.appendChild(probe);var w=probe.getBoundingClientRect().width;box.parentNode.removeChild(probe);
+    if(w>0)box.style.width=Math.ceil(w)+'px';}
+  apply();
+  new MutationObserver(apply).observe(box,{subtree:true,attributes:true,attributeFilter:['class']});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(apply);
+  addEventListener('resize',apply);}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(fit,50)});else setTimeout(fit,50);
+})();</script>
 </body>
 </html>
 <style>
@@ -7947,7 +7991,6 @@ html,body{
   .process-section .process-image-frame .process-bg-layer{transition:none!important;}
 }
 </style>
-
 <style id="oceayr-process-image-frame-display-guard">
 /* The legacy process cleanup hides unknown direct children. Explicitly allow the
    new contained image frame while continuing to hide other unintended elements. */
@@ -8946,8 +8989,7 @@ function init(){
   function translateSlider(ar){const map=ar?EN2AR:AR2EN;[$('#landingKicker'),$('#landingDescription'),$('#landingTitle .title-solid'),$('#landingTitle .title-outline'),$('#landingPrimary'),$('#landingSecondary')].filter(Boolean).forEach(el=>{const raw=el.textContent.replace(/\s+/g,' ').trim().replace(/\s*[→←]$/,'');const to=map[raw];if(to===undefined)return;if(el.id==='landingPrimary')el.innerHTML=to+' <span>'+(ar?'←':'→')+'</span>';else el.textContent=to})}
   ['landingKicker','landingTitle','landingDescription','landingPrimary','landingSecondary'].forEach(id=>{const el=document.getElementById(id);if(el)new MutationObserver(()=>{if(root.lang==='ar')translateSlider(true)}).observe(el,{childList:true,characterData:true,subtree:true})});
   const descEl=$('meta[name="description"]');const META={en:{title:document.title,desc:descEl?descEl.content:''},ar:{title:'OCEAYR | وكالة تسويق ومحتوى للضيافة في الإمارات',desc:'تنتج OCEAYR التصوير والفيديو والمحتوى الاجتماعي والحملات للفنادق والمنتجعات والمطاعم في الإمارات. ابدأ مشروعك اليوم.'}};
-  const WA={en:"Hi OCEAYR, I'd like to discuss a project for [venue].",ar:'مرحباً OCEAYR، أود مناقشة مشروع لـ [اسم المكان].'};
-  const nav=$('.site-nav'),wa=$('.wa-float'),menuBtn=$('#mobileMenuToggle');const langBtn=document.createElement('button');langBtn.type='button';langBtn.className='lang-toggle';langBtn.id='langBtn';if(nav)nav.appendChild(langBtn);
+  const WA={en:"Hi OCEAYR, I'd like to discuss a project for [venue].",ar:'مرحباً OCEAYR، أود مناقشة مشروع لـ [اسم المكان].'};  const nav=$('.site-nav'),wa=$('.wa-float'),menuBtn=$('#mobileMenuToggle');const langBtn=document.createElement('button');langBtn.type='button';langBtn.className='lang-toggle';langBtn.id='langBtn';if(nav)nav.appendChild(langBtn);
   function setLang(lang,save){const ar=lang==='ar';root.lang=ar?'ar':'en';root.dir=ar?'rtl':'ltr';REG.forEach(r=>{r.el.innerHTML=ar?r.ar:r.en});ATTR.forEach(r=>r.el.setAttribute(r.attr,ar?r.ar:r.en));translateSlider(ar);document.title=META[lang].title;if(descEl)descEl.content=META[lang].desc;if(wa){wa.href='https://wa.me/971528749214?text='+encodeURIComponent(WA[lang]);wa.setAttribute('aria-label',ar?'تواصل عبر واتساب':'Chat on WhatsApp')}langBtn.textContent=ar?'EN':'عربي';langBtn.lang=ar?'en':'ar';langBtn.setAttribute('aria-label',ar?'Switch to English':'التبديل إلى العربية');if(menuBtn)menuBtn.setAttribute('aria-label',ar?'فتح القائمة':'Open navigation');if(save){try{localStorage.setItem('oceayr-lang',lang)}catch(e){}}}
   langBtn.addEventListener('click',()=>setLang(root.lang==='ar'?'en':'ar',true));setLang(root.lang==='ar'?'ar':'en',false);touchLens();stepProcess();
 }
@@ -9102,19 +9144,19 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();</script>
 
 <style id="oceayr-v4-2-css">
-.hl-strip{order:2;flex:none;position:relative;overflow:hidden;direction:ltr;background:#111;color:#fff;
-  border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);
-  padding:clamp(34px,6vw,90px) 0;user-select:none}
+.hl-strip{order:2;flex:none;position:relative;overflow:hidden;direction:ltr;background:#fff;color:#111;
+  border-top:1px solid rgba(0,0,0,.12);border-bottom:1px solid rgba(0,0,0,.12);
+  padding:clamp(18px,2.6vw,38px) 0;user-select:none}
 .hl-row{overflow:hidden}
 .hl-track{display:flex;align-items:center;width:max-content;white-space:nowrap;will-change:transform;text-transform:uppercase}
 .hl-track span{display:block}
-.hl-track i{flex:0 0 auto;display:block;width:.15em;height:.15em;border-radius:50%;background:#fff;margin:0 .5em;opacity:.85}
+.hl-track i{flex:0 0 auto;display:block;width:.15em;height:.15em;border-radius:50%;background:#111;margin:0 .5em;opacity:.85}
 .hl-row-a .hl-track{font-family:var(--hl-outline-font,Optima,'Optima Nova','Optima LT Std',Marcellus,'Segoe UI',serif);
-  font-size:clamp(80px,17vw,280px);line-height:1.02;letter-spacing:.01em;
-  color:transparent;-webkit-text-stroke:1.2px rgba(255,255,255,.92)}
+  font-size:clamp(28px,5.2vw,86px);line-height:1.02;letter-spacing:.01em;
+  color:transparent;-webkit-text-stroke:1px rgba(17,17,17,.92)}
 .hl-row-b{margin-top:clamp(-18px,-1.2vw,-6px)}
 .hl-row-b .hl-track{font-family:var(--hl-solid-font,'Bebas Neue','Fjalla One',Impact,sans-serif);
-  font-size:clamp(48px,9vw,150px);line-height:1;letter-spacing:.03em;color:#fff;opacity:.92}
+  font-size:clamp(18px,3vw,50px);line-height:1;letter-spacing:.03em;color:#111;opacity:.92}
 html[lang="ar"] .hl-strip{display:none}
 </style>
 <script id="oceayr-v4-2">(function(){
