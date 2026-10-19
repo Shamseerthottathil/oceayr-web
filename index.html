@@ -30,6 +30,7 @@ window.setInterval=function(f,ms){var a=[].slice.call(arguments,2);
 if(ms===5600){return si.apply(window,[function(){if(!window.__procPause)f.apply(null,a)},ms])}
 return si.apply(window,[f,ms].concat(a))};})();
 </script>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Michroma&display=swap"/>
 <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&amp;family=Bebas+Neue&amp;family=Fjalla+One&amp;family=Kanit:wght@700;900&amp;family=Bodoni+Moda:wght@400;500;600;700;800&amp;family=Montserrat:wght@300&amp;family=Michroma&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -7052,6 +7053,14 @@ html body .hl-strip .hl-row-b .hl-track{
   font-size:clamp(18px,2.8vw,46px)!important;line-height:1.05!important;
   color:#111!important;-webkit-text-fill-color:#111!important;-webkit-text-stroke:0!important;opacity:1!important}
 html body .hl-strip .hl-row-b{margin-top:clamp(14px,2.2vw,34px)!important}
+/* 8. Strip: Michroma on both lines, tighter white band */
+html body .hl-strip{padding:clamp(12px,1.8vw,26px) 0!important}
+html body .hl-strip .hl-row-a .hl-track,html body .hl-strip .hl-row-b .hl-track{
+  font-family:'Michroma','Segoe UI',Arial,sans-serif!important;font-weight:400!important;letter-spacing:.02em!important;line-height:1.1!important}
+html body .hl-strip .hl-row-a .hl-track{font-size:clamp(20px,3.3vw,54px)!important}
+html body .hl-strip .hl-row-b .hl-track{font-size:clamp(13px,1.9vw,30px)!important}
+html body .hl-strip .hl-row-b{margin-top:clamp(10px,1.4vw,22px)!important}
+html body .hl-strip .hl-track span{font-family:'Michroma','Segoe UI',Arial,sans-serif!important;font-weight:400!important}
 </style>
 <script id="oceayr-fixes-js">(function(){
 /* Centre "For + current word" without changing the slide animation: the word box takes the width of the visible word. */
