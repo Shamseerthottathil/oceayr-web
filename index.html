@@ -997,8 +997,7 @@ nav a:hover::after{
 
   .contact-detail-value{
     font-size:10px;
-    letter-spacing:.055em;
-  }
+    letter-spacing:.055em;  }
 
   .hero{
     width:100vw;
@@ -1997,8 +1996,7 @@ html,body{background:#F7F6F2;color:#111;}
 }
 .landing-content{
   align-items:flex-end !important;
-}
-.landing-copy{
+}.landing-copy{
   background:rgba(247,246,242,.90);
   backdrop-filter:blur(4px);
   -webkit-backdrop-filter:blur(4px);
@@ -2997,8 +2995,7 @@ body{
   }
   .services-new>.section-cta{
     margin-left:20px!important;
-    margin-right:20px!important;
-  }
+    margin-right:20px!important;  }
 
   /* Other content sections: no clipped giant headlines. */
   .selected-intro{
@@ -3997,8 +3994,7 @@ body{
 .service-card-05 h3{
   font-size:clamp(25px,1.72vw,34px)!important;
 }
-.service-card p{
-  max-width:100%!important;
+.service-card p{  max-width:100%!important;
 }
 
 /* Slide titles: deliberately controlled line widths so no word is cropped. */
@@ -4746,7 +4742,7 @@ body{
 <a href="#home">Home</a>
 <a href="/about">About Us</a>
 <a href="#services">Services</a>
-<a aria-label="Collaboration" href="#summer">Collaboration</a>
+<a aria-label="Collaborations" href="#summer">Collaborations</a>
 <a href="/contact">Contact Us</a>
 <a class="nav-cta" href="/contact">Start A Project</a>
 </div>
@@ -4755,7 +4751,7 @@ body{
 <a href="#home">Home</a>
 <a href="/about">About Us</a>
 <a href="#services">Services</a>
-<a href="#summer">Collaboration</a>
+<a href="#summer">Collaborations</a>
 <a href="/contact">Contact Us</a>
 <a class="mobile-nav-cta" href="/contact">Start A Project <span>→</span></a>
 </div>
@@ -4997,8 +4993,7 @@ bgv.play().catch(()=>{
 
     const desktopLayout=[
       {i:0,  x:4.8,  y:0.0,   w:31.0, r:1.27, z:22, d:0},
-      {i:1,  x:38.0, y:-6.0,  w:25.8, r:1.30, z:28, d:40},
-      {i:2,  x:66.2, y:2.2,   w:32.8, r:.88,  z:20, d:70},
+      {i:1,  x:38.0, y:-6.0,  w:25.8, r:1.30, z:28, d:40},      {i:2,  x:66.2, y:2.2,   w:32.8, r:.88,  z:20, d:70},
 
       {i:3,  x:15.0, y:28.8,  w:31.8, r:.78,  z:40, d:110},
       {i:4,  x:51.8, y:24.8,  w:30.4, r:.78,  z:42, d:150},
@@ -5997,8 +5992,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   line-height:.9!important;
   letter-spacing:.025em!important;
   word-spacing:.02em!important;
-  -webkit-font-smoothing:antialiased!important;
-}
+  -webkit-font-smoothing:antialiased!important;}
 @media(max-width:768px){
   .ticker-wrap{height:88px!important;}
   .ticker-track span{
@@ -6997,8 +6991,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     max-width:100%!important;
     transform:translate(-50%,-50%)!important;
     padding:0 12px!important;
-    font-size:clamp(54px,12.5vw,92px)!important;
-    line-height:.84!important;
+    font-size:clamp(54px,12.5vw,92px)!important;    line-height:.84!important;
     text-align:center!important;
   }
 }
@@ -7061,6 +7054,21 @@ html body .hl-strip .hl-row-a .hl-track{font-size:clamp(20px,3.3vw,54px)!importa
 html body .hl-strip .hl-row-b .hl-track{font-size:clamp(13px,1.9vw,30px)!important}
 html body .hl-strip .hl-row-b{margin-top:clamp(10px,1.4vw,22px)!important}
 html body .hl-strip .hl-track span{font-family:'Michroma','Segoe UI',Arial,sans-serif!important;font-weight:400!important}
+
+/* 9. Strip: Michroma, hero-navy background, white text, thin gold top line, edge fade, fill-on-hover / fill-at-centre */
+html body .hl-strip{background:#0B0E24!important;color:#fff!important;
+  border-top:1px solid #B8894A!important;border-bottom:0!important;padding:clamp(14px,2vw,30px) 0!important}
+html body .hl-strip{z-index:1;box-shadow:0 -28px 50px -18px rgba(11,14,36,.85),0 28px 50px -18px rgba(11,14,36,.85)}
+html body .hl-strip::before,html body .hl-strip::after{content:"";position:absolute;top:0;bottom:0;width:9%;z-index:3;pointer-events:none}
+html body .hl-strip::before{left:0;background:linear-gradient(90deg,#0B0E24,rgba(11,14,36,0))}
+html body .hl-strip::after{right:0;background:linear-gradient(270deg,#0B0E24,rgba(11,14,36,0))}
+html body .hl-strip .hl-row-a .hl-track{color:transparent!important;-webkit-text-fill-color:transparent!important;-webkit-text-stroke:1px rgba(255,255,255,.95)!important}
+html body .hl-strip .hl-row-a .hl-track span{transition:-webkit-text-fill-color .4s ease,color .4s ease}
+html body .hl-strip .hl-row-a .hl-track span:hover,html body .hl-strip .hl-row-a .hl-track span.is-lit{
+  -webkit-text-fill-color:#fff!important;color:#fff!important}
+html body .hl-strip .hl-row-b{margin-top:clamp(10px,1.4vw,22px)!important}
+html body .hl-strip .hl-row-b .hl-track,html body .hl-strip .hl-row-b .hl-track span{color:#fff!important;-webkit-text-fill-color:#fff!important;-webkit-text-stroke:0!important;opacity:1!important}
+html body .hl-strip .hl-track i{background:#fff!important;opacity:.85!important}
 </style>
 <script id="oceayr-fixes-js">(function(){
 /* Centre "For + current word" without changing the slide animation: the word box takes the width of the visible word. */
@@ -7076,6 +7084,19 @@ function fit(){var box=document.getElementById('heroRotator');if(!box)return;
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(apply);
   addEventListener('resize',apply);}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(fit,50)});else setTimeout(fit,50);
+})();</script>
+<script id="oceayr-strip-fill">(function(){
+/* Outlined word nearest the middle of the screen fills in white (hover does the same on desktop) */
+function run(){var sec=document.getElementById('hlStrip');if(!sec)return;
+  var words=[].slice.call(sec.querySelectorAll('.hl-row-a .hl-track span')),raf=0;
+  function tick(){raf=0;var r=sec.getBoundingClientRect();
+    if(r.bottom<0||r.top>innerHeight){words.forEach(function(w){w.classList.remove('is-lit')});return}
+    var mid=innerWidth/2,best=null,bd=1e9;
+    words.forEach(function(w){var q=w.getBoundingClientRect(),d=Math.abs(q.left+q.width/2-mid);if(d<bd){bd=d;best=w}});
+    words.forEach(function(w){w.classList.toggle('is-lit',w===best)});}
+  function k(){if(!raf)raf=requestAnimationFrame(tick)}
+  addEventListener('scroll',k,{passive:true});addEventListener('resize',k);tick();}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(run,200)});else setTimeout(run,200);
 })();</script>
 </body>
 </html>
@@ -7969,8 +7990,7 @@ html,body{
 .process-section .process-image-frame .process-bg-layer.is-active{
   position:relative!important;
   opacity:1!important;
-  transform:none!important;
-}
+  transform:none!important;}
 
 /* Keep the cards clearly separated from the image and preserve the original theme. */
 .process-section .process-grid{
@@ -8969,8 +8989,7 @@ const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelecto
 const root=document.documentElement;
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const touch=matchMedia('(hover: none)').matches;
-const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
-const MAIL='mailto:careers@oceayr.com?subject=Join%20the%20OCEAYR%20team';
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));const MAIL='mailto:careers@oceayr.com?subject=Join%20the%20OCEAYR%20team';
 window.openJoinModal=()=>{location.href=MAIL};
 function init(){
   const landing=$('.landing-slider');if(landing)landing.id='collaborations';
