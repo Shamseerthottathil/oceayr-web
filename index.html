@@ -4,21 +4,21 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Hospitality Marketing &amp; Content Agency in the UAE | OCEAYR</title>
-<meta name="description" content="OCEAYR creates photography, film, social content and campaigns for hotels, resorts and restaurants in the UAE. Start your project today.">
+<title>OCEAYR | Hospitality, Food &amp; Lifestyle Marketing Agency, UAE</title>
+<meta name="description" content="OCEAYR is a UAE creative marketing agency for hospitality, food and lifestyle brands, offering strategy, photography, film, social content and campaigns.">
 <link rel="canonical" href="https://oceayr.com/">
 <meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://oceayr.com/">
-<meta property="og:title" content="OCEAYR | Hospitality Marketing Agency, UAE">
-<meta property="og:description" content="Photography, film and campaigns that make hospitality brands easier to choose.">
+<meta property="og:title" content="OCEAYR | Hospitality, Food &amp; Lifestyle Marketing Agency, UAE">
+<meta property="og:description" content="Creative marketing, photography, film and social content for hospitality, food and lifestyle brands across the UAE.">
 <meta property="og:image" content="https://oceayr.com/og-image.jpg"><!-- TODO: upload a 1200x630 image at this path -->
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="OCEAYR | Hospitality, Food &amp; Lifestyle Marketing Agency, UAE"><meta name="twitter:description" content="Creative marketing, photography, film and social content for hospitality, food and lifestyle brands across the UAE.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;700&amp;display=swap" rel="stylesheet">
 <!-- TODO: add "address" (city, country) to this JSON-LD once confirmed -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"OCEAYR Agency","url":"https://oceayr.com","description":"UAE creative marketing agency for luxury hospitality, food and lifestyle brands.","telephone":"+971528749214","areaServed":"AE","sameAs":["https://www.instagram.com/oceayr.agency"]}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"OCEAYR Agency","url":"https://oceayr.com","description":"UAE creative marketing agency for hospitality, food and lifestyle brands, offering brand strategy, photography, film and digital content.","telephone":"+971528749214","areaServed":"AE","sameAs":["https://www.instagram.com/oceayr.agency"]}
 </script>
 <script>
 (function(){var d=document.documentElement,h=new Date().getHours();
@@ -5225,13 +5225,23 @@ bgv.play().catch(()=>{
               return;
             }
 
-            d.x+=e.dx;
-            d.y+=e.dy;
+            const galleryBounds=document.querySelector('.gallery-section');
+            if(!galleryBounds){return;}
+            const galleryRect=galleryBounds.getBoundingClientRect();
+            const cardRect=e.target.getBoundingClientRect();
+            let dx=e.dx;
+            let dy=e.dy;
 
-            if(Math.abs(d.x)>4||Math.abs(d.y)>4){
-              d.moved=true;
-            }
+            if(cardRect.width<=galleryRect.width){
+              dx=Math.max(galleryRect.left-cardRect.left,Math.min(dx,galleryRect.right-cardRect.right));
+            }else{dx=0;}
+            if(cardRect.height<=galleryRect.height){
+              dy=Math.max(galleryRect.top-cardRect.top,Math.min(dy,galleryRect.bottom-cardRect.bottom));
+            }else{dy=0;}
 
+            d.x+=dx;
+            d.y+=dy;
+            if(Math.abs(d.x)>4||Math.abs(d.y)>4){d.moved=true;}
             e.target.style.transform=`translate3d(${d.x}px,${d.y}px,0)`;
           },
 
@@ -7050,6 +7060,52 @@ function fit(){var box=document.getElementById('heroRotator');if(!box)return;
   addEventListener('resize',apply);}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(fit,50)});else setTimeout(fit,50);
 })();</script>
+
+<style id="oceayr-lab-reviewed-fixes">
+/* Remove the time-of-day blue/purple wash over the homepage hero video; preserve the separate About-section mood effect. */
+.hero-video-section > .tod-wash{display:none!important;background:none!important;}
+/* Keep the hero video full-width when RTL is selected. */
+html[dir="rtl"] body section.hero-video-section{
+ direction:ltr!important;position:relative!important;width:100vw!important;min-width:100vw!important;max-width:none!important;
+ height:100vh!important;min-height:100vh!important;max-height:none!important;
+ margin-left:0!important;margin-right:0!important;overflow:hidden!important;
+}
+html[dir="rtl"] body section.hero-video-section video#bgv{
+ position:absolute!important;inset:0 auto auto 0!important;display:block!important;
+ width:100vw!important;min-width:100vw!important;max-width:none!important;height:100%!important;
+ object-fit:cover!important;object-position:50% 50%!important;transform:none!important;transform-origin:center center!important;
+}
+/* Full viewport hero on mobile and desktop. */
+html body section.hero-video-section{
+ position:relative!important;width:100vw!important;min-width:100vw!important;max-width:none!important;
+ height:100vh!important;min-height:100vh!important;max-height:none!important;
+ margin-left:0!important;margin-right:0!important;overflow:hidden!important;
+}
+html body section.hero-video-section > video#bgv{
+ position:absolute!important;inset:0 auto auto 0!important;width:100vw!important;min-width:100vw!important;max-width:none!important;
+ height:100%!important;object-fit:cover!important;object-position:50% 50%!important;
+ transform:none!important;transform-origin:center center!important;
+}
+@media(max-width:768px){
+ html body section.hero-video-section{
+  width:100vw!important;min-width:100vw!important;height:100vh!important;height:100svh!important;
+  min-height:100vh!important;min-height:100svh!important;max-height:none!important;flex:0 0 auto!important;
+ }
+ html body section.hero-video-section > video#bgv{
+  left:0!important;right:auto!important;inset:0 auto auto 0!important;display:block!important;
+  width:100%!important;min-width:0!important;max-width:100%!important;height:100%!important;
+  object-fit:cover!important;object-position:50% 50%!important;transform:none!important;transform-origin:center center!important;
+ }
+ html[dir="rtl"] body section.hero-video-section,
+ html[dir="rtl"] body section.hero-video-section > video#bgv{
+  width:100vw!important;min-width:100vw!important;max-width:none!important;
+ }
+}
+/* The JS clamp restricts movement; clipping prevents shadows/cards from painting outside the gallery. */
+html body section.gallery-section{overflow:hidden!important;}
+html body section.gallery-section .g-stage{overflow:hidden!important;}
+</style>
+
 </body>
 </html>
 <style>
