@@ -7107,44 +7107,6 @@ html body section.gallery-section .g-stage{overflow:hidden!important;}
 </style>
 
 
-<style id="oceayr-strip-style-restore">
-/* Restore the approved black marquee treatment shown in the reference screenshot.
-   This intentionally overrides the later generic white .hl-strip design rules. */
-html body #hlStrip.hl-strip{
-  background:#000000!important;
-  color:#ffffff!important;
-  border-top:1px solid #B8894A!important;
-  border-bottom:0!important;
-  padding:clamp(14px,2vw,30px) 0!important;
-}
-html body #hlStrip.hl-strip .hl-row-a .hl-track,
-html body #hlStrip.hl-strip .hl-row-b .hl-track{
-  font-family:'Michroma','Segoe UI',Arial,sans-serif!important;
-  font-weight:400!important;
-  letter-spacing:.02em!important;
-  line-height:1.1!important;
-}
-html body #hlStrip.hl-strip .hl-row-a .hl-track{
-  font-size:clamp(20px,3.3vw,54px)!important;
-  color:transparent!important;
-  -webkit-text-fill-color:transparent!important;
-  -webkit-text-stroke:1px rgba(255,255,255,.92)!important;
-  opacity:1!important;
-}
-html body #hlStrip.hl-strip .hl-row-b .hl-track{
-  font-size:clamp(13px,1.9vw,30px)!important;
-  color:rgba(255,255,255,.92)!important;
-  -webkit-text-fill-color:rgba(255,255,255,.92)!important;
-  -webkit-text-stroke:0 transparent!important;
-  opacity:1!important;
-}
-html body #hlStrip.hl-strip .hl-track i{
-  background:#ffffff!important;
-  opacity:.84!important;
-}
-html[lang="ar"] #hlStrip.hl-strip{display:none;}
-</style>
-
 </body>
 </html>
 <style>
@@ -9239,20 +9201,60 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();</script>
 
 <style id="oceayr-v4-2-css">
-.hl-strip{order:2;flex:none;position:relative;overflow:hidden;direction:ltr;background:#fff;color:#111;
-  border-top:1px solid rgba(0,0,0,.12);border-bottom:1px solid rgba(0,0,0,.12);
-  padding:clamp(18px,2.6vw,38px) 0;user-select:none}
-.hl-row{overflow:hidden}
-.hl-track{display:flex;align-items:center;width:max-content;white-space:nowrap;will-change:transform;text-transform:uppercase}
-.hl-track span{display:block}
-.hl-track i{flex:0 0 auto;display:block;width:.15em;height:.15em;border-radius:50%;background:#111;margin:0 .5em;opacity:.85}
-.hl-row-a .hl-track{font-family:var(--hl-outline-font,Optima,'Optima Nova','Optima LT Std',Marcellus,'Segoe UI',serif);
-  font-size:clamp(28px,5.2vw,86px);line-height:1.02;letter-spacing:.01em;
-  color:transparent;-webkit-text-stroke:1px rgba(17,17,17,.92)}
-.hl-row-b{margin-top:clamp(-18px,-1.2vw,-6px)}
-.hl-row-b .hl-track{font-family:var(--hl-solid-font,'Bebas Neue','Fjalla One',Impact,sans-serif);
-  font-size:clamp(18px,3vw,50px);line-height:1;letter-spacing:.03em;color:#111;opacity:.92}
-html[lang="ar"] .hl-strip{display:none}
+/* OCEAYR Shuffle strip — preserve the black Michroma design and keep the two rows separate. */
+html body #hlStrip.hl-strip{
+  order:2!important;flex:none!important;display:block!important;position:relative!important;isolation:isolate!important;
+  overflow:hidden!important;direction:ltr!important;box-sizing:border-box!important;
+  background:#000!important;color:#fff!important;border-top:1px solid #B8894A!important;border-bottom:0!important;
+  padding:clamp(26px,2.4vw,44px) 0!important;margin:0!important;user-select:none!important;
+}
+html body #hlStrip.hl-strip .hl-row{
+  display:block!important;position:relative!important;width:100%!important;min-width:0!important;
+  height:auto!important;min-height:0!important;overflow:hidden!important;margin:0!important;padding:0!important;clear:both!important;
+}
+html body #hlStrip.hl-strip .hl-row-a{height:clamp(30px,3.7vw,64px)!important;}
+/* Positive margin separates row B from row A; avoid the former negative overlap. */
+html body #hlStrip.hl-strip .hl-row-b{
+  height:clamp(18px,2.2vw,38px)!important;margin-top:clamp(10px,1.4vw,22px)!important;
+}
+html body #hlStrip.hl-strip .hl-row .hl-track{
+  display:flex!important;align-items:center!important;height:100%!important;min-height:0!important;width:max-content!important;
+  white-space:nowrap!important;font-family:'Michroma','Segoe UI',Arial,sans-serif!important;font-weight:400!important;
+  letter-spacing:.02em!important;line-height:1.1!important;text-transform:uppercase!important;box-sizing:border-box!important;
+}
+html body #hlStrip.hl-strip .hl-row .hl-track span{
+  display:block!important;flex:0 0 auto!important;font-family:'Michroma','Segoe UI',Arial,sans-serif!important;
+  font-weight:400!important;line-height:1.1!important;white-space:nowrap!important;
+}
+html body #hlStrip.hl-strip .hl-row-a .hl-track{
+  font-size:clamp(20px,3.3vw,54px)!important;color:transparent!important;-webkit-text-fill-color:transparent!important;
+  -webkit-text-stroke:1px rgba(255,255,255,.95)!important;opacity:1!important;
+}
+html body #hlStrip.hl-strip .hl-row-a .hl-track span{
+  -webkit-text-fill-color:transparent!important;-webkit-text-stroke:1px rgba(255,255,255,.95)!important;
+  transition:-webkit-text-fill-color .4s ease,color .4s ease!important;
+}
+html body #hlStrip.hl-strip .hl-row-a .hl-track span:hover,
+html body #hlStrip.hl-strip .hl-row-a .hl-track span.is-lit{
+  color:#fff!important;-webkit-text-fill-color:#fff!important;
+}
+html body #hlStrip.hl-strip .hl-row-b .hl-track{
+  font-size:clamp(13px,1.9vw,30px)!important;color:#fff!important;-webkit-text-fill-color:#fff!important;
+  -webkit-text-stroke:0 transparent!important;opacity:1!important;
+}
+html body #hlStrip.hl-strip .hl-row-b .hl-track span{
+  color:#fff!important;-webkit-text-fill-color:#fff!important;-webkit-text-stroke:0 transparent!important;
+}
+html body #hlStrip.hl-strip .hl-track i{
+  display:block!important;flex:0 0 auto!important;width:.15em!important;height:.15em!important;border-radius:50%!important;
+  background:#fff!important;margin:0 .5em!important;opacity:.85!important;
+}
+html[lang="ar"] #hlStrip.hl-strip{display:none!important;}
+@media(max-width:768px){
+  html body #hlStrip.hl-strip{padding:20px 0!important;}
+  html body #hlStrip.hl-strip .hl-row-a{height:30px!important;}
+  html body #hlStrip.hl-strip .hl-row-b{height:18px!important;margin-top:10px!important;}
+}
 </style>
 <script id="oceayr-v4-2">(function(){
 'use strict';
