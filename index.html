@@ -7106,6 +7106,45 @@ html body section.gallery-section{overflow:hidden!important;}
 html body section.gallery-section .g-stage{overflow:hidden!important;}
 </style>
 
+
+<style id="oceayr-strip-style-restore">
+/* Restore the approved black marquee treatment shown in the reference screenshot.
+   This intentionally overrides the later generic white .hl-strip design rules. */
+html body #hlStrip.hl-strip{
+  background:#000000!important;
+  color:#ffffff!important;
+  border-top:1px solid #B8894A!important;
+  border-bottom:0!important;
+  padding:clamp(14px,2vw,30px) 0!important;
+}
+html body #hlStrip.hl-strip .hl-row-a .hl-track,
+html body #hlStrip.hl-strip .hl-row-b .hl-track{
+  font-family:'Michroma','Segoe UI',Arial,sans-serif!important;
+  font-weight:400!important;
+  letter-spacing:.02em!important;
+  line-height:1.1!important;
+}
+html body #hlStrip.hl-strip .hl-row-a .hl-track{
+  font-size:clamp(20px,3.3vw,54px)!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  -webkit-text-stroke:1px rgba(255,255,255,.92)!important;
+  opacity:1!important;
+}
+html body #hlStrip.hl-strip .hl-row-b .hl-track{
+  font-size:clamp(13px,1.9vw,30px)!important;
+  color:rgba(255,255,255,.92)!important;
+  -webkit-text-fill-color:rgba(255,255,255,.92)!important;
+  -webkit-text-stroke:0 transparent!important;
+  opacity:1!important;
+}
+html body #hlStrip.hl-strip .hl-track i{
+  background:#ffffff!important;
+  opacity:.84!important;
+}
+html[lang="ar"] #hlStrip.hl-strip{display:none;}
+</style>
+
 </body>
 </html>
 <style>
