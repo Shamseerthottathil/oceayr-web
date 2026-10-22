@@ -4731,6 +4731,15 @@ body{
 <video autoplay="" id="bgv" loop="" muted="" playsinline="" preload="metadata">
 <source src="/video/oceayr-background.mp4" type="video/mp4"/>
 </video>
+<script>
+/* The landscape video is three portrait clips side by side. Portrait screens get
+   the middle clip only, so the neighbouring clips never show at the edges. */
+(function(){var v=document.getElementById('bgv'),mq=matchMedia('(max-aspect-ratio: 1/1)');
+function pick(){var src=mq.matches?'/video/oceayr-background-mobile.mp4':'/video/oceayr-background.mp4';
+if(v.getAttribute('src')===src)return;var t=v.currentTime||0,resume=v.getAttribute('src')!==null;
+v.setAttribute('src',src);if(resume){v.load();v.addEventListener('loadedmetadata',function(){try{v.currentTime=t}catch(e){}v.play().catch(function(){})},{once:true})}}
+pick();if(mq.addEventListener)mq.addEventListener('change',pick);else if(mq.addListener)mq.addListener(pick);})();
+</script>
 <h1>
     OCEAYR<br/>
 <span class="outline">AGENCY</span>

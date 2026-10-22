@@ -4,7 +4,7 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/video/oceayr-background.mp4",
+      "source": "/video/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
